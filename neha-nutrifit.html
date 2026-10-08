@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neha NutriFit | Fitness & Nutrition Centre in Mumbai</title>
+<meta name="description" content="Neha NutriFit Mumbai — weight loss, muscle gain, yoga and personalised diet plans. Train with certified coaches. Calculate your BMI and start your transformation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --bg:#0B0D08; --bg2:#12150D; --card:#161A10;
+  --lime:#C6FF3D; --lime-dim:#9BD41F; --orange:#FF5C1A;
+  --cream:#F4F6EC; --muted:#9AA08B; --line:rgba(198,255,61,.16);
+  --display:'Anton',sans-serif; --sans:'Space Grotesk',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--cream);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+::selection{background:var(--lime);color:#0B0D08}
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:.35s}
+.nav.scrolled{background:rgba(11,13,8,.9);backdrop-filter:blur(14px);padding:11px 0;border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:1.3rem;letter-spacing:.04em}
+.brand .bolt{width:42px;height:42px;background:var(--lime);display:grid;place-items:center;transform:skewX(-8deg);box-shadow:0 0 26px rgba(198,255,61,.45)}
+.brand .bolt svg{transform:skewX(8deg)}
+.brand em{font-style:normal;color:var(--lime)}
+.nav-links{display:flex;gap:30px}
+.nav-links a{font-size:.84rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:.25s;position:relative}
+.nav-links a:hover{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:#0B0D08;font-weight:700;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;padding:15px 32px;border:0;cursor:pointer;transform:skewX(-8deg);transition:.28s;font-family:var(--sans)}
+.btn span{transform:skewX(8deg);display:inline-flex;align-items:center;gap:10px}
+.btn:hover{background:#fff;box-shadow:0 0 34px rgba(198,255,61,.5);transform:skewX(-8deg) translateY(-3px)}
+.btn.ghost{background:transparent;color:var(--lime);box-shadow:inset 0 0 0 2px var(--lime)}
+.btn.ghost:hover{background:var(--lime);color:#0B0D08}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:26px;height:2.5px;background:var(--lime);margin:6px 0}
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:150px 0 90px;
+  background:radial-gradient(900px 500px at 80% 10%,rgba(198,255,61,.09),transparent 60%),radial-gradient(700px 500px at 10% 90%,rgba(255,92,26,.1),transparent 60%),var(--bg)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(198,255,61,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(198,255,61,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 70% at 50% 40%,#000 30%,transparent 100%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);border:1px solid var(--line);padding:9px 18px;background:rgba(198,255,61,.06)}
+.hero h1{font-family:var(--display);font-size:clamp(3.2rem,8vw,6.4rem);line-height:.98;letter-spacing:.01em;margin:26px 0 22px;text-transform:uppercase}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--lime)}
+.hero h1 .org{color:var(--orange)}
+.hero .lead{color:var(--muted);font-size:1.08rem;max-width:520px;margin-bottom:36px}
+.hero-cta{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:50px}
+.hero-stats{display:flex;gap:44px;flex-wrap:wrap}
+.hstat b{font-family:var(--display);font-size:2rem;color:var(--lime);display:block;letter-spacing:.02em}
+.hstat span{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+/* hero art */
+.hero-art{position:relative;display:grid;place-items:center;min-height:460px}
+.ring{position:absolute;border:1px solid var(--line);border-radius:50%}
+.ring.r1{width:340px;height:340px;animation:spin 26s linear infinite}
+.ring.r2{width:440px;height:440px;animation:spin 40s linear infinite reverse;border-style:dashed}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse-core{width:210px;height:210px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E4FF8F,var(--lime) 45%,var(--lime-dim) 100%);display:grid;place-items:center;box-shadow:0 0 80px rgba(198,255,61,.45);position:relative;z-index:2}
+.chip{position:absolute;background:var(--card);border:1px solid var(--line);padding:12px 20px;font-size:.8rem;font-weight:700;letter-spacing:.08em;transform:skewX(-8deg);z-index:3;box-shadow:0 16px 34px -12px rgba(0,0,0,.6)}
+.chip b{color:var(--lime);font-family:var(--display);font-size:1.15rem;letter-spacing:.03em;display:block}
+.chip.c1{top:6%;left:2%}.chip.c2{bottom:10%;right:0}.chip.c3{top:44%;right:-4%}
+/* ---------- Ticker ---------- */
+.ticker{background:var(--lime);color:#0B0D08;overflow:hidden;padding:13px 0;transform:rotate(-1.2deg) scale(1.02);margin:10px 0}
+.ticker-track{display:flex;width:max-content;animation:tick 22s linear infinite;font-family:var(--display);font-size:1.25rem;letter-spacing:.06em}
+.ticker-track span{padding:0 26px;white-space:nowrap}
+@keyframes tick{to{transform:translateX(-50%)}}
+/* ---------- Sections ---------- */
+section{padding:100px 0}
+.sec-head{max-width:680px;margin:0 auto 58px}
+.sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.kicker{color:var(--lime);font-weight:700;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase}
+.sec-head h2{font-family:var(--display);font-size:clamp(2.2rem,4.6vw,3.6rem);letter-spacing:.02em;margin:16px 0 12px;text-transform:uppercase;line-height:1.05}
+.sec-head h2 .stroke{color:transparent;-webkit-text-stroke:1.5px var(--cream)}
+.sec-head p{color:var(--muted)}
+/* programs */
+.prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.prog{background:var(--card);border:1px solid var(--line);padding:36px 28px;position:relative;overflow:hidden;transition:transform .35s,border-color .35s;transform-style:preserve-3d}
+.prog::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--lime),var(--orange));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.prog:hover{transform:translateY(-10px);border-color:rgba(198,255,61,.5)}
+.prog:hover::before{transform:scaleX(1)}
+.prog .num{font-family:var(--display);font-size:2.6rem;color:transparent;-webkit-text-stroke:1.5px rgba(198,255,61,.4);display:block;margin-bottom:14px}
+.prog .ic{width:56px;height:56px;background:rgba(198,255,61,.1);border:1px solid var(--line);display:grid;place-items:center;margin-bottom:18px;transform:skewX(-8deg)}
+.prog h3{font-family:var(--display);font-size:1.35rem;letter-spacing:.03em;margin-bottom:10px;text-transform:uppercase}
+.prog p{font-size:.9rem;color:var(--muted)}
+.prog .wk{margin-top:16px;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+/* trainers */
+.train-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.trainer{background:var(--card);border:1px solid var(--line);overflow:hidden;transition:transform .35s,box-shadow .35s}
+.trainer:hover{transform:translateY(-10px);box-shadow:0 30px 60px -20px rgba(198,255,61,.25)}
+.t-art{height:250px;display:grid;place-items:center;position:relative;overflow:hidden}
+.t-art .av{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:2.4rem;color:#0B0D08;position:relative;z-index:1;box-shadow:0 18px 36px -12px rgba(0,0,0,.6)}
+.t-art .halo{position:absolute;width:180px;height:180px;border-radius:50%;border:2px dashed rgba(198,255,61,.4);animation:spin 18s linear infinite}
+.t-body{padding:26px}
+.t-body h3{font-family:var(--display);font-size:1.4rem;letter-spacing:.03em}
+.t-body .role{color:var(--lime);font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin:6px 0 10px}
+.t-body p{font-size:.9rem;color:var(--muted)}
+.t-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.t-tags span{font-size:.72rem;font-weight:700;letter-spacing:.08em;background:rgba(198,255,61,.1);border:1px solid var(--line);color:var(--lime);padding:5px 12px}
+/* BMI */
+.bmi{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.bmi-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.bmi h2{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase;line-height:1.05;margin-bottom:14px}
+.bmi h2 .stroke{color:transparent;-webkit-text-stroke:1.5px var(--lime)}
+.calc{background:var(--card);border:1px solid var(--line);padding:40px 36px;position:relative}
+.slider-row{margin-bottom:28px}
+.slider-row .lab{display:flex;justify-content:space-between;font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.slider-row .lab b{color:var(--lime);font-family:var(--display);font-size:1.3rem;letter-spacing:.03em}
+input[type=range]{width:100%;appearance:none;-webkit-appearance:none;height:8px;background:linear-gradient(90deg,var(--lime) var(--fill,50%),#2A2F20 var(--fill,50%));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;background:var(--lime);border:3px solid #0B0D08;box-shadow:0 0 0 2px var(--lime);cursor:grab;transform:skewX(-8deg)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--lime);border:3px solid #0B0D08;border-radius:0;cursor:grab}
+.bmi-out{text-align:center;padding:26px 0 6px}
+.bmi-out .val{font-family:var(--display);font-size:4.4rem;line-height:1;color:var(--lime)}
+.bmi-out .cat{font-weight:700;letter-spacing:.24em;text-transform:uppercase;font-size:.9rem;margin-top:8px}
+.gauge{height:14px;background:#2A2F20;margin:22px 0 8px;position:relative;overflow:hidden}
+.gauge .fill{position:absolute;inset:0;width:0;background:linear-gradient(90deg,#5EB1FF,var(--lime) 45%,var(--orange) 75%,#FF2E2E);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.gauge-marks{display:flex;justify-content:space-between;font-size:.68rem;color:var(--muted);letter-spacing:.08em}
+.bmi-tip{margin-top:18px;font-size:.92rem;color:var(--muted);text-align:center;min-height:3.2em}
+/* results band */
+.band{background:linear-gradient(120deg,var(--lime),#8FD41F);color:#0B0D08;transform:skewY(-1.4deg);margin:40px 0;padding:64px 0}
+.band-inner{transform:skewY(1.4deg)}
+.band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center}
+.band-grid b{font-family:var(--display);font-size:clamp(2.4rem,4.4vw,3.6rem);display:block;line-height:1}
+.band-grid span{font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
+/* plans form */
+.plans-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:52px;align-items:start}
+.plans-grid h2{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase;line-height:1.05;margin-bottom:16px}
+.plan-cards{display:grid;gap:14px;margin-top:26px}
+.pcard{border:1px solid var(--line);padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--card);transition:.3s;cursor:pointer}
+.pcard:hover,.pcard.sel{border-color:var(--lime);background:rgba(198,255,61,.06);transform:translateX(8px)}
+.pcard b{font-family:var(--display);letter-spacing:.03em;font-size:1.1rem}
+.pcard small{display:block;color:var(--muted);font-size:.82rem}
+.pcard .pr{font-family:var(--display);color:var(--lime);font-size:1.4rem;white-space:nowrap}
+form.join{background:var(--card);border:1px solid var(--line);padding:40px 36px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1px solid #2E3324;background:#0E110A;color:var(--cream);font-family:inherit;font-size:.95rem;transition:.25s;border-radius:0}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--lime);box-shadow:0 0 0 3px rgba(198,255,61,.15)}
+.field select option{background:#12150D}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-ok{display:none;background:rgba(198,255,61,.1);border:1px solid var(--lime);color:var(--lime);padding:16px;font-weight:600;text-align:center;margin-top:6px}
+/* footer */
+footer{border-top:1px solid var(--line);padding:64px 0 28px;background:#080A06}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:42px}
+.foot-grid h4{color:var(--lime);font-family:var(--display);letter-spacing:.05em;font-size:1.05rem;margin-bottom:14px}
+.foot-grid a{display:block;padding:5px 0;font-size:.92rem;color:var(--muted)}
+.foot-grid a:hover{color:var(--lime)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.credit{font-size:.76rem;opacity:.6}
+@media(max-width:1000px){
+  .hero-grid,.bmi-grid,.plans-grid{grid-template-columns:1fr}
+  .prog-grid{grid-template-columns:1fr 1fr}
+  .train-grid{grid-template-columns:1fr 1fr}
+  .band-grid{grid-template-columns:1fr 1fr;gap:38px}
+  .nav-links{display:none}
+  .burger{display:block}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:rgba(11,13,8,.97);flex-direction:column;padding:24px;gap:18px;border-bottom:1px solid var(--line)}
+  .hero-art{min-height:360px}
+}
+@media(max-width:620px){.prog-grid,.train-grid,.frow{grid-template-columns:1fr}section{padding:76px 0}.hero{padding-top:130px}.chip.c3{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="bolt"><svg width="22" height="22" viewBox="0 0 24 24" fill="#0B0D08"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
+      <span>NEHA <em>NUTRIFIT</em></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#programs">Programs</a><a href="#trainers">Coaches</a><a href="#bmi">BMI Check</a><a href="#plans">Plans</a>
+    </div>
+    <a href="#plans" class="btn magnetic"><span>Join Now</span></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="grid-bg"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" data-hero>Mumbai · Andheri West</span>
+      <h1 data-hero><span class="hw">Train.</span> <span class="hw stroke">Fuel.</span><br><span class="hw org">Transform.</span></h1>
+      <p class="lead" data-hero>No crash diets. No guesswork. Strength training, yoga and nutrition coaching built around <b style="color:var(--cream)">your</b> body — by coaches who track every rep and every meal with you.</p>
+      <div class="hero-cta" data-hero>
+        <a href="#bmi" class="btn magnetic"><span>Check Your BMI
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a href="#programs" class="btn ghost magnetic"><span>View Programs</span></a>
+      </div>
+      <div class="hero-stats" data-hero>
+        <div class="hstat"><b><span data-count="2500">0</span>+</b><span>Transformations</span></div>
+        <div class="hstat"><b><span data-count="14">0</span></b><span>Certified coaches</span></div>
+        <div class="hstat"><b><span data-count="8">0</span> yrs</b><span>In Andheri</span></div>
+      </div>
+    </div>
+    <div class="hero-art" data-hero>
+      <div class="ring r1"></div><div class="ring r2"></div>
+      <div class="pulse-core">
+        <svg width="104" height="104" viewBox="0 0 24 24" fill="#0B0D08"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+      </div>
+      <div class="chip c1"><b>−18 kg</b>avg. fat loss / 6 mo</div>
+      <div class="chip c2"><b>4.9 ★</b>2,100+ Google reviews</div>
+      <div class="chip c3"><b>100%</b>personalised plans</div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>NO EXCUSES ✦ TRAIN HARD ✦ EAT SMART ✦ STAY CONSISTENT ✦ NO EXCUSES ✦ TRAIN HARD ✦ EAT SMART ✦ STAY CONSISTENT ✦&nbsp;</span>
+  </div>
+</div>
+
+<section id="programs">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <div class="kicker">Programs</div>
+      <h2>Pick your <span class="stroke">battle</span></h2>
+      <p>Four battle-tested tracks. Every plan starts with a full body-composition analysis — free.</p>
+    </div>
+    <div class="prog-grid">
+      <article class="prog tilt" data-reveal>
+        <span class="num">01</span>
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6FF3D" stroke-width="2"><path d="M12 21c-4 0-7-2.5-7-6 0-3 2.5-4.5 3.5-7 .8 1.5 3.5 1.5 3.5 1.5s2.7 0 3.5-1.5c1 2.5 3.5 4 3.5 7 0 3.5-3 6-7 6z"/><path d="M9 3l3 3 3-3"/></svg></div>
+        <h3>Fat Loss</h3><p>Strength + cardio + a calorie plan you'll actually enjoy. Sustainable, no starvation.</p>
+        <div class="wk">12-week track</div>
+      </article>
+      <article class="prog tilt" data-reveal>
+        <span class="num">02</span>
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6FF3D" stroke-width="2"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg></div>
+        <h3>Muscle Gain</h3><p>Progressive overload programming with protein-first desi diet plans that build.</p>
+        <div class="wk">16-week track</div>
+      </article>
+      <article class="prog tilt" data-reveal>
+        <span class="num">03</span>
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6FF3D" stroke-width="2"><circle cx="12" cy="6" r="2.6"/><path d="M12 9v5M12 11l-5 2M12 11l5 2M12 14l-4 7M12 14l4 7"/></svg></div>
+        <h3>Yoga & Mobility</h3><p>Power yoga, breathwork and joint mobility — strength that moves well.</p>
+        <div class="wk">Ongoing batches</div>
+      </article>
+      <article class="prog tilt" data-reveal>
+        <span class="num">04</span>
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6FF3D" stroke-width="2"><path d="M4 12h16M4 12l3-7h10l3 7M4 12l3 7h10l3-7"/><path d="M12 5v14" stroke-dasharray="2 2"/></svg></div>
+        <h3>Diet Plans</h3><p>PCOS, diabetes, thyroid-friendly nutrition — designed by certified nutritionists.</p>
+        <div class="wk">Monthly coaching</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="trainers" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <div class="kicker">Coaches</div>
+      <h2>Trained by the <span class="stroke">best</span></h2>
+      <p>Certified, experienced, and allergic to shortcuts.</p>
+    </div>
+    <div class="train-grid">
+      <article class="trainer" data-reveal>
+        <div class="t-art" style="background:radial-gradient(220px 160px at 50% 40%,rgba(198,255,61,.22),transparent 70%)">
+          <div class="halo"></div><div class="av" style="background:linear-gradient(135deg,#C6FF3D,#9BD41F)">NN</div>
+        </div>
+        <div class="t-body"><h3>Neha Sharma</h3><div class="role">Founder · Head Coach</div>
+        <p>Ex-national powerlifter, ISSA-certified. 8 years turning beginners into athletes.</p>
+        <div class="t-tags"><span>Strength</span><span>Fat Loss</span><span>Nutrition</span></div></div>
+      </article>
+      <article class="trainer" data-reveal>
+        <div class="t-art" style="background:radial-gradient(220px 160px at 50% 40%,rgba(255,92,26,.25),transparent 70%)">
+          <div class="halo"></div><div class="av" style="background:linear-gradient(135deg,#FF5C1A,#FF8A3D)">AR</div>
+        </div>
+        <div class="t-body"><h3>Arjun Rao</h3><div class="role">Strength & Conditioning</div>
+        <p>Former state-level sprinter. Builds explosive power with bulletproof programming.</p>
+        <div class="t-tags"><span>Muscle Gain</span><span>Athletics</span><span>HIIT</span></div></div>
+      </article>
+      <article class="trainer" data-reveal>
+        <div class="t-art" style="background:radial-gradient(220px 160px at 50% 40%,rgba(94,177,255,.22),transparent 70%)">
+          <div class="halo"></div><div class="av" style="background:linear-gradient(135deg,#5EB1FF,#9BD4FF)">PK</div>
+        </div>
+        <div class="t-body"><h3>Priya Kulkarni</h3><div class="role">Yoga & Mobility Lead</div>
+        <p>500-hr RYT. Power yoga flows that torch calories while fixing desk-damaged backs.</p>
+        <div class="t-tags"><span>Power Yoga</span><span>Mobility</span><span>Breathwork</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="bmi" class="bmi">
+  <div class="wrap bmi-grid">
+    <div data-reveal>
+      <div class="kicker">Know Your Number</div>
+      <h2>What's your <span class="stroke">BMI?</span></h2>
+      <p style="color:var(--muted);margin-bottom:26px">Drag the sliders — your Body Mass Index updates live. It's the first number every NutriFit plan starts from (followed by a full body-composition scan, free at the centre).</p>
+      <div class="calc">
+        <div class="slider-row">
+          <div class="lab"><span>Height</span><b><span id="hVal">170</span> cm</b></div>
+          <input type="range" id="height" min="140" max="210" value="170" aria-label="Height in centimetres">
+        </div>
+        <div class="slider-row">
+          <div class="lab"><span>Weight</span><b><span id="wVal">72</span> kg</b></div>
+          <input type="range" id="weight" min="35" max="150" value="72" aria-label="Weight in kilograms">
+        </div>
+        <div class="bmi-out">
+          <div class="val" id="bmiVal">24.9</div>
+          <div class="cat" id="bmiCat">Healthy</div>
+        </div>
+        <div class="gauge"><div class="fill" id="bmiFill"></div></div>
+        <div class="gauge-marks"><span>15</span><span>18.5</span><span>25</span><span>30</span><span>40</span></div>
+        <p class="bmi-tip" id="bmiTip"></p>
+      </div>
+    </div>
+    <div data-reveal>
+      <div class="kicker">Why It Matters</div>
+      <h2 style="font-family:var(--display);font-size:clamp(1.8rem,3.4vw,2.6rem);text-transform:uppercase;line-height:1.1;margin:14px 0 18px">One number.<br>Zero judgement.<br><span style="color:var(--lime)">Full roadmap.</span></h2>
+      <p style="color:var(--muted)">BMI is a starting signal, not a verdict. At your free trial session we measure muscle mass, visceral fat and metabolic age — then your coach builds the plan around <b style="color:var(--cream)">real data</b>, not guesswork.</p>
+      <div style="display:grid;gap:12px;margin-top:28px">
+        <div style="display:flex;gap:14px;align-items:center;border:1px solid var(--line);padding:16px 18px;background:var(--card)"><span style="font-family:var(--display);color:var(--lime);font-size:1.4rem">01</span><span style="font-size:.92rem">Free body-composition analysis on your first visit</span></div>
+        <div style="display:flex;gap:14px;align-items:center;border:1px solid var(--line);padding:16px 18px;background:var(--card)"><span style="font-family:var(--display);color:var(--lime);font-size:1.4rem">02</span><span style="font-size:.92rem">Personal macros + desi meal plan in 48 hours</span></div>
+        <div style="display:flex;gap:14px;align-items:center;border:1px solid var(--line);padding:16px 18px;background:var(--card)"><span style="font-family:var(--display);color:var(--lime);font-size:1.4rem">03</span><span style="font-size:.92rem">Re-measured every 4 weeks — the plan evolves with you</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap band-inner">
+    <div class="band-grid">
+      <div><b><span data-count="2500">0</span>+</b><span>Transformations</span></div>
+      <div><b><span data-count="18">0</span> kg</b><span>Avg. fat loss*</span></div>
+      <div><b><span data-count="96">0</span>%</b><span>Stick past 90 days</span></div>
+      <div><b><span data-count="14">0</span></b><span>Expert coaches</span></div>
+    </div>
+    <p style="text-align:center;font-size:.72rem;margin-top:22px;opacity:.7;font-weight:600;letter-spacing:.06em">*Average across 6-month fat-loss track completers, 2023–2026.</p>
+  </div>
+</div>
+
+<section id="plans">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <div class="kicker">Get Started</div>
+      <h2>Your plan <span class="stroke">awaits</span></h2>
+      <p>Pick a track, tell us your goal — get a callback with a free trial session.</p>
+    </div>
+    <div class="plans-grid">
+      <div data-reveal>
+        <h2>Simple pricing,<br><span style="color:var(--lime)">serious results.</span></h2>
+        <p style="color:var(--muted)">No lock-ins beyond a month. Pause anytime. Every plan includes diet + training + WhatsApp coach support.</p>
+        <div class="plan-cards" id="planCards">
+          <div class="pcard sel" data-plan="Ignite — Monthly"><div><b>IGNITE</b><small>Training + diet · monthly</small></div><span class="pr">₹4,999/mo</span></div>
+          <div class="pcard" data-plan="Transform — Quarterly"><div><b>TRANSFORM</b><small>Most popular · 3 months</small></div><span class="pr">₹12,999</span></div>
+          <div class="pcard" data-plan="Elite 1-on-1 — Monthly"><div><b>ELITE 1-ON-1</b><small>Personal coach, fully custom</small></div><span class="pr">₹14,999/mo</span></div>
+        </div>
+      </div>
+      <form class="join" id="joinForm" data-reveal>
+        <div class="frow">
+          <div class="field"><label>Your name</label><input type="text" id="jName" placeholder="Full name"></div>
+          <div class="field"><label>Phone</label><input type="tel" id="jPhone" placeholder="+91 …"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label>Primary goal</label><select id="jGoal"><option>Lose fat</option><option>Build muscle</option><option>Yoga & flexibility</option><option>Medical nutrition (PCOS / thyroid / diabetes)</option><option>Overall fitness</option></select></div>
+          <div class="field"><label>Interested plan</label><select id="jPlan"><option>Ignite — Monthly (₹4,999/mo)</option><option>Transform — Quarterly (₹12,999)</option><option>Elite 1-on-1 — Monthly (₹14,999/mo)</option><option>Just the free trial first</option></select></div>
+        </div>
+        <div class="field"><label>Anything we should know? (optional)</label><textarea id="jMsg" rows="3" placeholder="Injuries, conditions, schedule…"></textarea></div>
+        <button type="submit" class="btn" style="width:100%;justify-content:center"><span style="width:100%;justify-content:center">Claim Free Trial Session</span></button>
+        <div class="form-ok" id="joinOk">You're in! Our team will call you within 2 hours to schedule your free trial + body analysis.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h4>NEHA NUTRIFIT</h4><p style="font-size:.92rem;color:var(--muted);max-width:320px">Mumbai's no-nonsense fitness & nutrition centre — Andheri West. Train hard, eat smart.</p></div>
+      <div><h4>Explore</h4><a href="#programs">Programs</a><a href="#trainers">Coaches</a><a href="#bmi">BMI Calculator</a><a href="#plans">Plans</a></div>
+      <div><h4>Centre</h4><a href="#plans">Free Trial</a><a href="#plans">Membership</a><a href="#top">Andheri West, Mumbai</a></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Neha NutriFit, Andheri West, Mumbai.</span><span class="credit">Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<script>
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Seamless ticker */
+var tt = document.getElementById('tickerTrack');
+tt.innerHTML += tt.innerHTML;
+
+/* Nav */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+var burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('open'); }); });
+
+if(window.gsap && !reduced){
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Hero: punchy staggered entrance */
+  gsap.timeline({defaults:{ease:'power4.out'}})
+    .from('.hero .eyebrow', {opacity:0, x:-30, duration:.6, delay:.1})
+    .from('.hero .hw', {opacity:0, y:90, duration:.9, stagger:.12}, '-=.3')
+    .from('.hero .lead', {opacity:0, y:26, duration:.7}, '-=.5')
+    .from('.hero-cta > *', {opacity:0, y:24, duration:.6, stagger:.12}, '-=.45')
+    .from('.hstat', {opacity:0, y:18, duration:.55, stagger:.1}, '-=.4')
+    .from('.pulse-core', {opacity:0, scale:.5, duration:1, ease:'back.out(1.6)'}, '-=1')
+    .from('.chip', {opacity:0, scale:.7, duration:.6, stagger:.14, ease:'back.out(2)'}, '-=.6')
+    .from('.ring', {opacity:0, scale:.8, duration:1.2, stagger:.15}, '-=1');
+
+  /* Pulse core breathing */
+  gsap.to('.pulse-core', {scale:1.06, duration:1.8, yoyo:true, repeat:-1, ease:'sine.inOut', delay:1.5});
+
+  /* Scroll reveals */
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.fromTo(el, {opacity:0, y:44}, {opacity:1, y:0, duration:.9, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 88%', toggleActions:'play none none reverse'}});
+  });
+  ScrollTrigger.batch('.prog', {start:'top 90%', onEnter:function(b){
+    gsap.fromTo(b, {opacity:0, y:50, rotationX:8}, {opacity:1, y:0, rotationX:0, duration:.7, stagger:.1, ease:'power3.out'});
+  }});
+
+  /* Counters */
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target = parseFloat(el.dataset.count), obj = {v:0};
+    ScrollTrigger.create({trigger:el, start:'top 92%', once:true, onEnter:function(){
+      gsap.to(obj, {v:target, duration:1.8, ease:'power2.out',
+        onUpdate:function(){ el.textContent = Math.round(obj.v).toLocaleString('en-IN'); }});
+    }});
+  });
+
+  /* Magnetic buttons */
+  if(window.matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        gsap.to(btn, {x:(e.clientX - r.left - r.width/2)*.28, y:(e.clientY - r.top - r.height/2)*.28, duration:.4, ease:'power2.out'});
+      });
+      btn.addEventListener('mouseleave', function(){
+        gsap.to(btn, {x:0, y:0, duration:.7, ease:'elastic.out(1,.45)'});
+      });
+    });
+  }
+
+  /* Tilt cards */
+  document.querySelectorAll('.tilt').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var rx = ((e.clientY - r.top)/r.height - .5) * -10;
+      var ry = ((e.clientX - r.left)/r.width - .5) * 12;
+      gsap.to(card, {rotationX:rx, rotationY:ry, transformPerspective:700, duration:.4, ease:'power2.out'});
+    });
+    card.addEventListener('mouseleave', function(){
+      gsap.to(card, {rotationX:0, rotationY:0, duration:.7, ease:'power3.out'});
+    });
+  });
+} else {
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    el.textContent = Math.round(parseFloat(el.dataset.count)).toLocaleString('en-IN');
+  });
+}
+
+/* ---------- BMI calculator ---------- */
+var hS = document.getElementById('height'), wS = document.getElementById('weight');
+var hVal = document.getElementById('hVal'), wVal = document.getElementById('wVal');
+var bmiVal = document.getElementById('bmiVal'), bmiCat = document.getElementById('bmiCat');
+var bmiFill = document.getElementById('bmiFill'), bmiTip = document.getElementById('bmiTip');
+
+function paintSlider(s){
+  var pct = (s.value - s.min) / (s.max - s.min) * 100;
+  s.style.setProperty('--fill', pct + '%');
+}
+function bmiInfo(b){
+  if(b < 18.5) return {c:'Underweight', col:'#5EB1FF', t:'Time to build! A calorie-surplus desi diet + progressive strength training will add healthy mass. Our coaches love this starting point.'};
+  if(b < 25)   return {c:'Healthy', col:'#C6FF3D', t:'Solid base! Now let\u2019s level up — build strength, improve conditioning and lock in habits that keep you here for life.'};
+  if(b < 30)   return {c:'Overweight', col:'#FF5C1A', t:'Very fixable. Most NutriFit members start here and drop into the healthy zone in 12–16 weeks with our fat-loss track.'};
+  return {c:'Obese', col:'#FF2E2E', t:'Let\u2019s do this together — safely. Low-impact training + medical-friendly nutrition, supervised step by step. Your first consultation is free.'};
+}
+function updateBMI(){
+  var h = +hS.value, w = +wS.value;
+  hVal.textContent = h; wVal.textContent = w;
+  paintSlider(hS); paintSlider(wS);
+  var bmi = w / Math.pow(h/100, 2);
+  var info = bmiInfo(bmi);
+  bmiVal.textContent = bmi.toFixed(1);
+  bmiCat.textContent = info.c;
+  bmiCat.style.color = info.col;
+  bmiVal.style.color = info.col;
+  var pct = Math.max(0, Math.min(100, (bmi - 15) / 25 * 100));
+  bmiFill.style.width = pct + '%';
+  bmiTip.textContent = info.t;
+}
+hS.addEventListener('input', updateBMI);
+wS.addEventListener('input', updateBMI);
+updateBMI();
+
+/* Plan card select syncs with the form dropdown */
+var cards = document.querySelectorAll('#planCards .pcard');
+var jPlan = document.getElementById('jPlan');
+cards.forEach(function(c){
+  c.addEventListener('click', function(){
+    cards.forEach(function(x){ x.classList.remove('sel'); });
+    c.classList.add('sel');
+    var name = c.dataset.plan;
+    for(var i = 0; i < jPlan.options.length; i++){
+      if(jPlan.options[i].text.indexOf(name.split(' — ')[0]) === 0){ jPlan.selectedIndex = i; break; }
+    }
+    if(window.gsap && !reduced) gsap.fromTo(c, {scale:.97}, {scale:1, duration:.4, ease:'back.out(2)'});
+  });
+});
+
+/* Join form */
+document.getElementById('joinForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('jName').value.trim();
+  var phone = document.getElementById('jPhone').value.trim();
+  if(!name){ document.getElementById('jName').focus(); return; }
+  if(!phone){ document.getElementById('jPhone').focus(); return; }
+  var ok = document.getElementById('joinOk');
+  ok.style.display = 'block';
+  if(window.gsap && !reduced) gsap.from(ok, {opacity:0, y:10, duration:.5, ease:'power2.out'});
+  this.querySelector('button[type=submit]').style.display = 'none';
+  ok.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'nearest'});
+});
+</script>
+</body>
+</html>

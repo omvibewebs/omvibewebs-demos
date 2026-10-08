@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatic Restaurant — Dubai & Sharjah's Shawarma Institution</title>
+<meta name="description" content="Automatic Restaurant — legendary shawarma, broasted & fresh juices across Dubai and Sharjah. From AED 8.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --red:#E5382B; --red2:#B81F14; --mustard:#FFB703; --cream:#FFF6E5; --char:#16130E; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Oswald',sans-serif; background:var(--cream); color:var(--char); overflow-x:hidden; }
+  .font-display{ font-family:'Anton',sans-serif; }
+  ::selection{ background:var(--mustard); color:var(--char); }
+
+  /* halftone street texture */
+  .halftone{ background-image:radial-gradient(rgba(22,19,14,.14) 1.5px, transparent 1.5px); background-size:22px 22px; }
+  .halftone-light{ background-image:radial-gradient(rgba(255,246,229,.16) 1.5px, transparent 1.5px); background-size:20px 20px; }
+
+  .mega{ font-size:clamp(4.2rem,15vw,14rem); line-height:.88; }
+  .outline-txt{ -webkit-text-stroke:2px var(--cream); color:transparent; }
+  .outline-red{ -webkit-text-stroke:2px var(--red); color:transparent; }
+
+  /* marquees */
+  .mq{ display:flex; width:max-content; animation:marquee 20s linear infinite; }
+  .mq-slow{ animation-duration:34s; }
+  .mq-rev{ animation-direction:reverse; }
+  @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* stickers */
+  .sticker{ transform:rotate(-7deg); box-shadow:4px 5px 0 rgba(22,19,14,.9); transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+  .sticker:hover{ transform:rotate(3deg) scale(1.08); }
+  .sticker-r{ transform:rotate(6deg); }
+
+  /* menu cards */
+  .dish{ transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; border:3px solid var(--char); }
+  .dish:hover{ transform:translate(-4px,-6px); box-shadow:8px 10px 0 var(--char); }
+  .dish .add{ transition:all .2s ease; }
+  .dish .add:hover{ background:var(--char); color:var(--mustard); }
+
+  .reveal{ opacity:0; transform:translateY(40px); }
+
+  /* tray drawer */
+  #tray{ transform:translateX(105%); transition:transform .5s cubic-bezier(.22,1,.36,1); }
+  #tray.open{ transform:translateX(0); }
+  .tray-item{ animation:popIn .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes popIn{ from{ transform:scale(.85) translateX(20px); opacity:0;} to{ transform:none; opacity:1;} }
+
+  .tape{ position:absolute; top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);
+         background:var(--mustard); padding:4px 22px; font-weight:700; font-size:.8rem; letter-spacing:.15em;
+         border:2px solid var(--char); }
+
+  input,select,textarea{ outline:none; }
+  input:focus,select:focus,textarea:focus{ border-color:var(--red) !important; box-shadow:0 0 0 3px rgba(229,56,43,.18); }
+
+  .jitter:hover{ animation:jit .3s linear infinite; }
+  @keyframes jit{ 0%{transform:translate(0)} 25%{transform:translate(1px,-1px)} 50%{transform:translate(-1px,1px)} 75%{transform:translate(1px,1px)} 100%{transform:translate(0)} }
+
+  @media (prefers-reduced-motion: reduce){
+    .mq,.jitter:hover{ animation:none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 pt-3">
+    <div class="rounded-2xl px-5 py-3 flex items-center justify-between border-[3px]" style="background:var(--char); border-color:var(--char)">
+      <a href="#top" class="font-display text-2xl tracking-wide text-white">AUTOMATIC<span style="color:var(--mustard)">.</span></a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-semibold tracking-widest text-white/85">
+        <a href="#menu" class="hover:text-[#FFB703] transition">MENU</a>
+        <a href="#builder" class="hover:text-[#FFB703] transition">BUILD YOURS</a>
+        <a href="#branches" class="hover:text-[#FFB703] transition">BRANCHES</a>
+      </div>
+      <button id="trayBtn" class="jitter relative font-display text-sm tracking-widest px-6 py-2.5 rounded-full" style="background:var(--mustard); color:var(--char)" aria-label="Open your order tray">
+        TRAY <span id="trayCount" class="inline-grid place-items-center w-6 h-6 rounded-full text-xs ml-1" style="background:var(--red); color:#fff">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<header id="top" class="relative min-h-[100svh] flex flex-col justify-center overflow-hidden pt-32 pb-8 halftone" style="background-color:var(--red)">
+  <div class="max-w-7xl mx-auto px-5 w-full relative">
+    <div class="hero-el flex flex-wrap items-center gap-4 mb-4">
+      <span class="sticker bg-white rounded-full px-5 py-2 font-display text-sm tracking-widest">SINCE 1988</span>
+      <span class="sticker sticker-r rounded-full px-5 py-2 font-display text-sm tracking-widest text-white" style="background:var(--char)">DUBAI · SHARJAH</span>
+    </div>
+    <h1 class="font-display mega text-white hero-el">
+      <span class="block">SHAWARMA</span>
+      <span class="block outline-txt hero-el">SHAWARMA</span>
+      <span class="block hero-el" style="color:var(--mustard)">SHAWARMA</span>
+    </h1>
+    <div class="hero-el mt-6 flex flex-col md:flex-row md:items-center gap-6">
+      <p class="max-w-md text-white/90 text-lg font-medium">The spit that never stops. Charcoal shawarma, crispy broasted & ice-cold juices — from <strong>AED 8</strong>, served till late.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#menu" class="sticker font-display px-8 py-4 rounded-2xl text-lg tracking-wide" style="background:var(--mustard)">GRAB THE MENU</a>
+        <a href="#branches" class="sticker sticker-r font-display px-8 py-4 rounded-2xl text-lg tracking-wide text-white" style="background:var(--char)">FIND US</a>
+      </div>
+    </div>
+    <div class="hero-el mt-10 flex gap-10 text-white">
+      <div><div class="font-display text-4xl md:text-5xl"><span class="counter" data-target="35">0</span>+</div><div class="text-xs font-bold tracking-[.25em]">YEARS ON THE SPIT</div></div>
+      <div><div class="font-display text-4xl md:text-5xl"><span class="counter" data-target="12">0</span></div><div class="text-xs font-bold tracking-[.25em]">BRANCHES</div></div>
+      <div><div class="font-display text-4xl md:text-5xl">AED <span class="counter" data-target="8">0</span></div><div class="text-xs font-bold tracking-[.25em]">STARTING PRICE</div></div>
+    </div>
+  </div>
+  <div class="hero-el absolute bottom-24 right-6 md:right-16 hidden sm:block">
+    <div class="sticker bg-white rounded-full w-36 h-36 grid place-items-center text-center font-display leading-tight p-4" style="transform:rotate(10deg)">
+      <span>100%<br>CHARCOAL<br>GRILLED</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ MARQUEE 1 ══════════ -->
+<div class="py-3 overflow-hidden border-y-[3px]" style="background:var(--char); border-color:var(--char)">
+  <div class="mq font-display text-2xl" style="color:var(--mustard)" id="mq1"></div>
+</div>
+
+<!-- ══════════ BENTO MENU ══════════ -->
+<section id="menu" class="py-20 md:py-28 halftone">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <h2 class="font-display text-6xl md:text-8xl">THE <span class="outline-red">LINEUP</span></h2>
+      <p class="max-w-sm font-medium text-lg">Tap <strong>+ ADD</strong> to load your tray. Everything made fresh on the spit, all day.</p>
+    </div>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="dishGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ MARQUEE 2 ══════════ -->
+<div class="py-3 overflow-hidden border-y-[3px]" style="background:var(--mustard); border-color:var(--char)">
+  <div class="mq mq-slow mq-rev font-display text-2xl" style="color:var(--char)" id="mq2"></div>
+</div>
+
+<!-- ══════════ BUILD-YOUR-SHAWARMA ══════════ -->
+<section id="builder" class="py-20 md:py-28" style="background:var(--char)">
+  <div class="max-w-6xl mx-auto px-5 halftone-light rounded-[2.5rem] py-14 px-6 md:px-14 relative">
+    <div class="tape">INTERACTIVE</div>
+    <div class="reveal text-center">
+      <h2 class="font-display text-5xl md:text-7xl text-white">BUILD YOUR <span style="color:var(--mustard)">SHAWARMA</span></h2>
+      <p class="text-white/70 text-lg font-medium mt-3">Stack it your way — watch the wrap (and price) build live.</p>
+    </div>
+    <div class="mt-10 grid md:grid-cols-2 gap-10 items-start">
+      <div class="reveal">
+        <div class="rounded-[2rem] h-80 grid place-items-center relative overflow-hidden border-[3px]" style="background:var(--cream); border-color:var(--mustard)">
+          <div id="wrapArt" class="w-56 transition-transform duration-500"></div>
+          <div class="absolute bottom-4 font-display text-2xl px-6 py-2 rounded-full text-white" style="background:var(--red)">AED <span id="buildPrice">8</span></div>
+        </div>
+      </div>
+      <div class="reveal space-y-6">
+        <div>
+          <div class="text-white font-bold tracking-widest text-sm mb-3">1 · PROTEIN</div>
+          <div class="flex flex-wrap gap-3" id="protPick"></div>
+        </div>
+        <div>
+          <div class="text-white font-bold tracking-widest text-sm mb-3">2 · EXTRAS <span class="text-white/50 font-medium">(tap to toggle)</span></div>
+          <div class="flex flex-wrap gap-3" id="extraPick"></div>
+        </div>
+        <div>
+          <div class="text-white font-bold tracking-widest text-sm mb-3">3 · SAUCE LEVEL</div>
+          <input type="range" id="sauceRange" min="1" max="3" value="2" class="w-full accent-[#FFB703]">
+          <div class="flex justify-between text-white/60 text-sm font-semibold"><span>Light</span><span>Classic</span><span>Extra garlic</span></div>
+        </div>
+        <button id="buildAdd" class="jitter w-full font-display text-xl tracking-widest py-4 rounded-2xl border-[3px]" style="background:var(--mustard); border-color:var(--mustard)">+ ADD MY BUILD TO TRAY</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BRANCHES ══════════ -->
+<section id="branches" class="py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="reveal text-center">
+      <h2 class="font-display text-6xl md:text-8xl">FIND THE <span style="color:var(--red)">SPIT</span></h2>
+      <p class="mt-3 text-lg font-medium">Twelve counters and counting — these flagships never sleep.</p>
+    </div>
+    <div class="mt-12 grid md:grid-cols-3 gap-6" id="branchGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ ENQUIRY / ORDER CTA ══════════ -->
+<section id="order" class="pb-20 md:pb-28 px-5">
+  <div class="reveal max-w-5xl mx-auto rounded-[2.5rem] border-[3px] p-10 md:p-14 text-center relative halftone" style="background:var(--mustard); border-color:var(--char)">
+    <div class="tape">BULK & PARTY ORDERS</div>
+    <h2 class="font-display text-5xl md:text-7xl">FEEDING A CROWD?</h2>
+    <p class="mt-4 text-lg font-medium max-w-xl mx-auto">Office lunch, wedding, match night — shawarma platters from AED 28/person. Tell us the headcount, we handle the spit.</p>
+    <form id="bulkForm" class="mt-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
+      <input id="bName" type="text" placeholder="Your name *" class="rounded-xl border-[3px] px-5 py-3.5 font-semibold bg-white" style="border-color:var(--char)">
+      <input id="bPhone" type="tel" placeholder="Phone *" class="rounded-xl border-[3px] px-5 py-3.5 font-semibold bg-white" style="border-color:var(--char)">
+      <select id="bBranch" class="rounded-xl border-[3px] px-5 py-3.5 font-semibold bg-white" style="border-color:var(--char)">
+        <option>Al Barsha, Dubai</option><option>Deira, Dubai</option><option>Al Nahda, Sharjah</option>
+      </select>
+      <input id="bCount" type="number" min="10" placeholder="Headcount (10+) *" class="rounded-xl border-[3px] px-5 py-3.5 font-semibold bg-white" style="border-color:var(--char)">
+      <p id="bErr" class="hidden sm:col-span-2 text-sm font-bold" style="color:var(--red2)"></p>
+      <button class="sm:col-span-2 font-display text-xl tracking-widest py-4 rounded-xl text-white border-[3px]" style="background:var(--red); border-color:var(--char)">GET A QUOTE →</button>
+    </form>
+    <p id="bDone" class="hidden mt-8 font-display text-2xl">REQUEST RECEIVED — WE'LL CALL YOU WITHIN 30 MINUTES.</p>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="pt-14 pb-8 px-5 border-t-[3px]" style="background:var(--char); border-color:var(--char); color:#fff">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="font-display text-3xl">AUTOMATIC<span style="color:var(--mustard)">.</span></div>
+      <p class="mt-4 text-white/60 font-medium max-w-sm">The UAE's shawarma institution since 1988. Charcoal-grilled, garlic-loaded, priced for everyone.</p>
+    </div>
+    <div>
+      <div class="font-display text-sm tracking-[.3em]" style="color:var(--mustard)">FLAGSHIPS</div>
+      <p class="mt-3 text-white/60 font-medium text-sm leading-loose">Al Barsha, Dubai<br>Deira, Dubai<br>Al Nahda, Sharjah</p>
+    </div>
+    <div>
+      <div class="font-display text-sm tracking-[.3em]" style="color:var(--mustard)">HOURS</div>
+      <p class="mt-3 text-white/60 font-medium text-sm leading-loose">Daily · 11 AM – 2 AM<br>Delivery till 1 AM<br>+971 4 000 8899</p>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/15 flex flex-col md:flex-row justify-between gap-3 text-sm text-white/50 font-medium">
+    <span>© 2026 Automatic Restaurant, UAE. All rights reserved.</span>
+    <span class="text-xs opacity-70">Concept demo by Om Vibe Webs</span>
+  </div>
+</footer>
+
+<!-- ══════════ TRAY DRAWER ══════════ -->
+<div id="trayOverlay" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
+<aside id="tray" class="fixed top-0 right-0 bottom-0 w-full max-w-md z-[70] flex flex-col border-l-[3px]" style="background:var(--cream); border-color:var(--char)" aria-label="Order tray">
+  <div class="p-6 flex items-center justify-between border-b-[3px]" style="border-color:var(--char); background:var(--mustard)">
+    <h3 class="font-display text-2xl tracking-wide">YOUR TRAY</h3>
+    <button id="trayClose" class="font-display text-2xl w-10 h-10 rounded-full grid place-items-center border-[3px]" style="border-color:var(--char)" aria-label="Close tray">✕</button>
+  </div>
+  <div id="trayItems" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
+  <div class="p-6 border-t-[3px]" style="border-color:var(--char)">
+    <div class="flex justify-between font-display text-2xl mb-4"><span>TOTAL</span><span style="color:var(--red)">AED <span id="trayTotal">0</span></span></div>
+    <button id="trayCheckout" class="w-full font-display text-xl tracking-widest py-4 rounded-xl text-white" style="background:var(--red)">SEND ORDER ENQUIRY →</button>
+    <p class="text-xs font-medium text-center mt-3 opacity-60">Pay on pickup or delivery · Cash & card accepted</p>
+  </div>
+</aside>
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] font-display tracking-widest px-8 py-4 rounded-full text-white border-[3px] hidden" style="background:var(--char); border-color:var(--mustard)">ADDED TO TRAY ✓</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- MARQUEES ---------- */
+function fillMQ(id, items){
+  const html = items.map(t=>`<span class="whitespace-nowrap px-6">${t}</span>`).join('');
+  document.getElementById(id).innerHTML = `<div class="flex shrink-0 items-center">${html}</div><div class="flex shrink-0 items-center">${html}</div>`;
+}
+fillMQ('mq1', ['CHICKEN SHAWARMA AED 8','★','BEEF SHAWARMA AED 10','★','BROASTED AED 24','★','FRESH JUICES AED 12','★','OPEN TILL 2 AM','★']);
+fillMQ('mq2', ['CHARCOAL GRILLED','★','EXTRA GARLIC','★','FRESH SAJ','★','SINCE 1988','★']);
+
+/* ---------- MENU DATA ---------- */
+const DISHES = [
+  { name:'Chicken Shawarma', price:8, tag:'BESTSELLER', desc:'The legend. Garlic toum, pickles, fresh saj.', art:'wrap', c1:'#FFB703', c2:'#E5382B' },
+  { name:'Beef Shawarma', price:10, tag:'JUICY', desc:'Slow-marinated beef, tahini drizzle, onion sumac.', art:'wrap', c1:'#E5382B', c2:'#16130E' },
+  { name:'Shawarma Platter', price:28, tag:'SHARING', desc:'Open shawarma, fries, garlic dip, extra bread.', art:'plate', c1:'#FFB703', c2:'#16130E' },
+  { name:'Broasted Chicken', price:24, tag:'CRISPY', desc:'4 pc pressure-fried, fries, coleslaw, garlic.', art:'bucket', c1:'#E5382B', c2:'#FFB703' },
+  { name:'Falafel Wrap', price:7, tag:'VEGGIE', desc:'Crunchy falafel, hummus, mint, tahini.', art:'wrap', c1:'#7a9e43', c2:'#E5382B' },
+  { name:'Fresh Orange Juice', price:12, tag:'SQUEEZED', desc:'Pressed to order. Nothing else in the glass.', art:'juice', c1:'#FFB703', c2:'#E8830C' },
+];
+
+function dishArt(d){
+  const wrap = `<svg viewBox="0 0 120 120" class="w-24 h-24" aria-hidden="true"><ellipse cx="60" cy="100" rx="40" ry="8" fill="#16130E" opacity=".12"/><path d="M30 30 Q60 15 90 30 L78 92 Q60 102 42 92 Z" fill="#F3DFB8" stroke="#16130E" stroke-width="3"/><path d="M40 40 Q60 32 80 40" stroke="${d.c2}" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="52" cy="58" r="6" fill="${d.c1}"/><circle cx="68" cy="58" r="6" fill="${d.c1}"/><circle cx="60" cy="72" r="6" fill="${d.c1}"/></svg>`;
+  const plate = `<svg viewBox="0 0 120 120" class="w-24 h-24" aria-hidden="true"><ellipse cx="60" cy="100" rx="40" ry="8" fill="#16130E" opacity=".12"/><ellipse cx="60" cy="78" rx="44" ry="20" fill="#fff" stroke="#16130E" stroke-width="3"/><path d="M35 70 Q60 55 85 70" stroke="${d.c2}" stroke-width="7" fill="none" stroke-linecap="round"/><rect x="42" y="82" width="36" height="8" rx="4" fill="${d.c1}"/></svg>`;
+  const bucket = `<svg viewBox="0 0 120 120" class="w-24 h-24" aria-hidden="true"><ellipse cx="60" cy="102" rx="34" ry="7" fill="#16130E" opacity=".12"/><path d="M38 55 L82 55 L76 100 L44 100 Z" fill="${d.c1}" stroke="#16130E" stroke-width="3"/><circle cx="52" cy="48" r="9" fill="#E8A34C" stroke="#16130E" stroke-width="3"/><circle cx="68" cy="48" r="9" fill="#E8A34C" stroke="#16130E" stroke-width="3"/></svg>`;
+  const juice = `<svg viewBox="0 0 120 120" class="w-24 h-24" aria-hidden="true"><ellipse cx="60" cy="102" rx="30" ry="7" fill="#16130E" opacity=".12"/><rect x="42" y="40" width="36" height="58" rx="8" fill="${d.c1}" stroke="#16130E" stroke-width="3"/><rect x="42" y="40" width="36" height="16" rx="8" fill="#FFE3A3" stroke="#16130E" stroke-width="3"/><rect x="56" y="18" width="8" height="26" rx="4" fill="#16130E" transform="rotate(14 60 31)"/></svg>`;
+  return {wrap, plate, bucket, juice}[d.art];
+}
+
+const dishGrid = document.getElementById('dishGrid');
+dishGrid.innerHTML = DISHES.map((d,i)=>`
+  <article class="dish reveal rounded-3xl p-6 flex flex-col" style="background:#fff">
+    <div class="flex items-start justify-between">
+      <div class="rounded-2xl p-2 halftone" style="background:${d.c1}22">${dishArt(d)}</div>
+      <span class="sticker rounded-full px-4 py-1.5 font-display text-xs tracking-widest text-white" style="background:${d.c2}">${d.tag}</span>
+    </div>
+    <h3 class="font-display text-3xl mt-4 tracking-wide">${d.name.toUpperCase()}</h3>
+    <p class="font-medium mt-1 flex-1 opacity-70">${d.desc}</p>
+    <div class="mt-4 flex items-center justify-between">
+      <span class="font-display text-3xl" style="color:var(--red)">AED ${d.price}</span>
+      <button class="add font-display text-sm tracking-widest px-5 py-2.5 rounded-full border-[3px]" data-i="${i}" style="border-color:var(--char)">+ ADD</button>
+    </div>
+  </article>`).join('');
+
+/* ---------- TRAY ---------- */
+let tray = [];
+const trayEl = document.getElementById('tray'), overlay = document.getElementById('trayOverlay');
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.remove('hidden');
+  if(!reduced) gsap.fromTo(t,{y:20,opacity:0},{y:0,opacity:1,duration:.35,ease:'back.out(2)'});
+  clearTimeout(t._h); t._h = setTimeout(()=>t.classList.add('hidden'), 1800);
+}
+function renderTray(){
+  const wrap = document.getElementById('trayItems');
+  document.getElementById('trayCount').textContent = tray.reduce((a,i)=>a+i.qty,0);
+  if(!tray.length){
+    wrap.innerHTML = `<div class="text-center py-16 opacity-50"><div class="font-display text-5xl mb-3">:(</div><p class="font-bold">Your tray is empty.<br>Fix that below.</p></div>`;
+  } else {
+    wrap.innerHTML = tray.map((it,i)=>`
+      <div class="tray-item flex items-center gap-4 bg-white rounded-2xl p-4 border-[3px]" style="border-color:var(--char)">
+        <div class="font-display text-lg flex-1">${it.name}<div class="text-sm font-sans font-semibold opacity-60">${it.detail||''}</div></div>
+        <div class="flex items-center gap-2">
+          <button class="qbtn w-8 h-8 rounded-full font-display border-2" data-i="${i}" data-d="-1" style="border-color:var(--char)">−</button>
+          <span class="font-display w-6 text-center">${it.qty}</span>
+          <button class="qbtn w-8 h-8 rounded-full font-display border-2" data-i="${i}" data-d="1" style="border-color:var(--char)">+</button>
+        </div>
+        <div class="font-display">AED ${it.price*it.qty}</div>
+      </div>`).join('');
+    wrap.querySelectorAll('.qbtn').forEach(b=>b.addEventListener('click',()=>{
+      const it = tray[+b.dataset.i]; it.qty += +b.dataset.d;
+      if(it.qty<=0) tray.splice(+b.dataset.i,1);
+      renderTray();
+    }));
+  }
+  document.getElementById('trayTotal').textContent = tray.reduce((a,i)=>a+i.price*i.qty,0);
+}
+function addToTray(name, price, detail){
+  const ex = tray.find(i=>i.name===name && i.detail===(detail||''));
+  if(ex) ex.qty++; else tray.push({name, price, detail:detail||'', qty:1});
+  renderTray(); toast('ADDED TO TRAY ✓');
+  const c = document.getElementById('trayCount');
+  if(!reduced) gsap.fromTo(c,{scale:1.8,rotate:20},{scale:1,rotate:0,duration:.5,ease:'back.out(3)'});
+}
+document.querySelectorAll('.dish .add').forEach(b=>b.addEventListener('click',()=>{
+  const d = DISHES[+b.dataset.i]; addToTray(d.name, d.price, '');
+}));
+document.getElementById('trayBtn').addEventListener('click',()=>{ trayEl.classList.add('open'); overlay.classList.remove('hidden'); });
+const closeTray = ()=>{ trayEl.classList.remove('open'); overlay.classList.add('hidden'); };
+document.getElementById('trayClose').addEventListener('click', closeTray);
+overlay.addEventListener('click', closeTray);
+renderTray();
+
+document.getElementById('trayCheckout').addEventListener('click',()=>{
+  if(!tray.length){ toast('TRAY IS EMPTY'); return; }
+  closeTray();
+  document.getElementById('order').scrollIntoView({behavior: reduced?'auto':'smooth'});
+  toast('NOW TELL US WHERE TO SEND IT ↓');
+});
+
+/* ---------- BUILD YOUR SHAWARMA ---------- */
+const PROTS = [ {n:'Chicken',p:8}, {n:'Beef',p:10}, {n:'Falafel',p:7}, {n:'Mixed',p:12} ];
+const EXTRAS = [ {n:'Cheese',p:3}, {n:'Fries inside',p:2}, {n:'Extra pickles',p:1}, {n:'Jalapeño',p:1}, {n:'Double meat',p:6} ];
+let bProt = PROTS[0], bExtras = new Set();
+const protPick = document.getElementById('protPick'), extraPick = document.getElementById('extraPick');
+
+function chipStyle(active){ return active
+  ? 'background:var(--mustard); color:var(--char); border-color:var(--mustard);'
+  : 'background:transparent; color:#fff; border-color:rgba(255,255,255,.35);'; }
+
+function renderBuilder(){
+  protPick.innerHTML = PROTS.map((p,i)=>`<button class="bprot font-bold text-sm px-5 py-2.5 rounded-full border-2 transition-all" data-i="${i}" style="${chipStyle(p===bProt)}">${p.n} · ${p.p}</button>`).join('');
+  extraPick.innerHTML = EXTRAS.map((e,i)=>`<button class="bext font-bold text-sm px-5 py-2.5 rounded-full border-2 transition-all" data-i="${i}" style="${chipStyle(bExtras.has(i))}">+ ${e.n} · ${e.p}</button>`).join('');
+  protPick.querySelectorAll('.bprot').forEach(b=>b.addEventListener('click',()=>{ bProt = PROTS[+b.dataset.i]; renderBuilder(); }));
+  extraPick.querySelectorAll('.bext').forEach(b=>b.addEventListener('click',()=>{ const i=+b.dataset.i; bExtras.has(i)?bExtras.delete(i):bExtras.add(i); renderBuilder(); }));
+  const price = bProt.p + [...bExtras].reduce((a,i)=>a+EXTRAS[i].p,0);
+  document.getElementById('buildPrice').textContent = price;
+  /* wrap art grows with extras */
+  const layers = 1 + bExtras.size;
+  document.getElementById('wrapArt').innerHTML = `
+    <svg viewBox="0 0 160 190" class="w-full" aria-hidden="true">
+      <ellipse cx="80" cy="172" rx="60" ry="10" fill="#16130E" opacity=".12"/>
+      <path d="M40 40 Q80 22 120 40 L104 ${90+layers*8} Q80 ${104+layers*8} 56 ${90+layers*8} Z" fill="#F3DFB8" stroke="#16130E" stroke-width="4"/>
+      ${[...bExtras].map((ei,k)=>`<rect x="58" y="${66+k*12}" width="44" height="8" rx="4" fill="${['#E5382B','#FFB703','#7a9e43'][k%3]}"/>`).join('')}
+      <circle cx="80" cy="58" r="10" fill="${bProt.n==='Falafel'?'#7a9e43':'#E8A34C'}" stroke="#16130E" stroke-width="3"/>
+      <path d="M60 44 Q80 38 100 44" stroke="#E5382B" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </svg>`;
+  if(!reduced) gsap.fromTo('#wrapArt',{scale:.94,rotate:-2},{scale:1,rotate:0,duration:.4,ease:'back.out(2)'});
+}
+renderBuilder();
+document.getElementById('sauceRange').addEventListener('input', e=>{
+  const v = +e.target.value;
+  toast(v===3 ? 'EXTRA GARLIC. RESPECT.' : v===2 ? 'CLASSIC SAUCE' : 'LIGHT SAUCE');
+});
+document.getElementById('buildAdd').addEventListener('click',()=>{
+  const price = bProt.p + [...bExtras].reduce((a,i)=>a+EXTRAS[i].p,0);
+  const detail = bProt.n + ([...bExtras].map(i=>EXTRAS[i].n).join(', ')||'');
+  addToTray('Custom Shawarma', price, detail);
+});
+
+/* ---------- BRANCHES ---------- */
+const BRANCHES = [
+  { n:'AL BARSHA', t:'FLAGSHIP', d:'Hessa St — the big red counter you can smell from a block away.', h:'11 AM – 2 AM' },
+  { n:'DEIRA', t:'OLD SOUK', d:'Baniyas Rd — post-souk refuel station since day one.', h:'11 AM – 1 AM' },
+  { n:'AL NAHDA, SHARJAH', t:'SHARJAH HQ', d:'Where it all started in 1988. The original spit still turns here.', h:'11 AM – 2 AM' },
+];
+document.getElementById('branchGrid').innerHTML = BRANCHES.map(b=>`
+  <article class="reveal rounded-3xl border-[3px] p-8 bg-white hover:-translate-y-2 transition-transform duration-300 relative" style="border-color:var(--char)">
+    <span class="sticker absolute -top-4 left-6 rounded-full px-4 py-1 font-display text-xs tracking-widest text-white" style="background:var(--red)">${b.t}</span>
+    <h3 class="font-display text-3xl tracking-wide mt-2">${b.n}</h3>
+    <p class="font-medium mt-2 opacity-70">${b.d}</p>
+    <div class="mt-5 pt-5 border-t-2 border-dashed flex items-center justify-between" style="border-color:#16130E33">
+      <span class="font-bold text-sm">${b.h}</span>
+      <span class="font-display text-sm tracking-widest" style="color:var(--red)">DIRECTIONS →</span>
+    </div>
+  </article>`).join('');
+
+/* ---------- BULK FORM ---------- */
+document.getElementById('bulkForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const n = document.getElementById('bName').value.trim();
+  const p = document.getElementById('bPhone').value.trim();
+  const c = +document.getElementById('bCount').value;
+  const err = document.getElementById('bErr');
+  if(!n || p.replace(/\D/g,'').length < 7 || !(c>=10)){
+    err.textContent = 'Please add your name, a valid phone number and a headcount of 10+.';
+    err.classList.remove('hidden'); return;
+  }
+  err.classList.add('hidden');
+  document.getElementById('bulkForm').classList.add('hidden');
+  const done = document.getElementById('bDone');
+  done.classList.remove('hidden');
+  if(!reduced){ gsap.from(done,{scale:.9,opacity:0,duration:.5,ease:'back.out(2)'}); toast('QUOTE REQUEST SENT ✓'); }
+});
+
+/* ---------- MOTION ---------- */
+if(!reduced){
+  gsap.from('.hero-el',{y:60,opacity:0,duration:1,stagger:.1,ease:'power3.out',delay:.1});
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  gsap.utils.toArray('.counter').forEach(el=>{
+    const target=+el.dataset.target;
+    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,
+      onEnter:()=>gsap.fromTo(el,{innerText:0},{innerText:target,duration:1.5,snap:{innerText:1},ease:'power2.out'})});
+  });
+} else {
+  document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
+  document.querySelectorAll('.counter').forEach(el=>el.textContent=el.dataset.target);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Bakers — Fresh Cakes Delivered in Indore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --pink:#ff8fab; --pink-deep:#e05575; --pink-soft:#ffd6e0; --cream:#fff6ec;
+  --choc:#6b3f22; --choc-deep:#3e2413; --mint:#b8e6c9; --lav:#e3d5ff;
+  --ink:#4a2c1a; --bounce:cubic-bezier(.34,1.56,.64,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+h1,h2,h3,.display{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.05}
+img,svg{display:block;max-width:100%}
+::selection{background:var(--pink);color:#fff}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 5vw;background:rgba(255,246,236,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:3px solid #fff;box-shadow:0 6px 24px rgba(224,85,117,.08)}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fredoka';font-weight:700;font-size:1.5rem;color:var(--choc-deep);text-decoration:none}
+.logo .cup{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:16px;
+  background:linear-gradient(135deg,var(--pink),var(--pink-deep));border:3px solid #fff;
+  box-shadow:inset -3px -3px 6px rgba(0,0,0,.12),3px 3px 0 rgba(107,63,34,.15)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink);font-weight:700;font-size:.95rem;position:relative;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:4px;border-radius:4px;background:var(--pink);transition:width .3s var(--bounce)}
+.nav-links a:hover{color:var(--pink-deep)}.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Fredoka';font-weight:600;font-size:1rem;color:#fff;text-decoration:none;
+  background:linear-gradient(135deg,var(--pink-deep),var(--pink));border:3px solid #fff;border-radius:999px;padding:12px 28px;cursor:pointer;
+  box-shadow:inset -3px -3px 8px rgba(0,0,0,.12),4px 6px 0 rgba(107,63,34,.18);transition:transform .25s var(--bounce),box-shadow .25s}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:inset -3px -3px 8px rgba(0,0,0,.12),6px 10px 0 rgba(107,63,34,.18)}
+.btn:active{transform:translateY(1px) scale(.97)}
+.btn.ghost{background:#fff;color:var(--pink-deep)}
+.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.burger span{width:26px;height:4px;border-radius:4px;background:var(--choc-deep)}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:120px 5vw 60px;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 85% 15%,#ffe3ec 0 22%,transparent 23%),radial-gradient(circle at 8% 85%,#fff0d6 0 24%,transparent 25%),var(--cream)}
+.hero-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:3px solid var(--pink-soft);border-radius:999px;
+  padding:8px 18px;font-weight:800;font-size:.85rem;color:var(--pink-deep);box-shadow:3px 3px 0 rgba(224,85,117,.15);margin-bottom:22px}
+.hero h1{font-size:clamp(2.6rem,6vw,4.8rem);color:var(--choc-deep)}
+.hero h1 .hl{color:var(--pink-deep);position:relative;display:inline-block}
+.hero h1 .hl::after{content:'';position:absolute;left:-4px;right:-4px;bottom:6px;height:.32em;background:var(--pink-soft);z-index:-1;border-radius:6px;transform:rotate(-1.5deg)}
+.hero p.lead{font-size:1.15rem;font-weight:600;color:#7a5a44;max-width:46ch;margin:20px 0 30px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:36px;margin-top:38px;flex-wrap:wrap}
+.stat b{font-family:'Fredoka';font-size:1.9rem;color:var(--choc-deep);display:block}
+.stat span{font-size:.9rem;font-weight:700;color:#a07c5f}
+.hero-art{position:relative;display:flex;justify-content:center}
+.hero-cake{width:min(88%,420px);filter:drop-shadow(0 24px 32px rgba(107,63,34,.18));animation:floaty 5s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.7;z-index:-1}
+.sprinkle{position:absolute;font-size:0;width:12px;height:12px;border-radius:4px;opacity:.9;animation:fall 7s linear infinite}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0)}100%{transform:translateY(105vh) rotate(540deg)}}
+
+/* ---------- MARQUEE ---------- */
+.marquee{background:linear-gradient(90deg,var(--pink-deep),var(--pink));border-top:4px solid #fff;border-bottom:4px solid #fff;
+  overflow:hidden;white-space:nowrap;padding:14px 0;transform:rotate(-1.2deg) scale(1.02)}
+.marquee .track{display:inline-flex;gap:44px;animation:slide 22s linear infinite}
+.marquee span{font-family:'Fredoka';font-weight:600;color:#fff;font-size:1.15rem;letter-spacing:.5px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:90px 5vw}
+.wrap{max-width:1240px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:48px}
+.sec-head .kicker{font-family:'Fredoka';font-weight:600;color:var(--pink-deep);letter-spacing:3px;text-transform:uppercase;font-size:.85rem}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.2rem);color:var(--choc-deep);margin:10px 0}
+.sec-head p{font-weight:600;color:#8a6a52;max-width:60ch;margin:0 auto}
+
+/* ---------- FILTERS + GRID ---------- */
+.filters{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.chip{font-family:'Fredoka';font-weight:500;font-size:.95rem;padding:10px 22px;border-radius:999px;border:3px solid var(--pink-soft);
+  background:#fff;color:var(--ink);cursor:pointer;transition:all .25s var(--bounce);box-shadow:2px 3px 0 rgba(224,85,117,.12)}
+.chip:hover{transform:translateY(-2px)}
+.chip.active{background:linear-gradient(135deg,var(--pink-deep),var(--pink));color:#fff;border-color:#fff;box-shadow:3px 5px 0 rgba(107,63,34,.18)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px}
+.card{background:#fff;border:4px solid #fff;border-radius:26px;padding:22px;text-align:center;position:relative;overflow:hidden;
+  box-shadow:inset -4px -4px 10px rgba(255,214,224,.5),8px 10px 0 rgba(107,63,34,.12);
+  transition:transform .3s var(--bounce),box-shadow .3s;cursor:default}
+.card:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:inset -4px -4px 10px rgba(255,214,224,.5),12px 18px 0 rgba(107,63,34,.14)}
+.card.hide{display:none}
+.card .art{height:180px;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--pink-soft),#fff2e3);
+  border-radius:18px;margin-bottom:16px;overflow:hidden}
+.card .art svg{height:165px;transition:transform .4s var(--bounce)}
+.card:hover .art svg{transform:scale(1.12) rotate(3deg)}
+.flavor-tag{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--pink-deep);
+  background:var(--pink-soft);border-radius:999px;padding:5px 14px;margin-bottom:8px}
+.card h3{font-size:1.35rem;color:var(--choc-deep);margin-bottom:6px}
+.card p{font-size:.92rem;font-weight:600;color:#8a6a52;margin-bottom:16px}
+.card .btn{padding:10px 24px;font-size:.92rem;width:100%;justify-content:center}
+
+/* ---------- WHY STRIP ---------- */
+.why{background:linear-gradient(180deg,#ffeef3,#fff6ec)}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px}
+.perk{background:#fff;border-radius:22px;border:4px solid #fff;padding:30px 24px;text-align:center;
+  box-shadow:inset -3px -3px 8px rgba(255,214,224,.45),6px 8px 0 rgba(107,63,34,.1);transition:transform .3s var(--bounce)}
+.perk:hover{transform:translateY(-6px) scale(1.02)}
+.perk .ico{width:64px;height:64px;margin:0 auto 14px;border-radius:20px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--pink),var(--pink-deep));border:3px solid #fff;box-shadow:3px 4px 0 rgba(107,63,34,.15)}
+.perk h3{color:var(--choc-deep);margin-bottom:8px;font-size:1.15rem}
+.perk p{font-size:.92rem;font-weight:600;color:#8a6a52}
+
+/* ---------- ORDER FLOW ---------- */
+.order{background:var(--choc-deep);border-radius:36px;margin:0 3vw;padding:70px 5vw;color:#fff;position:relative;overflow:hidden}
+.order::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 10%,rgba(255,143,171,.35),transparent 40%),radial-gradient(circle at 10% 90%,rgba(255,214,224,.18),transparent 40%)}
+.order h2{color:#fff;text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:8px}
+.order .sub{text-align:center;color:#ffd6e0;font-weight:600;margin-bottom:44px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;position:relative;z-index:1}
+.step{background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.22);border-radius:22px;padding:28px 22px;text-align:center;backdrop-filter:blur(8px);transition:transform .3s var(--bounce)}
+.step:hover{transform:translateY(-6px)}
+.step .num{font-family:'Fredoka';font-size:2.2rem;font-weight:700;color:var(--pink);display:block;margin-bottom:10px}
+.step h3{margin-bottom:8px}.step p{font-size:.92rem;color:#f3d9c8;font-weight:600}
+
+/* ---------- MODAL ---------- */
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(62,36,19,.55);backdrop-filter:blur(6px)}
+.modal.open{display:flex}
+.modal-card{background:var(--cream);border:4px solid #fff;border-radius:28px;max-width:460px;width:100%;padding:36px 30px;position:relative;
+  box-shadow:inset -4px -4px 12px rgba(255,214,224,.5),0 30px 60px rgba(0,0,0,.3)}
+.modal-card h3{font-size:1.6rem;color:var(--choc-deep);margin-bottom:4px}
+.modal-card .cake-name{font-weight:800;color:var(--pink-deep);margin-bottom:20px}
+.close{position:absolute;top:14px;right:16px;background:#fff;border:3px solid var(--pink-soft);border-radius:50%;width:38px;height:38px;font-size:1.1rem;cursor:pointer;color:var(--pink-deep);transition:transform .25s var(--bounce)}
+.close:hover{transform:rotate(90deg) scale(1.1)}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:800;font-size:.85rem;color:var(--choc-deep);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;font-family:'Nunito';font-weight:600;font-size:1rem;padding:13px 16px;border-radius:14px;border:3px solid var(--pink-soft);background:#fff;color:var(--ink);outline:none;transition:border .2s,box-shadow .2s}
+.field input:focus,.field textarea:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,143,171,.25)}
+.field textarea{resize:vertical;min-height:96px}
+.form-note{font-size:.82rem;font-weight:600;color:#a07c5f;margin-top:12px;text-align:center}
+.success{display:none;text-align:center;padding:20px 0}
+.success .big{font-size:3.4rem;margin-bottom:12px}
+.success h3{color:var(--choc-deep);font-size:1.5rem;margin-bottom:8px}
+.success p{font-weight:600;color:#8a6a52}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--choc-deep);color:#f3d9c8;padding:56px 5vw 30px}
+.foot-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-bottom:36px}
+.foot-grid h4{font-family:'Fredoka';color:#fff;margin-bottom:14px;font-size:1.05rem}
+.foot-grid p,.foot-grid a{font-size:.92rem;font-weight:600;color:#d9bda6;text-decoration:none;line-height:2}
+.foot-grid a:hover{color:var(--pink)}
+.foot-bottom{max-width:1240px;margin:0 auto;border-top:2px solid rgba(255,255,255,.15);padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;font-weight:600;color:#c9a586}
+
+@media(max-width:860px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,246,236,.97);flex-direction:column;padding:18px 5vw;gap:14px;border-bottom:3px solid #fff}
+  .nav-links.open{display:flex}
+  .burger{display:flex}
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-ctas,.hero-stats{justify-content:center}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .order{margin:0 4vw}
+}
+.reveal{opacity:0}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#top"><span class="cup">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M7 4h10l-1.2 8.2a3 3 0 0 1-3 2.8H11.2a3 3 0 0 1-3-2.8L7 4z" fill="#fff" opacity=".35"/><path d="M6 18h12"/><path d="M12 9v3"/><circle cx="12" cy="6.5" r="1.4" fill="#fff" stroke="none"/></svg>
+  </span>Online Bakers</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#cakes">Cakes</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#order">How to Order</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="#cakes" class="btn" style="padding:10px 22px">Order Now</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="blob" style="width:340px;height:340px;background:#ffd6e0;top:6%;right:4%"></div>
+  <div class="blob" style="width:220px;height:220px;background:#fff0d6;bottom:8%;left:3%"></div>
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow hero-el">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05575" stroke-width="2.4" stroke-linecap="round"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11z"/></svg>
+        Indore's happiest cake studio
+      </span>
+      <h1 class="hero-el">Freshly baked <span class="hl">joy</span>,<br>delivered to your door.</h1>
+      <p class="lead hero-el">From midnight birthday surprises to wedding showstoppers — Online Bakers whips up small-batch cakes in Indore every single morning. Pick your flavour, tell us the occasion, and we'll handle the magic.</p>
+      <div class="hero-ctas hero-el">
+        <a href="#cakes" class="btn">Browse Cakes
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#order" class="btn ghost">How it works</a>
+      </div>
+      <div class="hero-stats hero-el">
+        <div class="stat"><b data-count="12000">0</b><span>happy celebrations</span></div>
+        <div class="stat"><b><span data-count="40">0</span>+</b><span>flavours baked fresh</span></div>
+        <div class="stat"><b><span data-count="60">0</span> min</b><span>express delivery</span></div>
+      </div>
+    </div>
+    <div class="hero-art hero-el">
+      <svg class="hero-cake" viewBox="0 0 220 210" fill="none">
+        <ellipse cx="110" cy="192" rx="80" ry="12" fill="#6b3f22" opacity=".12"/>
+        <rect x="40" y="172" width="140" height="14" rx="7" fill="#fff" stroke="#ffd6e0" stroke-width="3"/>
+        <rect x="55" y="118" width="110" height="58" rx="14" fill="#6b3f22"/>
+        <path d="M55,132 q9,12 18,0 q9,12 18,0 q9,12 18,0 q9,12 18,0 q9,12 18,0 q9,12 17,0 V118 H55 Z" fill="#ff8fab"/>
+        <rect x="66" y="92" width="88" height="30" rx="12" fill="#8a5433"/>
+        <path d="M66,104 q8,10 16,0 q8,10 16,0 q8,10 16,0 q8,10 16,0 q8,10 16,0 q8,10 14,0 V92 H66 Z" fill="#ffd6e0"/>
+        <rect x="106" y="58" width="8" height="34" rx="4" fill="#e05575"/>
+        <path d="M110,58 q10,-6 4,-20 q-2,8 -8,10 q6,2 4,10" fill="#ffce5c"/>
+        <circle cx="80" cy="86" r="7" fill="#e05575"/><circle cx="140" cy="86" r="7" fill="#e05575"/>
+        <circle cx="110" cy="80" r="7" fill="#ffce5c"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track" id="marqueeTrack">
+    <span>Fresh every morning</span><span>•</span><span>Chocolate</span><span>•</span><span>Red Velvet</span><span>•</span><span>Mango</span><span>•</span><span>Butterscotch</span><span>•</span><span>Strawberry</span><span>•</span><span>Midnight delivery</span><span>•</span><span>Eggless options</span><span>•</span>
+  </div>
+</div>
+
+<section id="cakes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Our menu</div>
+      <h2>Pick your craving</h2>
+      <p>Every cake is baked to order in our Indore kitchen — no day-old stock, ever. Filter by flavour, tap a cake, and send us an enquiry.</p>
+    </div>
+    <div class="filters reveal" id="filters">
+      <button class="chip active" data-f="all">All</button>
+      <button class="chip" data-f="chocolate">Chocolate</button>
+      <button class="chip" data-f="vanilla">Vanilla</button>
+      <button class="chip" data-f="strawberry">Strawberry</button>
+      <button class="chip" data-f="butterscotch">Butterscotch</button>
+      <button class="chip" data-f="mango">Mango</button>
+      <button class="chip" data-f="redvelvet">Red Velvet</button>
+      <button class="chip" data-f="blackforest">Black Forest</button>
+      <button class="chip" data-f="pineapple">Pineapple</button>
+    </div>
+    <div class="grid" id="cakeGrid"></div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Why Online Bakers</div>
+      <h2>Baked different, on purpose</h2>
+    </div>
+    <div class="perks">
+      <div class="perk reveal">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>60-minute express</h3><p>Order before 8 PM and get celebration-ready cakes delivered across Indore in about an hour.</p>
+      </div>
+      <div class="perk reveal">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 3c-4 4-6 7-6 10a6 6 0 0 0 12 0c0-3-2-6-6-10z"/></svg></div>
+        <h3>Baked this morning</h3><p>Small batches, real butter, Belgian cocoa. Nothing sits overnight — we bake after you order.</p>
+      </div>
+      <div class="perk reveal">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 21s-8-4.6-8-11a8 8 0 0 1 16 0c0 6.4-8 11-8 11z"/><path d="M9 12h6"/></svg></div>
+        <h3>Custom designs</h3><p>Photo cakes, theme cakes, tiered wedding cakes — send a reference and our artists recreate it.</p>
+      </div>
+      <div class="perk reveal">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h3>Eggless always</h3><p>Every flavour has a 100% eggless twin that tastes identical — just mention it in your enquiry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="order" style="padding-top:20px">
+  <div class="wrap">
+    <div class="order reveal">
+      <h2>Ordering is a piece of cake</h2>
+      <p class="sub">Three sweet steps between you and dessert</p>
+      <div class="steps">
+        <div class="step"><span class="num">01</span><h3>Pick a cake</h3><p>Browse the menu above and tap "Enquire" on the one that makes you drool.</p></div>
+        <div class="step"><span class="num">02</span><h3>Send an enquiry</h3><p>Share your name, phone and occasion details — size, message on the cake, delivery date.</p></div>
+        <div class="step"><span class="num">03</span><h3>We call &amp; bake</h3><p>Our cake studio calls to confirm, bakes it fresh, and delivers it to your Indore address.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="foot-grid">
+    <div>
+      <h4>Online Bakers</h4>
+      <p>Indore's cheerful little cake studio.<br>Baked fresh every morning,<br>delivered with a smile.</p>
+    </div>
+    <div>
+      <h4>Visit us</h4>
+      <p>14, Bakery Lane, Vijay Nagar<br>Indore, Madhya Pradesh<br>Open daily · 9 AM – 10 PM</p>
+    </div>
+    <div>
+      <h4>Quick links</h4>
+      <p><a href="#cakes">Cake menu</a><br><a href="#why">Why us</a><br><a href="#order">How to order</a></p>
+    </div>
+    <div>
+      <h4>Say hello</h4>
+      <p>hello@onlinebakers.example<br>+91 98XXX XXXXX<br>@onlinebakers.indore</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Online Bakers, Indore. All rights reserved.</span>
+    <span>Concept demo by Om Vibe Webs</span>
+  </div>
+</footer>
+
+<div class="modal" id="enquiryModal" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <button class="close" id="modalClose" aria-label="Close">✕</button>
+    <div id="formView">
+      <h3>Cake enquiry</h3>
+      <div class="cake-name" id="modalCakeName"></div>
+      <form id="enquiryForm">
+        <div class="field"><label for="fName">Your name</label><input id="fName" type="text" placeholder="e.g. Priya Sharma" required></div>
+        <div class="field"><label for="fPhone">Phone number</label><input id="fPhone" type="tel" placeholder="e.g. 98XXX XXXXX" required></div>
+        <div class="field"><label for="fMsg">Message</label><textarea id="fMsg" placeholder="Occasion, size, eggless?, delivery date & address…"></textarea></div>
+        <button type="submit" class="btn" style="width:100%;justify-content:center">Send Enquiry</button>
+        <p class="form-note">We'll call you back shortly to confirm your order.</p>
+      </form>
+    </div>
+    <div class="success" id="successView">
+      <div class="big">
+        <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#e05575" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10" fill="#ffd6e0" stroke="none"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
+      </div>
+      <h3>Enquiry sent!</h3>
+      <p id="successMsg">Our cake studio will call you shortly to confirm the details.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  gsap.globalTimeline.timeScale(100);
+}
+
+/* ---------- data ---------- */
+var CAKES = [
+  {name:'Truffle Bliss', flavor:'chocolate', desc:'Silky Belgian truffle layers with a glossy ganache crown.', c:{body:'#6b3f22',frost:'#4e2a15',top:'#8a5433',cherry:'#ff6b81'}},
+  {name:'Choco Fudge Dream', flavor:'chocolate', desc:'Double-fudge sponge, molten centre, cocoa crumble dust.', c:{body:'#4e2a15',frost:'#6b3f22',top:'#3e2413',cherry:'#ffd6e0'}},
+  {name:'Vanilla Cloud', flavor:'vanilla', desc:'Feather-light Madagascar vanilla sponge, whipped cream clouds.', c:{body:'#f7ead1',frost:'#fff8ec',top:'#f3dfba',cherry:'#e05575'}},
+  {name:'Strawberry Swirl', flavor:'strawberry', desc:'Fresh strawberry compote rippled through pink velvet cream.', c:{body:'#ffc9d6',frost:'#ffe9ef',top:'#ffb3c7',cherry:'#c1121f'}},
+  {name:'Butterscotch Crunch', flavor:'butterscotch', desc:'Caramelised praline crunch over golden butterscotch cream.', c:{body:'#e8b04b',frost:'#f7d896',top:'#d99a2b',cherry:'#8a4b1f'}},
+  {name:'Mango Tango', flavor:'mango', desc:'Alphonso mango mousse dancing on a light summer sponge.', c:{body:'#ffb703',frost:'#ffe29a',top:'#fb8500',cherry:'#fb5607'}},
+  {name:'Scarlet Velvet', flavor:'redvelvet', desc:'Crimson cocoa layers with tangy cream-cheese frosting.', c:{body:'#a4133c',frost:'#ffffff',top:'#800f2f',cherry:'#590d22'}},
+  {name:'Dark Forest Magic', flavor:'blackforest', desc:'Dark chocolate, cherry compote and chantilly — a classic reborn.', c:{body:'#3b1f14',frost:'#fff5ee',top:'#2a150c',cherry:'#c1121f'}},
+  {name:'Pineapple Sunshine', flavor:'pineapple', desc:'Juicy pineapple jewels folded into tropical whipped cream.', c:{body:'#ffe66d',frost:'#fff9db',top:'#ffd23f',cherry:'#2a9d8f'}}
+];
+
+function cakeArt(c){
+  return '<svg viewBox="0 0 200 180" fill="none">' +
+    '<ellipse cx="100" cy="162" rx="66" ry="10" fill="#6b3f22" opacity=".1"/>' +
+    '<rect x="48" y="148" width="104" height="12" rx="6" fill="#ffffff" stroke="#ffd6e0" stroke-width="3"/>' +
+    '<rect x="56" y="104" width="88" height="48" rx="12" fill="'+c.body+'"/>' +
+    '<path d="M56,116 q7.3,10 14.6,0 q7.3,10 14.6,0 q7.3,10 14.6,0 q7.3,10 14.6,0 q7.3,10 14.6,0 q7.3,10 14.6,0 V104 H56 Z" fill="'+c.frost+'"/>' +
+    '<rect x="64" y="80" width="72" height="26" rx="10" fill="'+c.top+'"/>' +
+    '<circle cx="100" cy="70" r="8" fill="'+c.cherry+'"/>' +
+    '<rect x="98.5" y="44" width="3" height="20" rx="1.5" fill="#e05575"/>' +
+    '<circle cx="100" cy="40" r="4" fill="#ffce5c"/>' +
+    '</svg>';
+}
+
+var grid = document.getElementById('cakeGrid');
+CAKES.forEach(function(k){
+  var card = document.createElement('div');
+  card.className = 'card reveal';
+  card.setAttribute('data-flavor', k.flavor);
+  card.innerHTML =
+    '<div class="art">'+cakeArt(k.c)+'</div>' +
+    '<span class="flavor-tag">'+k.flavor.replace('redvelvet','red velvet').replace('blackforest','black forest')+'</span>' +
+    '<h3>'+k.name+'</h3><p>'+k.desc+'</p>' +
+    '<button class="btn" data-cake="'+k.name+'">Enquire Now</button>';
+  grid.appendChild(card);
+});
+
+/* ---------- filters ---------- */
+document.getElementById('filters').addEventListener('click', function(e){
+  var b = e.target.closest('.chip'); if(!b) return;
+  document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active');});
+  b.classList.add('active');
+  var f = b.getAttribute('data-f');
+  var cards = grid.querySelectorAll('.card');
+  cards.forEach(function(card, i){
+    var show = (f === 'all' || card.getAttribute('data-flavor') === f);
+    card.classList.toggle('hide', !show);
+    if (show) gsap.fromTo(card, {opacity:0, y:24, scale:.96}, {opacity:1, y:0, scale:1, duration:.45, delay:i*.05, ease:'back.out(1.6)'});
+  });
+});
+
+/* ---------- modal ---------- */
+var modal = document.getElementById('enquiryModal');
+var cakeNameEl = document.getElementById('modalCakeName');
+var formView = document.getElementById('formView');
+var successView = document.getElementById('successView');
+
+function openModal(cake){
+  cakeNameEl.textContent = 'Selected cake: ' + cake;
+  formView.style.display = 'block';
+  successView.style.display = 'none';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  gsap.fromTo('.modal-card', {y:40, opacity:0, scale:.94}, {y:0, opacity:1, scale:1, duration:.45, ease:'back.out(1.5)'});
+}
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+grid.addEventListener('click', function(e){
+  var b = e.target.closest('[data-cake]'); if(!b) return;
+  openModal(b.getAttribute('data-cake'));
+});
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+document.getElementById('enquiryForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('fName').value.trim();
+  document.getElementById('successMsg').textContent = 'Thanks ' + name.split(' ')[0] + '! Our cake studio will call you shortly to confirm your ' + cakeNameEl.textContent.replace('Selected cake: ','') + ' order.';
+  formView.style.display = 'none';
+  successView.style.display = 'block';
+  gsap.fromTo('.success', {scale:.8, opacity:0}, {scale:1, opacity:1, duration:.5, ease:'back.out(1.8)'});
+  this.reset();
+});
+
+/* ---------- nav ---------- */
+document.getElementById('burger').addEventListener('click', function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+/* ---------- sprinkles ---------- */
+var hero = document.querySelector('.hero');
+var colors = ['#ff8fab','#ffd6e0','#ffce5c','#b8e6c9','#e3d5ff'];
+for (var i = 0; i < 14; i++){
+  var s = document.createElement('div');
+  s.className = 'sprinkle';
+  s.style.left = (Math.random()*100) + '%';
+  s.style.top = (-5 - Math.random()*20) + 'px';
+  s.style.background = colors[i % colors.length];
+  s.style.animationDelay = (Math.random()*7) + 's';
+  s.style.animationDuration = (5 + Math.random()*5) + 's';
+  if (i % 3 === 0) s.style.borderRadius = '50%';
+  hero.appendChild(s);
+}
+
+/* ---------- marquee duplicate ---------- */
+var track = document.getElementById('marqueeTrack');
+track.innerHTML += track.innerHTML;
+
+/* ---------- animations ---------- */
+gsap.from('.hero-el', {opacity:0, y:40, duration:.9, stagger:.12, ease:'power3.out', delay:.15});
+gsap.utils.toArray('.reveal').forEach(function(el){
+  gsap.fromTo(el, {opacity:0, y:36}, {opacity:1, y:0, duration:.7, ease:'power2.out',
+    scrollTrigger:{trigger:el, start:'top 88%', toggleActions:'play none none reverse'}});
+});
+document.querySelectorAll('[data-count]').forEach(function(el){
+  var target = parseInt(el.getAttribute('data-count'), 10);
+  ScrollTrigger.create({trigger:el, start:'top 92%', once:true, onEnter:function(){
+    gsap.fromTo(el, {innerText:0}, {innerText:target, duration:1.6, ease:'power1.out', snap:{innerText:1},
+      onUpdate:function(){ el.textContent = Math.round(parseFloat(el.textContent)).toLocaleString('en-IN'); }});
+  }});
+});
+</script>
+</body>
+</html>

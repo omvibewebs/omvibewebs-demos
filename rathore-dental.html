@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Maharishi Rathore's Dental Clinic — Modern Multispeciality Dentistry in Jabalpur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --teal:#0e9488; --teal-deep:#0b6f66; --aqua:#e6faf7; --aqua-deep:#c9f2ec;
+  --ink:#0c1f22; --muted:#5b7074; --white:#ffffff; --card:#f6fbfa;
+  --grad:linear-gradient(135deg,#0e9488 0%,#14b8a6 55%,#5eead4 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.01em}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(14,148,136,.12)}
+.nav-in{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.05rem;color:var(--teal-deep)}
+.brand svg{width:38px;height:38px}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem;transition:.25s}
+.nav-links a:hover{color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#fff;border:none;padding:14px 28px;border-radius:100px;font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none;box-shadow:0 12px 30px -8px rgba(14,148,136,.55);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 38px -8px rgba(14,148,136,.6)}
+.btn.ghost{background:#fff;color:var(--teal-deep);border:2px solid var(--aqua-deep);box-shadow:none}
+.burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--teal-deep)}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:130px 0 70px;background:
+  radial-gradient(700px 420px at 88% 12%,rgba(94,234,212,.35),transparent 60%),
+  radial-gradient(560px 380px at 8% 88%,rgba(14,148,136,.14),transparent 60%),#fbfeff;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none}
+.blob.b1{width:420px;height:420px;background:#99f6e4;top:-90px;right:-70px}
+.blob.b2{width:330px;height:330px;background:#a7f3d0;bottom:-70px;left:-60px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--aqua);border:1px solid var(--aqua-deep);color:var(--teal-deep);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:8px 18px;border-radius:100px;margin-bottom:22px}
+.hero h1{font-size:clamp(2.6rem,5.4vw,4.2rem);line-height:1.08;color:var(--ink)}
+.hero h1 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--muted);font-size:1.12rem;margin:20px 0 32px;max-width:520px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:38px;margin-top:44px}
+.stat b{display:block;font-size:1.7rem;color:var(--teal-deep);font-family:'Fraunces',serif}
+.stat span{font-size:.85rem;color:var(--muted)}
+.hero-art{position:relative;height:520px}
+.hero-card{position:absolute;border-radius:26px;box-shadow:0 30px 70px -20px rgba(12,31,34,.22);overflow:hidden}
+.hc-main{width:74%;height:400px;top:30px;right:0;background:linear-gradient(160deg,#0e9488,#0891b2);display:flex;align-items:center;justify-content:center}
+.hc-smile{width:52%;height:220px;bottom:10px;left:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px solid var(--aqua-deep)}
+.hc-float{width:44%;height:120px;top:0;left:6%;background:#fff;display:flex;align-items:center;gap:12px;padding:18px;border:1px solid var(--aqua-deep)}
+.hc-float .tick{width:44px;height:44px;border-radius:50%;background:var(--aqua);display:flex;align-items:center;justify-content:center;flex:none}
+.float-chip{position:absolute;background:#fff;border-radius:16px;box-shadow:0 16px 40px -12px rgba(12,31,34,.25);padding:12px 18px;font-size:.82rem;font-weight:700;color:var(--teal-deep);border:1px solid var(--aqua-deep)}
+section{padding:96px 0}
+.sec-head{max-width:640px;margin:0 auto 54px;text-align:center}
+.sec-head .kicker{color:var(--teal);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:12px 0 14px}
+.sec-head p{color:var(--muted)}
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{background:var(--card);border:1px solid rgba(14,148,136,.1);border-radius:24px;padding:34px 26px;transition:transform .3s,box-shadow .3s,background .3s}
+.svc:hover{transform:translateY(-10px);background:#fff;box-shadow:0 26px 60px -18px rgba(14,148,136,.3)}
+.svc .ico{width:62px;height:62px;border-radius:18px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc .ico svg{width:30px;height:30px;stroke:#fff}
+.svc h3{font-size:1.22rem;margin-bottom:10px}
+.svc p{color:var(--muted);font-size:.94rem}
+.svc a.more{display:inline-block;margin-top:16px;color:var(--teal-deep);font-weight:700;font-size:.88rem;text-decoration:none}
+/* DOCTORS */
+.doctors{background:linear-gradient(180deg,#f2fbfa,#fff)}
+.doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.doc{background:#fff;border-radius:26px;overflow:hidden;border:1px solid rgba(14,148,136,.12);transition:transform .3s,box-shadow .3s}
+.doc:hover{transform:translateY(-8px);box-shadow:0 26px 60px -18px rgba(12,31,34,.25)}
+.doc-art{height:250px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.doc-art .initials{width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:2rem;color:#fff;font-weight:600}
+.doc-body{padding:26px}
+.doc-body h3{font-size:1.25rem}
+.doc-body .role{color:var(--teal);font-weight:700;font-size:.85rem;margin:4px 0 10px}
+.doc-body p{color:var(--muted);font-size:.92rem}
+/* TRUST STRIP */
+.trust{background:var(--ink);color:#e8f6f4;border-radius:34px;margin:0 auto;max-width:1200px;padding:56px 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center}
+.trust b{font-size:2.2rem;font-family:'Fraunces',serif;color:#5eead4;display:block}
+.trust span{font-size:.9rem;opacity:.8}
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:st}
+.step{position:relative;background:#fff;border:1px solid rgba(14,148,136,.12);border-radius:22px;padding:32px 24px 28px}
+.step::before{counter-increment:st;content:counter(st,decimal-leading-zero);position:absolute;top:22px;right:24px;font-family:'Fraunces',serif;font-size:2.4rem;color:var(--aqua-deep);font-weight:600}
+.step h3{font-size:1.1rem;margin-bottom:8px;color:var(--teal-deep)}
+.step p{color:var(--muted);font-size:.92rem}
+/* TESTIMONIALS */
+.testi{background:var(--aqua);border-radius:40px;padding:70px 24px;overflow:hidden;position:relative}
+.t-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 24px 26px;scrollbar-width:none}
+.t-track::-webkit-scrollbar{display:none}
+.t-card{flex:0 0 min(420px,86vw);background:#fff;border-radius:24px;padding:34px 30px;scroll-snap-align:center;box-shadow:0 18px 44px -16px rgba(12,31,34,.16)}
+.t-card .stars{color:#f5a623;letter-spacing:4px;margin-bottom:14px}
+.t-card p{font-size:.98rem;color:#33475b}
+.t-who{display:flex;align-items:center;gap:14px;margin-top:22px}
+.t-who .av{width:52px;height:52px;border-radius:50%;background:var(--grad);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+/* BOOKING */
+.booking{background:linear-gradient(135deg,#0b6f66,#0e9488 60%,#14b8a6);border-radius:40px;color:#fff;position:relative;overflow:hidden}
+.booking .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.booking h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:14px}
+.booking p{opacity:.9}
+form.book{background:#fff;border-radius:26px;padding:38px 34px;color:var(--ink);box-shadow:0 30px 70px -20px rgba(0,0,0,.35)}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:.84rem;margin-bottom:7px;color:var(--teal-deep)}
+.field input,.field select,.field textarea{width:100%;border:2px solid var(--aqua-deep);border-radius:14px;padding:13px 16px;font-size:.95rem;font-family:inherit;transition:.25s;background:#fbfeff}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(14,148,136,.14)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-ok{display:none;background:#e6faf7;border:1px solid #5eead4;color:var(--teal-deep);border-radius:14px;padding:16px;font-weight:600;margin-top:6px}
+/* FAQ-ish contact strip */
+.contact-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px}
+.c-item{background:var(--card);border:1px solid rgba(14,148,136,.12);border-radius:20px;padding:26px;display:flex;gap:16px;align-items:flex-start}
+.c-item .ico{width:48px;height:48px;border-radius:14px;background:var(--aqua);display:flex;align-items:center;justify-content:center;flex:none}
+.c-item .ico svg{width:24px;height:24px;stroke:var(--teal-deep)}
+.c-item b{display:block;margin-bottom:4px}
+.c-item span{color:var(--muted);font-size:.92rem}
+footer{background:var(--ink);color:#b8d4d1;padding:56px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.foot-grid h4{color:#fff;margin-bottom:16px;font-size:1rem}
+.foot-grid a{color:#b8d4d1;text-decoration:none;display:block;margin-bottom:10px;font-size:.92rem}
+.foot-grid a:hover{color:#5eead4}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem}
+.reveal{opacity:0}
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{height:420px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .doc-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .trust{grid-template-columns:repeat(2,1fr);padding:44px 28px}
+  .booking .wrap{grid-template-columns:1fr}
+  .contact-strip{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(14,148,136,.15)}
+  .nav-links.open{display:flex}
+  .burger{display:block}
+  section{padding:70px 0}
+}
+@media(max-width:560px){.svc-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M24 6c-4 0-6 2-8 2S9 7 9 13c0 8 5 10 5 17 0 6 3 12 10 12 3 0 4-2 4-5v-9c0-3 8-3 8 0v9c0 3 1 5 4 5 7 0 10-6 10-12 0-7 5-9 5-17 0-6-5-5-7-5s-4-2-8-2c-2 0-3 1-4 2-1-1-2-2-4-2z" fill="#0e9488"/><path d="M24 6c-2 0-3 1-4 2v30c0 1 0 2 1 2s2-1 2-2V8c-1-1-2-2-1-2z" fill="#5eead4" opacity=".5"/></svg>
+      Rathore Dental
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Treatments</a><a href="#doctors">Doctors</a><a href="#journey">Your Visit</a><a href="#stories">Smiles</a><a href="#book" class="btn" style="padding:10px 22px">Book Appointment</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span style="display:block;width:26px;height:2.5px;background:var(--teal-deep);border-radius:3px;margin:3px 0"></span><span style="display:block;width:26px;height:2.5px;background:var(--teal-deep);border-radius:3px;margin:3px 0"></span><span style="display:block;width:26px;height:2.5px;background:var(--teal-deep);border-radius:3px;margin:3px 0"></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow reveal-hero">Jabalpur's Trusted Multispeciality Dental Clinic</span>
+      <h1 class="reveal-hero">A healthier smile begins with <span class="hl">gentle, expert care</span></h1>
+      <p class="lead reveal-hero">From painless root canals to complete smile makeovers — Dr. Maharishi Rathore and a team of specialists bring world-class dentistry to the heart of Jabalpur.</p>
+      <div class="hero-cta reveal-hero">
+        <a href="#book" class="btn">Book Your Visit
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#services" class="btn ghost">Explore Treatments</a>
+      </div>
+      <div class="hero-stats reveal-hero">
+        <div class="stat"><b data-count="15">0</b><span>Years of care</span></div>
+        <div class="stat"><b><span data-count="12000">0</span>+</b><span>Happy smiles</span></div>
+        <div class="stat"><b><span data-count="4.9" data-dec="1">0</span>★</b><span>Patient rating</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-card hc-main float-a">
+        <svg width="190" height="190" viewBox="0 0 48 48" fill="none"><path d="M24 6c-4 0-6 2-8 2S9 7 9 13c0 8 5 10 5 17 0 6 3 12 10 12 3 0 4-2 4-5v-9c0-3 8-3 8 0v9c0 3 1 5 4 5 7 0 10-6 10-12 0-7 5-9 5-17 0-6-5-5-7-5s-4-2-8-2c-2 0-3 1-4 2-1-1-2-2-4-2z" fill="#ffffff" opacity=".92"/><circle cx="38" cy="10" r="3" fill="#5eead4"/><circle cx="10" cy="38" r="2.4" fill="#5eead4"/></svg>
+      </div>
+      <div class="hero-card hc-smile float-b">
+        <svg width="60" height="40" viewBox="0 0 60 40"><path d="M6 8 Q30 44 54 8" stroke="#0e9488" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+        <b style="color:var(--teal-deep)">Painless Dentistry</b>
+        <span style="font-size:.8rem;color:var(--muted)">Single-visit RCT available</span>
+      </div>
+      <div class="hero-card hc-float float-c">
+        <span class="tick"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0b6f66" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span>
+        <div><b style="font-size:.85rem;color:var(--teal-deep)">Sterilised & Safe</b><br><span style="font-size:.75rem;color:var(--muted)">4-step hygiene protocol</span></div>
+      </div>
+      <div class="float-chip" style="bottom:56px;right:8%" id="chip1">✦ 500+ Implants placed</div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Treatments</div>
+      <h2>Complete care for every smile</h2>
+      <p>Specialist-led treatments with digital X-rays, rotary endodontics and painless anaesthesia techniques.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2C9 2 8 3.4 6.6 3.4 5.4 3.4 4 2.8 4 6c0 3.4 2.2 4.4 2.2 7.4 0 2.6 1.4 5.2 4.4 5.2 1.2 0 1.4-.8 1.4-2v-3.8c0-1.2 4-1.2 4 0V16.6c0 1.2.2 2 1.4 2 3 0 4.4-2.6 4.4-5.2 0-3 2.2-4 2.2-7.4 0-3.2-1.4-2.6-2.6-2.6C20 3.4 19 2 16 2c-1.4 0-2 .8-2.8 1.6C12.6 2.8 12.4 2 12 2z"/></svg></div>
+        <h3>Dental Implants</h3>
+        <p>Permanent, natural-feeling replacements for missing teeth — from single tooth to full-arch rehabilitation.</p>
+        <a class="more" href="#book">Ask about implants →</a>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 14c2-1 3-4 3-7M8 14c2-1 3-4 3-7M12 14c2-1 3-4 3-7M16 14c2-1 3-4 3-7M3 16c3 3 15 3 18 0"/></svg></div>
+        <h3>Braces & Clear Aligners</h3>
+        <p>Metal, ceramic and invisible aligner options for teens and adults — straighter teeth, discreetly.</p>
+        <a class="more" href="#book">Free smile assessment →</a>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3l2.5 5.5L20 9.5l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1z"/></svg></div>
+        <h3>Smile Designing</h3>
+        <p>Veneers, laminates and whitening crafted digitally — preview your new smile before we begin.</p>
+        <a class="more" href="#book">Design my smile →</a>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21c-5 0-8-3-8-8 0-4 3-6 4-9 1 2 4 2 4 2s3 0 4-2c1 3 4 5 4 9 0 5-3 8-8 8z"/></svg></div>
+        <h3>Painless Root Canals</h3>
+        <p>Single-visit rotary RCT with digital precision — save your natural tooth, minus the fear.</p>
+        <a class="more" href="#book">Relieve tooth pain →</a>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8.5 10.5h.01M15.5 10.5h.01M8 15c1.2 1.4 2.8 2 4 2s2.8-.6 4-2" stroke-linecap="round"/></svg></div>
+        <h3>Kids Dentistry</h3>
+        <p>Friendly first visits, fluoride care and habit correction — dental visits your child will actually enjoy.</p>
+        <a class="more" href="#book">Book a kids' visit →</a>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4"/></svg></div>
+        <h3>Whitening & Cleaning</h3>
+        <p>Remove stains and years of dullness in a single sitting — ultrasonic scaling plus safe enamel whitening.</p>
+        <a class="more" href="#book">Brighten my smile →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="doctors" class="doctors" style="padding-top:96px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Meet the doctors</div>
+      <h2>Specialists you can trust</h2>
+      <p>A multispeciality team — not a single-chair clinic. Every treatment is done by the right expert.</p>
+    </div>
+    <div class="doc-grid">
+      <div class="doc reveal">
+        <div class="doc-art" style="background:linear-gradient(140deg,#ccfbf1,#99f6e4)"><div class="initials" style="background:linear-gradient(135deg,#0e9488,#0891b2)">MR</div></div>
+        <div class="doc-body"><h3>Dr. Maharishi Rathore</h3><div class="role">Founder · Implantologist & Cosmetic Dentist</div><p>MDS with 15+ years of experience; 500+ successful implants and full-mouth rehabilitations across central India.</p></div>
+      </div>
+      <div class="doc reveal">
+        <div class="doc-art" style="background:linear-gradient(140deg,#e0f2fe,#bae6fd)"><div class="initials" style="background:linear-gradient(135deg,#0284c7,#0e9488)">AS</div></div>
+        <div class="doc-body"><h3>Dr. Anjali Sharma</h3><div class="role">Orthodontist · Braces & Aligners</div><p>Specialist in invisible orthodontics; hundreds of confident, camera-ready smiles for teens and working adults.</p></div>
+      </div>
+      <div class="doc reveal">
+        <div class="doc-art" style="background:linear-gradient(140deg,#fef3c7,#fde68a)"><div class="initials" style="background:linear-gradient(135deg,#d97706,#0e9488)">VK</div></div>
+        <div class="doc-body"><h3>Dr. Vikram Khare</h3><div class="role">Endodontist · Root Canal Specialist</div><p>Microscope-assisted single-visit root canals with a gentle, pain-free approach nervous patients love.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="trust reveal">
+      <div><b><span data-count="15">0</span>+</b><span>Years serving Jabalpur</span></div>
+      <div><b><span data-count="12000">0</span>+</b><span>Treatments completed</span></div>
+      <div><b><span data-count="3">0</span></b><span>Specialist doctors</span></div>
+      <div><b><span data-count="98">0</span>%</b><span>Patients who recommend us</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="journey" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Your visit</div>
+      <h2>Simple, transparent, stress-free</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Book in a minute</h3><p>Call, WhatsApp or use the form below — pick a slot that suits your day.</p></div>
+      <div class="step reveal"><h3>Digital diagnosis</h3><p>Low-radiation digital X-ray and a clear explanation of what you need — and what you don't.</p></div>
+      <div class="step reveal"><h3>Painless treatment</h3><p>Modern anaesthesia and rotary tools keep every procedure comfortable and quick.</p></div>
+      <div class="step reveal"><h3>Aftercare for life</h3><p>Free follow-ups, reminders and a written plan to keep your smile healthy for years.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="stories" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Patient stories</div>
+      <h2>Smiles that speak for us</h2>
+    </div>
+  </div>
+  <div class="testi reveal">
+    <div class="t-track" id="tTrack">
+      <div class="t-card"><div class="stars">★★★★★</div><p>"I was terrified of root canals, but Dr. Khare finished mine in one sitting — I genuinely felt nothing. The whole clinic is spotless and the staff explains everything."</p><div class="t-who"><div class="av">PS</div><div><b>Priya Sharma</b><br><span style="color:var(--muted);font-size:.85rem">Root Canal · Vijay Nagar</span></div></div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"My father's full-mouth implants changed his life — he eats everything again at 68. Dr. Rathore planned every step digitally and there were zero surprises."</p><div class="t-who"><div class="av">RA</div><div><b>Rohit Agrawal</b><br><span style="color:var(--muted);font-size:.85rem">Dental Implants · Napier Town</span></div></div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"Got clear aligners before my wedding. Nobody at work even noticed I was wearing them, and my smile in the photos is perfect. Worth every rupee."</p><div class="t-who"><div class="av">SN</div><div><b>Sneha Nema</b><br><span style="color:var(--muted);font-size:.85rem">Clear Aligners · Wright Town</span></div></div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"Took my 7-year-old here for her first filling. The doctor made it a game — she now asks when her next dental visit is! Rare to find such patience."</p><div class="t-who"><div class="av">KJ</div><div><b>Kavita Jain</b><br><span style="color:var(--muted);font-size:.85rem">Kids Dentistry · Sadar</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="book" style="padding-top:20px">
+  <div class="wrap">
+    <div class="booking reveal">
+      <div class="wrap" style="padding:64px 40px">
+        <div>
+          <h2>Book your appointment</h2>
+          <p>Same-day slots often available. Share your details and our care team will confirm your visit within 2 working hours.</p>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;gap:12px;align-items:center"><span style="background:rgba(255,255,255,.18);border-radius:12px;padding:10px;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L7.6 9.9a16 16 0 006.5 6.5l1.5-1.5a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span><div><b>Call / WhatsApp</b><br>+91 98XXX XXXXX</div></div>
+            <div style="display:flex;gap:12px;align-items:center"><span style="background:rgba(255,255,255,.18);border-radius:12px;padding:10px;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><div><b>Clinic hours</b><br>Mon–Sat · 10 AM – 2 PM & 5 PM – 9 PM</div></div>
+            <div style="display:flex;gap:12px;align-items:center"><span style="background:rgba(255,255,255,.18);border-radius:12px;padding:10px;display:grid;place-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Find us</b><br>Main Road, Napier Town, Jabalpur, MP</div></div>
+          </div>
+        </div>
+        <form class="book" id="bookForm">
+          <div class="frow">
+            <div class="field"><label>Full name</label><input type="text" id="bfName" placeholder="Your name" required></div>
+            <div class="field"><label>Phone</label><input type="tel" id="bfPhone" placeholder="+91 …" required></div>
+          </div>
+          <div class="frow">
+            <div class="field"><label>Treatment</label><select id="bfTreat"><option>General checkup & cleaning</option><option>Dental implants</option><option>Braces / clear aligners</option><option>Smile designing</option><option>Root canal</option><option>Kids dentistry</option></select></div>
+            <div class="field"><label>Preferred day</label><input type="date" id="bfDate"></div>
+          </div>
+          <div class="field"><label>Anything we should know? (optional)</label><textarea id="bfMsg" rows="3" placeholder="Symptoms, concerns, questions…"></textarea></div>
+          <button type="submit" class="btn" style="width:100%;justify-content:center">Request Appointment</button>
+          <div class="form-ok" id="bookOk">✓ Thank you! Your request has been noted — we'll call you shortly to confirm your slot.</div>
+        </form>
+      </div>
+    </div>
+    <div class="contact-strip">
+      <div class="c-item reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L7.6 9.9a16 16 0 006.5 6.5l1.5-1.5a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></div><div><b>Emergency dental pain?</b><span>Call us directly — painful cases are seen the same day.</span></div></div>
+      <div class="c-item reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><b>100% sterilised</b><span>Autoclaved instruments, disposable kits, 4-step hygiene protocol.</span></div></div>
+      <div class="c-item reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><div><b>Transparent pricing</b><span>Written estimate before treatment begins — no hidden charges, ever.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h4 style="font-family:'Fraunces',serif;font-size:1.3rem">Rathore Dental</h4><p style="font-size:.92rem;max-width:320px">Modern multispeciality dentistry in Jabalpur — gentle hands, honest advice, lasting smiles.</p></div>
+      <div><h4>Treatments</h4><a href="#services">Dental Implants</a><a href="#services">Braces & Aligners</a><a href="#services">Smile Designing</a><a href="#services">Root Canal</a></div>
+      <div><h4>Clinic</h4><a href="#doctors">Our Doctors</a><a href="#journey">Your Visit</a><a href="#stories">Patient Stories</a><a href="#book">Book Appointment</a></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Dr. Maharishi Rathore's Dental Clinic, Jabalpur.</span><span>Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<script>
+/* Graceful fallback if GSAP CDN fails: show everything, keep forms working */
+if(!window.gsap){
+  document.querySelectorAll('.reveal,.reveal-hero').forEach(function(e){e.style.opacity=1;e.style.transform='none';});
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var t=parseFloat(el.dataset.count),d=parseInt(el.dataset.dec||0);
+    el.textContent=d?t.toFixed(d):Math.round(t).toLocaleString('en-IN');
+  });
+}
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.gsap){
+gsap.registerPlugin(ScrollTrigger);
+
+/* Hero entrance */
+if(!reduced){
+  gsap.from('.reveal-hero',{opacity:0,y:34,duration:.9,stagger:.12,ease:'power3.out',delay:.15});
+  gsap.to('.float-a',{y:-14,duration:2.6,yoyo:true,repeat:-1,ease:'sine.inOut'});
+  gsap.to('.float-b',{y:12,duration:3.1,yoyo:true,repeat:-1,ease:'sine.inOut',delay:.4});
+  gsap.to('.float-c',{y:-10,duration:2.2,yoyo:true,repeat:-1,ease:'sine.inOut',delay:.8});
+  gsap.to('.blob.b1',{x:-30,y:24,duration:7,yoyo:true,repeat:-1,ease:'sine.inOut'});
+  gsap.to('.blob.b2',{x:26,y:-20,duration:8,yoyo:true,repeat:-1,ease:'sine.inOut'});
+}else{document.querySelectorAll('.reveal-hero').forEach(e=>e.style.opacity=1);}
+
+/* Scroll reveals */
+if(!reduced){
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.fromTo(el,{opacity:0,y:36},{opacity:1,y:0,duration:.85,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none reverse'}});
+  });
+  /* Staggered service cards */
+  ScrollTrigger.batch('.svc',{start:'top 90%',onEnter:b=>gsap.fromTo(b,{opacity:0,y:30,scale:.97},{opacity:1,y:0,scale:1,duration:.6,stagger:.09,ease:'back.out(1.4)'})});
+}else{document.querySelectorAll('.reveal').forEach(e=>{e.style.opacity=1;});}
+
+/* Counters */
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const target=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||0);
+  const fmt=v=>dec?v.toFixed(dec):Math.round(v).toLocaleString('en-IN');
+  if(reduced){el.textContent=fmt(target);return;}
+  const obj={v:0};
+  ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>{
+    gsap.to(obj,{v:target,duration:1.8,ease:'power2.out',onUpdate:()=>el.textContent=fmt(obj.v)});
+  }});
+});
+
+/* Testimonial auto-scroll */
+const track=document.getElementById('tTrack');
+let auto=setInterval(()=>{ if(track.scrollLeft+track.clientWidth>=track.scrollWidth-10){track.scrollTo({left:0,behavior:'smooth'});} else {track.scrollBy({left:440,behavior:'smooth'});} },4200);
+track.addEventListener('pointerdown',()=>{clearInterval(auto);});
+
+/* Mobile nav */
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+} /* end if(window.gsap) */
+
+/* Booking form (works with or without GSAP) */
+document.getElementById('bookForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=document.getElementById('bfName').value.trim();
+  const phone=document.getElementById('bfPhone').value.trim();
+  if(!name||!phone){return;}
+  const ok=document.getElementById('bookOk');
+  ok.style.display='block';
+  if(window.gsap && !reduced){gsap.from(ok,{opacity:0,y:10,duration:.5,ease:'power2.out'});}
+  this.querySelector('button[type=submit]').textContent='Request Received ✓';
+});
+</script>
+</body>
+</html>

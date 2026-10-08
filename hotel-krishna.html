@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Krishna | Heritage Luxury Hotel in Napier Town, Jabalpur</title>
+<meta name="description" content="Hotel Krishna — a classic heritage hotel in Napier Town, Jabalpur. Elegant rooms, pure-veg restaurant, banquet halls and warm Indian hospitality since 1987.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --maroon:#4A0D18; --maroon-deep:#2E080F; --maroon-soft:#6E1626;
+  --cream:#F8F1E2; --cream-dim:#EFE3CB; --gold:#C9A227; --gold-soft:#E6C96A;
+  --ink:#2A1216; --muted:#7A5F56; --line:rgba(201,162,39,.35);
+  --serif:'Playfair Display',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden;font-weight:400}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:.4s}
+.nav.scrolled{background:rgba(46,8,15,.92);backdrop-filter:blur(12px);padding:12px 0;box-shadow:0 10px 40px -12px rgba(0,0,0,.5);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:14px;color:var(--cream)}
+.monogram{width:48px;height:48px;border:1.5px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1.3rem;color:var(--gold);position:relative}
+.monogram::after{content:"";position:absolute;inset:4px;border:1px solid rgba(201,162,39,.4);border-radius:50%}
+.brand b{font-family:var(--serif);font-size:1.35rem;letter-spacing:.06em;font-weight:700}
+.brand small{display:block;font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-soft);font-weight:500}
+.nav-links{display:flex;gap:34px}
+.nav-links a{color:var(--cream);font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;position:relative;padding:4px 0;opacity:.92}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .35s}
+.nav-links a:hover::after{width:100%}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),#A8841C);color:var(--maroon-deep);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.82rem;padding:14px 30px;border:0;cursor:pointer;transition:.3s;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.btn-gold:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--gold);color:var(--gold-soft);letter-spacing:.1em;text-transform:uppercase;font-size:.82rem;padding:13px 30px;transition:.3s;font-weight:500}
+.btn-outline:hover{background:rgba(201,162,39,.14)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:26px;height:2px;background:var(--gold);margin:6px 0;border-radius:2px}
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(1000px 600px at 75% 20%,#5E1420 0%,var(--maroon) 45%,var(--maroon-deep) 100%);color:var(--cream);padding:140px 0 80px}
+.hero::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M60 10l8 22 22 8-22 8-8 22-8-22-22-8 22-8z' fill='none' stroke='%23C9A227' stroke-opacity='.07'/%3E%3C/svg%3E");pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;color:var(--gold-soft);letter-spacing:.34em;text-transform:uppercase;font-size:.74rem;font-weight:500}
+.eyebrow::before{content:"";width:44px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--serif);font-size:clamp(2.7rem,5.4vw,4.4rem);line-height:1.12;font-weight:700;margin:26px 0 22px}
+.hero h1 em{font-style:italic;color:var(--gold-soft);display:inline-block}
+.hero .lead{color:#E4D3B8;max-width:520px;font-size:1.08rem;font-weight:300;margin-bottom:36px}
+.hero-cta{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:48px}
+.hero-meta{display:flex;gap:40px;flex-wrap:wrap}
+.hm b{font-family:var(--serif);font-size:1.6rem;color:var(--gold-soft);display:block}
+.hm span{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+/* arch art */
+.arch-wrap{position:relative;display:grid;place-items:center}
+.arch-frame{position:relative;width:min(400px,84vw)}
+.arch-frame svg{width:100%;height:auto;display:block;filter:drop-shadow(0 40px 60px rgba(0,0,0,.45))}
+.curtain{position:absolute;inset:0;background:var(--maroon-deep);transform-origin:right;z-index:3;pointer-events:none}
+.arch-caption{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);background:var(--cream);color:var(--maroon);padding:12px 30px;font-family:var(--serif);font-style:italic;white-space:nowrap;box-shadow:0 18px 40px -12px rgba(0,0,0,.5);border:1px solid var(--gold)}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--gold-soft);font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px;z-index:2}
+.scroll-hint::after{content:"";width:1px;height:44px;background:linear-gradient(var(--gold),transparent);animation:drip 1.8s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* ---------- Ticker ---------- */
+.ticker{background:var(--gold);color:var(--maroon-deep);overflow:hidden;padding:14px 0}
+.ticker-track{display:flex;gap:0;width:max-content;animation:tick 30s linear infinite;font-weight:600;letter-spacing:.24em;text-transform:uppercase;font-size:.8rem}
+.ticker-track span{padding:0 34px;display:flex;align-items:center;gap:34px;white-space:nowrap}
+@keyframes tick{to{transform:translateX(-50%)}}
+/* ---------- Sections ---------- */
+section{padding:104px 0}
+.sec-head{text-align:center;max-width:660px;margin:0 auto 60px}
+.sec-head .kicker{color:#A8841C;font-weight:600;letter-spacing:.34em;text-transform:uppercase;font-size:.74rem}
+.sec-head h2{font-family:var(--serif);font-size:clamp(2rem,3.8vw,2.9rem);margin:16px 0 14px;font-weight:700}
+.sec-head p{color:var(--muted)}
+.divider{display:flex;justify-content:center;margin:8px 0 60px}
+/* welcome */
+.welcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.welcome-grid h2{font-family:var(--serif);font-size:clamp(1.9rem,3.4vw,2.7rem);margin-bottom:18px;line-height:1.25}
+.welcome-grid h2 em{color:#A8841C;font-style:italic}
+.welcome-grid p{color:var(--muted);margin-bottom:16px}
+.sign{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--maroon);margin-top:18px}
+.welcome-art{position:relative}
+.welcome-art .frame{border:1px solid var(--gold);padding:18px;background:#fff;box-shadow:0 30px 60px -20px rgba(74,13,24,.3)}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.stat-row .s{border-left:2px solid var(--gold);padding-left:16px}
+.stat-row b{font-family:var(--serif);font-size:2rem;color:var(--maroon);display:block}
+.stat-row span{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+/* rooms */
+.rooms{background:linear-gradient(180deg,var(--maroon-deep),var(--maroon) 60%,var(--maroon-deep));color:var(--cream);position:relative;overflow:hidden}
+.rooms::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Ccircle cx='70' cy='70' r='34' fill='none' stroke='%23C9A227' stroke-opacity='.06'/%3E%3C/svg%3E")}
+.rooms .sec-head h2{color:var(--cream)}
+.rooms .sec-head p{color:#D9C6A8}
+.room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative;z-index:1}
+.room{background:rgba(248,241,226,.045);border:1px solid var(--line);backdrop-filter:blur(4px);transition:transform .4s,box-shadow .4s,background .4s;display:flex;flex-direction:column}
+.room:hover{transform:translateY(-12px);box-shadow:0 34px 70px -20px rgba(0,0,0,.6);background:rgba(248,241,226,.08)}
+.room-art{height:210px;position:relative;overflow:hidden}
+.room-art svg{width:100%;height:100%;display:block;transition:transform .8s}
+.room:hover .room-art svg{transform:scale(1.06)}
+.room-tag{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--maroon-deep);font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:7px 16px}
+.room-body{padding:30px 28px 32px;display:flex;flex-direction:column;flex:1}
+.room-body h3{font-family:var(--serif);font-size:1.55rem;margin-bottom:6px}
+.room-body .size{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px}
+.room-body ul{list-style:none;margin-bottom:22px;flex:1}
+.room-body li{padding:7px 0 7px 26px;position:relative;font-size:.94rem;color:#E4D3B8;font-weight:300}
+.room-body li::before{content:"";position:absolute;left:2px;top:14px;width:12px;height:1px;background:var(--gold)}
+.room-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px}
+.price b{font-family:var(--serif);font-size:1.7rem;color:var(--gold-soft)}
+.price span{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+/* amenities */
+.amen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.amen{background:#fff;border:1px solid rgba(201,162,39,.25);padding:36px 30px;text-align:center;transition:.35s;position:relative;overflow:hidden}
+.amen::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .45s}
+.amen:hover{transform:translateY(-8px);box-shadow:0 26px 50px -18px rgba(74,13,24,.28)}
+.amen:hover::after{transform:scaleX(1)}
+.amen .ic{width:64px;height:64px;margin:0 auto 18px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#FBF6E9,#F3E8CC)}
+.amen h3{font-family:var(--serif);font-size:1.2rem;margin-bottom:8px}
+.amen p{font-size:.9rem;color:var(--muted)}
+/* gallery */
+.gallery{background:var(--maroon-deep);color:var(--cream)}
+.gallery .sec-head h2{color:var(--cream)}
+.gallery .sec-head p{color:#D9C6A8}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:18px}
+.gal{position:relative;overflow:hidden;cursor:pointer;border:1px solid var(--line)}
+.gal svg{width:100%;height:100%;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.gal:hover svg{transform:scale(1.07)}
+.gal.wide{grid-column:span 2}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 20px 16px;background:linear-gradient(transparent,rgba(20,4,8,.85));font-family:var(--serif);font-style:italic;font-size:1.05rem;opacity:0;transform:translateY(12px);transition:.45s}
+.gal:hover figcaption{opacity:1;transform:none}
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(20,4,8,.9);z-index:200;display:none;place-items:center;padding:30px}
+.lightbox.open{display:grid}
+.lightbox .lb-art{width:min(560px,92vw);border:1px solid var(--gold);background:var(--maroon-deep)}
+.lightbox .lb-art svg{width:100%;height:auto;display:block}
+.lightbox .lb-cap{text-align:center;color:var(--gold-soft);font-family:var(--serif);font-style:italic;margin-top:14px;font-size:1.2rem}
+.lightbox .lb-x{position:absolute;top:24px;right:30px;background:none;border:1px solid var(--gold);color:var(--gold);width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:1.2rem}
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.contact-grid h2{font-family:var(--serif);font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:16px}
+.c-lines{display:grid;gap:16px;margin:28px 0}
+.c-line{display:flex;gap:16px;align-items:flex-start}
+.c-line .ic{width:48px;height:48px;flex:none;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;background:#fff}
+.c-line b{display:block;font-family:var(--serif);font-size:1.05rem}
+.c-line span{color:var(--muted);font-size:.94rem}
+.map-art{border:1px solid var(--gold);background:#fff;padding:14px;box-shadow:0 24px 50px -20px rgba(74,13,24,.3)}
+form.enquiry{background:#fff;border:1px solid rgba(201,162,39,.35);padding:42px 38px;box-shadow:0 30px 60px -24px rgba(74,13,24,.3);position:relative}
+form.enquiry::before{content:"";position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px solid rgba(201,162,39,.3);pointer-events:none}
+.field{margin-bottom:18px;position:relative;z-index:1}
+.field label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#A8841C;margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1px solid #E3D3AC;background:#FDFBF5;font-family:inherit;font-size:.95rem;color:var(--ink);transition:.25s;border-radius:0}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.18);background:#fff}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-ok{display:none;background:#F3EEDF;border:1px solid var(--gold);color:var(--maroon);padding:16px;font-family:var(--serif);font-style:italic;text-align:center;margin-top:6px;position:relative;z-index:1}
+/* footer */
+footer{background:#1E050A;color:#C9B79A;padding:70px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;margin-bottom:46px}
+.foot-grid h4{color:var(--gold-soft);font-family:var(--serif);font-size:1.1rem;margin-bottom:16px;letter-spacing:.04em}
+.foot-grid a{display:block;padding:5px 0;font-size:.92rem;font-weight:300}
+.foot-grid a:hover{color:var(--gold-soft)}
+.foot-bottom{border-top:1px solid rgba(201,162,39,.2);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem}
+.credit{font-size:.76rem;opacity:.6}
+@media(max-width:1000px){
+  .hero-grid,.welcome-grid,.contact-grid{grid-template-columns:1fr}
+  .room-grid{grid-template-columns:1fr 1fr}
+  .amen-grid{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .burger{display:block}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:rgba(46,8,15,.97);flex-direction:column;padding:24px;gap:18px;border-bottom:1px solid var(--line)}
+  .arch-caption{bottom:-14px}
+}
+@media(max-width:620px){.room-grid,.amen-grid,.gal-grid,.frow{grid-template-columns:1fr}.gal.wide{grid-column:span 1}section{padding:76px 0}.hero{padding-top:120px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="monogram">K</span>
+      <span><b>HOTEL KRISHNA</b><small>Napier Town · Jabalpur</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#welcome">Heritage</a><a href="#rooms">Rooms</a><a href="#amenities">Amenities</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="btn-gold">Enquire</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" data-hero>Est. 1987 · Napier Town, Jabalpur</span>
+      <h1 data-hero class="split-words">Where Jabalpur's <em>heritage</em> welcomes you home.</h1>
+      <p class="lead" data-hero>A landmark of classic Indian hospitality in the heart of Napier Town — carved arches, candle-lit courtyards, a pure-veg kitchen of repute, and rooms that remember what comfort means.</p>
+      <div class="hero-cta" data-hero>
+        <a href="#rooms" class="btn-gold">Explore Rooms</a>
+        <a href="#contact" class="btn-outline">Plan Your Stay</a>
+      </div>
+      <div class="hero-meta" data-hero>
+        <div class="hm"><b>38<span style="font-size:1rem"> yrs</span></b><span>of hospitality</span></div>
+        <div class="hm"><b>62</b><span>elegant rooms</span></div>
+        <div class="hm"><b>4.6</b><span>guest rating</span></div>
+      </div>
+    </div>
+    <div class="arch-wrap" data-hero>
+      <div class="arch-frame">
+        <div class="curtain" id="curtain"></div>
+        <svg viewBox="0 0 400 560" role="img" aria-label="Hotel Krishna at dusk">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2E080F"/><stop offset=".55" stop-color="#6E1626"/><stop offset=".85" stop-color="#C97B2D"/><stop offset="1" stop-color="#E6C96A"/>
+            </linearGradient>
+            <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#C97B2D"/><stop offset="1" stop-color="#2E080F"/>
+            </linearGradient>
+            <clipPath id="archClip"><path d="M44 544 V244 C44 122 112 44 200 44 C288 44 356 122 356 244 V544 Z"/></clipPath>
+          </defs>
+          <g clip-path="url(#archClip)">
+            <rect x="0" y="0" width="400" height="560" fill="url(#sky)"/>
+            <circle cx="200" cy="392" r="46" fill="#F3D98B" opacity=".95"/>
+            <circle cx="200" cy="392" r="66" fill="#F3D98B" opacity=".18"/>
+            <g fill="#2E080F">
+              <rect x="44" y="430" width="312" height="114"/>
+              <path d="M158 430 C158 386 176 366 200 366 C224 366 242 386 242 430 Z"/>
+              <rect x="197" y="330" width="6" height="40"/><circle cx="200" cy="326" r="6"/>
+              <path d="M88 430 C88 402 100 390 116 390 C132 390 144 402 144 430 Z"/>
+              <path d="M256 430 C256 402 268 390 284 390 C300 390 312 402 312 430 Z"/>
+              <rect x="52" y="360" width="14" height="70"/><path d="M49 362 C49 348 54 340 59 340 C64 340 69 348 69 362 Z"/>
+              <rect x="334" y="360" width="14" height="70"/><path d="M331 362 C331 348 336 340 341 340 C346 340 351 348 351 362 Z"/>
+            </g>
+            <g fill="#F3D98B" opacity=".85">
+              <rect x="180" y="452" width="10" height="16"/><rect x="210" y="452" width="10" height="16"/>
+              <rect x="100" y="452" width="8" height="12"/><rect x="292" y="452" width="8" height="12"/>
+            </g>
+            <rect x="44" y="500" width="312" height="44" fill="url(#water)" opacity=".85"/>
+            <g stroke="#F3D98B" stroke-width="2" opacity=".5"><path d="M120 518 h44 M236 528 h52 M150 536 h36"/></g>
+            <g stroke="#F8F1E2" stroke-width="2.4" fill="none" opacity=".8">
+              <path d="M120 150 q7 -8 14 0 q7 -8 14 0"/><path d="M250 110 q6 -7 12 0 q6 -7 12 0"/>
+            </g>
+          </g>
+          <path d="M44 544 V244 C44 122 112 44 200 44 C288 44 356 122 356 244 V544" fill="none" stroke="#C9A227" stroke-width="7"/>
+          <path d="M60 544 V248 C60 136 120 60 200 60 C280 60 340 136 340 248 V544" fill="none" stroke="#C9A227" stroke-width="1.6" opacity=".7"/>
+        </svg>
+        <div class="arch-caption">The Krishna facade, at dusk</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Pure-Veg Restaurant <i>◆</i> Banquet Halls <i>◆</i> Rooftop Dining <i>◆</i> 62 Elegant Rooms <i>◆</i> Since 1987 <i>◆</i> Napier Town, Jabalpur <i>◆</i>&nbsp;</span>
+  </div>
+</div>
+
+<section id="welcome">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="kicker">Our Heritage</div>
+      <h2>Thirty-eight years of <em style="color:#A8841C">mehmaan-nawazi</em></h2>
+      <p>Born as a family guesthouse in 1987, Hotel Krishna grew — arch by arch — into Napier Town's most loved address for weddings, business stays and slow family holidays.</p>
+    </div>
+    <div class="divider" data-reveal>
+      <svg width="320" height="30" viewBox="0 0 320 30" fill="none"><path id="flourish" d="M10 15 C 80 4, 120 26, 160 15 S 240 4, 310 15" stroke="#C9A227" stroke-width="2"/><circle cx="160" cy="15" r="4" fill="#C9A227"/><circle cx="10" cy="15" r="2.5" fill="#C9A227"/><circle cx="310" cy="15" r="2.5" fill="#C9A227"/></svg>
+    </div>
+    <div class="welcome-grid">
+      <div data-reveal>
+        <h2>A courtyard calm in the <em>middle of the city</em></h2>
+        <p>Step off busy Napier Town road and the noise falls away. Cool stone corridors, the smell of fresh marigold, a fountain murmuring in the central courtyard — Krishna was designed for unhurried days.</p>
+        <p>Our kitchen serves pure-vegetarian Central Indian and North Indian classics on banana-leaf Sundays, and the rooftop comes alive at sunset with chaat, chai and the city lights below.</p>
+        <div class="sign">— The Krishna Family</div>
+        <div class="stat-row">
+          <div class="s"><b><span data-count="38">0</span></b><span>Years of service</span></div>
+          <div class="s"><b><span data-count="62">0</span></b><span>Rooms & suites</span></div>
+          <div class="s"><b><span data-count="1200">0</span>+</b><span>Weddings hosted</span></div>
+        </div>
+      </div>
+      <div class="welcome-art" data-reveal>
+        <div class="frame">
+          <svg viewBox="0 0 400 320" role="img" aria-label="Hotel courtyard illustration">
+            <rect width="400" height="320" fill="#F8F1E2"/>
+            <rect y="230" width="400" height="90" fill="#EFE3CB"/>
+            <g fill="#4A0D18">
+              <rect x="30" y="90" width="340" height="150"/>
+              <path d="M60 240 V150 C60 112 88 88 120 88 C152 88 180 112 180 150 V240 Z" fill="#F8F1E2"/>
+              <path d="M220 240 V150 C220 112 248 88 280 88 C312 88 340 112 340 150 V240 Z" fill="#F8F1E2"/>
+            </g>
+            <g fill="#C9A227">
+              <circle cx="200" cy="60" r="26"/>
+              <path d="M196 240 q4 -26 4 -52 M204 240 q-4 -26 -4 -52" stroke="#4A0D18" stroke-width="3" fill="none"/>
+              <ellipse cx="200" cy="176" rx="26" ry="10" opacity=".55"/>
+            </g>
+            <g stroke="#4A0D18" stroke-width="2" opacity=".35"><path d="M40 268 h320 M60 288 h280"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rooms" class="rooms">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="kicker" style="color:var(--gold-soft)">Stay With Us</div>
+      <h2>Rooms & Suites</h2>
+      <p>High ceilings, handloom furnishings and blackout drapes. Tariff hints below — write to us for the season's best offer.</p>
+    </div>
+    <div class="room-grid">
+      <article class="room" data-reveal>
+        <div class="room-art">
+          <svg viewBox="0 0 400 210" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="210" fill="#3A0A13"/>
+            <rect x="0" y="150" width="400" height="60" fill="#2E080F"/>
+            <path d="M250 150 V70 C250 40 272 24 296 24 C320 24 342 40 342 70 V150 Z" fill="#6E1626" stroke="#C9A227" stroke-width="2"/>
+            <rect x="266" y="86" width="60" height="64" fill="#E6C96A" opacity=".85"/>
+            <rect x="60" y="120" width="150" height="34" rx="8" fill="#C9A227"/>
+            <rect x="48" y="96" width="174" height="34" rx="10" fill="#F8F1E2"/>
+            <rect x="60" y="100" width="34" height="24" rx="8" fill="#EFE3CB"/><rect x="176" y="100" width="34" height="24" rx="8" fill="#EFE3CB"/>
+            <rect x="222" y="60" width="10" height="90" fill="#C9A227"/><ellipse cx="227" cy="56" rx="14" ry="10" fill="#E6C96A"/>
+          </svg>
+          <span class="room-tag">Most Loved</span>
+        </div>
+        <div class="room-body">
+          <h3>Deluxe Room</h3><div class="size">320 sq.ft · City View</div>
+          <ul><li>King bed with handloom linen</li><li>Rain shower & premium bath</li><li>Complimentary breakfast</li><li>High-speed Wi-Fi & work desk</li></ul>
+          <div class="room-foot"><div class="price"><b>₹2,499</b><span>per night · indicative</span></div><a href="#contact" class="btn-outline" style="padding:10px 22px">Enquire</a></div>
+        </div>
+      </article>
+      <article class="room" data-reveal>
+        <div class="room-art">
+          <svg viewBox="0 0 400 210" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="210" fill="#45101B"/>
+            <rect x="0" y="150" width="400" height="60" fill="#2E080F"/>
+            <path d="M40 150 V70 C40 40 62 24 86 24 C110 24 132 40 132 70 V150 Z" fill="#6E1626" stroke="#C9A227" stroke-width="2"/>
+            <rect x="56" y="86" width="60" height="64" fill="#E6C96A" opacity=".85"/>
+            <rect x="170" y="112" width="180" height="42" rx="8" fill="#C9A227"/>
+            <rect x="158" y="88" width="204" height="34" rx="10" fill="#F8F1E2"/>
+            <rect x="170" y="92" width="40" height="24" rx="8" fill="#EFE3CB"/><rect x="310" y="92" width="40" height="24" rx="8" fill="#EFE3CB"/>
+            <rect x="300" y="120" width="60" height="34" fill="#4A0D18" stroke="#C9A227"/><rect x="296" y="112" width="68" height="8" fill="#C9A227"/>
+          </svg>
+          <span class="room-tag">Business Pick</span>
+        </div>
+        <div class="room-body">
+          <h3>Executive Room</h3><div class="size">420 sq.ft · Courtyard View</div>
+          <ul><li>Everything in Deluxe, plus:</li><li>Sit-out balcony over courtyard</li><li>Evening tea & cookies service</li><li>Late checkout till 1 PM</li></ul>
+          <div class="room-foot"><div class="price"><b>₹3,999</b><span>per night · indicative</span></div><a href="#contact" class="btn-outline" style="padding:10px 22px">Enquire</a></div>
+        </div>
+      </article>
+      <article class="room" data-reveal>
+        <div class="room-art">
+          <svg viewBox="0 0 400 210" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="210" fill="#2E080F"/>
+            <rect x="0" y="150" width="400" height="60" fill="#1E050A"/>
+            <path d="M150 150 V64 C150 30 176 12 204 12 C232 12 258 30 258 64 V150 Z" fill="#4A0D18" stroke="#C9A227" stroke-width="2.5"/>
+            <rect x="168" y="76" width="72" height="74" fill="#E6C96A" opacity=".9"/>
+            <g fill="#E6C96A"><circle cx="204" cy="34" r="5"/><circle cx="184" cy="44" r="4"/><circle cx="224" cy="44" r="4"/><path d="M204 39 V20 M184 48 L176 34 M224 48 L232 34" stroke="#E6C96A" stroke-width="2"/></g>
+            <rect x="40" y="118" width="120" height="36" rx="8" fill="#C9A227"/>
+            <rect x="30" y="94" width="140" height="34" rx="10" fill="#F8F1E2"/>
+            <rect x="268" y="104" width="100" height="50" rx="6" fill="#6E1626" stroke="#C9A227"/>
+          </svg>
+          <span class="room-tag">Royal</span>
+        </div>
+        <div class="room-body">
+          <h3>Krishna Royal Suite</h3><div class="size">750 sq.ft · Living + Bedroom</div>
+          <ul><li>Separate living room & dining</li><li>Four-poster heritage bed</li><li>Private butler on call</li><li>Rooftop dinner for two, on us</li></ul>
+          <div class="room-foot"><div class="price"><b>₹6,499</b><span>per night · indicative</span></div><a href="#contact" class="btn-outline" style="padding:10px 22px">Enquire</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="amenities">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="kicker">At Your Service</div>
+      <h2>Amenities & Experiences</h2>
+      <p>Old-world courtesies, kept alive with modern comfort.</p>
+    </div>
+    <div class="amen-grid">
+      <div class="amen" data-reveal><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><path d="M7 2v20M7 5h9l-2.5 4L16 13H7M17 2c-2 1.5-2 4 0 5.5M17 13c-2 1.5-2 4 0 5.5"/></svg></div><h3>Pure-Veg Restaurant</h3><p>Central Indian thalis, tandoor nights and legendary Sunday breakfasts.</p></div>
+      <div class="amen" data-reveal><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5a5 5 0 017 0M5.8 9.8a9.5 9.5 0 0112.4 0M12 16.5h.01"/></svg></div><h3>High-Speed Wi-Fi</h3><p>Fibre internet in every room and corner of the courtyard.</p></div>
+      <div class="amen" data-reveal><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><path d="M5 17h14M6 17l1.5-5h9L18 17M8 12V8h8v4M7 20v-3M17 20v-3"/><circle cx="8" cy="19" r="1.6"/><circle cx="16" cy="19" r="1.6"/></svg></div><h3>Valet Parking</h3><p>Secure covered parking with 24-hour valet assistance.</p></div>
+      <div class="amen" data-reveal><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zM12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div><h3>24×7 Room Service</h3><p>Midnight maggi to early-morning filter coffee — always a call away.</p></div>
+      <div class="amen" data-reveal><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><path d="M4 21V10l8-6 8 6v11M4 21h16M9 21v-6h6v6"/></svg></div><h3>Banquet Halls</h3><p>Two pillarless halls and a lawn for weddings up to 800 guests.</p></div>
+      <div class="amen" data-reveal><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 018 8c0 5-8 12-8 12S4 15 4 10a8 8 0 018-8z"/></svg></div><h3>Travel Desk</h3><p>Day trips to Bhedaghat, Marble Rocks and Bargi Dam, arranged.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="gallery">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="kicker" style="color:var(--gold-soft)">Glimpses</div>
+      <h2>The Krishna in Frames</h2>
+      <p>Tap any frame to view it larger.</p>
+    </div>
+    <div class="gal-grid">
+      <figure class="gal wide" data-reveal data-cap="The grand facade at dusk">
+        <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice"><rect width="400" height="230" fill="#2E080F"/><circle cx="320" cy="52" r="30" fill="#E6C96A"/><g fill="#4A0D18"><rect x="60" y="110" width="280" height="120"/><path d="M150 110 C150 74 172 58 200 58 C228 58 250 74 250 110 Z"/><rect x="96" y="140" width="26" height="90"/><rect x="278" y="140" width="26" height="90"/></g><g fill="#E6C96A" opacity=".9"><rect x="120" y="140" width="16" height="24"/><rect x="150" y="140" width="16" height="24"/><rect x="234" y="140" width="16" height="24"/><rect x="264" y="140" width="16" height="24"/><rect x="192" y="140" width="16" height="24"/></g><rect y="200" width="400" height="30" fill="#1E050A"/></svg>
+        <figcaption>The grand facade at dusk</figcaption>
+      </figure>
+      <figure class="gal" data-reveal data-cap="The central courtyard">
+        <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice"><rect width="400" height="230" fill="#F3E8CC"/><rect y="170" width="400" height="60" fill="#E4D3B8"/><g fill="#4A0D18"><rect x="40" y="50" width="320" height="130"/><path d="M90 180 V110 C90 84 108 70 130 70 C152 70 170 84 170 110 V180 Z" fill="#F8F1E2"/><path d="M230 180 V110 C230 84 248 70 270 70 C292 70 310 84 310 110 V180 Z" fill="#F8F1E2"/></g><ellipse cx="200" cy="196" rx="46" ry="12" fill="#6E1626"/><path d="M200 196 q0 -34 0 -60 M200 150 q-16 -8 -26 -2 M200 150 q16 -8 26 -2" stroke="#C9A227" stroke-width="3" fill="none"/></svg>
+        <figcaption>The central courtyard</figcaption>
+      </figure>
+      <figure class="gal" data-reveal data-cap="Rooftop dining at sunset">
+        <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice"><rect width="400" height="230" fill="#6E1626"/><circle cx="200" cy="150" r="52" fill="#E6C96A"/><rect y="180" width="400" height="50" fill="#2E080F"/><g fill="#4A0D18"><rect x="120" y="150" width="14" height="40"/><rect x="266" y="150" width="14" height="40"/><rect x="110" y="140" width="180" height="12"/></g><g fill="#E6C96A"><circle cx="150" cy="120" r="4"/><circle cx="200" cy="112" r="4"/><circle cx="250" cy="120" r="4"/></g></svg>
+        <figcaption>Rooftop dining at sunset</figcaption>
+      </figure>
+      <figure class="gal" data-reveal data-cap="The royal dining hall">
+        <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice"><rect width="400" height="230" fill="#3A0A13"/><rect y="180" width="400" height="50" fill="#2E080F"/><ellipse cx="200" cy="150" rx="90" ry="18" fill="#4A0D18" stroke="#C9A227"/><g fill="#E6C96A"><circle cx="200" cy="60" r="8"/><circle cx="180" cy="72" r="6"/><circle cx="220" cy="72" r="6"/><path d="M200 68 V34 M180 78 L170 52 M220 78 L230 52" stroke="#E6C96A" stroke-width="3"/></g><g fill="#F8F1E2"><rect x="130" y="120" width="18" height="26"/><rect x="252" y="120" width="18" height="26"/></g></svg>
+        <figcaption>The royal dining hall</figcaption>
+      </figure>
+      <figure class="gal wide" data-reveal data-cap="The pillarless banquet lawn">
+        <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice"><rect width="400" height="230" fill="#1E3A24"/><rect y="170" width="400" height="60" fill="#2A5233"/><g fill="#F8F1E2" opacity=".92"><path d="M120 170 V110 L200 70 L280 110 V170 Z"/><path d="M150 170 V130 H250 V170" fill="#1E3A24"/></g><g fill="#E6C96A"><circle cx="90" cy="60" r="5"/><circle cx="150" cy="44" r="5"/><circle cx="250" cy="44" r="5"/><circle cx="310" cy="60" r="5"/><circle cx="200" cy="30" r="5"/></g><g stroke="#E6C96A" stroke-width="1.6"><path d="M90 65 V110 M150 49 V110 M250 49 V110 M310 65 V110 M200 35 V70"/></g></svg>
+        <figcaption>The pillarless banquet lawn</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="kicker">Reserve Your Stay</div>
+      <h2>Plan Your Visit</h2>
+      <p>Share your dates — our reservations desk replies within a few hours with availability and the season's best tariff.</p>
+    </div>
+    <div class="contact-grid">
+      <div data-reveal>
+        <h2>Find us in <em style="color:#A8841C">Napier Town</em></h2>
+        <div class="c-lines">
+          <div class="c-line"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Hotel Krishna</b><span>14, Napier Town, Near Civic Centre,<br>Jabalpur, Madhya Pradesh 482001</span></div></div>
+          <div class="c-line"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L7.6 9.9a16 16 0 006.5 6.5l1.5-1.5a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span><div><b>Reservations</b><span>+91 98XXX XXXXX · stay@hotelkrishna.in</span></div></div>
+          <div class="c-line"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E1626" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><div><b>Check-in / Check-out</b><span>12 noon · 11 AM — early arrival on request</span></div></div>
+        </div>
+        <div class="map-art" data-reveal>
+          <svg viewBox="0 0 400 250" style="width:100%;height:auto;display:block" role="img" aria-label="Stylised location map">
+            <rect width="400" height="250" fill="#F6EFDD"/>
+            <g stroke="#DCC99A" stroke-width="10"><path d="M-10 180 C 90 150, 160 200, 260 160 S 380 170, 410 140"/><path d="M120 -10 C 140 80, 100 160, 140 260"/></g>
+            <g stroke="#fff" stroke-width="2" stroke-dasharray="8 8"><path d="M-10 180 C 90 150, 160 200, 260 160 S 380 170, 410 140"/><path d="M120 -10 C 140 80, 100 160, 140 260"/></g>
+            <g font-family="Jost,sans-serif" font-size="12" fill="#7A5F56"><text x="286" y="120">Railway Stn</text><text x="40" y="70">Civic Centre</text><text x="230" y="225">Napier Town Rd</text></g>
+            <g><circle cx="205" cy="150" r="26" fill="#C9A227" opacity=".25"><animate attributeName="r" values="18;30;18" dur="2.4s" repeatCount="indefinite"/></circle><path d="M205 128 c-9 0 -15 6 -15 14 0 10 15 24 15 24 s15 -14 15 -24 c0 -8 -6 -14 -15 -14z" fill="#4A0D18" stroke="#C9A227" stroke-width="2"/><circle cx="205" cy="142" r="5" fill="#E6C96A"/></g>
+            <text x="205" y="200" text-anchor="middle" font-family="Playfair Display,serif" font-size="15" font-style="italic" fill="#4A0D18">Hotel Krishna</text>
+          </svg>
+        </div>
+      </div>
+      <form class="enquiry" id="enqForm" data-reveal>
+        <div class="frow">
+          <div class="field"><label>Full name</label><input type="text" id="eName" placeholder="Your name"></div>
+          <div class="field"><label>Phone</label><input type="tel" id="ePhone" placeholder="+91 …"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label>Check-in</label><input type="date" id="eIn"></div>
+          <div class="field"><label>Check-out</label><input type="date" id="eOut"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label>Room type</label><select id="eRoom"><option>Deluxe Room</option><option>Executive Room</option><option>Krishna Royal Suite</option><option>Banquet / Wedding enquiry</option></select></div>
+          <div class="field"><label>Guests</label><select id="eGuests"><option>1 – 2 guests</option><option>3 – 4 guests</option><option>5+ guests / group</option></select></div>
+        </div>
+        <div class="field"><label>Notes (optional)</label><textarea id="eMsg" rows="3" placeholder="Occasion, special requests…"></textarea></div>
+        <button type="submit" class="btn-gold" style="width:100%;justify-content:center;clip-path:none;padding:16px">Send Enquiry</button>
+        <div class="form-ok" id="enqOk">Dhanyavaad! Your enquiry has been received — our reservations desk will call you shortly.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h4>Hotel Krishna</h4><p style="font-size:.92rem;font-weight:300;max-width:320px">A heritage hotel in Napier Town, Jabalpur — classic Indian hospitality since 1987.</p></div>
+      <div><h4>Explore</h4><a href="#welcome">Our Heritage</a><a href="#rooms">Rooms & Suites</a><a href="#amenities">Amenities</a><a href="#gallery">Gallery</a></div>
+      <div><h4>Contact</h4><a href="#contact">Reservations</a><a href="#contact">Banquets & Weddings</a><a href="#contact">Travel Desk</a></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Hotel Krishna, Napier Town, Jabalpur.</span><span class="credit">Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Gallery viewer">
+  <button class="lb-x" id="lbClose" aria-label="Close">✕</button>
+  <div><div class="lb-art" id="lbArt"></div><div class="lb-cap" id="lbCap"></div></div>
+</div>
+
+<script>
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Split headline into words for staggered reveal */
+document.querySelectorAll('.split-words').forEach(function(h){
+  var frag = document.createDocumentFragment();
+  h.childNodes.forEach(function(n){
+    if(n.nodeType === 3){
+      n.textContent.split(/(\s+)/).forEach(function(w){
+        if(!w) return;
+        if(/^\s+$/.test(w)){ frag.appendChild(document.createTextNode(' ')); return; }
+        var s = document.createElement('span');
+        s.style.display = 'inline-block'; s.textContent = w; frag.appendChild(s);
+      });
+    } else { frag.appendChild(n.cloneNode(true)); }
+  });
+  h.innerHTML = ''; h.appendChild(frag);
+});
+
+/* Seamless ticker: duplicate content */
+var tt = document.getElementById('tickerTrack');
+tt.innerHTML += tt.innerHTML;
+
+/* Nav */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+var burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('open'); }); });
+
+if(window.gsap && !reduced){
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Hero entrance: curtain wipe + staggered words */
+  var tl = gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.to('#curtain', {scaleX:0, duration:1.1, ease:'power4.inOut', delay:.25})
+    .from('.hero .eyebrow[data-hero]', {opacity:0, y:18, duration:.7}, '-=.7')
+    .from('.split-words span, .split-words em', {opacity:0, y:44, duration:.8, stagger:.05}, '-=.55')
+    .from('.hero .lead', {opacity:0, y:24, duration:.7}, '-=.5')
+    .from('.hero-cta > *', {opacity:0, y:20, duration:.6, stagger:.12}, '-=.45')
+    .from('.hm', {opacity:0, y:16, duration:.6, stagger:.1}, '-=.4')
+    .from('.arch-frame', {opacity:0, scale:.96, duration:1}, '-=1')
+    .from('.arch-caption', {opacity:0, y:14, duration:.6}, '-=.5');
+
+  /* Parallax on arch */
+  gsap.to('.arch-frame', {y:-46, ease:'none',
+    scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:.6}});
+
+  /* Scroll reveals */
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.fromTo(el, {opacity:0, y:40}, {opacity:1, y:0, duration:.9, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 88%', toggleActions:'play none none reverse'}});
+  });
+  ScrollTrigger.batch('.room', {start:'top 90%',
+    onEnter:function(b){ gsap.fromTo(b, {opacity:0, y:44}, {opacity:1, y:0, duration:.75, stagger:.12, ease:'power3.out'}); }});
+
+  /* Flourish draw */
+  var fl = document.getElementById('flourish');
+  var len = fl.getTotalLength();
+  fl.style.strokeDasharray = len; fl.style.strokeDashoffset = len;
+  gsap.to(fl, {strokeDashoffset:0, duration:1.6, ease:'power2.out',
+    scrollTrigger:{trigger:'.divider', start:'top 85%', toggleActions:'play none none reverse'}});
+
+  /* Counters */
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target = parseFloat(el.dataset.count);
+    var obj = {v:0};
+    ScrollTrigger.create({trigger:el, start:'top 92%', once:true, onEnter:function(){
+      gsap.to(obj, {v:target, duration:1.8, ease:'power2.out',
+        onUpdate:function(){ el.textContent = Math.round(obj.v).toLocaleString('en-IN'); }});
+    }});
+  });
+} else {
+  /* Fallback: show everything, static counters */
+  var cur = document.getElementById('curtain'); if(cur) cur.style.display = 'none';
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    el.textContent = Math.round(parseFloat(el.dataset.count)).toLocaleString('en-IN');
+  });
+}
+
+/* Gallery lightbox */
+var lb = document.getElementById('lightbox'), lbArt = document.getElementById('lbArt'), lbCap = document.getElementById('lbCap');
+document.querySelectorAll('.gal').forEach(function(g){
+  g.addEventListener('click', function(){
+    lbArt.innerHTML = g.querySelector('svg').outerHTML;
+    lbCap.textContent = g.dataset.cap || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+document.getElementById('lbClose').addEventListener('click', closeLb);
+lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+
+/* Enquiry form */
+var eIn = document.getElementById('eIn'), eOut = document.getElementById('eOut');
+var today = new Date().toISOString().split('T')[0];
+eIn.min = today; eOut.min = today;
+eIn.addEventListener('change', function(){ eOut.min = eIn.value || today; });
+document.getElementById('enqForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('eName').value.trim();
+  var phone = document.getElementById('ePhone').value.trim();
+  if(!name || !phone){ 
+    if(!name) document.getElementById('eName').focus(); else document.getElementById('ePhone').focus();
+    return;
+  }
+  if(eIn.value && eOut.value && eOut.value <= eIn.value){
+    eOut.focus(); eOut.style.borderColor = '#B3261E'; return;
+  }
+  eOut.style.borderColor = '';
+  var ok = document.getElementById('enqOk');
+  ok.style.display = 'block';
+  if(window.gsap && !reduced) gsap.from(ok, {opacity:0, y:10, duration:.5, ease:'power2.out'});
+  this.querySelector('button[type=submit]').textContent = 'Enquiry Sent ✓';
+  ok.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'nearest'});
+});
+</script>
+</body>
+</html>

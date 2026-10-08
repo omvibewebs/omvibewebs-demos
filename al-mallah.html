@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Mallah — Legendary Lebanese Shawarma in Dubai Since 1979</title>
+<meta name="description" content="Al Mallah — Dubai's legendary Lebanese restaurant since 1979. Shawarma, falafel, hummus, fresh juices. Multiple branches across Dubai.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --sand:#F7EEDC; --sand2:#F1E2C6; --cedar:#0C3B2E; --cedar2:#0A2E24;
+         --ember:#E85D2A; --saffron:#F5A623; --cream:#FFFBF2; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter',sans-serif; background:var(--sand); color:var(--cedar); overflow-x:hidden; }
+  .font-display{ font-family:'Anton',sans-serif; }
+  .font-ar{ font-family:'Amiri',serif; }
+  ::selection{ background:var(--ember); color:#fff; }
+
+  /* oversized hero type */
+  .mega{ font-size:clamp(4.5rem,16vw,15rem); line-height:.86; letter-spacing:.01em; }
+  .stroke{ -webkit-text-stroke:2px var(--cedar); color:transparent; }
+
+  /* marquee */
+  .marquee-track{ display:flex; width:max-content; animation:marquee 26s linear infinite; }
+  .marquee-rev{ animation:marqueeR 30s linear infinite; }
+  @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  @keyframes marqueeR{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+
+  /* bento */
+  .bento{ transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease; }
+  .bento:hover{ transform:translateY(-8px); box-shadow:0 30px 60px -20px rgba(12,59,46,.35); }
+  .bento .price-tag{ transition:transform .35s cubic-bezier(.34,1.56,.64,1); }
+  .bento:hover .price-tag{ transform:rotate(-8deg) scale(1.12); }
+
+  /* glass cards */
+  .glass{ background:rgba(255,251,242,.09); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+          border:1px solid rgba(255,251,242,.18); }
+
+  /* timeline */
+  .tl-card{ scroll-snap-align:center; }
+
+  /* reveal */
+  .reveal{ opacity:0; transform:translateY(40px); }
+
+  /* magnetic */
+  .magnetic{ will-change:transform; }
+
+  /* wavy divider */
+  .wave{ display:block; width:100%; height:70px; }
+
+  .btn-ember{ transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; }
+  .btn-ember:hover{ transform:translateY(-3px) scale(1.03); box-shadow:0 16px 34px -12px rgba(232,93,42,.65); }
+
+  .num-outline{ -webkit-text-stroke:1.5px rgba(255,251,242,.35); color:transparent; }
+
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track,.marquee-rev{ animation:none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 py-3">
+    <div class="glass rounded-2xl px-5 py-3 flex items-center justify-between" style="background:rgba(12,59,46,.55)">
+      <a href="#top" class="flex items-center gap-3">
+        <span class="font-ar text-3xl leading-none" style="color:var(--saffron)">الملاح</span>
+        <span class="font-display text-xl tracking-wide text-white">AL MALLAH</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-white/90">
+        <a href="#story" class="hover:text-[#F5A623] transition">Story</a>
+        <a href="#menu" class="hover:text-[#F5A623] transition">Menu</a>
+        <a href="#branches" class="hover:text-[#F5A623] transition">Branches</a>
+        <a href="#visit" class="hover:text-[#F5A623] transition">Visit</a>
+      </div>
+      <a href="#visit" class="btn-ember magnetic font-display text-sm tracking-wide px-6 py-2.5 rounded-full text-white" style="background:var(--ember)">ORDER NOW</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<header id="top" class="relative min-h-[100svh] flex flex-col justify-center overflow-hidden pt-28 pb-10">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="font-ar absolute -right-10 top-1/2 -translate-y-1/2 leading-none opacity-[.07] select-none" style="font-size:38vw; color:var(--cedar)">شاورما</div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 w-full relative">
+    <div class="hero-el flex items-center gap-3 mb-6">
+      <span class="font-display text-xs tracking-[.35em] px-4 py-2 rounded-full text-white" style="background:var(--cedar)">EST. 1979 · DUBAI</span>
+      <span class="font-ar text-2xl" style="color:var(--ember)">مطعم لبناني أصيل</span>
+    </div>
+    <h1 class="font-display mega hero-el">
+      <span class="block" style="color:var(--cedar)">AL</span>
+      <span class="block stroke hero-el">MALLAH</span>
+    </h1>
+    <div class="hero-el mt-6 flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
+      <p class="max-w-md text-lg font-medium" style="color:#3d5a4f">The shawarma that built a city's appetite. Charcoal-grilled, garlic-sauced, wrapped fresh — the way Dubai has loved it for <strong>45+ years</strong>.</p>
+      <div class="flex gap-4">
+        <a href="#menu" class="btn-ember magnetic font-display px-8 py-4 rounded-full text-white text-lg" style="background:var(--ember)">SEE THE MENU</a>
+        <a href="#story" class="magnetic font-display px-8 py-4 rounded-full border-2 text-lg" style="border-color:var(--cedar); color:var(--cedar)">OUR STORY</a>
+      </div>
+    </div>
+    <div class="hero-el mt-12 grid grid-cols-3 max-w-lg gap-6">
+      <div><div class="font-display text-4xl md:text-5xl" style="color:var(--ember)"><span class="counter" data-target="45">0</span>+</div><div class="text-xs font-bold tracking-widest uppercase mt-1" style="color:#3d5a4f">Years serving</div></div>
+      <div><div class="font-display text-4xl md:text-5xl" style="color:var(--ember)"><span class="counter" data-target="4">0</span></div><div class="text-xs font-bold tracking-widest uppercase mt-1" style="color:#3d5a4f">Dubai branches</div></div>
+      <div><div class="font-display text-4xl md:text-5xl" style="color:var(--ember)">1<span class="counter" data-target="4">0</span>k</div><div class="text-xs font-bold tracking-widest uppercase mt-1" style="color:#3d5a4f">Wraps a month</div></div>
+    </div>
+  </div>
+  <!-- scroll hint -->
+  <div class="hero-el absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs font-bold tracking-widest uppercase" style="color:#3d5a4f">
+    Scroll
+    <svg width="18" height="26" viewBox="0 0 18 26" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="1" width="16" height="24" rx="8"/><circle cx="9" cy="8" r="2" fill="currentColor"><animate attributeName="cy" values="8;14;8" dur="1.6s" repeatCount="indefinite"/></circle></svg>
+  </div>
+</header>
+
+<!-- ══════════ MARQUEE ══════════ -->
+<div class="py-4 overflow-hidden border-y-4" style="background:var(--cedar); border-color:var(--saffron)">
+  <div class="marquee-track font-display text-2xl md:text-3xl text-white" id="marquee1"></div>
+</div>
+
+<!-- ══════════ STORY TIMELINE ══════════ -->
+<section id="story" class="py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <p class="font-display text-xs tracking-[.35em]" style="color:var(--ember)">OUR STORY</p>
+        <h2 class="font-display text-5xl md:text-7xl mt-3" style="color:var(--cedar)">FROM A CORNER<br>CAFETERIA <span class="stroke">TO A LEGEND</span></h2>
+      </div>
+      <p class="max-w-sm font-medium" style="color:#3d5a4f">Drag through the decades — every era added a flavour Dubai still queues for today.</p>
+    </div>
+  </div>
+  <div class="mt-10 overflow-x-auto pb-6" style="scroll-snap-type:x mandatory">
+    <div class="flex gap-6 px-5 max-w-7xl mx-auto w-max">
+      <article class="tl-card reveal w-72 md:w-80 shrink-0 rounded-3xl p-8 text-white" style="background:var(--cedar)">
+        <div class="font-display text-6xl num-outline">1979</div>
+        <h3 class="font-display text-2xl mt-4 tracking-wide">THE FIRST SPIT</h3>
+        <p class="mt-3 text-white/80 font-medium text-sm leading-relaxed">A tiny Lebanese cafeteria opens its doors. One charcoal grill, one family recipe, and shawarma like Dubai had never tasted.</p>
+        <div class="font-ar text-4xl mt-4" style="color:var(--saffron)">١٩٧٩</div>
+      </article>
+      <article class="tl-card reveal w-72 md:w-80 shrink-0 rounded-3xl p-8" style="background:var(--ember); color:#fff">
+        <div class="font-display text-6xl" style="-webkit-text-stroke:1.5px rgba(255,255,255,.4); color:transparent">1988</div>
+        <h3 class="font-display text-2xl mt-4 tracking-wide">GARLIC SAUCE FAME</h3>
+        <p class="mt-3 text-white/90 font-medium text-sm leading-relaxed">Word spreads: the toum (garlic sauce) is unreal. Taxi drivers start detouring just for a wrap. The queue becomes a landmark.</p>
+        <div class="font-ar text-4xl mt-4" style="color:var(--sand)">١٩٨٨</div>
+      </article>
+      <article class="tl-card reveal w-72 md:w-80 shrink-0 rounded-3xl p-8" style="background:var(--sand2); border:2px solid var(--cedar)">
+        <div class="font-display text-6xl" style="-webkit-text-stroke:1.5px var(--cedar); color:transparent">2001</div>
+        <h3 class="font-display text-2xl mt-4 tracking-wide" style="color:var(--cedar)">THE JUICE BAR</h3>
+        <p class="mt-3 font-medium text-sm leading-relaxed" style="color:#3d5a4f">Fresh-squeezed juices join the menu. Orange, avocado, and the famous layered cocktail — pressed to order, never bottled.</p>
+        <div class="font-ar text-4xl mt-4" style="color:var(--ember)">٢٠٠١</div>
+      </article>
+      <article class="tl-card reveal w-72 md:w-80 shrink-0 rounded-3xl p-8 text-white" style="background:var(--cedar2)">
+        <div class="font-display text-6xl num-outline">2015</div>
+        <h3 class="font-display text-2xl mt-4 tracking-wide">FOUR CORNERS OF DUBAI</h3>
+        <p class="mt-3 text-white/80 font-medium text-sm leading-relaxed">From one grill to four buzzing branches — Diyafah, Satwa, Deira, Barsha — each one packed till late, every single night.</p>
+        <div class="font-ar text-4xl mt-4" style="color:var(--saffron)">٢٠١٥</div>
+      </article>
+      <article class="tl-card reveal w-72 md:w-80 shrink-0 rounded-3xl p-8 text-white" style="background:linear-gradient(135deg,var(--ember),#b73d15)">
+        <div class="font-display text-6xl" style="-webkit-text-stroke:1.5px rgba(255,255,255,.4); color:transparent">2026</div>
+        <h3 class="font-display text-2xl mt-4 tracking-wide">STILL THE PEOPLE'S PLACE</h3>
+        <p class="mt-3 text-white/90 font-medium text-sm leading-relaxed">Same charcoal, same recipes, same welcome. Legends don't chase trends — they outlast them.</p>
+        <div class="font-ar text-4xl mt-4" style="color:var(--sand)">٢٠٢٦</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BENTO MENU ══════════ -->
+<section id="menu" class="py-20 md:py-28" style="background:var(--cedar)">
+  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true" style="margin-top:-5.5rem; margin-bottom:2rem"><path d="M0,40 C240,80 480,0 720,30 C960,60 1200,10 1440,40 L1440,0 L0,0 Z" fill="#F7EEDC"/></svg>
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <p class="font-display text-xs tracking-[.35em]" style="color:var(--saffron)">THE MENU</p>
+        <h2 class="font-display text-5xl md:text-7xl mt-3 text-white">CHARCOAL.<br>GARLIC. <span style="color:var(--saffron)">GLORY.</span></h2>
+      </div>
+      <p class="max-w-sm font-medium text-white/70">Everything grilled over real charcoal, wrapped to order. Prices in AED, tax included.</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 auto-rows-[minmax(150px,auto)]">
+      <!-- big: shawarma -->
+      <article class="bento reveal col-span-2 row-span-2 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden" style="background:linear-gradient(135deg,#E85D2A,#c24a1e)">
+        <svg class="absolute -right-6 -bottom-8 w-56 opacity-25" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M100 20 C60 60 55 110 70 160 L130 160 C145 110 140 60 100 20Z" fill="#fff"/>
+          <path d="M85 40 h30 M80 70 h40 M78 100 h44 M80 130 h40" stroke="#c24a1e" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <div><span class="font-display text-xs tracking-[.3em] text-white/80">MOST LOVED</span>
+        <h3 class="font-display text-4xl md:text-5xl text-white mt-2">CHICKEN<br>SHAWARMA</h3>
+        <p class="text-white/85 font-medium mt-3 max-w-xs">Charcoal spit-roasted, shaved thin, garlic toum, pickles, fresh saj bread.</p></div>
+        <div class="flex items-center justify-between mt-6">
+          <span class="price-tag font-display text-3xl bg-white rounded-2xl px-5 py-2" style="color:var(--ember)">AED 14</span>
+          <span class="font-ar text-4xl text-white/70">شاورما دجاج</span>
+        </div>
+      </article>
+      <!-- falafel -->
+      <article class="bento reveal rounded-3xl p-6 flex flex-col justify-between" style="background:var(--sand)">
+        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><circle cx="18" cy="30" r="11" fill="#8a5a2e"/><circle cx="34" cy="28" r="11" fill="#a06a35"/><circle cx="26" cy="18" r="11" fill="#7a4e26"/><circle cx="18" cy="30" r="3" fill="#5d3a1c"/><circle cx="34" cy="28" r="3" fill="#5d3a1c"/><circle cx="26" cy="18" r="3" fill="#5d3a1c"/></svg>
+        <div><h3 class="font-display text-2xl mt-3" style="color:var(--cedar)">FALAFEL<br>SANDWICH</h3>
+        <p class="text-sm font-medium mt-1" style="color:#3d5a4f">Crispy herb falafel, tahini, mint.</p></div>
+        <span class="price-tag font-display text-2xl rounded-xl px-4 py-1.5 text-white self-start" style="background:var(--cedar)">AED 12</span>
+      </article>
+      <!-- hummus -->
+      <article class="bento reveal rounded-3xl p-6 flex flex-col justify-between" style="background:var(--sand)">
+        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><ellipse cx="26" cy="28" rx="20" ry="14" fill="#e8c98a"/><ellipse cx="26" cy="26" rx="14" ry="9" fill="#f4dfa8"/><circle cx="26" cy="26" r="3" fill="#8a5a2e"/><circle cx="20" cy="30" r="2" fill="#6b9e4e"/><circle cx="32" cy="30" r="2" fill="#6b9e4e"/></svg>
+        <div><h3 class="font-display text-2xl mt-3" style="color:var(--cedar)">HUMMUS<br>BEIRUTI</h3>
+        <p class="text-sm font-medium mt-1" style="color:#3d5a4f">Silky hummus, olive oil, parsley.</p></div>
+        <span class="price-tag font-display text-2xl rounded-xl px-4 py-1.5 text-white self-start" style="background:var(--cedar)">AED 22</span>
+      </article>
+      <!-- mixed grill big -->
+      <article class="bento reveal col-span-2 rounded-3xl p-8 flex flex-col md:flex-row md:items-center justify-between gap-4 relative overflow-hidden" style="background:linear-gradient(135deg,#F5A623,#e08a10)">
+        <div><span class="font-display text-xs tracking-[.3em] text-white/85">FOR THE TABLE</span>
+        <h3 class="font-display text-3xl md:text-4xl text-white mt-2">MIXED GRILL PLATTER</h3>
+        <p class="text-white/90 font-medium mt-2 max-w-md">Shish tawook, lamb kebab, kofta & wings over charcoal — with fattoush, hummus & bread.</p></div>
+        <span class="price-tag font-display text-3xl bg-white rounded-2xl px-5 py-2 shrink-0" style="color:#c97a0a">AED 65</span>
+      </article>
+      <!-- fattoush -->
+      <article class="bento reveal rounded-3xl p-6 flex flex-col justify-between" style="background:var(--sand)">
+        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><path d="M8 34 Q26 20 44 34 L44 42 L8 42 Z" fill="#6b9e4e"/><circle cx="18" cy="32" r="4" fill="#d94f3d"/><circle cx="30" cy="30" r="4" fill="#d94f3d"/><rect x="12" y="38" width="8" height="6" rx="2" fill="#e8c98a" transform="rotate(-20 16 41)"/></svg>
+        <div><h3 class="font-display text-2xl mt-3" style="color:var(--cedar)">FATTOUSH</h3>
+        <p class="text-sm font-medium mt-1" style="color:#3d5a4f">Sumac, purslane, crispy bread.</p></div>
+        <span class="price-tag font-display text-2xl rounded-xl px-4 py-1.5 text-white self-start" style="background:var(--cedar)">AED 24</span>
+      </article>
+      <!-- juices -->
+      <article class="bento reveal rounded-3xl p-6 flex flex-col justify-between" style="background:var(--sand)">
+        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><rect x="17" y="12" width="18" height="30" rx="5" fill="#f5a623"/><rect x="17" y="12" width="18" height="10" rx="5" fill="#ffd98a"/><rect x="24" y="4" width="4" height="10" rx="2" fill="#0C3B2E" transform="rotate(12 26 9)"/></svg>
+        <div><h3 class="font-display text-2xl mt-3" style="color:var(--cedar)">FRESH<br>JUICES</h3>
+        <p class="text-sm font-medium mt-1" style="color:#3d5a4f">Orange, avocado, layered cocktail.</p></div>
+        <span class="price-tag font-display text-2xl rounded-xl px-4 py-1.5 text-white self-start" style="background:var(--cedar)">AED 16–20</span>
+      </article>
+      <!-- shawarma platter -->
+      <article class="bento reveal rounded-3xl p-6 flex flex-col justify-between" style="background:var(--sand)">
+        <div><h3 class="font-display text-2xl mt-1" style="color:var(--cedar)">SHAWARMA<br>PLATTER</h3>
+        <p class="text-sm font-medium mt-1" style="color:#3d5a4f">Open shawarma, fries, garlic, bread.</p></div>
+        <span class="price-tag font-display text-2xl rounded-xl px-4 py-1.5 text-white self-start" style="background:var(--cedar)">AED 38</span>
+      </article>
+      <!-- baklava -->
+      <article class="bento reveal rounded-3xl p-6 flex flex-col justify-between" style="background:var(--sand)">
+        <div><h3 class="font-display text-2xl mt-1" style="color:var(--cedar)">BAKLAVA<br><span class="text-lg">4 PIECES</span></h3>
+        <p class="text-sm font-medium mt-1" style="color:#3d5a4f">Pistachio, honey, crisp filo.</p></div>
+        <span class="price-tag font-display text-2xl rounded-xl px-4 py-1.5 text-white self-start" style="background:var(--cedar)">AED 16</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVERSE MARQUEE ══════════ -->
+<div class="py-4 overflow-hidden" style="background:var(--saffron)">
+  <div class="marquee-track marquee-rev font-display text-2xl md:text-3xl" style="color:var(--cedar)" id="marquee2"></div>
+</div>
+
+<!-- ══════════ BRANCHES ══════════ -->
+<section id="branches" class="py-20 md:py-28 relative overflow-hidden" style="background:var(--cedar2)">
+  <div class="absolute inset-0 opacity-[.06] pointer-events-none" aria-hidden="true">
+    <div class="font-ar absolute left-0 bottom-0 leading-none select-none" style="font-size:30vw; color:#fff">دبي</div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 relative">
+    <div class="reveal text-center">
+      <p class="font-display text-xs tracking-[.35em]" style="color:var(--saffron)">FIND US</p>
+      <h2 class="font-display text-5xl md:text-7xl mt-3 text-white">FOUR DOORS,<br><span style="color:var(--saffron)">ONE FLAME</span></h2>
+    </div>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5" id="branchGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ VISIT / CTA ══════════ -->
+<section id="visit" class="py-20 md:py-28">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden" style="background:linear-gradient(135deg,var(--ember),#a83a12)">
+      <div class="font-ar absolute -top-8 left-1/2 -translate-x-1/2 text-white/10 select-none leading-none" style="font-size:10rem" aria-hidden="true">تفضل</div>
+      <h2 class="font-display text-5xl md:text-7xl text-white relative">HUNGRY<br>ALREADY?</h2>
+      <p class="text-white/85 text-lg font-medium mt-4 max-w-xl mx-auto relative">Call ahead for takeaway, or walk in — the grill never really stops. Open daily 10 AM – 2 AM.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4 relative">
+        <a href="tel:+97143333333" class="magnetic font-display text-lg px-10 py-4 rounded-full text-white" style="background:var(--cedar)">CALL +971 4 333 3333</a>
+        <a href="#branches" class="magnetic font-display text-lg px-10 py-4 rounded-full border-2 border-white text-white">FIND A BRANCH</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="pt-14 pb-8 px-5" style="background:var(--cedar); color:#fff">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3"><span class="font-ar text-3xl" style="color:var(--saffron)">الملاح</span><span class="font-display text-2xl tracking-wide">AL MALLAH</span></div>
+      <p class="mt-4 text-white/70 font-medium max-w-sm">Dubai's legendary Lebanese restaurant since 1979. Charcoal-grilled, garlic-loaded, loved by generations.</p>
+    </div>
+    <div>
+      <div class="font-display text-sm tracking-[.3em]" style="color:var(--saffron)">BRANCHES</div>
+      <p class="mt-3 text-white/70 font-medium text-sm leading-loose">Al Diyafah Rd (Flagship)<br>Al Satwa<br>Deira<br>Al Barsha</p>
+    </div>
+    <div>
+      <div class="font-display text-sm tracking-[.3em]" style="color:var(--saffron)">HOURS</div>
+      <p class="mt-3 text-white/70 font-medium text-sm leading-loose">Daily · 10 AM – 2 AM<br>Ramadan hours vary<br>Takeaway & dine-in</p>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/15 flex flex-col md:flex-row justify-between gap-3 text-sm text-white/60 font-medium">
+    <span>© 2026 Al Mallah Restaurant, Dubai. All rights reserved.</span>
+    <span class="text-xs opacity-70">Concept demo by Om Vibe Webs</span>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- MARQUEES ---------- */
+const m1 = ['SHAWARMA','★','FALAFEL','★','HUMMUS','★','MIXED GRILL','★','FRESH JUICES','★','SINCE 1979','★'];
+const m2 = ['CHARCOAL GRILLED','★','GARLIC TOUM','★','FRESH SAJ BREAD','★','OPEN TILL 2 AM','★'];
+function fillMarquee(id, items){
+  const html = items.map(t=>`<span class="whitespace-nowrap px-4">${t}</span>`).join('');
+  document.getElementById(id).innerHTML = `<div class="flex shrink-0">${html}</div><div class="flex shrink-0">${html}</div>`;
+}
+fillMarquee('marquee1', m1); fillMarquee('marquee2', m2);
+
+/* ---------- BRANCHES ---------- */
+const BRANCHES = [
+  { name:'Al Diyafah Road', tag:'FLAGSHIP', hours:'10 AM – 2 AM', note:'The original grill. Expect a happy queue at dinner.' },
+  { name:'Al Satwa', tag:'LOCAL FAVOURITE', hours:'10 AM – 2 AM', note:'Satwa regulars swear this spit tastes the best.' },
+  { name:'Deira', tag:'OLD DUBAI', hours:'10 AM – 1 AM', note:'Steps from the souks — perfect after shopping.' },
+  { name:'Al Barsha', tag:'FAMILY PICK', hours:'11 AM – 1 AM', note:'Big family tables and the fastest takeaway counter.' },
+];
+document.getElementById('branchGrid').innerHTML = BRANCHES.map(b=>`
+  <article class="glass reveal rounded-3xl p-7 flex flex-col hover:-translate-y-2 transition-transform duration-300">
+    <span class="font-display text-[.65rem] tracking-[.3em] px-3 py-1.5 rounded-full self-start" style="background:var(--saffron); color:var(--cedar)">${b.tag}</span>
+    <h3 class="font-display text-2xl text-white mt-4 tracking-wide">${b.name.toUpperCase()}</h3>
+    <p class="text-white/70 text-sm font-medium mt-2 flex-1">${b.note}</p>
+    <div class="mt-5 pt-5 border-t border-white/15 flex items-center justify-between">
+      <span class="text-white/80 text-sm font-bold">${b.hours}</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    </div>
+  </article>`).join('');
+
+/* ---------- MOTION ---------- */
+if(!reduced){
+  gsap.from('.hero-el',{y:60,opacity:0,duration:1.1,stagger:.12,ease:'power3.out',delay:.1});
+  /* hero type grows slightly as you scroll away */
+  gsap.to('header h1',{scale:.94,opacity:.35,transformOrigin:'top center',ease:'none',
+    scrollTrigger:{trigger:'header',start:'top top',end:'bottom top',scrub:true}});
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  gsap.utils.toArray('.counter').forEach(el=>{
+    const target=+el.dataset.target;
+    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,
+      onEnter:()=>gsap.fromTo(el,{innerText:0},{innerText:target,duration:1.6,snap:{innerText:1},ease:'power2.out'})});
+  });
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*.22,y:(e.clientY-r.top-r.height/2)*.22,duration:.3});
+    });
+    btn.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'}));
+  });
+} else {
+  document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
+  document.querySelectorAll('.counter').forEach(el=>el.textContent=el.dataset.target);
+}
+</script>
+</body>
+</html>

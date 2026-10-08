@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ye Old Bakery | Heritage Artisan Bakery at The Claridges, New Delhi</title>
+<meta name="description" content="Ye Old Bakery — baking slow-fermented sourdough, croissants and celebration cakes at The Claridges, New Delhi since 1982.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --cream:#F7EDD9; --cream-deep:#F0E0C2; --paper:#FDF8EC;
+  --brown:#5C3A21; --brown-deep:#3A2312; --caramel:#D9A05B; --caramel-deep:#B97F3C;
+  --berry:#A63D40; --ink:#33220F; --muted:#8A6F4D;
+  --serif:'Fraunces',Georgia,serif; --sans:'Karla',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden}
+/* film grain */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:120;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 8s steps(10) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-2%,3%)}40%{transform:translate(3%,-2%)}60%{transform:translate(-3%,-3%)}80%{transform:translate(2%,2%)}}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:.35s}
+.nav.scrolled{background:rgba(58,35,18,.94);backdrop-filter:blur(10px);padding:11px 0;box-shadow:0 12px 34px -14px rgba(58,35,18,.6)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--cream)}
+.brand .mark{width:46px;height:46px;border-radius:50%;background:var(--caramel);display:grid;place-items:center;box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.brand b{font-family:var(--serif);font-size:1.25rem;letter-spacing:.02em}
+.brand small{display:block;font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--caramel);font-weight:700}
+.nav-links{display:flex;gap:30px}
+.nav-links a{color:var(--cream);font-size:.86rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.9;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--caramel);transition:width .3s;border-radius:2px}
+.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--brown);color:var(--cream);font-weight:700;font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 30px;border:0;border-radius:999px;cursor:pointer;transition:.3s;box-shadow:0 14px 28px -12px rgba(58,35,18,.55)}
+.btn:hover{background:var(--brown-deep);transform:translateY(-3px)}
+.btn.caramel{background:linear-gradient(135deg,var(--caramel),var(--caramel-deep));color:var(--brown-deep)}
+.btn.caramel:hover{filter:brightness(1.06)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:26px;height:2.5px;background:var(--cream);margin:6px 0;border-radius:2px}
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:150px 0 90px;
+  background:radial-gradient(800px 480px at 85% 10%,rgba(217,160,91,.35),transparent 60%),radial-gradient(600px 420px at 5% 90%,rgba(166,61,64,.12),transparent 60%),var(--cream)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:2}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--caramel-deep)}
+.kicker::before{content:"";width:36px;height:2px;background:var(--caramel-deep)}
+.hero h1{font-family:var(--serif);font-size:clamp(2.7rem,5.6vw,4.5rem);line-height:1.06;font-weight:700;margin:22px 0 20px;letter-spacing:-.01em}
+.hero h1 .u{position:relative;white-space:nowrap;color:var(--brown-deep)}
+.hero h1 .u svg{position:absolute;left:0;right:0;bottom:-.12em;width:100%;height:.28em}
+.hero .lead{color:var(--muted);font-size:1.1rem;max-width:520px;margin-bottom:34px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:46px}
+.hero-badges{display:flex;gap:26px;flex-wrap:wrap}
+.hb{display:flex;align-items:center;gap:10px;font-size:.86rem;font-weight:600;color:var(--brown)}
+.hb .dot{width:10px;height:10px;border-radius:50%;background:var(--caramel-deep)}
+/* hero art */
+.hero-art{position:relative;display:grid;place-items:center;min-height:480px}
+.oven{position:relative;width:min(380px,80vw)}
+.stamp{position:absolute;top:-30px;right:-14px;width:118px;height:118px;z-index:3;animation:spinSlow 24s linear infinite}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+.steam{position:absolute;top:-58px;left:50%;transform:translateX(-50%);display:flex;gap:18px}
+.steam span{width:8px;height:44px;border-radius:8px;background:linear-gradient(transparent,rgba(185,127,60,.5));filter:blur(3px);animation:steam 2.6s ease-in-out infinite}
+.steam span:nth-child(2){animation-delay:.5s;height:58px}.steam span:nth-child(3){animation-delay:1s}
+@keyframes steam{0%,100%{transform:translateY(6px) scaleY(.8);opacity:.4}50%{transform:translateY(-8px) scaleY(1.15);opacity:.9}}
+/* ---------- Ticker ---------- */
+.ticker{background:var(--brown-deep);color:var(--cream);overflow:hidden;padding:15px 0;border-top:3px double var(--caramel);border-bottom:3px double var(--caramel)}
+.ticker-track{display:flex;width:max-content;animation:tick 28s linear infinite;font-family:var(--serif);font-style:italic;font-size:1.05rem}
+.ticker-track span{padding:0 30px;white-space:nowrap;display:flex;align-items:center;gap:30px}
+.ticker-track i{font-style:normal;color:var(--caramel)}
+@keyframes tick{to{transform:translateX(-50%)}}
+/* ---------- Sections ---------- */
+section{padding:100px 0}
+.sec-head{text-align:center;max-width:660px;margin:0 auto 58px}
+.sec-head .kicker{justify-content:center}
+.sec-head .kicker::after{content:"";width:36px;height:2px;background:var(--caramel-deep)}
+.sec-head h2{font-family:var(--serif);font-size:clamp(2rem,3.8vw,2.9rem);margin:16px 0 12px;font-weight:700}
+.sec-head p{color:var(--muted)}
+/* story */
+.story{background:var(--paper);border-top:1px solid #EAD9B8;border-bottom:1px solid #EAD9B8;position:relative}
+.timeline{position:relative;max-width:860px;margin:0 auto;padding-left:8px}
+.timeline::before{content:"";position:absolute;left:19px;top:6px;bottom:6px;width:2px;background:repeating-linear-gradient(var(--caramel) 0 8px,transparent 8px 16px)}
+.t-item{position:relative;padding:0 0 44px 64px}
+.t-item:last-child{padding-bottom:0}
+.t-item::before{content:"";position:absolute;left:8px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--cream);border:3px solid var(--caramel-deep)}
+.t-item .yr{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--brown-deep)}
+.t-item h3{font-family:var(--serif);font-size:1.2rem;margin:4px 0 6px}
+.t-item p{color:var(--muted);font-size:.95rem;max-width:600px}
+/* products */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.polaroid{background:#fff;padding:16px 16px 22px;box-shadow:0 24px 50px -20px rgba(58,35,18,.35);transition:transform .45s cubic-bezier(.2,.7,.2,1.2),box-shadow .35s;position:relative}
+.polaroid:nth-child(odd){transform:rotate(-1.6deg)}
+.polaroid:nth-child(even){transform:rotate(1.4deg)}
+.polaroid:hover{transform:rotate(0) translateY(-10px) scale(1.02);box-shadow:0 34px 60px -20px rgba(58,35,18,.45);z-index:2}
+.polaroid .ph{height:190px;display:grid;place-items:center;background:linear-gradient(150deg,var(--cream),var(--cream-deep));border:1px solid #EBDCBC;position:relative;overflow:hidden}
+.polaroid h3{font-family:var(--serif);font-size:1.25rem;margin:16px 4px 4px}
+.polaroid .sub{font-size:.82rem;color:var(--muted);margin:0 4px 10px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.polaroid .tag{position:absolute;top:24px;right:24px;background:var(--berry);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;transform:rotate(6deg)}
+.polaroid .price-row{display:flex;justify-content:space-between;align-items:center;margin:0 4px}
+.polaroid .price{font-family:var(--serif);font-weight:700;font-size:1.2rem;color:var(--brown-deep)}
+.polaroid .order{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--caramel-deep)}
+/* menu */
+.menu{background:var(--brown-deep);color:var(--cream);position:relative;overflow:hidden}
+.menu::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cpath d='M80 30c10 14 10 30 0 44-10-14-10-30 0-44z' fill='none' stroke='%23D9A05B' stroke-opacity='.08'/%3E%3C/svg%3E")}
+.menu .sec-head h2{color:var(--cream)}
+.menu .sec-head p{color:#C9AE85}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 60px;position:relative}
+.mcat h3{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--caramel);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.mcat h3::after{content:"";flex:1;height:1px;background:rgba(217,160,91,.35)}
+.mitem{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px dashed rgba(217,160,91,.25)}
+.mitem .nm{font-weight:600}
+.mitem .nm small{display:block;font-weight:400;font-size:.8rem;color:#C9AE85}
+.mitem .pr{font-family:var(--serif);font-weight:700;color:var(--caramel);white-space:nowrap}
+/* testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tcard{background:var(--paper);border:1px solid #EAD9B8;border-radius:4px 26px 4px 26px;padding:36px 30px;position:relative;transition:.35s}
+.tcard:hover{transform:translateY(-8px);box-shadow:0 26px 50px -20px rgba(58,35,18,.35)}
+.tcard::before{content:"“";position:absolute;top:6px;left:22px;font-family:var(--serif);font-size:4.4rem;color:var(--caramel);opacity:.4;line-height:1}
+.tcard .stars{color:var(--caramel-deep);letter-spacing:.28em;margin-bottom:14px}
+.tcard p{font-size:.96rem;font-style:italic}
+.tcard .who{margin-top:20px;font-weight:700;font-size:.9rem}
+.tcard .who small{display:block;color:var(--muted);font-weight:500;font-style:normal}
+/* visit + form */
+.visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:52px;align-items:start}
+.visit-grid h2{font-family:var(--serif);font-size:clamp(1.9rem,3.4vw,2.6rem);margin-bottom:14px}
+.vlines{display:grid;gap:14px;margin:26px 0}
+.vline{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid #EAD9B8;padding:16px 18px;border-radius:16px}
+.vline .ic{width:44px;height:44px;flex:none;border-radius:12px;background:var(--caramel);display:grid;place-items:center}
+.vline b{display:block}
+.vline span{color:var(--muted);font-size:.92rem}
+form.order{background:var(--paper);border:1px solid #EAD9B8;border-radius:22px;padding:40px 36px;box-shadow:0 30px 60px -24px rgba(58,35,18,.35)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--caramel-deep);margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1.5px solid #E3D0A6;background:#fff;border-radius:12px;font-family:inherit;font-size:.95rem;color:var(--ink);transition:.25s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--caramel-deep);box-shadow:0 0 0 4px rgba(217,160,91,.2)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-ok{display:none;background:#F3E9CF;border:1.5px solid var(--caramel);color:var(--brown-deep);border-radius:12px;padding:16px;font-family:var(--serif);font-style:italic;text-align:center;margin-top:6px}
+/* footer */
+footer{background:var(--brown-deep);color:#D9BE96;padding:64px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:42px}
+.foot-grid h4{color:var(--caramel);font-family:var(--serif);font-size:1.1rem;margin-bottom:14px}
+.foot-grid a{display:block;padding:5px 0;font-size:.92rem}
+.foot-grid a:hover{color:var(--caramel)}
+.foot-bottom{border-top:1px solid rgba(217,160,91,.25);padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem}
+.credit{font-size:.76rem;opacity:.6}
+@media(max-width:1000px){
+  .hero-grid,.visit-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .burger{display:block}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:rgba(58,35,18,.97);flex-direction:column;padding:24px;gap:18px}
+  .hero-art{min-height:380px}
+}
+@media(max-width:620px){.prod-grid,.frow{grid-template-columns:1fr}section{padding:76px 0}.hero{padding-top:130px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.grain{display:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3A2312" stroke-width="1.8"><path d="M12 22V8M12 8C12 5 10 3 7 3c0 3 2 5 5 5zM12 12c0-3 2-5 5-5 0 3-2 5-5 5zM12 16c0-3-2-5-5-5 0 3 2 5 5 5zM12 16c0-3 2-5 5-5 0 3-2 5-5 5z"/></svg></span>
+      <span><b>Ye Old Bakery</b><small>The Claridges · New Delhi</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#story">Our Story</a><a href="#bakes">Signatures</a><a href="#menu">Menu</a><a href="#visit">Visit</a>
+    </div>
+    <a href="#visit" class="btn caramel" style="padding:11px 24px">Order Enquiry</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker" data-hero>Artisan Bakery · Est. 1982</span>
+      <h1 data-hero>Baked the <span class="u">slow way<svg viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M4 10 C 60 3, 140 3, 196 8" stroke="#B97F3C" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span>, since 1982.</h1>
+      <p class="lead" data-hero>Forty-three years, one wood-fired oven, and recipes that have never hurried. Sourdough fermented 36 hours, croissants laminated by hand, cakes that made Delhi fall in love — at The Claridges, New Delhi.</p>
+      <div class="hero-cta" data-hero>
+        <a href="#bakes" class="btn">See Signatures</a>
+        <a href="#visit" class="btn caramel">Order Fresh</a>
+      </div>
+      <div class="hero-badges" data-hero>
+        <div class="hb"><span class="dot"></span>36-hr fermented sourdough</div>
+        <div class="hb"><span class="dot"></span>No preservatives, ever</div>
+        <div class="hb"><span class="dot"></span>Baked fresh twice daily</div>
+      </div>
+    </div>
+    <div class="hero-art" data-hero>
+      <div class="oven">
+        <div class="steam" aria-hidden="true"><span></span><span></span><span></span></div>
+        <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+          <circle cx="60" cy="60" r="56" fill="#A63D40"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#F7EDD9" stroke-width="1.6" stroke-dasharray="4 4"/>
+          <text font-family="Karla,sans-serif" font-size="12.5" font-weight="700" letter-spacing="3.5" fill="#F7EDD9"><textPath href="#circ">SINCE 1982 · YE OLD BAKERY · </textPath></text>
+          <text x="60" y="70" text-anchor="middle" font-family="Fraunces,serif" font-size="26" font-weight="700" fill="#F7EDD9">43</text>
+          <text x="60" y="86" text-anchor="middle" font-family="Karla,sans-serif" font-size="10" letter-spacing="2" fill="#F7EDD9">YEARS</text>
+        </svg>
+        <svg viewBox="0 0 380 340" style="width:100%;height:auto;display:block;filter:drop-shadow(0 34px 44px rgba(58,35,18,.35))" role="img" aria-label="Fresh bread from the wood-fired oven">
+          <ellipse cx="190" cy="312" rx="150" ry="18" fill="#3A2312" opacity=".18"/>
+          <rect x="70" y="60" width="240" height="250" rx="26" fill="#5C3A21"/>
+          <rect x="86" y="76" width="208" height="218" rx="18" fill="#3A2312"/>
+          <path d="M110 294 V150 C110 108 142 84 190 84 C238 84 270 108 270 150 V294 Z" fill="#1E1006"/>
+          <ellipse cx="190" cy="240" rx="72" ry="60" fill="#D9A05B"/>
+          <ellipse cx="190" cy="232" rx="72" ry="56" fill="#E4B26A"/>
+          <path d="M150 210 q14 -12 28 0 M172 232 q14 -12 28 0 M150 254 q14 -12 28 0" stroke="#B97F3C" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <g fill="#F4C87E"><circle cx="130" cy="96" r="5"/><circle cx="250" cy="96" r="5"/></g>
+          <rect x="150" y="20" width="80" height="44" rx="10" fill="#5C3A21"/>
+          <g stroke="#D9A05B" stroke-width="4"><path d="M120 44 h30 M230 44 h30"/></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Fresh from the oven at 7 AM <i>✦</i> 36-hour sourdough <i>✦</i> Hand-laminated croissants <i>✦</i> Wedding & celebration cakes <i>✦</i> Since 1982 <i>✦</i>&nbsp;</span>
+  </div>
+</div>
+
+<section id="story" class="story">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="kicker">Our Story</span>
+      <h2>Four decades of crumbs & love</h2>
+      <p>What began as a two-table bakehouse inside The Claridges is today Delhi's most nostalgic address for real bread.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item" data-reveal><div class="yr">1982</div><h3>A wood-fired dream</h3><p>Master baker Mr. D'Souza fires the first batch of sourdough in a corner of The Claridges' kitchen. The queue forms before the shutters open.</p></div>
+      <div class="t-item" data-reveal><div class="yr">1995</div><h3>The croissant years</h3><p>A Paris-trained laminator joins the family. Delhi tastes a true 27-layer butter croissant for the first time — and never looks back.</p></div>
+      <div class="t-item" data-reveal><div class="yr">2008</div><h3>Cakes go legendary</h3><p>Our old-fashioned truffle cake becomes the city's worst-kept secret for birthdays, anniversaries and 2 AM cravings.</p></div>
+      <div class="t-item" data-reveal><div class="yr">2026</div><h3>Still slow, still ours</h3><p>Third-generation bakers, the same 1982 starter culture, the same wood-fired oven. Some things should never change.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="bakes">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="kicker">Signatures</span>
+      <h2>Bakes Delhi swears by</h2>
+      <p>Six icons, baked fresh every single day. When they're gone, they're gone.</p>
+    </div>
+    <div class="prod-grid">
+      <article class="polaroid" data-reveal>
+        <span class="tag">Bestseller</span>
+        <div class="ph"><svg width="110" height="110" viewBox="0 0 100 100"><ellipse cx="50" cy="62" rx="36" ry="24" fill="#D9A05B"/><ellipse cx="50" cy="56" rx="36" ry="24" fill="#E4B26A"/><path d="M30 48 l10 8 M44 42 l10 8 M58 42 l10 8" stroke="#B97F3C" stroke-width="4" stroke-linecap="round"/></svg></div>
+        <h3>36-Hr Sourdough</h3><div class="sub">Naturally leavened · 800g</div>
+        <div class="price-row"><span class="price">₹320</span><a class="order" href="#visit">Order →</a></div>
+      </article>
+      <article class="polaroid" data-reveal>
+        <div class="ph"><svg width="110" height="110" viewBox="0 0 100 100"><path d="M14 62 C 26 34, 74 34, 86 62 C 74 54, 64 56, 58 66 C 50 78, 42 74, 34 66 C 26 58, 22 58, 14 62 Z" fill="#E4B26A" stroke="#B97F3C" stroke-width="3"/><path d="M34 56 q6 -8 12 -2 M50 52 q6 -8 12 -2 M64 56 q6 -6 10 0" stroke="#B97F3C" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div>
+        <h3>Butter Croissants</h3><div class="sub">27 layers · baked 7 AM</div>
+        <div class="price-row"><span class="price">₹140</span><a class="order" href="#visit">Order →</a></div>
+      </article>
+      <article class="polaroid" data-reveal>
+        <span class="tag">Legendary</span>
+        <div class="ph"><svg width="110" height="110" viewBox="0 0 100 100"><path d="M28 78 V52 L50 34 L72 52 V78 Z" fill="#5C3A21"/><path d="M28 60 L50 44 L72 60" stroke="#D9A05B" stroke-width="4" fill="none"/><circle cx="50" cy="30" r="7" fill="#A63D40"/><path d="M50 23 q2 -6 7 -7" stroke="#3A2312" stroke-width="3" fill="none"/></svg></div>
+        <h3>Old Truffle Cake</h3><div class="sub">Dark chocolate · 1 kg</div>
+        <div class="price-row"><span class="price">₹950</span><a class="order" href="#visit">Order →</a></div>
+      </article>
+      <article class="polaroid" data-reveal>
+        <div class="ph"><svg width="110" height="110" viewBox="0 0 100 100"><circle cx="50" cy="55" r="30" fill="#D9A05B" stroke="#B97F3C" stroke-width="3"/><g fill="#5C3A21"><circle cx="40" cy="48" r="4"/><circle cx="58" cy="44" r="4"/><circle cx="52" cy="62" r="4"/><circle cx="64" cy="60" r="3.4"/><circle cx="38" cy="64" r="3.4"/></g></svg></div>
+        <h3>Oatmeal Cookies</h3><div class="sub">Box of 12 · ghee-kissed</div>
+        <div class="price-row"><span class="price">₹380</span><a class="order" href="#visit">Order →</a></div>
+      </article>
+      <article class="polaroid" data-reveal>
+        <div class="ph"><svg width="110" height="110" viewBox="0 0 100 100"><circle cx="50" cy="55" r="28" fill="#E4B26A" stroke="#B97F3C" stroke-width="3"/><path d="M50 55 m-16 0 a16 16 0 1 1 32 0 a10 10 0 1 1 -20 0" stroke="#B97F3C" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="50" cy="55" r="3" fill="#B97F3C"/></svg></div>
+        <h3>Cinnamon Rolls</h3><div class="sub">Brown-butter glaze</div>
+        <div class="price-row"><span class="price">₹180</span><a class="order" href="#visit">Order →</a></div>
+      </article>
+      <article class="polaroid" data-reveal>
+        <span class="tag">Seasonal</span>
+        <div class="ph"><svg width="110" height="110" viewBox="0 0 100 100"><path d="M26 62 L34 84 H66 L74 62 Z" fill="#D9A05B" stroke="#B97F3C" stroke-width="3"/><ellipse cx="50" cy="60" rx="26" ry="8" fill="#F4D79A"/><g><circle cx="38" cy="56" r="6" fill="#A63D40"/><circle cx="52" cy="54" r="6" fill="#D9A05B"/><circle cx="64" cy="58" r="6" fill="#A63D40"/></g></svg></div>
+        <h3>Seasonal Fruit Tart</h3><div class="sub">Vanilla custard · fresh fruit</div>
+        <div class="price-row"><span class="price">₹420</span><a class="order" href="#visit">Order →</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="kicker" style="color:var(--caramel)">The Menu</span>
+      <h2>Today's board</h2>
+      <p>Prices include all taxes. Whole cakes need 24 hours' notice — good things take time.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="mcat" data-reveal>
+        <h3>Breads</h3>
+        <div class="mitem"><div class="nm">36-Hr Sourdough<small>our 1982 starter · 800g</small></div><div class="pr">₹320</div></div>
+        <div class="mitem"><div class="nm">Multigrain Loaf<small>flax, sunflower, oats</small></div><div class="pr">₹280</div></div>
+        <div class="mitem"><div class="nm">Brioche Loaf<small>butter-rich, pillowy</small></div><div class="pr">₹260</div></div>
+        <div class="mitem"><div class="nm">Focaccia<small>rosemary & sea salt</small></div><div class="pr">₹240</div></div>
+      </div>
+      <div class="mcat" data-reveal>
+        <h3>Viennoiserie</h3>
+        <div class="mitem"><div class="nm">Butter Croissant<small>27 layers, French butter</small></div><div class="pr">₹140</div></div>
+        <div class="mitem"><div class="nm">Pain au Chocolat<small>dark chocolate batons</small></div><div class="pr">₹165</div></div>
+        <div class="mitem"><div class="nm">Cinnamon Roll<small>brown-butter glaze</small></div><div class="pr">₹180</div></div>
+        <div class="mitem"><div class="nm">Almond Danish<small>frangipane heart</small></div><div class="pr">₹175</div></div>
+      </div>
+      <div class="mcat" data-reveal>
+        <h3>Cakes</h3>
+        <div class="mitem"><div class="nm">Old Truffle Cake<small>the legend · 1 kg</small></div><div class="pr">₹950</div></div>
+        <div class="mitem"><div class="nm">Pineapple Classic<small>1980s style, cherries</small></div><div class="pr">₹750</div></div>
+        <div class="mitem"><div class="nm">Walnut Banana Cake<small>tea-time favourite</small></div><div class="pr">₹520</div></div>
+        <div class="mitem"><div class="nm">Seasonal Fruit Tart<small>baked to order</small></div><div class="pr">₹420</div></div>
+      </div>
+      <div class="mcat" data-reveal>
+        <h3>Cookies & More</h3>
+        <div class="mitem"><div class="nm">Oatmeal Cookies<small>box of 12</small></div><div class="pr">₹380</div></div>
+        <div class="mitem"><div class="nm">Choco-Chip Cookies<small>box of 12</small></div><div class="pr">₹420</div></div>
+        <div class="mitem"><div class="nm">Butter Shortbread<small>melt-in-mouth</small></div><div class="pr">₹350</div></div>
+        <div class="mitem"><div class="nm">Plum Cake Slice<small>Christmas, all year</small></div><div class="pr">₹160</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="love">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="kicker">Word of Mouth</span>
+      <h2>Delhi keeps coming back</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard" data-reveal><div class="stars">★★★★★</div><p>The truffle cake from Ye Old Bakery has been at every birthday in our family since 1998. Nothing else comes close — it's the taste of celebration itself.</p><div class="who">Meera Khanna<small>Loyalist since 1998 · South Delhi</small></div></div>
+      <div class="tcard" data-reveal><div class="stars">★★★★★</div><p>Their sourdough ruined all other bread for me. Crackling crust, open crumb, that gentle tang — I plan my week around the 7 AM batch.</p><div class="who">Arjun Mehta<small>Weekend regular · Gurugram</small></div></div>
+      <div class="tcard" data-reveal><div class="stars">★★★★★</div><p>Ordered a three-tier wedding cake with two days' notice. It arrived flawless and guests still talk about it a year later. Old school, in the best way.</p><div class="who">Sana & Vikram<small>Wedding order · Noida</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="kicker">Order & Visit</span>
+      <h2>Fresh out of the oven, to you</h2>
+      <p>Send an order enquiry — we confirm on call/WhatsApp within the hour during bakery hours.</p>
+    </div>
+    <div class="visit-grid">
+      <div data-reveal>
+        <h2>The bakehouse at <em style="color:var(--caramel-deep)">The Claridges</em></h2>
+        <div class="vlines">
+          <div class="vline"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A2312" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Find us</b><span>Ye Old Bakery, The Claridges,<br>12 Dr. APJ Abdul Kalam Road, New Delhi 110011</span></div></div>
+          <div class="vline"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A2312" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><div><b>Bakery hours</b><span>Mon–Sun · 7 AM – 9 PM<br>Fresh batches at 7 AM & 4 PM</span></div></div>
+          <div class="vline"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3A2312" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L7.6 9.9a16 16 0 006.5 6.5l1.5-1.5a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span><div><b>Call the counter</b><span>+91 98XXX XXXXX · bulk & wedding orders welcome</span></div></div>
+        </div>
+      </div>
+      <form class="order" id="orderForm" data-reveal>
+        <div class="frow">
+          <div class="field"><label>Your name</label><input type="text" id="oName" placeholder="Full name"></div>
+          <div class="field"><label>Phone</label><input type="tel" id="oPhone" placeholder="+91 …"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label>What would you like?</label><select id="oItem"><option>36-Hr Sourdough — ₹320</option><option>Butter Croissants (box of 6) — ₹750</option><option>Old Truffle Cake (1 kg) — ₹950</option><option>Oatmeal Cookies (box of 12) — ₹380</option><option>Cinnamon Rolls (box of 4) — ₹650</option><option>Wedding / bulk order</option></select></div>
+          <div class="field"><label>Pickup date</label><input type="date" id="oDate"></div>
+        </div>
+        <div class="field"><label>Quantity / notes</label><textarea id="oMsg" rows="3" placeholder="e.g. 2 sourdoughs + message on the cake…"></textarea></div>
+        <button type="submit" class="btn" style="width:100%;justify-content:center">Send Order Enquiry</button>
+        <div class="form-ok" id="orderOk">Shukriya! Your enquiry is with our bakers — we'll call you back to confirm.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h4>Ye Old Bakery</h4><p style="font-size:.92rem;max-width:320px">Baking the slow way at The Claridges, New Delhi — since 1982.</p></div>
+      <div><h4>Explore</h4><a href="#story">Our Story</a><a href="#bakes">Signatures</a><a href="#menu">Menu</a><a href="#love">Reviews</a></div>
+      <div><h4>Bakery</h4><a href="#visit">Order Enquiry</a><a href="#visit">Bulk & Wedding Orders</a><a href="#visit">Visit Us</a></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Ye Old Bakery, The Claridges, New Delhi.</span><span class="credit">Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<script>
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Seamless ticker */
+var tt = document.getElementById('tickerTrack');
+tt.innerHTML += tt.innerHTML;
+
+/* Nav */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+var burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('open'); }); });
+
+if(window.gsap && !reduced){
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Hero entrance */
+  gsap.timeline({defaults:{ease:'power3.out'}})
+    .from('.hero [data-hero] > *', {opacity:0, y:36, duration:.85, stagger:.13, delay:.15})
+    .from('.hero-art', {opacity:0, y:60, scale:.96, duration:1}, '-=.8')
+    .from('.stamp', {opacity:0, scale:.4, duration:.7, ease:'back.out(1.8)'}, '-=.5');
+
+  /* Gentle float on oven art */
+  gsap.to('.oven', {y:-12, duration:3.2, yoyo:true, repeat:-1, ease:'sine.inOut', delay:1.6});
+
+  /* Scroll reveals */
+  gsap.utils.toArray('[data-reveal]').forEach(function(el){
+    gsap.fromTo(el, {opacity:0, y:38}, {opacity:1, y:0, duration:.9, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 88%', toggleActions:'play none none reverse'}});
+  });
+
+  /* Polaroid scatter-in */
+  ScrollTrigger.batch('.polaroid', {start:'top 92%', onEnter:function(b){
+    gsap.fromTo(b, {opacity:0, y:60, rotation:function(i){return i%2? 8 : -8;}},
+      {opacity:1, y:0, rotation:function(i){return i%2? 1.4 : -1.6;}, duration:.8, stagger:.1, ease:'back.out(1.3)',
+      onComplete:function(){ b.forEach(function(card,i){ card.style.transform = ''; }); }});
+  }});
+
+  /* Timeline items slide from left */
+  gsap.utils.toArray('.t-item').forEach(function(el, i){
+    gsap.fromTo(el, {opacity:0, x:-40}, {opacity:1, x:0, duration:.8, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 88%', toggleActions:'play none none reverse'}});
+  });
+
+  /* Menu items shimmer in */
+  ScrollTrigger.batch('.mitem', {start:'top 94%', onEnter:function(b){
+    gsap.fromTo(b, {opacity:0, x:24}, {opacity:1, x:0, duration:.55, stagger:.06, ease:'power2.out'});
+  }});
+}
+
+/* Order form */
+var oDate = document.getElementById('oDate');
+oDate.min = new Date().toISOString().split('T')[0];
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('oName').value.trim();
+  var phone = document.getElementById('oPhone').value.trim();
+  if(!name){ document.getElementById('oName').focus(); return; }
+  if(!phone){ document.getElementById('oPhone').focus(); return; }
+  var ok = document.getElementById('orderOk');
+  ok.style.display = 'block';
+  if(window.gsap && !reduced) gsap.from(ok, {opacity:0, y:10, duration:.5, ease:'power2.out'});
+  this.querySelector('button[type=submit]').textContent = 'Enquiry Sent ✓';
+  ok.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'nearest'});
+});
+</script>
+</body>
+</html>

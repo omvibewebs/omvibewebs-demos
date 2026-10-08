@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WOW Beauty Salon — Dubai's Glow Destination | Dubai Mall · Nakheel Mall · Festival Plaza</title>
+<meta name="description" content="WOW Beauty Salon — luxury hair, nails, spa & bridal across Dubai Mall, Nakheel Mall and Festival Plaza. Book your glow online.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --blush:#F9E9E3; --blush2:#F5DCD3; --champ:#EACFA3; --plum:#4A2438; --plum2:#381A2B;
+         --rose:#D96C8A; --cream:#FFFAF6; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Outfit',sans-serif; background:var(--cream); color:var(--plum); overflow-x:hidden; }
+  .font-serif-d{ font-family:'Italiana',serif; }
+  ::selection{ background:var(--rose); color:#fff; }
+
+  .glass{ background:rgba(255,255,255,.55); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+          border:1px solid rgba(255,255,255,.7); }
+  .glass-dark{ background:rgba(74,36,56,.45); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+          border:1px solid rgba(255,255,255,.22); }
+
+  .float-a{ animation:floaty 8s ease-in-out infinite; }
+  .float-b{ animation:floaty 11s ease-in-out infinite reverse; }
+  @keyframes floaty{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-26px);} }
+
+  .marquee-track{ display:flex; width:max-content; animation:marquee 28s linear infinite; }
+  @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .mega{ font-size:clamp(3.4rem,10vw,9.5rem); line-height:.95; }
+
+  .svc{ transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s ease; }
+  .svc:hover{ transform:translateY(-10px) scale(1.015); box-shadow:0 34px 64px -24px rgba(217,108,138,.45); }
+
+  .slot{ transition:all .22s ease; cursor:pointer; }
+  .slot.active{ background:var(--plum); color:#fff; border-color:var(--plum); transform:scale(1.05); }
+
+  .reveal{ opacity:0; transform:translateY(42px); }
+  .magnetic{ will-change:transform; }
+  .btn-glow{ transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; }
+  .btn-glow:hover{ transform:translateY(-3px); box-shadow:0 18px 38px -12px rgba(217,108,138,.7); }
+
+  /* before/after slider */
+  .ba-wrap{ position:relative; overflow:hidden; border-radius:1.8rem; touch-action:none; }
+  .ba-after{ position:absolute; inset:0; clip-path:inset(0 0 0 50%); }
+  .ba-handle{ position:absolute; top:0; bottom:0; width:3px; background:#fff; left:50%; box-shadow:0 0 20px rgba(0,0,0,.3); }
+  .ba-knob{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px;
+            background:#fff; border-radius:9999px; display:grid; place-items:center; box-shadow:0 8px 24px rgba(0,0,0,.25); font-weight:800; color:var(--plum); }
+
+  input,select{ outline:none; }
+  input:focus,select:focus{ border-color:var(--rose) !important; box-shadow:0 0 0 3px rgba(217,108,138,.18); }
+
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track,.float-a,.float-b{ animation:none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 pt-4">
+    <div class="glass rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-lg">
+      <a href="#top" class="font-serif-d text-3xl tracking-wide">WOW<span style="color:var(--rose)">.</span></a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+        <a href="#services" class="hover:text-[#D96C8A] transition">Services</a>
+        <a href="#booking" class="hover:text-[#D96C8A] transition">Book</a>
+        <a href="#gallery" class="hover:text-[#D96C8A] transition">Transformations</a>
+        <a href="#branches" class="hover:text-[#D96C8A] transition">Branches</a>
+      </div>
+      <a href="#booking" class="btn-glow magnetic text-sm font-bold px-6 py-2.5 rounded-full text-white" style="background:var(--plum)">Book Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<header id="top" class="relative min-h-[100svh] flex items-center overflow-hidden pt-28 pb-16" style="background:linear-gradient(160deg,#F9E9E3 0%,#FFF9F5 55%,#F5DCD3 100%)">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="float-a absolute w-[420px] h-[420px] rounded-full -top-24 -right-24" style="background:radial-gradient(circle,#F2C9B8 0%,transparent 70%)"></div>
+    <div class="float-b absolute w-[360px] h-[360px] rounded-full bottom-0 -left-24" style="background:radial-gradient(circle,#EACFA3 0%,transparent 70%)"></div>
+    <div class="float-a absolute w-64 h-64 rounded-full top-1/3 left-1/2" style="background:radial-gradient(circle,#F7B9CD 0%,transparent 70%); animation-delay:2s"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 w-full relative grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="hero-el text-xs font-bold tracking-[.4em] uppercase" style="color:var(--rose)">Dubai · Est. glow experts</p>
+      <h1 class="hero-el font-serif-d mega mt-4">Glow like<br>you <em class="not-italic" style="color:var(--rose)">own</em><br>Dubai.</h1>
+      <p class="hero-el mt-6 text-lg font-light max-w-md" style="color:#6d4a5c">Hair, nails, spa & bridal artistry across three iconic malls. Walk in ordinary — float out <strong class="font-semibold">WOW</strong>.</p>
+      <div class="hero-el mt-8 flex flex-wrap gap-4">
+        <a href="#booking" class="btn-glow magnetic font-bold px-9 py-4 rounded-full text-white" style="background:var(--plum)">Book Appointment</a>
+        <a href="#services" class="magnetic font-bold px-9 py-4 rounded-full border-2" style="border-color:var(--plum)">Explore Services</a>
+      </div>
+      <div class="hero-el mt-10 flex gap-8">
+        <div><div class="font-serif-d text-4xl"><span class="counter" data-target="12">0</span>+</div><div class="text-xs font-bold tracking-widest uppercase" style="color:#6d4a5c">Years of artistry</div></div>
+        <div><div class="font-serif-d text-4xl"><span class="counter" data-target="98">0</span>k</div><div class="text-xs font-bold tracking-widest uppercase" style="color:#6d4a5c">Happy clients</div></div>
+        <div><div class="font-serif-d text-4xl">4.9★</div><div class="text-xs font-bold tracking-widest uppercase" style="color:#6d4a5c">Google rating</div></div>
+      </div>
+    </div>
+    <div class="hero-el relative">
+      <div class="glass rounded-[2.5rem] p-6 shadow-2xl rotate-2">
+        <div class="rounded-[2rem] h-80 md:h-96 relative overflow-hidden" style="background:linear-gradient(150deg,#F2C9B8,#EACFA3 60%,#D96C8A)">
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <circle cx="200" cy="170" r="70" fill="#8a5a3b" opacity=".85"/>
+            <path d="M130 170 q-10 120 25 160 M270 170 q10 120 -25 160" stroke="#5d3a24" stroke-width="26" fill="none" stroke-linecap="round"/>
+            <ellipse cx="200" cy="180" rx="52" ry="62" fill="#f6c9a0"/>
+            <path d="M148 170 q52 -70 104 0 q-8 -52 -52 -52 q-44 0 -52 52" fill="#5d3a24"/>
+            <circle cx="182" cy="182" r="5" fill="#4A2438"/><circle cx="218" cy="182" r="5" fill="#4A2438"/>
+            <path d="M185 208 q15 12 30 0" stroke="#B23A48" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="165" cy="200" r="8" fill="#F2A0B5" opacity=".6"/><circle cx="235" cy="200" r="8" fill="#F2A0B5" opacity=".6"/>
+            <rect x="120" y="300" width="160" height="200" rx="40" fill="#D96C8A"/>
+            <circle cx="200" cy="120" r="90" fill="#fff" opacity=".18"/>
+          </svg>
+          <div class="absolute bottom-5 left-5 right-5 glass rounded-2xl px-5 py-4 flex items-center justify-between">
+            <div><div class="font-bold text-sm">Signature Balayage</div><div class="text-xs font-medium" style="color:#6d4a5c">by Senior Stylist Aisha</div></div>
+            <div class="font-serif-d text-2xl" style="color:var(--rose)">AED 450</div>
+          </div>
+        </div>
+      </div>
+      <div class="float-b absolute -top-6 -left-4 glass rounded-2xl px-5 py-3 shadow-xl text-sm font-bold">★ 4.9 · 2,400+ reviews</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ MARQUEE ══════════ -->
+<div class="py-4 overflow-hidden" style="background:var(--plum)">
+  <div class="marquee-track font-serif-d text-2xl md:text-3xl text-white" id="marquee"></div>
+</div>
+
+<!-- ══════════ BENTO SERVICES ══════════ -->
+<section id="services" class="py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="reveal text-center max-w-2xl mx-auto">
+      <p class="text-xs font-bold tracking-[.4em] uppercase" style="color:var(--rose)">Services & pricing</p>
+      <h2 class="font-serif-d text-5xl md:text-7xl mt-4">The art of <em class="not-italic" style="color:var(--rose)">WOW</em></h2>
+      <p class="mt-4 text-lg font-light" style="color:#6d4a5c">Transparent pricing, master stylists, premium products. Tap any service to start booking it.</p>
+    </div>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5" id="svcGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ BOOKING ══════════ -->
+<section id="booking" class="py-20 md:py-28 relative overflow-hidden" style="background:linear-gradient(160deg,#4A2438,#2c1220)">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="float-a absolute w-[380px] h-[380px] rounded-full top-10 right-10" style="background:radial-gradient(circle,rgba(217,108,138,.35),transparent 70%)"></div>
+    <div class="float-b absolute w-[300px] h-[300px] rounded-full bottom-10 left-10" style="background:radial-gradient(circle,rgba(234,207,163,.3),transparent 70%)"></div>
+  </div>
+  <div class="max-w-5xl mx-auto px-5 relative">
+    <div class="reveal text-center">
+      <p class="text-xs font-bold tracking-[.4em] uppercase" style="color:var(--champ)">Reserve your chair</p>
+      <h2 class="font-serif-d text-5xl md:text-7xl mt-4 text-white">Book your glow</h2>
+      <p class="mt-4 text-white/70 font-light text-lg">Pick a service, a branch and a time — we'll confirm on WhatsApp within minutes.</p>
+    </div>
+
+    <div class="reveal mt-10 glass-dark rounded-[2.5rem] p-7 md:p-12 shadow-2xl">
+      <div id="bookForm">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="text-white/80 text-sm font-bold tracking-wide" for="bkService">SERVICE</label>
+            <select id="bkService" class="mt-2 w-full rounded-2xl px-5 py-4 font-semibold text-[#4A2438] bg-white/95 border-2 border-transparent"></select>
+          </div>
+          <div>
+            <label class="text-white/80 text-sm font-bold tracking-wide" for="bkBranch">BRANCH</label>
+            <select id="bkBranch" class="mt-2 w-full rounded-2xl px-5 py-4 font-semibold text-[#4A2438] bg-white/95 border-2 border-transparent">
+              <option>Dubai Mall — Fashion Ave, Level 2</option>
+              <option>Nakheel Mall — Palm Jumeirah, Level 1</option>
+              <option>Festival Plaza — Jebel Ali Village</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-white/80 text-sm font-bold tracking-wide" for="bkDate">DATE</label>
+            <input type="date" id="bkDate" class="mt-2 w-full rounded-2xl px-5 py-4 font-semibold text-[#4A2438] bg-white/95 border-2 border-transparent">
+          </div>
+          <div>
+            <label class="text-white/80 text-sm font-bold tracking-wide">TIME SLOT</label>
+            <div class="mt-2 flex flex-wrap gap-2" id="slotWrap"></div>
+          </div>
+          <div>
+            <label class="text-white/80 text-sm font-bold tracking-wide" for="bkName">YOUR NAME</label>
+            <input type="text" id="bkName" placeholder="e.g. Sara Ahmed" class="mt-2 w-full rounded-2xl px-5 py-4 font-semibold text-[#4A2438] bg-white/95 border-2 border-transparent">
+          </div>
+          <div>
+            <label class="text-white/80 text-sm font-bold tracking-wide" for="bkPhone">PHONE / WHATSAPP</label>
+            <input type="tel" id="bkPhone" placeholder="+971 ..." class="mt-2 w-full rounded-2xl px-5 py-4 font-semibold text-[#4A2438] bg-white/95 border-2 border-transparent">
+          </div>
+        </div>
+        <p id="bkError" class="hidden mt-5 text-sm font-bold" style="color:#F7B9CD"></p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-5">
+          <div class="text-white/80 font-medium">Estimated total: <span id="bkTotal" class="font-serif-d text-4xl text-white ml-2">AED 0</span></div>
+          <button id="bkSubmit" class="btn-glow magnetic font-bold text-lg px-12 py-4 rounded-full text-white" style="background:var(--rose)">Confirm Booking</button>
+        </div>
+      </div>
+      <div id="bookDone" class="hidden text-center py-10">
+        <div class="w-24 h-24 mx-auto rounded-full grid place-items-center" style="background:var(--champ)">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#4A2438" stroke-width="3" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>
+        </div>
+        <h3 class="font-serif-d text-4xl md:text-5xl text-white mt-6">You're booked, gorgeous.</h3>
+        <p class="text-white/75 text-lg font-light mt-3 max-w-md mx-auto">Thanks <span id="doneName" class="font-semibold text-white"></span>! <span id="doneSvc"></span> at <span id="doneBranch"></span>.</p>
+        <p class="mt-4 text-white/60 font-medium">Booking ref: <span id="doneRef" class="font-bold" style="color:var(--champ)"></span> · <span id="doneWhen"></span></p>
+        <button id="bookAgain" class="mt-8 font-bold px-8 py-3 rounded-full border-2 border-white/40 text-white">Make another booking</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BEFORE / AFTER GALLERY ══════════ -->
+<section id="gallery" class="py-20 md:py-28">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="reveal text-center max-w-2xl mx-auto">
+      <p class="text-xs font-bold tracking-[.4em] uppercase" style="color:var(--rose)">Transformations</p>
+      <h2 class="font-serif-d text-5xl md:text-7xl mt-4">Drag the <em class="not-italic" style="color:var(--rose)">magic</em></h2>
+      <p class="mt-4 text-lg font-light" style="color:#6d4a5c">Slide to see the WOW difference — real client transformations, styled in-salon.</p>
+    </div>
+    <div class="mt-10 grid md:grid-cols-2 gap-8">
+      <div class="reveal">
+        <div class="ba-wrap h-80 select-none" data-ba>
+          <div class="absolute inset-0" style="background:linear-gradient(150deg,#cbb8b0,#a08a80)">
+            <div class="absolute inset-0 grid place-items-center"><span class="font-serif-d text-3xl text-white/80">Before</span></div>
+          </div>
+          <div class="ba-after" style="background:linear-gradient(150deg,#F2C9B8,#EACFA3 55%,#D96C8A)">
+            <div class="absolute inset-0 grid place-items-center"><span class="font-serif-d text-3xl text-white">After · Balayage</span></div>
+            <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path d="M120 40 q-30 140 10 280 M200 30 q0 150 0 290 M280 40 q30 140 -10 280" stroke="#fff" stroke-width="14" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="ba-handle"><div class="ba-knob">↔</div></div>
+          <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full opacity-0 cursor-ew-resize" aria-label="Reveal before and after">
+        </div>
+        <p class="mt-3 font-bold">Caramel balayage <span class="font-medium" style="color:#6d4a5c">· Dubai Mall · AED 450</span></p>
+      </div>
+      <div class="reveal">
+        <div class="ba-wrap h-80 select-none" data-ba>
+          <div class="absolute inset-0" style="background:linear-gradient(150deg,#b9a89e,#8f7a6e)">
+            <div class="absolute inset-0 grid place-items-center"><span class="font-serif-d text-3xl text-white/80">Before</span></div>
+          </div>
+          <div class="ba-after" style="background:linear-gradient(150deg,#F7B9CD,#F5DCD3 55%,#EACFA3)">
+            <div class="absolute inset-0 grid place-items-center"><span class="font-serif-d text-3xl" style="color:var(--plum)">After · Bridal</span></div>
+            <svg class="absolute inset-0 w-full h-full opacity-25" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <circle cx="200" cy="140" r="70" fill="#fff"/><path d="M130 140 q70 -90 140 0" stroke="#D96C8A" stroke-width="10" fill="none"/>
+            </svg>
+          </div>
+          <div class="ba-handle"><div class="ba-knob">↔</div></div>
+          <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full opacity-0 cursor-ew-resize" aria-label="Reveal before and after">
+        </div>
+        <p class="mt-3 font-bold">Signature bridal glam <span class="font-medium" style="color:#6d4a5c">· Nakheel Mall · from AED 1,499</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BRANCHES ══════════ -->
+<section id="branches" class="py-20 md:py-28" style="background:var(--blush)">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="reveal text-center">
+      <p class="text-xs font-bold tracking-[.4em] uppercase" style="color:var(--rose)">Visit us</p>
+      <h2 class="font-serif-d text-5xl md:text-7xl mt-4">Three icons, one glow</h2>
+    </div>
+    <div class="mt-12 grid md:grid-cols-3 gap-6" id="branchGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS MARQUEE ══════════ -->
+<section class="py-16 overflow-hidden">
+  <div class="reveal text-center mb-8"><h2 class="font-serif-d text-4xl md:text-5xl">Loved across Dubai</h2></div>
+  <div class="marquee-track gap-6 px-3" id="revTrack" style="animation-duration:40s"></div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="pt-14 pb-8 px-5" style="background:var(--plum); color:#fff">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="font-serif-d text-4xl">WOW<span style="color:var(--rose)">.</span></div>
+      <p class="mt-4 text-white/65 font-light max-w-sm">Dubai's glow destination for hair, nails, spa & bridal. Three iconic locations, one promise — you'll leave saying wow.</p>
+    </div>
+    <div>
+      <div class="text-xs font-bold tracking-[.3em]" style="color:var(--champ)">BRANCHES</div>
+      <p class="mt-3 text-white/65 font-light text-sm leading-loose">Dubai Mall · Fashion Ave L2<br>Nakheel Mall · Palm Jumeirah L1<br>Festival Plaza · Jebel Ali</p>
+    </div>
+    <div>
+      <div class="text-xs font-bold tracking-[.3em]" style="color:var(--champ)">HOURS</div>
+      <p class="mt-3 text-white/65 font-light text-sm leading-loose">Daily · 10 AM – 10 PM<br>+971 4 000 1234<br>hello@wowsalon.example</p>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/15 flex flex-col md:flex-row justify-between gap-3 text-sm text-white/55">
+    <span>© 2026 WOW Beauty Salon, Dubai. All rights reserved.</span>
+    <span class="text-xs opacity-70">Concept demo by Om Vibe Webs</span>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- DATA ---------- */
+const IC = (paths, dark) => `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="${dark?'#fff':'#4A2438'}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+const SERVICES = [
+  { name:'Signature Haircut', price:120, unit:'', bg:'linear-gradient(135deg,#F2C9B8,#EACFA3)',
+    svg: IC('<circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M8.2 7.6 20 19M8.2 16.4 20 5"/>'),
+    desc:'Precision cut, wash & blowout by senior stylists.', dark:false },
+  { name:'Balayage / Highlights', price:450, unit:'from', bg:'linear-gradient(135deg,#EACFA3,#D96C8A)',
+    svg: IC('<path d="M7 3v18M12 5v14M17 7v10"/><path d="M4 8c4 2 12 2 16 0"/>'),
+    desc:'Hand-painted dimension, gloss finish, Olaplex care.', dark:false },
+  { name:'Gel Manicure', price:130, unit:'', bg:'linear-gradient(135deg,#F7B9CD,#F5DCD3)',
+    svg: IC('<path d="M8 21V10a4 4 0 0 1 8 0v11"/><path d="M8 14h8"/><circle cx="12" cy="7" r="1.4" fill="#4A2438"/>'),
+    desc:'Chip-proof gel, cuticle ritual, 60+ shades.', dark:false },
+  { name:'Royal Moroccan Bath', price:280, unit:'', bg:'linear-gradient(135deg,#F5DCD3,#EACFA3)',
+    svg: IC('<path d="M4 13h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2z"/><path d="M8 13V6a4 4 0 0 1 8 0"/>'),
+    desc:'Steam, black soap, kessa glow scrub & argan massage.', dark:false },
+  { name:'Bridal Couture', price:1499, unit:'from', bg:'linear-gradient(135deg,#4A2438,#7a3a56)',
+    svg: IC('<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>', true),
+    desc:'Trial + wedding day hair & makeup, on-location team.', dark:true },
+  { name:'HydraFacial Deluxe', price:350, unit:'', bg:'linear-gradient(135deg,#F9E9E3,#F7B9CD)',
+    svg: IC('<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/>'),
+    desc:'Deep cleanse, exfoliation & red-carpet radiance.', dark:false },
+  { name:'Keratin Silk', price:550, unit:'from', bg:'linear-gradient(135deg,#EACFA3,#F2C9B8)',
+    svg: IC('<path d="M6 4c0 6 12 6 12 12M6 4c0 6-2 8-2 12M18 4c0 8 2 10 0 16"/>'),
+    desc:'Frizz-free glass hair for up to 5 months.', dark:false },
+  { name:'Pedicure Ritual', price:150, unit:'', bg:'linear-gradient(135deg,#F5DCD3,#F9E9E3)',
+    svg: IC('<circle cx="12" cy="12" r="3"/><path d="M12 9V4M12 20v-5M9 12H4M20 12h-5M10 5.5 7 3M17 3l-3 2.5M10 18.5 7 21M17 21l-3-2.5"/>'),
+    desc:'Soak, scrub, massage & perfect polish.', dark:false },
+];
+const SLOTS = ['10:00 AM','11:30 AM','1:00 PM','2:30 PM','4:00 PM','5:30 PM','7:00 PM','8:30 PM'];
+let chosenSlot = SLOTS[3];
+
+/* ---------- MARQUEE ---------- */
+const mItems = ['HAIR','✦','NAILS','✦','SPA','✦','BRIDAL','✦','FACIALS','✦','DUBAI MALL','✦','NAKHEEL MALL','✦','FESTIVAL PLAZA','✦'];
+document.getElementById('marquee').innerHTML =
+  `<div class="flex shrink-0">${mItems.map(t=>`<span class="whitespace-nowrap px-5">${t}</span>`).join('')}</div>`.repeat(2);
+
+/* ---------- SERVICES GRID ---------- */
+const svcGrid = document.getElementById('svcGrid');
+svcGrid.innerHTML = SERVICES.map((s,i)=>`
+  <article class="svc reveal rounded-[1.8rem] p-7 flex flex-col min-h-[240px] ${s.dark?'text-white':''}" style="background:${s.bg}">
+    <div>${s.svg}</div>
+    <h3 class="font-serif-d text-3xl mt-4 leading-tight">${s.name}</h3>
+    <p class="text-sm font-medium mt-2 flex-1 ${s.dark?'text-white/75':'opacity-70'}">${s.desc}</p>
+    <div class="mt-4 flex items-center justify-between">
+      <span class="font-serif-d text-2xl">${s.unit?'<span class="text-base">from </span>':''}AED ${s.price.toLocaleString()}</span>
+      <button class="svc-book text-xs font-bold px-4 py-2 rounded-full ${s.dark?'bg-white text-[#4A2438]':'text-white'}" data-s="${s.name}" style="${s.dark?'':'background:var(--plum)'}">BOOK</button>
+    </div>
+  </article>`).join('');
+
+/* ---------- BOOKING ---------- */
+const bkService = document.getElementById('bkService');
+bkService.innerHTML = SERVICES.map(s=>`<option value="${s.name}|${s.price}">${s.name} — AED ${s.price.toLocaleString()}${s.unit?' +':''}</option>`).join('');
+bkService.addEventListener('change', updateTotal);
+
+const slotWrap = document.getElementById('slotWrap');
+function renderSlots(){
+  slotWrap.innerHTML = SLOTS.map(s=>`<button type="button" class="slot text-sm font-bold px-4 py-2 rounded-full border-2 border-white/30 text-white ${s===chosenSlot?'active':''}">${s}</button>`).join('');
+  slotWrap.querySelectorAll('.slot').forEach(b=>b.addEventListener('click',()=>{ chosenSlot=b.textContent; renderSlots(); }));
+}
+renderSlots();
+
+const bkDate = document.getElementById('bkDate');
+bkDate.min = new Date().toISOString().split('T')[0];
+bkDate.value = bkDate.min;
+
+function updateTotal(){
+  const price = +bkService.value.split('|')[1];
+  const el = document.getElementById('bkTotal');
+  if(!reduced){ gsap.fromTo(el,{scale:1.25},{scale:1,duration:.4,ease:'back.out(2)'}); }
+  el.textContent = 'AED ' + price.toLocaleString();
+}
+updateTotal();
+
+document.querySelectorAll('.svc-book').forEach(b=>b.addEventListener('click',()=>{
+  bkService.value = SERVICES.find(s=>s.name===b.dataset.s).name + '|' + SERVICES.find(s=>s.name===b.dataset.s).price;
+  updateTotal();
+  document.getElementById('booking').scrollIntoView({behavior: reduced?'auto':'smooth'});
+}));
+
+document.getElementById('bkSubmit').addEventListener('click',()=>{
+  const name = document.getElementById('bkName').value.trim();
+  const phone = document.getElementById('bkPhone').value.trim();
+  const err = document.getElementById('bkError');
+  if(!name || phone.replace(/\D/g,'').length < 7 || !bkDate.value){
+    err.textContent = 'Please add your name, a valid phone number and a date.';
+    err.classList.remove('hidden');
+    if(!reduced) gsap.fromTo('#bkSubmit',{x:-10},{x:0,duration:.5,ease:'elastic.out(1,.3)'});
+    return;
+  }
+  err.classList.add('hidden');
+  const [sName] = bkService.value.split('|');
+  document.getElementById('doneName').textContent = name.split(' ')[0];
+  document.getElementById('doneSvc').textContent = sName;
+  document.getElementById('doneBranch').textContent = document.getElementById('bkBranch').value.split(' — ')[0];
+  document.getElementById('doneRef').textContent = 'WOW-' + Math.random().toString(36).slice(2,8).toUpperCase();
+  document.getElementById('doneWhen').textContent = bkDate.value + ' · ' + chosenSlot;
+  document.getElementById('bookForm').classList.add('hidden');
+  const done = document.getElementById('bookDone');
+  done.classList.remove('hidden');
+  if(!reduced) gsap.from(done,{opacity:0,y:30,duration:.6,ease:'power3.out'});
+});
+document.getElementById('bookAgain').addEventListener('click',()=>{
+  document.getElementById('bookDone').classList.add('hidden');
+  document.getElementById('bookForm').classList.remove('hidden');
+});
+
+/* ---------- BRANCHES ---------- */
+const BRANCHES = [
+  { name:'Dubai Mall', loc:'Fashion Avenue, Level 2', hrs:'10 AM – 10 PM',
+    note:'Our flagship — 22 chairs, private bridal suite, valet at Fashion Ave.' },
+  { name:'Nakheel Mall', loc:'Palm Jumeirah, Level 1', hrs:'10 AM – 10 PM',
+    note:'Palm views, express lunch-hour services, cabana pedicure lounge.' },
+  { name:'Festival Plaza', loc:'Jebel Ali Village', hrs:'10 AM – 9 PM',
+    note:'Family-friendly, kids corner, free parking right outside.' },
+];
+document.getElementById('branchGrid').innerHTML = BRANCHES.map(b=>`
+  <article class="reveal glass rounded-[2rem] p-8 shadow-lg hover:-translate-y-2 transition-transform duration-300">
+    <div class="font-serif-d text-3xl">${b.name}</div>
+    <div class="text-sm font-bold mt-1" style="color:var(--rose)">${b.loc}</div>
+    <p class="mt-3 font-light" style="color:#6d4a5c">${b.note}</p>
+    <div class="mt-5 pt-5 border-t border-[#4A2438]/10 flex items-center justify-between">
+      <span class="text-sm font-bold">${b.hrs}</span>
+      <a href="#booking" class="text-sm font-bold" style="color:var(--rose)">Book here →</a>
+    </div>
+  </article>`).join('');
+
+/* ---------- REVIEWS ---------- */
+const REVIEWS = [
+  ['The balayage here ruined every other salon for me. Aisha is a genius.','Mariam K.','Dubai Mall'],
+  ['Booked bridal for my whole family. Calm, punctual, flawless makeup.','Priya R.','Nakheel Mall'],
+  ['Moroccan bath left my skin like silk. The steam room smells divine.','Lina S.','Festival Plaza'],
+  ['Gel mani still perfect after 3 weeks. Best nail artists in Dubai.','Fatima A.','Dubai Mall'],
+  ['Walked in stressed, floated out glowing. The head massage alone…','Elena V.','Nakheel Mall'],
+];
+document.getElementById('revTrack').innerHTML =
+  `<div class="flex shrink-0 gap-6 pr-6">${REVIEWS.map(r=>`
+    <div class="glass w-80 shrink-0 rounded-3xl p-6 shadow">
+      <div style="color:var(--rose)">★★★★★</div>
+      <p class="font-serif-d text-xl mt-2 leading-snug">“${r[0]}”</p>
+      <p class="mt-3 text-sm font-bold">${r[1]} <span class="font-medium" style="color:#6d4a5c">· ${r[2]}</span></p>
+    </div>`).join('')}</div>`.repeat(2);
+
+/* ---------- BEFORE/AFTER ---------- */
+document.querySelectorAll('[data-ba]').forEach(wrap=>{
+  const range = wrap.querySelector('input[type=range]');
+  const after = wrap.querySelector('.ba-after');
+  const handle = wrap.querySelector('.ba-handle');
+  const set = v => { after.style.clipPath = `inset(0 0 0 ${v}%)`; handle.style.left = v + '%'; };
+  range.addEventListener('input', ()=>set(range.value));
+  set(50);
+});
+
+/* ---------- MOTION ---------- */
+if(!reduced){
+  gsap.from('.hero-el',{y:56,opacity:0,duration:1,stagger:.12,ease:'power3.out',delay:.1});
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  gsap.utils.toArray('.counter').forEach(el=>{
+    const target=+el.dataset.target;
+    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,
+      onEnter:()=>gsap.fromTo(el,{innerText:0},{innerText:target,duration:1.6,snap:{innerText:1},ease:'power2.out'})});
+  });
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*.22,y:(e.clientY-r.top-r.height/2)*.22,duration:.3});
+    });
+    btn.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'}));
+  });
+} else {
+  document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
+  document.querySelectorAll('.counter').forEach(el=>el.textContent=el.dataset.target);
+}
+</script>
+</body>
+</html>
