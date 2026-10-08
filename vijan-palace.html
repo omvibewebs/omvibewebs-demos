@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Vijan Palace — Jabalpur</title>
+<meta name="description" content="Hotel Vijan Palace — Jabalpur's landmark hotel, restaurant & banquet destination near Karamchand Chowk.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1128; --charcoal:#101828; --ink:#050914;
+  --gold:#d4af37; --champagne:#f0d98c; --cream:#f7f1e3;
+}
+*{ -webkit-tap-highlight-color:transparent; }
+html{ scroll-behavior:smooth; }
+body{ background:var(--ink); color:var(--cream); font-family:'Jost',sans-serif; overflow-x:hidden; }
+.serif{ font-family:'Cormorant Garamond',serif; }
+::selection{ background:var(--gold); color:var(--ink); }
+::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:var(--ink); }
+::-webkit-scrollbar-thumb{ background:linear-gradient(var(--gold),#8a6d1f); border-radius:8px; }
+
+/* ---------- Preloader ---------- */
+#preloader{ position:fixed; inset:0; z-index:100; background:radial-gradient(ellipse at center,#0d1630 0%,#050914 70%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity .9s ease, visibility .9s; }
+#preloader.done{ opacity:0; visibility:hidden; }
+.mono-ring{ width:110px; height:110px; border:1px solid rgba(212,175,55,.35); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; position:relative;
+  animation:ringspin 6s linear infinite; }
+.mono-ring::before{ content:''; position:absolute; inset:-9px; border:1px solid transparent;
+  border-top-color:var(--gold); border-radius:50%; animation:ringspin 1.6s linear infinite; }
+@keyframes ringspin{ to{ transform:rotate(360deg);} }
+.mono-vp{ font-family:'Cormorant Garamond',serif; font-size:2.6rem; color:var(--gold); letter-spacing:.1em; animation:ringspin 6s linear infinite reverse; }
+#loadpct{ margin-top:26px; font-size:.75rem; letter-spacing:.45em; color:rgba(240,217,140,.7); text-transform:uppercase; }
+
+/* ---------- Cursor glow ---------- */
+#cursor{ position:fixed; width:340px; height:340px; border-radius:50%; pointer-events:none; z-index:1;
+  background:radial-gradient(circle, rgba(212,175,55,.09) 0%, transparent 65%); transform:translate(-50%,-50%); }
+
+/* ---------- Nav ---------- */
+#nav{ position:fixed; top:0; left:0; right:0; z-index:50; transition:all .45s ease; }
+#nav.scrolled{ background:rgba(5,9,20,.88); backdrop-filter:blur(14px); border-bottom:1px solid rgba(212,175,55,.22); }
+.nav-link{ position:relative; letter-spacing:.22em; font-size:.72rem; text-transform:uppercase; color:rgba(247,241,227,.82); transition:color .3s; }
+.nav-link::after{ content:''; position:absolute; left:0; bottom:-6px; width:0; height:1px; background:var(--gold); transition:width .35s; }
+.nav-link:hover{ color:var(--champagne);} .nav-link:hover::after{ width:100%; }
+
+/* ---------- Hero ---------- */
+.hero-sky{ position:absolute; inset:0;
+  background:linear-gradient(180deg,#050914 0%, #0a1430 34%, #16224d 52%, #3a2b52 66%, #8a4b3a 78%, #d98a4b 88%, #f0c060 96%); }
+.hero-sun{ position:absolute; left:50%; bottom:6%; width:180px; height:180px; margin-left:-90px; border-radius:50%;
+  background:radial-gradient(circle,#ffe9b0 0%, #f5c95c 38%, rgba(245,201,92,.55) 60%, transparent 72%);
+  box-shadow:0 0 120px 40px rgba(245,180,80,.35); animation:sunpulse 5s ease-in-out infinite; }
+@keyframes sunpulse{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.07);} }
+.star{ position:absolute; width:2px; height:2px; background:#fff; border-radius:50%; animation:twinkle 3s ease-in-out infinite; }
+@keyframes twinkle{ 0%,100%{ opacity:.15;} 50%{ opacity:.95;} }
+.skyline{ position:absolute; bottom:0; left:0; right:0; height:46%; }
+.water{ position:absolute; bottom:0; left:0; right:0; height:16%;
+  background:linear-gradient(180deg, rgba(240,192,96,.28), rgba(10,20,48,.0) 30%, rgba(6,10,24,.9));
+  overflow:hidden; }
+.water::before{ content:''; position:absolute; inset:0;
+  background:repeating-linear-gradient(178deg, transparent 0 14px, rgba(240,217,140,.10) 14px 15px);
+  animation:ripple 7s linear infinite; }
+@keyframes ripple{ to{ transform:translateY(28px);} }
+.hero-title{ font-size:clamp(3rem,9vw,7.5rem); line-height:.95; }
+.shimmer{ background:linear-gradient(110deg,#8a6d1f 20%, var(--champagne) 40%, #fff8e0 50%, var(--champagne) 60%, #8a6d1f 80%);
+  background-size:220% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:shimmer 5.5s linear infinite; }
+@keyframes shimmer{ to{ background-position:220% center;} }
+.gold-line{ height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.scroll-hint{ width:26px; height:44px; border:1.5px solid rgba(240,217,140,.6); border-radius:14px; position:relative; }
+.scroll-hint::after{ content:''; position:absolute; left:50%; top:8px; width:4px; height:9px; margin-left:-2px;
+  border-radius:4px; background:var(--champagne); animation:wheel 1.8s ease-in-out infinite; }
+@keyframes wheel{ 0%{ transform:translateY(0); opacity:1;} 70%{ transform:translateY(14px); opacity:0;} 100%{ opacity:0;} }
+
+/* ---------- Marquee ---------- */
+.marquee{ overflow:hidden; white-space:nowrap; }
+.marquee-track{ display:inline-block; animation:marq 26s linear infinite; }
+@keyframes marq{ to{ transform:translateX(-50%);} }
+
+/* ---------- Cards ---------- */
+.room-card{ transform-style:preserve-3d; transition:box-shadow .4s; background:linear-gradient(160deg,#101a38,#0a1128);
+  border:1px solid rgba(212,175,55,.25); }
+.room-card:hover{ box-shadow:0 30px 60px -18px rgba(212,175,55,.35); }
+.room-art{ height:190px; position:relative; overflow:hidden; }
+.float-badge{ animation:floaty 4.5s ease-in-out infinite; }
+@keyframes floaty{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-9px);} }
+
+/* ---------- Gallery ---------- */
+.g-item{ position:relative; overflow:hidden; border:1px solid rgba(212,175,55,.2); }
+.g-item .g-zoom{ transition:transform 1.1s cubic-bezier(.2,.7,.2,1); }
+.g-item:hover .g-zoom{ transform:scale(1.12); }
+.g-item::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(5,9,20,.85)); opacity:.9; }
+
+/* ---------- Testimonials ---------- */
+.t-slide{ position:absolute; inset:0; opacity:0; transform:translateY(24px); transition:all .8s ease; pointer-events:none; }
+.t-slide.active{ opacity:1; transform:translateY(0); pointer-events:auto; }
+.t-dot{ width:9px; height:9px; border-radius:50%; background:rgba(212,175,55,.3); cursor:pointer; transition:all .3s; }
+.t-dot.active{ background:var(--gold); transform:scale(1.35); }
+
+/* ---------- Form ---------- */
+.field{ background:rgba(255,255,255,.04); border:1px solid rgba(212,175,55,.3); color:var(--cream);
+  padding:.9rem 1.1rem; width:100%; border-radius:.35rem; outline:none; transition:border .3s, box-shadow .3s; font-size:.95rem;}
+.field:focus{ border-color:var(--gold); box-shadow:0 0 0 3px rgba(212,175,55,.15); }
+.field option{ background:#0a1128; }
+.btn-gold{ background:linear-gradient(120deg,#b8912c,var(--gold) 45%,#f0d98c 55%,var(--gold)); background-size:220% auto;
+  color:#0a1128; font-weight:600; letter-spacing:.18em; transition:all .4s; }
+.btn-gold:hover{ background-position:right center; transform:translateY(-2px); box-shadow:0 14px 34px -10px rgba(212,175,55,.55); }
+#formSuccess{ display:none; }
+#formSuccess.show{ display:flex; animation:popin .6s cubic-bezier(.2,1.4,.4,1); }
+@keyframes popin{ from{ transform:scale(.7); opacity:0;} to{ transform:scale(1); opacity:1;} }
+.check-ring{ stroke-dasharray:200; stroke-dashoffset:200; animation:draw 1s .2s ease forwards; }
+.check-mark{ stroke-dasharray:60; stroke-dashoffset:60; animation:draw .5s .9s ease forwards; }
+@keyframes draw{ to{ stroke-dashoffset:0;} }
+
+/* ---------- Misc ---------- */
+.reveal{ opacity:0; }
+.sec-label{ letter-spacing:.5em; font-size:.68rem; text-transform:uppercase; color:var(--gold); }
+.hall-row{ border-bottom:1px solid rgba(212,175,55,.18); transition:all .4s; cursor:default; }
+.hall-row:hover{ background:rgba(212,175,55,.07); padding-left:1.4rem; }
+.hall-row:hover .hall-name{ color:var(--champagne); }
+#waFloat{ position:fixed; right:22px; bottom:22px; z-index:60; width:60px; height:60px; border-radius:50%;
+  background:#22c15e; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 30px -6px rgba(34,193,94,.6); animation:wapulse 2.4s infinite; transition:transform .3s; }
+#waFloat:hover{ transform:scale(1.1) rotate(6deg); }
+@keyframes wapulse{ 0%{ box-shadow:0 0 0 0 rgba(34,193,94,.5);} 70%{ box-shadow:0 0 0 18px rgba(34,193,94,0);} 100%{ box-shadow:0 0 0 0 rgba(34,193,94,0);} }
+#particles{ position:fixed; inset:0; z-index:2; pointer-events:none; }
+.grain{ position:fixed; inset:0; z-index:3; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<canvas id="particles"></canvas>
+<div class="grain"></div>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="mono-ring"><span class="mono-vp">V·P</span></div>
+  <div id="loadpct">0%</div>
+  <div class="serif" style="margin-top:14px; letter-spacing:.35em; font-size:.8rem; color:rgba(247,241,227,.55)">HOTEL VIJAN PALACE</div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="serif text-2xl" style="color:var(--gold)">V·P</span>
+      <span class="hidden sm:block"><span class="serif text-lg tracking-widest">VIJAN PALACE</span><br>
+      <span class="text-[.6rem] tracking-[.4em]" style="color:rgba(240,217,140,.6)">JABALPUR</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-9">
+      <a class="nav-link" href="#rooms">Rooms</a>
+      <a class="nav-link" href="#banquets">Banquets</a>
+      <a class="nav-link" href="#dining">Dining</a>
+      <a class="nav-link" href="#gallery">Gallery</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
+    <a href="#booking" class="btn-gold text-xs px-6 py-3 rounded-sm uppercase">Book Now</a>
+    <button id="menuBtn" class="md:hidden text-2xl" style="color:var(--champagne)">☰</button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden px-6 pb-6 flex flex-col gap-4" style="background:rgba(5,9,20,.95)">
+    <a class="nav-link" href="#rooms">Rooms</a><a class="nav-link" href="#banquets">Banquets</a>
+    <a class="nav-link" href="#dining">Dining</a><a class="nav-link" href="#gallery">Gallery</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="relative min-h-screen flex items-end overflow-hidden">
+  <div class="hero-sky" data-parallax="0.25"></div>
+  <div id="stars" class="absolute inset-0" data-parallax="0.12"></div>
+  <div class="hero-sun" data-parallax="0.4"></div>
+  <!-- skyline silhouette -->
+  <svg class="skyline" data-parallax="0.55" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
+    <path fill="#0a1128" d="M0,320 L0,210 L60,210 L60,170 L120,170 L120,230 L200,230 L200,140 L230,140 L230,110 L250,110 L250,140 L280,140 L280,240 L360,240 L360,190 L430,190 L430,150 L470,150 L470,190 L540,190 L540,120 L575,120 L575,80 L600,80 L600,120 L635,120 L635,200 L720,200 L720,160 L800,160 L800,220 L880,220 L880,130 L915,130 L915,95 L940,95 L940,130 L975,130 L975,210 L1060,210 L1060,175 L1140,175 L1140,235 L1220,235 L1220,150 L1260,150 L1260,115 L1285,115 L1285,150 L1320,150 L1320,200 L1440,200 L1440,320 Z"/>
+    <g fill="#f0d98c" opacity=".85">
+      <rect x="215" y="155" width="8" height="10"/><rect x="235" y="180" width="8" height="10"/><rect x="555" y="135" width="9" height="11"/>
+      <rect x="590" y="140" width="9" height="11"/><rect x="895" y="145" width="9" height="11"/><rect x="1235" y="165" width="9" height="11"/>
+      <rect x="375" y="205" width="8" height="10"/><rect x="735" y="175" width="8" height="10"/>
+    </g>
+  </svg>
+  <!-- hotel silhouette front -->
+  <svg class="skyline" data-parallax="0.7" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" style="height:34%">
+    <path fill="#050914" d="M480,320 L480,120 L520,120 L520,90 L560,90 L560,60 L600,60 L600,90 L640,90 L640,120 L680,120 L680,320 Z"/>
+    <path fill="#050914" d="M560,60 L600,30 L640,60 Z"/>
+    <g fill="#ffd977" opacity=".9">
+      <rect x="500" y="150" width="14" height="18"/><rect x="526" y="150" width="14" height="18"/><rect x="552" y="150" width="14" height="18"/>
+      <rect x="578" y="150" width="14" height="18"/><rect x="604" y="150" width="14" height="18"/><rect x="630" y="150" width="14" height="18"/>
+      <rect x="500" y="190" width="14" height="18"/><rect x="552" y="190" width="14" height="18"/><rect x="604" y="190" width="14" height="18"/>
+      <rect x="500" y="230" width="14" height="18"/><rect x="578" y="230" width="14" height="18"/><rect x="630" y="230" width="14" height="18"/>
+    </g>
+  </svg>
+  <div class="water" data-parallax="0.85"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-28 pt-40" data-parallax="0.15">
+    <p class="hero-el sec-label mb-6">Jabalpur's Landmark of Hospitality</p>
+    <h1 class="hero-el serif hero-title shimmer">Hotel<br>Vijan Palace</h1>
+    <div class="hero-el gold-line my-8 max-w-md"></div>
+    <p class="hero-el max-w-xl text-lg font-light leading-relaxed" style="color:rgba(247,241,227,.85)">
+      Where the city comes to celebrate — elegant stays, legendary dining at Gulmohur,
+      and grand banquets near Karamchand Chowk, in the heart of Jabalpur.
+    </p>
+    <div class="hero-el flex flex-wrap gap-5 mt-10">
+      <a href="#booking" class="btn-gold px-9 py-4 rounded-sm text-sm uppercase">Reserve Your Stay</a>
+      <a href="#banquets" class="px-9 py-4 rounded-sm text-sm uppercase tracking-[.18em] border"
+         style="border-color:rgba(212,175,55,.5); color:var(--champagne)">Explore Banquets</a>
+    </div>
+    <div class="hero-el flex items-center gap-4 mt-14 text-sm" style="color:rgba(240,217,140,.75)">
+      <span class="text-xl" style="color:var(--gold)">★ ★ ★ ★ ★</span>
+      <span class="tracking-widest">8,800+ GUEST REVIEWS</span>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3">
+    <div class="scroll-hint"></div>
+    <span class="text-[.6rem] tracking-[.4em]" style="color:rgba(240,217,140,.6)">SCROLL</span>
+  </div>
+</header>
+<!-- Marquee -->
+<div class="marquee py-5 border-y" style="border-color:rgba(212,175,55,.25); background:rgba(212,175,55,.05)">
+  <div class="marquee-track serif text-xl tracking-[.3em]" style="color:var(--champagne)">
+    <span class="mx-8">LUXURY STAYS</span>✦<span class="mx-8">GULMOHUR RESTAURANT</span>✦<span class="mx-8">GRAND BANQUETS</span>✦<span class="mx-8">WEDDINGS</span>✦<span class="mx-8">CORPORATE EVENTS</span>✦
+    <span class="mx-8">LUXURY STAYS</span>✦<span class="mx-8">GULMOHUR RESTAURANT</span>✦<span class="mx-8">GRAND BANQUETS</span>✦<span class="mx-8">WEDDINGS</span>✦<span class="mx-8">CORPORATE EVENTS</span>✦
+  </div>
+</div>
+
+<!-- Stats -->
+<section class="relative py-24">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+    <div class="reveal"><div class="serif text-5xl md:text-6xl shimmer"><span class="counter" data-target="60">0</span>+</div>
+      <div class="gold-line my-4 w-16 mx-auto"></div><p class="text-sm tracking-[.25em] uppercase" style="color:rgba(247,241,227,.6)">Elegant Rooms</p></div>
+    <div class="reveal"><div class="serif text-5xl md:text-6xl shimmer"><span class="counter" data-target="1200">0</span>+</div>
+      <div class="gold-line my-4 w-16 mx-auto"></div><p class="text-sm tracking-[.25em] uppercase" style="color:rgba(247,241,227,.6)">Banquet Guests</p></div>
+    <div class="reveal"><div class="serif text-5xl md:text-6xl shimmer"><span class="counter" data-target="8800">0</span>+</div>
+      <div class="gold-line my-4 w-16 mx-auto"></div><p class="text-sm tracking-[.25em] uppercase" style="color:rgba(247,241,227,.6)">Guest Reviews</p></div>
+    <div class="reveal"><div class="serif text-5xl md:text-6xl shimmer"><span class="counter" data-target="25">0</span>+</div>
+      <div class="gold-line my-4 w-16 mx-auto"></div><p class="text-sm tracking-[.25em] uppercase" style="color:rgba(247,241,227,.6)">Years of Legacy</p></div>
+  </div>
+</section>
+
+<!-- Rooms -->
+<section id="rooms" class="relative py-24" style="background:linear-gradient(180deg,transparent,#0a1128 20%,#0a1128 80%,transparent)">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="reveal sec-label text-center mb-4">Stay in Comfort</p>
+    <h2 class="reveal serif text-4xl md:text-6xl text-center mb-4">Rooms <span class="italic" style="color:var(--champagne)">&</span> Suites</h2>
+    <div class="reveal gold-line w-40 mx-auto my-8"></div>
+    <p class="reveal text-center max-w-2xl mx-auto font-light mb-16" style="color:rgba(247,241,227,.7)">
+      Thoughtfully designed rooms with plush bedding, modern amenities and warm hospitality —
+      your peaceful retreat in the middle of the city.</p>
+
+    <div class="grid md:grid-cols-3 gap-8" style="perspective:1200px">
+      <!-- Deluxe -->
+      <div class="reveal room-card tilt rounded-md overflow-hidden">
+        <div class="room-art" style="background:linear-gradient(150deg,#1b2a5e,#0d1630 60%,#3a2b52)">
+          <svg viewBox="0 0 400 190" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+            <rect x="60" y="60" width="280" height="110" rx="8" fill="#0a1128" stroke="#d4af37" stroke-width="1.5" opacity=".9"/>
+            <rect x="75" y="45" width="250" height="30" rx="6" fill="#16224d"/>
+            <rect x="90" y="95" width="90" height="55" rx="4" fill="#f0d98c" opacity=".85"/>
+            <rect x="195" y="95" width="90" height="55" rx="4" fill="#f0d98c" opacity=".55"/>
+            <circle cx="330" cy="45" r="22" fill="#f5c95c" opacity=".8"/>
+            <rect x="0" y="170" width="400" height="20" fill="#050914" opacity=".6"/>
+          </svg>
+          <span class="float-badge absolute top-4 right-4 text-[.65rem] tracking-[.25em] px-4 py-2 rounded-full"
+                style="background:rgba(212,175,55,.15); border:1px solid rgba(212,175,55,.5); color:var(--champagne)">MOST LOVED</span>
+        </div>
+        <div class="p-8">
+          <h3 class="serif text-3xl mb-2" style="color:var(--champagne)">Deluxe Room</h3>
+          <p class="text-sm font-light mb-6" style="color:rgba(247,241,227,.65)">Cozy elegance · City view · King / Twin beds</p>
+          <ul class="text-sm space-y-2 font-light mb-8" style="color:rgba(247,241,227,.75)">
+            <li>✦ High-speed Wi-Fi & Smart TV</li><li>✦ Premium toiletries</li><li>✦ 24-hr room service</li>
+          </ul>
+          <a href="#booking" class="nav-link" style="color:var(--gold)">Reserve →</a>
+        </div>
+      </div>
+      <!-- Executive -->
+      <div class="reveal room-card tilt rounded-md overflow-hidden">
+        <div class="room-art" style="background:linear-gradient(150deg,#24305e,#0d1630 55%,#5e3a2b)">
+          <svg viewBox="0 0 400 190" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+            <rect x="50" y="55" width="300" height="115" rx="10" fill="#0a1128" stroke="#d4af37" stroke-width="1.5"/>
+            <rect x="70" y="35" width="260" height="34" rx="8" fill="#1b2a5e"/>
+            <rect x="85" y="90" width="120" height="60" rx="4" fill="#f0d98c" opacity=".9"/>
+            <rect x="220" y="90" width="95" height="60" rx="4" fill="#16224d" stroke="#d4af37" stroke-width="1"/>
+            <circle cx="80" cy="40" r="3" fill="#fff"/><circle cx="320" cy="30" r="2.5" fill="#fff"/><circle cx="200" cy="25" r="2" fill="#fff"/>
+          </svg>
+          <span class="float-badge absolute top-4 right-4 text-[.65rem] tracking-[.25em] px-4 py-2 rounded-full"
+                style="background:rgba(212,175,55,.15); border:1px solid rgba(212,175,55,.5); color:var(--champagne)">PREMIUM</span>
+        </div>
+        <div class="p-8">
+          <h3 class="serif text-3xl mb-2" style="color:var(--champagne)">Executive Room</h3>
+          <p class="text-sm font-light mb-6" style="color:rgba(247,241,227,.65)">Extra space · Sitting area · Garden facing</p>
+          <ul class="text-sm space-y-2 font-light mb-8" style="color:rgba(247,241,227,.75)">
+            <li>✦ Everything in Deluxe, plus</li><li>✦ Bathtub & lounge seating</li><li>✦ Complimentary breakfast</li>
+          </ul>
+          <a href="#booking" class="nav-link" style="color:var(--gold)">Reserve →</a>
+        </div>
+      </div>
+      <!-- Suite -->
+      <div class="reveal room-card tilt rounded-md overflow-hidden">
+        <div class="room-art" style="background:linear-gradient(150deg,#2b1f4d,#0d1630 55%,#8a5a1f)">
+          <svg viewBox="0 0 400 190" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+            <rect x="40" y="50" width="320" height="120" rx="12" fill="#0a1128" stroke="#f0d98c" stroke-width="2"/>
+            <rect x="60" y="28" width="280" height="36" rx="8" fill="#2b1f4d" stroke="#d4af37" stroke-width="1"/>
+            <rect x="75" y="85" width="130" height="65" rx="4" fill="#f0d98c"/>
+            <rect x="220" y="85" width="105" height="65" rx="4" fill="#16224d" stroke="#f0d98c" stroke-width="1"/>
+            <path d="M200 28 q20 -18 40 0" stroke="#f0d98c" fill="none" stroke-width="2"/>
+            <circle cx="200" cy="14" r="5" fill="#f0d98c"/>
+          </svg>
+          <span class="float-badge absolute top-4 right-4 text-[.65rem] tracking-[.25em] px-4 py-2 rounded-full"
+                style="background:rgba(212,175,55,.2); border:1px solid var(--gold); color:var(--champagne)">SIGNATURE</span>
+        </div>
+        <div class="p-8">
+          <h3 class="serif text-3xl mb-2" style="color:var(--champagne)">Palace Suite</h3>
+          <p class="text-sm font-light mb-6" style="color:rgba(247,241,227,.65)">Living room · Dining nook · Panoramic view</p>
+          <ul class="text-sm space-y-2 font-light mb-8" style="color:rgba(247,241,227,.75)">
+            <li>✦ Everything in Executive, plus</li><li>✦ Separate living & dining</li><li>✦ Priority concierge</li>
+          </ul>
+          <a href="#booking" class="nav-link" style="color:var(--gold)">Reserve →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Banquets -->
+<section id="banquets" class="relative py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="reveal sec-label text-center mb-4">Celebrate Grandly</p>
+    <h2 class="reveal serif text-4xl md:text-6xl text-center mb-4">Banquets <span class="italic" style="color:var(--champagne)">&</span> Events</h2>
+    <div class="reveal gold-line w-40 mx-auto my-8"></div>
+    <p class="reveal text-center max-w-2xl mx-auto font-light mb-14" style="color:rgba(247,241,227,.7)">
+      Weddings, receptions, corporate summits — Jabalpur's most trusted venue for moments that matter.
+      Hover to explore our halls.</p>
+    <div class="reveal rounded-md overflow-hidden" style="border:1px solid rgba(212,175,55,.25)">
+      <div class="hall-row flex items-center justify-between px-6 md:px-10 py-7">
+        <div><h3 class="hall-name serif text-2xl md:text-3xl transition-colors">The Grand Ballroom</h3>
+          <p class="text-sm font-light mt-1" style="color:rgba(247,241,227,.55)">Pillar-less hall · Crystal chandeliers · Bridal suites</p></div>
+        <div class="text-right"><span class="serif text-2xl md:text-3xl" style="color:var(--gold)">800</span>
+          <p class="text-xs tracking-[.25em]" style="color:rgba(247,241,227,.5)">GUESTS</p></div>
+      </div>
+      <div class="hall-row flex items-center justify-between px-6 md:px-10 py-7">
+        <div><h3 class="hall-name serif text-2xl md:text-3xl transition-colors">The Gulmohur Lawns</h3>
+          <p class="text-sm font-light mt-1" style="color:rgba(247,241,227,.55)">Open-air celebrations under fairy lights</p></div>
+        <div class="text-right"><span class="serif text-2xl md:text-3xl" style="color:var(--gold)">1200</span>
+          <p class="text-xs tracking-[.25em]" style="color:rgba(247,241,227,.5)">GUESTS</p></div>
+      </div>
+      <div class="hall-row flex items-center justify-between px-6 md:px-10 py-7">
+        <div><h3 class="hall-name serif text-2xl md:text-3xl transition-colors">The Imperial Hall</h3>
+          <p class="text-sm font-light mt-1" style="color:rgba(247,241,227,.55)">Conferences, seminars & gala dinners</p></div>
+        <div class="text-right"><span class="serif text-2xl md:text-3xl" style="color:var(--gold)">400</span>
+          <p class="text-xs tracking-[.25em]" style="color:rgba(247,241,227,.5)">GUESTS</p></div>
+      </div>
+      <div class="hall-row flex items-center justify-between px-6 md:px-10 py-7" style="border-bottom:none">
+        <div><h3 class="hall-name serif text-2xl md:text-3xl transition-colors">The Boardroom</h3>
+          <p class="text-sm font-light mt-1" style="color:rgba(247,241,227,.55)">Executive meetings · AV equipped</p></div>
+        <div class="text-right"><span class="serif text-2xl md:text-3xl" style="color:var(--gold)">40</span>
+          <p class="text-xs tracking-[.25em]" style="color:rgba(247,241,227,.5)">GUESTS</p></div>
+      </div>
+    </div>
+    <div class="reveal text-center mt-12">
+      <a href="#booking" class="btn-gold px-10 py-4 rounded-sm text-sm uppercase inline-block">Plan Your Event</a>
+    </div>
+  </div>
+</section>
+
+<!-- Dining -->
+<section id="dining" class="relative py-24 overflow-hidden" style="background:linear-gradient(180deg,transparent,#0d1428 25%,#0d1428 75%,transparent)">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+    <div class="reveal relative">
+      <svg viewBox="0 0 500 420" class="w-full rounded-md" style="border:1px solid rgba(212,175,55,.3)">
+        <defs><linearGradient id="dg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1b2a5e"/><stop offset=".6" stop-color="#0d1630"/><stop offset="1" stop-color="#050914"/></linearGradient></defs>
+        <rect width="500" height="420" fill="url(#dg)"/>
+        <ellipse cx="250" cy="330" rx="180" ry="26" fill="#0a1128" stroke="#d4af37" stroke-width="1.5"/>
+        <ellipse cx="250" cy="322" rx="150" ry="18" fill="#f7f1e3" opacity=".08"/>
+        <rect x="150" y="180" width="200" height="130" rx="60" fill="#16224d" stroke="#d4af37" stroke-width="1.5"/>
+        <circle cx="250" cy="225" r="52" fill="#d98a4b" opacity=".85"/>
+        <circle cx="232" cy="212" r="10" fill="#8a4b2b"/><circle cx="268" cy="232" r="12" fill="#a55f2e"/><circle cx="250" cy="244" r="8" fill="#7a3f22"/>
+        <path d="M120 160 q130 -40 260 0" stroke="#f0d98c" stroke-width="2" fill="none" opacity=".7"/>
+        <circle cx="120" cy="160" r="4" fill="#f0d98c"/><circle cx="380" cy="160" r="4" fill="#f0d98c"/>
+        <g opacity=".8"><circle cx="90" cy="80" r="3" fill="#fff"/><circle cx="420" cy="60" r="2.5" fill="#fff"/><circle cx="330" cy="110" r="2" fill="#fff"/></g>
+        <text x="250" y="380" text-anchor="middle" fill="#f0d98c" font-family="Cormorant Garamond,serif" font-size="26" letter-spacing="6">GULMOHUR</text>
+      </svg>
+      <span class="float-badge absolute -top-4 -right-3 px-5 py-3 rounded-full text-xs tracking-[.25em]"
+            style="background:rgba(212,175,55,.15); border:1px solid var(--gold); color:var(--champagne)">SINCE 1998</span>
+    </div>
+    <div>
+      <p class="reveal sec-label mb-4">Taste the Legend</p>
+      <h2 class="reveal serif text-4xl md:text-6xl mb-6">Gulmohur <span class="italic" style="color:var(--champagne)">Restaurant</span></h2>
+      <p class="reveal font-light leading-relaxed mb-8" style="color:rgba(247,241,227,.75)">
+        Jabalpur's beloved dining destination — royal North Indian, Chinese and Continental classics
+        served in an ambience of old-world charm. Family dinners, festive thalis and quiet celebrations,
+        all under one glowing roof.</p>
+      <div class="reveal grid grid-cols-2 gap-5 mb-10">
+        <div class="p-5 rounded" style="background:rgba(212,175,55,.06); border:1px solid rgba(212,175,55,.2)">
+          <div class="serif text-3xl" style="color:var(--gold)">4.3★</div><p class="text-xs tracking-[.2em] mt-1" style="color:rgba(247,241,227,.6)">GUEST RATING</p></div>
+        <div class="p-5 rounded" style="background:rgba(212,175,55,.06); border:1px solid rgba(212,175,55,.2)">
+          <div class="serif text-3xl" style="color:var(--gold)">11–11</div><p class="text-xs tracking-[.2em] mt-1" style="color:rgba(247,241,227,.6)">OPEN DAILY</p></div>
+      </div>
+      <a href="#booking" class="reveal btn-gold px-9 py-4 rounded-sm text-sm uppercase inline-block">Reserve a Table</a>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="relative py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="reveal sec-label text-center mb-4">Moments</p>
+    <h2 class="reveal serif text-4xl md:text-6xl text-center mb-4">The <span class="italic" style="color:var(--champagne)">Gallery</span></h2>
+    <div class="reveal gold-line w-40 mx-auto my-8"></div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="reveal g-item rounded h-64"><div class="g-zoom w-full h-full" style="background:linear-gradient(160deg,#24305e,#0d1630 60%,#d98a4b)"></div>
+        <span class="absolute bottom-4 left-4 z-10 serif text-lg tracking-widest">THE FAÇADE</span></div>
+      <div class="reveal g-item rounded h-64"><div class="g-zoom w-full h-full" style="background:linear-gradient(160deg,#3a2b52,#0d1630 55%,#f0d98c)"></div>
+        <span class="absolute bottom-4 left-4 z-10 serif text-lg tracking-widest">GRAND LOBBY</span></div>
+      <div class="reveal g-item rounded h-64"><div class="g-zoom w-full h-full" style="background:linear-gradient(160deg,#5e3a2b,#0d1630 55%,#f5c95c)"></div>
+        <span class="absolute bottom-4 left-4 z-10 serif text-lg tracking-widest">WEDDINGS</span></div>
+      <div class="reveal g-item rounded h-64"><div class="g-zoom w-full h-full" style="background:linear-gradient(160deg,#1b2a5e,#050914 60%,#8a4b3a)"></div>
+        <span class="absolute bottom-4 left-4 z-10 serif text-lg tracking-widest">GULMOHUR</span></div>
+      <div class="reveal g-item rounded h-64"><div class="g-zoom w-full h-full" style="background:linear-gradient(160deg,#0d1630,#24305e 50%,#f0d98c)"></div>
+        <span class="absolute bottom-4 left-4 z-10 serif text-lg tracking-widest">SUITES</span></div>
+      <div class="reveal g-item rounded h-64"><div class="g-zoom w-full h-full" style="background:linear-gradient(160deg,#2b1f4d,#050914 60%,#d4af37)"></div>
+        <span class="absolute bottom-4 left-4 z-10 serif text-lg tracking-widest">BANQUETS</span></div>
+      <div class="reveal g-item rounded h-64"><div class="g-zoom w-full h-full" style="background:linear-gradient(160deg,#16224d,#0d1630 55%,#d98a4b)"></div>
+        <span class="absolute bottom-4 left-4 z-10 serif text-lg tracking-widest">CELEBRATIONS</span></div>
+      <div class="reveal g-item rounded h-64"><div class="g-zoom w-full h-full" style="background:linear-gradient(160deg,#8a5a1f,#0d1630 60%,#3a2b52)"></div>
+        <span class="absolute bottom-4 left-4 z-10 serif text-lg tracking-widest">EVENINGS</span></div>
+    </div>
+  </div>
+</section>
+<!-- Testimonials -->
+<section class="relative py-24" style="background:linear-gradient(180deg,transparent,#0a1128 25%,#0a1128 75%,transparent)">
+  <div class="max-w-4xl mx-auto px-6">
+    <p class="reveal sec-label text-center mb-4">Guest Love</p>
+    <h2 class="reveal serif text-4xl md:text-6xl text-center mb-14">8,800+ <span class="italic" style="color:var(--champagne)">Stories</span></h2>
+    <div class="reveal relative h-64 md:h-56 rounded-md p-2" id="tWrap">
+      <div class="t-slide active flex flex-col items-center justify-center text-center px-4">
+        <div class="text-2xl mb-4" style="color:var(--gold)">★ ★ ★ ★ ★</div>
+        <p class="serif text-2xl md:text-3xl italic leading-snug max-w-2xl">"The banquet hall looked straight out of a film. Our wedding guests are still talking about the food at Gulmohur."</p>
+        <p class="mt-6 text-sm tracking-[.3em]" style="color:var(--champagne)">PRIYA & AMAN — WEDDING</p>
+      </div>
+      <div class="t-slide flex flex-col items-center justify-center text-center px-4">
+        <div class="text-2xl mb-4" style="color:var(--gold)">★ ★ ★ ★ ★</div>
+        <p class="serif text-2xl md:text-3xl italic leading-snug max-w-2xl">"Spotless rooms, warm staff and the best location in Jabalpur. My go-to hotel for every business trip."</p>
+        <p class="mt-6 text-sm tracking-[.3em]" style="color:var(--champagne)">RAJESH K. — BUSINESS TRAVELLER</p>
+      </div>
+      <div class="t-slide flex flex-col items-center justify-center text-center px-4">
+        <div class="text-2xl mb-4" style="color:var(--gold)">★ ★ ★ ★ ★</div>
+        <p class="serif text-2xl md:text-3xl italic leading-snug max-w-2xl">"Celebrated my parents' 50th anniversary here. The team made it feel like a royal durbar."</p>
+        <p class="mt-6 text-sm tracking-[.3em]" style="color:var(--champagne)">MEERA S. — FAMILY EVENT</p>
+      </div>
+    </div>
+    <div class="flex justify-center gap-3 mt-6" id="tDots">
+      <span class="t-dot active" data-i="0"></span><span class="t-dot" data-i="1"></span><span class="t-dot" data-i="2"></span>
+    </div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section id="booking" class="relative py-24">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="reveal sec-label text-center mb-4">Your Dates Await</p>
+    <h2 class="reveal serif text-4xl md:text-6xl text-center mb-4">Book Your <span class="italic" style="color:var(--champagne)">Experience</span></h2>
+    <div class="reveal gold-line w-40 mx-auto my-8"></div>
+    <div class="reveal rounded-md p-8 md:p-12 relative" style="background:linear-gradient(160deg,#101a38,#0a1128); border:1px solid rgba(212,175,55,.3)">
+      <form id="bookForm" class="grid md:grid-cols-2 gap-6">
+        <div><label class="text-xs tracking-[.25em] uppercase block mb-2" style="color:var(--champagne)">Full Name</label>
+          <input class="field" required placeholder="Your name"></div>
+        <div><label class="text-xs tracking-[.25em] uppercase block mb-2" style="color:var(--champagne)">Phone</label>
+          <input class="field" required pattern="[0-9+ ]{10,15}" placeholder="+91 XXXXX XXXXX"></div>
+        <div><label class="text-xs tracking-[.25em] uppercase block mb-2" style="color:var(--champagne)">Check-in</label>
+          <input type="date" class="field" required></div>
+        <div><label class="text-xs tracking-[.25em] uppercase block mb-2" style="color:var(--champagne)">Check-out</label>
+          <input type="date" class="field" required></div>
+        <div><label class="text-xs tracking-[.25em] uppercase block mb-2" style="color:var(--champagne)">Room Type</label>
+          <select class="field"><option>Deluxe Room</option><option>Executive Room</option><option>Palace Suite</option><option>Banquet / Event Enquiry</option><option>Restaurant Table</option></select></div>
+        <div><label class="text-xs tracking-[.25em] uppercase block mb-2" style="color:var(--champagne)">Guests</label>
+          <input type="number" min="1" max="1200" value="2" class="field"></div>
+        <div class="md:col-span-2"><label class="text-xs tracking-[.25em] uppercase block mb-2" style="color:var(--champagne)">Special Requests</label>
+          <textarea class="field" rows="3" placeholder="Wedding dates, dietary needs, decorations…"></textarea></div>
+        <div class="md:col-span-2 text-center mt-2">
+          <button type="submit" class="btn-gold px-12 py-4 rounded-sm text-sm uppercase">Send Enquiry</button>
+          <p class="text-xs mt-4 font-light" style="color:rgba(247,241,227,.5)">Our concierge responds within 2 hours · No advance needed for enquiry</p>
+        </div>
+      </form>
+      <div id="formSuccess" class="absolute inset-0 rounded-md flex-col items-center justify-center text-center p-8" style="background:rgba(5,9,20,.97)">
+        <svg width="90" height="90" viewBox="0 0 90 90"><circle class="check-ring" cx="45" cy="45" r="40" fill="none" stroke="#d4af37" stroke-width="2.5"/>
+          <path class="check-mark" d="M30 46 l10 10 l20 -22" fill="none" stroke="#f0d98c" stroke-width="4" stroke-linecap="round"/></svg>
+        <h3 class="serif text-3xl mt-6" style="color:var(--champagne)">Enquiry Received</h3>
+        <p class="font-light mt-3 max-w-sm" style="color:rgba(247,241,227,.7)">Thank you! Our team will call you shortly to confirm your booking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="relative py-24" style="background:linear-gradient(180deg,transparent,#0a1128 30%)">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14">
+    <div>
+      <p class="reveal sec-label mb-4">Find Us</p>
+      <h2 class="reveal serif text-4xl md:text-5xl mb-8">In the Heart of <span class="italic" style="color:var(--champagne)">Jabalpur</span></h2>
+      <div class="reveal space-y-6 font-light" style="color:rgba(247,241,227,.8)">
+        <p><span style="color:var(--gold)">⌖</span>&nbsp; Near Karamchand Chowk, Jabalpur,<br>&nbsp;&nbsp;&nbsp;&nbsp;Madhya Pradesh</p>
+        <p><span style="color:var(--gold)">✆</span>&nbsp; <a href="tel:+916262263639" class="hover:underline" style="color:var(--champagne)">+91 62622 63639</a></p>
+        <p><span style="color:var(--gold)">✉</span>&nbsp; <a href="mailto:vijangulmohur@yahoo.com" class="hover:underline" style="color:var(--champagne)">vijangulmohur@yahoo.com</a></p>
+        <p><span style="color:var(--gold)">◷</span>&nbsp; Reception 24 hours · Check-in 12 noon</p>
+      </div>
+    </div>
+    <div class="reveal rounded-md overflow-hidden" style="border:1px solid rgba(212,175,55,.3)">
+      <svg viewBox="0 0 500 340" class="w-full h-full">
+        <rect width="500" height="340" fill="#0d1630"/>
+        <g stroke="#1b2a5e" stroke-width="10"><line x1="0" y1="120" x2="500" y2="110"/><line x1="180" y1="0" x2="200" y2="340"/><line x1="0" y1="240" x2="500" y2="255"/></g>
+        <g stroke="#24305e" stroke-width="4"><line x1="0" y1="60" x2="500" y2="70"/><line x1="320" y1="0" x2="310" y2="340"/><line x1="0" y1="300" x2="500" y2="290"/></g>
+        <circle cx="255" cy="150" r="34" fill="none" stroke="#d4af37" stroke-width="2" opacity=".5">
+          <animate attributeName="r" values="24;44" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="2s" repeatCount="indefinite"/></circle>
+        <circle cx="255" cy="150" r="10" fill="#d4af37"/>
+        <text x="255" y="200" text-anchor="middle" fill="#f0d98c" font-family="Cormorant Garamond,serif" font-size="22" letter-spacing="3">VIJAN PALACE</text>
+        <text x="255" y="224" text-anchor="middle" fill="#f7f1e3" font-size="12" opacity=".6">Near Karamchand Chowk</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t py-10" style="border-color:rgba(212,175,55,.2)">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3"><span class="serif text-2xl" style="color:var(--gold)">V·P</span>
+      <span class="serif tracking-widest">VIJAN PALACE · JABALPUR</span></div>
+    <p class="text-xs font-light" style="color:rgba(247,241,227,.45)">© 2026 Hotel Vijan Palace · Concept redesign</p>
+    <div class="flex gap-6 text-xs tracking-[.25em]">
+      <a href="#rooms" class="nav-link">ROOMS</a><a href="#dining" class="nav-link">DINING</a><a href="#booking" class="nav-link">BOOK</a>
+    </div>
+  </div>
+</footer>
+
+<a id="waFloat" href="https://wa.me/916262263639" target="_blank" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3 0-.5L9.6 8.2c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.2-.7.3-.9.9-1.1 2.2-.2 3.9a11.6 11.6 0 0 0 4.5 4.2c1.7.8 2.4.9 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.1-.5-.3z"/></svg>
+</a>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* Preloader */
+(function(){
+  var pct=0, el=document.getElementById('loadpct');
+  var iv=setInterval(function(){
+    pct=Math.min(100, pct+Math.random()*14+4);
+    el.textContent=Math.floor(pct)+'%';
+    if(pct>=100){ clearInterval(iv);
+      setTimeout(function(){ document.getElementById('preloader').classList.add('done'); heroIntro(); }, 450);
+    }
+  }, 130);
+})();
+
+function heroIntro(){
+  gsap.fromTo('.hero-el',{y:60,opacity:0},{y:0,opacity:1,duration:1.2,stagger:.14,ease:'power3.out'});
+}
+
+/* Nav */
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){ nav.classList.toggle('scrolled', window.scrollY>60); },{passive:true});
+document.getElementById('menuBtn').addEventListener('click',function(){
+  document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(a){
+  a.addEventListener('click',function(){ document.getElementById('mobileMenu').classList.add('hidden'); });
+});
+
+/* Stars */
+(function(){
+  var w=document.getElementById('stars'), html='';
+  for(var i=0;i<70;i++){
+    html+='<span class="star" style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*55)+'%;animation-delay:'+(Math.random()*3).toFixed(1)+'s"></span>';
+  }
+  w.innerHTML=html;
+})();
+
+/* Hero parallax */
+window.addEventListener('scroll',function(){
+  var y=window.scrollY;
+  document.querySelectorAll('[data-parallax]').forEach(function(el){
+    var f=parseFloat(el.getAttribute('data-parallax'))||0.3;
+    el.style.transform='translateY('+(y*f)+'px)';
+  });
+},{passive:true});
+
+/* Particles */
+(function(){
+  var c=document.getElementById('particles'), x=c.getContext('2d'), P=[];
+  function rs(){ c.width=innerWidth; c.height=innerHeight; }
+  rs(); addEventListener('resize',rs);
+  for(var i=0;i<70;i++) P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+    r:Math.random()*2.2+.6,s:Math.random()*.6+.15,o:Math.random()*.5+.15,ph:Math.random()*6.28});
+  (function loop(t){
+    x.clearRect(0,0,c.width,c.height);
+    P.forEach(function(p){
+      p.y-=p.s; p.x+=Math.sin(t/1600+p.ph)*.25;
+      if(p.y<-10){ p.y=c.height+10; p.x=Math.random()*c.width; }
+      var tw=p.o*(0.6+0.4*Math.sin(t/700+p.ph));
+      x.beginPath(); x.arc(p.x,p.y,p.r,0,6.28);
+      x.fillStyle='rgba(212,175,55,'+tw.toFixed(2)+')'; x.fill();
+    });
+    requestAnimationFrame(loop);
+  })(0);
+})();
+
+/* Cursor glow */
+(function(){
+  var cur=document.getElementById('cursor'), tx=innerWidth/2, ty=innerHeight/2, cx=tx, cy=ty;
+  addEventListener('mousemove',function(e){ tx=e.clientX; ty=e.clientY; });
+  (function f(){ cx+=(tx-cx)*.08; cy+=(ty-cy)*.08;
+    cur.style.left=cx+'px'; cur.style.top=cy+'px'; requestAnimationFrame(f); })();
+})();
+
+/* Scroll reveals */
+document.querySelectorAll('.reveal').forEach(function(el){
+  gsap.fromTo(el,{y:56,opacity:0},{y:0,opacity:1,duration:1.05,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+
+/* Counters */
+(function(){
+  var done=false;
+  function run(){
+    if(done) return; done=true;
+    document.querySelectorAll('.counter').forEach(function(el){
+      var target=parseInt(el.getAttribute('data-target'),10), t0=null;
+      function step(ts){
+        if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/1800), e=1-Math.pow(1-p,3);
+        el.textContent=Math.floor(target*e).toLocaleString('en-IN');
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  new IntersectionObserver(function(en){ if(en[0].isIntersecting){ run(); } },{threshold:.4})
+    .observe(document.querySelector('.counter').closest('section'));
+})();
+
+/* 3D tilt */
+document.querySelectorAll('.tilt').forEach(function(card){
+  card.addEventListener('mousemove',function(e){
+    var r=card.getBoundingClientRect(),
+        rx=((e.clientY-r.top)/r.height-.5)*-12, ry=((e.clientX-r.left)/r.width-.5)*12;
+    card.style.transform='perspective(1100px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave',function(){ card.style.transform='perspective(1100px)'; });
+});
+
+/* Testimonials */
+(function(){
+  var slides=document.querySelectorAll('.t-slide'), dots=document.querySelectorAll('.t-dot'), i=0, timer;
+  function go(n){
+    slides[i].classList.remove('active'); dots[i].classList.remove('active');
+    i=(n+slides.length)%slides.length;
+    slides[i].classList.add('active'); dots[i].classList.add('active');
+  }
+  function auto(){ clearInterval(timer); timer=setInterval(function(){ go(i+1); },5200); }
+  dots.forEach(function(d){ d.addEventListener('click',function(){ go(parseInt(d.getAttribute('data-i'),10)); auto(); }); });
+  auto();
+})();
+
+/* Booking form */
+document.getElementById('bookForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('formSuccess').classList.add('show');
+  var s=document.getElementById('formSuccess');
+  s.style.display='flex';
+  setTimeout(function(){ s.classList.remove('show'); s.style.display='none'; document.getElementById('bookForm').reset(); }, 5000);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delhi Darbar — Iconic Mughlai Restaurant, Dubai Since 1946</title>
+<meta name="description" content="Delhi Darbar — Dubai's iconic Mughlai restaurant since 1946. Karama, Barsha & JLT. Table bookings, catering, legendary butter chicken & biryani.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --emerald:#0a3d2c; --emerald-deep:#052a1e; --saffron:#ff8c1a; --saffron-soft:#ffb25e;
+  --cream:#fff7ea; --cream2:#fbeed3; --chili:#e23e22; --ink:#0e241a;
+}
+*{ -webkit-tap-highlight-color:transparent; }
+html{ scroll-behavior:smooth; }
+body{ background:var(--cream); color:var(--ink); font-family:'Space Grotesk',sans-serif; overflow-x:hidden; }
+.font-display{ font-family:'Anton',sans-serif; letter-spacing:.01em; }
+.font-serifit{ font-family:'Instrument Serif',serif; font-style:italic; }
+/* ---------- preloader ---------- */
+#loader{ position:fixed; inset:0; z-index:100; background:var(--emerald-deep); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.2rem; transition:opacity .7s ease, visibility .7s; }
+#loader.done{ opacity:0; visibility:hidden; }
+#loadBarWrap{ width:min(420px,70vw); height:6px; background:rgba(255,255,255,.12); border-radius:99px; overflow:hidden; }
+#loadBar{ height:100%; width:0%; background:linear-gradient(90deg,var(--saffron),#ffd23e); border-radius:99px; }
+/* ---------- cursor ---------- */
+#curDot,#curRing{ position:fixed; top:0; left:0; pointer-events:none; z-index:99; border-radius:50%; }
+#curDot{ width:10px; height:10px; background:var(--saffron); transform:translate(-50%,-50%); }
+#curRing{ width:44px; height:44px; border:2px solid rgba(255,140,26,.7); transform:translate(-50%,-50%); transition:width .25s,height .25s,border-color .25s; }
+#curRing.big{ width:80px; height:80px; border-color:var(--chili); }
+@media (hover:none){ #curDot,#curRing{ display:none; } }
+/* ---------- mesh backgrounds ---------- */
+.mesh-hero{ background:
+  radial-gradient(600px 400px at 12% 18%, rgba(255,140,26,.35), transparent 60%),
+  radial-gradient(700px 500px at 88% 8%, rgba(226,62,34,.28), transparent 60%),
+  radial-gradient(800px 600px at 50% 110%, rgba(10,61,44,.9), transparent 65%),
+  linear-gradient(180deg,#0d4a36 0%, #083325 55%, #052a1e 100%); }
+.mesh-cream{ background:
+  radial-gradient(500px 350px at 85% 12%, rgba(255,178,94,.35), transparent 60%),
+  radial-gradient(600px 420px at 8% 88%, rgba(10,61,44,.10), transparent 60%),
+  var(--cream); }
+.glass{ background:rgba(255,255,255,.08); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.18); }
+.glass-dark{ background:rgba(5,42,30,.55); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.14); }
+/* ---------- marquee ---------- */
+.marquee{ overflow:hidden; white-space:nowrap; }
+.marquee-track{ display:inline-flex; gap:0; animation:mq 22s linear infinite; will-change:transform; }
+.marquee-track.slow{ animation-duration:38s; }
+@keyframes mq{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+/* ---------- misc anims ---------- */
+@keyframes floaty{ 0%,100%{ transform:translateY(0) rotate(0deg);} 50%{ transform:translateY(-18px) rotate(4deg);} }
+.floaty{ animation:floaty 6s ease-in-out infinite; }
+@keyframes spinSlow{ to{ transform:rotate(360deg);} }
+.spin-slow{ animation:spinSlow 22s linear infinite; }
+@keyframes steamUp{ 0%{ transform:translateY(0) scaleX(1); opacity:0;} 30%{ opacity:.8;} 100%{ transform:translateY(-90px) scaleX(1.6); opacity:0;} }
+.steam span{ position:absolute; bottom:0; width:8px; height:34px; border-radius:99px; background:linear-gradient(180deg,transparent,rgba(255,255,255,.75)); filter:blur(3px); animation:steamUp 3.2s ease-in infinite; }
+.text-stroke{ -webkit-text-stroke:2px var(--cream); color:transparent; }
+.text-stroke-em{ -webkit-text-stroke:2px var(--emerald); color:transparent; }
+.bento{ transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s; }
+.bento:hover{ transform:translateY(-8px) scale(1.015); box-shadow:0 30px 60px -20px rgba(10,61,44,.35); }
+.chip{ transition:all .3s; }
+button, .magnetic{ will-change:transform; }
+input,select,textarea{ outline:none; }
+input:focus,select:focus,textarea:focus{ border-color:var(--saffron)!important; box-shadow:0 0 0 3px rgba(255,140,26,.25); }
+.tcard{ transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .5s; }
+#successCheck{ stroke-dasharray:120; stroke-dashoffset:120; }
+.success-show #successCheck{ animation:draw .8s .2s ease forwards; }
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- PRELOADER -->
+<div id="loader">
+  <div class="font-display text-4xl md:text-6xl" style="color:var(--cream)">DELHI <span style="color:var(--saffron)">DARBAR</span></div>
+  <div id="loadBarWrap"><div id="loadBar"></div></div>
+  <div id="loadPct" class="font-serifit text-xl" style="color:var(--saffron-soft)">1946</div>
+</div>
+
+<div id="curDot"></div><div id="curRing"></div>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
+    <a href="#top" class="magnetic flex items-center gap-3">
+      <span class="w-11 h-11 rounded-2xl grid place-items-center font-display text-xl rotate-3" style="background:var(--saffron);color:var(--emerald-deep)">DD</span>
+      <span class="font-display text-xl tracking-wide" style="color:var(--cream)">DELHI DARBAR</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium" style="color:var(--cream)">
+      <a href="#legacy" class="hover:opacity-70 transition">Legacy</a>
+      <a href="#menu" class="hover:opacity-70 transition">Menu</a>
+      <a href="#branches" class="hover:opacity-70 transition">Branches</a>
+      <a href="#catering" class="hover:opacity-70 transition">Catering</a>
+    </nav>
+    <a href="#book" class="magnetic font-semibold text-sm px-6 py-3 rounded-full" style="background:var(--saffron);color:var(--emerald-deep)">Book a Table</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="mesh-hero relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-10">
+  <canvas id="spice" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 w-full">
+    <div class="reveal inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs md:text-sm font-medium mb-6" style="color:var(--cream)">
+      <span class="w-2 h-2 rounded-full animate-pulse" style="background:var(--saffron)"></span>
+      Dubai's Mughlai icon — serving since 1946
+    </div>
+    <h1 class="font-display leading-[.92] reveal" style="color:var(--cream);font-size:clamp(3.4rem,11vw,10rem)">
+      TASTE THE<br>
+      <span style="color:var(--saffron)">LEGEND</span> <span class="font-serifit font-normal" style="font-size:.55em;color:var(--cream)">of</span><br>
+      <span class="text-stroke">MUGHLAI</span> DUBAI
+    </h1>
+    <p class="reveal mt-6 max-w-xl text-base md:text-lg leading-relaxed" style="color:rgba(255,247,234,.82)">
+      Eight decades of dum, smoke &amp; saffron — from the streets of old Delhi to Karama, Barsha &amp; JLT. Butter chicken that built a legacy.
+    </p>
+    <div class="reveal mt-8 flex flex-wrap gap-4">
+      <a href="#book" class="magnetic font-bold px-8 py-4 rounded-full text-base" style="background:var(--saffron);color:var(--emerald-deep)">Reserve Your Table</a>
+      <a href="#menu" class="magnetic glass font-semibold px-8 py-4 rounded-full text-base" style="color:var(--cream)">Explore the Menu</a>
+    </div>
+    <!-- floating thali art -->
+    <div class="floaty absolute right-[4%] top-[16%] hidden lg:block w-72">
+      <svg viewBox="0 0 200 200" class="w-full drop-shadow-2xl">
+        <ellipse cx="100" cy="150" rx="86" ry="26" fill="#d9a441"/>
+        <ellipse cx="100" cy="144" rx="86" ry="26" fill="#f3c969"/>
+        <ellipse cx="100" cy="144" rx="66" ry="18" fill="#e8b04b"/>
+        <circle cx="100" cy="120" r="34" fill="#c96b2c"/><circle cx="100" cy="120" r="26" fill="#e8933f"/>
+        <circle cx="62" cy="132" r="14" fill="#7a4a21"/><circle cx="140" cy="132" r="14" fill="#a83226"/>
+        <circle cx="100" cy="150" r="10" fill="#f6e3b4"/>
+        <ellipse cx="100" cy="92" rx="20" ry="8" fill="#fff" opacity=".25"/>
+      </svg>
+      <div class="steam relative h-0 flex justify-center gap-3 -mt-16"><span style="left:38%"></span><span style="left:50%;animation-delay:1s"></span><span style="left:62%;animation-delay:2s"></span></div>
+    </div>
+    <!-- stats -->
+    <div class="reveal mt-12 grid grid-cols-3 max-w-lg gap-6">
+      <div><div class="font-display text-3xl md:text-5xl" style="color:var(--saffron)"><span data-count="80">0</span>+</div><div class="text-xs md:text-sm mt-1" style="color:rgba(255,247,234,.7)">years of legacy</div></div>
+      <div><div class="font-display text-3xl md:text-5xl" style="color:var(--saffron)"><span data-count="3">0</span></div><div class="text-xs md:text-sm mt-1" style="color:rgba(255,247,234,.7)">Dubai branches</div></div>
+      <div><div class="font-display text-3xl md:text-5xl" style="color:var(--saffron)"><span data-count="120">0</span>+</div><div class="text-xs md:text-sm mt-1" style="color:rgba(255,247,234,.7)">dishes on menu</div></div>
+    </div>
+  </div>
+  <!-- marquee -->
+  <div class="marquee absolute bottom-0 left-0 right-0 py-4 border-t" style="border-color:rgba(255,255,255,.15);background:rgba(5,42,30,.5)">
+    <div class="marquee-track font-display text-xl md:text-2xl" style="color:var(--cream)">
+      <span class="px-6">SINCE 1946 ✦ BUTTER CHICKEN ✦ DUM BIRYANI ✦ KARAMA ✦ BARSHA ✦ JLT ✦ CATERING ✦&nbsp;</span>
+      <span class="px-6">SINCE 1946 ✦ BUTTER CHICKEN ✦ DUM BIRYANI ✦ KARAMA ✦ BARSHA ✦ JLT ✦ CATERING ✦&nbsp;</span>
+    </div>
+  </div>
+</section>
+
+<!-- LEGACY — horizontal scroll strip -->
+<section id="legacy" class="relative overflow-hidden" style="background:var(--emerald-deep)">
+  <div class="h-screen flex items-center">
+    <div id="legacyTrack" class="flex items-center gap-6 md:gap-10 px-[8vw] will-change-transform">
+      <div class="shrink-0 w-[82vw] md:w-[34vw]">
+        <div class="font-serifit text-2xl mb-3" style="color:var(--saffron-soft)">our story</div>
+        <h2 class="font-display leading-none" style="color:var(--cream);font-size:clamp(2.6rem,6vw,5.5rem)">80 YEARS,<br>ONE <span style="color:var(--saffron)">FLAME</span></h2>
+        <p class="mt-5 max-w-sm leading-relaxed" style="color:rgba(255,247,234,.7)">Scroll through eight decades of tandoor smoke, royal recipes and Dubai love. Keep scrolling →</p>
+      </div>
+      <div class="shrink-0 w-[78vw] md:w-[26vw] glass-dark rounded-3xl p-8">
+        <div class="font-display text-6xl" style="color:var(--saffron)">1946</div>
+        <h3 class="font-display text-2xl mt-3" style="color:var(--cream)">BORN IN OLD DELHI</h3>
+        <p class="mt-3 text-sm leading-relaxed" style="color:rgba(255,247,234,.7)">A tiny eatery near Jama Masjid fires up its first tandoor. The butter chicken recipe is born — and never changes.</p>
+      </div>
+      <div class="shrink-0 w-[78vw] md:w-[26vw] rounded-3xl p-8" style="background:var(--saffron)">
+        <div class="font-display text-6xl" style="color:var(--emerald-deep)">1990s</div>
+        <h3 class="font-display text-2xl mt-3" style="color:var(--emerald-deep)">DUBAI CALLS</h3>
+        <p class="mt-3 text-sm leading-relaxed" style="color:rgba(14,36,26,.8)">Delhi Darbar lands in Karama, bringing authentic Mughlai to the Emirates. The queues begin on day one.</p>
+      </div>
+      <div class="shrink-0 w-[78vw] md:w-[26vw] glass-dark rounded-3xl p-8">
+        <div class="font-display text-6xl" style="color:var(--saffron)">2000s</div>
+        <h3 class="font-display text-2xl mt-3" style="color:var(--cream)">THREE BRANCHES</h3>
+        <p class="mt-3 text-sm leading-relaxed" style="color:rgba(255,247,234,.7)">Karama, Barsha &amp; JLT — plus a catering arm feeding Dubai's biggest weddings and corporate feasts.</p>
+      </div>
+      <div class="shrink-0 w-[78vw] md:w-[26vw] rounded-3xl p-8" style="background:var(--chili)">
+        <div class="font-display text-6xl" style="color:var(--cream)">2026</div>
+        <h3 class="font-display text-2xl mt-3" style="color:var(--cream)">THE LEGEND CONTINUES</h3>
+        <p class="mt-3 text-sm leading-relaxed" style="color:rgba(255,247,234,.85)">Same 1946 recipes. Same clay tandoors. A whole new digital home — welcome to the new Delhi Darbar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO MENU -->
+<section id="menu" class="mesh-cream relative py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="reveal flex items-end justify-between flex-wrap gap-4 mb-10">
+      <div>
+        <div class="font-serifit text-2xl" style="color:var(--chili)">the menu</div>
+        <h2 class="font-display leading-none mt-2" style="font-size:clamp(2.6rem,6vw,5rem)">BENTO OF <span class="text-stroke-em">FLAVOURS</span></h2>
+      </div>
+      <p class="max-w-sm text-sm leading-relaxed opacity-70">Hover the tiles — every dish is a legend. 120+ items across tandoor, curries, biryanis &amp; desserts.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-5 auto-rows-[150px] md:auto-rows-[170px]">
+      <div class="bento reveal col-span-2 md:col-span-7 row-span-2 rounded-3xl p-7 flex flex-col justify-between overflow-hidden relative" style="background:var(--emerald)">
+        <svg viewBox="0 0 120 120" class="absolute -right-4 -bottom-4 w-48 opacity-90 spin-slow"><circle cx="60" cy="60" r="46" fill="#d9a441"/><circle cx="60" cy="60" r="34" fill="#e8933f"/><circle cx="48" cy="52" r="7" fill="#a83226"/><circle cx="72" cy="58" r="6" fill="#7a4a21"/><circle cx="60" cy="72" r="6" fill="#a83226"/></svg>
+        <div><span class="chip text-[11px] font-bold px-3 py-1 rounded-full" style="background:var(--saffron);color:var(--emerald-deep)">BESTSELLER</span>
+        <h3 class="font-display text-3xl md:text-4xl mt-3" style="color:var(--cream)">BUTTER CHICKEN</h3></div>
+        <p class="text-sm max-w-xs" style="color:rgba(255,247,234,.75)">The 1946 original. Charred tandoori chicken folded into silky tomato-makhani. AED 42</p>
+      </div>
+      <div class="bento reveal col-span-1 md:col-span-5 rounded-3xl p-6 flex flex-col justify-between" style="background:var(--saffron)">
+        <svg viewBox="0 0 100 100" class="w-20"><rect x="20" y="30" width="60" height="46" rx="8" fill="#8a4b1f"/><ellipse cx="50" cy="30" rx="34" ry="10" fill="#e8b04b"/><circle cx="40" cy="26" r="4" fill="#fff"/><circle cx="58" cy="28" r="4" fill="#fff"/><circle cx="50" cy="22" r="4" fill="#a83226"/></svg>
+        <div><h3 class="font-display text-2xl" style="color:var(--emerald-deep)">DUM BIRYANI</h3><p class="text-sm font-medium" style="color:rgba(14,36,26,.75)">Sealed &amp; slow-cooked · AED 38</p></div>
+      </div>
+      <div class="bento reveal col-span-1 md:col-span-5 rounded-3xl p-6 flex flex-col justify-between" style="background:var(--chili)">
+        <svg viewBox="0 0 100 100" class="w-20"><line x1="20" y1="80" x2="80" y2="20" stroke="#5c2c14" stroke-width="6" stroke-linecap="round"/><circle cx="38" cy="62" r="9" fill="#c96b2c"/><circle cx="54" cy="46" r="9" fill="#a83226"/><circle cx="68" cy="32" r="9" fill="#e8933f"/></svg>
+        <div><h3 class="font-display text-2xl" style="color:var(--cream)">TANDOORI KEBABS</h3><p class="text-sm" style="color:rgba(255,247,234,.8)">Straight from clay fire · AED 36</p></div>
+      </div>
+      <div class="bento reveal col-span-1 md:col-span-4 rounded-3xl p-6 flex flex-col justify-between" style="background:#fff;border:2px solid var(--emerald)">
+        <svg viewBox="0 0 100 100" class="w-20"><ellipse cx="50" cy="55" rx="34" ry="24" fill="#f6e3b4"/><ellipse cx="50" cy="52" rx="28" ry="18" fill="#fbeed3"/><circle cx="50" cy="50" r="6" fill="#d9a441"/></svg>
+        <div><h3 class="font-display text-2xl">NAAN BASKET</h3><p class="text-sm opacity-70">Garlic · Cheese · Laccha · AED 12</p></div>
+      </div>
+      <div class="bento reveal col-span-1 md:col-span-4 rounded-3xl p-6 flex flex-col justify-between" style="background:var(--emerald-deep)">
+        <svg viewBox="0 0 100 100" class="w-20"><path d="M20 55 Q50 20 80 55 L74 78 Q50 66 26 78 Z" fill="#e8b04b"/><circle cx="50" cy="48" r="7" fill="#fff" opacity=".5"/></svg>
+        <div><h3 class="font-display text-2xl" style="color:var(--cream)">SHAHI DESSERTS</h3><p class="text-sm" style="color:rgba(255,247,234,.7)">Kulfi · Gulab Jamun · AED 18</p></div>
+      </div>
+      <div class="bento reveal col-span-2 md:col-span-4 rounded-3xl p-6 flex flex-col justify-between overflow-hidden" style="background:linear-gradient(135deg,var(--saffron),var(--chili))">
+        <h3 class="font-display text-2xl" style="color:#fff">+ 110 MORE</h3>
+        <p class="text-sm font-medium" style="color:rgba(255,255,255,.9)">Dals, curries, chaats, beverages &amp; more →</p>
+      </div>
+    </div>
+  </div>
+  <div class="marquee mt-16 py-3" style="background:var(--emerald)">
+    <div class="marquee-track slow font-display text-lg" style="color:var(--cream)">
+      <span class="px-6">FAMILY PACKS ✦ RAMADAN IFTAR ✦ CORPORATE LUNCH ✦ WEEKEND THALI FEST ✦&nbsp;</span>
+      <span class="px-6">FAMILY PACKS ✦ RAMADAN IFTAR ✦ CORPORATE LUNCH ✦ WEEKEND THALI FEST ✦&nbsp;</span>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section id="branches" class="relative py-24 md:py-32" style="background:var(--emerald-deep)">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="reveal mb-12">
+      <div class="font-serifit text-2xl" style="color:var(--saffron-soft)">find us</div>
+      <h2 class="font-display leading-none mt-2" style="color:var(--cream);font-size:clamp(2.6rem,6vw,5rem)">THREE DOORS,<br>ONE <span style="color:var(--saffron)">DARBAR</span></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="reveal glass-dark rounded-3xl p-8 bento">
+        <div class="font-display text-5xl mb-4" style="color:var(--saffron)">01</div>
+        <h3 class="font-display text-3xl" style="color:var(--cream)">KARAMA</h3>
+        <p class="text-sm mt-3 leading-relaxed" style="color:rgba(255,247,234,.7)">The original Dubai home. Bustling, beloved, always full — book ahead on weekends.</p>
+        <div class="mt-5 text-sm font-semibold" style="color:var(--saffron-soft)">+971 4 334 7171</div>
+        <div class="mt-1 text-xs" style="color:rgba(255,247,234,.55)">12pm – 11:30pm daily</div>
+      </div>
+      <div class="reveal glass-dark rounded-3xl p-8 bento md:-translate-y-4">
+        <div class="font-display text-5xl mb-4" style="color:var(--saffron)">02</div>
+        <h3 class="font-display text-3xl" style="color:var(--cream)">BARSHA</h3>
+        <p class="text-sm mt-3 leading-relaxed" style="color:rgba(255,247,234,.7)">Family-sized seating near Mall of the Emirates. The weekend thali-fest headquarters.</p>
+        <div class="mt-5 text-sm font-semibold" style="color:var(--saffron-soft)">+971 4 347 3020</div>
+        <div class="mt-1 text-xs" style="color:rgba(255,247,234,.55)">12pm – 11:30pm daily</div>
+      </div>
+      <div class="reveal glass-dark rounded-3xl p-8 bento">
+        <div class="font-display text-5xl mb-4" style="color:var(--saffron)">03</div>
+        <h3 class="font-display text-3xl" style="color:var(--cream)">JLT</h3>
+        <p class="text-sm mt-3 leading-relaxed" style="color:rgba(255,247,234,.7)">Lakeside views meet Mughlai royalty. Perfect for corporate lunches &amp; sundowners.</p>
+        <div class="mt-5 text-sm font-semibold" style="color:var(--saffron-soft)">+971 4 452 4111</div>
+        <div class="mt-1 text-xs" style="color:rgba(255,247,234,.55)">12pm – 11pm daily</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATERING -->
+<section id="catering" class="mesh-cream relative py-24 md:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-10 items-center">
+    <div class="reveal">
+      <div class="font-serifit text-2xl" style="color:var(--chili)">catering</div>
+      <h2 class="font-display leading-[.95] mt-2" style="font-size:clamp(2.6rem,6vw,5rem)">WE FEED<br><span class="text-stroke-em">DUBAI'S</span> BIGGEST<br>CELEBRATIONS</h2>
+      <p class="mt-5 max-w-md leading-relaxed opacity-75">Weddings, corporate galas, Ramadan iftars — live tandoor counters, chaat stations &amp; full Mughlai spreads for 50 to 5,000 guests.</p>
+      <a href="#book" class="magnetic inline-block mt-7 font-bold px-8 py-4 rounded-full" style="background:var(--emerald);color:var(--cream)">Get a Catering Quote</a>
+    </div>
+    <div class="reveal grid grid-cols-2 gap-4">
+      <div class="rounded-3xl p-6 text-center bento" style="background:var(--saffron)"><div class="font-display text-4xl" style="color:var(--emerald-deep)"><span data-count="5000">0</span>+</div><div class="text-sm font-semibold mt-1" style="color:var(--emerald-deep)">guests served</div></div>
+      <div class="rounded-3xl p-6 text-center bento" style="background:var(--emerald)"><div class="font-display text-4xl" style="color:var(--saffron)"><span data-count="300">0</span>+</div><div class="text-sm font-semibold mt-1" style="color:var(--cream)">events a year</div></div>
+      <div class="rounded-3xl p-6 text-center bento" style="background:var(--chili)"><div class="font-display text-4xl" style="color:#fff">LIVE</div><div class="text-sm font-semibold mt-1" style="color:#fff">tandoor counters</div></div>
+      <div class="rounded-3xl p-6 text-center bento" style="background:#fff;border:2px solid var(--emerald)"><div class="font-display text-4xl">50–5K</div><div class="text-sm font-semibold mt-1 opacity-70">guest range</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY marquee -->
+<section class="py-16 overflow-hidden" style="background:var(--cream)">
+  <div class="reveal text-center mb-8"><h2 class="font-display" style="font-size:clamp(2rem,5vw,4rem)">A FEAST FOR <span style="color:var(--chili)">EYES</span> FIRST</h2></div>
+  <div class="marquee"><div class="marquee-track slow gap-5 pr-5" id="galTrack">
+    <div class="w-64 h-44 rounded-3xl shrink-0 grid place-items-center" style="background:linear-gradient(135deg,#0a3d2c,#1a6b4a)"><svg viewBox="0 0 100 100" class="w-24"><ellipse cx="50" cy="62" rx="36" ry="14" fill="#d9a441"/><circle cx="50" cy="46" r="20" fill="#e8933f"/></svg></div>
+    <div class="w-64 h-44 rounded-3xl shrink-0 grid place-items-center" style="background:linear-gradient(135deg,#ff8c1a,#e23e22)"><svg viewBox="0 0 100 100" class="w-24"><line x1="25" y1="75" x2="75" y2="25" stroke="#5c2c14" stroke-width="7" stroke-linecap="round"/><circle cx="45" cy="55" r="10" fill="#fff"/><circle cx="62" cy="38" r="10" fill="#fff"/></svg></div>
+    <div class="w-64 h-44 rounded-3xl shrink-0 grid place-items-center" style="background:linear-gradient(135deg,#052a1e,#0a3d2c)"><svg viewBox="0 0 100 100" class="w-24"><rect x="22" y="34" width="56" height="40" rx="8" fill="#8a4b1f"/><ellipse cx="50" cy="34" rx="30" ry="9" fill="#e8b04b"/></svg></div>
+    <div class="w-64 h-44 rounded-3xl shrink-0 grid place-items-center" style="background:linear-gradient(135deg,#fbeed3,#ffb25e)"><svg viewBox="0 0 100 100" class="w-24"><ellipse cx="50" cy="55" rx="32" ry="22" fill="#f6e3b4"/><circle cx="50" cy="50" r="8" fill="#d9a441"/></svg></div>
+    <div class="w-64 h-44 rounded-3xl shrink-0 grid place-items-center" style="background:linear-gradient(135deg,#e23e22,#8f1f10)"><svg viewBox="0 0 100 100" class="w-24"><path d="M25 60 Q50 25 75 60 L70 78 Q50 68 30 78 Z" fill="#ffd23e"/></svg></div>
+  </div></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-24 md:py-32 relative overflow-hidden" style="background:var(--emerald)">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 text-center">
+    <div class="reveal font-serifit text-2xl mb-8" style="color:var(--saffron-soft)">dubai loves us</div>
+    <div class="reveal relative min-h-[220px]" id="tWrap">
+      <div class="tcard absolute inset-0"><p class="font-serifit text-2xl md:text-4xl leading-snug" style="color:var(--cream)">"The butter chicken here ruined every other butter chicken for me. Worth flying to Dubai for."</p><div class="mt-5 text-sm font-bold tracking-widest" style="color:var(--saffron)">— PRIYA S., JLT</div></div>
+      <div class="tcard absolute inset-0 opacity-0"><p class="font-serifit text-2xl md:text-4xl leading-snug" style="color:var(--cream)">"Booked them for our wedding — 800 guests, live chaat counters, zero chaos. Absolute pros."</p><div class="mt-5 text-sm font-bold tracking-widest" style="color:var(--saffron)">— AHMED K., KARAMA</div></div>
+      <div class="tcard absolute inset-0 opacity-0"><p class="font-serifit text-2xl md:text-4xl leading-snug" style="color:var(--cream)">"Thirty years in Dubai and the dum biryani still tastes like my childhood in Delhi."</p><div class="mt-5 text-sm font-bold tracking-widest" style="color:var(--saffron)">— FATIMA R., BARSHA</div></div>
+    </div>
+    <div class="reveal flex justify-center gap-3 mt-8" id="tDots"></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book" class="mesh-cream py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-10 items-stretch">
+    <div class="reveal flex flex-col justify-center">
+      <div class="font-serifit text-2xl" style="color:var(--chili)">book now</div>
+      <h2 class="font-display leading-[.95] mt-2" style="font-size:clamp(2.6rem,6vw,4.6rem)">YOUR TABLE<br>IS <span style="color:var(--saffron)">WAITING</span></h2>
+      <p class="mt-5 max-w-md leading-relaxed opacity-75">Pick your branch, date &amp; party size — we confirm on WhatsApp within 15 minutes. For catering quotes, mention it in the notes.</p>
+      <div class="mt-6 flex items-center gap-3">
+        <span class="w-12 h-12 rounded-2xl grid place-items-center font-display text-lg" style="background:var(--emerald);color:var(--cream)">★</span>
+        <div class="text-sm"><b>4.6 rating</b> · 12,000+ Google reviews across branches</div>
+      </div>
+    </div>
+    <div class="reveal rounded-[2rem] p-8 md:p-10 relative overflow-hidden" style="background:#fff;box-shadow:0 40px 80px -30px rgba(10,61,44,.25);border:2px solid var(--emerald)">
+      <form id="bookForm" class="grid grid-cols-2 gap-4">
+        <div class="col-span-2"><label class="text-xs font-bold tracking-widest opacity-60">NAME</label><input required type="text" placeholder="Your name" class="mt-1 w-full rounded-2xl border-2 border-black/10 px-4 py-3 transition"></div>
+        <div><label class="text-xs font-bold tracking-widest opacity-60">DATE</label><input required type="date" class="mt-1 w-full rounded-2xl border-2 border-black/10 px-4 py-3 transition"></div>
+        <div><label class="text-xs font-bold tracking-widest opacity-60">GUESTS</label><select class="mt-1 w-full rounded-2xl border-2 border-black/10 px-4 py-3 transition"><option>2</option><option>4</option><option>6</option><option>8+</option><option>Catering event</option></select></div>
+        <div class="col-span-2"><label class="text-xs font-bold tracking-widest opacity-60">BRANCH</label><select class="mt-1 w-full rounded-2xl border-2 border-black/10 px-4 py-3 transition"><option>Karama</option><option>Barsha</option><option>JLT</option></select></div>
+        <div class="col-span-2"><label class="text-xs font-bold tracking-widest opacity-60">PHONE / WHATSAPP</label><input required type="tel" placeholder="+971 ..." class="mt-1 w-full rounded-2xl border-2 border-black/10 px-4 py-3 transition"></div>
+        <button type="submit" class="magnetic col-span-2 font-bold text-lg py-4 rounded-2xl mt-2" style="background:var(--saffron);color:var(--emerald-deep)">Confirm Booking →</button>
+      </form>
+      <div id="bookDone" class="hidden absolute inset-0 flex-col items-center justify-center text-center p-10" style="background:#fff">
+        <svg viewBox="0 0 100 100" class="w-24 mb-5"><circle cx="50" cy="50" r="44" fill="none" stroke="#0a3d2c" stroke-width="6"/><path id="successCheck" d="M32 52 L45 64 L70 38" fill="none" stroke="#ff8c1a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="font-display text-3xl">SHUKRIYA!</h3>
+        <p class="mt-3 opacity-70 max-w-xs">Your request is in. We'll confirm on WhatsApp within 15 minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pt-20 pb-10 relative overflow-hidden" style="background:var(--emerald-deep)">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-4 gap-10 pb-12" style="border-bottom:1px solid rgba(255,255,255,.12)">
+      <div class="md:col-span-2">
+        <div class="font-display text-4xl" style="color:var(--cream)">DELHI <span style="color:var(--saffron)">DARBAR</span></div>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed" style="color:rgba(255,247,234,.65)">Since 1946. From old Delhi's lanes to Dubai's heart — the Mughlai legend lives on in Karama, Barsha &amp; JLT.</p>
+      </div>
+      <div>
+        <div class="text-xs font-bold tracking-widest mb-4" style="color:var(--saffron-soft)">CONTACT</div>
+        <div class="text-sm space-y-2" style="color:rgba(255,247,234,.75)"><div>+971 4 334 7171</div><div>enquiry@delhidarbar.ae</div></div>
+      </div>
+      <div>
+        <div class="text-xs font-bold tracking-widest mb-4" style="color:var(--saffron-soft)">EXPLORE</div>
+        <div class="text-sm space-y-2" style="color:rgba(255,247,234,.75)"><a href="#legacy" class="block hover:opacity-70">Legacy</a><a href="#menu" class="block hover:opacity-70">Menu</a><a href="#branches" class="block hover:opacity-70">Branches</a><a href="#book" class="block hover:opacity-70">Book a Table</a></div>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-wrap justify-between gap-4 text-xs" style="color:rgba(255,247,234,.45)">
+      <span>© 2026 Delhi Darbar · Concept redesign</span><span>Made with saffron &amp; smoke in Dubai</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/97143347171" target="_blank" rel="noopener" class="magnetic fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full grid place-items-center shadow-2xl" style="background:#25D366" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" class="w-8 h-8" fill="#fff"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 2 6.5L4 29l7.7-2c1.8 1 3.9 1.6 6.1 1.6h.2c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.2 1.2-4.4-.3-.4c-1-1.6-1.6-3.5-1.6-5.5C5 9.9 10 5 16 5s11 4.9 11 11-4.9 8.8-11 8.8zm6-6.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-.9-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.2-.6l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6-.1-.2-.7-1.8-1-2.4-.3-.6-.5-.5-.7-.6h-.6c-.2 0-.6.2-.9.5-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.4c.2.2 2.2 3.4 5.4 4.8 1.9.8 2.7.9 3.6.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.7-.4z"/></svg>
+</a>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- preloader ---------- */
+(function(){
+  var bar=document.getElementById('loadBar'), pct=document.getElementById('loadPct'), p=0;
+  var iv=setInterval(function(){
+    p=Math.min(100,p+Math.random()*16);
+    bar.style.width=p+'%';
+    pct.textContent=(1946+Math.round(p*0.8));
+    if(p>=100){ clearInterval(iv); setTimeout(function(){ document.getElementById('loader').classList.add('done'); },350); }
+  },140);
+})();
+
+/* ---------- cursor ---------- */
+(function(){
+  var d=document.getElementById('curDot'), r=document.getElementById('curRing'), mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',function(e){ mx=e.clientX; my=e.clientY; d.style.left=mx+'px'; d.style.top=my+'px'; });
+  (function loop(){ rx+=(mx-rx)*.16; ry+=(my-ry)*.16; r.style.left=rx+'px'; r.style.top=ry+'px'; requestAnimationFrame(loop); })();
+  document.querySelectorAll('a,button,.bento').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ r.classList.add('big'); });
+    el.addEventListener('mouseleave',function(){ r.classList.remove('big'); });
+  });
+})();
+
+/* ---------- magnetic ---------- */
+document.querySelectorAll('.magnetic').forEach(function(el){
+  el.addEventListener('mousemove',function(e){
+    var b=el.getBoundingClientRect();
+    gsap.to(el,{x:(e.clientX-b.left-b.width/2)*.28,y:(e.clientY-b.top-b.height/2)*.28,duration:.4,ease:'power2.out'});
+  });
+  el.addEventListener('mouseleave',function(){ gsap.to(el,{x:0,y:0,duration:.7,ease:'elastic.out(1,.4)'}); });
+});
+
+/* ---------- spice particles ---------- */
+(function(){
+  var c=document.getElementById('spice'), x=c.getContext('2d'), W,H,ps=[];
+  var cols=['255,140,26','255,178,94','226,62,34','255,210,62'];
+  function size(){ W=c.width=c.offsetWidth; H=c.height=c.offsetHeight; }
+  size(); window.addEventListener('resize',size);
+  for(var i=0;i<70;i++) ps.push({x:Math.random(),y:Math.random(),r:1+Math.random()*3.4,vy:.0004+Math.random()*.0012,vx:(Math.random()-.5)*.0006,a:.15+Math.random()*.5,col:cols[i%4],ph:Math.random()*6.28});
+  (function anim(t){
+    x.clearRect(0,0,W,H);
+    ps.forEach(function(p){
+      p.y-=p.vy; p.x+=p.vx+Math.sin(t/1600+p.ph)*.0004;
+      if(p.y<-.05){ p.y=1.05; p.x=Math.random(); }
+      x.beginPath(); x.arc(p.x*W,p.y*H,p.r,0,6.28);
+      x.fillStyle='rgba('+p.col+','+p.a+')'; x.fill();
+    });
+    requestAnimationFrame(anim);
+  })(0);
+})();
+
+/* ---------- reveals ---------- */
+document.querySelectorAll('.reveal').forEach(function(el){
+  gsap.from(el,{y:60,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+
+/* ---------- horizontal legacy ---------- */
+(function(){
+  var track=document.getElementById('legacyTrack');
+  gsap.to(track,{x:function(){ return -(track.scrollWidth-window.innerWidth); },ease:'none',
+    scrollTrigger:{trigger:'#legacy',start:'top top',end:function(){ return '+='+(track.scrollWidth-window.innerWidth); },scrub:1,pin:true,invalidateOnRefresh:true}});
+})();
+
+/* ---------- counters ---------- */
+document.querySelectorAll('[data-count]').forEach(function(el){
+  var target=+el.getAttribute('data-count'), o={v:0};
+  ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:function(){
+    gsap.to(o,{v:target,duration:1.8,ease:'power2.out',onUpdate:function(){ el.textContent=Math.round(o.v); }});
+  }});
+});
+
+/* ---------- nav bg ---------- */
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>60){ nav.classList.add('glass-dark'); } else { nav.classList.remove('glass-dark'); }
+},{passive:true});
+
+/* ---------- testimonials ---------- */
+(function(){
+  var cards=document.querySelectorAll('#tWrap .tcard'), dots=document.getElementById('tDots'), i=0, n=cards.length;
+  for(var k=0;k<n;k++){ var b=document.createElement('button'); b.className='w-3 h-3 rounded-full transition-all'; b.setAttribute('aria-label','slide '+(k+1)); (function(idx){ b.addEventListener('click',function(){ show(idx); }); })(k); dots.appendChild(b); }
+  var db=dots.children;
+  function show(j){
+    i=j;
+    cards.forEach(function(c,ci){ c.style.opacity=ci===i?1:0; c.style.transform=ci===i?'translateY(0)':'translateY(24px)'; c.style.pointerEvents=ci===i?'auto':'none'; });
+    for(var d=0;d<n;d++){ db[d].style.background=d===i?'#ff8c1a':'rgba(255,255,255,.25)'; db[d].style.width=d===i?'28px':'12px'; }
+  }
+  show(0); setInterval(function(){ show((i+1)%n); },5000);
+})();
+
+/* ---------- booking form ---------- */
+document.getElementById('bookForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var done=document.getElementById('bookDone');
+  done.classList.remove('hidden'); done.classList.add('flex','success-show');
+  gsap.from(done,{opacity:0,scale:.92,duration:.6,ease:'back.out(1.6)'});
+});
+</script>
+</body>
+</html>

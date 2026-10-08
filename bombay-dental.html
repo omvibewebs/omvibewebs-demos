@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bombay Dental Specialties — Mumbai's #1 Rated Dental Clinic | Ghatkopar East</title>
+<meta name="description" content="Bombay Dental Specialties, Ghatkopar East Mumbai — 5.0 rated by 1300+ patients. Implants, braces, root canals, cosmetic dentistry. Book your appointment online.">
+<style>
+  :root{
+    --teal:#0e7c7b; --teal-dark:#0a5f5e; --teal-light:#e3f4f3;
+    --ink:#1d2b33; --muted:#5b6b76; --bg:#ffffff; --soft:#f4f8f9;
+    --bluegray:#dfe9ec; --star:#f5a623; --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  /* emergency strip */
+  .emergency{background:linear-gradient(90deg,#c0392b,#e74c3c);color:#fff;text-align:center;font-size:14px;padding:9px 12px;font-weight:600;letter-spacing:.2px}
+  .emergency a{color:#fff;text-decoration:none;border-bottom:1px solid #fff}
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--bluegray)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand-mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;flex:none}
+  .brand-name{font-weight:800;font-size:17px;line-height:1.2}
+  .brand-name small{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:.6px}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a.nl{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
+  .nav-links a.nl:hover{color:var(--teal)}
+  .btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;padding:12px 26px;border-radius:999px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s}
+  .btn:hover{background:var(--teal-dark);transform:translateY(-1px);box-shadow:0 8px 20px rgba(14,124,123,.28)}
+  .btn.outline{background:#fff;color:var(--teal);border:2px solid var(--teal)}
+  .btn.outline:hover{background:var(--teal-light)}
+  .btn.small{padding:9px 20px;font-size:14px}
+  /* hero */
+  .hero{background:linear-gradient(135deg,#e9f5f4 0%,#f7fbfb 55%,#eef4f6 100%);padding:74px 0 66px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--bluegray);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:600;color:var(--teal-dark);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+  .stars{color:var(--star);letter-spacing:2px}
+  .hero h1{font-size:clamp(32px,5vw,52px);line-height:1.12;margin:18px 0 14px;font-weight:800;letter-spacing:-.5px}
+  .hero h1 span{color:var(--teal)}
+  .hero p.lead{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:28px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-visual{background:linear-gradient(160deg,#bfe6e4,#e6f4f3 60%,#d7e9ec);border-radius:28px;min-height:380px;position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(14,124,123,.14)}
+  .hero-visual::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 20% 25%,rgba(255,255,255,.7) 0 90px,transparent 91px),
+    radial-gradient(circle at 78% 70%,rgba(255,255,255,.55) 0 120px,transparent 121px)}
+  .smile-card{position:absolute;background:#fff;border-radius:18px;padding:18px 20px;box-shadow:0 14px 34px rgba(0,0,0,.10);max-width:250px}
+  .smile-card.c1{top:34px;left:30px}
+  .smile-card.c2{bottom:34px;right:30px}
+  .smile-card .num{font-size:26px;font-weight:800;color:var(--teal)}
+  .smile-card .lbl{font-size:13px;color:var(--muted);font-weight:600}
+  .tooth{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.9}
+  /* trust bar */
+  .trust{background:var(--ink);color:#fff;padding:30px 0}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .trust-grid .t-num{font-size:30px;font-weight:800;color:#7fd8d6}
+  .trust-grid .t-lbl{font-size:13.5px;color:#b9c7cd}
+  /* sections */
+  section.block{padding:70px 0}
+  section.block.alt{background:var(--soft)}
+  .kicker{display:inline-block;color:var(--teal);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+  h2.sec{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.4px;margin-bottom:12px}
+  p.sec-sub{color:var(--muted);max-width:640px;margin-bottom:36px;font-size:16.5px}
+  /* services */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc{background:#fff;border:1px solid var(--bluegray);border-radius:var(--radius);padding:28px 24px;transition:transform .15s,box-shadow .15s}
+  .svc:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(14,124,123,.12)}
+  .svc-icon{width:52px;height:52px;border-radius:14px;background:var(--teal-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .svc h3{font-size:18px;margin-bottom:8px}
+  .svc p{font-size:14.5px;color:var(--muted);margin-bottom:14px}
+  .price{font-weight:800;color:var(--teal);font-size:16px}
+  .price small{font-weight:500;color:var(--muted);font-size:12.5px}
+  /* booking */
+  .book-card{background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(14,124,123,.12);padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  label{font-size:13.5px;font-weight:600;color:var(--ink)}
+  input,select,textarea{border:1.5px solid var(--bluegray);border-radius:10px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,124,123,.12)}
+  .book-side{background:linear-gradient(150deg,var(--teal),var(--teal-dark));border-radius:18px;color:#fff;padding:30px;display:flex;flex-direction:column;justify-content:center}
+  .book-side h3{font-size:22px;margin-bottom:12px}
+  .book-side p{font-size:14.5px;color:#d7ecec;margin-bottom:18px}
+  .book-side ul{list-style:none;display:grid;gap:10px;font-size:14.5px}
+  .book-side li{display:flex;gap:10px;align-items:flex-start}
+  .check{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:13px}
+  .confirm{display:none;background:#eafaf3;border:1.5px solid #7fd8b0;color:#146c43;border-radius:12px;padding:16px;margin-top:16px;font-size:15px}
+  /* doctors */
+  .doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .doc{background:#fff;border:1px solid var(--bluegray);border-radius:var(--radius);overflow:hidden}
+  .doc-photo{height:190px;background:linear-gradient(150deg,#cfe9e8,#eef6f6);display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}
+  .avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#34a5a4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:40px;font-weight:800;margin-bottom:-30px;border:5px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+  .doc-body{padding:44px 24px 26px;text-align:center}
+  .doc-body h3{font-size:18px;margin-bottom:4px}
+  .doc-body .spec{color:var(--teal);font-weight:700;font-size:14px;margin-bottom:8px}
+  .doc-body p{font-size:14px;color:var(--muted)}
+  /* gallery */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .gal{background:#fff;border:1px solid var(--bluegray);border-radius:var(--radius);overflow:hidden}
+  .gal .ba{height:150px;display:flex}
+  .ba div{flex:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+  .ba .b1{background:linear-gradient(135deg,#b9c4c9,#9aa8ae)}
+  .ba .b2{background:linear-gradient(135deg,#ffe9b8,#ffd27a)}
+  .gal .cap{padding:12px 14px;font-size:13.5px;color:var(--muted)}
+  .gal .cap b{color:var(--ink);display:block;font-size:14px}
+  .tag{display:inline-block;background:var(--teal-light);color:var(--teal-dark);font-size:11px;font-weight:700;border-radius:999px;padding:3px 10px;margin-top:6px}
+  /* testimonials */
+  .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .testi{background:#fff;border:1px solid var(--bluegray);border-radius:var(--radius);padding:26px}
+  .testi .stars{font-size:15px;margin-bottom:10px}
+  .testi p{font-size:15px;color:var(--ink);margin-bottom:14px}
+  .testi .who{display:flex;align-items:center;gap:12px}
+  .who .ini{width:42px;height:42px;border-radius:50%;background:var(--teal-light);color:var(--teal-dark);font-weight:800;display:flex;align-items:center;justify-content:center}
+  .who b{font-size:14.5px;display:block}
+  .who small{color:var(--muted);font-size:12.5px}
+  /* faq */
+  .faq{max-width:760px}
+  .faq-item{background:#fff;border:1px solid var(--bluegray);border-radius:12px;margin-bottom:12px;overflow:hidden}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:18px 20px;font-size:16px;font-weight:700;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:inherit}
+  .faq-q .plus{color:var(--teal);font-size:22px;font-weight:400;flex:none;transition:transform .2s}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;color:var(--muted);font-size:15px}
+  .faq-a div{padding:0 20px 18px}
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .info-card{background:#fff;border:1px solid var(--bluegray);border-radius:var(--radius);padding:30px}
+  .info-row{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+  .info-ico{flex:none;width:44px;height:44px;border-radius:12px;background:var(--teal-light);display:flex;align-items:center;justify-content:center}
+  .info-row b{display:block;font-size:15px}
+  .info-row span,.info-row a{color:var(--muted);font-size:14.5px;text-decoration:none}
+  .info-row a:hover{color:var(--teal)}
+  .hours-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+  .hours-table td{padding:8px 0;border-bottom:1px dashed var(--bluegray)}
+  .hours-table td:last-child{text-align:right;font-weight:600}
+  .map-ph{border-radius:var(--radius);min-height:340px;background:linear-gradient(150deg,#e3edf0,#cfdde3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--muted);font-size:14.5px;border:1px solid var(--bluegray);text-align:center;padding:20px}
+  /* whatsapp float */
+  .wa-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(37,211,102,.45);z-index:60;transition:transform .15s}
+  .wa-float:hover{transform:scale(1.08)}
+  /* footer */
+  footer{background:var(--ink);color:#b9c7cd;padding:44px 0 26px;font-size:14px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:28px}
+  footer h4{color:#fff;font-size:15px;margin-bottom:12px}
+  footer a{color:#b9c7cd;text-decoration:none}
+  footer a:hover{color:#7fd8d6}
+  footer ul{list-style:none;display:grid;gap:8px}
+  .copy{border-top:1px solid #2e3f47;padding-top:20px;text-align:center;font-size:13px;color:#8fa0a8}
+  .demo-note{background:#fff8e6;border-top:2px dashed #e0b84f;color:#7a5c14;font-size:12.5px;text-align:center;padding:8px 12px}
+  @media(max-width:900px){
+    .hero-grid,.book-card,.contact-grid{grid-template-columns:1fr}
+    .svc-grid,.doc-grid{grid-template-columns:repeat(2,1fr)}
+    .gal-grid{grid-template-columns:repeat(2,1fr)}
+    .trust-grid{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr}
+    .nav-links a.nl{display:none}
+  }
+  @media(max-width:560px){
+    .svc-grid,.doc-grid,.testi-grid{grid-template-columns:1fr}
+    .book-card{padding:26px 20px}
+    .hero{padding:52px 0 46px}
+  }
+</style>
+</head>
+<body>
+
+<div class="emergency">Toothache or dental emergency? <a href="tel:+917977539593">Call now: +91 79775 39593</a> — walk-ins welcome</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 9c0 5 3 13 4 13 .8 0 1-4 3-4s2.2 4 3 4c1 0 4-8 4-13 0-4-3-7-7-7z"/></svg>
+      </span>
+      <span class="brand-name">Bombay Dental Specialties<small>GHATKOPAR EAST · MUMBAI</small></span>
+    </a>
+    <nav class="nav-links">
+      <a class="nl" href="#services">Services</a>
+      <a class="nl" href="#doctors">Doctors</a>
+      <a class="nl" href="#gallery">Smile Gallery</a>
+      <a class="nl" href="#faq">FAQs</a>
+      <a class="nl" href="#contact">Contact</a>
+      <a class="btn small" href="#book">Book Appointment</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span class="stars">★★★★★</span> 5.0 · 1,300+ Google reviews</span>
+      <h1>Mumbai's <span>#1 rated dental clinic</span> — your smile, Mumbai style.</h1>
+      <p class="lead">Painless, modern dentistry in Ghatkopar East — from routine cleanings to full-mouth implants. Trusted by 20,000+ happy patients.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#book">Book Appointment</a>
+        <a class="btn outline" href="tel:+917977539593">Call +91 79775 39593</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="tooth" width="130" height="130" viewBox="0 0 24 24" fill="#ffffff" opacity="0.95"><path d="M12 2C8 2 5 5 5 9c0 5 3 13 4 13 .8 0 1-4 3-4s2.2 4 3 4c1 0 4-8 4-13 0-4-3-7-7-7z"/></svg>
+      <div class="smile-card c1"><div class="num">5.0 ★</div><div class="lbl">1,300+ Google reviews — highest rated clinic in Mumbai</div></div>
+      <div class="smile-card c2"><div class="num">20,000+</div><div class="lbl">smiles transformed and counting</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="wrap trust-grid">
+    <div><div class="t-num">15+</div><div class="t-lbl">Years of experience</div></div>
+    <div><div class="t-num">1,300+</div><div class="t-lbl">Five-star Google reviews</div></div>
+    <div><div class="t-num">20,000+</div><div class="t-lbl">Smiles transformed</div></div>
+    <div><div class="t-num">9</div><div class="t-lbl">Dental specialties under one roof</div></div>
+  </div>
+</div>
+
+<section class="block" id="services">
+  <div class="wrap">
+    <span class="kicker">Our Services</span>
+    <h2 class="sec">Complete dental care, transparent prices</h2>
+    <p class="sec-sub">Every treatment plan starts with a free consultation and a written estimate — no surprises, ever.</p>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><path d="M12 2C8 2 5 5 5 9c0 5 3 13 4 13 .8 0 1-4 3-4s2.2 4 3 4c1 0 4-8 4-13 0-4-3-7-7-7z"/></svg></div>
+        <h3>Dental Implants</h3>
+        <p>Permanent, natural-looking tooth replacement with Swiss/Korean implant systems.</p>
+        <div class="price">₹24,999 – ₹49,999 <small>/ implant</small></div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h3>Braces &amp; Aligners</h3>
+        <p>Metal, ceramic &amp; invisible aligners for teens and adults. 0% EMI available.</p>
+        <div class="price">₹35,000 – ₹1,50,000 <small>/ full treatment</small></div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5 8l14 8M19 8L5 16"/></svg></div>
+        <h3>Root Canal Treatment</h3>
+        <p>Single-visit, painless RCT with rotary endodontics and digital X-ray.</p>
+        <div class="price">₹5,000 – ₹12,000 <small>/ tooth</small></div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><path d="M12 3l2.5 5.5L20 9.5l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1z"/></svg></div>
+        <h3>Teeth Whitening</h3>
+        <p>Zoom laser whitening — up to 8 shades brighter in a single 60-minute sitting.</p>
+        <div class="price">₹8,000 – ₹18,000 <small>/ session</small></div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></div>
+        <h3>Cleaning &amp; Polishing</h3>
+        <p>Ultrasonic scaling, stain removal and polish for healthy gums and fresh breath.</p>
+        <div class="price">₹1,200 – ₹2,500 <small>/ session</small></div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.6c2.9.3 5 2.2 5.7 5.4"/></svg></div>
+        <h3>Kids Dentistry</h3>
+        <p>Gentle, fear-free dental care for children — checkups, fluoride, habit correction.</p>
+        <div class="price">₹800 – ₹3,500 <small>/ visit</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="book">
+  <div class="wrap">
+    <span class="kicker">Book Online</span>
+    <h2 class="sec">Get your appointment in 30 seconds</h2>
+    <p class="sec-sub">Pick a treatment and a time that suits you — we confirm on call/WhatsApp within 2 working hours.</p>
+    <div class="book-card">
+      <form id="apptForm" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="fname">Full name</label><input id="fname" type="text" placeholder="e.g. Priya Sharma" required></div>
+          <div class="field"><label for="fphone">Phone number</label><input id="fphone" type="tel" placeholder="+91 …" required></div>
+          <div class="field"><label for="ftreat">Treatment</label>
+            <select id="ftreat">
+              <option>General checkup &amp; cleaning</option><option>Dental implants</option><option>Braces / Aligners</option><option>Root canal</option><option>Teeth whitening</option><option>Kids dentistry</option><option>Emergency / tooth pain</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="fdate">Preferred date</label><input id="fdate" type="date" required></div>
+          <div class="field"><label for="ftime">Preferred time</label>
+            <select id="ftime"><option>Morning (10–1)</option><option>Afternoon (1–4)</option><option>Evening (4–7:30)</option></select>
+          </div>
+          <div class="field full"><label for="fnote">Anything we should know? (optional)</label><textarea id="fnote" rows="2" placeholder="Symptoms, past treatment, questions…"></textarea></div>
+          <div class="field full"><button class="btn" type="submit">Request Appointment</button></div>
+        </div>
+        <div class="confirm" id="apptConfirm">Thank you! Your appointment request has been received. Our team will call/WhatsApp you shortly to confirm your slot.</div>
+      </form>
+      <div class="book-side">
+        <h3>Why patients choose us</h3>
+        <p>Mumbai's highest-rated dental clinic — 5.0 stars across 1,300+ verified Google reviews.</p>
+        <ul>
+          <li><span class="check">✓</span>Painless single-visit root canals &amp; digital X-rays</li>
+          <li><span class="check">✓</span>Strict 4-step sterilization for every patient</li>
+          <li><span class="check">✓</span>Transparent written estimates — 0% EMI available</li>
+          <li><span class="check">✓</span>Same-day emergency appointments for tooth pain</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="doctors">
+  <div class="wrap">
+    <span class="kicker">Meet The Doctors</span>
+    <h2 class="sec">Specialists you can trust</h2>
+    <p class="sec-sub">A full specialist team under one roof — so you never get referred elsewhere.</p>
+    <div class="doc-grid">
+      <div class="doc">
+        <div class="doc-photo"><div class="avatar">SS</div></div>
+        <div class="doc-body">
+          <h3>Dr. Sanket M. Sheth</h3>
+          <div class="spec">Endodontist &amp; Implantologist</div>
+          <p>BDS, MDS (Manipal) · 12+ years experience. 5,000+ painless root canals and 1,200+ implants placed.</p>
+        </div>
+      </div>
+      <div class="doc">
+        <div class="doc-photo"><div class="avatar">AK</div></div>
+        <div class="doc-body">
+          <h3>Dr. Aishwarya Kulkarni</h3>
+          <div class="spec">Orthodontist (Braces &amp; Aligners)</div>
+          <p>MDS Orthodontics · 9 years experience. 800+ smile-correction cases including invisible aligners.</p>
+        </div>
+      </div>
+      <div class="doc">
+        <div class="doc-photo"><div class="avatar">RP</div></div>
+        <div class="doc-body">
+          <h3>Dr. Rahul Patil</h3>
+          <div class="spec">Cosmetic &amp; Pediatric Dentist</div>
+          <p>BDS, FAGE · 8 years experience. Smile designing, veneers, whitening and gentle kids dentistry.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="gallery">
+  <div class="wrap">
+    <span class="kicker">Smile Gallery</span>
+    <h2 class="sec">Real transformations, real confidence</h2>
+    <p class="sec-sub">A glimpse of what modern cosmetic dentistry can do. (Sample visuals for illustration.)</p>
+    <div class="gal-grid">
+      <div class="gal"><div class="ba"><div class="b1">BEFORE</div><div class="b2">AFTER</div></div><div class="cap"><b>Full smile makeover</b>8 veneers · 2 sittings<span class="tag">COSMETIC</span></div></div>
+      <div class="gal"><div class="ba"><div class="b1">BEFORE</div><div class="b2">AFTER</div></div><div class="cap"><b>Single-tooth implant</b>Natural crown match<span class="tag">IMPLANT</span></div></div>
+      <div class="gal"><div class="ba"><div class="b1">BEFORE</div><div class="b2">AFTER</div></div><div class="cap"><b>Aligner correction</b>14 months, no braces<span class="tag">ORTHODONTICS</span></div></div>
+      <div class="gal"><div class="ba"><div class="b1">BEFORE</div><div class="b2">AFTER</div></div><div class="cap"><b>Laser whitening</b>7 shades brighter · 1 hour<span class="tag">WHITENING</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="reviews">
+  <div class="wrap">
+    <span class="kicker">Patient Stories</span>
+    <h2 class="sec">Loved by 1,300+ Mumbaikars</h2>
+    <p class="sec-sub">5.0 stars on Google — the highest-rated dental clinic in Mumbai.</p>
+    <div class="testi-grid">
+      <div class="testi"><div class="stars">★★★★★</div><p>"I was terrified of root canals, but Dr. Sheth finished mine in a single sitting — completely painless. The clinic is spotless and the staff is so warm."</p><div class="who"><div class="ini">PS</div><div><b>Priya Sharma</b><small>Ghatkopar West · Root canal</small></div></div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>"Got two implants here after being quoted double elsewhere. Transparent pricing, written estimate, and the result looks totally natural. Highly recommended."</p><div class="who"><div class="ini">AR</div><div><b>Amit Rao</b><small>Vikhroli · Implants</small></div></div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>"My 7-year-old actually looks forward to dental visits now! Dr. Patil is amazing with kids — gentle, patient, and fun. Best pediatric dentist in the area."</p><div class="who"><div class="ini">SN</div><div><b>Sneha Nair</b><small>Chembur · Kids dentistry</small></div></div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>"Had severe tooth pain at 7pm and they still accommodated me the same evening. Professional, honest — they told me what I did NOT need. Rare these days."</p><div class="who"><div class="ini">VK</div><div><b>Vikram Khanna</b><small>Ghatkopar East · Emergency care</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="faq">
+  <div class="wrap">
+    <span class="kicker">Good To Know</span>
+    <h2 class="sec">Frequently asked questions</h2>
+    <p class="sec-sub">Still unsure? Call us on <a href="tel:+917977539593" style="color:var(--teal);font-weight:700">+91 79775 39593</a> — we answer everything patiently.</p>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">Is root canal treatment painful?<span class="plus">+</span></button><div class="faq-a"><div>Not anymore. With modern rotary instruments and effective local anesthesia, most of our root canals are completed painlessly in a single visit — most patients say it feels like getting a filling.</div></div></div>
+      <div class="faq-item"><button class="faq-q">How much do dental implants cost?<span class="plus">+</span></button><div class="faq-a"><div>Implants at our clinic range from ₹24,999 to ₹49,999 per implant depending on the implant system and bone condition. Your first consultation and 3D scan assessment are free, and we give a written estimate before starting.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Do you offer EMI or payment plans?<span class="plus">+</span></button><div class="faq-a"><div>Yes. 0% EMI is available on treatments above ₹15,000 (braces, aligners, implants, full-mouth work) through all major credit cards and financing partners.</div></div></div>
+      <div class="faq-item"><button class="faq-q">I have sudden tooth pain — can I walk in?<span class="plus">+</span></button><div class="faq-a"><div>Absolutely. We reserve same-day emergency slots every day. Call <b>+91 79775 39593</b> and we will fit you in — tooth pain should never wait.</div></div></div>
+      <div class="faq-item"><button class="faq-q">How often should I get my teeth cleaned?<span class="plus">+</span></button><div class="faq-a"><div>Every 6 months for most adults. If you have gum disease, diabetes, or are a smoker, we may recommend every 3–4 months. Regular scaling prevents 90% of major dental problems.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Is teeth whitening safe for enamel?<span class="plus">+</span></button><div class="faq-a"><div>Yes, when done professionally. Our Zoom laser whitening is enamel-safe and dentist-supervised — unlike harsh home kits. Mild sensitivity for a day or two is normal and settles on its own.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap">
+    <span class="kicker">Visit Us</span>
+    <h2 class="sec">Find us in Ghatkopar East</h2>
+    <p class="sec-sub">Easy to reach — 2 minutes from Rajawadi Signal, on Mahatma Gandhi Road.</p>
+    <div class="contact-grid">
+      <div class="info-card">
+        <div class="info-row">
+          <div class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><b>Address</b><span>First Floor, Sapphire Business Annexe, 108 Mahatma Gandhi Rd, near Rajawadi Signal, Ghatkopar East, Mumbai 400077</span></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.25a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></div>
+          <div><b>Phone</b><a href="tel:+917977539593">+91 79775 39593</a></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div style="flex:1"><b>Clinic hours</b>
+            <table class="hours-table">
+              <tr><td>Monday – Saturday</td><td>10:00 – 19:30</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </table>
+          </div>
+        </div>
+        <a class="btn" href="#book" style="margin-top:6px">Book Appointment</a>
+      </div>
+      <div class="map-ph">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="1.6" stroke-linecap="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div><b style="color:var(--ink)">Bombay Dental Specialties</b><br>Sapphire Business Annexe, M.G. Road<br>Ghatkopar East, Mumbai 400077</div>
+        <a class="btn small outline" href="https://www.google.com/maps/search/?api=1&query=Bombay+Dental+Specialties+Ghatkopar+East+Mumbai" target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Bombay Dental Specialties</h4>
+        <p>Mumbai's #1 rated dental clinic — 5.0 stars from 1,300+ Google reviews. Complete family dentistry in Ghatkopar East.</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul><li><a href="#services">Services &amp; prices</a></li><li><a href="#book">Book appointment</a></li><li><a href="#doctors">Our doctors</a></li><li><a href="#faq">FAQs</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul><li><a href="tel:+917977539593">+91 79775 39593</a></li><li>Mon–Sat: 10:00 – 19:30</li><li>Ghatkopar East, Mumbai 400077</li></ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 Bombay Dental Specialties · Demo redesign concept</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/917977539593" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.5-.6c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.9.9-1.1 2.2-.2 3.9a11.6 11.6 0 0 0 4.5 4.2c1.7.8 2.4.9 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.1-.5-.2z"/></svg>
+</a>
+
+<div class="demo-note">Concept demo redesign prepared for outreach — not affiliated with the business.</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){
+        o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!open){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+  // Booking form confirmation
+  document.getElementById('apptForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('fname'), phone = document.getElementById('fphone'), date = document.getElementById('fdate');
+    var ok = true;
+    [name, phone, date].forEach(function(f){
+      if(!f.value.trim()){ f.style.borderColor = '#e74c3c'; ok = false; }
+      else { f.style.borderColor = ''; }
+    });
+    if(!ok) return;
+    document.getElementById('apptConfirm').style.display = 'block';
+    document.getElementById('apptConfirm').scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+  // Min date = today for booking
+  document.getElementById('fdate').min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>

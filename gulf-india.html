@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Gulf India — Colaba, Mumbai Near Gateway of India</title>
+<meta name="description" content="Hotel Gulf India — a landmark stay in Colaba, Mumbai, steps from the Gateway of India. 69 elegant rooms, decades of warm hospitality. Book direct and save.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --midnight:#04161b;
+  --deep:#062227;
+  --teal:#0a3a42;
+  --teal-lt:#14505a;
+  --brass:#c9a45c;
+  --gold:#e8c877;
+  --gold-lt:#f6e3ae;
+  --cream:#f4ead2;
+  --ink:#0b1e22;
+  --muted:#9db8b6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--midnight);color:var(--cream);font-family:'Jost',sans-serif;overflow-x:hidden;line-height:1.6}
+::selection{background:var(--brass);color:var(--midnight)}
+.serif{font-family:'Cormorant Garamond',serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{position:relative;padding:110px 0}
+.eyebrow{letter-spacing:.45em;text-transform:uppercase;font-size:12px;color:var(--brass);font-weight:500}
+.h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:600;line-height:1.15;margin:18px 0 14px}
+.h2 em{font-style:italic;color:var(--gold)}
+.lead{color:var(--muted);font-weight:300;font-size:1.08rem;max-width:640px}
+.divider{width:84px;height:2px;background:linear-gradient(90deg,var(--brass),transparent);margin:26px 0}
+.center{text-align:center}
+.center .lead{margin:0 auto}
+.center .divider{margin:26px auto}
+
+/* ---------- Preloader ---------- */
+#preloader{position:fixed;inset:0;z-index:2000;background:var(--midnight);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .9s ease,visibility .9s}
+#preloader.done{opacity:0;visibility:hidden}
+.pl-arch{width:120px;height:120px}
+.pl-arch path{stroke:var(--brass);stroke-width:2;fill:none;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.pl-word{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:.5em;color:var(--gold);text-indent:.5em;opacity:0;animation:fadeUp 1s .6s ease forwards}
+.pl-bar{width:180px;height:1px;background:rgba(201,164,92,.25);overflow:hidden}
+.pl-bar span{display:block;height:100%;width:40%;background:var(--brass);animation:load 1.4s ease-in-out infinite}
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(450%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- Cursor glow ---------- */
+#cursor{position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle,rgba(201,164,92,.10),transparent 65%);
+  transform:translate(-50%,-50%);transition:opacity .4s}
+@media(hover:none){#cursor{display:none}}
+
+/* ---------- Particles ---------- */
+#dust{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.85}
+
+/* ---------- Nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 0;transition:all .45s ease}
+nav.scrolled{background:rgba(4,22,27,.92);backdrop-filter:blur(14px);padding:13px 0;border-bottom:1px solid rgba(201,164,92,.18)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cream)}
+.brand svg{width:40px;height:40px}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;letter-spacing:.14em}
+.brand-name small{display:block;font-family:'Jost';font-size:.58rem;letter-spacing:.42em;color:var(--brass)}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{color:var(--cream);text-decoration:none;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;position:relative;padding:4px 0;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--brass);transition:width .35s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{border:1px solid var(--brass);color:var(--gold)!important;padding:10px 26px!important;transition:all .35s!important}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:var(--brass);color:var(--midnight)!important}
+#burger{display:none;background:none;border:0;cursor:pointer;z-index:1002}
+#burger span{display:block;width:26px;height:2px;background:var(--gold);margin:6px 0;transition:.35s}
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:0;background:rgba(4,22,27,.97);flex-direction:column;align-items:center;justify-content:center;gap:30px;transform:translateY(-100%);transition:transform .5s ease}
+  .nav-links.open{transform:none}
+  #burger{display:block}
+}
+
+/* ---------- Hero ---------- */
+#hero{min-height:100vh;display:flex;align-items:flex-end;justify-content:center;padding:0;overflow:hidden}
+.hero-sky{position:absolute;inset:0;background:linear-gradient(180deg,#02100f 0%,#07333b 34%,#0e5560 52%,#b0763a 72%,#e8a94e 82%,#f6d789 88%,#0a3a42 88.5%,#062227 100%)}
+.hero-sun{position:absolute;left:50%;top:56%;width:150px;height:150px;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,#fff6d8 0%,#f6d789 35%,rgba(246,215,137,.55) 55%,transparent 72%);
+  filter:blur(1px);animation:sunPulse 6s ease-in-out infinite}
+@keyframes sunPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.07)}}
+.hero-gateway{position:absolute;bottom:11.5%;left:50%;transform:translateX(-50%);width:min(560px,86vw);opacity:.96;filter:drop-shadow(0 6px 24px rgba(0,0,0,.5))}
+.sea{position:absolute;left:0;right:0;bottom:0;height:13%;overflow:hidden}
+.waves{position:absolute;bottom:0;left:0;width:200%;height:100%;display:flex;animation:waveSlide 14s linear infinite}
+.waves svg{width:50%;height:100%;flex-shrink:0}
+.waves.s2{animation-duration:9s;animation-direction:reverse;opacity:.55}
+.waves.s3{animation-duration:22s;opacity:.3}
+@keyframes waveSlide{to{transform:translateX(-50%)}}
+.hero-content{position:relative;z-index:5;text-align:center;padding:0 24px 16vh;width:100%}
+.hero-eyebrow{letter-spacing:.5em;text-transform:uppercase;font-size:12px;color:var(--gold-lt);text-indent:.5em}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,9vw,7rem);font-weight:600;line-height:1.02;margin:20px 0 8px;
+  background:linear-gradient(100deg,#8a6a34 0%,var(--gold-lt) 25%,#fffbe9 50%,var(--gold-lt) 75%,#8a6a34 100%);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 7s linear infinite;filter:drop-shadow(0 4px 22px rgba(0,0,0,.55))}
+@keyframes shimmer{to{background-position:220% center}}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.4vw,1.6rem);color:#ffeec4;letter-spacing:.06em}
+.hero-btns{margin-top:34px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:15px 42px;font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all .35s;cursor:pointer;border:0}
+.btn-gold{background:linear-gradient(120deg,var(--brass),var(--gold));color:var(--midnight)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(201,164,92,.4)}
+.btn-ghost{border:1px solid rgba(246,227,174,.6);color:var(--gold-lt);background:rgba(4,22,27,.25);backdrop-filter:blur(4px)}
+.btn-ghost:hover{background:rgba(246,227,174,.14);transform:translateY(-3px)}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:5;color:var(--gold-lt);font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;text-indent:.4em;opacity:.8}
+.scroll-hint::after{content:'';display:block;width:1px;height:44px;background:linear-gradient(var(--gold),transparent);margin:10px auto 0;animation:drip 1.8s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Stats ---------- */
+#stats{padding:0;background:var(--midnight)}
+.stats-band{border-top:1px solid rgba(201,164,92,.22);border-bottom:1px solid rgba(201,164,92,.22);
+  background:linear-gradient(180deg,rgba(10,58,66,.35),rgba(4,22,27,.1));display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:52px 20px;text-align:center;border-right:1px solid rgba(201,164,92,.14)}
+.stat:last-child{border-right:0}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.4rem);color:var(--gold);font-weight:600}
+.stat-num sup{font-size:1.4rem;color:var(--brass)}
+.stat-lbl{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+@media(max-width:760px){.stats-band{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat{border-bottom:1px solid rgba(201,164,92,.14)}}
+
+/* ---------- Rooms ---------- */
+#rooms{background:radial-gradient(1200px 500px at 80% -5%,rgba(20,80,90,.5),transparent),var(--midnight)}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;perspective:1200px}
+.room-card{background:linear-gradient(165deg,#0a2e33,#062227);border:1px solid rgba(201,164,92,.25);border-radius:6px;overflow:hidden;
+  transition:transform .18s ease-out,box-shadow .35s,border-color .35s;transform-style:preserve-3d;will-change:transform}
+.room-card:hover{box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 0 1px rgba(201,164,92,.5)}
+.room-art{height:230px;position:relative;overflow:hidden}
+.room-art svg{width:100%;height:100%;display:block;transition:transform .8s ease}
+.room-card:hover .room-art svg{transform:scale(1.08)}
+.room-tag{position:absolute;top:16px;left:16px;background:rgba(4,22,27,.75);backdrop-filter:blur(6px);border:1px solid rgba(201,164,92,.5);
+  color:var(--gold);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;padding:7px 14px;transform:translateZ(40px)}
+.room-body{padding:30px 28px 34px;transform:translateZ(24px)}
+.room-body h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;margin-bottom:6px}
+.room-size{color:var(--brass);font-size:.75rem;letter-spacing:.26em;text-transform:uppercase}
+.room-body p{color:var(--muted);font-weight:300;font-size:.95rem;margin:14px 0 20px}
+.room-feats{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.room-feats li{font-size:.72rem;letter-spacing:.12em;border:1px solid rgba(201,164,92,.3);color:var(--gold-lt);padding:5px 12px;border-radius:20px}
+.room-link{color:var(--gold);text-decoration:none;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;border-bottom:1px solid var(--brass);padding-bottom:4px;transition:all .3s}
+.room-link:hover{color:#fff; border-color:#fff}
+@media(max-width:900px){.rooms-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}}
+
+/* ---------- Location ---------- */
+#location{background:linear-gradient(180deg,var(--midnight),#072a31 60%,var(--midnight))}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:10px}
+.loc-map{border:1px solid rgba(201,164,92,.3);border-radius:8px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5);position:relative}
+.loc-map svg{display:block;width:100%;height:auto}
+.pin-pulse{animation:pinPulse 2s ease-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes pinPulse{0%{transform:scale(.6);opacity:.9}70%{transform:scale(1.8);opacity:0}100%{opacity:0}}
+.loc-list{list-style:none;margin-top:28px;display:grid;gap:18px}
+.loc-list li{display:flex;gap:16px;align-items:flex-start;background:rgba(10,58,66,.35);border:1px solid rgba(201,164,92,.18);padding:16px 20px;border-radius:6px;transition:all .3s}
+.loc-list li:hover{border-color:rgba(201,164,92,.55);transform:translateX(6px)}
+.loc-list .dist{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--gold);min-width:86px}
+.loc-list .plc{font-weight:500;letter-spacing:.04em}
+.loc-list .plc small{display:block;color:var(--muted);font-weight:300;font-size:.85rem}
+@media(max-width:900px){.loc-grid{grid-template-columns:1fr}}
+
+/* ---------- Amenities ---------- */
+.amen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px}
+.amen{background:rgba(10,58,66,.28);border:1px solid rgba(201,164,92,.18);border-radius:8px;padding:36px 22px;text-align:center;transition:all .35s;position:relative;overflow:hidden}
+.amen::before{content:'';position:absolute;inset:0;background:radial-gradient(320px 160px at 50% 0%,rgba(201,164,92,.16),transparent);opacity:0;transition:opacity .35s}
+.amen:hover{transform:translateY(-8px);border-color:rgba(201,164,92,.6);box-shadow:0 20px 44px rgba(0,0,0,.45)}
+.amen:hover::before{opacity:1}
+.amen svg{width:46px;height:46px;margin-bottom:16px}
+.amen h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;margin-bottom:6px}
+.amen p{color:var(--muted);font-size:.88rem;font-weight:300}
+@media(max-width:900px){.amen-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- Gallery ---------- */
+#gallery{background:var(--midnight)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:250px;gap:18px;margin-top:56px}
+.gal{position:relative;overflow:hidden;border-radius:6px;border:1px solid rgba(201,164,92,.2);cursor:pointer}
+.gal svg{width:100%;height:100%;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.gal:hover svg{transform:scale(1.1)}
+.gal.tall{grid-row:span 2}
+.gal-cap{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;background:linear-gradient(transparent,rgba(2,14,16,.92));
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:.04em;transform:translateY(8px);opacity:.92;transition:all .4s}
+.gal:hover .gal-cap{transform:none;opacity:1}
+.gal-cap small{display:block;font-family:'Jost';font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass);margin-bottom:4px}
+@media(max-width:760px){.gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:190px}.gal.tall{grid-row:span 1}}
+
+/* ---------- Testimonials ---------- */
+#voices{background:linear-gradient(180deg,var(--midnight),#072a31 55%,var(--midnight))}
+.tst-shell{max-width:760px;margin:54px auto 0;position:relative;min-height:300px}
+.tst{position:absolute;inset:0;opacity:0;transform:translateY(24px);transition:all .7s ease;text-align:center;pointer-events:none;padding:0 12px}
+.tst.active{opacity:1;transform:none;pointer-events:auto}
+.tst .stars{color:var(--gold);letter-spacing:.35em;font-size:1rem;margin-bottom:18px}
+.tst blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.6vw,1.8rem);font-style:italic;line-height:1.5;color:#f3e9cf}
+.tst .who{margin-top:22px;font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)}
+.tst .who small{display:block;color:var(--muted);letter-spacing:.18em;margin-top:6px}
+.tst-dots{display:flex;gap:10px;justify-content:center;margin-top:26px}
+.tst-dots button{width:34px;height:3px;border:0;background:rgba(201,164,92,.25);cursor:pointer;transition:background .3s}
+.tst-dots button.on{background:var(--gold)}
+
+/* ---------- Booking ---------- */
+#book{background:radial-gradient(900px 420px at 50% 0%,rgba(20,80,90,.55),transparent),var(--midnight)}
+.book-card{max-width:920px;margin:54px auto 0;background:linear-gradient(170deg,#0a2e33,#04161b);border:1px solid rgba(201,164,92,.35);
+  border-radius:10px;padding:clamp(28px,5vw,60px);box-shadow:0 40px 90px rgba(0,0,0,.55);position:relative;overflow:hidden}
+.book-card::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--brass),transparent)}
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)}
+.field input,.field select{background:rgba(4,22,27,.6);border:1px solid rgba(201,164,92,.3);color:var(--cream);
+  padding:14px 16px;font-family:'Jost';font-size:1rem;border-radius:4px;outline:none;transition:border .3s;color-scheme:dark}
+.field input:focus,.field select:focus{border-color:var(--gold)}
+.book-note{margin-top:20px;color:var(--muted);font-size:.88rem;font-weight:300;text-align:center}
+#bookSuccess{display:none;text-align:center;padding:30px 10px}
+#bookSuccess.show{display:block;animation:fadeUp .7s ease}
+#bookSuccess .tick{width:84px;height:84px;margin:0 auto 22px;border-radius:50%;border:2px solid var(--brass);display:flex;align-items:center;justify-content:center;
+  font-size:2.2rem;color:var(--gold);animation:tickPop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes tickPop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+@media(max-width:700px){.book-grid{grid-template-columns:1fr}}
+
+/* ---------- Contact / footer ---------- */
+#contact{padding-bottom:60px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}
+.c-card{border:1px solid rgba(201,164,92,.22);border-radius:8px;padding:38px 28px;text-align:center;background:rgba(10,58,66,.25);transition:all .35s}
+.c-card:hover{transform:translateY(-6px);border-color:rgba(201,164,92,.55)}
+.c-card svg{width:38px;height:38px;margin-bottom:14px}
+.c-card h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:8px}
+.c-card a,.c-card p{color:var(--muted);text-decoration:none;font-weight:300}
+.c-card a:hover{color:var(--gold)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto}}
+footer{border-top:1px solid rgba(201,164,92,.2);padding:44px 0 34px;text-align:center;background:#020e11}
+footer .f-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:.16em}
+footer .f-brand small{display:block;font-family:'Jost';font-size:.62rem;letter-spacing:.44em;color:var(--brass);margin-top:6px}
+footer p{color:var(--muted);font-size:.82rem;font-weight:300;margin-top:16px}
+footer .f-links{margin-top:14px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+footer .f-links a{color:var(--muted);text-decoration:none;font-size:.75rem;letter-spacing:.24em;text-transform:uppercase}
+footer .f-links a:hover{color:var(--gold)}
+
+/* ---------- WhatsApp float ---------- */
+#wa{position:fixed;right:26px;bottom:26px;z-index:900;width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(140deg,#25d366,#128c7e);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 30px rgba(18,140,126,.5);transition:transform .3s}
+#wa:hover{transform:scale(1.12) rotate(6deg)}
+#wa svg{width:30px;height:30px;fill:#fff}
+#wa::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.7);animation:waRing 2.2s ease-out infinite}
+@keyframes waRing{from{transform:scale(1);opacity:.8}to{transform:scale(1.7);opacity:0}}
+
+/* ---------- Reveal defaults ---------- */
+.rv{opacity:0;transform:translateY(46px)}
+.marquee{overflow:hidden;border-top:1px solid rgba(201,164,92,.22);border-bottom:1px solid rgba(201,164,92,.22);background:rgba(6,34,39,.6);padding:18px 0}
+.marquee-track{display:flex;gap:64px;width:max-content;animation:mq 30s linear infinite;white-space:nowrap}
+.marquee-track span{font-family:'Cormorant Garamond',serif;font-size:1.25rem;letter-spacing:.3em;color:var(--brass);text-transform:uppercase}
+.marquee-track span i{color:var(--gold);font-style:normal;margin-right:64px}
+@keyframes mq{to{transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <svg class="pl-arch" viewBox="0 0 120 120">
+    <path d="M30 100 L30 58 A30 30 0 0 1 90 58 L90 100 M18 100 L102 100 M60 28 L60 18 M52 22 L68 22"/>
+  </svg>
+  <div class="pl-word">GULF INDIA</div>
+  <div class="pl-bar"><span></span></div>
+</div>
+
+<div id="cursor"></div>
+<canvas id="dust"></canvas>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#hero" aria-label="Hotel Gulf India">
+      <svg viewBox="0 0 48 48" fill="none">
+        <path d="M12 40 L12 22 A12 12 0 0 1 36 22 L36 40" stroke="#c9a45c" stroke-width="2.4"/>
+        <path d="M20 40 L20 28 A4 4 0 0 1 28 28 L28 40" stroke="#c9a45c" stroke-width="1.6"/>
+        <path d="M6 40 L42 40" stroke="#c9a45c" stroke-width="2.4"/>
+        <circle cx="24" cy="8" r="2.4" fill="#e8c877"/>
+      </svg>
+      <span class="brand-name">GULF INDIA<small>COLABA &middot; MUMBAI</small></span>
+    </a>
+    <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#book" class="nav-cta">Book Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header id="hero">
+  <div class="hero-sky"></div>
+  <div class="hero-sun"></div>
+
+  <!-- Gateway of India silhouette -->
+  <svg class="hero-gateway" viewBox="0 0 560 340" aria-hidden="true">
+    <defs>
+      <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e5560"/><stop offset=".55" stop-color="#b0763a"/>
+        <stop offset=".75" stop-color="#e8a94e"/><stop offset=".86" stop-color="#f6d789"/>
+        <stop offset=".88" stop-color="#0a3a42"/><stop offset="1" stop-color="#062227"/>
+      </linearGradient>
+    </defs>
+    <!-- sea reflection shimmer -->
+    <rect x="0" y="300" width="560" height="40" fill="#062227" opacity=".55"/>
+    <!-- plinth -->
+    <rect x="150" y="288" width="260" height="16" fill="#04161b"/>
+    <!-- main block -->
+    <rect x="175" y="150" width="210" height="140" fill="#04161b"/>
+    <!-- main arch opening (sky shows through) -->
+    <path d="M225 290 L225 215 A55 55 0 0 1 335 215 L335 290 Z" fill="url(#skyG)"/>
+    <!-- arch inner ring -->
+    <path d="M225 290 L225 215 A55 55 0 0 1 335 215" fill="none" stroke="#04161b" stroke-width="10"/>
+    <!-- side wings -->
+    <rect x="120" y="200" width="55" height="90" fill="#04161b"/>
+    <rect x="385" y="200" width="55" height="90" fill="#04161b"/>
+    <path d="M132 290 L132 250 A13 13 0 0 1 163 250 L163 290 Z" fill="url(#skyG)"/>
+    <path d="M397 290 L397 250 A13 13 0 0 1 428 250 L428 290 Z" fill="url(#skyG)"/>
+    <!-- upper terrace -->
+    <rect x="195" y="120" width="170" height="32" fill="#04161b"/>
+    <!-- central chhatri dome -->
+    <path d="M252 122 A28 28 0 0 1 308 122 Z" fill="#04161b"/>
+    <rect x="277" y="86" width="6" height="12" fill="#04161b"/>
+    <circle cx="280" cy="80" r="4" fill="#04161b"/>
+    <!-- side turrets -->
+    <rect x="205" y="98" width="18" height="24" fill="#04161b"/>
+    <path d="M205 100 A9 9 0 0 1 223 100 Z" fill="#04161b"/>
+    <rect x="337" y="98" width="18" height="24" fill="#04161b"/>
+    <path d="M337 100 A9 9 0 0 1 355 100 Z" fill="#04161b"/>
+    <!-- jharokha dots -->
+    <g fill="#c9a45c" opacity=".8">
+      <circle cx="205" cy="170" r="3"/><circle cx="230" cy="170" r="3"/><circle cx="330" cy="170" r="3"/><circle cx="355" cy="170" r="3"/>
+      <circle cx="205" cy="188" r="3"/><circle cx="355" cy="188" r="3"/>
+    </g>
+    <!-- birds -->
+    <g stroke="#04161b" stroke-width="2.4" fill="none" opacity=".85">
+      <path d="M120 90 q8 -8 16 0 q8 -8 16 0"/>
+      <path d="M410 70 q7 -7 14 0 q7 -7 14 0"/>
+      <path d="M455 110 q6 -6 12 0 q6 -6 12 0"/>
+    </g>
+  </svg>
+
+  <!-- animated sea -->
+  <div class="sea">
+    <div class="waves s3">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 Q150 20 300 60 T600 60 T900 60 T1200 60 L1200 120 L0 120 Z" fill="#04161b"/></svg>
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 Q150 20 300 60 T600 60 T900 60 T1200 60 L1200 120 L0 120 Z" fill="#04161b"/></svg>
+    </div>
+    <div class="waves s2">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 70 Q150 35 300 70 T600 70 T900 70 T1200 70 L1200 120 L0 120 Z" fill="#062b31"/></svg>
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 70 Q150 35 300 70 T600 70 T900 70 T1200 70 L1200 120 L0 120 Z" fill="#062b31"/></svg>
+    </div>
+    <div class="waves">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 82 Q150 52 300 82 T600 82 T900 82 T1200 82 L1200 120 L0 120 Z" fill="#0a3a42"/></svg>
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 82 Q150 52 300 82 T600 82 T900 82 T1200 82 L1200 120 L0 120 Z" fill="#0a3a42"/></svg>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow rv-hero">Colaba &middot; Mumbai &middot; Since Decades</div>
+    <h1 class="hero-title rv-hero">Hotel Gulf India</h1>
+    <p class="hero-sub rv-hero">Where the city meets the sea — moments from the Gateway of India</p>
+    <div class="hero-btns rv-hero">
+      <a href="#book" class="btn btn-gold">Book Your Stay</a>
+      <a href="#rooms" class="btn btn-ghost">Explore Rooms</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<!-- Stats -->
+<div id="stats">
+  <div class="stats-band">
+    <div class="stat rv"><div class="stat-num"><span class="count" data-target="69">0</span></div><div class="stat-lbl">Elegant Rooms</div></div>
+    <div class="stat rv"><div class="stat-num"><span class="count" data-target="40">0</span><sup>+</sup></div><div class="stat-lbl">Years of Legacy</div></div>
+    <div class="stat rv"><div class="stat-num"><span class="count" data-target="2">0</span><sup> min</sup></div><div class="stat-lbl">Walk to Gateway</div></div>
+    <div class="stat rv"><div class="stat-num"><span class="count" data-target="24">0</span><sup>/7</sup></div><div class="stat-lbl">Warm Hospitality</div></div>
+  </div>
+</div>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Colaba <i>&#10022;</i></span><span>Gateway of India <i>&#10022;</i></span><span>Sea Breeze <i>&#10022;</i></span><span>Heritage Stay <i>&#10022;</i></span><span>Book Direct <i>&#10022;</i></span>
+    <span>Colaba <i>&#10022;</i></span><span>Gateway of India <i>&#10022;</i></span><span>Sea Breeze <i>&#10022;</i></span><span>Heritage Stay <i>&#10022;</i></span><span>Book Direct <i>&#10022;</i></span>
+  </div>
+</div>
+
+<!-- Rooms -->
+<section id="rooms">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow">Stay With Us</div>
+      <h2 class="h2">Rooms &amp; <em>Suites</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Sixty-nine thoughtfully kept rooms, each a quiet refuge above the buzz of Colaba — wake to sea air and the promise of the Gateway.</p>
+    </div>
+    <div class="rooms-grid">
+      <article class="room-card tilt rv">
+        <div class="room-art">
+          <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="rm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14505a"/><stop offset="1" stop-color="#062227"/></linearGradient></defs>
+            <rect width="400" height="230" fill="url(#rm1)"/>
+            <rect x="60" y="40" width="120" height="90" rx="6" fill="#0e3f47" stroke="#c9a45c" stroke-width="2"/>
+            <path d="M60 70 L180 70" stroke="#c9a45c" stroke-width="1.4" opacity=".7"/>
+            <path d="M60 100 L180 100" stroke="#c9a45c" stroke-width="1.4" opacity=".5"/>
+            <rect x="215" y="55" width="120" height="150" rx="60" fill="#0e3f47" stroke="#c9a45c" stroke-width="2"/>
+            <rect x="240" y="80" width="70" height="100" rx="35" fill="#e8a94e" opacity=".28"/>
+            <rect x="40" y="150" width="320" height="26" rx="6" fill="#123c43"/>
+            <rect x="40" y="140" width="320" height="14" rx="7" fill="#c9a45c" opacity=".85"/>
+            <rect x="60" y="118" width="70" height="24" rx="10" fill="#f4ead2" opacity=".9"/>
+            <rect x="270" y="118" width="70" height="24" rx="10" fill="#f4ead2" opacity=".9"/>
+            <circle cx="330" cy="60" r="26" fill="#e8c877" opacity=".9"/>
+            <circle cx="330" cy="60" r="36" fill="#e8c877" opacity=".18"/>
+          </svg>
+          <span class="room-tag">Most Loved</span>
+        </div>
+        <div class="room-body">
+          <h3>Deluxe Room</h3><div class="room-size">City View &middot; Queen Bed</div>
+          <p>Warm teak tones, crisp linens and a window onto Colaba's timeless streets — the classic Gulf India stay.</p>
+          <ul class="room-feats"><li>Free Wi-Fi</li><li>Air Conditioning</li><li>Room Service</li></ul>
+          <a class="room-link" href="#book">Reserve &rarr;</a>
+        </div>
+      </article>
+      <article class="room-card tilt rv">
+        <div class="room-art">
+          <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="rm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e5560"/><stop offset="1" stop-color="#04161b"/></linearGradient></defs>
+            <rect width="400" height="230" fill="url(#rm2)"/>
+            <rect x="90" y="30" width="220" height="130" rx="8" fill="#0e3f47" stroke="#c9a45c" stroke-width="2"/>
+            <path d="M90 95 L310 95" stroke="#c9a45c" stroke-width="1.6" opacity=".8"/>
+            <path d="M200 30 L200 160" stroke="#c9a45c" stroke-width="1.4" opacity=".55"/>
+            <path d="M110 120 q30 -22 60 0 q30 22 60 0 q30 -22 60 0" stroke="#e8a94e" stroke-width="3" fill="none" opacity=".55"/>
+            <path d="M110 138 q30 -22 60 0 q30 22 60 0 q30 -22 60 0" stroke="#e8a94e" stroke-width="3" fill="none" opacity=".3"/>
+            <rect x="60" y="168" width="280" height="24" rx="6" fill="#123c43"/>
+            <rect x="60" y="158" width="280" height="13" rx="6.5" fill="#c9a45c" opacity=".85"/>
+            <rect x="80" y="138" width="60" height="22" rx="9" fill="#f4ead2" opacity=".9"/>
+            <rect x="260" y="138" width="60" height="22" rx="9" fill="#f4ead2" opacity=".9"/>
+            <circle cx="60" cy="52" r="22" fill="#f6d789" opacity=".85"/>
+          </svg>
+          <span class="room-tag">Sea Facing</span>
+        </div>
+        <div class="room-body">
+          <h3>Executive Sea View</h3><div class="room-size">Partial Sea View &middot; King Bed</div>
+          <p>Higher floors, wider windows — fall asleep to the hush of the harbour and wake to gulls over the bay.</p>
+          <ul class="room-feats"><li>Sea Glimpse</li><li>Work Desk</li><li>Mini Fridge</li></ul>
+          <a class="room-link" href="#book">Reserve &rarr;</a>
+        </div>
+      </article>
+      <article class="room-card tilt rv">
+        <div class="room-art">
+          <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="rm3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14505a"/><stop offset="1" stop-color="#062227"/></linearGradient></defs>
+            <rect width="400" height="230" fill="url(#rm3)"/>
+            <rect x="50" y="60" width="130" height="110" rx="6" fill="#0e3f47" stroke="#c9a45c" stroke-width="2"/>
+            <rect x="220" y="60" width="130" height="110" rx="6" fill="#0e3f47" stroke="#c9a45c" stroke-width="2"/>
+            <path d="M50 105 L180 105 M220 105 L350 105" stroke="#c9a45c" stroke-width="1.4" opacity=".7"/>
+            <rect x="185" y="80" width="30" height="70" fill="#c9a45c" opacity=".5"/>
+            <rect x="60" y="176" width="120" height="20" rx="5" fill="#123c43"/>
+            <rect x="220" y="176" width="120" height="20" rx="5" fill="#123c43"/>
+            <rect x="60" y="168" width="120" height="11" rx="5" fill="#c9a45c" opacity=".8"/>
+            <rect x="220" y="168" width="120" height="11" rx="5" fill="#c9a45c" opacity=".8"/>
+            <circle cx="200" cy="42" r="24" fill="#e8c877" opacity=".9"/>
+            <circle cx="200" cy="42" r="34" fill="#e8c877" opacity=".16"/>
+          </svg>
+          <span class="room-tag">For Families</span>
+        </div>
+        <div class="room-body">
+          <h3>Family Suite</h3><div class="room-size">Two Rooms &middot; Sleeps Four</div>
+          <p>Interconnected comfort for families and groups — space to gather, quiet corners to retreat to.</p>
+          <ul class="room-feats"><li>2 Rooms</li><li>Sofa Seating</li><li>Extra Beds</li></ul>
+          <a class="room-link" href="#book">Reserve &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Location -->
+<section id="location">
+  <div class="wrap">
+    <div class="loc-grid">
+      <div class="rv">
+        <div class="eyebrow">Heart of Colaba</div>
+        <h2 class="h2">Steps from the <em>Gateway</em></h2>
+        <div class="divider"></div>
+        <p class="lead">Our address is our greatest amenity. Stay where Mumbai's story began — the Gateway of India, the Taj, and the Causeway are all a leisurely stroll away.</p>
+        <ul class="loc-list">
+          <li><span class="dist">2 min</span><span class="plc">Gateway of India<small>Morning walks &amp; sunset views by the harbour</small></span></li>
+          <li><span class="dist">5 min</span><span class="plc">Colaba Causeway<small>Street shopping, caf&eacute;s and old Bombay charm</small></span></li>
+          <li><span class="dist">10 min</span><span class="plc">Kala Ghoda Arts District<small>Galleries, museums and weekend art buzz</small></span></li>
+          <li><span class="dist">45 min</span><span class="plc">Chhatrapati Shivaji Airport<small>Easy transfers, day and night</small></span></li>
+        </ul>
+      </div>
+      <div class="loc-map rv">
+        <svg viewBox="0 0 520 420">
+          <defs>
+            <linearGradient id="mapSea" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e5560"/><stop offset="1" stop-color="#072a31"/></linearGradient>
+            <radialGradient id="pinGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e8c877" stop-opacity=".8"/><stop offset="1" stop-color="#e8c877" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="520" height="420" fill="url(#mapSea)"/>
+          <!-- landmass -->
+          <path d="M0 0 L330 0 Q300 120 250 200 Q200 300 150 420 L0 420 Z" fill="#0a2e33"/>
+          <!-- roads -->
+          <g stroke="#c9a45c" stroke-width="3" opacity=".55" fill="none">
+            <path d="M60 40 Q150 140 120 260 Q100 340 90 420"/>
+            <path d="M180 20 Q220 130 190 250 Q170 340 160 420"/>
+            <path d="M20 140 Q140 150 260 170"/>
+            <path d="M40 280 Q150 290 230 300"/>
+          </g>
+          <g stroke="#c9a45c" stroke-width="1.4" opacity=".3" fill="none">
+            <path d="M110 60 Q170 160 150 280"/><path d="M230 60 Q250 160 230 280"/>
+            <path d="M30 210 Q140 220 250 235"/>
+          </g>
+          <!-- labels -->
+          <g font-family="Jost,sans-serif" font-size="13" fill="#9db8b6" letter-spacing="2">
+            <text x="36" y="60">COLABA CAUSEWAY</text>
+            <text x="36" y="200">KALA GHODA</text>
+            <text x="36" y="330">FORT</text>
+            <text x="330" y="200" fill="#e8c877" opacity=".8">A R A B I A N&nbsp;&nbsp;S E A</text>
+          </g>
+          <!-- gateway marker -->
+          <g transform="translate(288,150)">
+            <circle r="34" fill="url(#pinGlow)"/>
+            <circle class="pin-pulse" r="16" fill="none" stroke="#e8c877" stroke-width="2"/>
+            <path d="M-9 14 L-9 2 A9 9 0 0 1 9 2 L9 14 M-14 14 L14 14" stroke="#e8c877" stroke-width="2.6" fill="none"/>
+            <circle cy="-12" r="3" fill="#e8c877"/>
+          </g>
+          <!-- hotel pin -->
+          <g transform="translate(228,168)">
+            <circle r="26" fill="url(#pinGlow)"/>
+            <path d="M0 12 C-9 2 -13 -3 -13 -9 A13 13 0 0 1 13 -9 C13 -3 9 2 0 12 Z" fill="#c9a45c"/>
+            <circle cy="-9" r="5" fill="#04161b"/>
+          </g>
+          <text x="228" y="216" text-anchor="middle" font-family="Jost,sans-serif" font-size="12" letter-spacing="3" fill="#f6e3ae">GULF INDIA</text>
+          <!-- compass -->
+          <g transform="translate(470,52)" opacity=".8">
+            <circle r="20" fill="none" stroke="#c9a45c" stroke-width="1.6"/>
+            <path d="M0 -14 L5 6 L0 2 L-5 6 Z" fill="#e8c877"/>
+            <text y="-26" text-anchor="middle" font-size="11" fill="#e8c877" font-family="Jost">N</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities -->
+<section id="amenities">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow">Every Comfort</div>
+      <h2 class="h2">Amenities &amp; <em>Services</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Decades of hosting travellers have taught us exactly what matters — and we take care of it quietly.</p>
+    </div>
+    <div class="amen-grid">
+      <div class="amen rv"><svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><path d="M8 20 a22 22 0 0 1 32 0 M14 26 a14 14 0 0 1 20 0 M20 32 a6 6 0 0 1 8 0"/><circle cx="24" cy="38" r="2.6" fill="#c9a45c"/></svg><h4>High-Speed Wi-Fi</h4><p>Complimentary fibre internet in every room.</p></div>
+      <div class="amen rv"><svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><path d="M10 34 h28 M14 34 v-8 h20 v8 M18 26 v-6 h12 v6 M24 20 v-8 M20 12 h8"/></svg><h4>Multi-Cuisine Dining</h4><p>Restaurant serving Indian, Chinese &amp; continental.</p></div>
+      <div class="amen rv"><svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><circle cx="24" cy="24" r="16"/><path d="M24 14 v10 l7 5"/></svg><h4>24&times;7 Room Service</h4><p>Day or night, a warm meal is a call away.</p></div>
+      <div class="amen rv"><svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><path d="M8 32 L24 10 L40 32 Z"/><path d="M18 32 v-8 h12 v8"/></svg><h4>Travel Desk</h4><p>Sightseeing, cabs and airport transfers arranged.</p></div>
+      <div class="amen rv"><svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><rect x="10" y="14" width="28" height="20" rx="3"/><path d="M10 22 h28 M18 34 v4 M30 34 v4"/></svg><h4>Business Centre</h4><p>Work-ready spaces for the travelling professional.</p></div>
+      <div class="amen rv"><svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><path d="M14 38 V20 a10 10 0 0 1 20 0 v18"/><path d="M10 38 h28"/></svg><h4>Laundry Service</h4><p>Same-day laundry &amp; dry-cleaning on request.</p></div>
+      <div class="amen rv"><svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><rect x="12" y="8" width="24" height="32" rx="4"/><path d="M20 32 h8"/></svg><h4>Doctor on Call</h4><p>Medical assistance available round the clock.</p></div>
+      <div class="amen rv"><svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><path d="M24 6 v30 M14 14 l10 -8 10 8 M12 36 h24"/></svg><h4>Currency Exchange</h4><p>Foreign exchange for international guests.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow">Moments</div>
+      <h2 class="h2">The Gulf India <em>Gallery</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Postcards from Colaba — the harbour, the arch, and the rooms our guests love.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal tall rv"><svg viewBox="0 0 400 520" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02100f"/><stop offset=".6" stop-color="#b0763a"/><stop offset=".8" stop-color="#f6d789"/><stop offset=".82" stop-color="#0a3a42"/><stop offset="1" stop-color="#04161b"/></linearGradient></defs><rect width="400" height="520" fill="url(#g1)"/><circle cx="200" cy="400" r="46" fill="#fff6d8" opacity=".95"/><path d="M150 430 L150 400 A50 50 0 0 1 250 400 L250 430 Z" fill="#04161b" opacity=".9"/><rect x="120" y="360" width="160" height="14" fill="#04161b" opacity=".9"/><g stroke="#04161b" stroke-width="3" fill="none" opacity=".8"><path d="M90 180 q10 -10 20 0 q10 -10 20 0"/><path d="M280 140 q9 -9 18 0 q9 -9 18 0"/></g><path d="M0 440 Q100 420 200 440 T400 440 L400 520 L0 520 Z" fill="#062227"/><path d="M0 470 Q100 452 200 470 T400 470 L400 520 L0 520 Z" fill="#04161b" opacity=".8"/></svg><div class="gal-cap"><small>Landmark</small>Gateway at Dusk</div></div>
+      <div class="gal rv"><svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14505a"/><stop offset="1" stop-color="#04161b"/></linearGradient></defs><rect width="400" height="250" fill="url(#g2)"/><rect x="70" y="60" width="260" height="120" rx="8" fill="#0e3f47" stroke="#c9a45c" stroke-width="2"/><path d="M70 120 L330 120" stroke="#c9a45c" opacity=".6"/><rect x="90" y="180" width="220" height="22" rx="6" fill="#123c43"/><rect x="90" y="172" width="220" height="12" rx="6" fill="#c9a45c" opacity=".8"/><circle cx="330" cy="50" r="20" fill="#e8c877" opacity=".85"/></svg><div class="gal-cap"><small>Rooms</small>Deluxe Comfort</div></div>
+      <div class="gal rv"><svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02100f"/><stop offset=".7" stop-color="#0e5560"/><stop offset="1" stop-color="#062227"/></linearGradient></defs><rect width="400" height="250" fill="url(#g3)"/><circle cx="200" cy="120" r="60" fill="#f6d789" opacity=".25"/><circle cx="200" cy="120" r="38" fill="#f6d789" opacity=".9"/><path d="M0 190 Q100 170 200 190 T400 190 L400 250 L0 250 Z" fill="#0a3a42"/><path d="M0 215 Q100 198 200 215 T400 215 L400 250 L0 250 Z" fill="#04161b"/><g fill="#c9a45c" opacity=".9"><rect x="60" y="120" width="10" height="60"/><rect x="330" y="120" width="10" height="60"/><circle cx="65" cy="112" r="8"/><circle cx="335" cy="112" r="8"/></g></svg><div class="gal-cap"><small>Harbour</small>Marine Drive Nights</div></div>
+      <div class="gal rv"><svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a2e33"/><stop offset="1" stop-color="#04161b"/></linearGradient></defs><rect width="400" height="250" fill="url(#g4)"/><ellipse cx="200" cy="200" rx="130" ry="34" fill="#123c43"/><ellipse cx="200" cy="192" rx="130" ry="30" fill="#f4ead2" opacity=".12"/><rect x="140" y="90" width="120" height="80" rx="10" fill="#c9a45c" opacity=".85"/><path d="M150 130 q25 -18 50 0 q25 18 50 0" stroke="#7a5a28" stroke-width="4" fill="none"/><circle cx="320" cy="60" r="24" fill="#e8a94e" opacity=".8"/><g stroke="#c9a45c" stroke-width="2" opacity=".7"><path d="M60 200 v-40 M340 200 v-40"/></g></svg><div class="gal-cap"><small>Dining</small>Restaurant &amp; Flavours</div></div>
+      <div class="gal rv"><svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b0763a"/><stop offset=".55" stop-color="#e8a94e"/><stop offset=".75" stop-color="#f6d789"/><stop offset=".78" stop-color="#0a3a42"/><stop offset="1" stop-color="#04161b"/></linearGradient></defs><rect width="400" height="250" fill="url(#g5)"/><circle cx="200" cy="185" r="34" fill="#fff6d8"/><rect x="160" y="150" width="80" height="60" fill="#04161b" opacity=".92"/><path d="M172 210 L172 185 A28 28 0 0 1 228 185 L228 210 Z" fill="url(#g5)"/><path d="M0 195 Q100 180 200 195 T400 195 L400 250 L0 250 Z" fill="#062227"/><path d="M0 220 Q100 208 200 220 T400 220 L400 250 L0 250 Z" fill="#04161b" opacity=".85"/></svg><div class="gal-cap"><small>Sunset</small>Arch by the Sea</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="voices">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow">Guest Stories</div>
+      <h2 class="h2">Loved by <em>Travellers</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="tst-shell rv">
+      <div class="tst active">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Two minutes from the Gateway and the staff treat you like family. The sea-facing room at sunrise is worth every rupee.&rdquo;</blockquote>
+        <div class="who">Priya Sharma<small>New Delhi &middot; Family Trip</small></div>
+      </div>
+      <div class="tst">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Old-school Bombay hospitality done right. Spotless rooms, quick service, and Colaba Causeway right outside the door.&rdquo;</blockquote>
+        <div class="who">James Whitfield<small>London &middot; Business Travel</small></div>
+      </div>
+      <div class="tst">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Booked directly and got a better rate than the apps. The travel desk planned our whole Elephanta day perfectly.&rdquo;</blockquote>
+        <div class="who">Rahul &amp; Sneha Desai<small>Pune &middot; Weekend Getaway</small></div>
+      </div>
+      <div class="tst">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;A Colaba institution. I've stayed here for fifteen years — the warmth never changes, only the city around it.&rdquo;</blockquote>
+        <div class="who">Farhan Merchant<small>Dubai &middot; Regular Guest</small></div>
+      </div>
+    </div>
+    <div class="tst-dots rv" id="tstDots"></div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section id="book">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow">Reserve Direct</div>
+      <h2 class="h2">Book Your <em>Stay</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Skip the aggregator markups — reserve directly with us for the best rate, flexible changes and a warm Colaba welcome.</p>
+    </div>
+    <div class="book-card rv">
+      <form id="bookForm" novalidate>
+        <div class="book-grid">
+          <div class="field"><label for="fName">Full Name</label><input id="fName" type="text" placeholder="Your name" required></div>
+          <div class="field"><label for="fPhone">Phone</label><input id="fPhone" type="tel" placeholder="+91 ..." required></div>
+          <div class="field"><label for="fIn">Check-In</label><input id="fIn" type="date" required></div>
+          <div class="field"><label for="fOut">Check-Out</label><input id="fOut" type="date" required></div>
+          <div class="field"><label for="fGuests">Guests</label><select id="fGuests"><option>1 Guest</option><option selected>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5+ Guests</option></select></div>
+          <div class="field"><label for="fRoom">Room Type</label><select id="fRoom"><option>Deluxe Room</option><option>Executive Sea View</option><option>Family Suite</option></select></div>
+        </div>
+        <div style="text-align:center;margin-top:28px">
+          <button type="submit" class="btn btn-gold" style="min-width:260px">Request Booking</button>
+        </div>
+        <p class="book-note">No advance needed — our reservations team confirms every request personally within an hour.</p>
+      </form>
+      <div id="bookSuccess">
+        <div class="tick">&#10003;</div>
+        <h3 class="serif" style="font-size:2rem;margin-bottom:10px">Request Received!</h3>
+        <p style="color:var(--muted);max-width:480px;margin:0 auto 24px">Thank you — our reservations team will call you shortly to confirm your stay at Hotel Gulf India.</p>
+        <a id="waConfirm" href="#" target="_blank" rel="noopener" class="btn btn-ghost">Confirm Instantly on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow">Find Us</div>
+      <h2 class="h2">Get in <em>Touch</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="c-card rv">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><path d="M24 44 C14 30 8 22 8 15 A16 16 0 0 1 40 15 C40 22 34 30 24 44 Z"/><circle cx="24" cy="15" r="5"/></svg>
+        <h4>Address</h4><p>Hotel Gulf India, Colaba,<br>Mumbai, Maharashtra<br>Near Gateway of India</p>
+      </div>
+      <div class="c-card rv">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><path d="M10 16 C10 10 14 8 16 12 L20 18 C21 20 20 22 18 23 L15 25 C17 30 21 34 26 36 L28 33 C29 31 31 30 33 31 L39 35 C43 37 41 41 35 41 C22 41 8 29 10 16 Z"/></svg>
+        <h4>Reservations</h4><p><a href="tel:+912266339355">+91 22 6633 9355</a><br>24&times;7 front desk</p>
+      </div>
+      <div class="c-card rv">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#c9a45c" stroke-width="2"><rect x="8" y="12" width="32" height="24" rx="3"/><path d="M8 14 L24 26 L40 14"/></svg>
+        <h4>Email</h4><p><a href="mailto:hotelgulf@hotelgulfindia.com">hotelgulf@hotelgulfindia.com</a><br>We reply within hours</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">GULF INDIA<small>COLABA &middot; MUMBAI</small></div>
+    <div class="f-links"><a href="#rooms">Rooms</a><a href="#location">Location</a><a href="#book">Book</a><a href="#contact">Contact</a></div>
+    <p>A design concept crafted with pride for Hotel Gulf India &middot; Colaba, Mumbai</p>
+  </div>
+</footer>
+
+<a id="wa" href="https://wa.me/912266339355?text=Hello%20Hotel%20Gulf%20India%2C%20I%27d%20like%20to%20book%20a%20room." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-1.9c1.8 1 3.9 1.5 6.1 1.5h.2c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-2 0-3.9-.5-5.5-1.5l-.4-.2-4.6 1.1 1.2-4.5-.3-.4c-1-1.7-1.6-3.7-1.6-5.8C4.8 9.1 9.9 4.5 16 4.5S27.2 9.1 27.2 15 22.1 24.8 16 24.8zm6.2-8.2c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.3-.8.1-.3-.2-1.4-.5-2.7-1.7-.9-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6L13 9.5c-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.3.3-1.3 1.3-1.3 3.2s1.4 3.7 1.5 3.9c.2.2 2.7 4.2 6.6 5.9 2.4 1 3.4 1.1 4.6.9.7-.1 2-1 2.3-1.9.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.7-.4z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Preloader */
+  window.addEventListener('load', function(){
+    setTimeout(function(){ document.getElementById('preloader').classList.add('done'); }, 1900);
+  });
+  setTimeout(function(){ document.getElementById('preloader').classList.add('done'); }, 4500);
+
+  /* Nav */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
+  var burger = document.getElementById('burger'), links = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){ links.classList.toggle('open'); });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open'); });
+  });
+
+  /* Cursor glow */
+  var cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', function(e){
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  /* Gold dust particles */
+  var cv = document.getElementById('dust'), ctx = cv.getContext('2d'), P = [];
+  function sizeCv(){ cv.width = innerWidth; cv.height = innerHeight; }
+  sizeCv(); window.addEventListener('resize', sizeCv);
+  for (var i = 0; i < 70; i++){
+    P.push({ x: Math.random()*innerWidth, y: Math.random()*innerHeight,
+      r: Math.random()*2.2 + .6, s: Math.random()*.5 + .15,
+      o: Math.random()*.55 + .15, ph: Math.random()*Math.PI*2 });
+  }
+  (function dust(){
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    var t = Date.now()/1000;
+    for (var j = 0; j < P.length; j++){
+      var p = P[j];
+      p.y -= p.s; p.x += Math.sin(t + p.ph)*.25;
+      if (p.y < -10){ p.y = cv.height + 10; p.x = Math.random()*cv.width; }
+      var tw = p.o * (0.6 + 0.4*Math.sin(t*2 + p.ph));
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7);
+      ctx.fillStyle = 'rgba(232,200,119,' + tw.toFixed(3) + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(dust);
+  })();
+
+  /* Hero entrance */
+  gsap.from('.rv-hero', { y: 60, opacity: 0, duration: 1.2, stagger: .16, ease: 'power3.out', delay: 2 });
+
+  /* Scroll reveals */
+  gsap.utils.toArray('.rv').forEach(function(el){
+    gsap.to(el, { opacity: 1, y: 0, duration: 1.05, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' } });
+  });
+
+  /* Counters */
+  document.querySelectorAll('.count').forEach(function(el){
+    var target = parseInt(el.dataset.target, 10), obj = { v: 0 };
+    ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true,
+      onEnter: function(){
+        gsap.to(obj, { v: target, duration: 2, ease: 'power2.out',
+          onUpdate: function(){ el.textContent = Math.round(obj.v); } });
+      }});
+  });
+
+  /* 3D tilt cards */
+  if (window.matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.tilt').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect(),
+            x = (e.clientX - r.left)/r.width - .5,
+            y = (e.clientY - r.top)/r.height - .5;
+        card.style.transform = 'perspective(1100px) rotateY(' + (x*10).toFixed(2) + 'deg) rotateX(' + (-y*10).toFixed(2) + 'deg) translateY(-6px)';
+      });
+      card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+    });
+  }
+
+  /* Testimonials carousel */
+  var slides = document.querySelectorAll('.tst'),
+      dotsBox = document.getElementById('tstDots'), idx = 0, timer;
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Show testimonial ' + (i+1));
+    b.addEventListener('click', function(){ show(i); restart(); });
+    dotsBox.appendChild(b);
+  });
+  var dots = dotsBox.querySelectorAll('button');
+  function show(i){
+    idx = (i + slides.length) % slides.length;
+    slides.forEach(function(s, k){ s.classList.toggle('active', k === idx); });
+    dots.forEach(function(d, k){ d.classList.toggle('on', k === idx); });
+  }
+  function restart(){ clearInterval(timer); timer = setInterval(function(){ show(idx+1); }, 5200); }
+  show(0); restart();
+
+  /* Booking form */
+  var form = document.getElementById('bookForm');
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById('fIn').min = today;
+  document.getElementById('fOut').min = today;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('fName').value.trim(),
+        phone = document.getElementById('fPhone').value.trim(),
+        fi = document.getElementById('fIn').value,
+        fo = document.getElementById('fOut').value;
+    if (!name || !phone || !fi || !fo){
+      gsap.fromTo(form, {x:-8}, {x:0, duration:.4, ease:'elastic.out(1,.35)'});
+      [ ['fName',name], ['fPhone',phone], ['fIn',fi], ['fOut',fo] ].forEach(function(pair){
+        document.getElementById(pair[0]).style.borderColor = pair[1] ? '' : '#e0685c';
+      });
+      return;
+    }
+    if (fo <= fi){
+      document.getElementById('fOut').style.borderColor = '#e0685c';
+      gsap.fromTo(form, {x:-8}, {x:0, duration:.4, ease:'elastic.out(1,.35)'});
+      return;
+    }
+    var room = document.getElementById('fRoom').value,
+        guests = document.getElementById('fGuests').value,
+        msg = 'Hello Hotel Gulf India! I am ' + name + ' (' + phone + '). I would like to book: ' + room +
+              ', ' + guests + ', Check-in ' + fi + ', Check-out ' + fo + '. Please confirm.';
+    document.getElementById('waConfirm').href = 'https://wa.me/912266339355?text=' + encodeURIComponent(msg);
+    gsap.to(form, { opacity: 0, y: -18, duration: .45, ease: 'power2.in', onComplete: function(){
+      form.style.display = 'none';
+      document.getElementById('bookSuccess').classList.add('show');
+    }});
+  });
+})();
+</script>
+</body>
+</html>

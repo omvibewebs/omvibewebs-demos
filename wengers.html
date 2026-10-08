@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wenger's — Legendary Bakery & Deli, Connaught Place New Delhi Since 1926</title>
+<meta name="description" content="Wenger's — baking Delhi's memories since 1926. Legendary bakery & deli in Connaught Place, New Delhi. Breads, cakes, pastries & deli classics.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { cream:'#F7F1E5', ivory:'#FBF8F1', cocoa:'#2B1B12', choc:'#4A2E1C', caramel:'#B07D3C', gold:'#C9A227', goldlight:'#E8C766' },
+  fontFamily: { serif:['"Cormorant Garamond"','serif'], sans:['Jost','sans-serif'] }
+}}}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{background:#F7F1E5;color:#2B1B12;font-family:Jost,sans-serif;overflow-x:hidden}
+  ::selection{background:#C9A227;color:#2B1B12}
+  .serif{font-family:'Cormorant Garamond',serif}
+  /* ---------- preloader ---------- */
+  #preloader{position:fixed;inset:0;z-index:100;background:#2B1B12;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease, visibility .8s}
+  #preloader.done{opacity:0;visibility:hidden}
+  .oven{width:120px;height:150px;border:3px solid #C9A227;border-radius:14px;position:relative;overflow:hidden;background:#1d110a}
+  .oven-door{position:absolute;inset:14px;border:2px solid #C9A22755;border-radius:8px;background:radial-gradient(circle at 50% 70%, #ff9d3c33, transparent 70%)}
+  .oven-glow{position:absolute;left:10%;right:10%;bottom:18px;height:26px;background:radial-gradient(ellipse at center,#ffb347,#ff7b1c00);filter:blur(6px);animation:flick 1.2s infinite alternate}
+  @keyframes flick{from{opacity:.55;transform:scaleX(.9)}to{opacity:1;transform:scaleX(1.08)}}
+  .heat{position:absolute;bottom:20px;left:50%;width:8px;height:8px;border-radius:50%;background:#C9A227;opacity:0;animation:rise 1.6s infinite ease-in}
+  @keyframes rise{0%{transform:translate(-50%,0) scale(1);opacity:0}20%{opacity:.9}100%{transform:translate(-50%,-90px) scale(2.2);opacity:0}}
+  /* ---------- cursor ---------- */
+  #cursor{position:fixed;width:26px;height:26px;border:1.5px solid #C9A227;border-radius:50%;pointer-events:none;z-index:99;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;mix-blend-mode:multiply}
+  #cursor.big{width:64px;height:64px;background:#C9A22733}
+  @media (hover:none){#cursor{display:none}}
+  /* ---------- nav ---------- */
+  #nav{transition:background .4s, box-shadow .4s, padding .4s}
+  #nav.scrolled{background:#FBF8F1ee;backdrop-filter:blur(10px);box-shadow:0 4px 24px #2b1b1215}
+  .navlink{position:relative}
+  .navlink::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1.5px;background:#C9A227;transition:width .35s}
+  .navlink:hover::after{width:100%}
+  /* ---------- hero ---------- */
+  .hero-bg{background:radial-gradient(1200px 600px at 70% -10%, #E8C76633, transparent),radial-gradient(900px 500px at 10% 110%, #B07D3C22, transparent),#F7F1E5}
+  .float-slow{animation:floaty 7s ease-in-out infinite}
+  .float-med{animation:floaty 5.2s ease-in-out infinite}
+  .float-fast{animation:floaty 4s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-22px) rotate(var(--r,0deg))}}
+  .steam{position:absolute;bottom:100%;left:50%;width:10px;height:34px;border-radius:50%;background:linear-gradient(to top,#ffffff00,#ffffffaa,#ffffff00);filter:blur(4px);opacity:0;animation:steamUp 3.2s infinite ease-in}
+  @keyframes steamUp{0%{transform:translate(-50%,10px) scaleX(1);opacity:0}30%{opacity:.8}100%{transform:translate(-50%,-46px) scaleX(2.4);opacity:0}}
+  .shimmer{background:linear-gradient(100deg,#C9A227 20%,#F5E3A8 40%,#C9A227 60%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
+  @keyframes shine{to{background-position:200% center}}
+  .gold-frame{position:relative}
+  .gold-frame::before{content:'';position:absolute;inset:-14px;border:1px solid #C9A22766;border-radius:inherit;pointer-events:none}
+  /* ---------- marquee ---------- */
+  .marquee{display:flex;gap:3rem;white-space:nowrap;animation:scrollX 26s linear infinite;width:max-content}
+  @keyframes scrollX{to{transform:translateX(-50%)}}
+  /* ---------- cards ---------- */
+  .tilt{transform-style:preserve-3d;transition:transform .25s ease, box-shadow .3s}
+  .tilt:hover{box-shadow:0 30px 60px -20px #2b1b1240}
+  .menu-card{transition:transform .35s, box-shadow .35s, opacity .4s}
+  .menu-card:hover{transform:translateY(-6px);box-shadow:0 22px 44px -18px #2b1b1233}
+  .menu-card.hide{display:none}
+  .chip{transition:all .3s}
+  .chip.active{background:#2B1B12;color:#F7F1E5;border-color:#2B1B12}
+  /* ---------- timeline ---------- */
+  .tl-dot{box-shadow:0 0 0 6px #F7F1E5, 0 0 0 7.5px #C9A227}
+  /* ---------- gallery ---------- */
+  .gart{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .gwrap:hover .gart{transform:scale(1.07) rotate(1deg)}
+  .gwrap .glabel{opacity:0;transform:translateY(12px);transition:all .45s}
+  .gwrap:hover .glabel{opacity:1;transform:translateY(0)}
+  /* ---------- misc ---------- */
+  .reveal{opacity:0;transform:translateY(46px)}
+  .divider-orn{display:flex;align-items:center;gap:1rem}
+  .divider-orn::before,.divider-orn::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,transparent,#C9A227,#C9A227,transparent)}
+  input,select,textarea{background:#fffdf8;border:1px solid #2b1b1222;border-radius:.6rem;padding:.8rem 1rem;width:100%;outline:none;transition:border .3s, box-shadow .3s;color:#2B1B12}
+  input:focus,select:focus,textarea:focus{border-color:#C9A227;box-shadow:0 0 0 3px #C9A22733}
+  .btn-gold{background:linear-gradient(120deg,#C9A227,#E8C766,#C9A227);background-size:200% auto;color:#2B1B12;transition:all .4s}
+  .btn-gold:hover{background-position:right center;transform:translateY(-2px);box-shadow:0 14px 28px -10px #C9A22788}
+  #dust{position:fixed;inset:0;pointer-events:none;z-index:5}
+  .testi{transition:opacity .6s, transform .6s}
+  .wheat{animation:sway 5s ease-in-out infinite;transform-origin:bottom center}
+  @keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+  @keyframes spinSlow{to{transform:rotate(360deg)}}
+  .spin-slow{animation:spinSlow 24s linear infinite}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= PRELOADER ================= -->
+<div id="preloader">
+  <div class="oven">
+    <div class="oven-door"></div>
+    <div class="oven-glow"></div>
+    <div class="heat" style="animation-delay:0s"></div>
+    <div class="heat" style="animation-delay:.5s;left:40%"></div>
+    <div class="heat" style="animation-delay:1s;left:60%"></div>
+  </div>
+  <div class="serif text-gold text-4xl mt-6 tracking-widest">Wenger's</div>
+  <div class="text-cream/60 text-xs tracking-[.4em] mt-2 uppercase">Est. 1926 · New Delhi</div>
+</div>
+
+<div id="cursor"></div>
+<canvas id="dust"></canvas>
+
+<!-- ================= NAV ================= -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between">
+  <a href="#top" class="flex items-center gap-3">
+    <div class="w-11 h-11 rounded-full border-2 border-gold flex items-center justify-center bg-cocoa text-gold serif text-2xl font-bold">W</div>
+    <div class="leading-tight">
+      <div class="serif text-2xl font-semibold tracking-wide">Wenger's</div>
+      <div class="text-[10px] tracking-[.35em] uppercase text-choc/70">Est. 1926</div>
+    </div>
+  </a>
+  <div class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase">
+    <a href="#heritage" class="navlink">Heritage</a>
+    <a href="#menu" class="navlink">Menu</a>
+    <a href="#signature" class="navlink">Signature</a>
+    <a href="#gallery" class="navlink">Gallery</a>
+    <a href="#visit" class="navlink">Visit</a>
+  </div>
+  <a href="#order" class="btn-gold px-6 py-2.5 rounded-full text-sm tracking-widest uppercase font-medium">Order</a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="top" class="hero-bg relative min-h-screen flex items-center overflow-hidden pt-28 pb-16">
+  <!-- floating pastry art -->
+  <div class="absolute inset-0 pointer-events-none" id="heroArt">
+    <svg class="float-slow absolute top-[16%] left-[6%] w-28 md:w-40 opacity-90" style="--r:-12deg" viewBox="0 0 100 100"><g fill="none" stroke="#B07D3C" stroke-width="3"><path d="M20 60 Q30 30 50 28 Q70 30 80 60 Q65 52 50 54 Q35 52 20 60 Z" fill="#E8C766" opacity=".85"/><path d="M32 48 Q40 40 50 42 M50 42 Q60 40 68 48"/></g><circle cx="50" cy="18" r="2.5" fill="#C9A227"/></svg>
+    <svg class="float-med absolute top-[64%] left-[12%] w-24 md:w-32 opacity-90" style="--r:10deg" viewBox="0 0 100 100"><g><rect x="30" y="45" width="40" height="34" rx="6" fill="#4A2E1C"/><rect x="30" y="38" width="40" height="12" rx="6" fill="#E8C766"/><circle cx="50" cy="30" r="5" fill="#C0392B"/><path d="M50 25 q-8 -8 -14 -4" stroke="#2B1B12" stroke-width="2.5" fill="none"/></g></svg>
+    <svg class="float-fast absolute top-[24%] right-[8%] w-32 md:w-48 opacity-90" style="--r:14deg" viewBox="0 0 120 80"><g fill="#D9A441"><ellipse cx="60" cy="45" rx="44" ry="20"/><path d="M20 45 Q40 20 60 22 Q80 20 100 45" fill="none" stroke="#B07D3C" stroke-width="3"/><path d="M38 40 L42 50 M60 36 L64 46 M82 40 L86 50" stroke="#B07D3C" stroke-width="2.5"/></g></svg>
+    <div class="float-slow absolute bottom-[10%] right-[14%] w-24 md:w-32" style="--r:-8deg"><div class="relative opacity-90">
+    <svg class="w-full block" viewBox="0 0 100 100"><g><path d="M35 55 h30 l-4 30 h-22 Z" fill="#F3E4C3" stroke="#B07D3C" stroke-width="2.5"/><ellipse cx="50" cy="52" rx="20" ry="9" fill="#FFF7E8" stroke="#B07D3C" stroke-width="2.5"/><circle cx="44" cy="50" r="3" fill="#C0392B"/><circle cx="56" cy="51" r="3" fill="#7A4A21"/><circle cx="50" cy="47" r="3" fill="#C9A227"/></g></svg>
+    <span class="steam" style="left:46%"></span><span class="steam" style="left:54%;animation-delay:1.1s"></span><span class="steam" style="left:50%;animation-delay:2.2s"></span>
+    </div></div>
+    <svg class="wheat absolute top-[46%] left-[42%] w-16 opacity-40 hidden md:block" viewBox="0 0 40 100"><g stroke="#B07D3C" stroke-width="2" fill="#E8C766"><line x1="20" y1="100" x2="20" y2="20"/><ellipse cx="20" cy="18" rx="5" ry="9"/><ellipse cx="12" cy="30" rx="5" ry="9" transform="rotate(-25 12 30)"/><ellipse cx="28" cy="30" rx="5" ry="9" transform="rotate(25 28 30)"/><ellipse cx="12" cy="46" rx="5" ry="9" transform="rotate(-25 12 46)"/><ellipse cx="28" cy="46" rx="5" ry="9" transform="rotate(25 28 46)"/></g></svg>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    <div class="reveal inline-flex items-center gap-3 border border-gold/60 rounded-full px-5 py-2 text-xs tracking-[.35em] uppercase text-choc mb-8 bg-ivory/60">
+      <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span> A Century of Baking · 1926 — 2026
+    </div>
+    <h1 class="reveal serif text-6xl md:text-8xl font-semibold leading-[1.02]">
+      Baking Delhi's<br><span class="shimmer italic">Memories</span> Since 1926
+    </h1>
+    <p class="reveal mt-7 max-w-2xl mx-auto text-choc/80 text-lg font-light leading-relaxed">
+      From Connaught Place's beating heart — handcrafted breads, legendary patties,
+      celebration cakes and old-world deli charm, baked fresh every single morning.
+    </p>
+    <div class="reveal mt-10 flex flex-wrap justify-center gap-4">
+      <a href="#menu" class="btn-gold px-9 py-4 rounded-full tracking-widest uppercase text-sm font-medium">Explore the Menu</a>
+      <a href="#heritage" class="px-9 py-4 rounded-full tracking-widest uppercase text-sm border border-cocoa/30 hover:border-gold hover:text-caramel transition">Our Story</a>
+    </div>
+    <div class="reveal mt-12 flex items-center justify-center gap-8 text-sm text-choc/70">
+      <span>★ 4.2 · 1,700+ reviews</span><span class="w-1 h-1 rounded-full bg-gold"></span>
+      <span>Connaught Place, New Delhi</span><span class="w-1 h-1 rounded-full bg-gold"></span>
+      <span>Open Daily</span>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0 overflow-hidden py-4 border-t border-gold/30 bg-ivory/70 backdrop-blur">
+    <div class="marquee serif text-xl md:text-2xl text-choc/80 italic">
+      <span>Fresh Sourdough ✦ Centenary Fruit Cake ✦ Butter Croissants ✦ Chicken Patties ✦ Black Forest ✦ Deli Platters ✦&nbsp;</span>
+      <span>Fresh Sourdough ✦ Centenary Fruit Cake ✦ Butter Croissants ✦ Chicken Patties ✦ Black Forest ✦ Deli Platters ✦&nbsp;</span>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERITAGE ================= -->
+<section id="heritage" class="relative py-28 bg-cocoa text-cream overflow-hidden">
+  <div class="absolute inset-0 opacity-[.07] pointer-events-none">
+    <svg class="spin-slow absolute -right-40 -top-40 w-[560px]" viewBox="0 0 200 200"><g fill="none" stroke="#C9A227" stroke-width="1"><circle cx="100" cy="100" r="90"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="50"/><path d="M100 10 L100 190 M10 100 L190 100"/></g></svg>
+  </div>
+  <div class="max-w-6xl mx-auto px-6 relative">
+    <div class="reveal text-center mb-16">
+      <div class="text-gold tracking-[.4em] uppercase text-xs mb-4">Our Heritage</div>
+      <h2 class="serif text-5xl md:text-6xl font-semibold">A Hundred Years<br><span class="italic text-goldlight">at the Heart of Delhi</span></h2>
+      <div class="divider-orn max-w-md mx-auto mt-8"><span class="text-gold text-xl">✦</span></div>
+    </div>
+    <div class="relative">
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gold/40 md:-translate-x-1/2"></div>
+      <div class="space-y-14">
+        <div class="reveal relative md:grid md:grid-cols-2 md:gap-16 pl-12 md:pl-0">
+          <div class="absolute left-4 md:left-1/2 top-1 w-4 h-4 -ml-2 rounded-full bg-gold tl-dot"></div>
+          <div class="md:text-right md:pr-4"><div class="serif text-4xl text-goldlight">1926</div><h3 class="serif text-2xl mt-2">The First Oven Lights</h3><p class="text-cream/70 mt-2 font-light">A Swiss baker opens a small patisserie in Connaught Place. Delhi falls in love at first bite.</p></div><div></div>
+        </div>
+        <div class="reveal relative md:grid md:grid-cols-2 md:gap-16 pl-12 md:pl-0">
+          <div class="absolute left-4 md:left-1/2 top-1 w-4 h-4 -ml-2 rounded-full bg-gold tl-dot"></div><div class="hidden md:block"></div>
+          <div class="md:pl-4"><div class="serif text-4xl text-goldlight">1950s</div><h3 class="serif text-2xl mt-2">The City's Celebration Bakery</h3><p class="text-cream/70 mt-2 font-light">Birthdays, weddings, Christmas cakes — no Delhi celebration was complete without a Wenger's box.</p></div>
+        </div>
+        <div class="reveal relative md:grid md:grid-cols-2 md:gap-16 pl-12 md:pl-0">
+          <div class="absolute left-4 md:left-1/2 top-1 w-4 h-4 -ml-2 rounded-full bg-gold tl-dot"></div>
+          <div class="md:text-right md:pr-4"><div class="serif text-4xl text-goldlight">1980s</div><h3 class="serif text-2xl mt-2">The Deli Counter Arrives</h3><p class="text-cream/70 mt-2 font-light">Savouries, patties and continental deli classics join the counter — a new generation discovers Wenger's.</p></div><div></div>
+        </div>
+        <div class="reveal relative md:grid md:grid-cols-2 md:gap-16 pl-12 md:pl-0">
+          <div class="absolute left-4 md:left-1/2 top-1 w-4 h-4 -ml-2 rounded-full bg-gold tl-dot"></div><div class="hidden md:block"></div>
+          <div class="md:pl-4"><div class="serif text-4xl text-goldlight">2026</div><h3 class="serif text-2xl mt-2">The Centenary</h3><p class="text-cream/70 mt-2 font-light">100 years young — same recipes, same love, now with a digital home worthy of the legend.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="py-20 bg-ivory border-y border-gold/30">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+    <div class="reveal"><div class="serif text-6xl font-semibold text-choc"><span class="counter" data-target="100">0</span></div><div class="tracking-[.25em] uppercase text-xs text-choc/60 mt-2">Years of Legacy</div></div>
+    <div class="reveal"><div class="serif text-6xl font-semibold text-choc"><span class="counter" data-target="120">0</span>+</div><div class="tracking-[.25em] uppercase text-xs text-choc/60 mt-2">Heritage Recipes</div></div>
+    <div class="reveal"><div class="serif text-6xl font-semibold text-choc"><span class="counter" data-target="50">0</span>L+</div><div class="tracking-[.25em] uppercase text-xs text-choc/60 mt-2">Happy Customers</div></div>
+    <div class="reveal"><div class="serif text-6xl font-semibold text-choc">4.2<span class="text-gold">★</span></div><div class="tracking-[.25em] uppercase text-xs text-choc/60 mt-2">1,700+ Reviews</div></div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="menu" class="py-28">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-12">
+      <div class="text-caramel tracking-[.4em] uppercase text-xs mb-4">Fresh From Our Ovens</div>
+      <h2 class="serif text-5xl md:text-6xl font-semibold">The <span class="italic text-caramel">Menu</span></h2>
+      <div class="divider-orn max-w-md mx-auto mt-8"><span class="text-gold text-xl">✦</span></div>
+    </div>
+    <div class="reveal max-w-xl mx-auto mb-8 relative">
+      <input id="menuSearch" type="text" placeholder="Search croissant, sourdough, truffle…" class="!rounded-full !pl-12 !py-4 shadow-lg shadow-choc/5">
+      <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-choc/40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    </div>
+    <div class="reveal flex flex-wrap justify-center gap-3 mb-12">
+      <button class="chip active px-6 py-2.5 rounded-full border border-choc/25 text-sm tracking-widest uppercase" data-cat="all">All</button>
+      <button class="chip px-6 py-2.5 rounded-full border border-choc/25 text-sm tracking-widest uppercase" data-cat="breads">Breads</button>
+      <button class="chip px-6 py-2.5 rounded-full border border-choc/25 text-sm tracking-widest uppercase" data-cat="cakes">Cakes & Pastries</button>
+      <button class="chip px-6 py-2.5 rounded-full border border-choc/25 text-sm tracking-widest uppercase" data-cat="deli">Deli & Savouries</button>
+      <button class="chip px-6 py-2.5 rounded-full border border-choc/25 text-sm tracking-widest uppercase" data-cat="beverages">Beverages</button>
+    </div>
+    <div id="menuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <p id="noResults" class="hidden text-center text-choc/60 italic serif text-2xl mt-8">Nothing in the oven by that name — try another craving.</p>
+  </div>
+</section>
+
+<!-- ================= SIGNATURE ================= -->
+<section id="signature" class="py-28 bg-cocoa text-cream relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 relative">
+    <div class="reveal text-center mb-16">
+      <div class="text-gold tracking-[.4em] uppercase text-xs mb-4">Legends on a Plate</div>
+      <h2 class="serif text-5xl md:text-6xl font-semibold">Signature <span class="italic text-goldlight">Collection</span></h2>
+      <div class="divider-orn max-w-md mx-auto mt-8"><span class="text-gold text-xl">✦</span></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8" style="perspective:1200px">
+      <div class="reveal tilt rounded-3xl bg-choc/60 border border-gold/25 p-8 text-center" data-tilt>
+        <svg class="w-28 h-28 mx-auto mb-6 float-med" viewBox="0 0 100 100"><g><rect x="28" y="48" width="44" height="34" rx="6" fill="#6B4226"/><rect x="28" y="40" width="44" height="13" rx="6" fill="#E8C766"/><circle cx="50" cy="32" r="5" fill="#C0392B"/><path d="M50 27 q-9 -9 -16 -5" stroke="#C9A227" stroke-width="2.5" fill="none"/><circle cx="42" cy="62" r="3" fill="#C9A227"/><circle cx="58" cy="66" r="3" fill="#C9A227"/></g></svg>
+        <h3 class="serif text-3xl">Centenary Fruit Cake</h3>
+        <p class="text-cream/60 font-light mt-3">Our 1926 recipe — rum-soaked fruits, aged to perfection for the 100th year.</p>
+        <div class="serif text-2xl text-goldlight mt-4">₹1,926 <span class="text-sm text-cream/50">/ kg</span></div>
+      </div>
+      <div class="reveal tilt rounded-3xl bg-choc/60 border border-gold/25 p-8 text-center" data-tilt>
+        <svg class="w-28 h-28 mx-auto mb-6 float-slow" style="--r:-10deg" viewBox="0 0 100 100"><g fill="#E8C766" stroke="#B07D3C" stroke-width="2.5"><path d="M18 62 Q28 34 50 32 Q72 34 82 62 Q66 54 50 56 Q34 54 18 62 Z"/><path d="M30 52 Q38 44 48 46 M52 46 Q62 44 70 52" fill="none"/></g></svg>
+        <h3 class="serif text-3xl">Butter Croissant</h3>
+        <p class="text-cream/60 font-light mt-3">Seventy-two layers of French butter. Shattering, golden, unforgettable.</p>
+        <div class="serif text-2xl text-goldlight mt-4">₹120 <span class="text-sm text-cream/50">/ pc</span></div>
+      </div>
+      <div class="reveal tilt rounded-3xl bg-choc/60 border border-gold/25 p-8 text-center" data-tilt>
+        <svg class="w-28 h-28 mx-auto mb-6 float-fast" viewBox="0 0 100 100"><g><ellipse cx="50" cy="58" rx="26" ry="16" fill="#D9A441" stroke="#B07D3C" stroke-width="2.5"/><path d="M28 52 Q50 30 72 52" fill="none" stroke="#8A5A28" stroke-width="2.5"/><circle cx="42" cy="54" r="3" fill="#4A2E1C"/><circle cx="58" cy="54" r="3" fill="#4A2E1C"/></g></svg>
+        <h3 class="serif text-3xl">Chicken Patty</h3>
+        <p class="text-cream/60 font-light mt-3">The Delhi icon — flaky crust, spiced chicken heart. A lunchtime legend.</p>
+        <div class="serif text-2xl text-goldlight mt-4">₹95 <span class="text-sm text-cream/50">/ pc</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery" class="py-28">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-14">
+      <div class="text-caramel tracking-[.4em] uppercase text-xs mb-4">A Feast for the Eyes</div>
+      <h2 class="serif text-5xl md:text-6xl font-semibold">The <span class="italic text-caramel">Gallery</span></h2>
+      <div class="divider-orn max-w-md mx-auto mt-8"><span class="text-gold text-xl">✦</span></div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div class="reveal gwrap relative rounded-2xl overflow-hidden h-64 gold-frame bg-gradient-to-br from-[#E8C766] to-[#B07D3C]"><svg class="gart absolute inset-0 w-full h-full" viewBox="0 0 200 260"><g><rect x="60" y="120" width="80" height="70" rx="10" fill="#4A2E1C"/><rect x="60" y="105" width="80" height="22" rx="10" fill="#FFF7E8"/><circle cx="100" cy="92" r="9" fill="#C0392B"/><path d="M100 83 q-14 -12 -24 -6" stroke="#C9A227" stroke-width="4" fill="none"/></g><circle cx="150" cy="50" r="30" fill="#ffffff22"/></svg><div class="glabel absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-cocoa/90 to-transparent text-cream serif text-xl">Celebration Cakes</div></div>
+      <div class="reveal gwrap relative rounded-2xl overflow-hidden h-64 gold-frame bg-gradient-to-br from-[#F3E4C3] to-[#D9A441]"><svg class="gart absolute inset-0 w-full h-full" viewBox="0 0 200 260"><g fill="#B07D3C"><ellipse cx="100" cy="150" rx="62" ry="28"/><path d="M42 150 Q70 105 100 108 Q130 105 158 150" fill="none" stroke="#7A4A21" stroke-width="5"/><path d="M70 138 L76 152 M100 132 L106 146 M130 138 L136 152" stroke="#7A4A21" stroke-width="4"/></g><circle cx="55" cy="60" r="26" fill="#ffffff22"/></svg><div class="glabel absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-cocoa/90 to-transparent text-cream serif text-xl">Artisan Breads</div></div>
+      <div class="reveal gwrap relative rounded-2xl overflow-hidden h-64 gold-frame bg-gradient-to-br from-[#8A5A28] to-[#4A2E1C]"><svg class="gart absolute inset-0 w-full h-full" viewBox="0 0 200 260"><g><path d="M70 130 h60 l-8 70 h-44 Z" fill="#F3E4C3" stroke="#E8C766" stroke-width="3"/><ellipse cx="100" cy="126" rx="38" ry="15" fill="#FFF7E8" stroke="#E8C766" stroke-width="3"/><circle cx="90" cy="122" r="5" fill="#C0392B"/><circle cx="110" cy="124" r="5" fill="#7A4A21"/><circle cx="100" cy="118" r="5" fill="#C9A227"/></g><circle cx="150" cy="200" r="34" fill="#ffffff11"/></svg><div class="glabel absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-cocoa/90 to-transparent text-cream serif text-xl">Morning Pastries</div></div>
+      <div class="reveal gwrap relative rounded-2xl overflow-hidden h-64 gold-frame bg-gradient-to-br from-[#C9A227] to-[#8A5A28]"><svg class="gart absolute inset-0 w-full h-full" viewBox="0 0 200 260"><g><rect x="55" y="140" width="90" height="16" rx="8" fill="#E8C766"/><rect x="70" y="110" width="60" height="34" rx="6" fill="#F3E4C3"/><circle cx="100" cy="98" r="12" fill="#C0392B"/><path d="M100 120 q0 14 -12 18" stroke="#B07D3C" stroke-width="4" fill="none"/></g><circle cx="50" cy="60" r="28" fill="#ffffff22"/></svg><div class="glabel absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-cocoa/90 to-transparent text-cream serif text-xl">Deli Classics</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="py-28 bg-ivory border-y border-gold/30 overflow-hidden">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="reveal text-caramel tracking-[.4em] uppercase text-xs mb-4">Love Letters</div>
+    <h2 class="reveal serif text-5xl md:text-6xl font-semibold mb-12">Delhi <span class="italic text-caramel">Speaks</span></h2>
+    <div class="reveal relative min-h-[220px]" id="testiBox">
+      <div class="testi absolute inset-0" data-t="0"><p class="serif text-2xl md:text-3xl italic leading-relaxed">"My grandfather bought his wedding cake here. So did my father. So did I. Wenger's isn't a bakery — it's family."</p><div class="mt-6 text-gold text-xl">★★★★★</div><div class="mt-2 tracking-widest uppercase text-sm text-choc/60">Meera K. · Delhi</div></div>
+      <div class="testi absolute inset-0 opacity-0 pointer-events-none" data-t="1"><p class="serif text-2xl md:text-3xl italic leading-relaxed">"The chicken patty at Wenger's has ruined every other patty for me. Worth every trip to CP."</p><div class="mt-6 text-gold text-xl">★★★★★</div><div class="mt-2 tracking-widest uppercase text-sm text-choc/60">Arjun S. · Gurgaon</div></div>
+      <div class="testi absolute inset-0 opacity-0 pointer-events-none" data-t="2"><p class="serif text-2xl md:text-3xl italic leading-relaxed">"Ordered my daughter's birthday cake — the Black Forest tasted like my own childhood. Some recipes are timeless."</p><div class="mt-6 text-gold text-xl">★★★★☆</div><div class="mt-2 tracking-widest uppercase text-sm text-choc/60">Ritu M. · Noida</div></div>
+    </div>
+    <div class="reveal flex justify-center gap-3 mt-6">
+      <button class="tdot w-3 h-3 rounded-full bg-gold" data-d="0"></button>
+      <button class="tdot w-3 h-3 rounded-full bg-choc/20" data-d="1"></button>
+      <button class="tdot w-3 h-3 rounded-full bg-choc/20" data-d="2"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ORDER / VISIT ================= -->
+<section id="order" class="py-28">
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <div class="text-caramel tracking-[.4em] uppercase text-xs mb-4">Reserve & Order</div>
+      <h2 class="serif text-5xl md:text-6xl font-semibold leading-tight">Your Table<br><span class="italic text-caramel">Awaits</span></h2>
+      <p class="text-choc/70 font-light mt-6 leading-relaxed">Bulk orders, celebration cakes, wedding dessert tables or a quiet coffee — tell us what you're craving and we'll have it ready.</p>
+      <div class="mt-8 space-y-4 text-choc/80">
+        <div class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold">✦</span> A-16, Connaught Place, New Delhi 110001</div>
+        <div class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold">✆</span> +91 11 2332 4373</div>
+        <div class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold">✉</span> info@wengers.in</div>
+        <div class="flex items-center gap-4"><span class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold">◷</span> Open Daily · 10:30 AM – 9:30 PM</div>
+      </div>
+    </div>
+    <div class="reveal bg-ivory rounded-3xl p-8 md:p-10 shadow-2xl shadow-choc/10 border border-gold/30 relative overflow-hidden">
+      <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-gold via-goldlight to-gold"></div>
+      <form id="orderForm" class="space-y-4">
+        <input type="text" id="fName" placeholder="Your name *" required>
+        <div class="grid grid-cols-2 gap-4">
+          <input type="tel" id="fPhone" placeholder="Phone *" required pattern="[0-9+ ]{8,15}">
+          <input type="date" id="fDate">
+        </div>
+        <select id="fType"><option>Celebration Cake</option><option>Bulk / Corporate Order</option><option>Wedding Dessert Table</option><option>Table Reservation</option><option>Other Enquiry</option></select>
+        <textarea id="fMsg" rows="3" placeholder="Tell us about your craving…"></textarea>
+        <button type="submit" class="btn-gold w-full py-4 rounded-xl tracking-widest uppercase text-sm font-medium">Send Enquiry</button>
+      </form>
+      <div id="formDone" class="hidden text-center py-10">
+        <div class="w-20 h-20 mx-auto rounded-full bg-gold/20 flex items-center justify-center text-4xl text-gold mb-5">✓</div>
+        <h3 class="serif text-3xl">Order Received!</h3>
+        <p class="text-choc/60 mt-3 font-light">Our bakers will call you shortly.<br>Fresh from the oven, just for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="visit" class="bg-cocoa text-cream pt-20 pb-8">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-10 mb-14">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3 mb-5"><div class="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center text-gold serif text-2xl font-bold">W</div><div><div class="serif text-3xl">Wenger's</div><div class="text-[10px] tracking-[.35em] uppercase text-cream/50">Est. 1926</div></div></div>
+      <p class="text-cream/60 font-light max-w-sm">A century of baking at the heart of Connaught Place. Recipes unchanged, love undiminished.</p>
+    </div>
+    <div><h4 class="tracking-[.3em] uppercase text-xs text-gold mb-5">Visit</h4><p class="text-cream/60 font-light leading-relaxed">A-16, Connaught Place<br>New Delhi 110001<br>+91 11 2332 4373<br>info@wengers.in</p></div>
+    <div><h4 class="tracking-[.3em] uppercase text-xs text-gold mb-5">Hours</h4><p class="text-cream/60 font-light leading-relaxed">Monday – Sunday<br>10:30 AM – 9:30 PM<br><span class="text-goldlight">Breads fresh at 8 AM daily</span></p></div>
+  </div>
+  <div class="max-w-6xl mx-auto px-6 pt-6 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-cream/40 tracking-widest uppercase">
+    <span>© 2026 Wenger's · Concept Redesign</span><span>Crafted with butter, love & 100 years of patience</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/911123324373" target="_blank" rel="noopener" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] shadow-2xl flex items-center justify-center hover:scale-110 transition" aria-label="WhatsApp">
+  <svg class="w-7 h-7 fill-white" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1l.8-.9c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.3z"/></svg>
+</a>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- preloader ---------- */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('done');
+    gsap.to('.reveal', { opacity: 1, y: 0, duration: 1, stagger: .12, ease: 'power3.out',
+      scrollTrigger: { trigger: '#top', start: 'top 85%' } });
+  }, 1600);
+});
+
+/* ---------- cursor ---------- */
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; });
+document.querySelectorAll('a,button,.tilt').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+/* ---------- nav ---------- */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), { passive: true });
+
+/* ---------- gold dust particles ---------- */
+const cv = document.getElementById('dust'), cx = cv.getContext('2d');
+let W, H, parts = [];
+function sizeCv(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
+sizeCv(); addEventListener('resize', sizeCv);
+for (let i = 0; i < 55; i++) parts.push({ x: Math.random()*innerWidth, y: Math.random()*innerHeight, r: Math.random()*2.4+.6, s: Math.random()*.5+.15, o: Math.random()*.5+.15, ph: Math.random()*6.28 });
+(function dust(t){
+  cx.clearRect(0,0,W,H);
+  parts.forEach(p => {
+    p.y -= p.s; p.x += Math.sin(t/1600 + p.ph)*.25;
+    if (p.y < -8){ p.y = H+8; p.x = Math.random()*W; }
+    cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.28);
+    cx.fillStyle = 'rgba(201,162,39,' + p.o*.55 + ')'; cx.fill();
+  });
+  requestAnimationFrame(dust);
+})(0);
+
+/* ---------- scroll reveals ---------- */
+document.querySelectorAll('section .reveal, footer .reveal').forEach(el => {
+  gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 88%' } });
+});
+
+/* ---------- counters ---------- */
+document.querySelectorAll('.counter').forEach(el => {
+  const target = +el.dataset.target;
+  ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true,
+    onEnter: () => gsap.to({ v: 0 }, { v: target, duration: 2, ease: 'power2.out',
+      onUpdate: function(){ el.textContent = Math.round(this.targets()[0].v); } }) });
+});
+
+/* ---------- hero parallax ---------- */
+gsap.to('#heroArt', { y: 90, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: 1 } });
+
+/* ---------- 3D tilt ---------- */
+document.querySelectorAll('[data-tilt]').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const rx = ((e.clientY - r.top)/r.height - .5) * -14;
+    const ry = ((e.clientX - r.left)/r.width - .5) * 14;
+    card.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-4px)';
+  });
+  card.addEventListener('mouseleave', () => card.style.transform = 'rotateX(0) rotateY(0)');
+});
+
+/* ---------- menu data ---------- */
+const MENU = [
+  { n:'Butter Croissant', d:'72 layers of French butter, baked golden', p:'₹120', c:'breads', tag:'Bestseller' },
+  { n:'Classic Sourdough', d:'48-hour fermented, stone-baked crust', p:'₹220', c:'breads' },
+  { n:'Multigrain Loaf', d:'Seven grains, honey-kissed crumb', p:'₹180', c:'breads' },
+  { n:'Brioche Buns (4)', d:'Pillowy, buttery, melt-in-mouth', p:'₹160', c:'breads' },
+  { n:'Black Forest Cake', d:'Cherry, cream & chocolate — the timeless classic', p:'₹750', c:'cakes', tag:'Legend' },
+  { n:'Belgian Truffle Cake', d:'Dark ganache, cocoa soil, gold dust', p:'₹950', c:'cakes' },
+  { n:'Pineapple Pastry', d:'Light sponge, fresh pineapple, chantilly', p:'₹90', c:'cakes' },
+  { n:'Rum Ball', d:'Chocolate, rum & nostalgia in every bite', p:'₹110', c:'cakes', tag:'Since 1960s' },
+  { n:'Centenary Fruit Cake', d:'1926 recipe, rum-soaked fruits', p:'₹1,926', c:'cakes', tag:'Centenary' },
+  { n:'Chicken Patty', d:'Flaky crust, spiced chicken — the Delhi icon', p:'₹95', c:'deli', tag:'Bestseller' },
+  { n:'Veg Puff', d:'Crisp layers, masala potato heart', p:'₹60', c:'deli' },
+  { n:'Quiche Lorraine', d:'Smoked chicken, gruyère, buttery shell', p:'₹210', c:'deli' },
+  { n:'Deli Platter', d:'Cold cuts, cheeses & artisan breads for four', p:'₹1,450', c:'deli' },
+  { n:'Filter Coffee', d:'Slow-brewed, served the old way', p:'₹80', c:'beverages' },
+  { n:'Hot Chocolate', d:'Belgian cocoa, whipped cream cloud', p:'₹180', c:'beverages', tag:'Winter Fav' },
+  { n:'Cold Coffee Frappe', d:'Blended thick, crowned with cream', p:'₹190', c:'beverages' },
+];
+const grid = document.getElementById('menuGrid'), noRes = document.getElementById('noResults');
+let activeCat = 'all', query = '';
+function renderMenu(){
+  grid.innerHTML = '';
+  let count = 0;
+  MENU.forEach(m => {
+    if (activeCat !== 'all' && m.c !== activeCat) return;
+    if (query && !(m.n + ' ' + m.d).toLowerCase().includes(query)) return;
+    count++;
+    const el = document.createElement('div');
+    el.className = 'menu-card bg-ivory rounded-2xl p-6 border border-choc/10 shadow-sm';
+    el.innerHTML = '<div class="flex justify-between items-start gap-3"><div><h3 class="serif text-2xl">' + m.n + '</h3>' +
+      '<p class="text-choc/60 font-light text-sm mt-1">' + m.d + '</p></div>' +
+      '<div class="serif text-xl text-caramel whitespace-nowrap">' + m.p + '</div></div>' +
+      (m.tag ? '<span class="inline-block mt-3 text-[10px] tracking-[.25em] uppercase bg-gold/15 text-caramel px-3 py-1 rounded-full">' + m.tag + '</span>' : '');
+    grid.appendChild(el);
+  });
+  noRes.classList.toggle('hidden', count > 0);
+  gsap.fromTo('#menuGrid .menu-card', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .5, stagger: .05, ease: 'power2.out' });
+}
+document.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  ch.classList.add('active'); activeCat = ch.dataset.cat; renderMenu();
+}));
+document.getElementById('menuSearch').addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); renderMenu(); });
+renderMenu();
+
+/* ---------- testimonials ---------- */
+const slides = document.querySelectorAll('.testi'), dots = document.querySelectorAll('.tdot');
+let ti = 0, tTimer;
+function showT(i){
+  ti = i;
+  slides.forEach((s, k) => {
+    const on = k === i;
+    s.style.opacity = on ? 1 : 0;
+    s.style.transform = on ? 'translateY(0)' : 'translateY(16px)';
+    s.classList.toggle('pointer-events-none', !on);
+  });
+  dots.forEach((d, k) => { d.classList.toggle('bg-gold', k === i); d.classList.toggle('bg-choc/20', k !== i); });
+}
+function autoT(){ clearInterval(tTimer); tTimer = setInterval(() => showT((ti+1)%slides.length), 5000); }
+dots.forEach(d => d.addEventListener('click', () => { showT(+d.dataset.d); autoT(); }));
+showT(0); autoT();
+
+/* ---------- form ---------- */
+document.getElementById('orderForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('fName'), phone = document.getElementById('fPhone');
+  if (!name.value.trim() || !phone.value.trim()){ gsap.fromTo('#orderForm',{x:-8},{x:0,duration:.4,ease:'elastic.out(1,.3)'}); return; }
+  document.getElementById('orderForm').classList.add('hidden');
+  const done = document.getElementById('formDone');
+  done.classList.remove('hidden');
+  gsap.fromTo(done, { opacity: 0, scale: .92 }, { opacity: 1, scale: 1, duration: .7, ease: 'back.out(1.6)' });
+});
+</script>
+</body>
+</html>

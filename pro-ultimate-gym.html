@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Ultimate Gym — Saket, New Delhi | Train Like a Pro</title>
+<meta name="description" content="Pro Ultimate Gym, Saket New Delhi. 4.8 rated gym with CrossFit, Zumba, Yoga, strength training. Book a free trial today.">
+<style>
+  :root{
+    --bg:#0a0a0a; --bg2:#111111; --card:#161616; --line:#262626;
+    --lime:#c8ff00; --lime-dim:#9fc400; --text:#f2f2f2; --muted:#a8a8a8;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+  h1,h2,h3,.cond{font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;font-stretch:condensed;text-transform:uppercase;letter-spacing:.02em;line-height:1.05;font-weight:800}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+  .section{padding:72px 0}
+  .eyebrow{display:inline-block;color:var(--lime);font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;margin-bottom:14px}
+  .sec-title{font-size:clamp(30px,5vw,52px);margin-bottom:10px}
+  .sec-sub{color:var(--muted);max-width:640px;margin-bottom:36px;font-size:17px}
+  .btn{display:inline-block;background:var(--lime);color:#0a0a0a;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:15px 32px;border-radius:999px;border:none;cursor:pointer;font-size:15px;transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,255,0,.35)}
+  .btn.ghost{background:transparent;color:var(--lime);border:2px solid var(--lime)}
+  .btn.small{padding:11px 22px;font-size:13px}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:.03em}
+  .logo span{color:var(--lime)}
+  .nav-links{display:flex;gap:26px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+  .nav-links a{color:var(--muted)}
+  .nav-links a:hover{color:var(--lime)}
+  /* HERO */
+  .hero{position:relative;padding:110px 0 90px;background:radial-gradient(1000px 500px at 80% -10%,rgba(200,255,0,.14),transparent 60%),linear-gradient(180deg,#101010,#0a0a0a);overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0 34px,rgba(200,255,0,.03) 34px 36px);pointer-events:none}
+  .hero-inner{position:relative;z-index:1}
+  .hero h1{font-size:clamp(52px,9vw,110px);margin:12px 0 18px}
+  .hero h1 span{color:var(--lime)}
+  .hero p.lead{font-size:clamp(16px,2.4vw,21px);color:var(--muted);max-width:620px;margin-bottom:30px}
+  .rating{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 18px;margin-bottom:22px;font-weight:700;font-size:15px}
+  .rating .stars{color:var(--lime);letter-spacing:2px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:44px;margin-top:48px;flex-wrap:wrap}
+  .stat b{display:block;font-size:34px;color:var(--lime)}
+  .stat small{color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:12px}
+  /* PLANS */
+  .plans{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;position:relative;transition:transform .15s ease,border-color .15s ease}
+  .plan:hover{transform:translateY(-4px);border-color:var(--lime)}
+  .plan.popular{border:2px solid var(--lime);background:#151a0b}
+  .plan .tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--lime);color:#0a0a0a;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:5px 16px;border-radius:999px;white-space:nowrap}
+  .plan h3{font-size:22px;margin-bottom:6px}
+  .plan .price{font-size:44px;font-weight:800;color:var(--lime);margin:10px 0 2px}
+  .plan .per{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .plan ul{list-style:none;margin-bottom:26px}
+  .plan li{padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px;color:#d8d8d8;display:flex;gap:10px;align-items:flex-start}
+  .plan li svg{flex:none;margin-top:4px}
+  .plan li:last-child{border-bottom:none}
+  /* TIMETABLE */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+  table{width:100%;border-collapse:collapse;min-width:760px;font-size:15px}
+  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#1a1a1a;color:var(--lime);text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td:first-child{font-weight:700;color:var(--lime);white-space:nowrap}
+  /* TRAINERS */
+  .trainers{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trainer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+  .trainer{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .trainer .face{height:190px;background:linear-gradient(135deg,#232323,#101010);display:flex;align-items:center;justify-content:center;position:relative}
+  .trainer .face::after{content:"";position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(180deg,transparent,rgba(200,255,0,.12))}
+  .trainer .face svg{opacity:.85}
+  .trainer .info{padding:22px}
+  .trainer h3{font-size:20px;margin-bottom:4px}
+  .trainer .spec{color:var(--lime);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+  .trainer p{color:var(--muted);font-size:14px}
+  /* FORM + BMI */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px}
+  .card h3{font-size:24px;margin-bottom:8px}
+  .card .desc{color:var(--muted);font-size:15px;margin-bottom:22px}
+  label{display:block;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:16px 0 6px}
+  input,select{width:100%;background:#0d0d0d;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:13px 14px;font-size:16px;font-family:inherit}
+  input:focus,select:focus{outline:none;border-color:var(--lime)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-note{font-size:13px;color:var(--muted);margin-top:14px}
+  .success{display:none;background:rgba(200,255,0,.1);border:1px solid var(--lime);border-radius:10px;padding:18px;margin-top:20px;font-size:15px}
+  .bmi-result{margin-top:20px;font-size:17px}
+  .bmi-result b{color:var(--lime);font-size:30px}
+  .bmi-bar{height:10px;background:#222;border-radius:99px;margin-top:12px;overflow:hidden}
+  .bmi-fill{height:100%;width:0;background:linear-gradient(90deg,var(--lime),#7dff00);border-radius:99px;transition:width .4s ease}
+  /* REVIEWS */
+  .reviews{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+  .review{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .review .stars{color:var(--lime);letter-spacing:3px;margin-bottom:12px}
+  .review p{font-size:15px;color:#d8d8d8;margin-bottom:16px;font-style:italic}
+  .review .who{font-weight:700;font-size:14px}
+  .review .who small{display:block;color:var(--muted);font-weight:400}
+  /* BRANCHES */
+  .branch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+  .branch{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .branch h3{font-size:19px;margin-bottom:8px}
+  .branch .flag{display:inline-block;background:var(--lime);color:#0a0a0a;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 12px;border-radius:999px;margin-bottom:12px}
+  .branch p{color:var(--muted);font-size:14px;margin-bottom:6px}
+  /* FLOATING WHATSAPP */
+  .wa-float{position:fixed;bottom:26px;right:26px;z-index:200;width:62px;height:62px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:transform .15s ease}
+  .wa-float:hover{transform:scale(1.08)}
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:44px 0 30px;background:#080808}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:30px}
+  .foot-grid h4{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--lime);margin-bottom:14px}
+  .foot-grid p,.foot-grid a{color:var(--muted);font-size:14px;display:block;margin-bottom:8px}
+  .foot-grid a:hover{color:var(--lime)}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#666;font-size:13px}
+  @media(max-width:860px){
+    .split{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .section{padding:54px 0}
+    .foot-grid{grid-template-columns:1fr}
+    .hero{padding:80px 0 64px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top">PRO <span>ULTIMATE</span> GYM</a>
+    <div class="nav-links">
+      <a href="#plans">Plans</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#trainers">Trainers</a>
+      <a href="#branches">Branches</a>
+    </div>
+    <a href="#trial" class="btn small">Book Free Trial</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="rating"><span class="stars">★★★★★</span> 4.8 · 800+ Google reviews</div>
+    <h1>Train Like<br>a <span>Pro</span></h1>
+    <p class="lead">Delhi's high-energy strength &amp; fitness arena in Saket. World-class equipment, certified coaches, and group classes that keep you coming back — your first workout is on us.</p>
+    <div class="hero-cta">
+      <a href="#trial" class="btn">Book Free Trial</a>
+      <a href="#plans" class="btn ghost">View Plans</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>4</b><small>Delhi Branches</small></div>
+      <div class="stat"><b>25+</b><small>Certified Trainers</small></div>
+      <div class="stat"><b>12K+</b><small>Happy Members</small></div>
+    </div>
+  </div>
+</header>
+
+<section class="section plans" id="plans">
+  <div class="wrap">
+    <span class="eyebrow">Membership</span>
+    <h2 class="sec-title">Pick Your Plan</h2>
+    <p class="sec-sub">Transparent pricing. No hidden charges. Every plan includes locker access, diet chart and all group classes.</p>
+    <div class="plan-grid">
+      <div class="plan">
+        <h3>Monthly</h3>
+        <div class="price">₹2,500</div>
+        <div class="per">per month</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>Full gym floor access</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>All group classes</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>Personalised diet chart</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>Locker facility</li>
+        </ul>
+        <a class="btn small" style="width:100%;text-align:center" href="https://wa.me/918011111142?text=Hi!%20I%20want%20to%20join%20the%20Monthly%20plan%20at%20Pro%20Ultimate%20Gym.">Join on WhatsApp</a>
+      </div>
+      <div class="plan popular">
+        <span class="tag">Most Popular</span>
+        <h3>Quarterly</h3>
+        <div class="price">₹6,000</div>
+        <div class="per">3 months · save ₹1,500</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>Everything in Monthly</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>2 personal training sessions</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>Body composition analysis</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>Steam &amp; recovery zone</li>
+        </ul>
+        <a class="btn small" style="width:100%;text-align:center" href="https://wa.me/918011111142?text=Hi!%20I%20want%20to%20join%20the%20Quarterly%20plan%20at%20Pro%20Ultimate%20Gym.">Join on WhatsApp</a>
+      </div>
+      <div class="plan">
+        <h3>Annual</h3>
+        <div class="price">₹18,000</div>
+        <div class="per">12 months · save ₹12,000</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>Everything in Quarterly</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>8 personal training sessions</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>Quarterly fitness reassessment</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4" fill="none" stroke="#c8ff00" stroke-width="2.4"/></svg>1 month freeze option</li>
+        </ul>
+        <a class="btn small" style="width:100%;text-align:center" href="https://wa.me/918011111142?text=Hi!%20I%20want%20to%20join%20the%20Annual%20plan%20at%20Pro%20Ultimate%20Gym.">Join on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="schedule">
+  <div class="wrap">
+    <span class="eyebrow">Weekly Timetable</span>
+    <h2 class="sec-title">Class Schedule</h2>
+    <p class="sec-sub">Reserve your slot on WhatsApp. All batches run Monday to Saturday; Sunday is active-recovery day.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6:00 – 7:00 AM</td><td>CrossFit</td><td>Yoga</td><td>CrossFit</td><td>Yoga</td><td>CrossFit</td><td>Bootcamp</td></tr>
+          <tr><td>7:00 – 8:00 AM</td><td>Strength</td><td>Cardio Burn</td><td>Strength</td><td>Cardio Burn</td><td>Strength</td><td>Strength</td></tr>
+          <tr><td>8:00 – 9:00 AM</td><td>Zumba</td><td>Strength</td><td>Zumba</td><td>Strength</td><td>Zumba</td><td>Yoga</td></tr>
+          <tr><td>5:00 – 6:00 PM</td><td>Cardio Burn</td><td>CrossFit</td><td>Cardio Burn</td><td>CrossFit</td><td>Cardio Burn</td><td>Zumba</td></tr>
+          <tr><td>6:00 – 7:00 PM</td><td>Strength</td><td>Zumba</td><td>Strength</td><td>Zumba</td><td>Strength</td><td>CrossFit</td></tr>
+          <tr><td>7:00 – 8:00 PM</td><td>CrossFit</td><td>Yoga</td><td>CrossFit</td><td>Yoga</td><td>Bootcamp</td><td>Cardio Burn</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section trainers" id="trainers">
+  <div class="wrap">
+    <span class="eyebrow">Coaches</span>
+    <h2 class="sec-title">Meet Your Trainers</h2>
+    <p class="sec-sub">Certified, experienced, and obsessed with your progress.</p>
+    <div class="trainer-grid">
+      <div class="trainer">
+        <div class="face"><svg width="72" height="72" viewBox="0 0 72 72"><rect x="6" y="30" width="10" height="12" rx="2" fill="#c8ff00"/><rect x="18" y="26" width="8" height="20" rx="2" fill="#c8ff00"/><rect x="26" y="33" width="20" height="6" rx="3" fill="#f2f2f2"/><rect x="46" y="26" width="8" height="20" rx="2" fill="#c8ff00"/><rect x="56" y="30" width="10" height="12" rx="2" fill="#c8ff00"/></svg></div>
+        <div class="info"><h3>Rahul Sharma</h3><div class="spec">Strength &amp; Conditioning</div><p>10+ years coaching powerlifters. Specialises in muscle gain and fat-loss transformations.</p></div>
+      </div>
+      <div class="trainer">
+        <div class="face"><svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="24" r="10" fill="#c8ff00"/><path d="M36 36c-8 0-14 5-15 13l4 1c1-6 5-9 11-9s10 3 11 9l4-1c-1-8-7-13-15-13z" fill="#f2f2f2"/></svg></div>
+        <div class="info"><h3>Priya Verma</h3><div class="spec">Zumba &amp; Aerobics</div><p>ZIN-certified instructor whose high-energy Zumba batches are the most loved in Saket.</p></div>
+      </div>
+      <div class="trainer">
+        <div class="face"><svg width="72" height="72" viewBox="0 0 72 72"><path d="M20 52 L36 14 L52 52" fill="none" stroke="#c8ff00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="56" r="5" fill="#f2f2f2"/></svg></div>
+        <div class="info"><h3>Amit Singh</h3><div class="spec">CrossFit &amp; HIIT</div><p>Former national-level athlete. Runs the 6 AM CrossFit crew — expect to be pushed hard.</p></div>
+      </div>
+      <div class="trainer">
+        <div class="face"><svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="20" r="8" fill="#f2f2f2"/><path d="M36 30v18m0-14l-12 6m12-6l12 6m-12 8l-9 16m9-16l9 16" stroke="#c8ff00" stroke-width="6" stroke-linecap="round" fill="none"/></svg></div>
+        <div class="info"><h3>Neha Kapoor</h3><div class="spec">Yoga &amp; Mobility</div><p>500-hour RYT. Blends traditional yoga with modern mobility work for injury-free training.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trial">
+  <div class="wrap">
+    <span class="eyebrow">Get Started</span>
+    <h2 class="sec-title">Book Your Free Trial</h2>
+    <p class="sec-sub">One full workout + trainer guidance + diet starter plan. Zero cost, zero pressure.</p>
+    <div class="split">
+      <div class="card">
+        <h3>Reserve Your Slot</h3>
+        <p class="desc">Fill this in — our team will confirm on call or WhatsApp within 2 hours.</p>
+        <form id="trialForm">
+          <label for="tname">Full Name</label>
+          <input id="tname" type="text" placeholder="e.g. Arjun Mehta" required>
+          <label for="tphone">Phone Number</label>
+          <input id="tphone" type="tel" pattern="[0-9+ ]{10,15}" placeholder="e.g. 98110 12345" required>
+          <div class="row2">
+            <div>
+              <label for="tbranch">Branch</label>
+              <select id="tbranch" required>
+                <option value="">Select branch</option>
+                <option>Saket (Flagship)</option>
+                <option>Pitampura</option>
+                <option>Jail Road</option>
+                <option>Model Town</option>
+              </select>
+            </div>
+            <div>
+              <label for="ttime">Preferred Slot</label>
+              <select id="ttime" required>
+                <option value="">Select slot</option>
+                <option>6 – 8 AM</option>
+                <option>8 – 10 AM</option>
+                <option>5 – 7 PM</option>
+                <option>7 – 9 PM</option>
+              </select>
+            </div>
+          </div>
+          <label for="tdate">Preferred Date</label>
+          <input id="tdate" type="date" required>
+          <div style="margin-top:22px"><button class="btn" type="submit" style="width:100%">Confirm Free Trial</button></div>
+          <p class="form-note">By submitting, you agree to be contacted about your trial booking.</p>
+        </form>
+        <div class="success" id="trialSuccess">Done! Your free trial request is recorded. Our team will call you shortly to confirm your slot. Get ready to train like a pro.</div>
+      </div>
+      <div class="card">
+        <h3>BMI Calculator</h3>
+        <p class="desc">Know your starting point. Enter your height and weight to get your Body Mass Index.</p>
+        <label for="bmiH">Height (cm)</label>
+        <input id="bmiH" type="number" min="100" max="230" placeholder="e.g. 172">
+        <label for="bmiW">Weight (kg)</label>
+        <input id="bmiW" type="number" min="25" max="250" placeholder="e.g. 78">
+        <div style="margin-top:22px"><button class="btn ghost" type="button" id="bmiBtn" style="width:100%">Calculate BMI</button></div>
+        <div class="bmi-result" id="bmiResult" style="display:none">Your BMI: <b id="bmiVal">–</b><div style="font-size:14px;color:var(--muted)" id="bmiCat"></div><div class="bmi-bar"><div class="bmi-fill" id="bmiFill"></div></div></div>
+        <p class="form-note">BMI is a rough guide — our trainers do a full body-composition analysis with every membership.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews">
+  <div class="wrap">
+    <span class="eyebrow">Member Stories</span>
+    <h2 class="sec-title">Transformations</h2>
+    <p class="sec-sub">Real members, real results. Rated 4.8 across 800+ Google reviews.</p>
+    <div class="review-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Lost 14 kg in 5 months. The trainers actually track your diet every week — nobody else in Saket does that. Best decision of my year."</p>
+        <div class="who">Sahil Khanna<small>Member since 2024 · Saket</small></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"The 7 AM Zumba batch with Priya ma'am is addictive. Equipment is new, floor never feels crowded, and the vibe is genuinely motivating."</p>
+        <div class="who">Ritu Malhotra<small>Member since 2023 · Pitampura</small></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Joined for the free trial, stayed for the CrossFit crew. Amit sir's programming took my deadlift from 60 to 140 kg. Worth every rupee."</p>
+        <div class="who">Vikram Rao<small>Member since 2025 · Saket</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="branches">
+  <div class="wrap">
+    <span class="eyebrow">Find Us</span>
+    <h2 class="sec-title">Our Branches</h2>
+    <p class="sec-sub">Four locations across Delhi — one membership works at all of them.</p>
+    <div class="branch-grid">
+      <div class="branch">
+        <span class="flag">Flagship</span>
+        <h3>Saket</h3>
+        <p>316/275, Westend Marg, near Saket Metro Station, New Delhi 110017</p>
+        <p>Call: +91 80111 11142</p>
+      </div>
+      <div class="branch">
+        <h3>Pitampura</h3>
+        <p>2nd Floor, Aggarwal Plaza, Netaji Subhash Place, Pitampura, New Delhi 110034</p>
+        <p>Call: +91 80111 11142</p>
+      </div>
+      <div class="branch">
+        <h3>Jail Road</h3>
+        <p>Plot 12, Community Centre, Jail Road, Janakpuri, New Delhi 110058</p>
+        <p>Call: +91 80111 11142</p>
+      </div>
+      <div class="branch">
+        <h3>Model Town</h3>
+        <p>G-7, Main Market, Model Town Phase 2, New Delhi 110009</p>
+        <p>Call: +91 80111 11142</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a class="wa-float" href="https://wa.me/918011111142?text=Hi!%20I%20have%20a%20question%20about%20Pro%20Ultimate%20Gym." aria-label="Chat on WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-1.8c1.8 1 3.9 1.6 6.1 1.6h.2c6.6 0 12-5.4 12-12S22.6 3 16 3z" fill="#fff"/><path d="M16 5.5c5.2 0 9.5 4.3 9.5 9.5 0 5.2-4.3 9.5-9.5 9.5-1.8 0-3.5-.5-5-1.4l-.5-.3-4.2 1 1-4.1-.3-.5c-1-1.6-1.5-3.4-1.5-5.2 0-5.2 4.3-9.5 9.5-9.5z" fill="#25d366"/><path d="M12.2 10.8c-.2 0-.5 0-.7.3-.9.9-1.1 2.3-.6 4.2.6 2.3 2.6 4.8 4.7 6.2 1.5 1 2.7 1.4 3.7 1.4.8 0 1.5-.3 2-.8.3-.3.5-.7.5-1.1 0-.2-.1-.4-.2-.5l-2.1-1.1c-.2-.1-.4-.1-.6 0l-.9.9c-.1.1-.3.2-.5.1-1.2-.5-2.9-2.2-3.4-3.4-.1-.2 0-.4.1-.5l.9-.9c.2-.2.2-.4.1-.6l-1-2.3c-.1-.3-.3-.4-.5-.4h-.5z" fill="#fff"/></svg>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Pro Ultimate Gym</h4>
+        <p>Delhi's high-energy fitness arena. Strength, CrossFit, Zumba, Yoga and more — across 4 branches.</p>
+        <p>316/275, Westend Marg, near Saket Metro Station, New Delhi 110017</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#plans">Membership Plans</a>
+        <a href="#schedule">Class Schedule</a>
+        <a href="#trainers">Trainers</a>
+        <a href="#trial">Book Free Trial</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+918011111142">+91 80111 11142</a>
+        <a href="https://wa.me/918011111142">WhatsApp Us</a>
+        <a href="#branches">All Branches</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Pro Ultimate Gym. All rights reserved.</span>
+      <span>Concept redesign demo by Om Vibe Webs</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('trialForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('tname').value.trim();
+  var branch = document.getElementById('tbranch').value;
+  var slot = document.getElementById('ttime').value;
+  if(!name || !branch || !slot) return;
+  var msg = document.getElementById('trialSuccess');
+  msg.style.display = 'block';
+  msg.innerHTML = 'Done, <b>' + name.split(' ')[0] + '</b>! Your free trial request for the <b>' + branch + '</b> branch (' + slot + ') is recorded. Our team will call you shortly to confirm. Get ready to train like a pro.';
+  this.reset();
+  msg.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+document.getElementById('bmiBtn').addEventListener('click', function(){
+  var h = parseFloat(document.getElementById('bmiH').value);
+  var w = parseFloat(document.getElementById('bmiW').value);
+  if(!h || !w || h < 100 || w < 25) return;
+  var bmi = w / Math.pow(h/100, 2);
+  var cat = bmi < 18.5 ? 'Underweight — our strength program can help you build up.' :
+            bmi < 25 ? 'Healthy range — let\'s build on it with strength & conditioning.' :
+            bmi < 30 ? 'Overweight — our fat-loss batches are perfect for you.' :
+                       'Obese — start with a trainer-guided plan; we\'ll get you there.';
+  document.getElementById('bmiResult').style.display = 'block';
+  document.getElementById('bmiVal').textContent = bmi.toFixed(1);
+  document.getElementById('bmiCat').textContent = cat;
+  document.getElementById('bmiFill').style.width = Math.min(100, Math.max(4, (bmi/40)*100)) + '%';
+});
+document.getElementById('tdate').min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>

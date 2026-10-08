@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arabian Courtyard Hotel &amp; Spa — Heritage Hotel, Bur Dubai</title>
+<meta name="description" content="Arabian Courtyard Hotel & Spa — a 4-star heritage hotel in Bur Dubai, opposite Dubai Museum. 172 rooms, rooftop pool, spa, steps from the souks.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FBF7EC; --sand:#F0DFC0; --sand-deep:#E4C996;
+  --terra:#C4743C; --terra-deep:#A85A2B; --terra-soft:#E8A96F;
+  --teal:#0C4B46; --teal-deep:#07322F; --ink:#123B38;
+}
+*{ -webkit-tap-highlight-color:transparent; }
+html{ scroll-behavior:smooth; }
+body{ font-family:'Sora',sans-serif; background:var(--ivory); color:var(--ink); overflow-x:hidden; }
+.font-display{ font-family:'Fraunces',serif; }
+::selection{ background:var(--terra); color:#fff; }
+
+/* ---------- Preloader ---------- */
+#preloader{ position:fixed; inset:0; z-index:100; background:var(--teal-deep);
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1.2rem;
+  transition:opacity .8s ease, visibility .8s; }
+#preloader.done{ opacity:0; visibility:hidden; }
+.arch-loader{ width:74px; height:96px; border:3px solid var(--sand); border-bottom:none;
+  border-radius:60px 60px 0 0; position:relative; animation:archPulse 1.6s ease-in-out infinite; }
+.arch-loader::after{ content:''; position:absolute; left:50%; bottom:8px; width:14px; height:14px;
+  background:var(--terra-soft); border-radius:50%; transform:translateX(-50%); filter:blur(1px);
+  animation:lanternGlow 1.6s ease-in-out infinite; }
+@keyframes archPulse{ 0%,100%{ transform:scale(1); opacity:.85;} 50%{ transform:scale(1.06); opacity:1;} }
+@keyframes lanternGlow{ 0%,100%{ box-shadow:0 0 12px 4px rgba(232,169,111,.7);} 50%{ box-shadow:0 0 26px 10px rgba(232,169,111,.95);} }
+.load-bar{ width:180px; height:3px; background:rgba(240,223,192,.18); border-radius:99px; overflow:hidden; }
+.load-bar span{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--terra),var(--terra-soft)); border-radius:99px; }
+
+/* ---------- Nav ---------- */
+#nav{ position:fixed; top:0; left:0; right:0; z-index:60; transition:all .45s ease; }
+#nav .nav-inner{ transition:all .45s ease; }
+#nav.scrolled .nav-inner{ background:rgba(251,247,236,.82); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(12,75,70,.12); box-shadow:0 12px 40px -12px rgba(12,75,70,.25); }
+.nav-link{ position:relative; }
+.nav-link::after{ content:''; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--terra); transition:width .3s ease; border-radius:99px; }
+.nav-link:hover::after{ width:100%; }
+
+/* ---------- Hero mesh + dunes ---------- */
+.hero-mesh{ position:absolute; inset:0; overflow:hidden;
+  background:
+    radial-gradient(42% 55% at 18% 22%, rgba(196,116,60,.34), transparent 70%),
+    radial-gradient(38% 50% at 84% 18%, rgba(12,75,70,.22), transparent 70%),
+    radial-gradient(46% 60% at 62% 84%, rgba(232,169,111,.40), transparent 70%),
+    radial-gradient(30% 40% at 30% 78%, rgba(228,201,150,.55), transparent 70%),
+    linear-gradient(160deg,#FDF9EF 0%, #F6EAD0 55%, #EFDDB8 100%); }
+.blob{ position:absolute; border-radius:50%; filter:blur(70px); opacity:.55; animation:blobFloat 14s ease-in-out infinite alternate; }
+@keyframes blobFloat{ from{ transform:translate(0,0) scale(1);} to{ transform:translate(60px,-40px) scale(1.15);} }
+.dune{ position:absolute; left:-5%; width:110%; pointer-events:none; }
+.grain{ position:absolute; inset:0; opacity:.5; mix-blend-mode:multiply; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.45 0 0 0 0 0.32 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* ---------- Type treatments ---------- */
+.display-xl{ font-size:clamp(3rem,10vw,8.5rem); line-height:.95; letter-spacing:-.02em; }
+.display-lg{ font-size:clamp(2.2rem,6vw,4.6rem); line-height:1.02; letter-spacing:-.015em; }
+.eyebrow{ letter-spacing:.32em; text-transform:uppercase; font-size:.72rem; font-weight:600; }
+.stroke-text{ color:transparent; -webkit-text-stroke:1.5px var(--teal); }
+.shimmer{ background:linear-gradient(110deg,var(--terra-deep) 20%, #E9B06C 40%, var(--terra-deep) 60%);
+  background-size:220% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:shimmer 5s linear infinite; }
+@keyframes shimmer{ to{ background-position:220% center; } }
+
+/* ---------- Marquee ---------- */
+.marquee{ overflow:hidden; white-space:nowrap; }
+.marquee-track{ display:inline-flex; gap:3.5rem; padding-right:3.5rem; animation:marquee 26s linear infinite; }
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+@keyframes marquee{ to{ transform:translateX(-50%);} }
+
+/* ---------- Glass cards ---------- */
+.glass{ background:rgba(255,255,255,.55); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.7); box-shadow:0 24px 60px -24px rgba(12,75,70,.28); }
+.glass-teal{ background:rgba(12,75,70,.55); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(240,223,192,.25); }
+.arch-top{ border-radius:999px 999px 1.4rem 1.4rem; }
+
+/* ---------- Bento ---------- */
+.bento{ display:grid; gap:1.1rem; grid-template-columns:repeat(4,1fr); }
+@media(max-width:900px){ .bento{ grid-template-columns:repeat(2,1fr);} }
+.bento-cell{ position:relative; overflow:hidden; border-radius:1.4rem; min-height:190px;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s; }
+.bento-cell:hover{ transform:translateY(-6px) scale(1.015); box-shadow:0 30px 60px -20px rgba(12,75,70,.35); }
+.bento-cell .shine{ position:absolute; inset:0; background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);
+  transform:translateX(-120%); transition:transform .9s ease; }
+.bento-cell:hover .shine{ transform:translateX(120%); }
+
+/* ---------- Tilt cards ---------- */
+.tilt{ transform-style:preserve-3d; transition:transform .25s ease, box-shadow .4s ease; will-change:transform; }
+.tilt .tilt-inner{ transform:translateZ(34px); }
+
+/* ---------- Reveal defaults (JS animates) ---------- */
+.rv{ opacity:0; transform:translateY(46px); }
+
+/* ---------- Buttons ---------- */
+.btn-fill{ position:relative; overflow:hidden; isolation:isolate; }
+.btn-fill::before{ content:''; position:absolute; inset:0; z-index:-1; background:var(--teal);
+  transform:translateY(101%); transition:transform .4s cubic-bezier(.2,.8,.2,1); border-radius:inherit; }
+.btn-fill:hover::before{ transform:translateY(0); }
+.btn-fill:hover{ color:#fff !important; border-color:var(--teal) !important; }
+
+/* ---------- Gallery ---------- */
+.g-tile{ position:relative; overflow:hidden; border-radius:1.2rem; cursor:pointer; }
+.g-tile svg{ transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+.g-tile:hover svg{ transform:scale(1.08) rotate(.4deg); }
+.g-tile .g-cap{ position:absolute; inset:auto 0 0 0; padding:1rem 1.1rem; color:#fff;
+  background:linear-gradient(transparent, rgba(7,50,47,.82)); transform:translateY(102%); transition:transform .45s ease; }
+.g-tile:hover .g-cap{ transform:translateY(0); }
+
+/* ---------- Testimonials ---------- */
+.tst{ position:absolute; inset:0; opacity:0; transform:translateY(24px) scale(.98); transition:all .7s cubic-bezier(.2,.8,.2,1); pointer-events:none; }
+.tst.active{ opacity:1; transform:none; pointer-events:auto; }
+.tst-dot{ width:9px; height:9px; border-radius:99px; background:rgba(12,75,70,.22); transition:all .35s; cursor:pointer; }
+.tst-dot.active{ width:30px; background:var(--terra); }
+
+/* ---------- Inputs ---------- */
+.inp{ width:100%; background:rgba(255,255,255,.7); border:1.5px solid rgba(12,75,70,.16); border-radius:.9rem;
+  padding:.85rem 1rem; font-size:.95rem; color:var(--ink); outline:none; transition:all .3s; }
+.inp:focus{ border-color:var(--terra); box-shadow:0 0 0 4px rgba(196,116,60,.15); background:#fff; }
+.inp.err{ border-color:#d64545; box-shadow:0 0 0 4px rgba(214,69,69,.12); }
+label.lbl{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:rgba(18,59,56,.65); }
+
+/* ---------- Success check ---------- */
+.check-pop{ animation:checkPop .6s cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes checkPop{ from{ transform:scale(.4); opacity:0;} to{ transform:scale(1); opacity:1;} }
+.draw-check{ stroke-dasharray:60; stroke-dashoffset:60; animation:drawCheck .7s .25s ease forwards; }
+@keyframes drawCheck{ to{ stroke-dashoffset:0; } }
+
+/* ---------- Floating WA ---------- */
+.wa-float{ position:fixed; right:1.25rem; bottom:1.25rem; z-index:55; width:60px; height:60px; border-radius:50%;
+  background:#25D366; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 14px 34px -8px rgba(37,211,102,.6); transition:transform .3s; }
+.wa-float:hover{ transform:scale(1.1) rotate(6deg); }
+.wa-float::before{ content:''; position:absolute; inset:0; border-radius:50%; background:#25D366; opacity:.5; animation:waPing 2.2s ease-out infinite; z-index:-1; }
+@keyframes waPing{ from{ transform:scale(1); opacity:.5;} to{ transform:scale(1.7); opacity:0;} }
+
+/* ---------- Misc ---------- */
+.divider-arch{ width:120px; height:56px; border:2px solid var(--terra); border-bottom:none; border-radius:80px 80px 0 0; opacity:.7; }
+.lantern{ position:absolute; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; filter:blur(.4px); }
+#lanternCanvas{ position:absolute; inset:0; pointer-events:none; }
+.chip{ font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; font-weight:600;
+  padding:.4rem .9rem; border-radius:99px; }
+.num-badge{ font-family:'Fraunces',serif; font-size:clamp(2.6rem,5vw,4rem); line-height:1; }
+.scroll-hint{ width:26px; height:44px; border:2px solid rgba(12,75,70,.4); border-radius:99px; position:relative; }
+.scroll-hint::after{ content:''; position:absolute; left:50%; top:8px; width:5px; height:9px; margin-left:-2.5px;
+  border-radius:99px; background:var(--terra); animation:wheel 1.8s ease-in-out infinite; }
+@keyframes wheel{ 0%{ transform:translateY(0); opacity:1;} 70%{ transform:translateY(14px); opacity:0;} 100%{ opacity:0;} }
+.tick{ display:inline-flex; align-items:center; gap:.5rem; }
+.tick svg{ flex:none; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="arch-loader"></div>
+  <div class="font-display text-2xl tracking-wide" style="color:var(--sand)">Arabian Courtyard</div>
+  <div class="load-bar"><span id="loadFill"></span></div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="nav-inner mt-4 rounded-2xl px-5 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3">
+        <svg width="34" height="42" viewBox="0 0 34 42" fill="none">
+          <path d="M3 40 V18 C3 8 10 3 17 3 C24 3 31 8 31 18 V40" stroke="#0C4B46" stroke-width="2.6"/>
+          <circle cx="17" cy="22" r="4.5" fill="#C4743C"/>
+          <path d="M10 40 V26 C10 21 13 19 17 19 C21 19 24 21 24 26 V40" stroke="#0C4B46" stroke-width="1.6" opacity=".55"/>
+        </svg>
+        <span class="font-display text-lg leading-tight font-semibold">Arabian Courtyard<br><span class="text-xs tracking-[.3em] font-sans font-medium" style="color:var(--terra-deep)">HOTEL &amp; SPA</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#rooms" class="nav-link">Rooms</a>
+        <a href="#heritage" class="nav-link">Heritage</a>
+        <a href="#spa" class="nav-link">Spa</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#booking" class="btn-fill hidden sm:inline-block text-sm font-semibold border-2 px-5 py-2.5 rounded-full transition-colors" style="border-color:var(--terra); color:var(--terra-deep)">Book Now</a>
+        <button id="menuBtn" class="md:hidden p-2" aria-label="Menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden mt-2 rounded-2xl glass p-5 flex-col gap-4 text-sm font-medium">
+      <a href="#rooms">Rooms</a><a href="#heritage">Heritage</a><a href="#spa">Spa</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+      <a href="#booking" class="font-semibold" style="color:var(--terra-deep)">Book Now →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header id="top" class="relative min-h-[108vh] flex items-center overflow-hidden">
+  <div class="hero-mesh"></div>
+  <div class="blob" style="width:340px;height:340px;left:-90px;top:16%;background:#E8A96F"></div>
+  <div class="blob" style="width:420px;height:420px;right:-110px;top:8%;background:#0C4B46;opacity:.28;animation-delay:-6s"></div>
+  <div class="blob" style="width:280px;height:280px;left:44%;bottom:6%;background:#C4743C;opacity:.4;animation-delay:-3s"></div>
+  <canvas id="lanternCanvas"></canvas>
+
+  <!-- Dune layers -->
+  <svg class="dune" data-depth="0.04" style="bottom:-2%" viewBox="0 0 1440 220" preserveAspectRatio="none" height="220">
+    <path d="M0,120 C240,60 480,160 720,110 C960,60 1200,150 1440,100 L1440,220 L0,220 Z" fill="#E4C996" opacity=".55"/>
+  </svg>
+  <svg class="dune" data-depth="0.09" style="bottom:-3%" viewBox="0 0 1440 220" preserveAspectRatio="none" height="200">
+    <path d="M0,140 C260,90 520,170 780,120 C1040,70 1240,160 1440,120 L1440,220 L0,220 Z" fill="#C4743C" opacity=".35"/>
+  </svg>
+  <svg class="dune" data-depth="0.15" style="bottom:-4%" viewBox="0 0 1440 220" preserveAspectRatio="none" height="180">
+    <path d="M0,150 C300,100 560,180 820,130 C1080,80 1260,165 1440,130 L1440,220 L0,220 Z" fill="#0C4B46" opacity=".9"/>
+  </svg>
+  <div class="grain"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pt-36 pb-56 w-full">
+    <div class="rv inline-flex items-center gap-2 chip mb-7" style="background:rgba(255,255,255,.55);border:1px solid rgba(12,75,70,.15);color:var(--teal)">
+      <span class="w-2 h-2 rounded-full" style="background:var(--terra)"></span> Bur Dubai · Opposite Dubai Museum
+    </div>
+    <h1 class="rv font-display display-xl font-semibold max-w-5xl">
+      Where Dubai's<br>
+      <span class="shimmer italic font-bold">Heritage</span> Comes<br>
+      to <span class="stroke-text">Stay.</span>
+    </h1>
+    <p class="rv mt-7 max-w-xl text-base sm:text-lg leading-relaxed" style="color:rgba(18,59,56,.75)">
+      A 4-star courtyard hotel wrapped around old Dubai — 172 rooms, a rooftop pool,
+      an award-winning spa, and the souks of the Creek just steps from your door.
+    </p>
+    <div class="rv mt-10 flex flex-wrap items-center gap-4">
+      <a href="#booking" class="btn-fill font-semibold px-8 py-4 rounded-full border-2 text-sm tracking-wide transition-colors" style="border-color:var(--terra);color:var(--terra-deep)">CHECK AVAILABILITY</a>
+      <a href="#heritage" class="font-semibold text-sm tracking-wide px-8 py-4 rounded-full glass inline-flex items-center gap-2">
+        Explore the Heritage
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="rv mt-14 flex items-center gap-8">
+      <div><div class="num-badge font-semibold">4<span style="color:var(--terra)">★</span></div><div class="text-xs tracking-[.2em] uppercase mt-1 opacity-60">Star Heritage Hotel</div></div>
+      <div class="w-px h-14" style="background:rgba(12,75,70,.18)"></div>
+      <div><div class="num-badge font-semibold"><span class="counter" data-target="172">0</span></div><div class="text-xs tracking-[.2em] uppercase mt-1 opacity-60">Rooms &amp; Suites</div></div>
+      <div class="w-px h-14" style="background:rgba(12,75,70,.18)"></div>
+      <div><div class="num-badge font-semibold"><span class="counter" data-target="20">0</span>+</div><div class="text-xs tracking-[.2em] uppercase mt-1 opacity-60">Years of Legacy</div></div>
+    </div>
+  </div>
+  <div class="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 hidden sm:block"><div class="scroll-hint"></div></div>
+</header>
+
+<!-- Marquee -->
+<div class="marquee py-5 border-y" style="background:var(--teal-deep);border-color:rgba(240,223,192,.15)">
+  <div class="marquee-track font-display text-xl sm:text-2xl" style="color:var(--sand)">
+    <span>Rooftop Pool</span><span style="color:var(--terra-soft)">✦</span><span>Award-Winning Spa</span><span style="color:var(--terra-soft)">✦</span><span>Al Fahidi Heritage</span><span style="color:var(--terra-soft)">✦</span><span>Meena Bazaar</span><span style="color:var(--terra-soft)">✦</span><span>Gold Souk</span><span style="color:var(--terra-soft)">✦</span><span>Dubai Creek Abra</span><span style="color:var(--terra-soft)">✦</span>
+    <span>Rooftop Pool</span><span style="color:var(--terra-soft)">✦</span><span>Award-Winning Spa</span><span style="color:var(--terra-soft)">✦</span><span>Al Fahidi Heritage</span><span style="color:var(--terra-soft)">✦</span><span>Meena Bazaar</span><span style="color:var(--terra-soft)">✦</span><span>Gold Souk</span><span style="color:var(--terra-soft)">✦</span><span>Dubai Creek Abra</span><span style="color:var(--terra-soft)">✦</span>
+  </div>
+</div>
+
+<!-- Stats band -->
+<section class="py-16" style="background:var(--ivory)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="rv"><div class="num-badge font-semibold" style="color:var(--teal)"><span class="counter" data-target="172">0</span></div><p class="text-xs tracking-[.22em] uppercase mt-2 opacity-60">Rooms &amp; Suites</p></div>
+    <div class="rv"><div class="num-badge font-semibold" style="color:var(--terra-deep)"><span class="counter" data-target="15">0</span>+</div><p class="text-xs tracking-[.22em] uppercase mt-2 opacity-60">Hospitality Awards</p></div>
+    <div class="rv"><div class="num-badge font-semibold" style="color:var(--teal)"><span class="counter" data-target="3">0</span></div><p class="text-xs tracking-[.22em] uppercase mt-2 opacity-60">Restaurants &amp; Cafés</p></div>
+    <div class="rv"><div class="num-badge font-semibold" style="color:var(--terra-deep)"><span class="counter" data-target="98">0</span>%</div><p class="text-xs tracking-[.22em] uppercase mt-2 opacity-60">Guest Satisfaction</p></div>
+  </div>
+</section>
+<!-- Rooms -->
+<section id="rooms" class="py-24 sm:py-32 relative overflow-hidden" style="background:linear-gradient(180deg,var(--ivory),#F5E8CE)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+      <div>
+        <p class="rv eyebrow mb-4" style="color:var(--terra-deep)">Stay</p>
+        <h2 class="rv font-display display-lg font-semibold">Rooms wrapped in<br><span class="italic" style="color:var(--terra-deep)">Arabian calm.</span></h2>
+      </div>
+      <p class="rv max-w-md text-sm leading-relaxed opacity-70">Mashrabiya shadows, sand-toned linens, courtyard views — every room is a quiet pause above the bustle of old Dubai.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-7" style="perspective:1200px">
+      <!-- Card 1 -->
+      <div class="rv tilt rounded-3xl overflow-hidden glass">
+        <div class="tilt-inner">
+          <div class="arch-top overflow-hidden mx-5 mt-5 h-60 relative">
+            <svg viewBox="0 0 400 260" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="r1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6E7C8"/><stop offset="1" stop-color="#E4C996"/></linearGradient></defs>
+              <rect width="400" height="260" fill="url(#r1)"/>
+              <rect x="60" y="90" width="280" height="170" rx="10" fill="#0C4B46" opacity=".92"/>
+              <rect x="80" y="110" width="240" height="60" rx="6" fill="#FBF7EC" opacity=".9"/>
+              <rect x="80" y="182" width="110" height="52" rx="6" fill="#C4743C" opacity=".85"/>
+              <rect x="205" y="182" width="115" height="52" rx="6" fill="#A85A2B" opacity=".7"/>
+              <circle cx="330" cy="52" r="26" fill="#E8A96F" opacity=".9"/>
+              <path d="M0,220 Q100,190 200,215 T400,210 L400,260 L0,260 Z" fill="#07322F" opacity=".35"/>
+            </svg>
+            <span class="absolute top-4 left-4 chip" style="background:var(--teal);color:#fff">Most Loved</span>
+          </div>
+          <div class="p-7">
+            <h3 class="font-display text-2xl font-semibold">Courtyard Deluxe</h3>
+            <p class="text-sm mt-2 opacity-70 leading-relaxed">Overlooks the central courtyard with carved wooden balconies. King or twin, rain shower, Arabic coffee ritual on arrival.</p>
+            <div class="flex items-center justify-between mt-6">
+              <div><span class="font-display text-3xl font-semibold" style="color:var(--terra-deep)">AED 320</span><span class="text-xs opacity-60"> / night</span></div>
+              <a href="#booking" class="text-sm font-semibold underline underline-offset-4" style="color:var(--teal)">Reserve →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="rv tilt rounded-3xl overflow-hidden glass md:-mt-8">
+        <div class="tilt-inner">
+          <div class="arch-top overflow-hidden mx-5 mt-5 h-60 relative">
+            <svg viewBox="0 0 400 260" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="r2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0C4B46"/><stop offset="1" stop-color="#07322F"/></linearGradient></defs>
+              <rect width="400" height="260" fill="url(#r2)"/>
+              <circle cx="200" cy="70" r="34" fill="#F0DFC0" opacity=".95"/>
+              <path d="M40,200 Q120,150 200,190 T360,180 L400,260 L40,260 Z" fill="#C4743C" opacity=".5"/>
+              <rect x="120" y="150" width="160" height="70" rx="8" fill="#FBF7EC" opacity=".92"/>
+              <rect x="140" y="165" width="60" height="40" rx="4" fill="#0C4B46" opacity=".85"/>
+              <rect x="210" y="165" width="50" height="40" rx="4" fill="#C4743C" opacity=".8"/>
+            </svg>
+            <span class="absolute top-4 left-4 chip" style="background:var(--terra);color:#fff">Signature</span>
+          </div>
+          <div class="p-7">
+            <h3 class="font-display text-2xl font-semibold">Heritage Suite</h3>
+            <p class="text-sm mt-2 opacity-70 leading-relaxed">A suite that tells Dubai's story — majlis-style lounge, handcrafted brass, and a terrace facing the museum quarter.</p>
+            <div class="flex items-center justify-between mt-6">
+              <div><span class="font-display text-3xl font-semibold" style="color:var(--terra-deep)">AED 640</span><span class="text-xs opacity-60"> / night</span></div>
+              <a href="#booking" class="text-sm font-semibold underline underline-offset-4" style="color:var(--teal)">Reserve →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="rv tilt rounded-3xl overflow-hidden glass">
+        <div class="tilt-inner">
+          <div class="arch-top overflow-hidden mx-5 mt-5 h-60 relative">
+            <svg viewBox="0 0 400 260" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="r3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8A96F"/><stop offset="1" stop-color="#C4743C"/></linearGradient></defs>
+              <rect width="400" height="260" fill="url(#r3)"/>
+              <rect x="0" y="150" width="400" height="110" fill="#0C4B46" opacity=".9"/>
+              <ellipse cx="200" cy="150" rx="150" ry="26" fill="#7FD4C1" opacity=".8"/>
+              <ellipse cx="200" cy="150" rx="110" ry="18" fill="#A9E6D6" opacity=".7"/>
+              <rect x="60" y="60" width="40" height="90" rx="4" fill="#FBF7EC" opacity=".85"/>
+              <rect x="300" y="60" width="40" height="90" rx="4" fill="#FBF7EC" opacity=".85"/>
+            </svg>
+            <span class="absolute top-4 left-4 chip" style="background:#fff;color:var(--teal);border:1px solid rgba(12,75,70,.2)">Family Pick</span>
+          </div>
+          <div class="p-7">
+            <h3 class="font-display text-2xl font-semibold">Family Majlis Room</h3>
+            <p class="text-sm mt-2 opacity-70 leading-relaxed">Interconnecting space for the whole family, pool-view balcony, kids' welcome kit and complimentary abra tickets.</p>
+            <div class="flex items-center justify-between mt-6">
+              <div><span class="font-display text-3xl font-semibold" style="color:var(--terra-deep)">AED 480</span><span class="text-xs opacity-60"> / night</span></div>
+              <a href="#booking" class="text-sm font-semibold underline underline-offset-4" style="color:var(--teal)">Reserve →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Heritage location -->
+<section id="heritage" class="py-24 sm:py-32 relative overflow-hidden" style="background:var(--teal-deep)">
+  <div class="grain"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+    <p class="rv eyebrow mb-4" style="color:var(--terra-soft)">Location</p>
+    <h2 class="rv font-display display-lg font-semibold max-w-3xl" style="color:var(--ivory)">Step out into <span class="italic shimmer">three centuries</span> of Dubai.</h2>
+    <p class="rv mt-5 max-w-xl text-sm leading-relaxed" style="color:rgba(251,247,236,.7)">We're planted in the city's historic heart — the museum across the street, wind-tower lanes behind us, and the Creek's dhows a short stroll away.</p>
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="rv glass-teal rounded-3xl p-7 hover:-translate-y-2 transition-transform duration-500">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M8 38 V20 C8 12 14 8 22 8 C30 8 36 12 36 20 V38" stroke="#E8A96F" stroke-width="2.4"/><circle cx="22" cy="24" r="4" fill="#C4743C"/></svg>
+        <h3 class="font-display text-xl font-semibold mt-4" style="color:var(--ivory)">Dubai Museum</h3>
+        <p class="text-sm mt-2 leading-relaxed" style="color:rgba(251,247,236,.65)">Directly opposite — Al Fahidi Fort, the city's oldest soul, is your neighbour.</p>
+        <p class="chip mt-4 inline-block" style="background:rgba(232,169,111,.16);color:var(--terra-soft)">1 min walk</p>
+      </div>
+      <div class="rv glass-teal rounded-3xl p-7 hover:-translate-y-2 transition-transform duration-500">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M6 36 L22 10 L38 36" stroke="#E8A96F" stroke-width="2.4" stroke-linejoin="round"/><path d="M14 36 V26 M22 36 V22 M30 36 V26" stroke="#E8A96F" stroke-width="2"/></svg>
+        <h3 class="font-display text-xl font-semibold mt-4" style="color:var(--ivory)">Al Fahidi Quarter</h3>
+        <p class="text-sm mt-2 leading-relaxed" style="color:rgba(251,247,236,.65)">Wind-tower lanes, art galleries and courtyard cafés from the 1900s.</p>
+        <p class="chip mt-4 inline-block" style="background:rgba(232,169,111,.16);color:var(--terra-soft)">5 min walk</p>
+      </div>
+      <div class="rv glass-teal rounded-3xl p-7 hover:-translate-y-2 transition-transform duration-500">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="14" stroke="#E8A96F" stroke-width="2.4"/><path d="M22 12 V22 L29 27" stroke="#E8A96F" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <h3 class="font-display text-xl font-semibold mt-4" style="color:var(--ivory)">Meena Bazaar</h3>
+        <p class="text-sm mt-2 leading-relaxed" style="color:rgba(251,247,236,.65)">Textiles, gold and street food — old Dubai's most colourful market.</p>
+        <p class="chip mt-4 inline-block" style="background:rgba(232,169,111,.16);color:var(--terra-soft)">7 min walk</p>
+      </div>
+      <div class="rv glass-teal rounded-3xl p-7 hover:-translate-y-2 transition-transform duration-500">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M6 30 Q12 22 22 24 Q32 26 38 20 L38 34 Q28 38 18 36 Q10 34 6 30 Z" stroke="#E8A96F" stroke-width="2.4" stroke-linejoin="round"/><path d="M14 24 V16 M22 24 V14 M30 22 V16" stroke="#E8A96F" stroke-width="2"/></svg>
+        <h3 class="font-display text-xl font-semibold mt-4" style="color:var(--ivory)">Creek &amp; Abra Ride</h3>
+        <p class="text-sm mt-2 leading-relaxed" style="color:rgba(251,247,236,.65)">Cross to the Gold &amp; Spice Souks on a wooden abra for just AED 1.</p>
+        <p class="chip mt-4 inline-block" style="background:rgba(232,169,111,.16);color:var(--terra-soft)">10 min walk</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities bento -->
+<section class="py-24 sm:py-32" style="background:var(--ivory)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <p class="rv eyebrow mb-4" style="color:var(--terra-deep)">Amenities</p>
+    <h2 class="rv font-display display-lg font-semibold mb-14">Everything, <span class="italic" style="color:var(--terra-deep)">beautifully</span> within reach.</h2>
+    <div class="bento">
+      <div class="rv bento-cell col-span-2 row-span-2 p-8 flex flex-col justify-end text-white" style="background:linear-gradient(150deg,#0C4B46,#07322F);min-height:400px">
+        <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+          <ellipse cx="200" cy="300" rx="220" ry="90" fill="#7FD4C1" opacity=".5"/>
+          <ellipse cx="200" cy="300" rx="160" ry="62" fill="#A9E6D6" opacity=".55"/>
+          <rect x="60" y="60" width="34" height="120" rx="6" fill="#F0DFC0" opacity=".5"/>
+          <rect x="306" y="60" width="34" height="120" rx="6" fill="#F0DFC0" opacity=".5"/>
+          <circle cx="200" cy="90" r="30" fill="#E8A96F" opacity=".8"/>
+        </svg>
+        <div class="shine"></div>
+        <div class="relative"><h3 class="font-display text-3xl font-semibold">Rooftop Pool</h3><p class="text-sm mt-2 opacity-80 max-w-sm">Swim above the wind towers at sunset — loungers, cabanas and a poolside majlis café.</p></div>
+      </div>
+      <div class="rv bento-cell p-7 flex flex-col justify-between" style="background:linear-gradient(150deg,#E8A96F,#C4743C)">
+        <div class="shine"></div>
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 34 C10 26 6 18 8 10 C14 14 20 14 20 22 C20 14 26 14 32 10 C34 18 30 26 20 34 Z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        <div><h3 class="font-display text-xl font-semibold text-white">Award-Winning Spa</h3><p class="text-xs text-white opacity-85 mt-1">Hammam rituals &amp; aromatherapy</p></div>
+      </div>
+      <div class="rv bento-cell p-7 flex flex-col justify-between glass">
+        <div class="shine"></div>
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 28 h24 M10 28 V14 h20 v14 M14 14 V9 h12 v5" stroke="#0C4B46" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <div><h3 class="font-display text-xl font-semibold">3 Restaurants</h3><p class="text-xs opacity-60 mt-1">Emirati, Indian &amp; continental</p></div>
+      </div>
+      <div class="rv bento-cell p-7 flex flex-col justify-between" style="background:var(--teal)">
+        <div class="shine"></div>
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="6" stroke="#F0DFC0" stroke-width="2.2"/><path d="M8 34 C8 26 13 22 20 22 C27 22 32 26 32 34" stroke="#F0DFC0" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <div><h3 class="font-display text-xl font-semibold text-white">Fitness Studio</h3><p class="text-xs text-white opacity-70 mt-1">24×7 · personal trainers</p></div>
+      </div>
+      <div class="rv bento-cell p-7 flex flex-col justify-between glass">
+        <div class="shine"></div>
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M12 30 a8 8 0 1 1 3-15.5 M28 10 a8 8 0 1 1-3 15.5" stroke="#C4743C" stroke-width="2.2" stroke-linecap="round"/><circle cx="20" cy="20" r="3" fill="#0C4B46"/></svg>
+        <div><h3 class="font-display text-xl font-semibold">Free Wi-Fi</h3><p class="text-xs opacity-60 mt-1">Fibre-speed, everywhere</p></div>
+      </div>
+      <div class="rv bento-cell col-span-2 p-7 flex items-center justify-between gap-6" style="background:linear-gradient(120deg,#F0DFC0,#E4C996)">
+        <div class="shine"></div>
+        <div><h3 class="font-display text-2xl font-semibold">Heritage Concierge</h3><p class="text-sm opacity-70 mt-1 max-w-xs">Souks tours, dhow cruises, desert safaris — planned by locals who know old Dubai by heart.</p></div>
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" class="flex-none"><circle cx="36" cy="36" r="30" stroke="#0C4B46" stroke-width="2.5"/><path d="M36 20 V36 L47 43" stroke="#C4743C" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Spa -->
+<section id="spa" class="py-24 sm:py-32 relative overflow-hidden" style="background:linear-gradient(160deg,#F6E7C8,#EFDDB8)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="rv relative">
+      <div class="arch-top overflow-hidden h-[440px] relative" style="box-shadow:0 40px 80px -30px rgba(12,75,70,.4)">
+        <svg viewBox="0 0 400 440" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="spa1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0C4B46"/><stop offset=".6" stop-color="#0A3B38"/><stop offset="1" stop-color="#07322F"/></linearGradient>
+          <radialGradient id="spaGlow" cx=".5" cy=".38" r=".5"><stop offset="0" stop-color="#E8A96F" stop-opacity=".8"/><stop offset="1" stop-color="#E8A96F" stop-opacity="0"/></radialGradient></defs>
+          <rect width="400" height="440" fill="url(#spa1)"/>
+          <ellipse cx="200" cy="170" rx="150" ry="120" fill="url(#spaGlow)"/>
+          <circle cx="200" cy="150" r="44" fill="#E8A96F" opacity=".9"/>
+          <path d="M60,320 Q140,280 200,310 T340,300 L400,440 L0,440 Z" fill="#F0DFC0" opacity=".18"/>
+          <path d="M120,380 q10,-18 20,0 q10,18 20,0" stroke="#E8A96F" stroke-width="3" fill="none" opacity=".7"/>
+          <path d="M250,390 q10,-18 20,0 q10,18 20,0" stroke="#E8A96F" stroke-width="3" fill="none" opacity=".7"/>
+        </svg>
+        <div class="absolute bottom-6 left-6 right-6 glass rounded-2xl p-5 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full flex-none flex items-center justify-center" style="background:var(--terra)"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 21 C5 15 3 10 5 6 C9 8 12 8 12 12 C12 8 15 8 19 6 C21 10 19 15 12 21Z"/></svg></div>
+          <div><p class="font-semibold text-sm">Traditional Hammam Ritual</p><p class="text-xs opacity-60">60 min · from AED 280</p></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="rv eyebrow mb-4" style="color:var(--terra-deep)">Spa &amp; Wellness</p>
+      <h2 class="rv font-display display-lg font-semibold">Slow down,<br>the <span class="italic" style="color:var(--terra-deep)">Arabian</span> way.</h2>
+      <p class="rv mt-5 text-sm leading-relaxed opacity-70 max-w-lg">Steam, rose water and warm marble. Our spa blends centuries-old hammam tradition with modern therapy — the perfect reset after a day in the souks.</p>
+      <div class="mt-8 space-y-4">
+        <div class="rv tick glass rounded-2xl p-5"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C4743C" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><p class="font-semibold text-sm">Signature Arabian Rituals</p><p class="text-xs opacity-60">Hammam, oud aromatherapy, hot-stone massage</p></div></div>
+        <div class="rv tick glass rounded-2xl p-5"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C4743C" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><p class="font-semibold text-sm">Couples' Sanctuary</p><p class="text-xs opacity-60">Private suites for two, with rose-petal soak</p></div></div>
+        <div class="rv tick glass rounded-2xl p-5"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C4743C" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><p class="font-semibold text-sm">Open 10 AM – 10 PM</p><p class="text-xs opacity-60">In-room treatments on request</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Gallery -->
+<section id="gallery" class="py-24 sm:py-32" style="background:var(--ivory)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div><p class="rv eyebrow mb-4" style="color:var(--terra-deep)">Gallery</p>
+      <h2 class="rv font-display display-lg font-semibold">Postcards from<br>the <span class="italic" style="color:var(--terra-deep)">courtyard.</span></h2></div>
+      <p class="rv text-sm opacity-60 max-w-sm">Hover to wander — carved arches, lantern-lit evenings and rooftop sunsets.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="rv g-tile h-64 md:h-80">
+        <svg viewBox="0 0 300 400" class="w-full h-full" preserveAspectRatio="xMidYMid slice"><rect width="300" height="400" fill="#0C4B46"/><path d="M40 400 V180 C40 100 100 60 150 60 C200 60 260 100 260 180 V400" fill="none" stroke="#E8A96F" stroke-width="6"/><circle cx="150" cy="200" r="34" fill="#E8A96F" opacity=".9"/><path d="M0 400 L300 400 L300 340 Q150 300 0 340 Z" fill="#07322F"/></svg>
+        <div class="g-cap"><p class="font-semibold text-sm">The Grand Archway</p></div>
+      </div>
+      <div class="rv g-tile h-64 md:h-80 md:mt-10">
+        <svg viewBox="0 0 300 400" class="w-full h-full" preserveAspectRatio="xMidYMid slice"><rect width="300" height="400" fill="#E4C996"/><circle cx="150" cy="120" r="46" fill="#C4743C" opacity=".9"/><ellipse cx="150" cy="300" rx="130" ry="60" fill="#7FD4C1" opacity=".8"/><ellipse cx="150" cy="300" rx="90" ry="40" fill="#A9E6D6" opacity=".7"/><rect x="40" y="200" width="26" height="100" rx="5" fill="#FBF7EC" opacity=".8"/><rect x="234" y="200" width="26" height="100" rx="5" fill="#FBF7EC" opacity=".8"/></svg>
+        <div class="g-cap"><p class="font-semibold text-sm">Rooftop Pool at Dusk</p></div>
+      </div>
+      <div class="rv g-tile h-64 md:h-80">
+        <svg viewBox="0 0 300 400" class="w-full h-full" preserveAspectRatio="xMidYMid slice"><rect width="300" height="400" fill="#F6E7C8"/><path d="M60 400 V220 q0-70 60-90 q-20 40 0 90 Z" fill="#0C4B46" opacity=".85"/><path d="M240 400 V220 q0-70-60-90 q20 40 0 90 Z" fill="#0C4B46" opacity=".85"/><circle cx="150" cy="150" r="30" fill="#E8A96F"/><path d="M0 330 Q75 300 150 325 T300 320 L300 400 L0 400 Z" fill="#C4743C" opacity=".4"/></svg>
+        <div class="g-cap"><p class="font-semibold text-sm">Wind-Tower Views</p></div>
+      </div>
+      <div class="rv g-tile h-64 md:h-80 md:mt-10">
+        <svg viewBox="0 0 300 400" class="w-full h-full" preserveAspectRatio="xMidYMid slice"><rect width="300" height="400" fill="#07322F"/><ellipse cx="150" cy="110" rx="100" ry="80" fill="#E8A96F" opacity=".25"/><circle cx="150" cy="100" r="36" fill="#F0DFC0" opacity=".95"/><path d="M30 300 Q90 260 150 290 T270 285 L300 400 L0 400 Z" fill="#0C4B46"/><path d="M70 340 q8,-14 16,0 q8,14 16,0 M170 350 q8,-14 16,0 q8,14 16,0" stroke="#E8A96F" stroke-width="3" fill="none" opacity=".7"/></svg>
+        <div class="g-cap"><p class="font-semibold text-sm">Lantern-Lit Evenings</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-24 sm:py-32" style="background:linear-gradient(180deg,var(--ivory),#F5E8CE)">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <div class="rv divider-arch mx-auto mb-8"></div>
+    <p class="rv eyebrow mb-6" style="color:var(--terra-deep)">Guest Stories</p>
+    <div class="rv relative h-64 sm:h-52" id="tstWrap">
+      <div class="tst active flex flex-col items-center justify-start">
+        <p class="font-display text-2xl sm:text-3xl italic leading-snug">"The location is unbeatable — museum across the road, souks on foot. The courtyard at night is pure magic."</p>
+        <p class="mt-5 text-sm font-semibold tracking-wide">SOPHIA M. <span class="opacity-50 font-normal">· London, UK</span></p>
+        <p class="text-sm mt-1" style="color:var(--terra)">★★★★★</p>
+      </div>
+      <div class="tst flex flex-col items-center justify-start">
+        <p class="font-display text-2xl sm:text-3xl italic leading-snug">"Best hammam I've had outside Istanbul. Staff treated us like family from check-in to checkout."</p>
+        <p class="mt-5 text-sm font-semibold tracking-wide">RAJESH K. <span class="opacity-50 font-normal">· Mumbai, India</span></p>
+        <p class="text-sm mt-1" style="color:var(--terra)">★★★★★</p>
+      </div>
+      <div class="tst flex flex-col items-center justify-start">
+        <p class="font-display text-2xl sm:text-3xl italic leading-snug">"Rooftop pool at sunset with the old city below — we extended our stay by two nights."</p>
+        <p class="mt-5 text-sm font-semibold tracking-wide">ELENA R. <span class="opacity-50 font-normal">· Barcelona, Spain</span></p>
+        <p class="text-sm mt-1" style="color:var(--terra)">★★★★★</p>
+      </div>
+    </div>
+    <div class="rv flex items-center justify-center gap-2 mt-4" id="tstDots"></div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section id="booking" class="py-24 sm:py-32 relative overflow-hidden" style="background:var(--teal-deep)">
+  <div class="grain"></div>
+  <div class="blob" style="width:380px;height:380px;left:-120px;bottom:-80px;background:#C4743C;opacity:.35"></div>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 relative grid lg:grid-cols-5 gap-12 items-center">
+    <div class="lg:col-span-2">
+      <p class="rv eyebrow mb-4" style="color:var(--terra-soft)">Reservations</p>
+      <h2 class="rv font-display display-lg font-semibold" style="color:var(--ivory)">Your courtyard<br>is <span class="italic shimmer">waiting.</span></h2>
+      <p class="rv mt-5 text-sm leading-relaxed" style="color:rgba(251,247,236,.65)">Tell us your dates — our team replies within 2 hours with the best direct-booking rate, always lower than aggregators.</p>
+      <div class="rv mt-8 flex items-center gap-4">
+        <div class="glass-teal rounded-2xl px-5 py-4"><p class="text-xs uppercase tracking-[.2em]" style="color:var(--terra-soft)">Best rate</p><p class="font-display text-xl font-semibold" style="color:#fff">Guaranteed</p></div>
+        <div class="glass-teal rounded-2xl px-5 py-4"><p class="text-xs uppercase tracking-[.2em]" style="color:var(--terra-soft)">Free</p><p class="font-display text-xl font-semibold" style="color:#fff">Cancellation</p></div>
+      </div>
+    </div>
+    <div class="lg:col-span-3">
+      <form id="bookForm" class="rv glass rounded-3xl p-7 sm:p-9" novalidate>
+        <div id="formFields" class="grid sm:grid-cols-2 gap-5">
+          <div><label class="lbl" for="fName">Full name</label><input id="fName" class="inp mt-2" type="text" placeholder="Ayesha Khan" autocomplete="name"></div>
+          <div><label class="lbl" for="fPhone">Phone / WhatsApp</label><input id="fPhone" class="inp mt-2" type="tel" placeholder="+971 50 123 4567" autocomplete="tel"></div>
+          <div><label class="lbl" for="fIn">Check-in</label><input id="fIn" class="inp mt-2" type="date"></div>
+          <div><label class="lbl" for="fOut">Check-out</label><input id="fOut" class="inp mt-2" type="date"></div>
+          <div><label class="lbl" for="fGuests">Guests</label>
+            <select id="fGuests" class="inp mt-2"><option>1 Adult</option><option selected>2 Adults</option><option>2 Adults + 1 Child</option><option>2 Adults + 2 Children</option><option>Group / Event</option></select></div>
+          <div><label class="lbl" for="fRoom">Room type</label>
+            <select id="fRoom" class="inp mt-2"><option>Courtyard Deluxe</option><option>Heritage Suite</option><option>Family Majlis Room</option></select></div>
+          <div class="sm:col-span-2"><label class="lbl" for="fNote">Special requests</label><textarea id="fNote" class="inp mt-2" rows="2" placeholder="High floor, early check-in, anniversary setup…"></textarea></div>
+          <p id="formErr" class="sm:col-span-2 hidden text-sm font-medium" style="color:#c0392b">Please fill your name, phone and both dates.</p>
+          <div class="sm:col-span-2"><button type="submit" class="btn-fill w-full font-semibold py-4 rounded-full border-2 text-sm tracking-[.18em] transition-colors" style="border-color:var(--terra);color:var(--terra-deep)">REQUEST BOOKING</button></div>
+        </div>
+        <div id="formDone" class="hidden text-center py-10">
+          <svg class="check-pop mx-auto" width="86" height="86" viewBox="0 0 86 86" fill="none">
+            <circle cx="43" cy="43" r="40" stroke="#C4743C" stroke-width="4"/>
+            <path class="draw-check" d="M28 44 L40 56 L59 32" stroke="#0C4B46" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 class="font-display text-3xl font-semibold mt-6">Shukran! Request received.</h3>
+          <p class="text-sm opacity-70 mt-3 max-w-sm mx-auto">Our reservations team will confirm your stay within 2 hours on WhatsApp and email.</p>
+          <a id="waConfirm" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 font-semibold text-sm px-6 py-3 rounded-full text-white" style="background:#25D366">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1l.8-.9c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+            Confirm instantly on WhatsApp
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-24 sm:py-32" style="background:var(--ivory)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <p class="rv eyebrow mb-4" style="color:var(--terra-deep)">Find Us</p>
+    <h2 class="rv font-display display-lg font-semibold mb-12">In the heart of<br><span class="italic" style="color:var(--terra-deep)">old Dubai.</span></h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="https://maps.google.com/?q=Arabian+Courtyard+Hotel+Bur+Dubai" target="_blank" rel="noopener" class="rv glass rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-500 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 36 C20 36 8 22 8 14 A12 12 0 0 1 32 14 C32 22 20 36 20 36 Z" stroke="#C4743C" stroke-width="2.4"/><circle cx="20" cy="14" r="4.5" fill="#0C4B46"/></svg>
+        <h3 class="font-display text-xl font-semibold mt-4">Address</h3>
+        <p class="text-sm opacity-70 mt-2 leading-relaxed">Al Fahidi Street, Bur Dubai<br>Opposite Dubai Museum<br>Dubai, UAE</p>
+      </a>
+      <a href="tel:+97143519111" class="rv glass rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-500 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M12 6 h16 a4 4 0 0 1 4 4 v20 a4 4 0 0 1-4 4 H12 a4 4 0 0 1-4-4 V10 a4 4 0 0 1 4-4 Z" stroke="#C4743C" stroke-width="2.4"/><path d="M16 13 h8 M16 18 h8 M16 23 h5" stroke="#0C4B46" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <h3 class="font-display text-xl font-semibold mt-4">Call Us</h3>
+        <p class="text-sm opacity-70 mt-2 leading-relaxed">+971 4 351 9111<br>24-hour front desk<br>Reception always awake</p>
+      </a>
+      <a href="mailto:info@arabiancourtyard.com" class="rv glass rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-500 block">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="10" width="28" height="20" rx="4" stroke="#C4743C" stroke-width="2.4"/><path d="M8 13 L20 22 L32 13" stroke="#0C4B46" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="font-display text-xl font-semibold mt-4">Write to Us</h3>
+        <p class="text-sm opacity-70 mt-2 leading-relaxed">info@arabiancourtyard.com<br>Events &amp; weddings desk<br>Replies within a day</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="pt-16 pb-8" style="background:var(--teal-deep)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row justify-between gap-10 pb-10 border-b" style="border-color:rgba(240,223,192,.15)">
+      <div class="max-w-sm">
+        <p class="font-display text-2xl font-semibold" style="color:var(--ivory)">Arabian Courtyard</p>
+        <p class="text-xs tracking-[.3em] mt-1" style="color:var(--terra-soft)">HOTEL &amp; SPA · BUR DUBAI</p>
+        <p class="text-sm mt-4 leading-relaxed" style="color:rgba(251,247,236,.6)">A 4-star heritage hotel where old Dubai lives on — courtyards, lanterns and the Creek breeze.</p>
+      </div>
+      <div class="flex gap-16 text-sm">
+        <div><p class="eyebrow mb-4" style="color:var(--terra-soft)">Explore</p><div class="flex flex-col gap-3" style="color:rgba(251,247,236,.7)"><a href="#rooms" class="hover:opacity-100 opacity-70">Rooms</a><a href="#heritage" class="hover:opacity-100 opacity-70">Heritage</a><a href="#spa" class="hover:opacity-100 opacity-70">Spa</a><a href="#gallery" class="hover:opacity-100 opacity-70">Gallery</a></div></div>
+        <div><p class="eyebrow mb-4" style="color:var(--terra-soft)">Contact</p><div class="flex flex-col gap-3" style="color:rgba(251,247,236,.7)"><a href="tel:+97143519111" class="opacity-70">+971 4 351 9111</a><a href="mailto:info@arabiancourtyard.com" class="opacity-70">info@arabiancourtyard.com</a><a href="#booking" class="opacity-70">Book direct</a></div></div>
+      </div>
+    </div>
+    <p class="text-xs mt-8 text-center" style="color:rgba(251,247,236,.4)">© 2026 Arabian Courtyard Hotel &amp; Spa · Bur Dubai, UAE · Website redesign concept</p>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a class="wa-float" href="https://wa.me/97143519111?text=Hello%20Arabian%20Courtyard!%20I%27d%20like%20to%20book%20a%20stay." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1l.8-.9c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+</a>
+<script>
+(function(){
+  'use strict';
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- Preloader ---------- */
+  var pre = document.getElementById('preloader'),
+      fill = document.getElementById('loadFill'),
+      prog = 0;
+  var li = setInterval(function(){
+    prog = Math.min(100, prog + Math.random()*22);
+    fill.style.width = prog + '%';
+    if(prog >= 100){
+      clearInterval(li);
+      setTimeout(function(){ pre.classList.add('done'); heroIntro(); }, 350);
+    }
+  }, 160);
+
+  /* ---------- Lantern particles ---------- */
+  var cv = document.getElementById('lanternCanvas'), ctx = cv.getContext('2d'), W, H, parts = [];
+  function sizeCv(){ W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight; }
+  sizeCv(); window.addEventListener('resize', sizeCv);
+  function mkLantern(init){
+    return { x: Math.random()*W, y: init ? Math.random()*H : H + 30,
+      r: 3 + Math.random()*7, s: .35 + Math.random()*.8,
+      drift: (Math.random()-.5)*.5, hue: 22 + Math.random()*18,
+      a: .25 + Math.random()*.5, ph: Math.random()*Math.PI*2 };
+  }
+  for(var i=0;i<46;i++) parts.push(mkLantern(true));
+  (function tick(t){
+    ctx.clearRect(0,0,W,H);
+    for(var j=0;j<parts.length;j++){
+      var p = parts[j];
+      p.y -= p.s; p.x += p.drift + Math.sin(t/1400 + p.ph)*.25;
+      if(p.y < -40) parts[j] = p = mkLantern(false);
+      var tw = .65 + .35*Math.sin(t/700 + p.ph);
+      var g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3);
+      g.addColorStop(0,'hsla('+p.hue+',72%,62%,'+(p.a*tw)+')');
+      g.addColorStop(1,'hsla('+p.hue+',72%,62%,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle = 'hsla('+(p.hue+8)+',80%,68%,'+(p.a*tw+.15)+')';
+      ctx.beginPath();
+      ctx.ellipse(p.x,p.y,p.r,p.r*1.25,0,0,Math.PI*2); ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  })(0);
+
+  /* ---------- Hero intro ---------- */
+  function heroIntro(){
+    gsap.utils.toArray('header .rv').forEach(function(el,i){
+      gsap.to(el,{ opacity:1, y:0, duration:1.1, delay:.15+i*.12, ease:'power3.out' });
+    });
+  }
+
+  /* ---------- Scroll reveals ---------- */
+  gsap.utils.toArray('section .rv, footer .rv').forEach(function(el){
+    if(el.closest('header')) return;
+    gsap.to(el,{ opacity:1, y:0, duration:1, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 88%' } });
+  });
+
+  /* ---------- Nav ---------- */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive:true });
+  var menuBtn = document.getElementById('menuBtn'), mMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function(){
+    var open = mMenu.classList.toggle('hidden');
+    mMenu.classList.toggle('flex', !open ? false : true);
+    if(!mMenu.classList.contains('hidden')){ mMenu.classList.add('flex'); mMenu.classList.remove('hidden'); }
+    else { mMenu.classList.remove('flex'); }
+  });
+  mMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mMenu.classList.add('hidden'); mMenu.classList.remove('flex'); }); });
+
+  /* ---------- Dune parallax ---------- */
+  var dunes = document.querySelectorAll('.dune');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    dunes.forEach(function(d){
+      var depth = parseFloat(d.getAttribute('data-depth')) || .06;
+      d.style.transform = 'translateY(' + (y*depth) + 'px)';
+    });
+  }, { passive:true });
+
+  /* ---------- Counters ---------- */
+  document.querySelectorAll('.counter').forEach(function(c){
+    var target = parseInt(c.getAttribute('data-target'),10) || 0;
+    ScrollTrigger.create({ trigger:c, start:'top 90%', once:true,
+      onEnter:function(){
+        gsap.to({ v:0 },{ v:target, duration:1.8, ease:'power2.out',
+          onUpdate:function(){ c.textContent = Math.round(this.targets()[0].v); } });
+      }});
+  });
+
+  /* ---------- 3D tilt ---------- */
+  document.querySelectorAll('.tilt').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect(),
+          x = (e.clientX - r.left)/r.width - .5,
+          y = (e.clientY - r.top)/r.height - .5;
+      card.style.transform = 'perspective(1100px) rotateY('+(x*10)+'deg) rotateX('+(-y*10)+'deg) translateY(-6px)';
+      card.style.boxShadow = '0 34px 70px -22px rgba(12,75,70,.4)';
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = 'perspective(1100px) rotateY(0) rotateX(0)';
+      card.style.boxShadow = '';
+    });
+  });
+
+  /* ---------- Testimonials ---------- */
+  var slides = document.querySelectorAll('#tstWrap .tst'),
+      dotsBox = document.getElementById('tstDots'), idx = 0, timer;
+  slides.forEach(function(_,i){
+    var d = document.createElement('button');
+    d.className = 'tst-dot' + (i===0 ? ' active' : '');
+    d.setAttribute('aria-label','Show testimonial '+(i+1));
+    d.addEventListener('click', function(){ go(i); restart(); });
+    dotsBox.appendChild(d);
+  });
+  var dots = dotsBox.querySelectorAll('.tst-dot');
+  function go(n){
+    idx = (n + slides.length) % slides.length;
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
+  }
+  function restart(){ clearInterval(timer); timer = setInterval(function(){ go(idx+1); }, 5200); }
+  restart();
+
+  /* ---------- Booking form ---------- */
+  var form = document.getElementById('bookForm');
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById('fIn').min = today;
+  document.getElementById('fOut').min = today;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('fName'),
+        phone = document.getElementById('fPhone'),
+        fin = document.getElementById('fIn'),
+        fout = document.getElementById('fOut'),
+        err = document.getElementById('formErr'), ok = true;
+    [name,phone,fin,fout].forEach(function(f){ f.classList.remove('err'); });
+    err.classList.add('hidden');
+    if(!name.value.trim()){ name.classList.add('err'); ok = false; }
+    if(phone.value.replace(/\D/g,'').length < 7){ phone.classList.add('err'); ok = false; }
+    if(!fin.value){ fin.classList.add('err'); ok = false; }
+    if(!fout.value || (fin.value && fout.value <= fin.value)){ fout.classList.add('err'); ok = false; }
+    if(!ok){ err.classList.remove('hidden'); return; }
+    var msg = 'Hello Arabian Courtyard! I would like to book:%0A' +
+      'Name: ' + encodeURIComponent(name.value.trim()) + '%0A' +
+      'Phone: ' + encodeURIComponent(phone.value.trim()) + '%0A' +
+      'Check-in: ' + fin.value + '  Check-out: ' + fout.value + '%0A' +
+      'Guests: ' + encodeURIComponent(document.getElementById('fGuests').value) + '%0A' +
+      'Room: ' + encodeURIComponent(document.getElementById('fRoom').value);
+    var note = document.getElementById('fNote').value.trim();
+    if(note) msg += '%0ANotes: ' + encodeURIComponent(note);
+    document.getElementById('waConfirm').href = 'https://wa.me/97143519111?text=' + msg;
+    document.getElementById('formFields').classList.add('hidden');
+    document.getElementById('formDone').classList.remove('hidden');
+    gsap.from('#formDone', { opacity:0, y:24, duration:.8, ease:'power3.out' });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muthu's Curry — Iconic Indian Restaurant, Little India Singapore Since 1969</title>
+<meta name="description" content="Muthu's Curry — Singapore's iconic Indian restaurant in Little India since 1969. Michelin Bib Gourmand. Famous fish head curry. Reserve your table.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@400;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --cream:#FFF6E3; --cream2:#FBEFD4;
+  --orange:#F26522; --orange-deep:#D9480F; --orange-soft:#FFB25E;
+  --green:#1E7A3C; --green-deep:#0C4A22; --leaf:#35A853;
+  --yellow:#FFC93C; --pink:#FF6B9D;
+  --ink:#23130A;
+}
+*{ -webkit-tap-highlight-color:transparent; }
+html{ scroll-behavior:smooth; }
+body{ font-family:'Sora',sans-serif; background:var(--cream); color:var(--ink); overflow-x:hidden; }
+.font-display{ font-family:'Anton',sans-serif; letter-spacing:.01em; }
+.font-hand{ font-family:'Caveat',cursive; }
+
+/* ---------- PRELOADER ---------- */
+#preloader{ position:fixed; inset:0; z-index:100; background:var(--green-deep); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; transition:opacity .6s, visibility .6s; }
+#preloader.done{ opacity:0; visibility:hidden; }
+.pot{ width:110px; height:110px; animation:bob 1.2s ease-in-out infinite; }
+@keyframes bob{ 0%,100%{ transform:translateY(0) rotate(-3deg);} 50%{ transform:translateY(-14px) rotate(3deg);} }
+.loadbar{ width:200px; height:10px; background:rgba(255,255,255,.18); border-radius:99px; overflow:hidden; }
+.loadbar>div{ height:100%; width:0%; background:var(--yellow); border-radius:99px; }
+
+/* ---------- CURSOR ---------- */
+#cursor{ position:fixed; width:26px; height:26px; border-radius:50%; background:var(--orange); mix-blend-mode:multiply; pointer-events:none; z-index:99; transform:translate(-50%,-50%) scale(1); opacity:.85; display:none; }
+@media(pointer:fine){ #cursor{ display:block; } }
+
+/* ---------- MARQUEE ---------- */
+.marquee{ overflow:hidden; white-space:nowrap; }
+.marquee-track{ display:inline-flex; gap:0; animation:marq 22s linear infinite; will-change:transform; }
+.marquee-track.rev{ animation:marqr 26s linear infinite; }
+@keyframes marq{ to{ transform:translateX(-50%);} }
+@keyframes marqr{ from{ transform:translateX(-50%);} to{ transform:translateX(0);} }
+.marq-item{ display:inline-flex; align-items:center; gap:1.2rem; padding:0 1.2rem; }
+
+/* ---------- STICKERS ---------- */
+.sticker{ display:inline-flex; align-items:center; gap:.4rem; font-weight:800; font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; padding:.55rem 1rem; border-radius:999px; border:2.5px solid var(--ink); box-shadow:4px 4px 0 var(--ink); transform:rotate(-4deg); transition:transform .25s cubic-bezier(.34,1.56,.64,1); }
+.sticker:hover{ transform:rotate(2deg) scale(1.08); }
+.sticker.y{ background:var(--yellow); } .sticker.o{ background:var(--orange); color:#fff;} .sticker.g{ background:var(--green); color:#fff;} .sticker.p{ background:var(--pink); color:#fff;} .sticker.c{ background:#fff;}
+
+/* ---------- BUTTONS ---------- */
+.btn-pop{ display:inline-flex; align-items:center; gap:.6rem; font-weight:800; padding:1rem 2rem; border-radius:999px; border:3px solid var(--ink); box-shadow:6px 6px 0 var(--ink); transition:transform .18s cubic-bezier(.34,1.8,.64,1), box-shadow .18s; text-transform:uppercase; letter-spacing:.04em; }
+.btn-pop:hover{ transform:translate(-2px,-2px) scale(1.04); box-shadow:9px 9px 0 var(--ink); }
+.btn-pop:active{ transform:translate(3px,3px) scale(.98); box-shadow:2px 2px 0 var(--ink); }
+
+/* ---------- CARDS ---------- */
+.card-pop{ background:#fff; border:3px solid var(--ink); border-radius:1.6rem; box-shadow:7px 7px 0 var(--ink); transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s; }
+.card-pop:hover{ transform:translateY(-8px) rotate(-.6deg); box-shadow:11px 13px 0 var(--ink); }
+
+/* ---------- BENTO ---------- */
+.bento{ display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:minmax(150px,auto); gap:1.1rem; }
+.bento .cell{ position:relative; overflow:hidden; }
+.bento .span2{ grid-column:span 2; } .bento .span3{ grid-column:span 3; } .bento .span4{ grid-column:span 4; } .bento .span6{ grid-column:span 6; }
+@media(max-width:820px){ .bento{ grid-template-columns:repeat(2,1fr);} .bento .span2,.bento .span3,.bento .span4,.bento .span6{ grid-column:span 2; } }
+
+/* ---------- BANANA LEAF ---------- */
+.leaf{ position:absolute; pointer-events:none; opacity:.9; }
+.leaf-float{ animation:leafsway 7s ease-in-out infinite; transform-origin:top center; }
+@keyframes leafsway{ 0%,100%{ transform:rotate(-4deg);} 50%{ transform:rotate(5deg);} }
+
+/* ---------- TIMELINE ---------- */
+#tl-track{ display:flex; gap:1.4rem; width:max-content; }
+.tl-card{ width:300px; flex-shrink:0; }
+
+/* ---------- FORM ---------- */
+.field{ width:100%; background:#fff; border:3px solid var(--ink); border-radius:1rem; padding:.9rem 1.1rem; font-weight:600; outline:none; transition:box-shadow .2s, transform .2s; }
+.field:focus{ box-shadow:5px 5px 0 var(--orange); transform:translate(-2px,-2px); }
+
+/* ---------- MISC ---------- */
+.outline-text{ -webkit-text-stroke:2.5px var(--ink); color:transparent; }
+.wiggle{ animation:wig 3.4s ease-in-out infinite; }
+@keyframes wig{ 0%,100%{ transform:rotate(-2deg);} 50%{ transform:rotate(2.5deg);} }
+.spin-slow{ animation:spin 14s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg);} }
+.blob{ border-radius:58% 42% 55% 45%/48% 55% 45% 52%; }
+.tilt{ transition:transform .3s cubic-bezier(.34,1.56,.64,1); transform-style:preserve-3d; }
+.grain::after{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E"); }
+.reveal{ opacity:0; transform:translateY(46px); }
+#spiceCanvas{ position:absolute; inset:0; pointer-events:none; }
+.float-slow{ animation:floaty 6s ease-in-out infinite; }
+@keyframes floaty{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-16px);} }
+.testi{ display:none; } .testi.active{ display:block; animation:fadeSlide .5s ease; }
+@keyframes fadeSlide{ from{ opacity:0; transform:translateX(30px);} to{ opacity:1; transform:none;} }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <svg class="pot" viewBox="0 0 100 100"><ellipse cx="50" cy="82" rx="34" ry="10" fill="#0a3a1c"/><path d="M20 55 Q50 48 80 55 L74 78 Q50 86 26 78 Z" fill="#F26522" stroke="#23130A" stroke-width="3"/><ellipse cx="50" cy="55" rx="30" ry="9" fill="#D9480F" stroke="#23130A" stroke-width="3"/><path d="M38 50 q4 -8 0 -14 M50 50 q-4 -10 2 -16 M62 50 q4 -8 0 -14" stroke="#FFC93C" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".9"/><circle cx="34" cy="66" r="4" fill="#FFC93C"/><circle cx="58" cy="70" r="5" fill="#35A853"/><circle cx="48" cy="63" r="3" fill="#FF6B9D"/></svg>
+  <div class="font-display text-3xl text-white tracking-wide">MUTHU'S CURRY</div>
+  <div class="loadbar"><div id="loadfill"></div></div>
+  <div class="text-white/70 text-sm font-semibold" id="loadtxt">Heating up the spices…</div>
+</div>
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav class="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-6xl">
+  <div class="flex items-center justify-between bg-white border-[3px] border-[#23130A] rounded-full pl-5 pr-2 py-2" style="box-shadow:5px 5px 0 #23130A">
+    <a href="#top" class="flex items-center gap-2">
+      <svg width="34" height="34" viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#F26522" stroke="#23130A" stroke-width="2.5"/><path d="M10 24 Q20 14 30 24" stroke="#FFF6E3" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="20" cy="15" r="3" fill="#FFC93C"/></svg>
+      <span class="font-display text-xl">MUTHU'S <span class="text-[#D9480F]">CURRY</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 font-bold text-sm">
+      <a href="#menu" class="hover:text-[#D9480F] transition">Menu</a>
+      <a href="#story" class="hover:text-[#D9480F] transition">Our Story</a>
+      <a href="#visit" class="hover:text-[#D9480F] transition">Visit</a>
+    </div>
+    <a href="#reserve" class="btn-pop !py-2.5 !px-6 text-sm bg-[#FFC93C]">Reserve</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="relative min-h-[108vh] flex flex-col justify-center overflow-hidden pt-28 pb-10" style="background:radial-gradient(1100px 500px at 80% -5%, #FFE3B3 0%, transparent 60%), radial-gradient(900px 480px at 8% 20%, #D9F2C7 0%, transparent 55%), var(--cream)">
+  <canvas id="spiceCanvas"></canvas>
+  <!-- banana leaves -->
+  <svg class="leaf leaf-float" style="top:6%;left:-40px;width:220px" viewBox="0 0 200 320"><path d="M100 10 C150 90 150 220 100 310 C50 220 50 90 100 10Z" fill="#35A853" stroke="#0C4A22" stroke-width="4"/><path d="M100 10 L100 310" stroke="#0C4A22" stroke-width="4"/><path d="M100 60 L140 80 M100 120 L145 140 M100 180 L142 200 M100 240 L138 258 M100 60 L60 80 M100 120 L55 140 M100 180 L58 200 M100 240 L62 258" stroke="#0C4A22" stroke-width="3"/></svg>
+  <svg class="leaf leaf-float" style="bottom:4%;right:-30px;width:190px;animation-delay:2s" viewBox="0 0 200 320"><path d="M100 10 C150 90 150 220 100 310 C50 220 50 90 100 10Z" fill="#1E7A3C" stroke="#0C4A22" stroke-width="4"/><path d="M100 10 L100 310" stroke="#0C4A22" stroke-width="4"/><path d="M100 60 L140 80 M100 120 L145 140 M100 180 L142 200 M100 240 L138 258 M100 60 L60 80 M100 120 L55 140 M100 180 L58 200 M100 240 L62 258" stroke="#0C4A22" stroke-width="3"/></svg>
+
+  <div class="relative z-10 w-[94%] max-w-6xl mx-auto text-center">
+    <div class="flex justify-center gap-3 flex-wrap mb-6 hero-el">
+      <span class="sticker y wiggle">Est. 1969</span>
+      <span class="sticker g" style="transform:rotate(3deg)">Little India · Singapore</span>
+      <span class="sticker p wiggle" style="animation-delay:1s">Michelin Bib Gourmand</span>
+    </div>
+    <h1 class="font-display leading-[.88] hero-el" style="font-size:clamp(3.4rem,11vw,9.5rem)">
+      <span class="block" id="heroL1">MUTHU'S</span>
+      <span class="block text-[#D9480F]" id="heroL2">CURRY</span>
+    </h1>
+    <p class="font-hand text-3xl md:text-4xl mt-4 text-[#0C4A22] hero-el">fish head curry legends since '69 — damn shiok! 🔥</p>
+    <p class="max-w-xl mx-auto mt-4 font-semibold text-[#23130A]/70 hero-el">57 years of banana-leaf magic in the heart of Little India. A Singapore Heritage Business serving the island's most legendary South Indian feast.</p>
+    <div class="flex justify-center gap-4 mt-8 flex-wrap hero-el">
+      <a href="#reserve" class="btn-pop bg-[#F26522] text-white text-base">Book a Table</a>
+      <a href="#menu" class="btn-pop bg-white text-base">See the Menu</a>
+    </div>
+    <!-- floating dish art -->
+    <div class="relative mx-auto mt-10 w-64 h-64 md:w-80 md:h-80 hero-el float-slow">
+      <svg viewBox="0 0 300 300" class="w-full h-full drop-shadow-xl">
+        <ellipse cx="150" cy="255" rx="110" ry="18" fill="#0C4A22" opacity=".15"/>
+        <ellipse cx="150" cy="190" rx="120" ry="52" fill="#35A853" stroke="#0C4A22" stroke-width="5"/>
+        <ellipse cx="150" cy="184" rx="104" ry="42" fill="#D7EBC0"/>
+        <ellipse cx="150" cy="180" rx="88" ry="34" fill="#FBEFD4" stroke="#0C4A22" stroke-width="3"/>
+        <circle cx="150" cy="180" r="46" fill="#D9480F" stroke="#23130A" stroke-width="4"/>
+        <circle cx="150" cy="180" r="34" fill="#F26522"/>
+        <ellipse cx="132" cy="168" rx="9" ry="6" fill="#FFC93C" transform="rotate(-20 132 168)"/>
+        <ellipse cx="166" cy="190" rx="10" ry="6" fill="#FFC93C" transform="rotate(15 166 190)"/>
+        <circle cx="150" cy="180" r="8" fill="#FFF6E3"/>
+        <circle cx="96" cy="150" r="16" fill="#FFF6E3" stroke="#0C4A22" stroke-width="3"/><circle cx="204" cy="150" r="16" fill="#FFF6E3" stroke="#0C4A22" stroke-width="3"/>
+        <circle cx="96" cy="150" r="8" fill="#F26522"/><circle cx="204" cy="150" r="8" fill="#35A853"/>
+        <path d="M120 128 q6 -14 0 -24 M140 126 q-6 -14 2 -24 M160 126 q6 -14 0 -24 M180 128 q-6 -14 2 -24" stroke="#F26522" stroke-width="5" fill="none" stroke-linecap="round" opacity=".75"/>
+      </svg>
+      <div class="sticker o absolute -right-4 top-6 spin-slow !rounded-full !w-24 !h-24 !p-0 justify-center text-center leading-tight" style="font-size:.65rem">100%<br>LEGIT</div>
+    </div>
+  </div>
+
+  <!-- marquee -->
+  <div class="absolute bottom-0 left-0 right-0 -rotate-1 origin-bottom-left">
+    <div class="marquee bg-[#0C4A22] text-white py-3 border-y-[3px] border-[#23130A]">
+      <div class="marquee-track font-display text-xl tracking-wide" id="marq1"></div>
+    </div>
+  </div>
+</header>
+
+<!-- HERITAGE STRIP -->
+<section id="story" class="relative py-20 overflow-hidden" style="background:var(--orange)">
+  <div class="w-[94%] max-w-6xl mx-auto">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-8 reveal">
+      <div>
+        <span class="sticker c mb-3">Our Story</span>
+        <h2 class="font-display text-white leading-none" style="font-size:clamp(2.4rem,6vw,4.5rem); text-shadow:4px 4px 0 #23130A">57 YEARS OF<br>CURRY MAGIC</h2>
+      </div>
+      <p class="font-hand text-2xl text-white/90 rotate-[-2deg]">drag the timeline →</p>
+    </div>
+  </div>
+  <div class="overflow-x-auto pb-6 px-[3%]" id="tl-scroll">
+    <div id="tl-track">
+      <div class="tl-card card-pop p-6 reveal"><div class="font-display text-5xl text-[#D9480F]">1969</div><h3 class="font-extrabold mt-2">It all begins</h3><p class="text-sm mt-2 text-[#23130A]/70 font-medium">A humble eatery opens in Little India, serving homestyle South Indian meals on fresh banana leaves.</p></div>
+      <div class="tl-card card-pop p-6 reveal"><div class="font-display text-5xl text-[#D9480F]">1980s</div><h3 class="font-extrabold mt-2">Fish head curry fame</h3><p class="text-sm mt-2 text-[#23130A]/70 font-medium">Our signature fish head curry becomes the talk of Singapore — queues out the door, every single day.</p></div>
+      <div class="tl-card card-pop p-6 reveal"><div class="font-display text-5xl text-[#D9480F]">2016</div><h3 class="font-extrabold mt-2">Michelin Bib Gourmand</h3><p class="text-sm mt-2 text-[#23130A]/70 font-medium">The Michelin Guide recognises Muthu's Curry — exceptional food at friendly prices. A national icon.</p></div>
+      <div class="tl-card card-pop p-6 reveal"><div class="font-display text-5xl text-[#D9480F]">2021</div><h3 class="font-extrabold mt-2">Heritage Business</h3><p class="text-sm mt-2 text-[#23130A]/70 font-medium">Named a Singapore Heritage Business by the National Heritage Board. A living piece of history.</p></div>
+      <div class="tl-card card-pop p-6 reveal" style="background:var(--green-deep); color:#fff"><div class="font-display text-5xl text-[#FFC93C]">TODAY</div><h3 class="font-extrabold mt-2">Still the legend</h3><p class="text-sm mt-2 text-white/75 font-medium">Three generations later, the recipes haven't changed — and neither has the love. Come taste history.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO MENU -->
+<section id="menu" class="py-24 relative" style="background:linear-gradient(180deg,var(--cream) 0%,var(--cream2) 100%)">
+  <div class="w-[94%] max-w-6xl mx-auto">
+    <div class="text-center mb-10 reveal">
+      <span class="sticker y mb-4">The Menu</span>
+      <h2 class="font-display leading-none mt-3" style="font-size:clamp(2.6rem,7vw,5.5rem)">PICK YOUR <span class="text-[#D9480F]">CRAVING</span></h2>
+      <p class="font-hand text-2xl text-[#0C4A22] mt-2">every dish hits different, we promise</p>
+    </div>
+    <div class="bento">
+      <div class="cell span4 card-pop p-7 reveal tilt" style="background:linear-gradient(135deg,#F26522,#D9480F); color:#fff">
+        <span class="sticker y absolute top-4 right-4 !text-[.65rem]">Bestseller</span>
+        <div class="font-display text-4xl md:text-5xl leading-tight mt-6">FISH HEAD<br>CURRY</div>
+        <p class="mt-3 text-white/85 font-semibold max-w-sm">The legend itself. Giant red snapper head simmered in fiery tamarind curry — made for sharing (or not).</p>
+        <div class="mt-5 flex items-center gap-4"><span class="font-display text-4xl">S$28</span><span class="sticker c !text-[.65rem]">Serves 2–3</span></div>
+      </div>
+      <div class="cell span2 card-pop p-6 reveal" style="background:#0C4A22; color:#fff">
+        <div class="font-display text-3xl text-[#FFC93C]">BRIYANI<br>FEAST</div>
+        <p class="text-sm text-white/75 mt-2 font-medium">Dum-style mutton & chicken briyani, raita on the side.</p>
+        <div class="font-display text-2xl mt-3">from S$12</div>
+      </div>
+      <div class="cell span2 card-pop p-6 reveal">
+        <div class="font-display text-3xl">MASALA<br>DOSA</div>
+        <p class="text-sm text-[#23130A]/65 mt-2 font-medium">Crispy, golden, stuffed with spiced potato. Sambar + chutneys.</p>
+        <div class="font-display text-2xl mt-3 text-[#D9480F]">S$8.50</div>
+      </div>
+      <div class="cell span2 card-pop p-6 reveal" style="background:#FFC93C">
+        <div class="font-display text-3xl">TANDOORI<br>MIX GRILL</div>
+        <p class="text-sm text-[#23130A]/70 mt-2 font-medium">Char-grilled tikka, tangdi & seekh — straight from the clay oven.</p>
+        <div class="font-display text-2xl mt-3">S$22</div>
+      </div>
+      <div class="cell span2 card-pop p-6 reveal">
+        <div class="font-display text-3xl">CHICKEN 65</div>
+        <p class="text-sm text-[#23130A]/65 mt-2 font-medium">Fiery red, curry leaves, extra crunch. A Singapore favourite.</p>
+        <div class="font-display text-2xl mt-3 text-[#D9480F]">S$14</div>
+      </div>
+      <div class="cell span3 card-pop p-6 reveal tilt" style="background:linear-gradient(135deg,#1E7A3C,#0C4A22); color:#fff">
+        <div class="font-display text-3xl text-[#FFC93C]">BANANA LEAF SET MEAL</div>
+        <p class="text-sm text-white/80 mt-2 font-medium">Rice + 3 veg + fish/chicken curry + papadam + payasam. The full traditional spread.</p>
+        <div class="font-display text-2xl mt-3">S$16.90</div>
+      </div>
+      <div class="cell span3 card-pop p-6 reveal">
+        <div class="font-display text-3xl">MANGO LASSI <span class="text-[#D9480F]">+</span> MORE</div>
+        <p class="text-sm text-[#23130A]/65 mt-2 font-medium">Fresh mango lassi, filter coffee, teh tarik & homemade desserts to cool the fire.</p>
+        <div class="font-display text-2xl mt-3 text-[#D9480F]">from S$4</div>
+      </div>
+    </div>
+    <p class="text-center mt-8 font-hand text-2xl text-[#0C4A22] reveal">full menu at the restaurant — 120+ dishes strong 💪</p>
+  </div>
+</section>
+
+<!-- MICHELIN HIGHLIGHT -->
+<section class="py-20 relative overflow-hidden" style="background:var(--green-deep)">
+  <svg class="leaf leaf-float" style="top:-30px;right:4%;width:170px;opacity:.5" viewBox="0 0 200 320"><path d="M100 10 C150 90 150 220 100 310 C50 220 50 90 100 10Z" fill="#35A853"/><path d="M100 10 L100 310" stroke="#0C4A22" stroke-width="4"/></svg>
+  <div class="w-[94%] max-w-5xl mx-auto text-center relative z-10">
+    <div class="reveal inline-block">
+      <svg width="120" height="120" viewBox="0 0 120 120" class="mx-auto spin-slow">
+        <circle cx="60" cy="60" r="54" fill="#FFC93C" stroke="#23130A" stroke-width="4"/>
+        <circle cx="60" cy="60" r="42" fill="none" stroke="#23130A" stroke-width="2.5" stroke-dasharray="6 5"/>
+        <text x="60" y="52" text-anchor="middle" font-family="Anton" font-size="17" fill="#23130A">MICHELIN</text>
+        <text x="60" y="72" text-anchor="middle" font-family="Anton" font-size="13" fill="#D9480F">BIB</text>
+        <text x="60" y="88" text-anchor="middle" font-family="Anton" font-size="13" fill="#D9480F">GOURMAND</text>
+      </svg>
+    </div>
+    <h2 class="font-display text-white leading-tight mt-6 reveal" style="font-size:clamp(2rem,5.5vw,4rem)">RECOGNISED BY<br><span class="text-[#FFC93C]">MICHELIN</span> · LOVED BY SINGAPORE</h2>
+    <p class="text-white/75 font-semibold max-w-2xl mx-auto mt-4 reveal">Bib Gourmand for exceptional food at friendly prices — plus Singapore Heritage Business status from the National Heritage Board. Not bad for a Little India kopitiam-turned-legend.</p>
+    <div class="flex justify-center gap-3 mt-8 flex-wrap reveal">
+      <span class="sticker y">Bib Gourmand</span><span class="sticker o">Heritage Business</span><span class="sticker c">Since 1969</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="py-24" style="background:var(--cream)">
+  <div class="w-[94%] max-w-6xl mx-auto">
+    <div class="text-center mb-10 reveal">
+      <span class="sticker g mb-4 !text-white">Vibes</span>
+      <h2 class="font-display leading-none mt-3" style="font-size:clamp(2.6rem,7vw,5.5rem)">TASTE WITH <span class="text-[#1E7A3C]">YOUR EYES</span></h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="card-pop p-0 overflow-hidden reveal aspect-square flex items-center justify-center" style="background:linear-gradient(135deg,#FFB25E,#F26522)"><svg width="70%" viewBox="0 0 100 100"><ellipse cx="50" cy="62" rx="34" ry="16" fill="#0C4A22" opacity=".2"/><ellipse cx="50" cy="55" rx="30" ry="14" fill="#FBEFD4" stroke="#23130A" stroke-width="3"/><circle cx="50" cy="55" r="15" fill="#D9480F" stroke="#23130A" stroke-width="2.5"/><circle cx="50" cy="55" r="6" fill="#FFC93C"/></svg></div>
+      <div class="card-pop p-0 overflow-hidden reveal aspect-square flex items-center justify-center" style="background:linear-gradient(135deg,#35A853,#0C4A22)"><svg width="70%" viewBox="0 0 100 100"><path d="M50 8 C72 35 72 70 50 94 C28 70 28 35 50 8Z" fill="#D7EBC0" stroke="#0C4A22" stroke-width="3"/><path d="M50 8 L50 94" stroke="#0C4A22" stroke-width="3"/></svg></div>
+      <div class="card-pop p-0 overflow-hidden reveal aspect-square flex items-center justify-center" style="background:linear-gradient(135deg,#FFC93C,#F26522)"><svg width="70%" viewBox="0 0 100 100"><rect x="22" y="45" width="56" height="34" rx="8" fill="#FBEFD4" stroke="#23130A" stroke-width="3"/><path d="M30 45 q-4 -14 6 -18 M45 45 q0 -14 8 -16 M60 45 q4 -14 10 -14" stroke="#D9480F" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="50" cy="86" rx="26" ry="6" fill="#23130A" opacity=".15"/></svg></div>
+      <div class="card-pop p-0 overflow-hidden reveal aspect-square flex items-center justify-center" style="background:linear-gradient(135deg,#FF6B9D,#D9480F)"><svg width="70%" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="#FBEFD4" stroke="#23130A" stroke-width="3"/><path d="M50 20 q-12 14 0 30 q12 -16 0 -30" fill="#D9480F"/><circle cx="50" cy="62" r="8" fill="#FFC93C" stroke="#23130A" stroke-width="2.5"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-20" style="background:var(--cream2)">
+  <div class="w-[94%] max-w-3xl mx-auto text-center">
+    <span class="sticker p mb-4 reveal">Wall of Love</span>
+    <h2 class="font-display mt-3 mb-8 reveal" style="font-size:clamp(2.2rem,6vw,4rem)">PEOPLE CAN'T <span class="text-[#D9480F]">STOP TALKING</span></h2>
+    <div class="card-pop p-8 md:p-10 reveal min-h-[220px] relative" id="testiBox">
+      <div class="testi active"><p class="font-hand text-3xl leading-snug">"The fish head curry is a religious experience. I've brought 12 different friends here. Zero regrets."</p><p class="mt-4 font-extrabold">— Priya R. <span class="text-[#D9480F]">★★★★★</span></p></div>
+      <div class="testi"><p class="font-hand text-3xl leading-snug">"Grew up eating here, now my kids demand it every Deepavali. An institution, truly."</p><p class="mt-4 font-extrabold">— Daniel K. <span class="text-[#D9480F]">★★★★★</span></p></div>
+      <div class="testi"><p class="font-hand text-3xl leading-snug">"Michelin-listed and still priced like a hawker stall. The briyani alone is worth the flight."</p><p class="mt-4 font-extrabold">— Sofia M., visiting from London <span class="text-[#D9480F]">★★★★★</span></p></div>
+      <div class="flex justify-center gap-3 mt-6">
+        <button class="btn-pop !p-3 bg-white" onclick="testiGo(-1)" aria-label="prev">←</button>
+        <button class="btn-pop !p-3 bg-[#FFC93C]" onclick="testiGo(1)" aria-label="next">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reserve" class="py-24 relative overflow-hidden" style="background:linear-gradient(160deg,#F26522 0%,#D9480F 60%,#A83208 100%)">
+  <div class="marquee absolute top-6 left-0 right-0 opacity-25"><div class="marquee-track rev font-display text-5xl text-white" id="marq2"></div></div>
+  <div class="w-[94%] max-w-4xl mx-auto relative z-10 mt-10">
+    <div class="text-center mb-8 reveal">
+      <span class="sticker c mb-4">Skip the Queue</span>
+      <h2 class="font-display text-white leading-none mt-3" style="font-size:clamp(2.6rem,7vw,5rem); text-shadow:4px 4px 0 #23130A">BOOK YOUR<br>BANANA LEAF</h2>
+    </div>
+    <form id="resForm" class="card-pop p-7 md:p-10 reveal" onsubmit="return reserveSubmit(event)">
+      <div class="grid md:grid-cols-2 gap-4">
+        <input class="field" required placeholder="Your name" id="rName">
+        <input class="field" required placeholder="Phone / WhatsApp" id="rPhone">
+        <input class="field" type="date" required id="rDate">
+        <select class="field" required id="rGuests"><option value="">Guests…</option><option>1–2</option><option>3–5</option><option>6–10</option><option>10+ (party!)</option></select>
+      </div>
+      <textarea class="field mt-4" rows="3" placeholder="Special requests (birthday? extra spicy? let us know!)" id="rNote"></textarea>
+      <button type="submit" class="btn-pop bg-[#0C4A22] text-white w-full justify-center mt-6 text-lg" id="resBtn">Reserve My Table 🎉</button>
+      <div id="resOk" class="hidden text-center py-6">
+        <div class="font-display text-4xl text-[#1E7A3C]">TABLE LOCKED IN! 🎊</div>
+        <p class="font-hand text-2xl mt-2">we'll WhatsApp you to confirm — see you soon!</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="py-24" style="background:var(--cream)">
+  <div class="w-[94%] max-w-6xl mx-auto">
+    <div class="text-center mb-10 reveal">
+      <span class="sticker y mb-4">Find Us</span>
+      <h2 class="font-display leading-none mt-3" style="font-size:clamp(2.6rem,7vw,5.5rem)">COME <span class="text-[#1E7A3C]">HUNGRY</span></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card-pop p-7 reveal tilt">
+        <div class="font-display text-2xl mb-2">📍 LOCATION</div>
+        <p class="font-semibold text-[#23130A]/75">Race Course Road,<br>Little India,<br>Singapore</p>
+        <p class="font-hand text-xl text-[#1E7A3C] mt-2">2 min from Little India MRT!</p>
+      </div>
+      <div class="card-pop p-7 reveal tilt">
+        <div class="font-display text-2xl mb-2">🕐 HOURS</div>
+        <p class="font-semibold text-[#23130A]/75">Mon – Sun<br>10:30 AM – 10:30 PM<br><span class="text-[#D9480F]">Open every single day</span></p>
+        <p class="font-hand text-xl text-[#1E7A3C] mt-2">lunch rush = 12–2pm, plan ahead!</p>
+      </div>
+      <div class="card-pop p-7 reveal tilt" style="background:#0C4A22; color:#fff">
+        <div class="font-display text-2xl mb-2 text-[#FFC93C]">📞 CONTACT</div>
+        <p class="font-semibold text-white/85">+65 6392 1722<br>reservation@muthuscurry.com</p>
+        <a href="https://wa.me/6563921722" class="btn-pop bg-[#FFC93C] !text-[#23130A] mt-4 !py-2.5 !px-5 text-sm">WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pt-14 pb-8 text-white relative overflow-hidden" style="background:#0C4A22">
+  <div class="w-[94%] max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-8 items-start">
+      <div>
+        <div class="font-display text-4xl">MUTHU'S <span class="text-[#FFC93C]">CURRY</span></div>
+        <p class="text-white/60 font-medium mt-2 max-w-sm">Singapore's iconic Indian restaurant — serving legendary South Indian feasts in Little India since 1969.</p>
+        <div class="flex gap-3 mt-5 flex-wrap"><span class="sticker y !text-[.65rem]">Est. 1969</span><span class="sticker c !text-[.65rem]">Bib Gourmand</span><span class="sticker o !text-[.65rem]">Heritage Business</span></div>
+      </div>
+      <div class="font-semibold text-white/75 text-sm leading-loose">
+        <div class="font-display text-white text-lg mb-1">QUICK BITES</div>
+        <a href="#menu" class="hover:text-[#FFC93C] block">Menu</a><a href="#story" class="hover:text-[#FFC93C] block">Our Story</a><a href="#reserve" class="hover:text-[#FFC93C] block">Reservations</a><a href="#visit" class="hover:text-[#FFC93C] block">Visit Us</a>
+      </div>
+    </div>
+    <div class="border-t border-white/15 mt-10 pt-6 flex flex-col md:flex-row justify-between text-xs text-white/50 font-medium gap-2">
+      <span>© 2026 Muthu's Curry · Little India, Singapore · Concept redesign demo</span>
+      <span class="font-hand text-base text-white/60">made with extra spice 🌶️</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/6563921722" aria-label="WhatsApp" class="fixed bottom-5 right-5 z-50 w-16 h-16 rounded-full flex items-center justify-center float-slow" style="background:#25D366; border:3px solid #23130A; box-shadow:5px 5px 0 #23130A">
+  <svg width="32" height="32" viewBox="0 0 32 32"><path fill="#fff" d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-1.8c1.8 1 3.9 1.6 6.1 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.1 1.2-4.4-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.8C6.9 9.9 11 5.8 16 5.8S25.1 9.9 25.1 15 21 24.8 16 24.8zm5.4-8.1c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.3-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.6.1-.3 0-.5 0-.7l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.2-.8.5-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
+</a>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- PRELOADER ---------- */
+(function(){
+  const msgs=["Heating up the spices…","Grinding fresh masalas…","Laying the banana leaf…"];
+  let p=0; const fill=document.getElementById('loadfill'), txt=document.getElementById('loadtxt');
+  const iv=setInterval(()=>{ p+=Math.random()*22; if(p>=100){p=100;clearInterval(iv); setTimeout(()=>{document.getElementById('preloader').classList.add('done'); heroIn();},350);} fill.style.width=p+'%'; txt.textContent=msgs[Math.min(msgs.length-1,Math.floor(p/34))]; },220);
+})();
+
+/* ---------- HERO ENTRANCE ---------- */
+function heroIn(){
+  gsap.fromTo('.hero-el',{y:60,opacity:0},{y:0,opacity:1,duration:1,stagger:.12,ease:'back.out(1.4)'});
+  gsap.fromTo('#heroL1',{x:-80,opacity:0},{x:0,opacity:1,duration:1,ease:'power3.out'});
+  gsap.fromTo('#heroL2',{x:80,opacity:0},{x:0,opacity:1,duration:1,delay:.15,ease:'power3.out'});
+}
+
+/* ---------- MARQUEES ---------- */
+(function(){
+  const items=['FISH HEAD CURRY','★','SINCE 1969','★','BANANA LEAF MEALS','★','MICHELIN BIB GOURMAND','★','LITTLE INDIA','★'];
+  const html=items.map(t=>'<span class="marq-item">'+t+'</span>').join('');
+  document.getElementById('marq1').innerHTML=html+html;
+  const items2=['BOOK YOUR TABLE','✦','SKIP THE QUEUE','✦','BOOK YOUR TABLE','✦','SKIP THE QUEUE','✦'];
+  const html2=items2.map(t=>'<span class="marq-item">'+t+'</span>').join('');
+  document.getElementById('marq2').innerHTML=html2+html2;
+})();
+
+/* ---------- SPICE PARTICLES ---------- */
+(function(){
+  const c=document.getElementById('spiceCanvas'), ctx=c.getContext('2d');
+  let W,H,parts=[];
+  const colors=['#F26522','#FFC93C','#35A853','#FF6B9D','#D9480F'];
+  function size(){ W=c.width=c.offsetWidth; H=c.height=c.offsetHeight; }
+  size(); addEventListener('resize',size);
+  for(let i=0;i<46;i++) parts.push({x:Math.random()*2000,y:Math.random()*1200,r:3+Math.random()*7,vy:.3+Math.random()*.9,vx:(Math.random()-.5)*.5,rot:Math.random()*6.28,vr:(Math.random()-.5)*.04,col:colors[i%colors.length]});
+  (function loop(){
+    ctx.clearRect(0,0,W,H);
+    parts.forEach(p=>{ p.y-=p.vy; p.x+=p.vx; p.rot+=p.vr;
+      if(p.y<-20){p.y=H+20;p.x=Math.random()*W;}
+      ctx.save(); ctx.translate(p.x%(W+1),p.y); ctx.rotate(p.rot);
+      ctx.fillStyle=p.col; ctx.globalAlpha=.55;
+      ctx.beginPath(); ctx.ellipse(0,0,p.r,p.r*.55,0,0,6.29); ctx.fill(); ctx.restore(); });
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ---------- SCROLL REVEALS ---------- */
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+
+/* ---------- 3D TILT ---------- */
+document.querySelectorAll('.tilt').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform='perspective(800px) rotateY('+(x*10)+'deg) rotateX('+(-y*10)+'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
+});
+
+/* ---------- CURSOR ---------- */
+(function(){
+  const cur=document.getElementById('cursor'); let mx=0,my=0,cx=0,cy=0;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function follow(){ cx+=(mx-cx)*.2; cy+=(my-cy)*.2; cur.style.left=cx+'px'; cur.style.top=cy+'px'; requestAnimationFrame(follow); })();
+  document.querySelectorAll('a,button,.card-pop').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(1.9)';cur.style.background='#FFC93C';});
+    el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';cur.style.background='#F26522';});
+  });
+})();
+
+/* ---------- TESTIMONIALS ---------- */
+let tIdx=0; const testis=document.querySelectorAll('.testi');
+function testiShow(i){ testis.forEach(t=>t.classList.remove('active')); tIdx=(i+testis.length)%testis.length; testis[tIdx].classList.add('active'); }
+function testiGo(d){ testiShow(tIdx+d); }
+setInterval(()=>testiShow(tIdx+1),6000);
+
+/* ---------- RESERVATION ---------- */
+function reserveSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('resBtn');
+  btn.textContent='Locking it in… ⏳'; btn.disabled=true;
+  setTimeout(()=>{
+    document.getElementById('resForm').querySelectorAll('input,select,textarea').forEach(f=>f.style.display='none');
+    btn.style.display='none';
+    const ok=document.getElementById('resOk'); ok.classList.remove('hidden');
+    gsap.fromTo(ok,{scale:.6,opacity:0},{scale:1,opacity:1,duration:.7,ease:'back.out(1.8)'});
+    for(let i=0;i<40;i++) confettiBurst();
+  },900);
+  return false;
+}
+function confettiBurst(){
+  const s=document.createElement('div');
+  const cols=['#F26522','#FFC93C','#35A853','#FF6B9D','#fff'];
+  s.style.cssText='position:fixed;left:50%;top:60%;width:'+(6+Math.random()*8)+'px;height:'+(6+Math.random()*8)+'px;background:'+cols[Math.floor(Math.random()*cols.length)]+';z-index:95;pointer-events:none;border-radius:2px;';
+  document.body.appendChild(s);
+  gsap.to(s,{x:(Math.random()-.5)*600,y:(Math.random()-.7)*500,rotation:Math.random()*720,opacity:0,duration:1.4+Math.random(),ease:'power2.out',onComplete:()=>s.remove()});
+}
+
+/* ---------- TIMELINE DRAG ---------- */
+(function(){
+  const el=document.getElementById('tl-scroll'); let down=false,sx=0,sl=0;
+  el.addEventListener('pointerdown',e=>{down=true;sx=e.clientX;sl=el.scrollLeft;});
+  addEventListener('pointerup',()=>down=false);
+  el.addEventListener('pointermove',e=>{ if(down) el.scrollLeft=sl-(e.clientX-sx); });
+})();
+</script>
+</body>
+</html>
