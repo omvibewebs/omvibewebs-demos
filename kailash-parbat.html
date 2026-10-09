@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kailash Parbat — Chaat Legends Since 1952 | Singapore</title>
+<meta name="description" content="Kailash Parbat Singapore — vegetarian chaat heritage since 1952. Pani puri, bhel, ragda patties, kulfi falooda.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { mango:'#FFB703', chilli:'#E63946', leafy:'#2A9D48', cream:'#FFF8E7', ink:'#1D1A16', grape:'#6C2BD9' },
+  fontFamily: { mega:['"Archivo Black"','sans-serif'], body:['"Space Grotesk"','sans-serif'], hand:['Caveat','cursive'] }
+}}}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{font-family:'Space Grotesk',sans-serif;background:#FFF8E7;color:#1D1A16;overflow-x:hidden}
+  ::selection{background:#E63946;color:#FFF8E7}
+  .font-mega{font-family:'Archivo Black',sans-serif}
+  /* ---- sticker ---- */
+  .sticker{border:3px solid #1D1A16;box-shadow:5px 5px 0 #1D1A16;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+  .sticker:hover{transform:rotate(0deg) scale(1.04)!important;box-shadow:8px 8px 0 #1D1A16}
+  /* ---- bobble hover (motion.dev bobble idea) ---- */
+  .bobble{transition:transform .35s cubic-bezier(.34,1.8,.5,1)}
+  .bobble:hover{transform:translateY(-10px) rotate(-1.5deg)}
+  /* ---- wavy marquee ---- */
+  .marquee-track{display:flex;width:max-content;animation:marquee 22s linear infinite}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+  /* ---- halftone dots ---- */
+  .halftone{background-image:radial-gradient(#1D1A16 1.3px,transparent 1.3px);background-size:16px 16px}
+  /* ---- wavy divider ---- */
+  .wave{display:block;width:100%;height:60px}
+  /* ---- tilt card ---- */
+  .tilt{transform-style:preserve-3d;transition:box-shadow .3s}
+  /* ---- filter tabs ---- */
+  .tab{border:3px solid #1D1A16;transition:all .25s}
+  .tab.active{background:#1D1A16;color:#FFF8E7;transform:rotate(-2deg) scale(1.05)}
+  /* ---- chaat card art float ---- */
+  .float-slow{animation:floaty 5s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+  /* ---- burst badge spin ---- */
+  .spin-slow{animation:spin 14s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  /* ---- nav ---- */
+  #nav{transition:background .35s,box-shadow .35s}
+  #nav.scrolled{background:rgba(255,248,231,.92);backdrop-filter:blur(12px);box-shadow:0 6px 24px -10px rgba(29,26,22,.3)}
+  /* ---- form ---- */
+  .field{background:#fff;border:3px solid #1D1A16;border-radius:14px;transition:box-shadow .25s,transform .25s}
+  .field:focus{outline:none;box-shadow:4px 4px 0 #2A9D48;transform:translate(-2px,-2px)}
+  /* ---- toast ---- */
+  #toast{transform:translateY(160%) rotate(-2deg);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+  #toast.show{transform:translateY(0) rotate(-2deg)}
+  /* ---- confetti piece ---- */
+  .confetti{position:fixed;top:-20px;z-index:95;pointer-events:none;border-radius:2px}
+  /* ---- timeline ---- */
+  .tl-track{scroll-snap-type:x mandatory}
+  .tl-card{scroll-snap-align:center}
+  /* ---- preloader ---- */
+  #loader{position:fixed;inset:0;z-index:100;background:#E63946;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+  .loader-pop{animation:pop .7s cubic-bezier(.34,1.8,.5,1) infinite alternate}
+  @keyframes pop{from{transform:scale(1) rotate(-4deg)}to{transform:scale(1.15) rotate(4deg)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- PRELOADER -->
+<div id="loader">
+  <p class="loader-pop font-mega text-cream text-5xl md:text-7xl">CHAAAT!</p>
+  <p class="font-hand text-cream/90 text-2xl">loading the crunch…</p>
+</div>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 px-5 md:px-10 py-4 flex items-center justify-between">
+  <a href="#top" class="flex items-center gap-3">
+    <span class="sticker bg-mango rounded-full w-12 h-12 grid place-items-center font-mega text-xl -rotate-6">KP</span>
+    <span class="font-mega text-xl leading-none">KAILASH<br>PARBAT</span>
+  </a>
+  <div class="hidden md:flex items-center gap-3 text-sm font-bold">
+    <a href="#menu" class="sticker bg-cream rounded-full px-5 py-2">Menu</a>
+    <a href="#story" class="sticker bg-cream rounded-full px-5 py-2">Since 1952</a>
+    <a href="#order" class="sticker bg-chilli text-cream rounded-full px-6 py-2 -rotate-2">Order / Catering</a>
+  </div>
+  <button id="menuBtn" class="md:hidden sticker bg-mango rounded-full w-11 h-11 grid place-items-center" aria-label="Open menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+</nav>
+<div id="mobileMenu" class="fixed inset-0 z-40 bg-mango hidden flex-col items-center justify-center gap-6 font-mega text-3xl">
+  <a href="#menu">MENU</a><a href="#story">SINCE 1952</a><a href="#order">ORDER</a>
+</div>
+
+<!-- HERO -->
+<header id="top" class="relative min-h-screen flex items-center pt-32 pb-20 px-5 md:px-10 overflow-hidden bg-cream">
+  <div class="halftone absolute inset-0 opacity-[.06] pointer-events-none"></div>
+  <!-- spinning burst badge -->
+  <div class="absolute right-[6%] top-[16%] w-32 h-32 md:w-44 md:h-44 z-10">
+    <svg class="spin-slow w-full h-full" viewBox="0 0 100 100">
+      <path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" fill="none"/>
+      <circle cx="50" cy="50" r="49" fill="#E63946"/>
+      <text fill="#FFF8E7" font-size="11.5" font-weight="700" letter-spacing="2"><textPath href="#circ">PURE VEG · SINCE 1952 · PURE VEG · SINCE 1952 ·</textPath></text>
+    </svg>
+    <span class="absolute inset-0 grid place-items-center font-mega text-cream text-xl">100%</span>
+  </div>
+  <!-- floating chaat doodles -->
+  <svg class="float-slow absolute left-[4%] bottom-[12%] w-20 md:w-28" viewBox="0 0 100 100"><circle cx="50" cy="55" r="34" fill="#FFB703" stroke="#1D1A16" stroke-width="4"/><circle cx="50" cy="48" r="26" fill="#fff"/><circle cx="42" cy="46" r="4" fill="#E63946"/><circle cx="58" cy="44" r="4" fill="#2A9D48"/><circle cx="50" cy="56" r="4" fill="#FFB703"/></svg>
+  <svg class="float-slow absolute right-[12%] bottom-[24%] w-16 md:w-24" style="animation-delay:-2.4s" viewBox="0 0 100 100"><path d="M20 70 L50 25 L80 70 Z" fill="#E63946" stroke="#1D1A16" stroke-width="4" stroke-linejoin="round"/><circle cx="50" cy="55" r="7" fill="#FFF8E7"/></svg>
+
+  <div class="max-w-7xl mx-auto w-full relative z-10 text-center">
+    <p class="hero-kicker inline-block sticker bg-leafy text-cream font-bold px-6 py-2 rounded-full rotate-[-3deg] mb-8">Singapore · Little India · est. 1952</p>
+    <h1 class="font-mega leading-[.9] text-[16vw] md:text-[9rem]">
+      <span class="hero-line block text-ink">TASTE THE</span>
+      <span class="hero-line block text-chilli" style="text-shadow:5px 5px 0 #1D1A16">CHAAAT</span>
+      <span class="hero-line block text-ink">EXPLOSION</span>
+    </h1>
+    <p class="hero-sub font-hand text-2xl md:text-3xl text-ink/70 mt-6">crunchy · tangy · spicy · legendary since 1952</p>
+    <div class="hero-sub mt-10 flex flex-wrap justify-center gap-4">
+      <a href="#menu" class="bobble sticker bg-chilli text-cream font-mega text-lg px-9 py-4 rounded-2xl inline-block">SEE THE MENU</a>
+      <a href="#order" class="bobble sticker bg-cream font-mega text-lg px-9 py-4 rounded-2xl inline-block">ORDER NOW</a>
+    </div>
+    <div class="hero-sub mt-12 flex justify-center gap-6 md:gap-10 flex-wrap">
+      <div class="sticker bg-cream rounded-2xl px-6 py-3 rotate-[-2deg]"><p class="font-mega text-2xl"><span class="counter" data-target="70">0</span>+</p><p class="text-xs font-bold uppercase">Years of chaat</p></div>
+      <div class="sticker bg-cream rounded-2xl px-6 py-3 rotate-[2deg]"><p class="font-mega text-2xl"><span class="counter" data-target="40">0</span>+</p><p class="text-xs font-bold uppercase">Chaat varieties</p></div>
+      <div class="sticker bg-cream rounded-2xl px-6 py-3 rotate-[-1deg]"><p class="font-mega text-2xl">100%</p><p class="text-xs font-bold uppercase">Vegetarian</p></div>
+    </div>
+  </div>
+</header>
+
+<!-- WAVY MARQUEE -->
+<div class="bg-ink text-mango py-4 overflow-hidden -rotate-1 scale-[1.03]">
+  <div class="marquee-track gap-8 font-mega text-xl md:text-2xl">
+    <span class="flex gap-8 shrink-0 items-center" id="mq1"></span>
+    <span class="flex gap-8 shrink-0 items-center" id="mq2"></span>
+  </div>
+</div>
+<svg class="wave bg-ink" viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 Q120,0 240,30 T480,30 T720,30 T960,30 T1200,30 T1440,30 V60 H0 Z" fill="#FFF8E7"/></svg>
+
+<!-- MENU -->
+<section id="menu" class="px-5 md:px-10 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10">
+      <p class="scroll-fade inline-block sticker bg-grape text-cream text-sm font-bold px-5 py-2 rounded-full rotate-[2deg] mb-5">THE LINE-UP</p>
+      <h2 class="scroll-fade font-mega text-5xl md:text-7xl">PICK YOUR <span class="text-chilli">CRUNCH</span></h2>
+      <p class="scroll-fade font-hand text-2xl text-ink/60 mt-3">tap a filter — watch the cards dance</p>
+    </div>
+    <div class="scroll-fade flex flex-wrap justify-center gap-3 mb-12" id="tabs">
+      <button class="tab active font-bold px-6 py-2.5 rounded-full bg-cream" data-filter="all">All</button>
+      <button class="tab font-bold px-6 py-2.5 rounded-full bg-cream" data-filter="chaat">Chaat</button>
+      <button class="tab font-bold px-6 py-2.5 rounded-full bg-cream" data-filter="tikki">Tikkis & Snacks</button>
+      <button class="tab font-bold px-6 py-2.5 rounded-full bg-cream" data-filter="sweet">Sweets & Kulfi</button>
+      <button class="tab font-bold px-6 py-2.5 rounded-full bg-cream" data-filter="thali">Thalis</button>
+    </div>
+    <div id="menuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+<!-- STORY TIMELINE -->
+<section id="story" class="bg-leafy text-cream py-20 md:py-28 overflow-hidden relative">
+  <div class="halftone absolute inset-0 opacity-10 pointer-events-none" style="background-image:radial-gradient(#FFF8E7 1.3px,transparent 1.3px)"></div>
+  <div class="max-w-7xl mx-auto px-5 md:px-10 relative">
+    <p class="scroll-fade inline-block sticker bg-ink text-mango text-sm font-bold px-5 py-2 rounded-full -rotate-2 mb-5">HERITAGE</p>
+    <h2 class="scroll-fade font-mega text-5xl md:text-7xl mb-4">SINCE <span class="text-mango">1952</span></h2>
+    <p class="scroll-fade font-hand text-2xl text-cream/80 mb-10">drag through seven decades of delicious →</p>
+  </div>
+  <div class="tl-track flex gap-6 overflow-x-auto px-5 md:px-10 pb-6" id="timeline">
+    <div class="tl-card sticker bg-cream text-ink rounded-3xl p-7 min-w-[280px] md:min-w-[340px] -rotate-1">
+      <p class="font-mega text-4xl text-chilli">1952</p><h3 class="font-mega text-xl mt-2">A Karachi kitchen</h3>
+      <p class="text-sm text-ink/70 mt-2">Mulchandani family starts serving chaat in Karachi — pani puri that stops traffic.</p>
+    </div>
+    <div class="tl-card sticker bg-mango text-ink rounded-3xl p-7 min-w-[280px] md:min-w-[340px] rotate-1">
+      <p class="font-mega text-4xl text-chilli">1960s</p><h3 class="font-mega text-xl mt-2">Mumbai calling</h3>
+      <p class="text-sm text-ink/70 mt-2">The legendary Colaba outlet opens. Bollywood stars queue for bhel puri.</p>
+    </div>
+    <div class="tl-card sticker bg-cream text-ink rounded-3xl p-7 min-w-[280px] md:min-w-[340px] -rotate-1">
+      <p class="font-mega text-4xl text-chilli">1980s</p><h3 class="font-mega text-xl mt-2">Going global</h3>
+      <p class="text-sm text-ink/70 mt-2">Kailash Parbat travels — Dubai, London, and the chaat map of the world expands.</p>
+    </div>
+    <div class="tl-card sticker bg-chilli text-cream rounded-3xl p-7 min-w-[280px] md:min-w-[340px] rotate-1">
+      <p class="font-mega text-4xl">2000s</p><h3 class="font-mega text-xl mt-2">Singapore chapter</h3>
+      <p class="text-sm text-cream/85 mt-2">Little India gets its crunch fix — ragda patties land on Serangoon Road.</p>
+    </div>
+    <div class="tl-card sticker bg-cream text-ink rounded-3xl p-7 min-w-[280px] md:min-w-[340px] -rotate-1">
+      <p class="font-mega text-4xl text-chilli">2026</p><h3 class="font-mega text-xl mt-2">Still 100% veg</h3>
+      <p class="text-sm text-ink/70 mt-2">Seven decades on, every puri is still fried fresh, every chutney ground daily.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER / CATERING -->
+<section id="order" class="px-5 md:px-10 py-20 md:py-28 relative overflow-hidden">
+  <svg class="float-slow absolute left-[3%] top-[10%] w-24 opacity-80" viewBox="0 0 100 100"><circle cx="50" cy="55" r="34" fill="#2A9D48" stroke="#1D1A16" stroke-width="4"/><path d="M30 50 Q50 65 70 50" stroke="#FFF8E7" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center relative">
+    <div>
+      <p class="scroll-fade inline-block sticker bg-chilli text-cream text-sm font-bold px-5 py-2 rounded-full rotate-[-2deg] mb-5">ORDER & CATERING</p>
+      <h2 class="scroll-fade font-mega text-5xl md:text-6xl leading-[1.02]">HUNGRY?<br><span class="text-leafy">LET'S FIX THAT.</span></h2>
+      <p class="scroll-fade mt-5 text-lg text-ink/70">Bulk chaat platters for parties, Deepavali open houses & corporate events — or just tell us what you're craving and we'll pack it hot.</p>
+      <div class="scroll-fade mt-6 space-y-3 font-bold">
+        <p class="flex items-center gap-3"><span class="sticker bg-mango rounded-full w-9 h-9 grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></span>+65 6291 1234</p>
+        <p class="flex items-center gap-3"><span class="sticker bg-leafy text-cream rounded-full w-9 h-9 grid place-items-center shrink-0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>12 Upper Dickson Road, Little India</p>
+      </div>
+    </div>
+    <form id="orderForm" class="scroll-fade sticker bg-white rounded-3xl p-7 md:p-9 space-y-4 rotate-1" novalidate>
+      <h3 class="font-mega text-2xl">GET A QUOTE</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <input required name="name" type="text" placeholder="Your name" class="field px-4 py-3 w-full font-medium">
+        <input required name="phone" type="tel" placeholder="Phone" class="field px-4 py-3 w-full font-medium">
+      </div>
+      <select required name="type" class="field px-4 py-3 w-full font-medium text-ink/70">
+        <option value="">I'm ordering for…</option>
+        <option>Party platter (10–30 pax)</option>
+        <option>Wedding / big event (50+ pax)</option>
+        <option>Corporate lunch</option>
+        <option>Just me, right now</option>
+      </select>
+      <textarea name="notes" rows="3" placeholder="Tell us the craving… (e.g. 20x pani puri, extra spicy)" class="field px-4 py-3 w-full font-medium"></textarea>
+      <button type="submit" class="bobble sticker w-full bg-chilli text-cream font-mega text-lg py-4 rounded-2xl">FIRE THE ORDER</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream pt-16 pb-8 px-5 md:px-10 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="footer-big font-mega text-[12vw] md:text-[7.5rem] leading-[.95] text-center">STAY <span class="text-mango">CRUNCHY</span></h2>
+    <div class="mt-10 grid md:grid-cols-4 gap-8 text-sm">
+      <div><p class="font-mega text-lg mb-3">KAILASH PARBAT</p><p class="text-cream/60">Vegetarian chaat legends since 1952. Now crunching in Singapore.</p></div>
+      <div><p class="font-bold mb-3 text-mango">VISIT</p><p class="text-cream/60">12 Upper Dickson Road<br>Singapore 207488<br>Daily 11am – 10pm</p></div>
+      <div><p class="font-bold mb-3 text-mango">CONTACT</p><p class="text-cream/60">+65 6291 1234<br>hello@kailashparbat.sg</p></div>
+      <div><p class="font-bold mb-3 text-mango">FOLLOW</p><p class="text-cream/60">Instagram · Facebook · TikTok</p></div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-cream/15 flex flex-wrap justify-between gap-3 text-xs text-cream/50">
+      <p>© 2026 Kailash Parbat Singapore. All rights reserved.</p>
+      <p>Concept demo by Om Vibe Webs</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[90] sticker bg-leafy text-cream px-7 py-4 rounded-2xl flex items-center gap-3 font-bold">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFF8E7" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+  <p>Order received! We'll call you back super fast.</p>
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- menu data -> cards ---------- */
+var MENU = [
+  { name:'Pani Puri', cat:'chaat', price:'S$7.90', desc:'Crisp puris, spicy mint water, potato-chana filling', tag:'Bestseller', color:'#FFB703',
+    art:'<circle cx="50" cy="55" r="30" fill="#FFB703" stroke="#1D1A16" stroke-width="4"/><circle cx="50" cy="48" r="22" fill="#2A9D48"/><circle cx="42" cy="46" r="4" fill="#fff"/><circle cx="58" cy="50" r="4" fill="#E63946"/>' },
+  { name:'Bhel Puri', cat:'chaat', price:'S$8.50', desc:'Puffed rice tossed in tamarind, onion, crunchy sev', tag:'Mumbai classic', color:'#2A9D48',
+    art:'<path d="M25 70 L50 30 L75 70 Z" fill="#E63946" stroke="#1D1A16" stroke-width="4" stroke-linejoin="round"/><circle cx="50" cy="55" r="6" fill="#FFF8E7"/>' },
+  { name:'Ragda Patties', cat:'chaat', price:'S$9.90', desc:'Griddled potato patties drowned in white-pea ragda', tag:'Crowd favourite', color:'#E63946',
+    art:'<ellipse cx="50" cy="55" rx="32" ry="22" fill="#E8A33D" stroke="#1D1A16" stroke-width="4"/><path d="M28 52 Q50 62 72 52" stroke="#7a4a12" stroke-width="4" fill="none"/>' },
+  { name:'Dahi Puri', cat:'chaat', price:'S$8.90', desc:'Cool yogurt, sweet chutney, pomegranate jewels', tag:'', color:'#FFB703',
+    art:'<circle cx="50" cy="55" r="30" fill="#FFF8E7" stroke="#1D1A16" stroke-width="4"/><circle cx="42" cy="50" r="5" fill="#E63946"/><circle cx="58" cy="52" r="5" fill="#E63946"/><circle cx="50" cy="60" r="5" fill="#2A9D48"/>' },
+  { name:'Samosa Chaat', cat:'chaat', price:'S$9.50', desc:'Crushed samosa, chole, yogurt, two chutneys', tag:'Extra loaded', color:'#6C2BD9',
+    art:'<path d="M28 68 L50 32 L72 68 Z" fill="#FFB703" stroke="#1D1A16" stroke-width="4" stroke-linejoin="round"/><circle cx="50" cy="56" r="8" fill="#E63946"/>' },
+  { name:'Aloo Tikki', cat:'tikki', price:'S$7.50', desc:'Crisp potato tikki, chole, tangy imli drizzle', tag:'', color:'#2A9D48',
+    art:'<ellipse cx="50" cy="58" rx="30" ry="18" fill="#E8A33D" stroke="#1D1A16" stroke-width="4"/><circle cx="40" cy="54" r="4" fill="#7a4a12"/><circle cx="58" cy="58" r="4" fill="#7a4a12"/>' },
+  { name:'Pav Bhaji', cat:'tikki', price:'S$11.90', desc:'Buttery bhaji, toasted pav, extra maska on top', tag:'Mumbai soul', color:'#E63946',
+    art:'<rect x="22" y="50" width="56" height="22" rx="10" fill="#E8A33D" stroke="#1D1A16" stroke-width="4"/><ellipse cx="50" cy="44" rx="26" ry="12" fill="#D64528" stroke="#1D1A16" stroke-width="4"/>' },
+  { name:'Dahi Bhalla', cat:'tikki', price:'S$8.90', desc:'Cloud-soft lentil dumplings in chilled yogurt', tag:'', color:'#FFB703',
+    art:'<circle cx="38" cy="55" r="16" fill="#FFF8E7" stroke="#1D1A16" stroke-width="4"/><circle cx="62" cy="55" r="16" fill="#FFF8E7" stroke="#1D1A16" stroke-width="4"/>' },
+  { name:'Kulfi Falooda', cat:'sweet', price:'S$9.90', desc:'Dense malai kulfi, vermicelli, rose syrup, basil seeds', tag:'Must try', color:'#6C2BD9',
+    art:'<path d="M35 30 L65 30 L60 65 Q50 72 40 65 Z" fill="#F5D7E3" stroke="#1D1A16" stroke-width="4"/><circle cx="50" cy="22" r="10" fill="#FFF8E7" stroke="#1D1A16" stroke-width="4"/>' },
+  { name:'Jalebi with Rabri', cat:'sweet', price:'S$8.50', desc:'Hot crisp jalebi coils, cold creamy rabri', tag:'', color:'#E63946',
+    art:'<circle cx="50" cy="52" r="24" fill="none" stroke="#F08A1D" stroke-width="9"/><circle cx="50" cy="52" r="10" fill="none" stroke="#F08A1D" stroke-width="7"/>' },
+  { name:'KP Royal Thali', cat:'thali', price:'S$19.90', desc:'Chaat sampler + 2 curries, naan, rice, dessert', tag:'Feeds one hungry human', color:'#2A9D48',
+    art:'<circle cx="50" cy="55" r="32" fill="#FFB703" stroke="#1D1A16" stroke-width="4"/><circle cx="38" cy="50" r="9" fill="#E63946"/><circle cx="60" cy="50" r="9" fill="#2A9D48"/><circle cx="49" cy="62" r="9" fill="#FFF8E7"/>' },
+  { name:'Chaat Party Platter', cat:'thali', price:'S$59.00', desc:'Serves 6–8: pani puri, bhel, tikkis, jalebi', tag:'Party hero', color:'#FFB703',
+    art:'<rect x="18" y="40" width="64" height="30" rx="8" fill="#E63946" stroke="#1D1A16" stroke-width="4"/><circle cx="34" cy="55" r="7" fill="#FFB703"/><circle cx="52" cy="55" r="7" fill="#2A9D48"/><circle cx="68" cy="55" r="7" fill="#FFF8E7"/>' }
+];
+
+var grid = document.getElementById('menuGrid');
+function cardHTML(item, i){
+  var rot = (i % 2 === 0) ? '-rotate-1' : 'rotate-1';
+  var tag = item.tag ? '<span class="inline-block text-xs font-bold px-3 py-1 rounded-full mb-3" style="background:' + item.color + ';color:#1D1A16">' + item.tag + '</span>' : '<span class="inline-block mb-3">&nbsp;</span>';
+  return '<article class="menu-card bobble sticker bg-white rounded-3xl p-6 ' + rot + '" data-cat="' + item.cat + '">' +
+    '<div class="rounded-2xl mb-5 grid place-items-center py-6" style="background:' + item.color + '22">' +
+      '<svg viewBox="0 0 100 100" class="w-24 h-24">' + item.art + '</svg></div>' +
+    tag + '<h3 class="font-mega text-xl mb-1">' + item.name + '</h3>' +
+    '<p class="text-sm text-ink/60 mb-4">' + item.desc + '</p>' +
+    '<div class="flex items-center justify-between"><p class="font-mega text-lg text-chilli">' + item.price + '</p>' +
+    '<a href="#order" class="text-sm font-bold underline decoration-2 underline-offset-4">Order this</a></div></article>';
+}
+function renderMenu(filter){
+  grid.innerHTML = MENU.filter(function(m){ return filter === 'all' || m.cat === filter; })
+    .map(cardHTML).join('');
+  gsap.fromTo('.menu-card', { opacity:0, y:40, scale:.94, rotate:0 },
+    { opacity:1, y:0, scale:1, duration:.6, stagger:.07, ease:'back.out(1.6)',
+      onComplete:function(){ grid.querySelectorAll('.menu-card').forEach(function(c,i){ c.style.transform=''; }); bindTilt(); } });
+}
+renderMenu('all');
+document.getElementById('tabs').addEventListener('click', function(e){
+  var btn = e.target.closest('.tab'); if(!btn) return;
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  var cards = grid.querySelectorAll('.menu-card');
+  gsap.to(cards, { opacity:0, y:24, scale:.94, duration:.25, stagger:.03, ease:'power2.in',
+    onComplete:function(){ renderMenu(btn.getAttribute('data-filter')); } });
+});
+
+/* ---------- loader ---------- */
+window.addEventListener('load', function(){
+  gsap.to('#loader', { yPercent:-100, duration:.8, delay:.9, ease:'power3.inOut',
+    onComplete:function(){ document.getElementById('loader').style.display='none'; heroIntro(); } });
+});
+function heroIntro(){
+  var tl = gsap.timeline({defaults:{ease:'back.out(1.4)'}});
+  tl.from('.hero-kicker', { scale:0, rotate:-20, duration:.6 })
+    .from('.hero-line', { y:90, opacity:0, duration:.8, stagger:.12 }, '-=.3')
+    .from('.hero-sub', { y:30, opacity:0, duration:.7, stagger:.1 }, '-=.4');
+}
+
+/* ---------- nav ---------- */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+var menuBtn = document.getElementById('menuBtn'), mobileMenu = document.getElementById('mobileMenu'), menuOpen = false;
+menuBtn.addEventListener('click', function(){
+  menuOpen = !menuOpen;
+  mobileMenu.classList.toggle('hidden', !menuOpen);
+  mobileMenu.classList.toggle('flex', menuOpen);
+});
+mobileMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menuOpen=false; mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('flex'); }); });
+
+/* ---------- marquee (motion.dev ticker idea) ---------- */
+(function(){
+  var items = ['PANI PURI','BHEL PURI','RAGDA PATTIES','KULFI FALOODA','SINCE 1952','100% VEG'];
+  var star = '<svg width="26" height="26" viewBox="0 0 24 24" fill="#E63946" style="flex-shrink:0"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 12.2l7.1-.6z"/></svg>';
+  var half = items.map(function(t){ return '<span class="flex items-center gap-8">' + star + '<span>' + t + '</span></span>'; }).join('');
+  document.getElementById('mq1').innerHTML = half;
+  document.getElementById('mq2').innerHTML = half;
+})();
+
+/* ---------- scroll reveals ---------- */
+gsap.utils.toArray('.scroll-fade').forEach(function(el){
+  gsap.from(el, { opacity:0, y:44, duration:.8, ease:'back.out(1.5)',
+    scrollTrigger:{ trigger:el, start:'top 90%' } });
+});
+
+/* ---------- tilt cards (motion.dev tilt idea) ---------- */
+function bindTilt(){
+  document.querySelectorAll('.menu-card:not([data-tilt])').forEach(function(card){
+    card.setAttribute('data-tilt','1');
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var rx = ((e.clientY - r.top) / r.height - .5) * -10;
+      var ry = ((e.clientX - r.left) / r.width - .5) * 10;
+      card.style.transform = 'perspective(700px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+    });
+    card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+  });
+}
+bindTilt();
+
+/* ---------- counters ---------- */
+gsap.utils.toArray('.counter').forEach(function(el){
+  var target = parseInt(el.getAttribute('data-target'), 10);
+  ScrollTrigger.create({ trigger:el, start:'top 94%', once:true,
+    onEnter:function(){ gsap.to(el, { innerText:target, duration:1.4, ease:'bounce.out', snap:{innerText:1} }); } });
+});
+
+/* ---------- footer pop ---------- */
+gsap.from('.footer-big', { scale:.8, opacity:0, duration:1, ease:'back.out(1.3)',
+  scrollTrigger:{ trigger:'footer', start:'top 80%' } });
+
+/* ---------- confetti (motion.dev confetti idea) ---------- */
+function confettiBurst(){
+  var colors = ['#FFB703','#E63946','#2A9D48','#6C2BD9','#FFF8E7'];
+  for(var i=0; i<70; i++){
+    var p = document.createElement('div');
+    p.className = 'confetti';
+    var s = 6 + Math.random()*8;
+    p.style.width = s + 'px'; p.style.height = s*0.6 + 'px';
+    p.style.left = (20 + Math.random()*60) + 'vw';
+    p.style.background = colors[i % colors.length];
+    document.body.appendChild(p);
+    gsap.to(p, { y: window.innerHeight + 60, x:'+=' + (Math.random()*300-150), rotation: Math.random()*720-360,
+      duration: 1.8 + Math.random()*1.6, ease:'power1.in', delay: Math.random()*.4,
+      onComplete:(function(el){ return function(){ el.remove(); }; })(p) });
+  }
+}
+
+/* ---------- order form ---------- */
+var form = document.getElementById('orderForm'), toast = document.getElementById('toast'), toastTimer;
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  if(!form.checkValidity()){ form.reportValidity(); return; }
+  confettiBurst();
+  toast.classList.add('show');
+  form.reset();
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 4200);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ara Cakes — Couture Cakes by Jaya | Luxury Wedding & Celebration Cakes, New Delhi</title>
+<meta name="description" content="Ara Cakes by Jaya — bespoke couture cakes in New Delhi. Wedding tiers, birthday showstoppers and custom edible art. Order your dream cake.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--blush:#fbe9e2;--blush2:#f6d5c8;--cream:#fffaf5;--gold:#b8860b;--gold2:#d4a62e;--cocoa:#4a2e28;--rose:#c4707f}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--cocoa);overflow-x:hidden}
+.font-corm{font-family:'Cormorant Garamond',serif}.font-script{font-family:'Dancing Script',cursive}
+::selection{background:var(--gold2);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--blush)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:6px}
+
+#nav{transition:all .4s}
+#nav.solid{background:rgba(255,250,245,.92);backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(184,134,11,.12)}
+.nav-link{position:relative;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.nav-link::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:width .35s}
+.nav-link:hover::after{width:100%}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#fff;font-weight:600;letter-spacing:.14em;box-shadow:0 10px 28px rgba(184,134,11,.35);transition:transform .3s,box-shadow .3s}
+.btn-gold:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 38px rgba(184,134,11,.5)}
+.btn-line{border:1.5px solid var(--gold);color:var(--gold);font-weight:600;letter-spacing:.14em;transition:all .3s}
+.btn-line:hover{background:var(--gold);color:#fff;transform:translateY(-3px)}
+.eyebrow{letter-spacing:.4em;font-size:.68rem;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+.pill{border:1.5px solid #e8d3c2;background:#fff;border-radius:999px;padding:.65rem 1.6rem;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#8a6a5e;transition:all .3s;cursor:pointer}
+.pill:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.pill.active{background:linear-gradient(135deg,var(--gold2),var(--gold));border-color:transparent;color:#fff;box-shadow:0 8px 22px rgba(184,134,11,.35)}
+
+.cake-card{background:#fff;border-radius:26px;overflow:hidden;border:1px solid #f3e2d5;box-shadow:0 10px 34px rgba(196,112,127,.10);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.cake-card:hover{transform:translateY(-10px) rotate(-.4deg);box-shadow:0 28px 60px rgba(196,112,127,.22)}
+.cake-card .art{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.cake-card:hover .art{transform:scale(1.05)}
+.cake-tag{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--gold);background:rgba(184,134,11,.1);border-radius:999px;padding:.3rem .9rem}
+
+.step{background:#fff;border-radius:24px;border:1px solid #f3e2d5;box-shadow:0 8px 26px rgba(196,112,127,.08);transition:all .35s}
+.step:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(196,112,127,.16)}
+.step-num{font-family:'Dancing Script',cursive;font-size:3rem;color:var(--gold2);line-height:1}
+
+.field{background:#fff;border:1.5px solid #ecd9c8;border-radius:14px;color:var(--cocoa);transition:border .3s,box-shadow .3s}
+.field:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(184,134,11,.12)}
+.field::placeholder{color:#b89a8a}
+
+.float-a{animation:floaty 6s ease-in-out infinite}
+.float-b{animation:floaty 8s ease-in-out infinite reverse}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(1.2deg)}}
+.petal{position:absolute;border-radius:60% 40% 60% 40%;background:linear-gradient(135deg,#f6cdd3,#f0a8b4);opacity:.55;animation:drift 14s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-60px) rotate(40deg)}}
+.tst{position:absolute;inset:0;opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s;pointer-events:none}
+.tst.active{opacity:1;transform:none;pointer-events:auto}
+.reveal-mask{overflow:hidden}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4 flex items-center justify-between">
+  <a href="#" class="flex items-center gap-3">
+    <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+      <ellipse cx="24" cy="34" rx="14" ry="6" fill="#f6d5c8"/><rect x="12" y="22" width="24" height="12" rx="4" fill="#fff"/><rect x="12" y="22" width="24" height="5" rx="2.5" fill="#f0a8b4"/>
+      <rect x="16" y="14" width="16" height="8" rx="3" fill="#fff"/><path d="M24 14 v-6" stroke="#b8860b" stroke-width="2"/><ellipse cx="24" cy="6" rx="3" ry="4" fill="#d4a62e"/>
+    </svg>
+    <span><span class="font-script text-3xl block leading-none" style="color:var(--cocoa)">Ara Cakes</span>
+    <span class="text-[10px] tracking-[.34em] font-medium" style="color:var(--gold)">COUTURE &middot; BY JAYA</span></span>
+  </a>
+  <div class="hidden md:flex items-center gap-9">
+    <a href="#gallery" class="nav-link">Gallery</a><a href="#process" class="nav-link">Process</a>
+    <a href="#about" class="nav-link">About Jaya</a><a href="#order" class="btn-gold magnetic px-7 py-3 rounded-full text-xs uppercase">Order a Cake</a>
+  </div>
+  <button id="menuBtn" class="md:hidden p-2" aria-label="Menu"><svg width="26" height="26" viewBox="0 0 24 24" stroke="#4a2e28" stroke-width="1.8" fill="none"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</nav>
+<div id="mobileMenu" class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-7" style="background:rgba(255,250,245,.98)">
+  <a href="#gallery" class="font-corm text-3xl">Gallery</a><a href="#process" class="font-corm text-3xl">Process</a>
+  <a href="#about" class="font-corm text-3xl">About Jaya</a><a href="#order" class="btn-gold px-8 py-3 rounded-full text-sm uppercase">Order a Cake</a>
+</div>
+
+<!-- HERO -->
+<header class="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16" style="background:linear-gradient(160deg,var(--blush) 0%,var(--cream) 60%,#fdeee4 100%)">
+  <div class="petal" style="width:90px;height:70px;top:16%;left:8%"></div>
+  <div class="petal" style="width:60px;height:46px;top:64%;left:4%;animation-delay:-5s"></div>
+  <div class="petal" style="width:110px;height:84px;top:24%;right:6%;animation-delay:-9s"></div>
+  <div class="petal" style="width:52px;height:40px;top:76%;right:12%;animation-delay:-3s"></div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+    <div>
+      <p class="eyebrow mb-6 hero-el">New Delhi &middot; Eggless options available</p>
+      <p class="font-script text-4xl md:text-5xl hero-el" style="color:var(--rose)">baked with love,</p>
+      <h1 class="font-corm font-medium text-6xl md:text-8xl leading-[.95] mt-1" id="heroTitle">designed<br>like <em style="color:var(--gold)">art</em></h1>
+      <p class="hero-el mt-7 text-lg max-w-md font-light" style="color:#7a5c50">Couture cakes for weddings, birthdays and once-in-a-lifetime moments &mdash; handcrafted by Jaya, Delhi's sugar artist, with Belgian chocolate and real blooms.</p>
+      <div class="hero-el mt-9 flex flex-wrap gap-4">
+        <a href="#order" class="btn-gold magnetic px-9 py-4 rounded-full text-xs uppercase">Order Your Cake</a>
+        <a href="#gallery" class="btn-line magnetic px-9 py-4 rounded-full text-xs uppercase">View Gallery</a>
+      </div>
+      <div class="hero-el mt-10 flex gap-8 text-sm" style="color:#7a5c50">
+        <div><span class="font-corm text-3xl block font-semibold" style="color:var(--cocoa)"><span class="counter" data-to="900">0</span>+</span>cakes delivered</div>
+        <div><span class="font-corm text-3xl block font-semibold" style="color:var(--cocoa)"><span class="counter" data-to="6">0</span> yrs</span>sugar artistry</div>
+        <div><span class="font-corm text-3xl block font-semibold" style="color:var(--cocoa)">4.9</span>average rating</div>
+      </div>
+    </div>
+    <div class="relative flex justify-center hero-el">
+      <div class="absolute rounded-full" style="width:min(78vw,460px);height:min(78vw,460px);background:radial-gradient(circle,#f6d5c8 0%,transparent 70%)"></div>
+      <svg viewBox="0 0 400 460" class="float-a relative" style="width:min(70vw,380px);filter:drop-shadow(0 30px 40px rgba(196,112,127,.3))">
+        <ellipse cx="200" cy="420" rx="130" ry="20" fill="#e8c9b8" opacity=".7"/>
+        <rect x="110" y="380" width="180" height="14" rx="7" fill="#d4a62e"/>
+        <rect x="120" y="300" width="160" height="84" rx="10" fill="#fff5ee"/>
+        <path d="M120,310 q10,18 20,0 q10,18 20,0 q10,18 20,0 q10,18 20,0 q10,18 20,0 q10,18 20,0 q10,18 20,0 q10,18 20,0 L280,300 h-160 z" fill="#8a4a2f"/>
+        <rect x="135" y="222" width="130" height="82" rx="10" fill="#fdf1e7"/>
+        <path d="M135,232 q9,16 18,0 q9,16 18,0 q9,16 18,0 q9,16 18,0 q9,16 18,0 q9,16 18,0 q8,14 12,4 L265,222 h-130 z" fill="#f0a8b4"/>
+        <rect x="152" y="150" width="96" height="76" rx="10" fill="#fff"/>
+        <path d="M152,160 q8,14 16,0 q8,14 16,0 q8,14 16,0 q8,14 16,0 q8,14 16,0 q8,14 16,0 L248,150 h-96 z" fill="#d4a62e" opacity=".8"/>
+        <g><circle cx="170" cy="120" r="16" fill="#f0a8b4"/><circle cx="200" cy="108" r="20" fill="#f6cdd3"/><circle cx="232" cy="122" r="15" fill="#f0a8b4"/><circle cx="200" cy="122" r="8" fill="#d4a62e"/><path d="M200,142 q-6,20 -22,26 M200,142 q8,18 24,24" stroke="#7a9a5b" stroke-width="5" fill="none"/></g>
+        <g fill="#d4a62e" opacity=".9"><circle cx="150" cy="260" r="4"/><circle cx="250" cy="260" r="4"/><circle cx="200" cy="186" r="4"/><circle cx="170" cy="186" r="3"/><circle cx="232" cy="186" r="3"/></g>
+      </svg>
+      <div class="absolute -bottom-2 right-2 md:right-10 px-6 py-4 rounded-2xl float-b" style="background:#fff;box-shadow:0 18px 40px rgba(196,112,127,.25);border:1px solid #f3e2d5">
+        <p class="font-script text-2xl" style="color:var(--rose)">this week's favourite</p>
+        <p class="text-xs tracking-[.2em] uppercase font-semibold mt-1" style="color:var(--gold)">Pistachio Rose Wedding Tier</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- GALLERY -->
+<section id="gallery" class="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
+  <div class="text-center st-reveal">
+    <p class="eyebrow mb-5">The Collection</p>
+    <h2 class="font-corm text-5xl md:text-6xl">Cakes that <em style="color:var(--gold)">steal the show</em></h2>
+    <p class="font-script text-3xl mt-4" style="color:var(--rose)">pick a mood, we'll bake the dream</p>
+  </div>
+  <div class="flex flex-wrap justify-center gap-3 mt-10 st-reveal" id="pills">
+    <button class="pill active" data-f="all">All Cakes</button>
+    <button class="pill" data-f="wedding">Wedding</button>
+    <button class="pill" data-f="birthday">Birthday</button>
+    <button class="pill" data-f="custom">Custom Art</button>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12" id="cakeGrid"></div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="py-20 md:py-28" style="background:linear-gradient(180deg,var(--blush),var(--cream))">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="text-center st-reveal">
+      <p class="eyebrow mb-5">How It Works</p>
+      <h2 class="font-corm text-5xl md:text-6xl">From sketch to <em style="color:var(--gold)">showstopper</em></h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+      <div class="step p-8 st-reveal"><p class="step-num">1.</p><h3 class="font-corm text-2xl mt-3 font-semibold">Consult</h3><p class="text-sm mt-2 font-light" style="color:#7a5c50">A 20-minute call or studio visit. Tell us the occasion, theme, flavours and servings.</p></div>
+      <div class="step p-8 st-reveal"><p class="step-num">2.</p><h3 class="font-corm text-2xl mt-3 font-semibold">Design</h3><p class="text-sm mt-2 font-light" style="color:#7a5c50">Jaya sketches your cake and shares a digital preview. Unlimited tweaks until you love it.</p></div>
+      <div class="step p-8 st-reveal"><p class="step-num">3.</p><h3 class="font-corm text-2xl mt-3 font-semibold">Bake</h3><p class="text-sm mt-2 font-light" style="color:#7a5c50">Baked fresh 24 hours before delivery &mdash; Belgian chocolate, real vanilla, seasonal fruit.</p></div>
+      <div class="step p-8 st-reveal"><p class="step-num">4.</p><h3 class="font-corm text-2xl mt-3 font-semibold">Deliver</h3><p class="text-sm mt-2 font-light" style="color:#7a5c50">Chilled, boxed and hand-delivered across Delhi NCR. Tiered cakes assembled on-site.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-28 grid md:grid-cols-2 gap-14 items-center">
+  <div class="st-reveal flex justify-center">
+    <div class="relative">
+      <svg viewBox="0 0 320 380" style="width:min(72vw,300px);filter:drop-shadow(0 24px 40px rgba(196,112,127,.25))">
+        <rect x="20" y="20" width="280" height="340" rx="140" fill="#f6d5c8"/>
+        <circle cx="160" cy="140" r="62" fill="#f3c39a"/>
+        <path d="M98,140 q-6,-70 62,-70 q68,0 62,70 q-4,-34 -30,-40 q6,18 -4,26 q-16,-22 -44,-18 q-30,4 -46,32z" fill="#4a2e28"/>
+        <circle cx="138" cy="142" r="6" fill="#4a2e28"/><circle cx="182" cy="142" r="6" fill="#4a2e28"/>
+        <path d="M146,168 q14,12 28,0" stroke="#a8562f" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="120" cy="158" r="8" fill="#f0a8b4" opacity=".7"/><circle cx="200" cy="158" r="8" fill="#f0a8b4" opacity=".7"/>
+        <rect x="96" y="210" width="128" height="130" rx="40" fill="#fff"/>
+        <path d="M96,250 q64,26 128,0 l0,60 q-64,26 -128,0z" fill="#f0a8b4"/>
+      </svg>
+      <div class="absolute -bottom-4 -right-6 px-6 py-4 rounded-2xl float-a" style="background:linear-gradient(135deg,var(--gold2),var(--gold));color:#fff;box-shadow:0 16px 36px rgba(184,134,11,.4)">
+        <p class="font-script text-2xl">Jaya</p><p class="text-[10px] tracking-[.24em] uppercase">Founder &amp; Sugar Artist</p>
+      </div>
+    </div>
+  </div>
+  <div class="st-reveal">
+    <p class="eyebrow mb-5">Meet the Artist</p>
+    <h2 class="font-corm text-5xl">Hi, I'm <em style="color:var(--gold)">Jaya</em></h2>
+    <p class="mt-6 font-light leading-relaxed" style="color:#7a5c50">Six years ago I baked my daughter's birthday cake in our little Hauz Khas kitchen &mdash; and never stopped. Today Ara Cakes is Delhi's boutique studio for couture celebration cakes: hand-painted tiers, sculpted florals and flavours people write back about.</p>
+    <p class="mt-4 font-light leading-relaxed" style="color:#7a5c50">Every cake leaves my studio only when I'd proudly serve it at my own table.</p>
+    <p class="font-script text-3xl mt-6" style="color:var(--rose)">&ldquo;Life's too short for boring cake.&rdquo;</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-16" style="background:var(--blush)">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <p class="eyebrow mb-8 st-reveal">Sweet Words</p>
+    <div class="relative h-56 md:h-48 st-reveal" id="tstWrap">
+      <div class="tst active px-4"><p class="font-corm text-2xl md:text-3xl italic">&ldquo;Our 4-tier wedding cake looked too beautiful to cut &mdash; and tasted even better. Guests are still talking about the pistachio-rose flavour.&rdquo;</p><p class="mt-5 text-xs tracking-[.3em] uppercase font-semibold" style="color:var(--gold)">Ananya &amp; Kabir &middot; Wedding, Chattarpur</p></div>
+      <div class="tst px-4"><p class="font-corm text-2xl md:text-3xl italic">&ldquo;Jaya turned my son's dinosaur obsession into a 3D showstopper. He cried happy tears. Worth every rupee.&rdquo;</p><p class="mt-5 text-xs tracking-[.3em] uppercase font-semibold" style="color:var(--gold)">Ritu Malhotra &middot; Birthday, Gurugram</p></div>
+      <div class="tst px-4"><p class="font-corm text-2xl md:text-3xl italic">&ldquo;Ordered 200 branded cupcakes for our launch. Flawless logo work, delivered chilled and on time.&rdquo;</p><p class="mt-5 text-xs tracking-[.3em] uppercase font-semibold" style="color:var(--gold)">Sana Sheikh &middot; Corporate, Noida</p></div>
+    </div>
+    <div class="flex justify-center gap-3 mt-2" id="tstDots"></div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order" class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-28 grid md:grid-cols-5 gap-12">
+  <div class="md:col-span-2 st-reveal">
+    <p class="eyebrow mb-5">Order Enquiry</p>
+    <h2 class="font-corm text-5xl">Let's bake your <em style="color:var(--gold)">story</em></h2>
+    <p class="mt-6 font-light" style="color:#7a5c50">Tell us about your celebration. We reply within 24 hours with a quote and design sketch slot. Custom cakes need 5&ndash;7 days' notice; wedding tiers 3&ndash;4 weeks.</p>
+    <div class="mt-8 p-6 rounded-2xl" style="background:#fff;border:1px solid #f3e2d5">
+      <p class="text-xs tracking-[.24em] uppercase font-semibold" style="color:var(--gold)">Starting prices</p>
+      <div class="mt-3 space-y-2 text-sm font-medium"><p class="flex justify-between"><span>Designer birthday cakes</span><span class="font-corm font-semibold text-lg">₹1,800+</span></p>
+      <p class="flex justify-between"><span>Custom art cakes</span><span class="font-corm font-semibold text-lg">₹3,500+</span></p>
+      <p class="flex justify-between"><span>Wedding tiers</span><span class="font-corm font-semibold text-lg">₹12,000+</span></p></div>
+    </div>
+  </div>
+  <form id="orderForm" class="md:col-span-3 st-reveal p-8 rounded-3xl" style="background:#fff;border:1px solid #f3e2d5;box-shadow:0 24px 60px rgba(196,112,127,.14)">
+    <div class="grid grid-cols-2 gap-5">
+      <div class="col-span-2 md:col-span-1"><label class="text-xs tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Your name</label><input required class="field mt-2 w-full px-4 py-3" placeholder="Full name"></div>
+      <div class="col-span-2 md:col-span-1"><label class="text-xs tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Phone</label><input required type="tel" class="field mt-2 w-full px-4 py-3" placeholder="+91 ..."></div>
+      <div><label class="text-xs tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Occasion</label><select class="field mt-2 w-full px-4 py-3"><option>Wedding</option><option>Birthday</option><option>Anniversary</option><option>Baby Shower</option><option>Corporate</option><option>Just Because</option></select></div>
+      <div><label class="text-xs tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Needed by</label><input required type="date" class="field mt-2 w-full px-4 py-3"></div>
+      <div><label class="text-xs tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Servings</label><select class="field mt-2 w-full px-4 py-3"><option>10–15 guests</option><option>20–30 guests</option><option>40–60 guests</option><option>80+ guests (tiered)</option></select></div>
+      <div><label class="text-xs tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Flavour</label><select class="field mt-2 w-full px-4 py-3"><option>Belgian Chocolate Truffle</option><option>Pistachio Rose</option><option>Red Velvet Cream Cheese</option><option>Mango Passionfruit</option><option>Butterscotch Praline</option><option>Eggless Vanilla Bean</option></select></div>
+      <div class="col-span-2"><label class="text-xs tracking-[.2em] uppercase font-semibold" style="color:var(--gold)">Describe your dream cake</label><textarea rows="3" class="field mt-2 w-full px-4 py-3" placeholder="Colours, theme, inspiration, message on the cake..."></textarea></div>
+      <div class="col-span-2"><button class="btn-gold w-full py-4 rounded-full text-sm uppercase magnetic">Request Quote</button>
+      <p id="orderMsg" class="hidden text-center mt-4 font-semibold text-sm" style="color:var(--gold)"></p></div>
+    </div>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="pt-14 pb-8" style="background:#3a241f">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-4 gap-10">
+    <div><p class="font-script text-3xl" style="color:#f6d5c8">Ara Cakes</p><p class="text-sm mt-3 font-light" style="color:rgba(246,213,200,.65)">Couture cakes by Jaya &mdash; Hauz Khas, New Delhi. Baked fresh, delivered with love.</p></div>
+    <div><p class="text-xs tracking-[.3em] uppercase mb-4 font-semibold" style="color:var(--gold2)">Visit</p><p class="text-sm font-light" style="color:rgba(246,213,200,.7)">14, Hauz Khas Village<br>New Delhi 110016<br>Tue–Sun, 10 AM – 8 PM</p></div>
+    <div><p class="text-xs tracking-[.3em] uppercase mb-4 font-semibold" style="color:var(--gold2)">Contact</p><p class="text-sm font-light" style="color:rgba(246,213,200,.7)">+91 98110 24680<br>hello@aracakes.in<br>@aracakes.delhi</p></div>
+    <div><p class="text-xs tracking-[.3em] uppercase mb-4 font-semibold" style="color:var(--gold2)">Good to know</p><p class="text-sm font-light" style="color:rgba(246,213,200,.7)">Eggless options &middot; FSSAI licensed<br>Delivery across Delhi NCR</p></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-10 pt-6 flex flex-col md:flex-row justify-between gap-3 text-xs" style="border-top:1px solid rgba(212,166,46,.25);color:rgba(246,213,200,.5)">
+    <p>&copy; 2026 Ara Cakes by Jaya. All rights reserved.</p><p>Concept demo by Om Vibe Webs</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGsap = typeof gsap !== 'undefined';
+  if(hasGsap && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- cake SVG art ---------- */
+  function cakeSVG(kind){
+    var base = '<rect width="420" height="300" fill="#fdf6ef"/><ellipse cx="210" cy="262" rx="120" ry="16" fill="#e8cdbd" opacity=".6"/>';
+    if(kind==='w1') return base + // blush wedding tier
+      '<rect x="130" y="220" width="160" height="44" rx="8" fill="#fff"/><path d="M130,228 q10,14 20,0 q10,14 20,0 q10,14 20,0 q10,14 20,0 q10,14 20,0 q10,14 20,0 q10,14 20,0 q6,10 10,2 v-8 h-160z" fill="#f0a8b4"/>' +
+      '<rect x="145" y="160" width="130" height="62" rx="8" fill="#fdf1e7"/><path d="M145,168 q9,12 18,0 q9,12 18,0 q9,12 18,0 q9,12 18,0 q9,12 18,0 q9,12 18,0 q6,9 12,2 v-8 h-130z" fill="#f6cdd3"/>' +
+      '<rect x="160" y="104" width="100" height="58" rx="8" fill="#fff"/>' +
+      '<g><circle cx="190" cy="84" r="13" fill="#f0a8b4"/><circle cx="212" cy="76" r="16" fill="#f6cdd3"/><circle cx="232" cy="86" r="12" fill="#f0a8b4"/><circle cx="211" cy="86" r="6" fill="#d4a62e"/></g>' +
+      '<g fill="#d4a62e"><circle cx="170" cy="190" r="3.5"/><circle cx="250" cy="190" r="3.5"/><circle cx="210" cy="132" r="3.5"/></g>';
+    if(kind==='w2') return base + // gold geometric wedding
+      '<rect x="125" y="216" width="170" height="48" rx="6" fill="#f7ead0"/><path d="M125,240 h170 M150,216 v48 M210,216 v48 M270,216 v48" stroke="#b8860b" stroke-width="2.5"/>' +
+      '<rect x="145" y="156" width="130" height="62" rx="6" fill="#fff8ea"/><path d="M145,180 h130 M178,156 v62 M242,156 v62" stroke="#b8860b" stroke-width="2"/>' +
+      '<rect x="165" y="102" width="90" height="56" rx="6" fill="#fdf6e3"/><circle cx="210" cy="88" r="12" fill="none" stroke="#b8860b" stroke-width="3"/><circle cx="210" cy="88" r="5" fill="#d4a62e"/>';
+    if(kind==='b1') return base + // chocolate drip birthday
+      '<rect x="135" y="196" width="150" height="68" rx="10" fill="#5b3a29"/><path d="M135,206 q11,22 22,6 q11,26 22,8 q11,22 22,6 q11,24 22,8 q11,20 22,6 q11,18 22,4 q8,12 18,4 v-42 h-150z" fill="#8a5a3b"/>' +
+      '<rect x="135" y="196" width="150" height="16" rx="8" fill="#a87954"/>' +
+      '<g><rect x="206" y="130" width="8" height="52" rx="4" fill="#f0a8b4"/><path d="M196,128 q14,-18 28,0 q-14,10 -28,0" fill="#ff9d2e"/><ellipse cx="210" cy="112" rx="8" ry="12" fill="#ffbe4d"/></g>' +
+      '<g fill="#fff"><circle cx="165" cy="240" r="4"/><circle cx="200" cy="248" r="4"/><circle cx="240" cy="238" r="4"/><circle cx="265" cy="250" r="4"/></g>' +
+      '<text x="210" y="248" text-anchor="middle" font-family="Dancing Script,cursive" font-size="26" fill="#ffe9c9">Happy Day</text>';
+    if(kind==='b2') return base + // pastel rainbow birthday
+      '<rect x="140" y="200" width="140" height="64" rx="10" fill="#cfe3f5"/><rect x="140" y="216" width="140" height="14" fill="#f6cdd3"/><rect x="140" y="234" width="140" height="14" fill="#fdf0b8"/>' +
+      '<rect x="155" y="140" width="110" height="62" rx="10" fill="#fdeede"/><rect x="155" y="152" width="110" height="12" fill="#f0a8b4"/>' +
+      '<g stroke-width="5" stroke-linecap="round"><path d="M170,140 v-34" stroke="#f0a8b4"/><path d="M210,140 v-44" stroke="#8fc7ea"/><path d="M248,140 v-30" stroke="#b5d99a"/><circle cx="170" cy="100" r="8" fill="#f0a8b4"/><circle cx="210" cy="90" r="8" fill="#8fc7ea"/><circle cx="248" cy="104" r="8" fill="#b5d99a"/></g>';
+    if(kind==='c1') return base + // floral custom
+      '<rect x="140" y="196" width="140" height="68" rx="34" fill="#fff"/><path d="M140,210 q12,20 26,4 q14,22 28,6 q14,20 28,4 q14,18 28,4 q12,14 30,6 v-34 h-140z" fill="#e8a2b0"/>' +
+      '<g><circle cx="180" cy="170" r="15" fill="#f0a8b4"/><circle cx="180" cy="170" r="6" fill="#d4a62e"/><circle cx="240" cy="170" r="15" fill="#f6cdd3"/><circle cx="240" cy="170" r="6" fill="#d4a62e"/><circle cx="210" cy="150" r="17" fill="#f0a8b4"/><circle cx="210" cy="150" r="7" fill="#d4a62e"/><path d="M160,190 q50,26 100,0" stroke="#7a9a5b" stroke-width="5" fill="none"/></g>';
+    // c2: sculpted heart custom
+    return base +
+      '<path d="M210,250 C150,210 130,170 150,140 C165,118 195,120 210,142 C225,120 255,118 270,140 C290,170 270,210 210,250z" fill="#c4707f"/>' +
+      '<path d="M210,250 C170,220 152,190 158,162" stroke="#e8a2b0" stroke-width="6" fill="none" opacity=".7"/>' +
+      '<ellipse cx="210" cy="266" rx="70" ry="10" fill="#e8cdbd"/>' +
+      '<g fill="#d4a62e"><circle cx="170" cy="120" r="4"/><circle cx="250" cy="118" r="4"/><circle cx="210" cy="100" r="4"/></g>';
+  }
+
+  var cakes = [
+    {t:'Blush Peony Tier', c:'wedding', tag:'Wedding', price:'from ₹14,500', art:'w1', d:'Three tiers of pistachio-rose sponge with hand-piped peonies and silk ribbon.'},
+    {t:'Gilded Deco', c:'wedding', tag:'Wedding', price:'from ₹18,000', art:'w2', d:'Art-deco gold lattice over ivory fondant — for ballroom receptions.'},
+    {t:'Choco Drip Celebration', c:'birthday', tag:'Birthday', price:'from ₹2,200', art:'b1', d:'Belgian chocolate drip, torched meringue and a hand-written message.'},
+    {t:'Pastel Carnival', c:'birthday', tag:'Birthday', price:'from ₹1,800', art:'b2', d:'Rainbow layers inside, pastel buttercream outside. Kids adore it.'},
+    {t:'Garden Bloom', c:'custom', tag:'Custom Art', price:'from ₹3,800', art:'c1', d:'Sculpted sugar flowers on a blush ombre base — no two alike.'},
+    {t:'Sweetheart Sculpt', c:'custom', tag:'Custom Art', price:'from ₹4,200', art:'c2', d:'A hand-carved heart in ruby ganache. Anniversaries, proposals, vows.'}
+  ];
+  var grid = document.getElementById('cakeGrid');
+  function renderCakes(f){
+    grid.innerHTML = '';
+    cakes.filter(function(k){ return f==='all' || k.c===f; }).forEach(function(k){
+      var el = document.createElement('div');
+      el.className = 'cake-card';
+      el.innerHTML = '<div class="art"><svg viewBox="0 0 420 300" class="w-full block">' + cakeSVG(k.art) + '</svg></div>' +
+        '<div class="p-7"><div class="flex items-center justify-between"><span class="cake-tag">' + k.tag + '</span>' +
+        '<span class="font-corm font-semibold text-lg" style="color:var(--gold)">' + k.price + '</span></div>' +
+        '<h3 class="font-corm text-3xl mt-3">' + k.t + '</h3>' +
+        '<p class="text-sm font-light mt-2" style="color:#7a5c50">' + k.d + '</p>' +
+        '<a href="#order" class="btn-line inline-block mt-5 px-6 py-2.5 rounded-full text-xs uppercase">Order similar</a></div>';
+      grid.appendChild(el);
+    });
+    if(hasGsap && !reduce) gsap.from(grid.children, {opacity:0, y:26, scale:.97, duration:.55, stagger:.08, ease:'power2.out'});
+  }
+  renderCakes('all');
+  document.getElementById('pills').addEventListener('click', function(e){
+    var b = e.target.closest('.pill'); if(!b) return;
+    this.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('active'); });
+    b.classList.add('active'); renderCakes(b.dataset.f);
+  });
+
+  /* ---------- menus / nav ---------- */
+  var mm = document.getElementById('mobileMenu');
+  document.getElementById('menuBtn').addEventListener('click', function(){ var o = mm.classList.toggle('hidden'); mm.classList.toggle('flex', !o); });
+  mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mm.classList.add('hidden'); mm.classList.remove('flex'); }); });
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('solid', window.scrollY > 40); }, {passive:true});
+
+  /* ---------- animations ---------- */
+  if(hasGsap && !reduce){
+    gsap.from('.hero-el', {y:30, opacity:0, duration:.9, stagger:.12, ease:'power2.out', delay:.15});
+    if(typeof ScrollTrigger !== 'undefined'){
+      gsap.utils.toArray('.st-reveal').forEach(function(el){
+        gsap.from(el, {opacity:0, y:16, duration:.6, ease:'power2.out', scrollTrigger:{trigger:el, start:'top 90%', toggleActions:'play none none reverse'}});
+      });
+      document.querySelectorAll('.counter').forEach(function(c){
+        var to = +c.dataset.to;
+        ScrollTrigger.create({trigger:c, start:'top 94%', once:true, onEnter:function(){
+          gsap.fromTo(c, {innerText:0}, {innerText:to, duration:1.5, ease:'power1.out', snap:{innerText:1}, onUpdate:function(){ c.innerText = Math.round(+c.innerText).toLocaleString('en-IN'); }});
+        }});
+      });
+    }
+    if(window.matchMedia('(pointer:fine)').matches){
+      document.querySelectorAll('.magnetic').forEach(function(b){
+        b.addEventListener('mousemove', function(e){
+          var r = b.getBoundingClientRect();
+          gsap.to(b, {x:(e.clientX-r.left-r.width/2)*.22, y:(e.clientY-r.top-r.height/2)*.26, duration:.4});
+        });
+        b.addEventListener('mouseleave', function(){ gsap.to(b, {x:0, y:0, duration:.6, ease:'elastic.out(1,.4)'}); });
+      });
+    }
+  }
+
+  /* ---------- testimonials ---------- */
+  var tsts = document.querySelectorAll('.tst'), dots = document.getElementById('tstDots'), ti = 0;
+  tsts.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.className = 'rounded-full transition-all'; d.style.cssText = 'width:10px;height:10px';
+    d.setAttribute('aria-label','Show testimonial '+(i+1));
+    d.addEventListener('click', function(){ showT(i); });
+    dots.appendChild(d);
+  });
+  function showT(i){
+    ti = i;
+    tsts.forEach(function(t, k){ t.classList.toggle('active', k===i); });
+    dots.querySelectorAll('button').forEach(function(d, k){
+      d.style.background = k===i ? '#b8860b' : '#e0c9b4';
+      d.style.width = k===i ? '28px' : '10px';
+    });
+  }
+  showT(0);
+  setInterval(function(){ if(!reduce) showT((ti+1)%tsts.length); }, 6000);
+
+  /* ---------- form ---------- */
+  document.getElementById('orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var m = document.getElementById('orderMsg');
+    m.textContent = 'Thank you! Jaya will reply within 24 hours with your quote and a design slot.';
+    m.classList.remove('hidden');
+    if(hasGsap && !reduce) gsap.from(m, {y:10, opacity:0, duration:.5});
+    this.querySelectorAll('input,textarea').forEach(function(f){ if(f.type!=='date') f.value=''; });
+  });
+})();
+</script>
+</body>
+</html>

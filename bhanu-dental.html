@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhanu Dental Clinic, Dahisar Mumbai — Painless Dentistry, Honest Pricing</title>
+<meta name="description" content="Bhanu Dental Clinic, Dahisar East Mumbai — painless root canals, braces, implants and smile makeovers by Dr. Bhanu (MDS). Book your appointment online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--teal:#0d7c7a;--teal2:#14a8a4;--mint:#d9f2ec;--mint2:#eefaf6;--ink:#0f2b2a;--mut:#5a7a78;--line:#d7ece8}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--ink);overflow-x:hidden}
+.font-fr{font-family:'Fraunces',serif}
+::selection{background:var(--teal);color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--mint2)}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:6px}
+
+#progress{position:fixed;top:0;left:0;height:4px;z-index:100;background:linear-gradient(90deg,var(--teal2),var(--teal));width:0}
+#nav{transition:all .35s}
+#nav.solid{background:rgba(255,255,255,.94);backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(13,124,122,.12)}
+.nav-link{font-size:.82rem;font-weight:600;letter-spacing:.08em;color:var(--ink);position:relative}
+.nav-link::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--teal);border-radius:2px;transition:width .3s}
+.nav-link:hover::after{width:100%}
+.btn-teal{background:linear-gradient(135deg,var(--teal2),var(--teal));color:#fff;font-weight:700;box-shadow:0 10px 28px rgba(13,124,122,.35);transition:transform .28s,box-shadow .28s}
+.btn-teal:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(13,124,122,.5)}
+.btn-line{border:2px solid var(--teal);color:var(--teal);font-weight:700;transition:all .28s}
+.btn-line:hover{background:var(--teal);color:#fff;transform:translateY(-3px)}
+.eyebrow{letter-spacing:.32em;font-size:.68rem;text-transform:uppercase;color:var(--teal);font-weight:700}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 8px 30px rgba(13,124,122,.07);transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-7px);box-shadow:0 24px 54px rgba(13,124,122,.15)}
+.tcard{border:1.5px solid var(--line);border-radius:20px;transition:all .3s;background:#fff}
+.tcard:hover{border-color:var(--teal2);transform:translateY(-5px);box-shadow:0 18px 40px rgba(13,124,122,.14)}
+
+.tab{border-radius:999px;padding:.7rem 1.7rem;font-weight:700;font-size:.85rem;color:var(--mut);border:1.5px solid var(--line);transition:all .3s;cursor:pointer;background:#fff}
+.tab:hover{border-color:var(--teal2);color:var(--teal)}
+.tab.active{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 10px 26px rgba(13,124,122,.35)}
+
+.acc{border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border .3s}
+.acc.open{border-color:var(--teal2)}
+.acc-head{cursor:pointer}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.8,.2,1)}
+.acc-icon{transition:transform .35s}
+.acc.open .acc-icon{transform:rotate(45deg)}
+
+.slot{border:1.5px solid var(--line);border-radius:12px;padding:.6rem .4rem;font-size:.82rem;font-weight:600;color:var(--mut);cursor:pointer;transition:all .25s;text-align:center}
+.slot:hover{border-color:var(--teal2);color:var(--teal)}
+.slot.sel{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 6px 18px rgba(13,124,122,.35)}
+.slot.off{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+
+.field{background:var(--mint2);border:1.5px solid var(--line);border-radius:14px;transition:border .25s,box-shadow .25s;color:var(--ink)}
+.field:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(13,124,122,.12);background:#fff}
+.field::placeholder{color:#93b3b1}
+
+.stat{background:linear-gradient(150deg,var(--mint2),#fff);border:1px solid var(--line);border-radius:20px}
+.pulse-dot{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.5);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.type-caret{display:inline-block;width:3px;height:1em;background:var(--teal);margin-left:3px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.45;pointer-events:none}
+.tst{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;pointer-events:none}
+.tst.active{opacity:1;transform:none;pointer-events:auto}
+.check-pop{animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="antialiased">
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4 flex items-center justify-between">
+  <a href="#" class="flex items-center gap-3">
+    <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+      <rect x="4" y="4" width="40" height="40" rx="14" fill="url(#tg)"/>
+      <defs><linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14a8a4"/><stop offset="1" stop-color="#0d7c7a"/></linearGradient></defs>
+      <path d="M24 10c-5 0-7 3-9 3-2.4 0-3-2-3-2 1 9 4 12 5 17 .8 3.6 1.4 10 4 10 2 0 1.6-6 3-6s1 6 3 6c2.6 0 3.2-6.4 4-10 1-5 4-8 5-17 0 0-.6 2-3 2-2 0-4-3-9-3z" fill="#fff"/>
+    </svg>
+    <span><span class="font-extrabold text-xl block leading-none">Bhanu Dental</span>
+    <span class="text-[10px] tracking-[.3em] font-semibold" style="color:var(--teal)">DAHISAR &middot; MUMBAI</span></span>
+  </a>
+  <div class="hidden md:flex items-center gap-8">
+    <a href="#treatments" class="nav-link">Treatments</a><a href="#doctor" class="nav-link">Doctor</a>
+    <a href="#reviews" class="nav-link">Reviews</a><a href="#faq" class="nav-link">FAQ</a>
+    <a href="#book" class="btn-teal magnetic px-7 py-3 rounded-full text-sm">Book Appointment</a>
+  </div>
+  <button id="menuBtn" class="md:hidden p-2" aria-label="Menu"><svg width="26" height="26" viewBox="0 0 24 24" stroke="#0f2b2a" stroke-width="2" fill="none"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</nav>
+<div id="mobileMenu" class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-7 bg-white/98" style="background:rgba(255,255,255,.98)">
+  <a href="#treatments" class="font-fr text-3xl">Treatments</a><a href="#doctor" class="font-fr text-3xl">Doctor</a>
+  <a href="#reviews" class="font-fr text-3xl">Reviews</a><a href="#book" class="btn-teal px-8 py-3 rounded-full">Book Appointment</a>
+</div>
+
+<!-- HERO -->
+<header class="relative min-h-screen flex items-center overflow-hidden pt-28 pb-14" style="background:linear-gradient(150deg,var(--mint2) 0%,#fff 55%,#e6f6f1 100%)">
+  <div class="blob" style="width:440px;height:440px;background:#bfe9df;top:-140px;right:-120px"></div>
+  <div class="blob" style="width:300px;height:300px;background:#d9f2ec;bottom:-100px;left:-100px"></div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+    <div>
+      <p class="hero-el inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full mb-7" style="background:#fff;border:1px solid var(--line);color:var(--teal)">
+        <span class="pulse-dot"></span> Accepting new patients &middot; Dahisar East</p>
+      <h1 class="font-fr font-semibold text-5xl md:text-7xl leading-[1.04]">
+        <span id="typeLine" class="block min-h-[1.2em]"></span><span class="type-caret"></span>
+      </h1>
+      <p class="hero-el mt-6 text-lg max-w-md" style="color:var(--mut)">From routine cleanings to full smile makeovers &mdash; gentle, transparent dentistry by <strong style="color:var(--ink)">Dr. Bhanu (MDS)</strong>, trusted by 12,000+ families across Dahisar, Borivali and Mira Road.</p>
+      <div class="hero-el mt-9 flex flex-wrap gap-4">
+        <a href="#book" class="btn-teal magnetic px-9 py-4 rounded-full">Book Appointment</a>
+        <a href="tel:+919820012345" class="btn-line magnetic px-9 py-4 rounded-full inline-flex items-center gap-2">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+          +91 98200 12345</a>
+      </div>
+      <div class="hero-el mt-10 grid grid-cols-3 gap-4 max-w-md">
+        <div class="stat p-4 text-center"><p class="text-2xl font-extrabold" style="color:var(--teal)"><span class="counter" data-to="12">0</span>k+</p><p class="text-xs font-semibold" style="color:var(--mut)">Happy patients</p></div>
+        <div class="stat p-4 text-center"><p class="text-2xl font-extrabold" style="color:var(--teal)"><span class="counter" data-to="15">0</span>+</p><p class="text-xs font-semibold" style="color:var(--mut)">Years experience</p></div>
+        <div class="stat p-4 text-center"><p class="text-2xl font-extrabold" style="color:var(--teal)">4.9</p><p class="text-xs font-semibold" style="color:var(--mut)">Google rating</p></div>
+      </div>
+    </div>
+    <div class="hero-el relative flex justify-center">
+      <svg viewBox="0 0 420 440" style="width:min(78vw,400px);filter:drop-shadow(0 30px 50px rgba(13,124,122,.25))">
+        <circle cx="210" cy="210" r="190" fill="#d9f2ec"/>
+        <circle cx="210" cy="210" r="150" fill="#eefaf6"/>
+        <path d="M210 90c-44 0-62 26-80 26-21 0-26-17-26-17 9 79 35 105 44 149 7 32 12 88 35 88 18 0 14-53 27-53s9 53 27 53c23 0 28-56 35-88 9-44 35-70 44-149 0 0-5 17-26 17-18 0-36-26-80-26z" fill="#fff" stroke="#0d7c7a" stroke-width="6"/>
+        <path d="M170 190 q20 26 40 0 M210 190 q20 26 40 0" stroke="#14a8a4" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <g fill="#14a8a4"><circle cx="120" cy="120" r="10" opacity=".5"/><circle cx="310" cy="140" r="14" opacity=".35"/><circle cx="290" cy="300" r="8" opacity=".5"/><circle cx="130" cy="300" r="12" opacity=".3"/></g>
+        <g stroke="#0d7c7a" stroke-width="4" fill="none" opacity=".6"><path d="M96,210 l-24,-10 M324,210 l24,-10 M210,392 l0,26"/></g>
+      </svg>
+      <div class="absolute bottom-4 left-2 md:left-8 px-5 py-4 card flex items-center gap-3">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="1.8"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><p class="font-extrabold text-sm">100% Sterile</p><p class="text-xs" style="color:var(--mut)">4-step instrument protocol</p></div>
+      </div>
+      <div class="absolute top-6 right-2 md:right-8 px-5 py-4 card flex items-center gap-3">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div><p class="font-extrabold text-sm">Painless First</p><p class="text-xs" style="color:var(--mut)">Computer-controlled anaesthesia</p></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST STRIP -->
+<div class="border-y" style="border-color:var(--line);background:#fff">
+  <div class="max-w-7xl mx-auto px-6 py-6 flex flex-wrap justify-center gap-x-12 gap-y-4 text-sm font-semibold" style="color:var(--mut)">
+    <span class="flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>MDS Prosthodontist</span>
+    <span class="flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Digital X-Ray in-house</span>
+    <span class="flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>EMI available</span>
+    <span class="flex items-center gap-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>All insurances supported</span>
+  </div>
+</div>
+
+<!-- TREATMENTS -->
+<section id="treatments" class="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
+  <div class="text-center st-reveal">
+    <p class="eyebrow mb-5">Our Treatments</p>
+    <h2 class="font-fr font-semibold text-4xl md:text-6xl">Complete care for every smile</h2>
+    <p class="mt-4 max-w-xl mx-auto" style="color:var(--mut)">Transparent pricing shared before we begin &mdash; no surprises, ever.</p>
+  </div>
+  <div class="flex flex-wrap justify-center gap-3 mt-10 st-reveal" id="treatTabs">
+    <button class="tab active" data-t="general">General Dentistry</button>
+    <button class="tab" data-t="cosmetic">Cosmetic</button>
+    <button class="tab" data-t="ortho">Braces &amp; Aligners</button>
+    <button class="tab" data-t="surgical">Implants &amp; Surgery</button>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10" id="treatGrid"></div>
+</section>
+
+<!-- DOCTOR -->
+<section id="doctor" class="py-20 md:py-28" style="background:linear-gradient(160deg,var(--mint2),#fff)">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-14 items-center">
+    <div class="st-reveal flex justify-center">
+      <div class="relative">
+        <svg viewBox="0 0 320 380" style="width:min(72vw,300px);filter:drop-shadow(0 24px 44px rgba(13,124,122,.22))">
+          <rect x="20" y="20" width="280" height="340" rx="140" fill="#d9f2ec"/>
+          <circle cx="160" cy="138" r="60" fill="#e8b98d"/>
+          <path d="M100,138 q-4,-64 60,-64 q64,0 60,64 q-6,-30 -28,-36 l-8,14 -10,-16 -12,12 -8,-14 q-40,2 -54,40z" fill="#2b2b2b"/>
+          <circle cx="139" cy="140" r="6" fill="#1c1c1c"/><circle cx="181" cy="140" r="6" fill="#1c1c1c"/>
+          <path d="M146,166 q14,12 28,0" stroke="#8a4a2f" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <rect x="98" y="208" width="124" height="132" rx="36" fill="#0d7c7a"/>
+          <path d="M148,208 v60 M172,208 v60" stroke="#fff" stroke-width="5"/>
+          <rect x="140" y="200" width="40" height="26" rx="8" fill="#e8b98d"/>
+        </svg>
+        <div class="absolute -bottom-4 -right-4 px-6 py-4 card"><p class="font-extrabold">Dr. Bhanu</p><p class="text-xs font-semibold" style="color:var(--teal)">MDS Prosthodontics</p></div>
+      </div>
+    </div>
+    <div class="st-reveal">
+      <p class="eyebrow mb-5">Your Dentist</p>
+      <h2 class="font-fr font-semibold text-4xl md:text-5xl">Dentistry with a<br>gentle hand</h2>
+      <p class="mt-6 leading-relaxed" style="color:var(--mut)">Dr. Bhanu completed her MDS in Prosthodontics from Government Dental College, Mumbai, and has spent 15 years making dental visits something patients no longer dread. Her philosophy is simple: explain everything, numb completely, and never rush.</p>
+      <ul class="mt-7 space-y-3 font-medium">
+        <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full flex-none flex items-center justify-center" style="background:var(--mint)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>MDS, Government Dental College Mumbai (2010)</li>
+        <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full flex-none flex items-center justify-center" style="background:var(--mint)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>Certified implantologist &mdash; 800+ implants placed</li>
+        <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full flex-none flex items-center justify-center" style="background:var(--mint)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>Invisalign&reg; provider since 2018</li>
+        <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full flex-none flex items-center justify-center" style="background:var(--mint)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>Member, Indian Dental Association</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="max-w-4xl mx-auto px-6 py-20 md:py-24 text-center">
+  <p class="eyebrow mb-5 st-reveal">Patient Stories</p>
+  <h2 class="font-fr font-semibold text-4xl md:text-5xl st-reveal">12,000+ smiles and counting</h2>
+  <div class="relative h-60 md:h-52 mt-10 st-reveal" id="tstWrap">
+    <div class="tst active px-4"><div class="flex justify-center gap-1 mb-4 stars"></div><p class="font-fr text-2xl md:text-3xl italic">&ldquo;I was terrified of root canals. Dr. Bhanu finished mine in 40 minutes &mdash; I genuinely didn't feel a thing.&rdquo;</p><p class="mt-5 text-xs tracking-[.28em] uppercase font-bold" style="color:var(--teal)">Nilesh Patil &middot; Dahisar</p></div>
+    <div class="tst px-4"><div class="flex justify-center gap-1 mb-4 stars"></div><p class="font-fr text-2xl md:text-3xl italic">&ldquo;My daughter's braces journey was so smooth. Clear pricing, honest timelines, beautiful result.&rdquo;</p><p class="mt-5 text-xs tracking-[.28em] uppercase font-bold" style="color:var(--teal)">Farah Khan &middot; Borivali</p></div>
+    <div class="tst px-4"><div class="flex justify-center gap-1 mb-4 stars"></div><p class="font-fr text-2xl md:text-3xl italic">&ldquo;Got two implants at 68. The team treated me like family and the cost was exactly as quoted.&rdquo;</p><p class="mt-5 text-xs tracking-[.28em] uppercase font-bold" style="color:var(--teal)">Joseph D'Souza &middot; Mira Road</p></div>
+  </div>
+  <div class="flex justify-center gap-3 mt-2" id="tstDots"></div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="max-w-3xl mx-auto px-6 pb-20 md:pb-28">
+  <div class="text-center st-reveal"><p class="eyebrow mb-5">Good To Know</p><h2 class="font-fr font-semibold text-4xl md:text-5xl">Questions, answered</h2></div>
+  <div class="space-y-4 mt-10" id="faqList"></div>
+</section>
+
+<!-- BOOKING -->
+<section id="book" class="py-20 md:py-28" style="background:linear-gradient(135deg,#0d7c7a,#095e5c)">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 grid md:grid-cols-5 gap-12">
+    <div class="md:col-span-2 text-white st-reveal">
+      <p class="text-xs tracking-[.32em] uppercase font-bold mb-5" style="color:#9fe0dc">Book Appointment</p>
+      <h2 class="font-fr font-semibold text-4xl md:text-5xl">Your smile deserves<br>an hour with us</h2>
+      <p class="mt-6 text-lg" style="color:#c9ece9">Pick a day and time &mdash; we confirm on WhatsApp within 30 minutes during clinic hours (10 AM &ndash; 2 PM, 5 PM &ndash; 9 PM).</p>
+      <div class="mt-8 space-y-4 font-medium" style="color:#e2f5f3">
+        <p class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fe0dc" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>+91 98200 12345</p>
+        <p class="flex items-center gap-3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fe0dc" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>2nd Floor, Shree Heights, Near Dahisar Station (E), Mumbai 400068</p>
+      </div>
+    </div>
+    <div class="md:col-span-3 st-reveal">
+      <form id="apptForm" class="card p-8">
+        <div id="formStep1">
+          <h3 class="text-xl font-extrabold">1. Choose a day</h3>
+          <div class="grid grid-cols-4 sm:grid-cols-7 gap-2.5 mt-5" id="dayGrid"></div>
+          <h3 class="text-xl font-extrabold mt-8">2. Choose a time</h3>
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-2.5 mt-5" id="slotGrid"></div>
+          <h3 class="text-xl font-extrabold mt-8">3. Your details</h3>
+          <div class="grid grid-cols-2 gap-4 mt-5">
+            <input required id="pName" class="field col-span-2 md:col-span-1 px-4 py-3" placeholder="Full name">
+            <input required id="pPhone" type="tel" class="field col-span-2 md:col-span-1 px-4 py-3" placeholder="Phone number">
+            <select id="pReason" class="field col-span-2 px-4 py-3"><option>General checkup &amp; cleaning</option><option>Tooth pain / sensitivity</option><option>Braces / aligners consult</option><option>Implant consult</option><option>Smile designing</option><option>Kids dentistry</option></select>
+          </div>
+          <button type="submit" class="btn-teal w-full mt-7 py-4 rounded-2xl text-base">Confirm Appointment</button>
+          <p id="slotWarn" class="hidden text-center mt-3 text-sm font-bold" style="color:#c2410c">Please pick a day and time slot first.</p>
+        </div>
+        <div id="formStep2" class="hidden text-center py-10">
+          <div class="check-pop w-20 h-20 mx-auto rounded-full flex items-center justify-center" style="background:var(--mint)">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#0d7c7a" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3 class="font-fr font-semibold text-3xl mt-6">Request received!</h3>
+          <p class="mt-3" style="color:var(--mut)" id="confirmText"></p>
+          <p class="mt-2 text-sm font-semibold" style="color:var(--teal)">We will confirm on WhatsApp within 30 minutes (clinic hours).</p>
+          <button type="button" id="bookAnother" class="btn-line mt-8 px-8 py-3 rounded-full text-sm">Book another appointment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pt-14 pb-8" style="background:#0b2423">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-4 gap-10">
+    <div><p class="font-extrabold text-xl text-white">Bhanu Dental Clinic</p><p class="text-sm mt-3" style="color:#8fb8b5">Gentle, transparent dentistry in Dahisar East, Mumbai since 2011.</p></div>
+    <div><p class="text-xs tracking-[.3em] uppercase mb-4 font-bold" style="color:#9fe0dc">Clinic Hours</p><p class="text-sm" style="color:#8fb8b5">Mon–Sat: 10 AM – 2 PM<br>&amp; 5 PM – 9 PM<br>Sunday: 10 AM – 1 PM</p></div>
+    <div><p class="text-xs tracking-[.3em] uppercase mb-4 font-bold" style="color:#9fe0dc">Contact</p><p class="text-sm" style="color:#8fb8b5">+91 98200 12345<br>care@bhanudental.in<br>Dahisar (E), Mumbai 400068</p></div>
+    <div><p class="text-xs tracking-[.3em] uppercase mb-4 font-bold" style="color:#9fe0dc">Emergency?</p><p class="text-sm" style="color:#8fb8b5">Severe tooth pain or trauma?<br>Call us — we keep daily<br>emergency slots.</p></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 mt-10 pt-6 flex flex-col md:flex-row justify-between gap-3 text-xs" style="border-top:1px solid rgba(159,224,220,.2);color:#6d9a97">
+    <p>&copy; 2026 Bhanu Dental Clinic. All rights reserved.</p><p>Concept demo by Om Vibe Webs</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGsap = typeof gsap !== 'undefined';
+  if(hasGsap && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- typewriter ---------- */
+  var lines = ['Painless dentistry,', 'honest pricing.'];
+  var tl = document.getElementById('typeLine'), li = 0, ci = 0, del = false;
+  function type(){
+    var cur = lines[li];
+    tl.textContent = cur.slice(0, ci);
+    if(!del){ ci++; if(ci > cur.length){ del = true; return void setTimeout(type, li === lines.length-1 ? 2600 : 700); } }
+    else { ci--; if(ci === 0){ del = false; li = (li+1) % lines.length; } }
+    setTimeout(type, del ? 28 : 62);
+  }
+  if(!reduce) type(); else tl.textContent = lines.join(' ');
+
+  /* ---------- treatments tabs ---------- */
+  var treats = {
+    general: [
+      ['Dental Checkup & Cleaning', '₹800', 'Complete oral exam, ultrasonic scaling and polishing. The foundation of a healthy smile.'],
+      ['Tooth-Colored Fillings', '₹1,500', 'Seamless composite fillings matched to your tooth shade. Single sitting.'],
+      ['Painless Root Canal', '₹6,500', 'Single-visit rotary RCT with digital X-ray guidance. Truly painless.'],
+      ['Kids Dentistry', '₹600', 'Friendly first visits, fluoride application and habit correction for little smiles.'],
+      ['Tooth Extraction', '₹1,200', 'Gentle, atraumatic extractions including impacted wisdom teeth.'],
+      ['Dentures', '₹15,000', 'Natural-looking complete and partial dentures, relined for comfort.']
+    ],
+    cosmetic: [
+      ['Teeth Whitening', '₹9,000', 'In-office laser whitening — up to 8 shades brighter in one hour.'],
+      ['Smile Designing', '₹25,000', 'Digital smile preview before we begin. Veneers, contouring, gum shaping.'],
+      ['Dental Veneers', '₹12,000', 'Ultra-thin E-max veneers for chips, gaps and stains. Per tooth.'],
+      ['Tooth Jewellery', '₹2,500', 'Subtle crystal accents bonded safely to your enamel.']
+    ],
+    ortho: [
+      ['Metal Braces', '₹35,000', 'Time-tested alignment for teens and adults. 12–18 months typical.'],
+      ['Ceramic Braces', '₹48,000', 'Tooth-colored brackets — effective yet discreet.'],
+      ['Clear Aligners', '₹65,000', 'Removable, nearly invisible trays. Eat anything, brush normally.'],
+      ['Retainers', '₹4,000', 'Custom retainers to hold your new smile for life.']
+    ],
+    surgical: [
+      ['Dental Implants', '₹28,000', 'Swiss-grade implants with lifetime warranty on the fixture. Per implant.'],
+      ['Wisdom Tooth Surgery', '₹8,000', 'Safe removal of impacted molars under complete anaesthesia.'],
+      ['Bone Grafting', '₹12,000', 'Rebuilds bone support for long-lasting implant success.'],
+      ['Full-Mouth Rehab', 'on quote', 'Complete restoration planned digitally, executed in phases. EMI available.']
+    ]
+  };
+  var tgrid = document.getElementById('treatGrid');
+  function renderTreats(k){
+    tgrid.innerHTML = '';
+    treats[k].forEach(function(t){
+      var el = document.createElement('div');
+      el.className = 'tcard p-7';
+      el.innerHTML = '<div class="flex items-start justify-between gap-3"><h3 class="font-extrabold text-lg">' + t[0] + '</h3>' +
+        '<span class="flex-none text-sm font-extrabold px-3 py-1.5 rounded-full" style="background:var(--mint);color:var(--teal)">' + t[1] + '</span></div>' +
+        '<p class="text-sm mt-3 leading-relaxed" style="color:var(--mut)">' + t[2] + '</p>' +
+        '<a href="#book" class="inline-flex items-center gap-2 mt-5 text-sm font-bold" style="color:var(--teal)">Book this treatment <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>';
+      tgrid.appendChild(el);
+    });
+    if(hasGsap && !reduce) gsap.from(tgrid.children, {opacity:0, y:22, duration:.5, stagger:.07, ease:'power2.out'});
+  }
+  renderTreats('general');
+  document.getElementById('treatTabs').addEventListener('click', function(e){
+    var b = e.target.closest('.tab'); if(!b) return;
+    this.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    b.classList.add('active'); renderTreats(b.dataset.t);
+  });
+
+  /* ---------- FAQ accordion ---------- */
+  var faqs = [
+    ['Does a root canal hurt?', 'With modern rotary instruments and computer-controlled anaesthesia, most patients tell us it felt like getting a filling. The procedure is typically completed in a single 40-minute sitting.'],
+    ['How much do braces cost, and is EMI available?', 'Metal braces start at ₹35,000 and clear aligners at ₹65,000. We offer zero-cost EMI over 6–12 months, and the full payment plan is shared in writing before treatment begins.'],
+    ['Do you treat children?', 'Yes — we love young patients. First visits are kept short and playful, and we focus on prevention: fluoride application, sealants and habit correction.'],
+    ['What if I have a dental emergency?', 'Call us immediately at +91 98200 12345. We reserve emergency slots every day for severe pain, swelling or trauma.'],
+    ['Is teeth whitening safe for enamel?', 'Yes. Our in-office laser whitening is enamel-safe when done professionally, and we always check your gum health first. Sensitivity, if any, settles within 48 hours.']
+  ];
+  var fl = document.getElementById('faqList');
+  faqs.forEach(function(f){
+    var el = document.createElement('div');
+    el.className = 'acc st-reveal bg-white';
+    el.innerHTML = '<div class="acc-head flex items-center justify-between gap-4 px-6 py-5"><p class="font-bold">' + f[0] + '</p>' +
+      '<span class="acc-icon flex-none w-8 h-8 rounded-full flex items-center justify-center" style="background:var(--mint)"><svg width="14" height="14" viewBox="0 0 24 24" stroke="#0d7c7a" stroke-width="2.6" fill="none"><path d="M12 5v14M5 12h14"/></svg></span></div>' +
+      '<div class="acc-body"><p class="px-6 pb-6 text-[15px] leading-relaxed" style="color:var(--mut)">' + f[1] + '</p></div>';
+    el.querySelector('.acc-head').addEventListener('click', function(){
+      var open = el.classList.toggle('open');
+      el.querySelector('.acc-body').style.maxHeight = open ? el.querySelector('.acc-body').scrollHeight + 'px' : '0';
+    });
+    fl.appendChild(el);
+  });
+
+  /* ---------- stars ---------- */
+  document.querySelectorAll('.stars').forEach(function(s){
+    for(var i=0;i<5;i++) s.innerHTML += '<svg width="18" height="18" viewBox="0 0 24 24" fill="#14a8a4"><path d="M12 2l2.6 6.9L22 9.3l-5.4 4.7L18.2 21 12 17l-6.2 4 1.6-7L2 9.3l7.4-.4z"/></svg>';
+  });
+
+  /* ---------- testimonials ---------- */
+  var tsts = document.querySelectorAll('.tst'), dots = document.getElementById('tstDots'), ti = 0;
+  tsts.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.className = 'rounded-full transition-all'; d.style.cssText = 'width:10px;height:10px';
+    d.setAttribute('aria-label','Show review '+(i+1));
+    d.addEventListener('click', function(){ showT(i); });
+    dots.appendChild(d);
+  });
+  function showT(i){
+    ti = i;
+    tsts.forEach(function(t, k){ t.classList.toggle('active', k===i); });
+    dots.querySelectorAll('button').forEach(function(d, k){
+      d.style.background = k===i ? '#0d7c7a' : '#cfe7e4';
+      d.style.width = k===i ? '28px' : '10px';
+    });
+  }
+  showT(0);
+  setInterval(function(){ if(!reduce) showT((ti+1)%tsts.length); }, 6000);
+
+  /* ---------- appointment: day + slot pickers ---------- */
+  var dayGrid = document.getElementById('dayGrid'), slotGrid = document.getElementById('slotGrid');
+  var selDay = null, selSlot = null;
+  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var now = new Date();
+  for(var d=0; d<7; d++){
+    (function(){
+      var dt = new Date(now); dt.setDate(now.getDate()+d);
+      var isSun = dt.getDay()===0;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'slot' + (isSun ? ' off' : '');
+      b.innerHTML = '<span class="block text-[11px] uppercase">' + days[dt.getDay()] + '</span><span class="block text-base">' + dt.getDate() + ' ' + months[dt.getMonth()] + '</span>';
+      if(isSun){ b.disabled = true; b.title = 'Closed on Sundays (open till 1 PM — call us)'; }
+      else b.addEventListener('click', function(){
+        dayGrid.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('sel'); });
+        b.classList.add('sel'); selDay = b.querySelectorAll('span')[1].textContent + ' ' + b.querySelectorAll('span')[0].textContent;
+        document.getElementById('slotWarn').classList.add('hidden');
+      });
+      dayGrid.appendChild(b);
+    })();
+  }
+  var slots = ['10:00 AM','11:00 AM','12:00 PM','1:00 PM','5:00 PM','6:00 PM','7:00 PM','8:00 PM'];
+  var booked = {'11:00 AM':true,'6:00 PM':true};
+  slots.forEach(function(s){
+    var b = document.createElement('button');
+    b.type = 'button';
+    var off = !!booked[s];
+    b.className = 'slot' + (off ? ' off' : '');
+    b.textContent = s;
+    if(off){ b.disabled = true; }
+    else b.addEventListener('click', function(){
+      slotGrid.querySelectorAll('.slot').forEach(function(x){ x.classList.remove('sel'); });
+      b.classList.add('sel'); selSlot = s;
+      document.getElementById('slotWarn').classList.add('hidden');
+    });
+    slotGrid.appendChild(b);
+  });
+
+  document.getElementById('apptForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!selDay || !selSlot){ document.getElementById('slotWarn').classList.remove('hidden'); return; }
+    var name = document.getElementById('pName').value.trim().split(' ')[0] || 'friend';
+    document.getElementById('confirmText').innerHTML = 'Thanks <strong>' + name + '</strong> — your request for <strong>' + selDay + ' at ' + selSlot + '</strong> (' + document.getElementById('pReason').value + ') is with our front desk.';
+    document.getElementById('formStep1').classList.add('hidden');
+    var s2 = document.getElementById('formStep2');
+    s2.classList.remove('hidden');
+    if(hasGsap && !reduce) gsap.from(s2, {y:20, opacity:0, duration:.6, ease:'power2.out'});
+  });
+  document.getElementById('bookAnother').addEventListener('click', function(){
+    document.getElementById('formStep2').classList.add('hidden');
+    document.getElementById('formStep1').classList.remove('hidden');
+    selDay = selSlot = null;
+    dayGrid.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('sel'); });
+    slotGrid.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('sel'); });
+  });
+
+  /* ---------- menus / nav / progress ---------- */
+  var mm = document.getElementById('mobileMenu');
+  document.getElementById('menuBtn').addEventListener('click', function(){ var o = mm.classList.toggle('hidden'); mm.classList.toggle('flex', !o); });
+  mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mm.classList.add('hidden'); mm.classList.remove('flex'); }); });
+  var nav = document.getElementById('nav'), prog = document.getElementById('progress');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('solid', window.scrollY > 40);
+    var h = document.documentElement;
+    prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  /* ---------- animations ---------- */
+  if(hasGsap && !reduce){
+    gsap.from('.hero-el', {y:28, opacity:0, duration:.85, stagger:.12, ease:'power2.out', delay:.1});
+    if(typeof ScrollTrigger !== 'undefined'){
+      gsap.utils.toArray('.st-reveal').forEach(function(el){
+        gsap.from(el, {opacity:0, y:16, duration:.55, ease:'power2.out', scrollTrigger:{trigger:el, start:'top 90%', toggleActions:'play none none reverse'}});
+      });
+      document.querySelectorAll('.counter').forEach(function(c){
+        var to = +c.dataset.to;
+        ScrollTrigger.create({trigger:c, start:'top 94%', once:true, onEnter:function(){
+          gsap.fromTo(c, {innerText:0}, {innerText:to, duration:1.4, ease:'power1.out', snap:{innerText:1}});
+        }});
+      });
+    }
+    if(window.matchMedia('(pointer:fine)').matches){
+      document.querySelectorAll('.magnetic').forEach(function(b){
+        b.addEventListener('mousemove', function(e){
+          var r = b.getBoundingClientRect();
+          gsap.to(b, {x:(e.clientX-r.left-r.width/2)*.2, y:(e.clientY-r.top-r.height/2)*.25, duration:.35});
+        });
+        b.addEventListener('mouseleave', function(){ gsap.to(b, {x:0, y:0, duration:.6, ease:'elastic.out(1,.4)'}); });
+      });
+    }
+  }
+})();
+</script>
+</body>
+</html>

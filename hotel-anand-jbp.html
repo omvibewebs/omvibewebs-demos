@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Anand, Jabalpur — Clean, Comfortable & Honest Prices | Book Direct</title>
+<meta name="description" content="Hotel Anand, Jabalpur — a trusted budget hotel near the railway station. Clean AC rooms from ₹1,499. Call to book direct and save.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--navy:#0b2a4a;--navy2:#123f6b;--amber:#f5a623;--amber2:#ffbe4d;--paper:#f4f7fb;--ink:#12263a;--mut:#5b7186}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+::selection{background:var(--amber);color:var(--navy)}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#e6edf5}
+::-webkit-scrollbar-thumb{background:var(--navy);border-radius:6px}
+
+.topbar{background:var(--navy);transition:box-shadow .3s}
+.topbar.stuck{box-shadow:0 8px 30px rgba(11,42,74,.35)}
+.btn-call{background:linear-gradient(135deg,var(--amber2),var(--amber));color:#3a2404;font-weight:800;box-shadow:0 8px 24px rgba(245,166,35,.4);transition:transform .25s,box-shadow .25s}
+.btn-call:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 32px rgba(245,166,35,.55)}
+.btn-navy{background:var(--navy);color:#fff;font-weight:700;transition:transform .25s,background .25s}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-2px)}
+.btn-line{border:2px solid var(--navy);color:var(--navy);font-weight:700;transition:all .25s}
+.btn-line:hover{background:var(--navy);color:#fff}
+
+.card{background:#fff;border-radius:22px;border:1px solid #e2eaf3;box-shadow:0 6px 24px rgba(11,42,74,.07);transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(11,42,74,.14)}
+.tariff{position:relative;overflow:hidden}
+.tariff .pop{position:absolute;top:18px;right:-38px;transform:rotate(45deg);background:var(--amber);color:#3a2404;font-size:.68rem;font-weight:800;letter-spacing:.14em;padding:.45rem 3rem}
+.price-old{text-decoration:line-through;color:var(--mut)}
+.tick{width:22px;height:22px;flex:none;border-radius:50%;background:#e7f6ee;display:flex;align-items:center;justify-content:center}
+.chip{background:#fff;border:1.5px solid #dbe5f0;border-radius:999px;font-weight:600;font-size:.85rem;transition:all .25s}
+.chip:hover{border-color:var(--amber);transform:translateY(-3px);box-shadow:0 10px 22px rgba(245,166,35,.25)}
+
+.gal{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;box-shadow:0 10px 30px rgba(11,42,74,.12)}
+.gal svg{transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.gal:hover svg{transform:scale(1.07)}
+.gal .cap{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1.2rem .9rem;background:linear-gradient(transparent,rgba(11,42,74,.85));color:#fff;font-weight:600}
+
+#lightbox{position:fixed;inset:0;z-index:90;background:rgba(11,42,74,.92);display:none;align-items:center;justify-content:center;padding:1.5rem}
+#lightbox.open{display:flex}
+#lightbox svg{max-width:min(880px,94vw);border-radius:18px;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+
+.field{background:#fff;border:1.5px solid #dbe5f0;border-radius:14px;transition:border .25s,box-shadow .25s}
+.field:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 4px rgba(11,42,74,.1)}
+
+.badge-trust{background:#fff;border:1px solid #e2eaf3;border-radius:16px;box-shadow:0 4px 16px rgba(11,42,74,.06)}
+.sticky-call{position:fixed;bottom:0;left:0;right:0;z-index:60;display:none;background:#fff;border-top:1px solid #e2eaf3;box-shadow:0 -8px 30px rgba(11,42,74,.15)}
+@media(max-width:767px){.sticky-call.show{display:flex}}
+.step-dot{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none}
+.split-line{display:block;overflow:hidden}
+.split-line>span{display:inline-block}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="antialiased pb-0">
+
+<!-- TOP BAR -->
+<div class="topbar text-white text-sm">
+  <div class="max-w-7xl mx-auto px-5 py-2.5 flex items-center justify-between gap-4">
+    <p class="flex items-center gap-2 font-medium"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="hidden sm:inline">Near Jabalpur Railway Station &middot; 5 min walk</span><span class="sm:hidden">Near Railway Station</span></p>
+    <a href="tel:+917614567890" class="flex items-center gap-2 font-bold" style="color:var(--amber2)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>+91 761 456 7890</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav" class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="w-11 h-11 rounded-2xl flex items-center justify-center font-extrabold text-xl text-white" style="background:linear-gradient(135deg,var(--navy),var(--navy2))">A</span>
+      <span><span class="font-extrabold text-xl block leading-none" style="color:var(--navy)">Hotel Anand</span><span class="text-[11px] font-semibold tracking-[.28em]" style="color:var(--mut)">JABALPUR</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 font-semibold text-[15px]">
+      <a href="#tariffs" class="hover:text-amber-600">Rooms &amp; Tariff</a>
+      <a href="#gallery" class="hover:text-amber-600">Gallery</a>
+      <a href="#why" class="hover:text-amber-600">Why Anand</a>
+      <a href="#contact" class="hover:text-amber-600">Contact</a>
+    </div>
+    <a href="tel:+917614567890" class="btn-call magnetic px-6 py-3 rounded-full text-sm hidden sm:inline-block">Call to Book</a>
+    <button id="menuBtn" class="md:hidden p-2" aria-label="Menu"><svg width="26" height="26" viewBox="0 0 24 24" stroke="#0b2a4a" stroke-width="2" fill="none"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white px-5 py-4 space-y-3 font-semibold">
+    <a href="#tariffs" class="block">Rooms &amp; Tariff</a><a href="#gallery" class="block">Gallery</a><a href="#why" class="block">Why Anand</a><a href="#contact" class="block">Contact</a>
+    <a href="tel:+917614567890" class="btn-call px-6 py-3 rounded-full text-sm inline-block text-center">Call to Book</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="relative overflow-hidden" style="background:linear-gradient(120deg,#0b2a4a 0%,#123f6b 60%,#0b2a4a 100%)">
+  <div class="hero-blob" style="width:420px;height:420px;background:#f5a623;top:-140px;right:-120px"></div>
+  <div class="hero-blob" style="width:300px;height:300px;background:#3d7bc4;bottom:-120px;left:-100px"></div>
+  <div class="max-w-7xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center relative">
+    <div class="text-white">
+      <p class="inline-flex items-center gap-2 text-xs font-bold tracking-[.2em] uppercase px-4 py-2 rounded-full mb-6" style="background:rgba(245,166,35,.15);color:var(--amber2)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623"><path d="M12 2l2.6 6.9L22 9.3l-5.4 4.7L18.2 21 12 17l-6.2 4 1.6-7L2 9.3l7.4-.4z"/></svg>
+        Trusted since 1998 &middot; 4.3 rated by 3,100+ guests</p>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.06]" id="heroTitle">Clean rooms.<br>Honest prices.<br><span style="color:var(--amber2)">Zero surprises.</span></h1>
+      <p class="hero-el mt-6 text-lg max-w-md" style="color:#c8d8ea">A family-run budget hotel 5 minutes from Jabalpur station. Spotless AC rooms, hot water 24&times;7, and a tariff card with no hidden charges &mdash; what you see is what you pay.</p>
+      <div class="hero-el mt-8 flex flex-wrap gap-4">
+        <a href="tel:+917614567890" class="btn-call magnetic px-8 py-4 rounded-full">Call +91 761 456 7890</a>
+        <a href="#tariffs" class="magnetic px-8 py-4 rounded-full font-bold border-2 border-white/40 text-white hover:border-white transition">See Tariff</a>
+      </div>
+      <div class="hero-el mt-10 grid grid-cols-3 gap-4 max-w-md">
+        <div class="badge-trust p-4 text-center"><p class="text-2xl font-extrabold" style="color:var(--navy)"><span class="counter" data-to="45">0</span></p><p class="text-xs font-semibold" style="color:var(--mut)">AC Rooms</p></div>
+        <div class="badge-trust p-4 text-center"><p class="text-2xl font-extrabold" style="color:var(--navy)">₹<span class="counter" data-to="1499">0</span></p><p class="text-xs font-semibold" style="color:var(--mut)">Starting / night</p></div>
+        <div class="badge-trust p-4 text-center"><p class="text-2xl font-extrabold" style="color:var(--navy)"><span class="counter" data-to="27">0</span>+</p><p class="text-xs font-semibold" style="color:var(--mut)">Years of trust</p></div>
+      </div>
+    </div>
+    <div class="relative tilt-wrap" style="perspective:1000px">
+      <div id="heroCard" class="card tariff p-8 md:p-10" style="transform-style:preserve-3d">
+        <span class="pop">Best Value</span>
+        <p class="text-xs font-extrabold tracking-[.22em] uppercase" style="color:var(--amber)">Most Booked</p>
+        <h2 class="text-3xl font-extrabold mt-2" style="color:var(--navy)">Deluxe AC Room</h2>
+        <div class="flex items-end gap-3 mt-4">
+          <p class="text-5xl font-extrabold" style="color:var(--navy)">₹1,999</p>
+          <p class="price-old text-lg mb-1">₹2,800</p>
+        </div>
+        <p class="text-sm font-semibold mt-1" style="color:var(--mut)">per night &middot; taxes included &middot; free cancellation</p>
+        <ul class="mt-6 space-y-3 text-[15px] font-medium">
+          <li class="flex gap-3 items-center"><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1c8a4c" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>King-size bed, fresh linen daily</li>
+          <li class="flex gap-3 items-center"><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1c8a4c" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>Split AC &middot; 32&Prime; Smart TV &middot; Free Wi-Fi</li>
+          <li class="flex gap-3 items-center"><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1c8a4c" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>Attached bath, hot water 24&times;7</li>
+          <li class="flex gap-3 items-center"><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1c8a4c" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>Complimentary breakfast for two</li>
+        </ul>
+        <a href="tel:+917614567890" class="btn-call block text-center mt-8 py-4 rounded-2xl font-extrabold">Book This Room &mdash; Call Now</a>
+        <p class="text-center text-xs mt-3 font-semibold" style="color:var(--mut)">No advance needed &middot; Pay at hotel</p>
+      </div>
+    </div>
+  </div>
+  <svg class="block w-full" viewBox="0 0 1440 70" preserveAspectRatio="none" style="height:56px"><path d="M0,70 L0,35 Q360,0 720,35 T1440,35 L1440,70 Z" fill="#f4f7fb"/></svg>
+</header>
+
+<!-- TARIFFS -->
+<section id="tariffs" class="max-w-7xl mx-auto px-5 py-16 md:py-24">
+  <div class="text-center st-reveal">
+    <p class="text-xs font-extrabold tracking-[.3em] uppercase" style="color:var(--amber)">Rooms &amp; Tariff</p>
+    <h2 class="text-3xl md:text-5xl font-extrabold mt-3" style="color:var(--navy)">One honest price list.<br>No asterisks.</h2>
+    <p class="mt-4 max-w-xl mx-auto font-medium" style="color:var(--mut)">Every room includes free Wi-Fi, hot water, daily housekeeping and parking. Prices include all taxes.</p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-7 mt-12" id="tariffGrid"></div>
+  <p class="text-center mt-8 text-sm font-semibold st-reveal" style="color:var(--mut)">Extra bed ₹400/night &middot; Check-in 12 noon, check-out 11 AM &middot; ID proof required at check-in</p>
+</section>
+
+<!-- WHY -->
+<section id="why" class="py-16 md:py-24" style="background:#fff">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center st-reveal">
+      <p class="text-xs font-extrabold tracking-[.3em] uppercase" style="color:var(--amber)">Why Hotel Anand</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold mt-3" style="color:var(--navy)">Built on trust, run like family</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <div class="card p-7 st-reveal"><span class="step-dot">1</span><h3 class="font-bold text-lg mt-5" style="color:var(--navy)">Prime location</h3><p class="text-sm mt-2 font-medium" style="color:var(--mut)">5-minute walk from the railway station, 10 minutes from Russell Chowk market. Auto stand right outside.</p></div>
+      <div class="card p-7 st-reveal"><span class="step-dot">2</span><h3 class="font-bold text-lg mt-5" style="color:var(--navy)">Spotless, every day</h3><p class="text-sm mt-2 font-medium" style="color:var(--mut)">Rooms deep-cleaned and linen changed daily. Our housekeeping checklist has 42 points &mdash; and we follow all of them.</p></div>
+      <div class="card p-7 st-reveal"><span class="step-dot">3</span><h3 class="font-bold text-lg mt-5" style="color:var(--navy)">Food you can trust</h3><p class="text-sm mt-2 font-medium" style="color:var(--mut)">In-house pure-veg kitchen with FSSAI licence. Complimentary breakfast; lunch and dinner on order.</p></div>
+      <div class="card p-7 st-reveal"><span class="step-dot">4</span><h3 class="font-bold text-lg mt-5" style="color:var(--navy)">Help, any hour</h3><p class="text-sm mt-2 font-medium" style="color:var(--mut)">Front desk staffed round the clock. Late-night arrival? Early train? We adjust check-in times for you.</p></div>
+    </div>
+    <div class="mt-12 flex flex-wrap justify-center gap-3 st-reveal">
+      <span class="chip px-5 py-2.5">Free Wi-Fi</span><span class="chip px-5 py-2.5">Power Backup</span><span class="chip px-5 py-2.5">Hot Water 24&times;7</span><span class="chip px-5 py-2.5">Free Parking</span><span class="chip px-5 py-2.5">Room Service</span><span class="chip px-5 py-2.5">Daily Housekeeping</span><span class="chip px-5 py-2.5">CCTV Security</span><span class="chip px-5 py-2.5">Laundry</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="max-w-7xl mx-auto px-5 py-16 md:py-24">
+  <div class="text-center st-reveal">
+    <p class="text-xs font-extrabold tracking-[.3em] uppercase" style="color:var(--amber)">Gallery</p>
+    <h2 class="text-3xl md:text-5xl font-extrabold mt-3" style="color:var(--navy)">See it before you book it</h2>
+    <p class="mt-4 font-medium" style="color:var(--mut)">Tap any photo to view larger.</p>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12" id="galGrid"></div>
+</section>
+<div id="lightbox" role="dialog" aria-label="Photo viewer"><div id="lbContent"></div>
+  <button id="lbClose" class="absolute top-5 right-6 text-white text-4xl leading-none" aria-label="Close">&times;</button>
+  <p id="lbCap" class="absolute bottom-8 text-white font-semibold"></p>
+</div>
+
+<!-- CONTACT / ENQUIRY -->
+<section id="contact" class="py-16 md:py-24" style="background:linear-gradient(135deg,#0b2a4a,#123f6b)">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-start">
+    <div class="text-white st-reveal">
+      <p class="text-xs font-extrabold tracking-[.3em] uppercase" style="color:var(--amber2)">Get in touch</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold mt-3">Questions? Just call.</h2>
+      <p class="mt-5 text-lg" style="color:#c8d8ea">We answer faster on the phone than on email &mdash; but send an enquiry and we will reply within an hour, 8 AM to 10 PM.</p>
+      <a href="tel:+917614567890" class="btn-call magnetic inline-flex items-center gap-3 mt-8 px-8 py-4 rounded-full text-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+        +91 761 456 7890</a>
+      <div class="mt-8 space-y-3 font-medium" style="color:#c8d8ea)">
+        <p>Station Road, Near Railway Station, Jabalpur 482001</p>
+        <p>hello@hotelanandjbp.in</p>
+      </div>
+    </div>
+    <form id="enqForm" class="card p-8 st-reveal">
+      <h3 class="text-xl font-extrabold" style="color:var(--navy)">Send an enquiry</h3>
+      <div class="grid grid-cols-2 gap-4 mt-6">
+        <input required class="field col-span-2 px-4 py-3 text-[15px]" placeholder="Your name">
+        <input required type="tel" class="field col-span-2 md:col-span-1 px-4 py-3 text-[15px]" placeholder="Phone number">
+        <input type="date" class="field col-span-2 md:col-span-1 px-4 py-3 text-[15px]" aria-label="Check-in date">
+        <select class="field col-span-2 px-4 py-3 text-[15px]"><option>Standard AC Room — ₹1,499</option><option>Deluxe AC Room — ₹1,999</option><option>Family Room — ₹2,999</option></select>
+        <textarea rows="3" class="field col-span-2 px-4 py-3 text-[15px]" placeholder="Your message (dates, guests, questions...)"></textarea>
+      </div>
+      <button class="btn-navy w-full mt-6 py-4 rounded-2xl">Send Enquiry</button>
+      <p id="enqMsg" class="hidden text-center mt-4 font-bold text-sm" style="color:#1c8a4c"></p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="font-extrabold text-lg" style="color:var(--navy)">Hotel Anand <span class="font-medium text-sm" style="color:var(--mut)">&middot; Jabalpur</span></p>
+    <p class="text-sm font-medium" style="color:var(--mut)">&copy; 2026 Hotel Anand. All rights reserved.</p>
+    <p class="text-sm font-medium" style="color:var(--mut)">Concept demo by Om Vibe Webs</p>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CALL -->
+<div class="sticky-call items-center justify-between px-5 py-3">
+  <div><p class="font-extrabold text-sm" style="color:var(--navy)">Rooms from ₹1,499</p><p class="text-xs" style="color:var(--mut)">Free cancellation</p></div>
+  <a href="tel:+917614567890" class="btn-call px-7 py-3 rounded-full text-sm">Call to Book</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGsap = typeof gsap !== 'undefined';
+  if(hasGsap && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- tariff cards ---------- */
+  var tariffs = [
+    {name:'Standard AC Room', price:'₹1,499', old:'₹2,000', pop:false, feats:['Comfortable double bed','Split AC & ceiling fan','32" Smart TV, free Wi-Fi','Attached bath, hot water']},
+    {name:'Deluxe AC Room', price:'₹1,999', old:'₹2,800', pop:true, feats:['King-size bed, premium linen','Split AC, 32" Smart TV','Free Wi-Fi, work desk','Breakfast for two included','Attached bath, hot water 24x7']},
+    {name:'Family Room', price:'₹2,999', old:'₹3,800', pop:false, feats:['Sleeps 4 comfortably','Two connected rooms','Split ACs, 2 Smart TVs','Breakfast for four included']}
+  ];
+  var tg = document.getElementById('tariffGrid');
+  tariffs.forEach(function(t){
+    var el = document.createElement('div');
+    el.className = 'card tariff p-8 st-reveal' + (t.pop ? ' ring-2' : '');
+    if(t.pop) el.style.setProperty('--tw-ring-color', '#f5a623');
+    el.innerHTML = (t.pop ? '<span class="pop">Best Value</span>' : '') +
+      '<h3 class="text-xl font-extrabold" style="color:var(--navy)">' + t.name + '</h3>' +
+      '<div class="flex items-end gap-3 mt-3"><p class="text-4xl font-extrabold" style="color:var(--navy)">' + t.price + '</p>' +
+      '<p class="price-old mb-1">' + t.old + '</p></div>' +
+      '<p class="text-xs font-bold mt-1 uppercase tracking-wider" style="color:var(--mut)">per night &middot; taxes included</p>' +
+      '<ul class="mt-5 space-y-2.5 text-[14px] font-medium">' +
+      t.feats.map(function(f){ return '<li class="flex gap-2.5 items-start"><span class="tick mt-0.5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1c8a4c" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>' + f + '</li>'; }).join('') +
+      '</ul><a href="tel:+917614567890" class="' + (t.pop ? 'btn-call' : 'btn-line') + ' block text-center mt-7 py-3.5 rounded-2xl text-sm">Call to Book</a>';
+    tg.appendChild(el);
+  });
+
+  /* ---------- gallery (SVG art) ---------- */
+  function scene(kind){
+    var sky = '<rect width="400" height="260" rx="0" fill="#dce9f5"/>';
+    if(kind==='room') return sky +
+      '<rect x="0" y="200" width="400" height="60" fill="#b9cde3"/><rect x="40" y="150" width="200" height="70" rx="10" fill="#0b2a4a"/><rect x="40" y="120" width="200" height="40" rx="8" fill="#f4f7fb"/><rect x="60" y="105" width="44" height="26" rx="8" fill="#fff"/><rect x="176" y="105" width="44" height="26" rx="8" fill="#fff"/><rect x="260" y="130" width="90" height="90" rx="6" fill="#123f6b"/><rect x="268" y="80" width="74" height="56" rx="30" fill="#9fc4e8"/><rect x="30" y="60" width="60" height="80" rx="8" fill="#f5a623" opacity=".85"/>';
+    if(kind==='lobby') return sky +
+      '<rect x="0" y="200" width="400" height="60" fill="#c3d5ea"/><rect x="120" y="110" width="160" height="100" rx="8" fill="#0b2a4a"/><rect x="140" y="90" width="120" height="26" rx="6" fill="#123f6b"/><rect x="60" y="40" width="280" height="18" rx="9" fill="#f5a623" opacity=".7"/><circle cx="200" cy="60" r="10" fill="#fff8e1"/><rect x="300" y="150" width="60" height="60" rx="30" fill="#3d7bc4" opacity=".5"/>';
+    if(kind==='bath') return sky +
+      '<rect x="0" y="200" width="400" height="60" fill="#c9d9ec"/><rect x="90" y="140" width="220" height="70" rx="30" fill="#fff"/><rect x="90" y="140" width="220" height="22" rx="11" fill="#9fc4e8"/><rect x="270" y="90" width="16" height="60" fill="#8aa5c2"/><circle cx="278" cy="80" r="22" fill="#8aa5c2"/><rect x="60" y="60" width="80" height="110" rx="8" fill="#dbe9f7" stroke="#8aa5c2" stroke-width="4"/>';
+    return sky + /* dining */
+      '<rect x="0" y="200" width="400" height="60" fill="#b9cde3"/><ellipse cx="200" cy="190" rx="130" ry="34" fill="#0b2a4a"/><ellipse cx="200" cy="180" rx="130" ry="32" fill="#f4f7fb"/><ellipse cx="200" cy="172" rx="90" ry="22" fill="#f5a623" opacity=".55"/><rect x="196" y="110" width="8" height="50" fill="#fff"/><ellipse cx="200" cy="104" rx="10" ry="14" fill="#ffbe4d"/>';
+  }
+  var gals = [
+    ['room','Deluxe Room','Spacious, sunlit and spotless'],
+    ['lobby','Reception Lobby','Warm welcome, 24x7 desk'],
+    ['bath','Modern Bathrooms','Hot water, round the clock'],
+    ['dining','Breakfast Hall','Complimentary breakfast daily']
+  ];
+  var gg = document.getElementById('galGrid'), lb = document.getElementById('lightbox'), lbC = document.getElementById('lbContent'), lbCap = document.getElementById('lbCap');
+  gals.forEach(function(g){
+    var el = document.createElement('div');
+    el.className = 'gal st-reveal';
+    el.innerHTML = '<svg viewBox="0 0 400 260" class="w-full block">' + scene(g[0]) + '</svg><div class="cap"><p>' + g[1] + '</p><p class="text-xs font-normal opacity-80">' + g[2] + '</p></div>';
+    el.addEventListener('click', function(){
+      lbC.innerHTML = '<svg viewBox="0 0 400 260" style="width:100%;height:auto;display:block">' + scene(g[0]) + '</svg>';
+      lbCap.textContent = g[1] + ' — ' + g[2];
+      lb.classList.add('open'); document.body.style.overflow = 'hidden';
+    });
+    gg.appendChild(el);
+  });
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+
+  /* ---------- menus / sticky ---------- */
+  var mm = document.getElementById('mobileMenu');
+  document.getElementById('menuBtn').addEventListener('click', function(){ mm.classList.toggle('hidden'); });
+  mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mm.classList.add('hidden'); }); });
+  var sc = document.querySelector('.sticky-call');
+  window.addEventListener('scroll', function(){
+    document.querySelector('.topbar').classList.toggle('stuck', window.scrollY > 10);
+    sc.classList.toggle('show', window.scrollY > 500);
+  }, {passive:true});
+
+  /* ---------- animations ---------- */
+  if(hasGsap && !reduce){
+    /* split-text hero */
+    (function(){
+      var h = document.getElementById('heroTitle');
+      var parts = h.innerHTML.split(/<br\s*\/?>/i);
+      h.innerHTML = parts.map(function(p){ return '<span class="split-line"><span>' + p + '</span></span>'; }).join('');
+      gsap.from('#heroTitle .split-line > span', {yPercent:110, duration:.9, stagger:.12, ease:'power3.out'});
+      gsap.from('.hero-el', {y:24, opacity:0, duration:.8, stagger:.1, delay:.3, ease:'power2.out'});
+      gsap.from('#heroCard', {y:40, opacity:0, rotateX:8, duration:1, delay:.4, ease:'power3.out'});
+    })();
+    if(typeof ScrollTrigger !== 'undefined'){
+      gsap.utils.toArray('.st-reveal').forEach(function(el){
+        gsap.from(el, {opacity:0, y:16, duration:.55, ease:'power2.out', scrollTrigger:{trigger:el, start:'top 90%', toggleActions:'play none none reverse'}});
+      });
+      document.querySelectorAll('.counter').forEach(function(c){
+        var to = +c.dataset.to;
+        ScrollTrigger.create({trigger:c, start:'top 94%', once:true, onEnter:function(){
+          gsap.fromTo(c, {innerText:0}, {innerText:to, duration:1.4, ease:'power1.out', snap:{innerText:1}, onUpdate:function(){ c.innerText = Math.round(+c.innerText).toLocaleString('en-IN'); }});
+        }});
+      });
+    }
+    /* tilt on hero card */
+    var hc = document.getElementById('heroCard');
+    if(window.matchMedia('(pointer:fine)').matches && hc){
+      hc.parentElement.addEventListener('mousemove', function(e){
+        var r = hc.getBoundingClientRect();
+        var x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+        gsap.to(hc, {rotateY:x*10, rotateX:-y*10, duration:.5, ease:'power2.out'});
+      });
+      hc.parentElement.addEventListener('mouseleave', function(){ gsap.to(hc, {rotateX:0, rotateY:0, duration:.8, ease:'elastic.out(1,.5)'}); });
+      /* magnetic buttons */
+      document.querySelectorAll('.magnetic').forEach(function(b){
+        b.addEventListener('mousemove', function(e){
+          var r = b.getBoundingClientRect();
+          gsap.to(b, {x:(e.clientX-r.left-r.width/2)*.2, y:(e.clientY-r.top-r.height/2)*.25, duration:.35});
+        });
+        b.addEventListener('mouseleave', function(){ gsap.to(b, {x:0, y:0, duration:.6, ease:'elastic.out(1,.4)'}); });
+      });
+    }
+  }
+
+  /* ---------- form ---------- */
+  document.getElementById('enqForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var m = document.getElementById('enqMsg');
+    m.textContent = 'Enquiry sent! We will call you back within an hour (8 AM – 10 PM).';
+    m.classList.remove('hidden');
+    if(hasGsap && !reduce) gsap.from(m, {y:8, opacity:0, duration:.45});
+    this.querySelectorAll('input,textarea').forEach(function(f){ f.value=''; });
+  });
+})();
+</script>
+</body>
+</html>

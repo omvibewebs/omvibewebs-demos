@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nihal Hotel — Smart Business Stay in Deira, Dubai</title>
+<meta name="description" content="Nihal Hotel, Deira Dubai — a sharp 3-star business hotel. 2 min to metro, 10 min to DXB. Book direct and save.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0d3b3b; --teal-deep:#082626; --teal-soft:#155e5a;
+  --sand:#e9dcc3; --sand-deep:#d9c8a4; --paper:#f7f4eb;
+  --clay:#d9622b; --clay-deep:#b34a1d;
+  --ink:#12211f; --muted:#5f6f6c;
+  --mega:'Anton',sans-serif; --head:'Archivo',sans-serif; --body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);overflow-x:hidden;line-height:1.6}
+::selection{background:var(--clay);color:#fff}
+a{text-decoration:none;color:inherit}
+.container{width:min(1280px,92%);margin:0 auto}
+
+/* ---------- Top bar nav ---------- */
+.topbar{background:var(--teal-deep);color:var(--sand);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;padding:9px 0;text-align:center}
+.topbar b{color:#fff}
+nav{position:sticky;top:0;z-index:1000;background:rgba(247,244,235,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(13,59,59,.14)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.brand{font-family:var(--mega);font-size:1.9rem;letter-spacing:.04em;color:var(--teal)}
+.brand span{color:var(--clay)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:.76rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);position:relative;padding:6px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--clay);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+/* Rolling text button (motion.dev rolling-text-button idea) */
+.roll{position:relative;display:inline-block;overflow:hidden;background:var(--clay);color:#fff;font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;padding:15px 34px;border:0;cursor:pointer}
+.roll .rt{display:block;transition:transform .45s cubic-bezier(.65,0,.35,1)}
+.roll .rt:last-child{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transform:translateY(100%)}
+.roll:hover .rt:first-child{transform:translateY(-100%)}
+.roll:hover .rt:last-child{transform:none}
+.burger{display:none;background:none;border:0;cursor:pointer}
+.burger span{display:block;width:28px;height:2.5px;background:var(--ink);margin:6px 0}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--teal);color:var(--paper);position:relative;overflow:hidden;padding:110px 0 0}
+.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(233,220,195,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(233,220,195,.05) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
+.hero-inner{position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(233,220,195,.35);border-radius:100px;padding:10px 24px;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin-bottom:28px}
+.hero-tag .pulse{width:9px;height:9px;border-radius:50%;background:#7be3a0;animation:blink 1.8s infinite}
+@keyframes blink{50%{opacity:.3}}
+.mega{font-family:var(--mega);font-size:clamp(4.6rem,15vw,13rem);line-height:.9;letter-spacing:.01em;color:var(--paper)}
+.mega .stroke{color:transparent;-webkit-text-stroke:2px var(--sand)}
+.mega .clay{color:var(--clay)}
+.hero-sub{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:34px;flex-wrap:wrap}
+.hero-sub p{max-width:520px;color:#cfe0d8;font-weight:300;font-size:1.06rem}
+.hero-stats{display:flex;gap:0;border:1px solid rgba(233,220,195,.25);margin-top:54px}
+.hstat{flex:1;padding:28px 30px;border-right:1px solid rgba(233,220,195,.25)}
+.hstat:last-child{border-right:0}
+.hstat b{font-family:var(--mega);font-size:clamp(2rem,4vw,3.2rem);color:var(--sand);display:block;line-height:1;letter-spacing:.02em}
+.hstat b i{font-style:normal;color:var(--clay)}
+.hstat small{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:#9db8ae}
+.hero-art{position:relative;margin-top:-10px;z-index:1}
+.hero-art svg{width:100%;height:auto;display:block}
+
+/* ---------- Marquee ---------- */
+.marquee{background:var(--clay);color:#fff;overflow:hidden;padding:16px 0;border-top:3px solid var(--teal-deep);border-bottom:3px solid var(--teal-deep)}
+.mq-track{display:flex;width:max-content;animation:tick 24s linear infinite}
+.mq-track span{font-family:var(--head);font-weight:700;font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;padding:0 26px;white-space:nowrap;display:flex;align-items:center;gap:26px}
+.mq-track span::after{content:"";width:10px;height:10px;background:#fff;transform:rotate(45deg);flex:none}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{padding:110px 0}
+.sec-label{display:flex;align-items:center;gap:18px;margin-bottom:26px}
+.sec-label .n{font-family:var(--mega);font-size:1rem;color:var(--clay);border:2px solid var(--clay);width:52px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.sec-label .t{font-size:.74rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.sec-title{font-family:var(--mega);font-size:clamp(2.6rem,6vw,4.6rem);line-height:1;letter-spacing:.01em;margin-bottom:18px;text-transform:uppercase}
+.sec-title .thin{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.sec-sub{max-width:620px;color:var(--muted);font-size:1.04rem;margin-bottom:56px}
+
+/* ---------- Rooms: horizontal snap rail ---------- */
+.rooms-sec{background:var(--sand)}
+.rail-wrap{position:relative}
+.rail{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4% 30px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 min(420px,84vw);scroll-snap-align:start;background:var(--paper);border:1px solid rgba(13,59,59,.16);display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s}
+.rcard:hover{transform:translateY(-10px);box-shadow:0 30px 60px rgba(13,59,59,.18)}
+.rcard .rart{height:230px;overflow:hidden}
+.rcard .rart svg{width:100%;height:100%;transition:transform .7s}
+.rcard:hover .rart svg{transform:scale(1.06)}
+.rcard .rbody{padding:30px;display:flex;flex-direction:column;gap:12px;flex:1}
+.rcard .rk{font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--clay)}
+.rcard h3{font-family:var(--head);font-weight:700;font-size:1.6rem}
+.rcard p{color:var(--muted);font-size:.94rem;flex:1}
+.rfeat{display:flex;flex-wrap:wrap;gap:8px}
+.rfeat span{font-size:.72rem;font-weight:600;background:rgba(13,59,59,.07);padding:7px 14px;border-radius:100px;color:var(--teal)}
+.rfoot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(13,59,59,.14);padding-top:18px;margin-top:6px}
+.rprice{font-family:var(--mega);font-size:1.7rem;color:var(--teal)}
+.rprice small{font-family:var(--body);font-size:.72rem;color:var(--muted);font-weight:400}
+.rbook{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);display:inline-flex;gap:8px;align-items:center}
+.rail-nav{display:flex;gap:14px;margin-top:8px}
+.rail-nav button{width:56px;height:56px;border-radius:50%;border:2px solid var(--teal);background:transparent;color:var(--teal);font-size:1.3rem;cursor:pointer;transition:.3s}
+.rail-nav button:hover{background:var(--teal);color:var(--sand)}
+
+/* ---------- Amenities bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+.acard{background:#fff;border:1px solid rgba(13,59,59,.12);border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.acard:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(13,59,59,.14)}
+.acard .aicon{width:48px;height:48px;border-radius:14px;background:var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:auto}
+.acard h4{font-family:var(--head);font-weight:700;font-size:1.08rem}
+.acard p{font-size:.84rem;color:var(--muted)}
+.a1{grid-column:span 2;background:var(--teal);color:#eaf3ee;border:0}
+.a1 p{color:#a9c4ba}.a1 .aicon{background:var(--clay)}
+.a6{grid-column:span 2;background:linear-gradient(135deg,var(--clay),var(--clay-deep));color:#fff;border:0}
+.a6 p{color:#ffe0cd}.a6 .aicon{background:rgba(255,255,255,.2)}
+
+/* ---------- Location ---------- */
+.loc-sec{background:var(--teal-deep);color:var(--paper)}
+.loc-sec .sec-title{color:var(--paper)}
+.loc-sec .sec-title .thin{-webkit-text-stroke:1.5px var(--sand)}
+.loc-sec .sec-sub{color:#a9c4ba}
+.loc-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.map-frame{border:1px solid rgba(233,220,195,.25);border-radius:20px;overflow:hidden;background:var(--teal)}
+.map-frame svg{width:100%;height:auto;display:block}
+.dist-list{display:grid;gap:0}
+.dist{display:flex;justify-content:space-between;align-items:center;padding:20px 6px;border-bottom:1px solid rgba(233,220,195,.18);transition:.3s}
+.dist:hover{padding-left:16px;background:rgba(233,220,195,.05)}
+.dist .dl{font-weight:600;font-size:1rem;color:var(--paper)}
+.dist .dl small{display:block;font-weight:400;font-size:.78rem;color:#9db8ae;letter-spacing:.06em}
+.dist .dt{font-family:var(--mega);font-size:1.5rem;color:var(--clay)}
+
+/* ---------- Booking ---------- */
+.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border:2px solid var(--teal);background:#fff}
+.book-info{background:var(--teal);color:var(--paper);padding:60px 50px}
+.book-info h3{font-family:var(--mega);font-size:2.4rem;line-height:1.05;margin-bottom:18px;text-transform:uppercase}
+.book-info h3 span{color:var(--clay)}
+.book-info p{color:#cfe0d8;font-weight:300;margin-bottom:30px}
+.direct-perks{display:grid;gap:16px}
+.direct-perks div{display:flex;gap:14px;align-items:center;font-size:.92rem}
+.direct-perks .tick{width:30px;height:30px;flex:none;border-radius:50%;background:var(--clay);display:flex;align-items:center;justify-content:center}
+.book-form{padding:60px 50px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.field label{display:block;font-size:.66rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.field input,.field select{width:100%;border:1.5px solid rgba(13,59,59,.2);background:var(--paper);padding:14px 16px;font-family:var(--body);font-size:.95rem;color:var(--ink);border-radius:0;transition:.3s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--clay);box-shadow:0 0 0 3px rgba(217,98,43,.15)}
+.nights-note{font-size:.8rem;color:var(--muted);margin:-6px 0 18px}
+.nights-note b{color:var(--clay)}
+.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,140px);background:var(--teal-deep);color:var(--sand);padding:18px 38px;font-size:.86rem;letter-spacing:.1em;z-index:1500;transition:transform .5s cubic-bezier(.2,.9,.3,1.25);border-left:5px solid var(--clay);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.toast.show{transform:translate(-50%,0)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--teal-deep);color:#9db8ae;padding:70px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:50px;padding-bottom:50px}
+.foot-brand{font-family:var(--mega);font-size:2.1rem;color:var(--paper);margin-bottom:12px}
+.foot-brand span{color:var(--clay)}
+.foot-grid h5{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--sand);margin-bottom:20px}
+.foot-grid p,.foot-grid a{font-size:.93rem;display:block;margin-bottom:10px;font-weight:300}
+.foot-grid a:hover{color:#fff}
+.credit{border-top:1px solid rgba(233,220,195,.15);padding:22px 0;text-align:center;font-size:.78rem;letter-spacing:.16em}
+.credit b{color:var(--sand);font-weight:600}
+
+.reveal{opacity:0;transform:translateY(44px)}
+.line-mask{overflow:hidden}
+.line-mask>span{display:block;transform:translateY(110%)}
+
+@media(max-width:1000px){
+  .nav-links{display:none}.burger{display:block}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .a1,.a6{grid-column:span 2}
+  .loc-grid,.book-grid{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap}.hstat{flex:1 1 40%}
+}
+@media(max-width:640px){
+  .frow{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}.a1,.a6{grid-column:span 1}
+  .foot-grid{grid-template-columns:1fr}
+  .book-info,.book-form{padding:40px 28px}
+  section{padding:80px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}.line-mask>span{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Deira, Dubai · <b>Book direct &amp; save 15%</b> · Free cancellation up to 48h</div>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#top">NIHAL<span>.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#rooms">Rooms</a><a href="#amenities">Amenities</a><a href="#location">Location</a><a href="#book">Book Direct</a>
+    </div>
+    <a href="#book" class="roll"><span class="rt">Book Direct</span><span class="rt">Save 15%</span></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-grid-lines"></div>
+  <div class="container hero-inner">
+    <span class="hero-tag"><span class="pulse"></span> 3-star business hotel · Deira</span>
+    <h1 class="mega" id="megaTitle">STAY<br><span class="stroke">SMART.</span><br><span class="clay">STAY NIHAL.</span></h1>
+    <div class="hero-sub">
+      <p>Two minutes from the metro, ten from DXB airport. Crisp rooms, fast Wi-Fi, a serious breakfast — everything a business trip needs, nothing it doesn't.</p>
+      <a href="#book" class="roll"><span class="rt">Check Availability</span><span class="rt">From AED 199</span></a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><b><span class="count" data-to="120">0</span><i>+</i></b><small>Rooms &amp; Suites</small></div>
+      <div class="hstat"><b><span class="count" data-to="15">0</span><i>yr</i></b><small>Serving Deira</small></div>
+      <div class="hstat"><b><span class="count" data-to="4.3" data-dec="1">0</span><i>★</i></b><small>Guest Rating</small></div>
+      <div class="hstat"><b><span class="count" data-to="10">0</span><i>min</i></b><small>To DXB Airport</small></div>
+    </div>
+  </div>
+  <div class="hero-art">
+    <svg viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d3b3b"/><stop offset="1" stop-color="#082626"/></linearGradient></defs>
+      <rect width="1440" height="300" fill="url(#sky)"/>
+      <g fill="#155e5a">
+        <rect x="40" y="120" width="90" height="180"/><rect x="160" y="80" width="70" height="220"/><rect x="260" y="140" width="110" height="160"/>
+        <rect x="1050" y="90" width="80" height="210"/><rect x="1160" y="130" width="100" height="170"/><rect x="1290" y="70" width="70" height="230"/>
+        <rect x="640" y="110" width="120" height="190"/><rect x="800" y="150" width="90" height="150"/>
+      </g>
+      <g fill="#e9dcc3" opacity=".8">
+        <rect x="60" y="140" width="12" height="12"/><rect x="84" y="140" width="12" height="12"/><rect x="60" y="164" width="12" height="12"/>
+        <rect x="176" y="100" width="10" height="10"/><rect x="196" y="100" width="10" height="10"/><rect x="176" y="122" width="10" height="10"/>
+        <rect x="1066" y="110" width="12" height="12"/><rect x="1090" y="110" width="12" height="12"/>
+        <rect x="1306" y="90" width="10" height="10"/><rect x="1326" y="90" width="10" height="10"/>
+        <rect x="660" y="130" width="14" height="14"/><rect x="686" y="130" width="14" height="14"/><rect x="712" y="130" width="14" height="14"/>
+      </g>
+      <rect x="0" y="292" width="1440" height="8" fill="#d9622b"/>
+      <g stroke="#d9622b" stroke-width="3" fill="none" opacity=".9"><path d="M400 300 C 560 220, 700 220, 860 300"/></g>
+      <circle cx="630" cy="252" r="7" fill="#d9622b"/><circle cx="630" cy="252" r="12" fill="none" stroke="#d9622b" stroke-width="2"/>
+      <text x="400" y="285" font-family="Archivo, sans-serif" font-size="15" fill="#e9dcc3" letter-spacing="4">DEIRA · DUBAI</text>
+    </svg>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track" id="mqTrack">
+    <span>Free High-Speed WiFi</span><span>2 Min to Metro</span><span>10 Min to DXB</span><span>Rooftop Breakfast</span><span>Business Centre 24/7</span><span>Airport Shuttle</span>
+  </div>
+</div>
+
+<section id="rooms">
+  <div class="container">
+    <div class="sec-label reveal"><span class="n">01</span><span class="t">Rooms &amp; Rates</span></div>
+    <h2 class="sec-title reveal">PICK YOUR <span class="thin">FLOOR</span></h2>
+    <p class="sec-sub reveal">Three room grades, one standard: spotless, quiet and fast. Swipe through — all rates include breakfast and taxes.</p>
+  </div>
+  <div class="rail-wrap">
+    <div class="rail" id="rail">
+      <article class="rcard">
+        <div class="rart"><svg viewBox="0 0 420 230" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="nr1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9dcc3"/><stop offset="1" stop-color="#d9c8a4"/></linearGradient></defs><rect width="420" height="230" fill="url(#nr1)"/><rect x="60" y="120" width="300" height="70" rx="6" fill="#0d3b3b"/><rect x="60" y="100" width="300" height="26" rx="6" fill="#155e5a"/><rect x="90" y="70" width="70" height="36" rx="4" fill="#e9dcc3" stroke="#0d3b3b" stroke-width="3"/><rect x="260" y="70" width="70" height="36" rx="4" fill="#e9dcc3" stroke="#0d3b3b" stroke-width="3"/></svg></div>
+        <div class="rbody"><span class="rk">Standard</span><h3>Classic Room</h3><p>26 sqm, queen bed, work desk, rain shower. City-facing, blackout curtains, 55" smart TV.</p><div class="rfeat"><span>Breakfast incl.</span><span>Free WiFi</span><span>Work desk</span></div><div class="rfoot"><span class="rprice">AED 199<small> / night</small></span><a class="rbook" href="#book">Book <span>→</span></a></div></div>
+      </article>
+      <article class="rcard">
+        <div class="rart"><svg viewBox="0 0 420 230" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="nr2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#155e5a"/><stop offset="1" stop-color="#082626"/></linearGradient></defs><rect width="420" height="230" fill="url(#nr2)"/><rect x="50" y="110" width="320" height="80" rx="6" fill="#0d3b3b" stroke="#e9dcc3" stroke-width="2"/><rect x="50" y="88" width="320" height="28" rx="6" fill="#e9dcc3"/><rect x="120" y="40" width="180" height="52" rx="4" fill="#082626" stroke="#e9dcc3" stroke-width="3"/><rect x="140" y="52" width="140" height="28" fill="#d9622b" opacity=".65"/></svg></div>
+        <div class="rbody"><span class="rk">Deluxe</span><h3>Executive Room</h3><p>34 sqm on high floors, king bed, lounge chair, Nespresso, creek glimpses. Priority late checkout.</p><div class="rfeat"><span>High floor</span><span>Nespresso</span><span>Late checkout</span></div><div class="rfoot"><span class="rprice">AED 299<small> / night</small></span><a class="rbook" href="#book">Book <span>→</span></a></div></div>
+      </article>
+      <article class="rcard">
+        <div class="rart"><svg viewBox="0 0 420 230" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="nr3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9622b"/><stop offset="1" stop-color="#b34a1d"/></linearGradient></defs><rect width="420" height="230" fill="url(#nr3)"/><rect x="40" y="100" width="340" height="90" rx="6" fill="#082626"/><rect x="40" y="78" width="340" height="28" rx="6" fill="#e9dcc3"/><g fill="#e9dcc3" opacity=".85"><rect x="70" y="120" width="60" height="50" rx="4"/><rect x="180" y="120" width="60" height="50" rx="4"/><rect x="290" y="120" width="60" height="50" rx="4"/></g></svg></div>
+        <div class="rbody"><span class="rk">Suite</span><h3>Business Suite</h3><p>52 sqm with separate living room, dining for four, two smart TVs. Built for long stays and longer deals.</p><div class="rfeat"><span>Living room</span><span>2 TVs</span><span>Airport pickup</span></div><div class="rfoot"><span class="rprice">AED 449<small> / night</small></span><a class="rbook" href="#book">Book <span>→</span></a></div></div>
+      </article>
+      <article class="rcard">
+        <div class="rart"><svg viewBox="0 0 420 230" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="nr4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d3b3b"/><stop offset="1" stop-color="#155e5a"/></linearGradient></defs><rect width="420" height="230" fill="url(#nr4)"/><g fill="none" stroke="#e9dcc3" stroke-width="3"><rect x="60" y="90" width="120" height="70" rx="4"/><rect x="240" y="90" width="120" height="70" rx="4"/></g><g fill="#d9622b"><circle cx="120" cy="125" r="10"/><circle cx="300" cy="125" r="10"/></g><rect x="60" y="175" width="300" height="10" fill="#e9dcc3" opacity=".5"/></svg></div>
+        <div class="rbody"><span class="rk">Groups</span><h3>Corporate Block</h3><p>10+ rooms for crews and project teams. Dedicated coordinator, group breakfast timings, invoice billing.</p><div class="rfeat"><span>10+ rooms</span><span>Coordinator</span><span>Invoice billing</span></div><div class="rfoot"><span class="rprice">ON QUOTE<small> / night</small></span><a class="rbook" href="#book">Enquire <span>→</span></a></div></div>
+      </article>
+    </div>
+    <div class="container"><div class="rail-nav"><button id="railPrev" aria-label="Previous rooms">←</button><button id="railNext" aria-label="Next rooms">→</button></div></div>
+  </div>
+</section>
+
+<section id="amenities" style="padding-top:40px">
+  <div class="container">
+    <div class="sec-label reveal"><span class="n">02</span><span class="t">Amenities</span></div>
+    <h2 class="sec-title reveal">EVERYTHING <span class="thin">INCLUDED</span></h2>
+    <p class="sec-sub reveal">No asterisks, no upsells at check-in. If it's on this grid, it's in your rate.</p>
+    <div class="bento">
+      <div class="acard a1 reveal"><div class="aicon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M2 9a15 15 0 0120 0M5.5 12.5a10 10 0 0113 0M9 16a5 5 0 016 0"/><circle cx="12" cy="19" r="1.6" fill="#fff"/></svg></div><h4>1 Gbps Fibre Wi-Fi</h4><p>Room-wide fibre with a wired desk port. Video calls that never freeze.</p></div>
+      <div class="acard reveal"><div class="aicon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 11h16v9H4zM4 11l2-6h12l2 6M12 5V3"/></svg></div><h4>Rooftop Breakfast</h4><p>Hot buffet 6–10:30 AM with Deira views.</p></div>
+      <div class="acard reveal"><div class="aicon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 13h18"/></svg></div><h4>24/7 Business Centre</h4><p>Print, scan &amp; two quiet work pods.</p></div>
+      <div class="acard reveal"><div class="aicon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M6 17a4 4 0 118 0M14 17a4 4 0 018 0M2 17h20M12 13V5M8 5h8"/></svg></div><h4>Compact Gym</h4><p>Cardio + free weights, open 5 AM–11 PM.</p></div>
+      <div class="acard reveal"><div class="aicon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M3 16V8a2 2 0 012-2h14a2 2 0 012 2v8M3 16h18M3 16v3a1 1 0 001 1h2a1 1 0 001-1v-2M21 16v3a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2"/><circle cx="8" cy="19" r="1.4" fill="#fff"/><circle cx="16" cy="19" r="1.4" fill="#fff"/></svg></div><h4>Airport Shuttle</h4><p>Scheduled DXB runs, 6 AM–11 PM.</p></div>
+      <div class="acard a6 reveal"><div class="aicon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></div><h4>Book Direct, Save 15%</h4><p>Lowest rate guaranteed on this site — plus free cancellation to 48 hours.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="loc-sec" id="location">
+  <div class="container">
+    <div class="sec-label reveal"><span class="n">03</span><span class="t" style="color:#9db8ae">Location</span></div>
+    <h2 class="sec-title reveal">DEIRA, <span class="thin">ON THE DOT</span></h2>
+    <p class="sec-sub reveal">Al Rigga Road — the commercial heart of old Dubai. Step out and the city is already moving.</p>
+    <div class="loc-grid">
+      <div class="map-frame reveal">
+        <svg viewBox="0 0 560 420" role="img" aria-label="Stylised map of Deira around Nihal Hotel">
+          <rect width="560" height="420" fill="#0d3b3b"/>
+          <g stroke="#155e5a" stroke-width="10" fill="none"><path d="M-20 300 C 120 260, 200 300, 340 240 S 520 200, 600 220"/></g>
+          <g stroke="#e9dcc3" stroke-width="3" opacity=".5"><path d="M60 -20 V 440 M180 -20 V 440 M300 -20 V 440 M420 -20 V 440 M-20 100 H580 M-20 200 H580 M-20 330 H580"/></g>
+          <g stroke="#d9622b" stroke-width="5" fill="none"><path d="M-20 150 H580"/><circle cx="300" cy="150" r="8" fill="#d9622b" stroke="none"/></g>
+          <text x="316" y="144" font-family="Archivo" font-size="13" fill="#e9dcc3">Al Rigga Metro</text>
+          <rect x="230" y="230" width="120" height="60" rx="8" fill="#d9622b"/>
+          <text x="290" y="256" text-anchor="middle" font-family="Anton" font-size="20" fill="#fff">NIHAL</text>
+          <text x="290" y="276" text-anchor="middle" font-family="Inter" font-size="11" fill="#fff">YOU ARE HERE</text>
+          <g font-family="Inter" font-size="12" fill="#9db8ae">
+            <text x="60" y="90">Baniyas Rd</text><text x="420" y="90">DXB Airport →</text>
+            <text x="60" y="360">Dubai Creek</text><text x="400" y="360">Naif Souq</text>
+          </g>
+          <circle cx="470" cy="70" r="6" fill="#7be3a0"/><text x="484" y="75" font-family="Inter" font-size="12" fill="#9db8ae">DXB · 10 min</text>
+        </svg>
+      </div>
+      <div class="dist-list reveal">
+        <div class="dist"><div class="dl">Al Rigga Metro Station<small>Red line — airport &amp; business bay direct</small></div><div class="dt">2 min</div></div>
+        <div class="dist"><div class="dl">DXB International Airport<small>Free scheduled shuttle</small></div><div class="dt">10 min</div></div>
+        <div class="dist"><div class="dl">Dubai Creek &amp; Baniyas Road<small>Old souqs, abra rides, trading houses</small></div><div class="dt">5 min</div></div>
+        <div class="dist"><div class="dl">Deira City Centre Mall<small>400+ stores &amp; dining</small></div><div class="dt">7 min</div></div>
+        <div class="dist"><div class="dl">Dubai Festival City<small>Waterfront dining &amp; IMAGINE show</small></div><div class="dt">12 min</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="container">
+    <div class="sec-label reveal"><span class="n">04</span><span class="t">Direct Booking</span></div>
+    <h2 class="sec-title reveal">LOCK YOUR <span class="thin">RATE</span></h2>
+    <p class="sec-sub reveal">Send an enquiry — our front desk confirms within 30 minutes with your best direct rate. No prepayment needed.</p>
+    <div class="book-grid reveal">
+      <div class="book-info">
+        <h3>WHY BOOK <span>DIRECT?</span></h3>
+        <p>OTAs take commission — we'd rather give it to you as a discount.</p>
+        <div class="direct-perks">
+          <div><span class="tick"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4"><path d="M2 7.5l3.5 3.5L12 3"/></svg></span>15% off the OTA price, guaranteed</div>
+          <div><span class="tick"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4"><path d="M2 7.5l3.5 3.5L12 3"/></svg></span>Free cancellation up to 48 hours</div>
+          <div><span class="tick"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4"><path d="M2 7.5l3.5 3.5L12 3"/></svg></span>Free room upgrade when available</div>
+          <div><span class="tick"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4"><path d="M2 7.5l3.5 3.5L12 3"/></svg></span>Early check-in from 11 AM on request</div>
+        </div>
+      </div>
+      <form class="book-form" id="bookForm">
+        <div class="frow">
+          <div class="field"><label>Full Name</label><input type="text" name="name" placeholder="Your name" required></div>
+          <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@company.com" required></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label>Check-in</label><input type="date" name="in" id="inDate" required></div>
+          <div class="field"><label>Check-out</label><input type="date" name="out" id="outDate" required></div>
+        </div>
+        <p class="nights-note" id="nightsNote">Select your dates to see the trip length.</p>
+        <div class="frow">
+          <div class="field"><label>Guests</label><select name="guests"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4+ guests / group</option></select></div>
+          <div class="field"><label>Room Type</label><select name="room"><option>Classic Room — AED 199</option><option>Executive Room — AED 299</option><option>Business Suite — AED 449</option><option>Corporate Block — on quote</option></select></div>
+        </div>
+        <button type="submit" class="roll" style="width:100%;text-align:center"><span class="rt">Send Booking Enquiry</span><span class="rt">We reply in 30 min</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-grid">
+    <div><div class="foot-brand">NIHAL<span>.</span></div><p>Al Rigga Road, Deira<br>Dubai, UAE<br>+971 4 294 0000<br>stay@nihalhotel.ae</p></div>
+    <div><h5>Hotel</h5><a href="#rooms">Rooms &amp; Rates</a><a href="#amenities">Amenities</a><a href="#location">Location</a></div>
+    <div><h5>Book</h5><a href="#book">Direct Booking</a><a href="#book">Corporate Enquiries</a><a href="#top">Back to Top</a></div>
+  </div>
+  <div class="credit">Concept demo by <b>Om Vibe Webs</b></div>
+</footer>
+
+<div class="toast" id="toast">Enquiry sent — our front desk will confirm your direct rate within 30 minutes.</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Seamless marquee */
+  var mq = document.getElementById("mqTrack");
+  mq.innerHTML += mq.innerHTML;
+
+  /* Hero intro */
+  var tl = gsap.timeline();
+  tl.from(".hero-tag", {opacity:0, y:-20, duration:.7, ease:"power3.out"})
+    .from("#megaTitle", {opacity:0, y:70, duration:1, ease:"power4.out"}, "-=.4")
+    .from(".hero-sub > *", {opacity:0, y:30, duration:.8, stagger:.14, ease:"power3.out"}, "-=.6")
+    .from(".hstat", {opacity:0, y:30, duration:.7, stagger:.1, ease:"power3.out"}, "-=.5")
+    .from(".hero-art", {opacity:0, y:80, duration:1, ease:"power3.out"}, "-=.7");
+  if(reduce){ tl.progress(1); }
+
+  /* Scroll reveals */
+  gsap.utils.toArray(".reveal").forEach(function(el){
+    gsap.to(el, {opacity:1, y:0, duration:.9, ease:"power3.out",
+      scrollTrigger:{trigger:el, start:"top 88%", toggleActions:"play none none reverse"}});
+  });
+
+  /* Counters (supports decimals) */
+  document.querySelectorAll(".count").forEach(function(el){
+    var to = parseFloat(el.getAttribute("data-to"));
+    var dec = parseInt(el.getAttribute("data-dec") || "0", 10);
+    ScrollTrigger.create({trigger: el, start:"top 92%", once:true, onEnter:function(){
+      var obj = {v:0};
+      gsap.to(obj, {v:to, duration:1.8, ease:"power2.out", onUpdate:function(){
+        el.textContent = dec ? obj.v.toFixed(dec) : Math.round(obj.v).toString();
+      }});
+    }});
+  });
+
+  /* Room rail arrows */
+  var rail = document.getElementById("rail");
+  function railBy(dir){
+    var card = rail.querySelector(".rcard");
+    rail.scrollBy({left: dir * (card.offsetWidth + 24), behavior:"smooth"});
+  }
+  document.getElementById("railPrev").addEventListener("click", function(){ railBy(-1); });
+  document.getElementById("railNext").addEventListener("click", function(){ railBy(1); });
+
+  /* Mobile nav toggle */
+  var burger = document.getElementById("burger"), links = document.getElementById("navLinks");
+  burger.addEventListener("click", function(){
+    var open = links.style.display === "flex";
+    links.style.display = open ? "" : "flex";
+    links.style.flexDirection = "column";
+    links.style.position = "absolute";
+    links.style.top = "100%"; links.style.left = "0"; links.style.right = "0";
+    links.style.background = "#f7f4eb";
+    links.style.padding = "20px 4%";
+    links.style.gap = "18px";
+    links.style.borderBottom = "2px solid #0d3b3b";
+  });
+
+  /* Nights calculator */
+  var inD = document.getElementById("inDate"), outD = document.getElementById("outDate"), note = document.getElementById("nightsNote");
+  function updNights(){
+    if(inD.value && outD.value){
+      var n = Math.round((new Date(outD.value) - new Date(inD.value)) / 86400000);
+      note.innerHTML = n > 0 ? "Your trip: <b>" + n + " night" + (n>1?"s":"") + "</b> — best direct rate applied at confirmation." : "Check-out must be after check-in.";
+    }
+  }
+  inD.addEventListener("change", updNights); outD.addEventListener("change", updNights);
+
+  /* Booking form */
+  var form = document.getElementById("bookForm"), toast = document.getElementById("toast");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    toast.classList.add("show"); form.reset();
+    note.textContent = "Select your dates to see the trip length.";
+    setTimeout(function(){ toast.classList.remove("show"); }, 4500);
+  });
+})();
+</script>
+</body>
+</html>

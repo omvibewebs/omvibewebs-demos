@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corail Beauty Salon — Al Jaddaf, Dubai | Hair · Nails · Skin · Glow</title>
+<meta name="description" content="Corail Beauty Salon, Al Jaddaf Dubai. Hair, nails, skin and bridal artistry in soft coral luxury. Book your glow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#ff6f61; --coral-deep:#e14e5a; --coral-ink:#c23a4e;
+  --blush:#ffdcd6; --blush-soft:#ffece7; --cream:#fff8f4;
+  --ink:#43222e; --ink-soft:#7c5561; --plum:#2e1620;
+  --disp:'Bricolage Grotesque',sans-serif; --body:'Space Grotesk',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.6}
+::selection{background:var(--coral);color:#fff}
+a{text-decoration:none;color:inherit}
+.container{width:min(1240px,92%);margin:0 auto}
+
+/* ---------- Floating pill nav ---------- */
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:1000;width:min(1240px,94%)}
+.nav-pill{display:flex;align-items:center;justify-content:space-between;background:rgba(255,248,244,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,111,97,.25);border-radius:100px;padding:12px 14px 12px 26px;box-shadow:0 14px 40px rgba(225,78,90,.14)}
+.logo{font-family:var(--disp);font-weight:800;font-size:1.45rem;letter-spacing:.02em;color:var(--coral-ink);display:flex;align-items:center;gap:10px}
+.logo svg{width:34px;height:34px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);position:relative}
+.nav-links a:hover{color:var(--coral-ink)}
+.btn-pill{display:inline-block;background:linear-gradient(120deg,var(--coral),var(--coral-deep));color:#fff;font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 32px;border-radius:100px;border:0;cursor:pointer;box-shadow:0 12px 28px rgba(225,78,90,.35);transition:transform .3s,box-shadow .3s}
+.btn-pill:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 36px rgba(225,78,90,.45)}
+.burger{display:none;background:none;border:0;cursor:pointer}
+.burger span{display:block;width:26px;height:2.5px;background:var(--ink);margin:5px 0;border-radius:2px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:150px 0 90px;overflow:hidden;
+  background:radial-gradient(900px 600px at 12% 8%,#ffe3da 0%,transparent 60%),
+             radial-gradient(800px 560px at 88% 20%,#ffd3e2 0%,transparent 55%),
+             radial-gradient(700px 700px at 50% 110%,#ffc9b8 0%,transparent 60%),var(--cream)}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;z-index:0;animation:blobFloat 12s ease-in-out infinite}
+.blob.b1{width:420px;height:420px;background:#ffb3a6;top:-8%;right:-6%}
+.blob.b2{width:340px;height:340px;background:#ffc7dd;bottom:4%;left:-8%;animation-delay:3s}
+.blob.b3{width:260px;height:260px;background:#ffe0b8;top:38%;left:44%;animation-delay:6s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
+.hero-inner{position:relative;z-index:2;text-align:center;width:100%}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(255,111,97,.3);border-radius:100px;padding:10px 22px;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--coral-ink);font-weight:600;margin-bottom:30px;box-shadow:0 8px 24px rgba(225,78,90,.12)}
+.hero-kicker .dot{width:9px;height:9px;border-radius:50%;background:var(--coral);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.35}}
+.mega{font-family:var(--disp);font-weight:800;line-height:.92;letter-spacing:-.015em;font-size:clamp(4rem,13.5vw,11.5rem);color:var(--ink)}
+.mega .ch{display:inline-block}
+.mega .grad{background:linear-gradient(100deg,var(--coral) 10%,var(--coral-deep) 55%,#ff9d7e 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mega-sub{font-family:var(--disp);font-weight:400;font-size:clamp(1.3rem,3.4vw,2.3rem);color:var(--ink-soft);margin-top:18px}
+.mega-sub em{font-style:normal;color:var(--coral-ink);font-weight:600}
+.hero-cta{margin-top:40px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.btn-ghost{display:inline-block;padding:15px 32px;border-radius:100px;border:1.5px solid var(--ink);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);transition:.3s;background:transparent;cursor:pointer}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.stickers{position:absolute;inset:0;z-index:1;pointer-events:none}
+.sticker{position:absolute;background:#fff;border:1.5px solid var(--ink);border-radius:100px;padding:12px 22px;font-weight:600;font-size:.82rem;box-shadow:5px 5px 0 var(--ink);transform:rotate(-6deg)}
+.sticker.s1{top:22%;left:6%}
+.sticker.s2{top:30%;right:7%;transform:rotate(5deg);background:var(--ink);color:#fff;box-shadow:5px 5px 0 var(--coral)}
+.sticker.s3{bottom:16%;left:10%;transform:rotate(4deg)}
+.sticker.s4{bottom:24%;right:9%;transform:rotate(-4deg);background:var(--blush)}
+.hero-art{margin:64px auto 0;width:min(880px,94%);position:relative;z-index:2}
+.hero-art .frame{border-radius:32px;overflow:hidden;border:6px solid #fff;box-shadow:0 40px 90px rgba(225,78,90,.25);transform:rotate(-1.2deg)}
+.hero-art svg{width:100%;height:auto;display:block}
+
+/* ---------- Ticker ---------- */
+.ticker{background:var(--plum);color:#ffdcd6;overflow:hidden;padding:20px 0;transform:rotate(-1.2deg) scale(1.02);border-top:2px solid var(--coral);border-bottom:2px solid var(--coral)}
+.ticker-track{display:flex;gap:0;width:max-content;animation:tick 26s linear infinite}
+.ticker span{font-family:var(--disp);font-weight:700;font-size:1.35rem;letter-spacing:.06em;text-transform:uppercase;padding:0 28px;white-space:nowrap;display:flex;align-items:center;gap:28px}
+.ticker span::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--coral);flex:none}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{padding:110px 0}
+.sec-head{max-width:760px;margin:0 auto 60px;text-align:center}
+.kick{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--coral-ink);background:#fff;border:1px solid rgba(255,111,97,.3);padding:9px 20px;border-radius:100px;margin-bottom:20px}
+.sec-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.04;letter-spacing:-.01em}
+.sec-head h2 em{font-style:normal;color:var(--coral)}
+.sec-head p{color:var(--ink-soft);margin-top:16px;font-size:1.05rem}
+
+/* ---------- Bento services ---------- */
+.services{background:linear-gradient(180deg,var(--cream),var(--blush-soft))}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:18px}
+.bcard{position:relative;border-radius:26px;padding:30px;overflow:hidden;background:#fff;border:1px solid rgba(255,111,97,.18);box-shadow:0 10px 30px rgba(225,78,90,.08);transition:transform .4s cubic-bezier(.2,.7,.3,1.2),box-shadow .4s;display:flex;flex-direction:column;justify-content:flex-end;will-change:transform}
+.bcard:hover{box-shadow:0 26px 60px rgba(225,78,90,.2)}
+.bcard .icon{width:54px;height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--coral),var(--coral-deep));margin-bottom:auto;box-shadow:0 10px 22px rgba(225,78,90,.35)}
+.bcard h3{font-family:var(--disp);font-weight:700;font-size:1.5rem;margin-bottom:6px}
+.bcard p{font-size:.9rem;color:var(--ink-soft)}
+.bcard .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.bcard .pills span{font-size:.72rem;font-weight:600;background:var(--blush-soft);border:1px solid rgba(255,111,97,.25);padding:6px 13px;border-radius:100px;color:var(--coral-ink)}
+.bcard .from{position:absolute;top:24px;right:24px;background:var(--ink);color:#fff;font-size:.74rem;font-weight:600;padding:8px 15px;border-radius:100px;letter-spacing:.05em}
+.b1{grid-column:span 2;background:linear-gradient(135deg,#ff8a7a,#e14e5a);color:#fff;border:0}
+.b1 p{color:#ffe3da}.b1 .icon{background:rgba(255,255,255,.2);box-shadow:none}
+.b1 .from{background:#fff;color:var(--coral-ink)}
+.b1 .pills span{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);color:#fff}
+.b4{grid-column:span 2}
+.b6{grid-column:span 2;background:linear-gradient(135deg,#43222e,#2e1620);color:#fff;border:0}
+.b6 p{color:#d9aeae}.b6 .pills span{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#ffdcd6}
+.b6 .from{background:var(--coral);color:#fff}
+
+/* ---------- Gallery ---------- */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gtile{border-radius:26px;overflow:hidden;position:relative;height:340px;cursor:pointer}
+.gtile svg{width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.gtile:hover svg{transform:scale(1.06) rotate(.5deg)}
+.gtile .cap{position:absolute;left:20px;bottom:20px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-radius:100px;padding:10px 22px;font-weight:600;font-size:.82rem;letter-spacing:.08em;color:var(--ink)}
+
+/* ---------- Reviews ---------- */
+.reviews{background:var(--plum);color:#ffe9e2}
+.reviews .sec-head h2{color:#fff}
+.reviews .sec-head p{color:#d9aeae}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev{background:rgba(255,255,255,.06);border:1px solid rgba(255,220,214,.18);border-radius:26px;padding:34px;backdrop-filter:blur(8px);transition:transform .35s,background .35s}
+.rev:hover{transform:translateY(-8px);background:rgba(255,255,255,.09)}
+.stars{display:flex;gap:5px;margin-bottom:18px}
+.rev p{font-size:.98rem;line-height:1.7;color:#ffe9e2}
+.rev .who{margin-top:22px;font-weight:600;font-size:.85rem;letter-spacing:.1em;color:var(--blush)}
+.rev .who small{display:block;color:#b98a92;font-weight:400;letter-spacing:.05em;margin-top:4px}
+
+/* ---------- Booking (glassmorphism) ---------- */
+.book-wrap{position:relative;border-radius:36px;overflow:hidden;padding:80px 8%;background:linear-gradient(130deg,#ff9d7e,#e14e5a 45%,#a83a5c 100%)}
+.book-wrap::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,.16);filter:blur(60px);top:-160px;right:-120px}
+.book-wrap::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(255,220,200,.22);filter:blur(60px);bottom:-140px;left:-100px}
+.glass{position:relative;z-index:2;background:rgba(255,255,255,.14);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.45);border-radius:28px;padding:54px;display:grid;grid-template-columns:1fr 1fr;gap:50px;box-shadow:0 40px 90px rgba(120,20,40,.3)}
+.glass h2{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4vw,3rem);color:#fff;line-height:1.05;margin-bottom:16px}
+.glass .g-sub{color:#ffe3da;font-size:1rem;margin-bottom:28px}
+.g-contact{display:grid;gap:14px;margin-top:8px}
+.g-contact a{display:flex;align-items:center;gap:14px;color:#fff;font-weight:500;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:14px 20px;transition:.3s}
+.g-contact a:hover{background:rgba(255,255,255,.24);transform:translateX(6px)}
+.g-contact svg{flex:none}
+form.bform{display:grid;gap:16px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bform input,.bform select{background:rgba(255,255,255,.9);border:1px solid transparent;border-radius:14px;padding:15px 18px;font-family:var(--body);font-size:.94rem;color:var(--ink);width:100%;transition:.3s}
+.bform input:focus,.bform select:focus{outline:none;border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
+.bform button{justify-self:start}
+.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,140px);background:var(--plum);color:#ffdcd6;padding:18px 36px;border-radius:100px;font-size:.88rem;letter-spacing:.06em;z-index:1500;transition:transform .5s cubic-bezier(.2,.9,.3,1.25);box-shadow:0 20px 50px rgba(0,0,0,.3);border:1px solid var(--coral)}
+.toast.show{transform:translate(-50%,0)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--plum);color:#d9aeae;padding:70px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:50px;padding-bottom:50px}
+.foot-brand{font-family:var(--disp);font-weight:800;font-size:2rem;color:#fff;margin-bottom:12px}
+.foot-grid h5{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--coral);margin-bottom:20px}
+.foot-grid p,.foot-grid a{font-size:.93rem;display:block;margin-bottom:10px;font-weight:300}
+.foot-grid a:hover{color:#fff}
+.credit{border-top:1px solid rgba(255,220,214,.14);padding:22px 0;text-align:center;font-size:.78rem;letter-spacing:.16em}
+.credit b{color:var(--coral);font-weight:600}
+
+.reveal{opacity:0;transform:translateY(40px)}
+
+@media(max-width:1000px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .b1,.b4,.b6{grid-column:span 2}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gtile{height:280px}
+  .rev-grid{grid-template-columns:1fr}
+  .glass{grid-template-columns:1fr;padding:36px 26px}
+  .sticker.s1,.sticker.s4{display:none}
+}
+@media(max-width:640px){
+  .bento{grid-template-columns:1fr}
+  .b1,.b4,.b6{grid-column:span 1}
+  .gal-grid{grid-template-columns:1fr}
+  .f2{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .book-wrap{padding:50px 5%}
+  section{padding:80px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-pill">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="#e14e5a" stroke-width="3"/><path d="M20 8 C26 14 27 18 27 22 A7 7 0 0 1 13 22 C13 18 14 14 20 8 Z" fill="#ff6f61"/><path d="M20 15 V30 M14 22 H26" stroke="#fff" stroke-width="1.6"/></svg>
+      corail
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#book">Book</a>
+    </div>
+    <a href="#book" class="btn-pill">Book Now</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="stickers">
+    <span class="sticker s1">blowout from AED 99</span>
+    <span class="sticker s2">Al Jaddaf · Dubai</span>
+    <span class="sticker s3">4.9 rated by 2k+ clients</span>
+    <span class="sticker s4">walk-ins welcome</span>
+  </div>
+  <div class="container hero-inner">
+    <span class="hero-kicker"><span class="dot"></span> Beauty salon · Al Jaddaf, Dubai</span>
+    <h1 class="mega" id="megaTitle">GLOW <span class="grad">LOUD</span></h1>
+    <p class="mega-sub">Hair, nails &amp; skin artistry — <em>soft on you, loud on results.</em></p>
+    <div class="hero-cta">
+      <a href="#book" class="btn-pill magnetic">Book Your Glow</a>
+      <a href="#services" class="btn-ghost magnetic">See Services</a>
+    </div>
+    <div class="hero-art">
+      <div class="frame">
+        <svg viewBox="0 0 880 420" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Abstract beauty line art">
+          <defs>
+            <linearGradient id="cart" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffdcd6"/><stop offset=".55" stop-color="#ff9d8a"/><stop offset="1" stop-color="#e14e5a"/></linearGradient>
+            <linearGradient id="cart2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffece7"/><stop offset="1" stop-color="#ffc7b8"/></linearGradient>
+          </defs>
+          <rect width="880" height="420" fill="url(#cart2)"/>
+          <circle cx="660" cy="120" r="150" fill="url(#cart)" opacity=".55"/>
+          <circle cx="150" cy="330" r="110" fill="url(#cart)" opacity=".35"/>
+          <g fill="none" stroke="#43222e" stroke-width="5" stroke-linecap="round">
+            <path d="M330 90 C 300 160, 300 260, 340 330 C 370 380, 430 390, 470 360"/>
+            <path d="M340 330 C 420 350, 520 340, 580 300"/>
+            <path d="M470 120 C 540 110, 600 150, 610 220 C 615 270, 590 310, 560 322"/>
+            <path d="M430 200 q 30 -14 58 2"/>
+            <circle cx="520" cy="212" r="7" fill="#43222e" stroke="none"/>
+            <path d="M500 268 q 26 14 52 -4"/>
+            <path d="M380 250 q 40 60 120 66"/>
+          </g>
+          <g fill="#e14e5a"><circle cx="610" cy="90" r="10"/><circle cx="250" cy="120" r="7"/><circle cx="720" cy="300" r="9"/><circle cx="180" cy="250" r="6"/></g>
+          <g stroke="#e14e5a" stroke-width="3" fill="none" opacity=".8"><path d="M120 90 q 18 -22 40 -8 q -20 20 -40 8"/><path d="M700 350 q 22 -14 40 4 q -22 14 -40 -4"/></g>
+          <text x="60" y="380" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="44" fill="#43222e" opacity=".9">corail beauty</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Hair Styling</span><span>Nails</span><span>Hydrafacial</span><span>Lashes</span><span>Balayage</span><span>Bridal</span><span>Massage</span><span>Waxing</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kick">Menu of Glow</span>
+      <h2>Pick your <em>ritual</em></h2>
+      <p>Transparent pricing, premium products, zero rushed appointments. Every service ends with our signature head massage.</p>
+    </div>
+    <div class="bento">
+      <div class="bcard b1 reveal tilt">
+        <span class="from">from AED 99</span>
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3c-4 3-6 7-6 11a6 6 0 0012 0c0-4-2-8-6-11z"/><path d="M12 3v18"/></svg></div>
+        <h3>Hair Artistry</h3><p>Cuts, blowouts, balayage &amp; keratin by senior stylists.</p>
+        <div class="pills"><span>Cut + Blowout 149</span><span>Balayage 599</span><span>Keratin 450</span></div>
+      </div>
+      <div class="bcard reveal tilt">
+        <span class="from">from AED 120</span>
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M7 3v10M12 3v10M17 3v10"/><rect x="5" y="13" width="14" height="8" rx="3"/></svg></div>
+        <h3>Nails</h3><p>Russian manicure, extensions &amp; nail art.</p>
+        <div class="pills"><span>Mani 120</span><span>Extensions 250</span></div>
+      </div>
+      <div class="bcard reveal tilt">
+        <span class="from">from AED 199</span>
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg></div>
+        <h3>Skin &amp; Facials</h3><p>Hydrafacial, brightening &amp; glow peels.</p>
+        <div class="pills"><span>Hydrafacial 299</span><span>Glow Peel 199</span></div>
+      </div>
+      <div class="bcard b4 reveal tilt">
+        <span class="from">from AED 349</span>
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 21C7 17 4 13 4 9a5 5 0 019-3 5 5 0 019 3c0 4-3 8-8 12z"/></svg></div>
+        <h3>Bridal Couture</h3><p>Full bridal hair, makeup &amp; draping with trial session. In-salon or at your venue.</p>
+        <div class="pills"><span>Bridal Trial 199</span><span>Full Bridal 1,499</span><span>Party Makeup 349</span></div>
+      </div>
+      <div class="bcard reveal tilt">
+        <span class="from">from AED 89</span>
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.6"/></svg></div>
+        <h3>Lashes &amp; Brows</h3><p>Lash lifts, extensions &amp; brow lamination.</p>
+        <div class="pills"><span>Lash Lift 180</span><span>Extensions 220</span></div>
+      </div>
+      <div class="bcard b6 reveal tilt">
+        <span class="from">from AED 149</span>
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3v18M5 8c4 2 10 2 14 0M5 16c4-2 10-2 14 0"/></svg></div>
+        <h3>Spa Rituals</h3><p>Moroccan bath, deep-tissue &amp; aromatherapy escapes.</p>
+        <div class="pills"><span>Moroccan Bath 249</span><span>Massage 60min 199</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="sec-head reveal"><span class="kick">The Vibe</span><h2>Inside <em>Corail</em></h2><p>Blush walls, daylight mirrors, and chairs you'll never want to leave.</p></div>
+    <div class="gal-grid">
+      <div class="gtile reveal"><svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffece7"/><stop offset="1" stop-color="#ffb3a6"/></linearGradient></defs><rect width="400" height="340" fill="url(#cg1)"/><rect x="120" y="60" width="160" height="200" rx="80" fill="#fff" opacity=".8"/><rect x="140" y="80" width="120" height="160" rx="60" fill="#ffdcd6"/><circle cx="200" cy="60" r="18" fill="#e14e5a" opacity=".7"/><rect x="60" y="280" width="280" height="14" rx="7" fill="#43222e" opacity=".25"/></svg><span class="cap">Styling Lounge</span></div>
+      <div class="gtile reveal"><svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd3e2"/><stop offset="1" stop-color="#e14e5a"/></linearGradient></defs><rect width="400" height="340" fill="url(#cg2)"/><g fill="#fff" opacity=".85"><ellipse cx="140" cy="200" rx="60" ry="90"/><ellipse cx="260" cy="200" rx="60" ry="90"/></g><g fill="#e14e5a"><circle cx="200" cy="80" r="12"/><circle cx="320" cy="120" r="8"/><circle cx="90" cy="110" r="8"/></g></svg><span class="cap">Nail Atelier</span></div>
+      <div class="gtile reveal"><svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff8f4"/><stop offset="1" stop-color="#ffdcd6"/></linearGradient></defs><rect width="400" height="340" fill="url(#cg3)"/><rect x="100" y="180" width="200" height="90" rx="45" fill="#ffb3a6"/><rect x="130" y="150" width="140" height="50" rx="25" fill="#fff"/><circle cx="200" cy="90" r="30" fill="#ffe3da" stroke="#e14e5a" stroke-width="4"/></svg><span class="cap">Facial Suites</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="sec-head reveal"><span class="kick">Love Notes</span><h2>2,400+ five-star <em style="color:#ff9d7e">glows</em></h2><p>Real reviews from Google &amp; Fresha.</p></div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars"><svg width="90" height="18" viewBox="0 0 90 18"><g fill="#ff9d7e"><path d="M9 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5L4.5 13.6l1-5L1.8 5.2l5-.6z"/><path d="M29 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M49 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M69 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M89 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z" transform="translate(-10,0)"/></g></svg></div><p>"Best balayage in Dubai, genuinely. They showed me reference shades, were honest about what my hair could take, and the result is unreal."</p><div class="who">SARA M.<small>Balayage · Google review</small></div></div>
+      <div class="rev reveal"><div class="stars"><svg width="90" height="18" viewBox="0 0 90 18"><g fill="#ff9d7e"><path d="M9 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5L4.5 13.6l1-5L1.8 5.2l5-.6z"/><path d="M29 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M49 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M69 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M89 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z" transform="translate(-10,0)"/></g></svg></div><p>"The Russian manicure here ruined every other salon for me. Three weeks, zero chips. The salon itself is so pretty I took photos."</p><div class="who">ELENA K.<small>Nails · Fresha review</small></div></div>
+      <div class="rev reveal"><div class="stars"><svg width="90" height="18" viewBox="0 0 90 18"><g fill="#ff9d7e"><path d="M9 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5L4.5 13.6l1-5L1.8 5.2l5-.6z"/><path d="M29 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M49 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M69 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z"/><path d="M89 0l2.2 4.6 5 .6-3.7 3.4 1 5-4.5-2.5-4.5 2.5 1-5-3.7-3.4 5-.6z" transform="translate(-10,0)"/></g></svg></div><p>"Booked bridal hair + makeup for my wedding. Trial was thorough, day-of was calm and on time, and I cried happy tears at the reveal."</p><div class="who">PRIYA S.<small>Bridal · Google review</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="container">
+    <div class="book-wrap reveal">
+      <div class="glass">
+        <div>
+          <h2>Book your<br>glow session</h2>
+          <p class="g-sub">Tell us what you need — we confirm on WhatsApp within 15 minutes, 9 AM to 9 PM daily.</p>
+          <div class="g-contact">
+            <a href="tel:+97144001234"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a13 13 0 005 5l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 6a2 2 0 012-2z"/></svg>+971 4 400 1234</a>
+            <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 12a8 8 0 01-8 8H4l2-3a8 8 0 1115-5z"/></svg>WhatsApp us instantly</a>
+            <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Al Jaddaf, Dubai — near the metro</a>
+          </div>
+        </div>
+        <form class="bform" id="bookForm">
+          <div class="f2">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="tel" name="phone" placeholder="Phone / WhatsApp" required>
+          </div>
+          <select name="service" required>
+            <option value="" disabled selected>Choose a service</option>
+            <option>Haircut &amp; Styling</option><option>Balayage / Colour</option>
+            <option>Manicure / Pedicure</option><option>Hydrafacial</option>
+            <option>Lashes &amp; Brows</option><option>Bridal Package</option><option>Spa Ritual</option>
+          </select>
+          <div class="f2">
+            <input type="date" name="date" required>
+            <select name="time" required>
+              <option value="" disabled selected>Preferred time</option>
+              <option>Morning (9–12)</option><option>Afternoon (12–5)</option><option>Evening (5–9)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-pill magnetic">Request Booking</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-grid">
+    <div><div class="foot-brand">corail</div><p>Al Jaddaf, Dubai, UAE<br>Open daily 9:00 AM – 9:00 PM<br>+971 4 400 1234</p></div>
+    <div><h5>Explore</h5><a href="#services">Services &amp; Prices</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a></div>
+    <div><h5>Visit</h5><a href="#book">Book Appointment</a><a href="#top">Back to Top</a></div>
+  </div>
+  <div class="credit">Concept demo by <b>Om Vibe Webs</b></div>
+</footer>
+
+<div class="toast" id="toast">Request received! We'll confirm on WhatsApp within 15 minutes.</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Duplicate ticker content for seamless loop */
+  var track = document.getElementById("tickerTrack");
+  track.innerHTML += track.innerHTML;
+
+  /* Split mega title into chars (motion.dev split-text idea) */
+  var mega = document.getElementById("megaTitle");
+  (function(){
+    var frag = document.createDocumentFragment();
+    Array.prototype.forEach.call(mega.childNodes, function(n){
+      if(n.nodeType === 3){
+        n.textContent.split("").forEach(function(chr){
+          if(chr === " "){ frag.appendChild(document.createTextNode("\u00A0")); return; }
+          var s = document.createElement("span"); s.className = "ch"; s.textContent = chr; frag.appendChild(s);
+        });
+      } else {
+        var grad = n.textContent.split("").map(function(chr){
+          var s = document.createElement("span"); s.className = "ch"; s.textContent = chr; return s;
+        });
+        var wrap = document.createElement("span"); wrap.className = "grad";
+        grad.forEach(function(s){ wrap.appendChild(s); });
+        frag.appendChild(document.createTextNode(" ")); frag.appendChild(wrap);
+      }
+    });
+    mega.innerHTML = ""; mega.appendChild(frag);
+  })();
+
+  /* Hero intro: staggered chars + wavy idle (motion.dev wavy text idea) */
+  var chars = mega.querySelectorAll(".ch");
+  var tl = gsap.timeline();
+  tl.from(chars, {yPercent:110, rotate:6, opacity:0, duration:.9, ease:"back.out(1.6)", stagger:.045})
+    .from(".hero-kicker", {opacity:0, y:-18, duration:.7}, "-=.7")
+    .from(".mega-sub", {opacity:0, y:24, duration:.8}, "-=.5")
+    .from(".hero-cta > *", {opacity:0, y:24, duration:.7, stagger:.12}, "-=.5")
+    .from(".hero-art .frame", {opacity:0, y:60, rotate:2, duration:1}, "-=.5")
+    .from(".sticker", {opacity:0, scale:.5, duration:.6, ease:"back.out(2)", stagger:.1}, "-=.7");
+  if(reduce){ tl.progress(1); }
+  else {
+    gsap.to(chars, {y:-14, duration:1.1, ease:"sine.inOut", stagger:{each:.06, yoyo:true, repeat:-1}});
+  }
+
+  /* Scroll reveals */
+  gsap.utils.toArray(".reveal").forEach(function(el){
+    gsap.to(el, {opacity:1, y:0, duration:.9, ease:"power3.out",
+      scrollTrigger:{trigger:el, start:"top 88%", toggleActions:"play none none reverse"}});
+  });
+
+  /* 3D tilt on bento cards (motion.dev tilt card idea) */
+  if(!reduce && window.matchMedia("(pointer:fine)").matches){
+    document.querySelectorAll(".tilt").forEach(function(card){
+      card.addEventListener("mousemove", function(e){
+        var r = card.getBoundingClientRect();
+        var rx = ((e.clientY - r.top)/r.height - .5) * -8;
+        var ry = ((e.clientX - r.left)/r.width - .5) * 8;
+        card.style.transform = "perspective(900px) rotateX("+rx+"deg) rotateY("+ry+"deg) scale(1.02)";
+      });
+      card.addEventListener("mouseleave", function(){ card.style.transform = ""; });
+    });
+    /* Magnetic buttons (motion.dev magnetic target idea) */
+    document.querySelectorAll(".magnetic").forEach(function(btn){
+      btn.addEventListener("mousemove", function(e){
+        var r = btn.getBoundingClientRect();
+        gsap.to(btn, {x:(e.clientX - r.left - r.width/2)*.25, y:(e.clientY - r.top - r.height/2)*.25, duration:.4});
+      });
+      btn.addEventListener("mouseleave", function(){ gsap.to(btn, {x:0, y:0, duration:.5, ease:"elastic.out(1,.5)"}); });
+    });
+  }
+
+  /* Mobile nav: simple toggle -> scroll to book */
+  var burger = document.querySelector(".burger");
+  if(burger){
+    burger.addEventListener("click", function(){
+      document.getElementById("book").scrollIntoView({behavior:"smooth"});
+    });
+  }
+
+  /* Booking form */
+  var form = document.getElementById("bookForm"), toast = document.getElementById("toast");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    toast.classList.add("show"); form.reset();
+    setTimeout(function(){ toast.classList.remove("show"); }, 4500);
+  });
+})();
+</script>
+</body>
+</html>
