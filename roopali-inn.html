@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Roopali Inn | Pure Veg Restaurant & Comfort Stay — Napier Town, Jabalpur</title>
+<meta name="description" content="Hotel Roopali Inn, Jabalpur — serving pure vegetarian North Indian favourites since 1989. Restaurant, comfortable rooms and family dining near Station Road.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf8f3; --card:#ffffff; --ink:#17251f; --muted:#6b7a72;
+  --green:#0d5c43; --green-d:#093f2e; --amber:#e8930c; --amber-soft:#fdf0d8;
+  --line:#e7e0d2; --radius:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;width:min(1180px,calc(100% - 28px));
+  background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 12px 40px rgba(20,40,30,.08)}
+nav .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 22px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Sora';font-weight:800;font-size:1.15rem;letter-spacing:.02em}
+.brand .mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--green),#149a6c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+.brand small{font-family:'Inter';font-weight:500;font-size:.62rem;letter-spacing:.3em;color:var(--muted);display:block}
+nav .links{display:flex;gap:28px;align-items:center}
+nav .links a.nl{font-size:.86rem;font-weight:500;color:#3d4a44;position:relative}
+nav .links a.nl::after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--amber);border-radius:2px;transition:width .3s}
+nav .links a.nl:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;border-radius:14px;font-weight:600;font-size:.88rem;cursor:pointer;border:0;transition:transform .3s,box-shadow .3s;will-change:transform}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 10px 26px rgba(13,92,67,.3)}
+.btn-green:hover{box-shadow:0 14px 34px rgba(13,92,67,.42)}
+.btn-amber{background:var(--amber);color:#231600;box-shadow:0 10px 26px rgba(232,147,12,.32)}
+.btn-line{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.btn-line:hover{border-color:var(--green)}
+.burger{display:none;background:none;border:0;cursor:pointer}
+.burger span{display:block;width:24px;height:2px;background:var(--ink);margin:6px 0;transition:.3s;border-radius:2px}
+@media(max-width:900px){
+  nav .links{position:fixed;top:0;right:0;height:100dvh;width:min(320px,85vw);background:#fff;flex-direction:column;justify-content:center;align-items:flex-start;padding:40px;gap:26px;transform:translateX(105%);transition:transform .45s cubic-bezier(.7,0,.3,1);box-shadow:-20px 0 60px rgba(0,0,0,.12);border-radius:0}
+  nav .links.open{transform:none}
+  .burger{display:block;z-index:70}
+  body.menu-open .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  body.menu-open .burger span:nth-child(2){opacity:0}
+  body.menu-open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+}
+
+/* ---------- HERO ---------- */
+.hero{padding:150px 0 70px;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 400px at 12% 8%,rgba(232,147,12,.14),transparent 60%),
+  radial-gradient(700px 500px at 88% 20%,rgba(13,92,67,.10),transparent 60%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}}
+.pill{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:.78rem;font-weight:600;letter-spacing:.08em;color:var(--green);box-shadow:0 6px 18px rgba(20,40,30,.06)}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:#22b573;box-shadow:0 0 0 5px rgba(34,181,115,.15);animation:blink 2s infinite}
+@keyframes blink{50%{opacity:.5}}
+.hero h1{font-size:clamp(2.9rem,6.4vw,4.9rem);font-weight:800;margin:24px 0 18px}
+.hero h1 .hl{color:var(--green);position:relative;white-space:nowrap}
+.hero h1 .hl svg{position:absolute;left:0;bottom:-8px;width:100%;height:14px}
+.hero p.sub{color:var(--muted);font-size:1.1rem;max-width:480px;font-weight:300}
+.hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.trust{display:flex;gap:26px;margin-top:36px;flex-wrap:wrap}
+.trust div b{font-family:'Sora';font-size:1.35rem;display:block}
+.trust div span{font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+/* hero bento art */
+.bento{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,190px);gap:14px}
+.bcell{border-radius:var(--radius);overflow:hidden;position:relative;border:1px solid var(--line);box-shadow:0 18px 44px rgba(20,40,30,.08)}
+.bcell.big{grid-row:span 2}
+.bcell .cap{position:absolute;left:16px;bottom:14px;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);padding:8px 16px;border-radius:999px;font-size:.76rem;font-weight:600;letter-spacing:.06em}
+.bcell .veg{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:7px;background:#fff;border:2px solid #1d7a3a;display:flex;align-items:center;justify-content:center}
+.bcell .veg::after{content:"";width:11px;height:11px;border-radius:50%;background:#1d7a3a}
+
+/* ---------- MARQUEE ---------- */
+.strip{background:var(--ink);color:#f3efe4;overflow:hidden;padding:15px 0;transform:rotate(-1.2deg) scale(1.02);margin:30px 0 0}
+.strip .track{display:inline-flex;white-space:nowrap;animation:slide 24s linear infinite;will-change:transform}
+.strip span{font-family:'Sora';font-weight:600;font-size:.95rem;letter-spacing:.18em;text-transform:uppercase;padding:0 28px;display:inline-flex;align-items:center;gap:56px}
+.strip span::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--amber)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+.sec{padding:100px 0}
+.kick{font-size:.74rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+h2.title{font-size:clamp(2rem,4.6vw,3.1rem);font-weight:700;max-width:620px}
+.lead{color:var(--muted);margin-top:14px;max-width:600px;font-weight:300;font-size:1.05rem}
+
+/* feature bento */
+.fbento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(210px,auto);gap:16px;margin-top:52px}
+@media(max-width:900px){.fbento{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.fbento{grid-template-columns:1fr}}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s}
+.fcard:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(20,40,30,.1)}
+.fcard.wide{grid-column:span 2;background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;border:0}
+@media(max-width:600px){.fcard.wide{grid-column:span 1}}
+.fcard .ico{width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;background:var(--amber-soft);margin-bottom:18px}
+.fcard.wide .ico{background:rgba(255,255,255,.14)}
+.fcard h3{font-size:1.3rem;margin-bottom:8px}
+.fcard p{font-size:.93rem;color:var(--muted);font-weight:300}
+.fcard.wide p{color:#cfe3d8}
+.fcard .num{position:absolute;right:20px;top:14px;font-family:'Sora';font-weight:800;font-size:3.4rem;color:transparent;-webkit-text-stroke:1px var(--line)}
+.fcard.wide .num{-webkit-text-stroke:1px rgba(255,255,255,.25)}
+
+/* menu tabs */
+.menu-sec{background:#fff;border-block:1px solid var(--line)}
+.tabs{display:flex;gap:10px;margin:44px 0 8px;flex-wrap:wrap;position:relative}
+.tab{padding:12px 24px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:.9rem;cursor:pointer;transition:.3s;font-family:'Sora'}
+.tab:hover{border-color:var(--green)}
+.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.menu-list{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+@media(max-width:800px){.menu-list{grid-template-columns:1fr}}
+.mi{display:flex;align-items:baseline;gap:14px;padding:18px 4px;border-bottom:1px dashed var(--line);animation:fadeUp .5s both}
+.mi:nth-child(2){animation-delay:.05s}.mi:nth-child(3){animation-delay:.1s}.mi:nth-child(4){animation-delay:.15s}
+.mi:nth-child(5){animation-delay:.2s}.mi:nth-child(6){animation-delay:.25s}.mi:nth-child(7){animation-delay:.3s}.mi:nth-child(8){animation-delay:.35s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.mi .nm{font-weight:600;font-size:1.02rem}
+.mi .nm small{display:block;font-weight:400;color:var(--muted);font-size:.82rem;margin-top:2px}
+.mi .dots{flex:1;border-bottom:2px dotted #d8cfb8;transform:translateY(-5px);min-width:30px}
+.mi .pr{font-family:'Sora';font-weight:700;color:var(--green);white-space:nowrap}
+.menu-note{margin-top:30px;display:flex;gap:14px;align-items:center;background:var(--amber-soft);border:1px solid #f0d9a8;border-radius:16px;padding:18px 22px;font-size:.92rem}
+
+/* tariff */
+.tariff{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+@media(max-width:900px){.tariff{grid-template-columns:1fr;max-width:480px;margin-inline:auto}}
+.tcard{background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:40px 34px;text-align:center;position:relative;transition:transform .4s,box-shadow .4s,border .4s}
+.tcard:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(20,40,30,.12)}
+.tcard.pop{border-color:var(--green);box-shadow:0 30px 70px rgba(13,92,67,.16)}
+.tcard .flag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:7px 20px;border-radius:999px}
+.tcard h3{font-size:1.35rem;margin-bottom:6px}
+.tcard .amt{font-family:'Sora';font-weight:800;font-size:2.6rem;margin:14px 0 4px}
+.tcard .amt small{font-size:.9rem;font-weight:500;color:var(--muted)}
+.tcard ul{list-style:none;margin:24px 0 30px;display:grid;gap:11px;text-align:left}
+.tcard li{display:flex;gap:10px;font-size:.92rem;color:#44524b;align-items:flex-start}
+
+/* reviews */
+.rev-track{display:flex;gap:18px;margin-top:48px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.rev{flex:0 0 min(360px,85vw);background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;scroll-snap-align:start}
+.rev .stars{color:var(--amber);letter-spacing:4px;margin-bottom:12px;font-size:1rem}
+.rev p{font-size:.94rem;color:#44524b;font-weight:300}
+.rev b{display:block;margin-top:16px;font-size:.85rem}
+.rev b span{color:var(--muted);font-weight:400}
+
+/* booking */
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px;align-items:start}
+@media(max-width:900px){.book-grid{grid-template-columns:1fr}}
+.form{background:#fff;border:1px solid var(--line);border-radius:26px;padding:44px 40px;box-shadow:0 30px 70px rgba(20,40,30,.1)}
+@media(max-width:560px){.form{padding:32px 24px}}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:13px;font-family:inherit;font-size:.98rem;background:#fff;color:var(--ink);transition:border .3s,box-shadow .3s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(13,92,67,.1)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.info-card{background:linear-gradient(150deg,var(--ink),#24382e);color:#e9efe9;border-radius:26px;padding:44px 40px}
+.info-card h3{font-size:1.7rem;margin-bottom:6px;color:#fff}
+.info-card>p{color:#a9bcb1;font-size:.94rem;font-weight:300}
+.irow{display:flex;gap:15px;margin-top:26px;align-items:flex-start}
+.irow .ic{flex:none;width:44px;height:44px;border-radius:13px;background:rgba(232,147,12,.16);display:flex;align-items:center;justify-content:center}
+.irow b{display:block;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+.hours{margin-top:28px;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:grid;gap:8px;font-size:.9rem}
+.hours div{display:flex;justify-content:space-between;color:#c6d2c9}
+
+/* toast */
+.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,140px);background:var(--ink);color:#fff;padding:17px 30px;border-radius:15px;z-index:99;transition:transform .5s cubic-bezier(.2,.9,.3,1.2);box-shadow:0 20px 50px rgba(0,0,0,.35);max-width:90vw;text-align:center;font-size:.94rem}
+.toast.show{transform:translate(-50%,0)}
+
+/* footer */
+footer{background:var(--ink);color:#9fb0a6;padding:60px 0 30px;margin-top:40px}
+footer .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:800px){footer .fgrid{grid-template-columns:1fr}}
+footer h4{font-family:'Sora';color:#fff;font-size:1.1rem;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:9px;font-size:.9rem}
+footer a:hover{color:var(--amber)}
+.fine{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem}
+.credit{color:var(--amber)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="bar">
+    <a class="brand" href="#top"><span class="mark">R</span><span>Roopali Inn<small>Napier Town · Jabalpur</small></span></a>
+    <div class="links" id="navLinks">
+      <a class="nl" href="#story">Story</a>
+      <a class="nl" href="#menu">Menu</a>
+      <a class="nl" href="#tariff">Tariff</a>
+      <a class="nl" href="#reviews">Reviews</a>
+      <a href="#book" class="btn btn-green" style="padding:11px 24px">Book a Table</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill rv"><span class="dot"></span>PURE VEG · SERVING SINCE 1989</span>
+      <h1 class="rv rv-d1">Jabalpur's beloved <span class="hl">vegetarian table<svg viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M3 10 Q 60 3 120 8 T 197 6" fill="none" stroke="#e8930c" stroke-width="5" stroke-linecap="round"/></svg></span> for 35+ years</h1>
+      <p class="sub rv rv-d2">Hand-ground masalas, slow-simmered dals and tandoor-fresh breads — plus comfortable rooms for travellers, all opposite the Income Tax Office on Station Road.</p>
+      <div class="hero-cta rv rv-d3">
+        <a href="#menu" class="btn btn-green magnetic">View Menu</a>
+        <a href="#book" class="btn btn-line magnetic">Book a Table</a>
+      </div>
+      <div class="trust rv rv-d3">
+        <div><b>4.1 ★</b><span>Zomato dining rating</span></div>
+        <div><b>5,000+</b><span>delivery ratings</span></div>
+        <div><b>₹1,000</b><span>avg. cost for two</span></div>
+      </div>
+    </div>
+    <div class="bento rv rv-d2" aria-hidden="true">
+      <div class="bcell big" style="background:linear-gradient(150deg,#ffd98e,#e8930c)">
+        <svg viewBox="0 0 200 380" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+          <ellipse cx="100" cy="200" rx="78" ry="150" fill="#fff8ea"/>
+          <ellipse cx="100" cy="200" rx="64" ry="136" fill="#f6e3bd"/>
+          <circle cx="100" cy="120" r="26" fill="#c9722a"/><circle cx="100" cy="185" r="30" fill="#8a5a1e"/>
+          <circle cx="100" cy="255" r="24" fill="#d99a3d"/><circle cx="72" cy="150" r="12" fill="#e8930c"/><circle cx="128" cy="220" r="12" fill="#b4661f"/>
+          <rect x="88" y="300" width="24" height="60" rx="8" fill="#c9a25e"/>
+        </svg>
+        <span class="veg"></span><span class="cap">Signature Thali</span>
+      </div>
+      <div class="bcell" style="background:linear-gradient(150deg,#d9ecdd,#9cc7ab)">
+        <svg viewBox="0 0 200 190" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+          <rect x="45" y="90" width="110" height="60" rx="10" fill="#2f6b4f"/><rect x="45" y="72" width="110" height="26" rx="10" fill="#3f8a66"/>
+          <rect x="70" y="40" width="60" height="36" rx="6" fill="#1e4a35"/>
+          <circle cx="160" cy="45" r="18" fill="#e8930c" opacity=".85"/>
+        </svg>
+        <span class="cap">Comfort Rooms</span>
+      </div>
+      <div class="bcell" style="background:linear-gradient(150deg,#ffe9c4,#f2b950)">
+        <svg viewBox="0 0 200 190" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+          <path d="M60 150 L100 60 L140 150 Z" fill="#c9722a"/><path d="M78 150 L100 95 L122 150 Z" fill="#e8930c"/>
+          <ellipse cx="100" cy="155" rx="60" ry="12" fill="#8a5a1e" opacity=".5"/>
+          <circle cx="100" cy="48" r="8" fill="#ffd98e"/>
+        </svg>
+        <span class="veg"></span><span class="cap">Tandoor Fresh</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip" aria-hidden="true"><div class="track" id="stripTrack">
+  <span>Thali Specials</span><span>Tandoor</span><span>Sizzlers</span><span>Family Feasts</span><span>Since 1989</span><span>Pure Veg</span>
+</div></div>
+
+<!-- ============ STORY / FEATURES ============ -->
+<section class="sec" id="story">
+  <div class="wrap">
+    <div class="kick rv">Our Story</div>
+    <h2 class="title rv">A Napier Town institution, run like family</h2>
+    <p class="lead rv">Since 1989, Roopali Inn has been where Jabalpur comes for honest vegetarian food — generous thalis, smoky tandoor and recipes that regulars have loved for generations.</p>
+    <div class="fbento">
+      <div class="fcard wide rv">
+        <span class="num">01</span>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3c-4 3-6 6-6 10a6 6 0 0012 0c0-4-2-7-6-10z"/></svg></div>
+        <h3>Pure vegetarian kitchen</h3>
+        <p>100% vegetarian, always. Aromatic rice, creamy curries, sizzlers and family feasts — made fresh through the day, never reheated shortcuts.</p>
+      </div>
+      <div class="fcard rv rv-d1">
+        <span class="num">02</span>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="1.8"><path d="M3 21h18M5 21V10l7-6 7 6v11"/></svg></div>
+        <h3>Stay upstairs</h3>
+        <p>Clean, air-conditioned rooms with Wi-Fi, parking and 24-hour reception — ideal for business and family travellers.</p>
+      </div>
+      <div class="fcard rv">
+        <span class="num">03</span>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Open 10 AM – 11 PM</h3>
+        <p>Lunch, evening snacks and dinner, all seven days — plus home delivery and takeaway across the city.</p>
+      </div>
+      <div class="fcard rv rv-d1">
+        <span class="num">04</span>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M21 21v-2a4 4 0 00-3-3.9"/></svg></div>
+        <h3>Family first</h3>
+        <p>Spacious family seating, wheelchair-accessible entry and free parking — bring everyone.</p>
+      </div>
+      <div class="fcard rv rv-d2">
+        <span class="num">05</span>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="1.8"><path d="M12 21s-7-4.5-7-11a7 7 0 0114 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Easy to reach</h3>
+        <p>859, Station Road, opposite Income Tax Office — 2 km from Jabalpur station, near Russell Chowk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="sec menu-sec" id="menu">
+  <div class="wrap">
+    <div class="kick rv">Restaurant Menu</div>
+    <h2 class="title rv">Crowd favourites, priced kindly</h2>
+    <p class="lead rv">A glimpse of the kitchen — the full menu at the restaurant runs much deeper.</p>
+    <div class="tabs rv" role="tablist" aria-label="Menu categories">
+      <button class="tab active" data-cat="north" role="tab">North Indian</button>
+      <button class="tab" data-cat="tandoor" role="tab">Tandoor & Breads</button>
+      <button class="tab" data-cat="chinese" role="tab">Chinese</button>
+      <button class="tab" data-cat="south" role="tab">South Indian</button>
+      <button class="tab" data-cat="bev" role="tab">Beverages & Desserts</button>
+    </div>
+    <div class="menu-list rv" id="menuList"></div>
+    <div class="menu-note rv">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8930c" stroke-width="2" style="flex:none"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+      <span><strong>Roopali Special Thali — ₹249.</strong> Dal, two sabzis, paneer, rice, 3 rotis, papad, salad, sweet & chaas. The city's best-value feast.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TARIFF ============ -->
+<section class="sec" id="tariff">
+  <div class="wrap">
+    <div class="kick rv">Room Tariff</div>
+    <h2 class="title rv">Simple, honest pricing</h2>
+    <p class="lead rv">All rooms include Wi-Fi, air-conditioning, hot water and complimentary breakfast.</p>
+    <div class="tariff">
+      <div class="tcard rv">
+        <h3>Standard Room</h3><p style="color:var(--muted);font-size:.9rem">Cosy comfort for solo travellers</p>
+        <div class="amt">₹1,199<small> / night</small></div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Queen bed · sleeps 2</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>AC, TV & high-speed Wi-Fi</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Complimentary breakfast</li>
+        </ul>
+        <a href="#book" class="btn btn-line magnetic" style="width:100%;justify-content:center">Book Room</a>
+      </div>
+      <div class="tcard pop rv rv-d1">
+        <span class="flag">Most Booked</span>
+        <h3>Deluxe Room</h3><p style="color:var(--muted);font-size:.9rem">Extra space, city views</p>
+        <div class="amt">₹1,799<small> / night</small></div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>King bed · sleeps 2–3</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Seating corner & work desk</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Breakfast + 1 thali coupon</li>
+        </ul>
+        <a href="#book" class="btn btn-green magnetic" style="width:100%;justify-content:center">Book Room</a>
+      </div>
+      <div class="tcard rv rv-d2">
+        <h3>Family Room</h3><p style="color:var(--muted);font-size:.9rem">Room for the whole clan</p>
+        <div class="amt">₹2,499<small> / night</small></div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Two beds · sleeps 4–5</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Spacious bath & wardrobe</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d5c43" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Breakfast for the family</li>
+        </ul>
+        <a href="#book" class="btn btn-line magnetic" style="width:100%;justify-content:center">Book Room</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec" id="reviews" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kick rv">Guest Love</div>
+    <h2 class="title rv">What Jabalpur says</h2>
+    <div class="rev-track rv">
+      <div class="rev"><div class="stars">★★★★★</div><p>"My go-to place in Jabalpur, always. The thali is unbeatable value and the staff treats you like family."</p><b>Arya V. <span>· Dined recently</span></b></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>"Delicious food with genuinely cooperative staff. The paneer dishes and fresh tandoori rotis stood out."</p><b>Sapna D. <span>· Family dinner</span></b></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>"Good food and good service, every single visit. The sizzlers are a must-try on a cold evening."</p><b>Sheershak P. <span>· Regular guest</span></b></div>
+      <div class="rev"><div class="stars">★★★★☆</div><p>"Great recommendations from the team, worth every rupee. Delivery arrived hot and on time."</p><b>Zomato Review <span>· Delivery order</span></b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="sec" id="book" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kick rv">Reservations</div>
+    <h2 class="title rv">Book a table or a room</h2>
+    <div class="book-grid">
+      <form class="form rv" id="bookForm" novalidate>
+        <div class="two">
+          <div class="field"><label for="f-name">Full Name</label><input id="f-name" required placeholder="Your name"></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" required inputmode="tel" placeholder="+91 …"></div>
+        </div>
+        <div class="field"><label for="f-type">I want to book</label><select id="f-type"><option>Restaurant table</option><option>Standard Room</option><option>Deluxe Room</option><option>Family Room</option><option>Bulk / party order</option></select></div>
+        <div class="two">
+          <div class="field"><label for="f-date">Date</label><input id="f-date" type="date" required></div>
+          <div class="field"><label for="f-time">Time</label><input id="f-time" type="time" value="19:30"></div>
+        </div>
+        <div class="field"><label for="f-guests">Guests</label><select id="f-guests"><option>2</option><option>1</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+        <button type="submit" class="btn btn-amber" style="width:100%;justify-content:center">Confirm Booking Request</button>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:12px;text-align:center">We confirm every request on call within 30 minutes.</p>
+      </form>
+      <div class="info-card rv rv-d1">
+        <h3>Visit us</h3>
+        <p>Walk-ins welcome · Free parking · Family seating</p>
+        <div class="irow"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8930c" stroke-width="1.8"><path d="M12 21s-7-4.5-7-11a7 7 0 0114 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b>Address</b>859, Station Road, Opp. Income Tax Office, Napier Town, Jabalpur, MP 482001</div></div>
+        <div class="irow"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8930c" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg></div><div><b>Phone</b>+91 81090 01516<br>+91 95844 65567</div></div>
+        <div class="hours">
+          <div><span>Restaurant</span><span>10:00 AM – 11:00 PM</span></div>
+          <div><span>Hotel reception</span><span>24 hours</span></div>
+          <div><span>Open days</span><span>All 7 days</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><h4>Hotel Roopali Inn</h4><p style="font-size:.9rem;max-width:340px">Pure vegetarian restaurant and comfortable hotel stay in Napier Town, Jabalpur — serving the city since 1989.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="#story">Our Story</a></li><li><a href="#menu">Menu</a></li><li><a href="#tariff">Room Tariff</a></li><li><a href="#book">Book Now</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>+91 81090 01516</li><li>+91 95844 65567</li><li>859, Station Road, Napier Town, Jabalpur 482001</li></ul></div>
+    </div>
+    <div class="fine"><span>© 2026 Hotel Roopali Inn, Jabalpur. All rights reserved.</span><span class="credit">Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status">Request received! We will call you shortly to confirm.</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* mobile nav */
+  var burger = document.getElementById("burger"), links = document.getElementById("navLinks");
+  burger.addEventListener("click", function(){ links.classList.toggle("open"); document.body.classList.toggle("menu-open"); });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); document.body.classList.remove("menu-open"); }); });
+
+  /* marquee duplicate */
+  var st = document.getElementById("stripTrack"); st.innerHTML += st.innerHTML;
+
+  /* reveal */
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {threshold:.12});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* magnetic */
+  if(!reduce && matchMedia("(pointer:fine)").matches){
+    document.querySelectorAll(".magnetic").forEach(function(btn){
+      btn.addEventListener("mousemove", function(e){ var r = btn.getBoundingClientRect();
+        btn.style.transform = "translate(" + ((e.clientX - r.left - r.width/2)*.15) + "px," + ((e.clientY - r.top - r.height/2)*.25) + "px)"; });
+      btn.addEventListener("mouseleave", function(){ btn.style.transform = ""; });
+    });
+  }
+
+  /* menu data */
+  var MENU = {
+    north: [
+      ["Paneer Butter Masala","Silky tomato-makhani gravy, kasuri methi",240],
+      ["Dal Tadka Fry","Yellow dal tempered in desi ghee",180],
+      ["Kadhai Paneer","Charred peppers, kadhai masala",230],
+      ["Veg Kolhapuri","Fiery Kolhapuri masala, coconut finish",210],
+      ["Malai Kofta","Cottage-cheese dumplings, cashew gravy",220],
+      ["Jeera Rice","Basmati tossed with ghee-roasted jeera",150],
+      ["Veg Biryani","Dum-style, served with burhani raita",200],
+      ["Roopali Special Thali","Dal, 2 sabzi, paneer, rice, rotis, sweet",249]
+    ],
+    tandoor: [
+      ["Tandoori Roti","Whole wheat, clay-oven fresh",25],
+      ["Butter Naan","Pillowy, brushed with butter",45],
+      ["Garlic Naan","Roasted garlic, coriander",55],
+      ["Lachha Paratha","Sixteen flaky layers",50],
+      ["Paneer Tikka Angar","Smoked, mint chutney",220],
+      ["Tandoori Mushroom","Charred, ajwain marinade",200],
+      ["Veg Seekh Kebab","Minced veg, saffron brush",190],
+      ["Cheese Naan Basket","Assorted stuffed naans for two",120]
+    ],
+    chinese: [
+      ["Veg Manchow Soup","Loaded, crispy noodle crown",130],
+      ["Hakka Noodles","Smoky wok toss, burnt garlic",160],
+      ["Veg Fried Rice","Spring onion, five-spice",150],
+      ["Chilli Paneer Dry","Crisp paneer, peppers, soy glaze",210],
+      ["Veg Manchurian","Hand-rolled dumplings",170],
+      ["Dragon Sizzler","Noodles + manchurian on a hot plate",240],
+      ["American Chopsuey","Crisp noodles, sweet-sour veg",190],
+      ["Schezwan Fried Rice","House schezwan, extra fire",170]
+    ],
+    south: [
+      ["Masala Dosa","Crisp, potato palya, trio of chutneys",140],
+      ["Mysore Masala Dosa","Red garlic chutney, butter roast",160],
+      ["Idli Sambar (4 pc)","Cloud-soft, drumstick sambar",100],
+      ["Medu Vada","Crisp outside, fluffy inside",110],
+      ["Onion Uttapam","Thick, caramelised onions",130],
+      ["Rava Masala Dosa","Semolina crisp, onion-potato",150],
+      ["Filter Coffee","Frothy, served davara-tumbler style",60],
+      ["Curd Rice","Tempered, pomegranate pearls",120]
+    ],
+    bev: [
+      ["Sweet / Salted Lassi","Thick curd, malai crown",90],
+      ["Mango Lassi","Alphonso pulp, seasonal",120],
+      ["Fresh Lime Soda","Sweet, salted or mixed",70],
+      ["Cold Coffee","Blended, chocolate rim",110],
+      ["Masala Chaas","Roasted jeera, curry leaf",60],
+      ["Gulab Jamun (2 pc)","Warm, rose syrup",80],
+      ["Kulfi Falooda","Hand-churned kulfi, vermicelli",130],
+      ["Sizzling Brownie","Walnut brownie, vanilla scoop",150]
+    ]
+  };
+  var list = document.getElementById("menuList");
+  function render(cat){
+    list.innerHTML = "";
+    MENU[cat].forEach(function(it){
+      var d = document.createElement("div"); d.className = "mi";
+      d.innerHTML = '<div class="nm">' + it[0] + '<small>' + it[1] + '</small></div><div class="dots"></div><div class="pr">₹' + it[2] + '</div>';
+      list.appendChild(d);
+    });
+  }
+  render("north");
+  document.querySelectorAll(".tab").forEach(function(t){
+    t.addEventListener("click", function(){
+      document.querySelectorAll(".tab").forEach(function(x){ x.classList.remove("active"); x.setAttribute("aria-selected","false"); });
+      t.classList.add("active"); t.setAttribute("aria-selected","true");
+      render(t.dataset.cat);
+    });
+  });
+
+  /* form */
+  var form = document.getElementById("bookForm"), toast = document.getElementById("toast"), tt;
+  form.addEventListener("submit", function(e){
+    e.preventDefault(); var ok = true;
+    ["f-name","f-phone","f-date"].forEach(function(id){
+      var f = document.getElementById(id);
+      var bad = !f.value.trim() || (id === "f-phone" && f.value.replace(/\D/g,"").length < 10);
+      f.style.borderColor = bad ? "#c0392b" : ""; if(bad) ok = false;
+    });
+    if(!ok) return;
+    toast.classList.add("show"); form.reset();
+    clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove("show"); }, 4200);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaat Bazaar — Dubai's Loudest Little Corner of India | Karama, Dubai</title>
+<meta name="description" content="Chaat Bazaar, Karama Dubai — 40+ chaat varieties. Pani puri, samosa chaat, bhel puri and more. Loud, proud, spicy street food.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF8EA; --paper:#FFFBF2; --ink:#2A1508;
+  --chili:#E8381F; --chili-d:#B82712;
+  --turmeric:#FFB627; --turmeric-d:#E8960C;
+  --mint:#1FA38B; --tamarind:#8A4B16; --lime:#9BE12B;
+}
+*{ -webkit-tap-highlight-color:transparent; }
+html{ scroll-behavior:smooth; }
+body{ background:var(--cream); color:var(--ink); font-family:'Space Grotesk',sans-serif; overflow-x:hidden; }
+.font-display{ font-family:'Anton',sans-serif; letter-spacing:.01em; }
+.font-hand{ font-family:'Caveat',cursive; }
+::selection{ background:var(--turmeric); color:var(--ink); }
+
+/* dotted street-paper texture */
+.paper-dots{ background-image:radial-gradient(rgba(42,21,8,.07) 1.2px, transparent 1.2px); background-size:22px 22px; }
+
+/* sticker cards */
+.sticker{ background:#fff; border:3px solid var(--ink); border-radius:1.25rem; box-shadow:5px 5px 0 var(--ink); transition:transform .25s cubic-bezier(.34,1.8,.64,1), box-shadow .25s; }
+.sticker:hover{ transform:translate(-2px,-4px) rotate(-.5deg) scale(1.02); box-shadow:9px 10px 0 var(--ink); }
+.sticker.turmeric{ background:var(--turmeric); } .sticker.mint{ background:#DDF7EC; } .sticker.chili{ background:#FFE4DC; } .sticker.lime{ background:#EEFBD3; }
+
+.tag{ display:inline-block; font-weight:700; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; padding:.35rem .8rem; border:2.5px solid var(--ink); border-radius:999px; box-shadow:3px 3px 0 var(--ink); }
+
+.btn-pop{ display:inline-flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.04em; border:3px solid var(--ink); border-radius:999px; padding:1rem 2.2rem; box-shadow:5px 5px 0 var(--ink); transition:transform .2s cubic-bezier(.34,1.8,.64,1), box-shadow .2s; }
+.btn-pop:hover{ transform:translate(-2px,-3px); box-shadow:8px 9px 0 var(--ink); }
+.btn-pop:active{ transform:translate(3px,3px); box-shadow:1px 1px 0 var(--ink); }
+
+/* marquee */
+.marquee{ overflow:hidden; white-space:nowrap; }
+.marquee-track{ display:inline-flex; align-items:center; gap:2.5rem; padding-right:2.5rem; animation:marq 26s linear infinite; will-change:transform; }
+.marquee-track.fast{ animation-duration:18s; }
+@keyframes marq{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* float doodles */
+@keyframes floaty{ 0%,100%{transform:translateY(0) rotate(var(--r,0deg))} 50%{transform:translateY(-18px) rotate(var(--r,0deg))} }
+.floaty{ animation:floaty 5s ease-in-out infinite; }
+@keyframes spin-slow{ to{transform:rotate(360deg)} }
+.spin-slow{ animation:spin-slow 14s linear infinite; }
+@keyframes wiggle{ 0%,100%{transform:rotate(-4deg)} 50%{transform:rotate(4deg)} }
+.wiggle{ animation:wiggle 2.4s ease-in-out infinite; }
+
+/* hero burst */
+@keyframes burst-pop{ 0%{transform:scale(0) rotate(-12deg)} 70%{transform:scale(1.08) rotate(3deg)} 100%{transform:scale(1) rotate(0)} }
+.burst-pop{ animation:burst-pop .7s cubic-bezier(.34,1.56,.64,1) both; }
+
+/* underline squiggle */
+.squiggle{ position:relative; }
+.squiggle svg{ position:absolute; left:0; bottom:-.35em; width:100%; height:.5em; }
+
+/* shimmer ticket button */
+@keyframes shine{ 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+.shine{ background:linear-gradient(110deg,var(--chili) 40%,#ff7a5c 50%,var(--chili) 60%); background-size:200% 100%; animation:shine 3s linear infinite; color:#fff; }
+
+/* reveal defaults (JS animates) */
+.reveal{ opacity:0; transform:translateY(36px); }
+.no-motion .reveal{ opacity:1; transform:none; }
+
+/* spice meter */
+.chili-off{ opacity:.22; filter:grayscale(1); }
+
+/* form */
+.field{ width:100%; background:#fff; border:3px solid var(--ink); border-radius:1rem; padding:.9rem 1.1rem; font-weight:600; box-shadow:4px 4px 0 rgba(42,21,8,.12); }
+.field:focus{ outline:none; border-color:var(--chili); box-shadow:4px 4px 0 var(--chili); }
+
+/* toast */
+#toast{ transition:transform .45s cubic-bezier(.34,1.56,.64,1), opacity .3s; transform:translateY(140%); opacity:0; }
+#toast.show{ transform:translateY(0); opacity:1; }
+
+/* builder option cards */
+.opt input{ display:none; }
+.opt span{ display:block; cursor:pointer; }
+.opt input:checked + span{ background:var(--ink); color:var(--cream); transform:rotate(-1deg) scale(1.03); }
+
+/* ticket edge */
+.ticket{ --notch:14px; -webkit-mask:radial-gradient(var(--notch) at var(--notch) 50%, transparent 98%, #000) -999px 0/ 100% 100% no-repeat, linear-gradient(#000,#000); -webkit-mask-composite:source-in; mask-composite:intersect; }
+
+@media (prefers-reduced-motion: reduce){
+  .marquee-track,.floaty,.spin-slow,.wiggle,.shine{ animation:none !important; }
+}
+</style>
+</head>
+<body class="paper-dots antialiased">
+
+<!-- grainy top announcement bar -->
+<div class="bg-[#2A1508] text-[#FFF8EA] text-center text-xs sm:text-sm font-bold tracking-widest uppercase py-2.5 px-4 relative z-50">
+  <span class="wiggle inline-block"><svg viewBox="0 0 24 24" class="w-4 h-4 inline-block -mt-0.5" fill="#FFB627"><path d="M12 2c1 4-4 6-4 11a4 4 0 0 0 8 0c0-2-1-3-1-3s3 1 3 5a6 6 0 0 1-12 0C6 8 12 6 12 2Z"/></svg></span> Karama, Dubai &nbsp;·&nbsp; Open Daily 11 AM – 1 AM &nbsp;·&nbsp; <span class="text-[#FFB627]">Free delivery within Karama</span>
+</div>
+
+<!-- NAV -->
+<header id="nav" class="sticky top-0 z-40 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
+    <a href="#top" class="flex items-center gap-2">
+      <span class="sticker turmeric !rounded-full w-11 h-11 grid place-items-center !border-[2.5px] rotate-[-6deg]">
+        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none"><path d="M4 20c8-1 14-7 15-16-2 0-4 .5-5.5 1C9 3 5 8 4 20Z" fill="#E8381F" stroke="#2A1508" stroke-width="1.6"/><path d="M7 20c5-1 9-5 10-11" stroke="#FFB627" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="font-display text-xl sm:text-2xl tracking-wide">CHAAT <span class="text-[#E8381F]">BAZAAR</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-7 font-bold text-sm tracking-wide">
+      <a href="#menu" class="hover:text-[#E8381F] transition-colors">MENU</a>
+      <a href="#builder" class="hover:text-[#E8381F] transition-colors">CHAAT LAB</a>
+      <a href="#story" class="hover:text-[#E8381F] transition-colors">OUR STORY</a>
+      <a href="#order" class="btn-pop !py-2.5 !px-6 text-sm bg-[#E8381F] text-white shine">ORDER NOW</a>
+    </div>
+    <a href="#order" class="md:hidden btn-pop !py-2 !px-5 text-sm bg-[#E8381F] text-white">ORDER</a>
+  </nav>
+</header>
+<!-- HERO -->
+<section id="top" class="relative overflow-hidden">
+  <!-- big radial sun -->
+  <div class="absolute -top-40 -right-40 w-[34rem] h-[34rem] rounded-full pointer-events-none" style="background:radial-gradient(circle,#FFD45E 0%,#FFB627 38%,rgba(255,182,39,0) 70%)"></div>
+  <div class="absolute top-40 -left-32 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(232,56,31,.35) 0%,rgba(232,56,31,0) 70%)"></div>
+
+  <!-- floating doodles -->
+  <svg class="floaty absolute top-28 left-[8%] w-14 sm:w-20 hidden sm:block" style="--r:-14deg" viewBox="0 0 64 64"><path d="M10 54C30 52 48 34 50 8c-4 0-8 1-11 2C24 6 12 26 10 54Z" fill="#E8381F" stroke="#2A1508" stroke-width="3"/><path d="M16 52c10-2 20-12 24-24" stroke="#FFB627" stroke-width="3" stroke-linecap="round" fill="none"/></svg>
+  <svg class="floaty absolute bottom-24 right-[6%] w-16 sm:w-24 hidden sm:block" style="--r:12deg;animation-delay:-2s" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#FFE45E" stroke="#2A1508" stroke-width="3"/><path d="M32 8v48M8 32h48M15 15l34 34M49 15L15 49" stroke="#2A1508" stroke-width="2.5"/><circle cx="32" cy="32" r="24" fill="none" stroke="#E8960C" stroke-width="2" stroke-dasharray="6 6"/></svg>
+  <svg class="spin-slow absolute top-[55%] left-[42%] w-24 opacity-20 hidden lg:block" viewBox="0 0 100 100"><g fill="none" stroke="#2A1508" stroke-width="2"><circle cx="50" cy="50" r="40"/><circle cx="50" cy="50" r="28" stroke-dasharray="5 7"/></g><text x="50" y="56" text-anchor="middle" font-size="13" font-weight="800" fill="#2A1508">SPICY</text></svg>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-16 sm:pt-20 sm:pb-24 relative">
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <div class="burst-pop inline-block mb-5">
+          <span class="tag bg-[#1FA38B] text-white rotate-[-2deg]">Est. 2019 · Karama, Dubai</span>
+        </div>
+        <h1 class="font-display leading-[.9] text-[17vw] sm:text-7xl lg:text-8xl xl:text-[7.5rem]">
+          <span class="block hero-line">LOUD.</span>
+          <span class="block hero-line text-[#E8381F]" style="-webkit-text-stroke:2px #2A1508">PROUD.</span>
+          <span class="block hero-line squiggle w-fit">SPICY.
+            <svg viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M2 14 Q 25 4 50 12 T 100 12 T 150 12 T 198 10" fill="none" stroke="#E8381F" stroke-width="7" stroke-linecap="round"/></svg>
+          </span>
+        </h1>
+        <p class="mt-7 text-lg sm:text-xl font-medium max-w-xl leading-relaxed hero-line">
+          Dubai's wildest street-food corner — <strong>40+ chaat varieties</strong>, tamarind flying, sev raining, and flavours turned up to eleven. This is not dinner. This is a <span class="font-hand text-2xl text-[#E8381F]">flavour dhamaka!</span>
+        </p>
+        <div class="mt-9 flex flex-wrap gap-4 hero-line">
+          <a href="#menu" class="btn-pop bg-[#FFB627] text-[#2A1508] text-lg">SEE THE MENU
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#builder" class="btn-pop bg-white text-[#2A1508] text-lg">BUILD YOUR CHAAT</a>
+        </div>
+        <div class="mt-8 flex items-center gap-3 hero-line">
+          <div class="flex -space-x-3">
+            <span class="w-10 h-10 rounded-full border-[2.5px] border-[#2A1508] bg-[#E8381F] grid place-items-center font-display text-white text-sm">R</span>
+            <span class="w-10 h-10 rounded-full border-[2.5px] border-[#2A1508] bg-[#1FA38B] grid place-items-center font-display text-white text-sm">A</span>
+            <span class="w-10 h-10 rounded-full border-[2.5px] border-[#2A1508] bg-[#FFB627] grid place-items-center font-display text-[#2A1508] text-sm">S</span>
+            <span class="w-10 h-10 rounded-full border-[2.5px] border-[#2A1508] bg-white grid place-items-center font-display text-xs">50K</span>
+          </div>
+          <p class="text-sm font-bold">50,000+ happy bellies<br><span class="font-medium text-[#8A4B16]">rated 4.9 by Karama regulars</span></p>
+        </div>
+      </div>
+
+      <!-- hero ticket / plate art -->
+      <div class="lg:col-span-5 relative">
+        <div class="sticker turmeric p-6 sm:p-8 rotate-[2deg] relative z-10" id="hero-card">
+          <div class="flex items-center justify-between mb-4">
+            <span class="tag bg-white">Today's Special</span>
+            <span class="font-display text-2xl">AED 18</span>
+          </div>
+          <!-- plate of chaat : inline SVG art -->
+          <svg viewBox="0 0 300 220" class="w-full h-auto drop-shadow-xl">
+            <ellipse cx="150" cy="180" rx="120" ry="18" fill="#2A1508" opacity=".12"/>
+            <ellipse cx="150" cy="160" rx="115" ry="42" fill="#fff" stroke="#2A1508" stroke-width="4"/>
+            <ellipse cx="150" cy="160" rx="88" ry="30" fill="#F6C453"/>
+            <g stroke="#2A1508" stroke-width="2.5">
+              <circle cx="110" cy="150" r="10" fill="#E8381F"/><circle cx="140" cy="145" r="9" fill="#E8381F"/><circle cx="170" cy="152" r="10" fill="#E8381F"/><circle cx="195" cy="148" r="8" fill="#E8381F"/>
+              <circle cx="125" cy="165" r="8" fill="#FFF3D6"/><circle cx="155" cy="168" r="9" fill="#FFF3D6"/><circle cx="185" cy="164" r="8" fill="#FFF3D6"/>
+              <circle cx="100" cy="163" r="6" fill="#1FA38B"/><circle cx="205" cy="162" r="6" fill="#1FA38B"/>
+            </g>
+            <g stroke="#8A4B16" stroke-width="2" fill="none" opacity=".8">
+              <path d="M95 140 q 30 -14 60 -6 t 55 4"/><path d="M100 172 q 40 12 95 0"/>
+            </g>
+            <g stroke="#2A1508" stroke-width="2">
+              <path d="M120 118 l14 -26 14 26 z" fill="#FFB627"/><path d="M160 116 l12 -22 12 22 z" fill="#FFB627"/>
+            </g>
+            <g fill="#1FA38B"><ellipse cx="90" cy="120" rx="12" ry="5" transform="rotate(-30 90 120)"/><ellipse cx="215" cy="122" rx="12" ry="5" transform="rotate(25 215 122)"/></g>
+            <path d="M150 60 q 6 -14 0 -26" stroke="#E8381F" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M135 64 q 4 -10 0 -18 M165 64 q -4 -10 0 -18" stroke="#E8960C" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <h3 class="font-display text-3xl mt-4">SAMOSA CHAAT <span class="text-[#E8381F]">BOMB</span></h3>
+          <p class="font-medium mt-1 text-[#5b3a1e]">Crushed samosa · chole · dahi · imli · sev avalanche</p>
+          <button class="btn-pop w-full justify-center mt-5 bg-[#E8381F] text-white shine" data-add="Samosa Chaat Bomb — AED 18">ADD TO ORDER
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="sticker chili absolute -bottom-8 -left-4 sm:-left-8 px-5 py-3 rotate-[-6deg] z-20 wiggle">
+          <p class="font-display text-lg leading-none">SPICE LEVEL:<br><span class="text-[#E8381F]">DUBAI SUMMER</span></p>
+        </div>
+        <div class="sticker mint absolute -top-6 -right-2 sm:-right-6 px-5 py-3 rotate-[5deg] z-20 floaty">
+          <p class="font-hand text-2xl leading-none">extra imli,<br>always!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- marquee strip -->
+  <div class="marquee bg-[#2A1508] text-[#FFF8EA] py-4 -rotate-1 scale-[1.02] border-y-4 border-[#2A1508] relative z-10">
+    <div class="marquee-track fast font-display text-2xl sm:text-3xl tracking-wide" id="dish-marquee"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="sticker p-6 text-center reveal"><p class="font-display text-5xl sm:text-6xl text-[#E8381F]"><span class="counter" data-to="40">0</span>+</p><p class="font-bold mt-2 tracking-wide text-sm">CHAAT VARIETIES</p></div>
+    <div class="sticker turmeric p-6 text-center reveal"><p class="font-display text-5xl sm:text-6xl"><span class="counter" data-to="25">0</span></p><p class="font-bold mt-2 tracking-wide text-sm">SECRET SPICES</p></div>
+    <div class="sticker mint p-6 text-center reveal"><p class="font-display text-5xl sm:text-6xl text-[#1FA38B]"><span class="counter" data-to="12">0</span><span class="text-3xl">min</span></p><p class="font-bold mt-2 tracking-wide text-sm">AVG. SERVING TIME</p></div>
+    <div class="sticker lime p-6 text-center reveal"><p class="font-display text-5xl sm:text-6xl">4.9<span class="text-3xl">★</span></p><p class="font-bold mt-2 tracking-wide text-sm">GOOGLE RATING</p></div>
+  </div>
+</section>
+<!-- MENU -->
+<section id="menu" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+  <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+    <div class="reveal">
+      <span class="tag bg-[#E8381F] text-white rotate-[-1.5deg] mb-4">The Full Dhamaka</span>
+      <h2 class="font-display text-5xl sm:text-7xl mt-4 leading-none">PICK YOUR<br><span class="text-[#E8381F]" style="-webkit-text-stroke:1.5px #2A1508">POISON</span> <span class="font-hand text-4xl sm:text-5xl text-[#1FA38B]">(the tasty kind)</span></h2>
+    </div>
+    <div class="flex flex-wrap gap-3 reveal" id="menu-filters">
+      <button class="btn-pop !py-2 !px-5 text-sm bg-[#2A1508] text-white" data-filter="all">ALL</button>
+      <button class="btn-pop !py-2 !px-5 text-sm bg-white" data-filter="classics">CLASSICS</button>
+      <button class="btn-pop !py-2 !px-5 text-sm bg-white" data-filter="fried">FRIED &amp; CRISPY</button>
+      <button class="btn-pop !py-2 !px-5 text-sm bg-white" data-filter="cool">SWEET &amp; COOL</button>
+      <button class="btn-pop !py-2 !px-5 text-sm bg-white" data-filter="dxb">DUBAI SPECIALS</button>
+    </div>
+  </div>
+  <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  <p class="text-center mt-10 font-bold text-[#8A4B16] reveal">…and 28 more on the in-store wall of fame. <a href="#order" class="underline decoration-[#E8381F] decoration-2 underline-offset-4 text-[#E8381F]">Ask us anything</a> — we love a challenge.</p>
+</section>
+
+<!-- CHAAT LAB : interactive builder -->
+<section id="builder" class="relative py-16 sm:py-24 my-10" style="background:#2A1508">
+  <div class="absolute inset-0 opacity-[.06]" style="background-image:radial-gradient(#FFB627 1.6px, transparent 1.6px);background-size:26px 26px"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative">
+    <div class="text-center mb-12 reveal">
+      <span class="tag bg-[#FFB627] rotate-[1.5deg] mb-4">Interactive</span>
+      <h2 class="font-display text-5xl sm:text-7xl text-[#FFF8EA] mt-4">THE CHAAT <span class="text-[#FFB627]">LAB</span></h2>
+      <p class="text-[#FFF8EA]/70 font-medium mt-3 max-w-xl mx-auto">Mad scientist mode: pick a base, pile on toppings, set your spice courage. We build it live in the kitchen.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+      <div class="sticker p-6 sm:p-8 rotate-[-.5deg] reveal">
+        <p class="font-display text-2xl mb-4">1 · PICK YOUR BASE <span class="text-[#E8381F]">(AED)</span></p>
+        <div class="grid grid-cols-2 gap-3" id="lab-base">
+          <label class="opt"><input type="radio" name="base" value="12" data-name="Samosa" checked><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold">Samosa<br><small class="font-medium">12</small></span></label>
+          <label class="opt"><input type="radio" name="base" value="10" data-name="Papdi"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold">Papdi<br><small class="font-medium">10</small></span></label>
+          <label class="opt"><input type="radio" name="base" value="11" data-name="Aloo Tikki"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold">Aloo Tikki<br><small class="font-medium">11</small></span></label>
+          <label class="opt"><input type="radio" name="base" value="13" data-name="Dahi Bhalla"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold">Dahi Bhalla<br><small class="font-medium">13</small></span></label>
+        </div>
+        <p class="font-display text-2xl mt-7 mb-4">2 · PILE ON TOPPINGS <span class="text-[#1FA38B]">(+AED)</span></p>
+        <div class="grid grid-cols-2 gap-3" id="lab-tops">
+          <label class="opt"><input type="checkbox" value="3" data-name="Chole"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold text-sm">Chole <small>+3</small></span></label>
+          <label class="opt"><input type="checkbox" value="2" data-name="Extra Sev"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold text-sm">Extra Sev <small>+2</small></span></label>
+          <label class="opt"><input type="checkbox" value="2" data-name="Dahi Cloud"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold text-sm">Dahi Cloud <small>+2</small></span></label>
+          <label class="opt"><input type="checkbox" value="4" data-name="Paneer Crumble"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold text-sm">Paneer Crumble <small>+4</small></span></label>
+          <label class="opt"><input type="checkbox" value="1" data-name="Imli Drizzle"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold text-sm">Imli Drizzle <small>+1</small></span></label>
+          <label class="opt"><input type="checkbox" value="5" data-name="Cheese Blast"><span class="sticker !shadow-[3px_3px_0_#2A1508] p-3 text-center font-bold text-sm">Cheese Blast <small>+5</small></span></label>
+        </div>
+        <p class="font-display text-2xl mt-7 mb-3">3 · SPICE COURAGE</p>
+        <input id="lab-spice" type="range" min="0" max="3" value="2" step="1" class="w-full accent-[#E8381F] h-2">
+        <div class="flex justify-between text-xs font-bold mt-1 text-[#8A4B16]"><span>BABY</span><span>MUMBAI LOCAL</span><span>DUBAI SUMMER</span><span>VOLCANO</span></div>
+      </div>
+      <div class="lg:sticky lg:top-28 reveal">
+        <div class="sticker turmeric p-8 rotate-[1deg] text-center">
+          <p class="tag bg-white mb-4">Your Creation</p>
+          <svg viewBox="0 0 200 120" class="w-40 mx-auto my-2" id="lab-plate">
+            <ellipse cx="100" cy="92" rx="78" ry="24" fill="#fff" stroke="#2A1508" stroke-width="4"/>
+            <g id="lab-layers"></g>
+          </svg>
+          <h3 class="font-display text-4xl leading-tight" id="lab-name">SAMOSA SUPREME</h3>
+          <p class="font-medium text-[#5b3a1e] mt-1" id="lab-desc">Samosa · Extra Sev · Imli Drizzle</p>
+          <div class="flex items-center justify-center gap-2 mt-3" id="lab-meter"></div>
+          <p class="font-display text-6xl mt-4">AED <span id="lab-price">15</span></p>
+          <button class="btn-pop w-full justify-center mt-5 bg-[#E8381F] text-white shine" id="lab-add">ADD THIS BEAST TO MY ORDER</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+  <div class="grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-5 reveal">
+      <div class="sticker chili p-2 rotate-[-2deg]">
+        <div class="rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,#FFB627 0%,#E8381F 55%,#8A4B16 100%)">
+          <svg viewBox="0 0 400 460" class="w-full h-auto block">
+            <rect width="400" height="460" fill="none"/>
+            <g opacity=".9"><rect x="30" y="330" width="340" height="16" fill="#2A1508"/><rect x="52" y="180" width="16" height="150" fill="#2A1508"/><rect x="332" y="180" width="16" height="150" fill="#2A1508"/><rect x="40" y="150" width="320" height="40" rx="8" fill="#E8381F" stroke="#2A1508" stroke-width="5"/><rect x="40" y="96" width="320" height="58" rx="8" fill="#FFB627" stroke="#2A1508" stroke-width="5"/><path d="M60 96 q 140 -70 280 0" fill="none" stroke="#2A1508" stroke-width="5"/><circle cx="200" cy="52" r="16" fill="#1FA38B" stroke="#2A1508" stroke-width="4"/></g>
+            <text x="200" y="128" text-anchor="middle" font-family="Anton,sans-serif" font-size="30" fill="#2A1508">CHAAT BAZAAR</text>
+            <text x="200" y="176" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="15" fill="#FFF8EA">KARAMA · DUBAI</text>
+            <g><ellipse cx="110" cy="270" rx="46" ry="46" fill="#fff" stroke="#2A1508" stroke-width="4"/><ellipse cx="200" cy="270" rx="46" ry="46" fill="#fff" stroke="#2A1508" stroke-width="4"/><ellipse cx="290" cy="270" rx="46" ry="46" fill="#fff" stroke="#2A1508" stroke-width="4"/><text x="110" y="278" text-anchor="middle" font-size="22" font-weight="800" fill="#E8381F">40+</text><text x="200" y="278" text-anchor="middle" font-size="22" font-weight="800" fill="#1FA38B">100%</text><text x="290" y="278" text-anchor="middle" font-size="22" font-weight="800" fill="#E8960C">0</text><text x="110" y="296" text-anchor="middle" font-size="10" font-weight="700" fill="#2A1508">VARIETIES</text><text x="200" y="296" text-anchor="middle" font-size="10" font-weight="700" fill="#2A1508">VEG</text><text x="290" y="296" text-anchor="middle" font-size="10" font-weight="700" fill="#2A1508">BOGUS</text></g>
+            <g stroke="#2A1508" stroke-width="4" fill="none"><path d="M90 380 q 10 -18 20 0"/><path d="M310 380 q 10 -18 20 0"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <span class="tag bg-[#1FA38B] text-white rotate-[1deg] reveal">Our Story</span>
+      <h2 class="font-display text-5xl sm:text-6xl mt-5 leading-[1.02] reveal">FROM A MUMBAI<br>THELE TO <span class="text-[#E8381F]">KARAMA'S</span><br>FAVOURITE NOISE</h2>
+      <p class="mt-6 text-lg font-medium leading-relaxed text-[#5b3a1e] reveal">Chaat Bazaar started in 2019 as a six-foot cart outside a Karama grocery store. One handi of ragda, a steel dabba of imli chutney, and a family recipe for masala that three generations refused to write down.</p>
+      <p class="mt-4 text-lg font-medium leading-relaxed text-[#5b3a1e] reveal">Today the cart is a full-blown bazaar — but the rules haven't changed: <strong class="text-[#2A1508]">everything fresh every morning, chutneys ground in-house, and no chaat leaves the counter until it makes you grin.</strong></p>
+      <div class="mt-8 grid sm:grid-cols-3 gap-4">
+        <div class="sticker mint p-5 reveal"><p class="font-display text-xl">FRESH DAILY</p><p class="text-sm font-medium mt-1">Chutneys &amp; masalas ground every single morning. No packets, ever.</p></div>
+        <div class="sticker lime p-5 reveal"><p class="font-display text-xl">100% VEG</p><p class="text-sm font-medium mt-1">Pure vegetarian kitchen, Jain options on request.</p></div>
+        <div class="sticker turmeric p-5 reveal"><p class="font-display text-xl">MADE TO ORDER</p><p class="text-sm font-medium mt-1">Your plate is assembled the second you order. Crisp stays crisp.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ORDER -->
+<section id="order" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+  <div class="grid lg:grid-cols-12 gap-8">
+    <div class="lg:col-span-7 reveal">
+      <span class="tag bg-[#E8381F] text-white rotate-[-1deg]">Order Enquiry</span>
+      <h2 class="font-display text-5xl sm:text-6xl mt-5 leading-none">HUNGRY? <span class="font-hand text-[#1FA38B] text-5xl sm:text-6xl">let's fix that.</span></h2>
+      <p class="mt-4 font-medium text-[#5b3a1e] text-lg">Drop your details — we confirm on call/WhatsApp within 10 minutes. Pickup from Karama or delivery across Dubai.</p>
+      <form id="order-form" class="mt-8 grid sm:grid-cols-2 gap-5">
+        <div><label class="font-bold text-sm tracking-wide">YOUR NAME *</label><input required class="field mt-2" name="name" placeholder="e.g. Aarav Mehta"></div>
+        <div><label class="font-bold text-sm tracking-wide">PHONE / WHATSAPP *</label><input required class="field mt-2" name="phone" placeholder="+971 5X XXX XXXX"></div>
+        <div><label class="font-bold text-sm tracking-wide">PICKUP OR DELIVERY? *</label>
+          <select class="field mt-2" name="mode"><option>Pickup — Karama</option><option>Delivery — Karama (free)</option><option>Delivery — rest of Dubai (AED 10)</option></select></div>
+        <div><label class="font-bold text-sm tracking-wide">WHEN?</label>
+          <select class="field mt-2" name="time"><option>ASAP (30–45 min)</option><option>Today evening</option><option>Tomorrow lunch</option><option>Party / bulk order — call me</option></select></div>
+        <div class="sm:col-span-2"><label class="font-bold text-sm tracking-wide">YOUR ORDER</label><textarea id="order-items" class="field mt-2" rows="3" name="items" placeholder="e.g. 2x Samosa Chaat Bomb, 1x Pani Puri… (tap ADD on any dish to fill this in)"></textarea></div>
+        <div class="sm:col-span-2">
+          <button type="submit" class="btn-pop w-full justify-center bg-[#1FA38B] text-white text-xl">SEND ORDER ENQUIRY
+            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="text-center text-sm font-medium text-[#8A4B16] mt-3">No payment now — pay on pickup / delivery. Bulk &amp; party orders welcome.</p>
+        </div>
+      </form>
+    </div>
+    <div class="lg:col-span-5 space-y-6">
+      <div class="sticker p-6 rotate-[1deg] reveal">
+        <p class="font-display text-2xl mb-3">FIND THE NOISE</p>
+        <div class="flex items-start gap-3 font-medium">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 shrink-0 mt-0.5" fill="none" stroke="#E8381F" stroke-width="2.2"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5" fill="#E8381F" stroke="none"/></svg>
+          <p>Shop 4, Al Karama Street,<br>Karama, Dubai, UAE<br><span class="text-[#8A4B16] text-sm">Next to the old cinema — follow the smell of tadka.</span></p>
+        </div>
+        <div class="flex items-start gap-3 font-medium mt-4">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 shrink-0 mt-0.5" fill="none" stroke="#1FA38B" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2" stroke-linecap="round"/></svg>
+          <p>Open daily · 11:00 AM – 1:00 AM<br><span class="text-[#8A4B16] text-sm">Friday rush 7–10 PM — order ahead!</span></p>
+        </div>
+      </div>
+      <div class="sticker turmeric p-6 rotate-[-1deg] reveal">
+        <p class="font-display text-2xl mb-2">PARTY? OFFICE? CRICKET NIGHT?</p>
+        <p class="font-medium">Chaat counters &amp; bulk boxes from 20 to 2,000 guests. Tell us the headcount in the form — our events guy calls you back same day.</p>
+      </div>
+      <div class="marquee bg-[#FFB627] border-[3px] border-[#2A1508] rounded-2xl py-3 rotate-[1deg] reveal">
+        <div class="marquee-track font-display text-xl" id="offer-marquee"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#2A1508] text-[#FFF8EA] mt-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-3 gap-10">
+    <div>
+      <p class="font-display text-3xl">CHAAT <span class="text-[#E8381F]">BAZAAR</span></p>
+      <p class="mt-3 text-[#FFF8EA]/60 font-medium max-w-xs">Dubai's loudest little corner of India. 40+ chaat varieties, made fresh daily in Karama.</p>
+    </div>
+    <div class="font-medium">
+      <p class="font-display text-xl mb-4 text-[#FFB627]">EXPLORE</p>
+      <div class="grid grid-cols-2 gap-2 text-[#FFF8EA]/70">
+        <a href="#menu" class="hover:text-[#FFB627]">Menu</a><a href="#builder" class="hover:text-[#FFB627]">Chaat Lab</a>
+        <a href="#story" class="hover:text-[#FFB627]">Our Story</a><a href="#order" class="hover:text-[#FFB627]">Order</a>
+      </div>
+    </div>
+    <div class="font-medium">
+      <p class="font-display text-xl mb-4 text-[#FFB627]">VISIT</p>
+      <p class="text-[#FFF8EA]/70">Shop 4, Al Karama Street, Karama, Dubai<br>Daily 11 AM – 1 AM</p>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-[#FFF8EA]/50 font-medium">
+      <p>© 2026 Chaat Bazaar, Karama Dubai. Concept demo.</p>
+      <p>Concept demo by <span class="text-[#FFB627] font-bold">Om Vibe Webs</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- toast + confetti canvas -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[92%] max-w-md">
+  <div class="sticker turmeric p-5 flex items-center gap-4">
+    <span class="w-12 h-12 shrink-0 rounded-full bg-[#1FA38B] border-[3px] border-[#2A1508] grid place-items-center">
+      <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="#fff" stroke-width="3"><path d="M4 12.5 9.5 18 20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <div><p class="font-display text-xl" id="toast-title">Order received!</p><p class="font-medium text-sm" id="toast-msg">We'll call you back within 10 minutes.</p></div>
+  </div>
+</div>
+<canvas id="confetti" class="fixed inset-0 pointer-events-none z-[55]"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+"use strict";
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduced){ document.body.classList.add('no-motion'); }
+
+/* ---------- data ---------- */
+var CHILI = '<svg viewBox="0 0 24 24" class="w-4 h-4 inline-block"><path d="M4 20c8-1 14-7 15-16-2 0-4 .5-5.5 1C9 3 5 8 4 20Z" fill="#E8381F" stroke="#2A1508" stroke-width="1.4"/></svg>';
+var MENU = [
+ {n:"Pani Puri (6 pc)", d:"Crisp puris, tangy pudina water, aloo-chana masala", p:15, s:3, c:"classics", t:"BESTSELLER", bg:"chili"},
+ {n:"Samosa Chaat Bomb", d:"Crushed samosa, chole, dahi, imli, sev avalanche", p:18, s:2, c:"classics", t:"HOUSE ICON", bg:"turmeric"},
+ {n:"Bhel Puri", d:"Puffed rice tossed with kachi kairi, onion & 3 chutneys", p:14, s:2, c:"classics", t:"", bg:"mint"},
+ {n:"Papdi Chaat", d:"Shatter-crisp papdi, whipped dahi, pomegranate jewels", p:16, s:2, c:"classics", t:"", bg:"lime"},
+ {n:"Sev Puri", d:"Flat puris loaded with onion-tomato, nylon sev snow", p:16, s:2, c:"classics", t:"", bg:""},
+ {n:"Aloo Tikki Chole", d:"Griddle-crisp tikki drowned in Amritsari chole", p:19, s:3, c:"fried", t:"HEAVYWEIGHT", bg:"chili"},
+ {n:"Ragda Pattice", d:"Mumbai-style white-pea ragda over golden pattice", p:18, s:3, c:"fried", t:"", bg:""},
+ {n:"Dabeli", d:"Kutchi bun, spiced potato, pomegranate, roasted peanuts", p:15, s:2, c:"fried", t:"", bg:"turmeric"},
+ {n:"Cheese Burst Tikki", d:"Tikki oozing molten cheese, mint drizzle", p:22, s:1, c:"fried", t:"KIDS LOVE IT", bg:"lime"},
+ {n:"Dahi Bhalla", d:"Cloud-soft bhallas, chilled dahi, roasted jeera dust", p:17, s:1, c:"cool", t:"", bg:"mint"},
+ {n:"Mango Shrikhand Cup", d:"Alphonso shrikhand, kesar, pistachio rubble", p:20, s:0, c:"cool", t:"SEASONAL", bg:"turmeric"},
+ {n:"Kulfi Falooda Chaat", d:"Dense kulfi, rose falooda, basil seeds, dry fruit", p:22, s:0, c:"cool", t:"", bg:""},
+ {n:"Karama Chaat Tower", d:"7-layer sharing tower — every chaat in one skyline", p:29, s:3, c:"dxb", t:"FOR 2–3", bg:"chili"},
+ {n:"Deira Dune Dabeli", d:"Dabeli reimagined with date chutney & dukkah crunch", p:21, s:2, c:"dxb", t:"DUBAI TWIST", bg:"lime"},
+ {n:"Burj Sev Stack", d:"Towering sev-puri stack with saffron dahi", p:24, s:1, c:"dxb", t:"INSTA FAMOUS", bg:"mint"}
+];
+var CATS = {classics:"CLASSICS", fried:"FRIED & CRISPY", cool:"SWEET & COOL", dxb:"DUBAI SPECIALS"};
+
+function spiceMeter(s){
+  var h = '<span class="inline-flex items-center gap-1" title="Spice level '+s+'/3">';
+  for(var i=1;i<=3;i++){ h += '<span class="'+(i<=s?'':'chili-off')+'">'+CHILI+'</span>'; }
+  return h+'</span>';
+}
+
+var grid = document.getElementById('menu-grid');
+function renderMenu(filter){
+  var html = '';
+  MENU.forEach(function(m,i){
+    if(filter!=='all' && m.c!==filter) return;
+    html += '<article class="sticker '+m.bg+' p-6 flex flex-col menu-card" data-cat="'+m.c+'">'
+      + (m.t ? '<span class="tag bg-[#2A1508] text-white self-start rotate-[-2deg] mb-3 !text-[.65rem]">'+m.t+'</span>' : '<span class="tag bg-white self-start rotate-[-2deg] mb-3 !text-[.65rem]">'+CATS[m.c]+'</span>')
+      + '<h3 class="font-display text-2xl leading-tight">'+m.n+'</h3>'
+      + '<p class="font-medium text-sm mt-2 text-[#5b3a1e] flex-1">'+m.d+'</p>'
+      + '<div class="flex items-center justify-between mt-5">'
+      + '<div><p class="text-[.65rem] font-bold tracking-widest text-[#8A4B16]">SPICE</p>'+spiceMeter(m.s)+'</div>'
+      + '<p class="font-display text-3xl">AED '+m.p+'</p></div>'
+      + '<button class="btn-pop w-full justify-center mt-5 !py-3 bg-white text-sm add-btn" data-add="'+m.n+' — AED '+m.p+'">ADD TO ORDER +</button>'
+      + '</article>';
+  });
+  grid.innerHTML = html;
+  bindAddButtons();
+  if(!reduced && window.gsap){
+    gsap.fromTo('#menu-grid .menu-card',{y:34,opacity:0,rotate:1.5},{y:0,opacity:1,rotate:0,duration:.55,stagger:.06,ease:'back.out(1.4)',overwrite:true});
+  }
+}
+function bindAddButtons(){
+  Array.prototype.forEach.call(document.querySelectorAll('.add-btn,[data-add]:not(.add-btn)'), function(b){
+    if(b.dataset.bound) return; b.dataset.bound = '1';
+    b.addEventListener('click', function(){
+      var ta = document.getElementById('order-items');
+      ta.value = (ta.value ? ta.value.replace(/\s+$/,'') + ', ' : '') + b.getAttribute('data-add');
+      showToast('Added to your order', b.getAttribute('data-add') + ' — see the order form below.');
+      if(!reduced && window.gsap){ gsap.fromTo(b,{scale:.92},{scale:1,duration:.4,ease:'back.out(3)'}); }
+      ta.scrollIntoView({behavior: reduced ? 'auto':'smooth', block:'center'});
+    });
+  });
+}
+renderMenu('all');
+document.getElementById('menu-filters').addEventListener('click', function(e){
+  var btn = e.target.closest('button'); if(!btn) return;
+  Array.prototype.forEach.call(this.querySelectorAll('button'), function(x){
+    x.classList.remove('bg-[#2A1508]','text-white'); x.classList.add('bg-white');
+  });
+  btn.classList.add('bg-[#2A1508]','text-white'); btn.classList.remove('bg-white');
+  renderMenu(btn.getAttribute('data-filter'));
+});
+
+/* ---------- marquees ---------- */
+function fillMarquee(id, items, sep){
+  var el = document.getElementById(id); if(!el) return;
+  var chunk = items.map(function(t){ return '<span>'+t+'</span><span class="text-[#FFB627]">'+sep+'</span>'; }).join('');
+  el.innerHTML = chunk + chunk + chunk + chunk;
+}
+fillMarquee('dish-marquee', ['PANI PURI','SAMOSA CHAAT','BHEL PURI','DAHI BHALLA','RAGDA PATTICE','ALOO TIKKI','DABELI','SEV PURI','PAPDI CHAAT','KULFI FALOODA'], '✦');
+fillMarquee('offer-marquee', ['FREE DELIVERY IN KARAMA','PARTY ORDERS WELCOME','FRESH CHUTNEYS DAILY','OPEN TILL 1 AM'], '★');
+
+/* ---------- counters ---------- */
+function animateCounters(){
+  document.querySelectorAll('.counter').forEach(function(c){
+    var to = parseInt(c.getAttribute('data-to'),10), start = null;
+    if(reduced){ c.textContent = to; return; }
+    function step(ts){ if(!start) start = ts; var p = Math.min((ts-start)/1400,1);
+      c.textContent = Math.round(to * (1-Math.pow(1-p,3)));
+      if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  });
+}
+
+/* ---------- GSAP reveals ---------- */
+if(!reduced && window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo('.hero-line',{y:60,opacity:0,rotate:1},{y:0,opacity:1,rotate:0,duration:.9,stagger:.12,ease:'back.out(1.5)',delay:.15});
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    gsap.to(el,{y:0,opacity:1,duration:.8,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%',once:true}, onStart:animateCountersOnce});
+  });
+  gsap.to('#hero-card',{y:-14,duration:2.6,yoyo:true,repeat:-1,ease:'sine.inOut'});
+  var tilt = document.getElementById('hero-card');
+  tilt.addEventListener('mousemove', function(e){
+    var r = tilt.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    gsap.to(tilt,{rotateY:x*10,rotateX:-y*10,transformPerspective:800,duration:.4});
+  });
+  tilt.addEventListener('mouseleave', function(){ gsap.to(tilt,{rotateY:0,rotateX:0,duration:.6,ease:'elastic.out(1,.5)'}); });
+}
+var countersDone = false;
+function animateCountersOnce(){ if(!countersDone){ countersDone = true; animateCounters(); } }
+if(reduced){ document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity=1; el.style.transform='none'; }); animateCounters(); }
+
+/* ---------- nav glass ---------- */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){
+  if(window.scrollY > 40){ nav.classList.add('bg-[#FFF8EA]/90','backdrop-blur-md','shadow-[0_3px_0_#2A1508]'); }
+  else{ nav.classList.remove('bg-[#FFF8EA]/90','backdrop-blur-md','shadow-[0_3px_0_#2A1508]'); }
+}, {passive:true});
+
+/* ---------- chaat lab ---------- */
+var SPICE_NAMES = ['BABY','MUMBAI LOCAL','DUBAI SUMMER','VOLCANO'];
+function labUpdate(){
+  var base = document.querySelector('#lab-base input:checked');
+  var basePrice = parseInt(base.value,10), baseName = base.getAttribute('data-name');
+  var tops = [], tPrice = 0;
+  document.querySelectorAll('#lab-tops input:checked').forEach(function(t){ tops.push(t.getAttribute('data-name')); tPrice += parseInt(t.value,10); });
+  var spice = parseInt(document.getElementById('lab-spice').value,10);
+  var adjectives = ['SUPREME','VOLCANO','MAHARAJA','DHAMAKA','LEGEND','TORNADO'];
+  var adj = adjectives[(baseName.length + tops.length + spice) % adjectives.length];
+  document.getElementById('lab-name').textContent = (baseName+' '+adj).toUpperCase();
+  document.getElementById('lab-desc').textContent = baseName + (tops.length ? ' · ' + tops.join(' · ') : ' · classic style') + ' · spice: ' + SPICE_NAMES[spice].toLowerCase();
+  document.getElementById('lab-price').textContent = basePrice + tPrice;
+  document.getElementById('lab-meter').innerHTML = spiceMeter(spice);
+  var layers = document.getElementById('lab-layers'), lh = '';
+  var cols = ['#E8381F','#FFB627','#1FA38B','#FFF3D6','#8A4B16'];
+  for(var i=0;i<Math.min(tops.length+2,6);i++){
+    lh += '<ellipse cx="100" cy="'+(78-i*7)+'" rx="'+(62-i*6)+'" ry="10" fill="'+cols[i%cols.length]+'" stroke="#2A1508" stroke-width="2.5"/>';
+  }
+  layers.innerHTML = lh;
+  if(!reduced && window.gsap){ gsap.fromTo('#lab-plate',{scale:.94,rotate:-2},{scale:1,rotate:0,duration:.45,ease:'back.out(2)'}); }
+}
+document.getElementById('builder').addEventListener('change', labUpdate);
+document.getElementById('lab-add').addEventListener('click', function(){
+  var ta = document.getElementById('order-items');
+  var item = 'Chaat Lab: ' + document.getElementById('lab-name').textContent + ' — AED ' + document.getElementById('lab-price').textContent;
+  ta.value = (ta.value ? ta.value.replace(/\s+$/,'') + ', ' : '') + item;
+  showToast('Beast added!', item);
+  fireConfetti();
+});
+labUpdate();
+
+/* ---------- toast ---------- */
+var toastTimer = null;
+function showToast(title, msg){
+  document.getElementById('toast-title').textContent = title;
+  document.getElementById('toast-msg').textContent = msg;
+  var t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3800);
+}
+
+/* ---------- confetti ---------- */
+var cCanvas = document.getElementById('confetti'), ctx = cCanvas.getContext('2d'), parts = [], confettiRunning = false;
+function sizeCanvas(){ cCanvas.width = window.innerWidth; cCanvas.height = window.innerHeight; }
+sizeCanvas(); window.addEventListener('resize', sizeCanvas);
+function fireConfetti(){
+  if(reduced) return;
+  var colors = ['#E8381F','#FFB627','#1FA38B','#9BE12B','#FFF8EA'];
+  for(var i=0;i<90;i++){
+    parts.push({x:Math.random()*cCanvas.width, y:-20-Math.random()*cCanvas.height*.3,
+      w:6+Math.random()*8, h:8+Math.random()*10, c:colors[i%colors.length],
+      vy:2+Math.random()*4, vx:-2+Math.random()*4, r:Math.random()*Math.PI, vr:-.15+Math.random()*.3});
+  }
+  if(!confettiRunning){ confettiRunning = true; requestAnimationFrame(confettiStep); }
+}
+function confettiStep(){
+  ctx.clearRect(0,0,cCanvas.width,cCanvas.height);
+  parts = parts.filter(function(p){ return p.y < cCanvas.height+40; });
+  parts.forEach(function(p){
+    p.x+=p.vx; p.y+=p.vy; p.r+=p.vr;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r); ctx.fillStyle=p.c; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); ctx.restore();
+  });
+  if(parts.length){ requestAnimationFrame(confettiStep); } else { confettiRunning=false; ctx.clearRect(0,0,cCanvas.width,cCanvas.height); }
+}
+
+/* ---------- order form ---------- */
+document.getElementById('order-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = this.name.value.trim().split(' ')[0] || 'friend';
+  showToast('Order enquiry sent!', 'Thanks '+name+' — we\'ll confirm on call/WhatsApp within 10 minutes.');
+  fireConfetti();
+  this.reset();
+});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharjah Palace Hotel — A Quiet Icon of Gulf Hospitality | Sharjah, UAE</title>
+<meta name="description" content="Sharjah Palace Hotel, Sharjah UAE — elegant rooms from AED 150, vintage Zafran restaurant, serene courtyards. Timeless Gulf hospitality.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F6F0E4; --sand-2:#EFE6D3; --stone:#DCC9A3; --bronze:#A98B5F;
+  --espresso:#241B12; --espresso-2:#171008; --gold:#C6A15B; --palm:#5C6B4C;
+}
+*{ -webkit-tap-highlight-color:transparent; }
+html{ scroll-behavior:smooth; }
+body{ background:var(--sand); color:var(--espresso); font-family:'Jost',sans-serif; overflow-x:hidden; }
+.serif{ font-family:'Cormorant Garamond',serif; }
+::selection{ background:var(--gold); color:var(--espresso-2); }
+
+.eyebrow{ font-size:.72rem; letter-spacing:.42em; text-transform:uppercase; font-weight:500; }
+
+/* mashrabiya pattern */
+.mashrabiya{ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23A98B5F' stroke-opacity='.35' stroke-width='1.2'%3E%3Cpath d='M36 6l24 30-24 30-24-30z'/%3E%3Ccircle cx='36' cy='36' r='7'/%3E%3Cpath d='M0 36h22M50 36h22M36 0v14M36 58v14'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* slow ken-burns dusk gradient */
+@keyframes dusk{ 0%,100%{background-position:0% 40%} 50%{background-position:100% 60%} }
+.dusk{ background:linear-gradient(115deg,#171008 0%,#2c2113 30%,#6b4f26 58%,#a97f3e 78%,#241b12 100%); background-size:280% 280%; animation:dusk 22s ease-in-out infinite; }
+
+/* gold shimmer text */
+@keyframes shimmer-x{ 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+.gold-text{ background:linear-gradient(100deg,#8a6a34 20%,#f3dfae 40%,#c6a15b 55%,#8a6a34 75%); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shimmer-x 7s linear infinite; }
+
+/* reveal */
+.reveal{ opacity:0; transform:translateY(44px); }
+.no-motion .reveal{ opacity:1; transform:none; }
+
+/* room card hover — image-reveal style zoom inside arch frame */
+.room-frame{ overflow:hidden; }
+.room-frame .art{ transition:transform 1.1s cubic-bezier(.19,1,.22,1); }
+.room-card:hover .room-frame .art{ transform:scale(1.07); }
+.room-card{ transition:transform .5s cubic-bezier(.19,1,.22,1), box-shadow .5s; }
+.room-card:hover{ transform:translateY(-8px); box-shadow:0 30px 60px -20px rgba(36,27,18,.35); }
+.room-card .book-line{ transition:width .5s cubic-bezier(.19,1,.22,1); width:0; }
+.room-card:hover .book-line{ width:100%; }
+
+/* marquee */
+.marquee{ overflow:hidden; white-space:nowrap; }
+.marquee-track{ display:inline-flex; align-items:center; gap:3rem; padding-right:3rem; animation:marq 34s linear infinite; will-change:transform; }
+@keyframes marq{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* arch divider */
+.arch{ clip-path:ellipse(70% 100% at 50% 100%); }
+
+/* form */
+.field{ width:100%; background:rgba(255,255,255,.7); border:1px solid rgba(169,139,95,.5); border-radius:.35rem; padding:.95rem 1.1rem; font-weight:400; color:var(--espresso); transition:border-color .3s, box-shadow .3s; }
+.field:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(198,161,91,.22); }
+.field::placeholder{ color:rgba(36,27,18,.4); }
+select.field{ appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23A98B5F' stroke-width='2'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; }
+
+.btn-luxe{ display:inline-flex; align-items:center; justify-content:center; gap:.7rem; letter-spacing:.28em; text-transform:uppercase; font-size:.78rem; font-weight:500; padding:1.15rem 2.8rem; border:1px solid var(--gold); position:relative; overflow:hidden; transition:color .45s; z-index:0; }
+.btn-luxe::before{ content:""; position:absolute; inset:0; background:var(--gold); transform:scaleX(0); transform-origin:right; transition:transform .5s cubic-bezier(.19,1,.22,1); z-index:-1; }
+.btn-luxe:hover::before{ transform:scaleX(1); transform-origin:left; }
+.btn-luxe:hover{ color:var(--espresso-2); }
+.btn-luxe.dark{ color:var(--sand); }
+.btn-luxe.solid{ background:var(--espresso); color:var(--sand); border-color:var(--espresso); }
+.btn-luxe.solid::before{ background:var(--gold); }
+
+/* toast */
+#toast{ transition:transform .6s cubic-bezier(.19,1,.22,1), opacity .4s; transform:translateY(140%); opacity:0; }
+#toast.show{ transform:translateY(0); opacity:1; }
+
+/* scroll cue */
+@keyframes cue{ 0%{transform:translateY(0);opacity:1} 70%{transform:translateY(16px);opacity:0} 100%{transform:translateY(0);opacity:0} }
+.cue-dot{ animation:cue 2.2s ease-in-out infinite; }
+
+/* bento hover sheen */
+.bento{ position:relative; overflow:hidden; }
+.bento::after{ content:""; position:absolute; top:0; left:-80%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-20deg); transition:left .8s ease; }
+.bento:hover::after{ left:130%; }
+
+/* nav link underline */
+.nav-link{ position:relative; }
+.nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:1px; width:0; background:var(--gold); transition:width .4s cubic-bezier(.19,1,.22,1); }
+.nav-link:hover::after{ width:100%; }
+
+/* scrolled nav */
+#nav.scrolled{ background:rgba(246,240,228,.94); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:0 1px 0 rgba(169,139,95,.4); }
+#nav.scrolled .nav-brand{ color:var(--espresso); }
+#nav.scrolled .nav-links{ color:rgba(36,27,18,.85); }
+#nav.scrolled .btn-luxe.dark{ color:var(--espresso); border-color:var(--bronze); }
+
+@media (prefers-reduced-motion: reduce){
+  .marquee-track,.dusk,.gold-text,.cue-dot{ animation:none !important; }
+}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 inset-x-0 z-40 transition-all duration-500">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-8 py-5">
+    <a href="#top" class="flex items-center gap-3">
+      <svg viewBox="0 0 48 48" class="w-10 h-10" fill="none">
+        <path d="M8 40V22c0-8 7-14 16-14s16 6 16 14v18" stroke="#C6A15B" stroke-width="2.5"/>
+        <path d="M16 40V26c0-5 3.5-9 8-9s8 4 8 9v14" stroke="#C6A15B" stroke-width="2"/>
+        <circle cx="24" cy="10" r="2.5" fill="#C6A15B"/>
+      </svg>
+      <span class="leading-none">
+        <span class="serif block text-2xl tracking-wide text-[#F6F0E4] nav-brand">Sharjah Palace</span>
+        <span class="eyebrow block text-[#C6A15B] mt-1" style="font-size:.58rem">Hotel · Sharjah</span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-9 text-[.8rem] tracking-[.22em] font-medium text-[#F6F0E4]/90 nav-links">
+      <a href="#rooms" class="nav-link">ROOMS</a>
+      <a href="#dining" class="nav-link">DINING</a>
+      <a href="#experiences" class="nav-link">EXPERIENCES</a>
+      <a href="#booking" class="btn-luxe dark !py-3 !px-7">Reserve</a>
+    </div>
+    <a href="#booking" class="md:hidden btn-luxe dark !py-2.5 !px-6 !text-[.7rem]">Reserve</a>
+  </nav>
+</header>
+<!-- HERO -->
+<section id="top" class="dusk relative min-h-screen flex items-end overflow-hidden">
+  <div class="absolute inset-0 mashrabiya opacity-40 pointer-events-none"></div>
+  <!-- palace silhouette : inline SVG art -->
+  <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" class="absolute bottom-0 inset-x-0 w-full h-[46vh] pointer-events-none" aria-hidden="true">
+    <defs>
+      <linearGradient id="bldg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2c1a"/><stop offset="1" stop-color="#171008"/></linearGradient>
+      <linearGradient id="winlit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dfae"/><stop offset="1" stop-color="#c6a15b"/></linearGradient>
+    </defs>
+    <g fill="url(#bldg)">
+      <rect x="0" y="300" width="1440" height="120"/>
+      <rect x="120" y="220" width="180" height="200"/><rect x="340" y="180" width="220" height="240"/>
+      <rect x="600" y="140" width="240" height="280"/><rect x="880" y="180" width="220" height="240"/><rect x="1140" y="220" width="180" height="200"/>
+      <path d="M600 140 L720 70 L840 140 Z"/><rect x="712" y="30" width="16" height="50"/>
+      <path d="M340 180 L450 120 L560 180 Z"/><path d="M880 180 L990 120 L1100 180 Z"/>
+    </g>
+    <g fill="url(#winlit)" opacity=".85">
+      <g id="wins"></g>
+    </g>
+    <g fill="#0d0905" opacity=".9">
+      <path d="M1200 300 q 30 -60 60 0 q 30 -60 60 0" stroke="#0d0905" stroke-width="10" fill="none"/>
+      <rect x="1248" y="300" width="8" height="60"/>
+    </g>
+    <!-- moon -->
+    <circle cx="1180" cy="110" r="46" fill="#f3dfae" opacity=".9"/>
+    <circle cx="1164" cy="100" r="40" fill="#241b12" opacity=".55"/>
+  </svg>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 pb-28 sm:pb-36 pt-40 w-full">
+    <p class="eyebrow text-[#C6A15B] hero-line">Sharjah · United Arab Emirates</p>
+    <h1 class="serif text-[#F6F0E4] leading-[.95] mt-6 text-[15vw] sm:text-8xl lg:text-[7.5rem]">
+      <span class="block hero-line">Sharjah</span>
+      <span class="block hero-line italic gold-text font-medium">Palace</span>
+    </h1>
+    <p class="hero-line mt-7 max-w-xl text-lg sm:text-xl font-light text-[#F6F0E4]/80 leading-relaxed">
+      A quiet icon of Gulf hospitality — arched courtyards, slow evenings, and service that remembers your name. Rooms from <span class="text-[#F3DFAE] font-medium">AED 150</span>.
+    </p>
+    <div class="hero-line mt-10 flex flex-wrap gap-5">
+      <a href="#booking" class="btn-luxe dark">Check Availability</a>
+      <a href="#rooms" class="btn-luxe dark !border-[#F6F0E4]/30">Explore Rooms</a>
+    </div>
+    <div class="hero-line mt-14 flex items-center gap-8 text-[#F6F0E4]/60 text-sm tracking-widest">
+      <span><span class="serif text-3xl text-[#F3DFAE]">4.8</span> GUEST RATING</span>
+      <span class="w-px h-8 bg-[#F6F0E4]/20"></span>
+      <span><span class="serif text-3xl text-[#F3DFAE]">1987</span> SERVING SINCE</span>
+      <span class="w-px h-8 bg-[#F6F0E4]/20 hidden sm:block"></span>
+      <span class="hidden sm:block"><span class="serif text-3xl text-[#F3DFAE]">120</span> ROOMS &amp; SUITES</span>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#F6F0E4]/50">
+    <span class="eyebrow" style="font-size:.58rem">Scroll</span>
+    <span class="w-6 h-10 rounded-full border border-[#F6F0E4]/30 flex justify-center pt-2"><span class="cue-dot w-1 h-2 rounded-full bg-[#C6A15B]"></span></span>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee bg-[#171008] text-[#C6A15B] py-5 border-y border-[#C6A15B]/25">
+  <div class="marquee-track serif italic text-2xl sm:text-3xl" id="luxe-marquee"></div>
+</div>
+
+<!-- INTRO / PHILOSOPHY -->
+<section class="max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28 text-center">
+  <p class="eyebrow text-[#A98B5F] reveal">The Philosophy</p>
+  <h2 class="serif text-4xl sm:text-6xl leading-tight mt-6 reveal">Hospitality, the way the Gulf<br class="hidden sm:block"> has practised it for <span class="italic gold-text">centuries</span>.</h2>
+  <p class="mt-8 text-lg font-light leading-relaxed text-[#241B12]/70 max-w-3xl mx-auto reveal">No noise. No hurry. Just cool marble underfoot, the scent of oud in the lobby, dates and qahwa on arrival — and a team that treats every guest like the first guest.</p>
+  <div class="grid grid-cols-3 gap-6 sm:gap-10 mt-14 max-w-2xl mx-auto">
+    <div class="reveal"><p class="serif text-5xl sm:text-6xl text-[#A98B5F]"><span class="counter" data-to="38">0</span></p><p class="eyebrow mt-3 text-[#241B12]/60" style="font-size:.6rem">Years of service</p></div>
+    <div class="reveal"><p class="serif text-5xl sm:text-6xl text-[#A98B5F]"><span class="counter" data-to="120">0</span></p><p class="eyebrow mt-3 text-[#241B12]/60" style="font-size:.6rem">Rooms &amp; suites</p></div>
+    <div class="reveal"><p class="serif text-5xl sm:text-6xl text-[#A98B5F]"><span class="counter" data-to="92">0</span>%</p><p class="eyebrow mt-3 text-[#241B12]/60" style="font-size:.6rem">Return guests</p></div>
+  </div>
+</section>
+<!-- ROOMS -->
+<section id="rooms" class="py-20 sm:py-28" style="background:linear-gradient(#F6F0E4,#EFE6D3)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
+      <div class="reveal">
+        <p class="eyebrow text-[#A98B5F]">Stay</p>
+        <h2 class="serif text-5xl sm:text-7xl mt-4">Rooms &amp; <span class="italic text-[#A98B5F]">Suites</span></h2>
+      </div>
+      <p class="max-w-sm font-light text-[#241B12]/60 reveal">Every room faces the courtyard or the creek. Every rate includes breakfast at Zafran and qahwa on arrival.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Deluxe -->
+      <article class="room-card reveal bg-white/60 backdrop-blur rounded-sm border border-[#A98B5F]/30 overflow-hidden">
+        <div class="room-frame arch relative h-72" style="background:linear-gradient(160deg,#E8D9B8,#CBB27F)">
+          <svg viewBox="0 0 400 300" class="art w-full h-full" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="300" fill="none"/>
+            <rect x="60" y="60" width="280" height="180" rx="120" fill="#F6F0E4" stroke="#A98B5F" stroke-width="4"/>
+            <rect x="90" y="100" width="220" height="140" rx="90" fill="#8FB3C9" opacity=".55"/>
+            <rect x="90" y="170" width="220" height="70" rx="0" fill="#5C6B4C" opacity=".5"/>
+            <circle cx="300" cy="110" r="16" fill="#F3DFAE"/>
+            <g stroke="#A98B5F" stroke-width="3"><path d="M140 240v-40M260 240v-40"/></g>
+            <rect x="120" y="200" width="160" height="40" rx="6" fill="#7A5C33"/>
+            <rect x="120" y="192" width="160" height="12" rx="6" fill="#F6F0E4" stroke="#A98B5F" stroke-width="2"/>
+            <rect x="60" y="248" width="280" height="10" fill="#A98B5F" opacity=".4"/>
+          </svg>
+          <span class="absolute top-4 left-4 bg-[#171008]/85 text-[#F3DFAE] text-[.65rem] tracking-[.25em] px-4 py-2">MOST LOVED</span>
+        </div>
+        <div class="p-8">
+          <p class="eyebrow text-[#A98B5F]" style="font-size:.6rem">Courtyard view · 32 m²</p>
+          <h3 class="serif text-3xl mt-2">Deluxe Room</h3>
+          <p class="font-light text-[#241B12]/60 mt-3 text-[.95rem] leading-relaxed">Hand-cut stone archways, a four-poster in carved teak, and mornings that begin with birdsong in the courtyard.</p>
+          <div class="flex flex-wrap gap-x-5 gap-y-2 mt-5 text-sm text-[#241B12]/70 font-light">
+            <span class="flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="#A98B5F" stroke-width="2"><path d="M2 17v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6M2 17h20M2 17v2m20-2v2M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>King bed</span>
+            <span class="flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="#A98B5F" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Breakfast incl.</span>
+            <span class="flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="#A98B5F" stroke-width="2"><path d="M5 12a7 7 0 0 1 14 0M8.5 12a3.5 3.5 0 0 1 7 0M12 12h.01M2 8.5A15 15 0 0 1 22 8.5"/></svg>Fast Wi-Fi</span>
+          </div>
+          <div class="flex items-end justify-between mt-7">
+            <p><span class="text-xs tracking-widest text-[#241B12]/50">FROM</span><br><span class="serif text-4xl">AED 150</span><span class="text-sm text-[#241B12]/50"> / night</span></p>
+            <a href="#booking" data-room="Deluxe Room" class="room-cta text-sm tracking-[.22em] font-medium">RESERVE <span class="book-line block h-px bg-[#C6A15B] mt-1"></span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Executive -->
+      <article class="room-card reveal bg-white/60 backdrop-blur rounded-sm border border-[#A98B5F]/30 overflow-hidden">
+        <div class="room-frame arch relative h-72" style="background:linear-gradient(160deg,#DCC9A3,#A98B5F)">
+          <svg viewBox="0 0 400 300" class="art w-full h-full" preserveAspectRatio="xMidYMid slice">
+            <rect x="40" y="70" width="320" height="170" rx="130" fill="#F6F0E4" stroke="#7A5C33" stroke-width="4"/>
+            <rect x="70" y="105" width="110" height="135" rx="55" fill="#8FB3C9" opacity=".5"/>
+            <rect x="220" y="105" width="110" height="135" rx="55" fill="#E8A87C" opacity=".45"/>
+            <rect x="150" y="190" width="100" height="50" rx="6" fill="#7A5C33"/>
+            <ellipse cx="200" cy="120" rx="34" ry="10" fill="#C6A15B" opacity=".7"/>
+            <circle cx="200" cy="104" r="12" fill="#F3DFAE" stroke="#A98B5F" stroke-width="2"/>
+            <rect x="40" y="248" width="320" height="10" fill="#7A5C33" opacity=".4"/>
+          </svg>
+          <span class="absolute top-4 left-4 bg-[#A98B5F] text-white text-[.65rem] tracking-[.25em] px-4 py-2">CREEK VIEW</span>
+        </div>
+        <div class="p-8">
+          <p class="eyebrow text-[#A98B5F]" style="font-size:.6rem">Creek view · 48 m² · Lounge access</p>
+          <h3 class="serif text-3xl mt-2">Executive Suite</h3>
+          <p class="font-light text-[#241B12]/60 mt-3 text-[.95rem] leading-relaxed">A separate majlis sitting room, sunset over the creek, and evening dates served as the call to prayer drifts across the water.</p>
+          <div class="flex flex-wrap gap-x-5 gap-y-2 mt-5 text-sm text-[#241B12]/70 font-light">
+            <span class="flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="#A98B5F" stroke-width="2"><path d="M4 11h16v9H4zM4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/></svg>Sitting room</span>
+            <span class="flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="#A98B5F" stroke-width="2"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg>Soaking tub</span>
+            <span class="flex items-center gap-2"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="#A98B5F" stroke-width="2"><path d="M6 3h12l-1 18H7L6 3ZM9 8h6"/></svg>Lounge access</span>
+          </div>
+          <div class="flex items-end justify-between mt-7">
+            <p><span class="text-xs tracking-widest text-[#241B12]/50">FROM</span><br><span class="serif text-4xl">AED 320</span><span class="text-sm text-[#241B12]/50"> / night</span></p>
+            <a href="#booking" data-room="Executive Suite" class="room-cta text-sm tracking-[.22em] font-medium">RESERVE <span class="book-line block h-px bg-[#C6A15B] mt-1"></span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Royal -->
+      <article class="room-card reveal bg-[#171008] text-[#F6F0E4] rounded-sm border border-[#C6A15B]/40 overflow-hidden">
+        <div class="room-frame arch relative h-72" style="background:linear-gradient(160deg,#3a2c1a,#171008)">
+          <svg viewBox="0 0 400 300" class="art w-full h-full" preserveAspectRatio="xMidYMid slice">
+            <rect x="60" y="50" width="280" height="200" rx="120" fill="#241B12" stroke="#C6A15B" stroke-width="4"/>
+            <rect x="95" y="90" width="210" height="160" rx="90" fill="#0d0905"/>
+            <g fill="#C6A15B" opacity=".9">
+              <circle cx="140" cy="140" r="4"/><circle cx="200" cy="120" r="4"/><circle cx="260" cy="140" r="4"/><circle cx="170" cy="170" r="4"/><circle cx="230" cy="170" r="4"/>
+              <path d="M200 195v-30M185 175l15-12 15 12" stroke="#C6A15B" stroke-width="3" fill="none"/>
+            </g>
+            <path d="M200 250 m-40 0 a40 18 0 1 0 80 0 a40 18 0 1 0 -80 0" fill="none" stroke="#C6A15B" stroke-width="3"/>
+            <rect x="120" y="255" width="160" height="8" fill="#C6A15B" opacity=".5"/>
+          </svg>
+          <span class="absolute top-4 left-4 bg-[#C6A15B] text-[#171008] text-[.65rem] tracking-[.25em] px-4 py-2 font-semibold">SIGNATURE</span>
+        </div>
+        <div class="p-8">
+          <p class="eyebrow text-[#C6A15B]" style="font-size:.6rem">Panoramic terrace · 110 m² · Butler</p>
+          <h3 class="serif text-3xl mt-2">Royal Palace Suite</h3>
+          <p class="font-light text-[#F6F0E4]/60 mt-3 text-[.95rem] leading-relaxed">The top floor of the old wing. Private terrace, oud-burning ritual at dusk, and a butler who has served three generations of guests.</p>
+          <div class="flex flex-wrap gap-x-5 gap-y-2 mt-5 text-sm text-[#F6F0E4]/70 font-light">
+            <span>Private terrace</span><span>·</span><span>Dedicated butler</span><span>·</span><span>Chauffeur</span>
+          </div>
+          <div class="flex items-end justify-between mt-7">
+            <p><span class="text-xs tracking-widest text-[#F6F0E4]/50">FROM</span><br><span class="serif text-4xl text-[#F3DFAE]">AED 590</span><span class="text-sm text-[#F6F0E4]/50"> / night</span></p>
+            <a href="#booking" data-room="Royal Palace Suite" class="room-cta text-sm tracking-[.22em] font-medium text-[#F3DFAE]">RESERVE <span class="book-line block h-px bg-[#C6A15B] mt-1"></span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DINING -->
+<section id="dining" class="relative py-20 sm:py-28 overflow-hidden" style="background:#171008">
+  <div class="absolute inset-0 mashrabiya opacity-25 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <div class="reveal order-2 lg:order-1">
+        <div class="rounded-sm overflow-hidden border border-[#C6A15B]/40">
+          <svg viewBox="0 0 560 420" class="w-full h-auto block">
+            <rect width="560" height="420" fill="#241B12"/>
+            <rect x="40" y="40" width="480" height="340" rx="200" fill="#2E2314" stroke="#C6A15B" stroke-width="3"/>
+            <g fill="#C6A15B" opacity=".85">
+              <ellipse cx="280" cy="250" rx="120" ry="26" fill="#171008" stroke="#C6A15B" stroke-width="3"/>
+              <ellipse cx="280" cy="244" rx="120" ry="26" fill="#3A2C1A" stroke="#C6A15B" stroke-width="2"/>
+              <path d="M200 244 q 80 26 160 0" stroke="#C6A15B" stroke-width="2" fill="none" opacity=".6"/>
+            </g>
+            <g stroke="#C6A15B" stroke-width="2.5" fill="none">
+              <path d="M120 300 q 160 40 320 0"/>
+              <path d="M150 120 q 130 -50 260 0" opacity=".5"/>
+            </g>
+            <g>
+              <circle cx="150" cy="150" r="26" fill="#F3DFAE" opacity=".9"/>
+              <circle cx="410" cy="150" r="26" fill="#F3DFAE" opacity=".9"/>
+              <circle cx="140" cy="142" r="24" fill="#241B12" opacity=".35"/>
+              <circle cx="400" cy="142" r="24" fill="#241B12" opacity=".35"/>
+            </g>
+            <g fill="#8FB3C9" opacity=".8"><rect x="255" y="180" width="50" height="34" rx="4" transform="rotate(8 280 197)"/><rect x="248" y="176" width="50" height="34" rx="4" transform="rotate(-6 273 193)" fill="#E8A87C"/></g>
+            <text x="280" y="350" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-size="30" fill="#F3DFAE">evenings at Zafran</text>
+          </svg>
+        </div>
+      </div>
+      <div class="reveal order-1 lg:order-2">
+        <p class="eyebrow text-[#C6A15B]">Dining</p>
+        <h2 class="serif text-5xl sm:text-6xl text-[#F6F0E4] mt-4">Zafran —<br><span class="italic gold-text">the vintage table</span></h2>
+        <p class="mt-6 text-lg font-light text-[#F6F0E4]/70 leading-relaxed">Our 40-year-old restaurant serves the Gulf the way grandmothers remember it — slow-cooked harees, saffron machboos, luqaimat with date syrup — beneath brass lanterns older than the hotel itself.</p>
+        <ul class="mt-8 space-y-5">
+          <li class="flex gap-5"><span class="serif text-2xl text-[#C6A15B] w-14 shrink-0">01</span><div><p class="text-[#F6F0E4] tracking-wide font-medium">Emirati Heritage Breakfast</p><p class="font-light text-[#F6F0E4]/55 text-sm mt-1">Daily 6:30 – 10:30 AM · balaleet, chebab, karak chai</p></div></li>
+          <li class="flex gap-5"><span class="serif text-2xl text-[#C6A15B] w-14 shrink-0">02</span><div><p class="text-[#F6F0E4] tracking-wide font-medium">The Saffron Table</p><p class="font-light text-[#F6F0E4]/55 text-sm mt-1">Dinner 7 PM – 11 PM · machboos, harees, grilled hammour</p></div></li>
+          <li class="flex gap-5"><span class="serif text-2xl text-[#C6A15B] w-14 shrink-0">03</span><div><p class="text-[#F6F0E4] tracking-wide font-medium">Majlis Afternoon Tea</p><p class="font-light text-[#F6F0E4]/55 text-sm mt-1">Daily 4 – 6 PM · dates, luqaimat, Arabic qahwa ritual</p></div></li>
+        </ul>
+        <a href="#booking" class="btn-luxe dark mt-10">Reserve a Table</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- EXPERIENCES : bento -->
+<section id="experiences" class="max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+  <div class="text-center mb-14 reveal">
+    <p class="eyebrow text-[#A98B5F]">Experiences</p>
+    <h2 class="serif text-5xl sm:text-7xl mt-4">Slow days, <span class="italic text-[#A98B5F]">well spent</span></h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6 auto-rows-[minmax(220px,auto)]">
+    <div class="bento reveal md:col-span-2 rounded-sm border border-[#A98B5F]/30 p-9 flex flex-col justify-end min-h-[300px]" style="background:linear-gradient(140deg,#3a2c1a,#171008)">
+      <svg viewBox="0 0 120 120" class="w-24 h-24 mb-6" fill="none"><circle cx="60" cy="52" r="26" stroke="#C6A15B" stroke-width="2.5"/><path d="M34 90c8-14 44-14 52 0" stroke="#C6A15B" stroke-width="2.5"/><path d="M60 26v-8M86 52h10M34 52H24" stroke="#C6A15B" stroke-width="2.5" stroke-linecap="round"/><path d="M48 52c2-6 22-6 24 0-4 8-20 8-24 0Z" fill="#C6A15B" opacity=".7"/></svg>
+      <h3 class="serif text-3xl sm:text-4xl text-[#F6F0E4]">The Courtyard Hammam</h3>
+      <p class="font-light text-[#F6F0E4]/60 mt-3 max-w-md">A traditional steam ritual in our stone hammam — black soap, kessa mitt, and rosewater to finish. As it has been done for centuries.</p>
+    </div>
+    <div class="bento reveal rounded-sm border border-[#A98B5F]/30 p-9 flex flex-col justify-end min-h-[300px] bg-[#EFE6D3]">
+      <svg viewBox="0 0 120 120" class="w-20 h-20 mb-6" fill="none"><path d="M60 14c14 18 22 32 22 48a22 22 0 0 1-44 0c0-16 8-30 22-48Z" stroke="#A98B5F" stroke-width="2.5"/><path d="M60 44v34M48 58h24" stroke="#A98B5F" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <h3 class="serif text-3xl">Palm Garden Spa</h3>
+      <p class="font-light text-[#241B12]/60 mt-3">Date-seed oil massages beneath the palms.</p>
+    </div>
+    <div class="bento reveal rounded-sm border border-[#A98B5F]/30 p-9 flex flex-col justify-end min-h-[260px] bg-[#EFE6D3]">
+      <svg viewBox="0 0 120 120" class="w-20 h-20 mb-6" fill="none"><path d="M20 84c20-6 60-6 80 0l-8 14H28l-8-14Z" stroke="#A98B5F" stroke-width="2.5"/><path d="M60 84V40M60 40c-12 0-20-8-20-18 10 0 16 4 20 10 4-6 10-10 20-10 0 10-8 18-20 18Z" stroke="#A98B5F" stroke-width="2.5"/></svg>
+      <h3 class="serif text-3xl">Creek Dhow Evenings</h3>
+      <p class="font-light text-[#241B12]/60 mt-3">Sunset cruises with oud music and karak.</p>
+    </div>
+    <div class="bento reveal rounded-sm border border-[#A98B5F]/30 p-9 flex flex-col justify-end min-h-[260px] bg-[#EFE6D3]">
+      <svg viewBox="0 0 120 120" class="w-20 h-20 mb-6" fill="none"><rect x="28" y="46" width="64" height="44" rx="4" stroke="#A98B5F" stroke-width="2.5"/><path d="M28 58l32 20 32-20" stroke="#A98B5F" stroke-width="2.5"/><circle cx="60" cy="30" r="8" stroke="#A98B5F" stroke-width="2.5"/></svg>
+      <h3 class="serif text-3xl">Heritage Sharjah Tours</h3>
+      <p class="font-light text-[#241B12]/60 mt-3">Guided walks through the old souq &amp; fort.</p>
+    </div>
+    <div class="bento reveal md:col-span-3 rounded-sm border border-[#C6A15B]/50 p-9 sm:p-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8" style="background:linear-gradient(120deg,#241B12,#3a2c1a)">
+      <div>
+        <p class="eyebrow text-[#C6A15B]">Private occasions</p>
+        <h3 class="serif text-3xl sm:text-5xl text-[#F6F0E4] mt-3">Weddings beneath the <span class="italic gold-text">arches</span></h3>
+        <p class="font-light text-[#F6F0E4]/60 mt-3 max-w-xl">The courtyard hosts 300 guests under lantern light. Our events atelier plans everything — from the zaffa entrance to the farewell qahwa.</p>
+      </div>
+      <a href="#booking" class="btn-luxe dark shrink-0">Enquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- GUEST WORDS -->
+<section class="py-16 border-y border-[#A98B5F]/30 bg-[#EFE6D3]/60 overflow-hidden">
+  <p class="eyebrow text-center text-[#A98B5F] mb-10 reveal">Guest words</p>
+  <div class="marquee"><div class="marquee-track" id="review-track" style="animation-duration:44s"></div></div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="relative py-20 sm:py-28" style="background:linear-gradient(#F6F0E4,#EFE6D3)">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12 reveal">
+      <p class="eyebrow text-[#A98B5F]">Reservations</p>
+      <h2 class="serif text-5xl sm:text-7xl mt-4">Begin your <span class="italic text-[#A98B5F]">stay</span></h2>
+      <p class="font-light text-[#241B12]/60 mt-4 max-w-xl mx-auto">Send a booking enquiry — our reservations desk replies within two hours, 8 AM to 10 PM GST.</p>
+    </div>
+    <form id="booking-form" class="reveal bg-white/70 backdrop-blur border border-[#A98B5F]/40 rounded-sm p-8 sm:p-12 shadow-[0_30px_60px_-30px_rgba(36,27,18,.3)]">
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div><label class="eyebrow block mb-3 text-[#241B12]/60" style="font-size:.62rem">Full name *</label><input required name="name" class="field" placeholder="Your name"></div>
+        <div><label class="eyebrow block mb-3 text-[#241B12]/60" style="font-size:.62rem">Email *</label><input required type="email" name="email" class="field" placeholder="you@example.com"></div>
+        <div><label class="eyebrow block mb-3 text-[#241B12]/60" style="font-size:.62rem">Check-in *</label><input required type="date" name="in" id="bk-in" class="field"></div>
+        <div><label class="eyebrow block mb-3 text-[#241B12]/60" style="font-size:.62rem">Check-out *</label><input required type="date" name="out" id="bk-out" class="field"></div>
+        <div><label class="eyebrow block mb-3 text-[#241B12]/60" style="font-size:.62rem">Room type</label>
+          <select name="room" id="bk-room" class="field"><option>Deluxe Room — from AED 150</option><option>Executive Suite — from AED 320</option><option>Royal Palace Suite — from AED 590</option></select></div>
+        <div><label class="eyebrow block mb-3 text-[#241B12]/60" style="font-size:.62rem">Guests</label>
+          <select name="guests" class="field"><option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>4+ guests / family</option></select></div>
+        <div class="sm:col-span-2"><label class="eyebrow block mb-3 text-[#241B12]/60" style="font-size:.62rem">Special requests</label><textarea name="notes" rows="3" class="field" placeholder="Anniversary, quiet room, extra bed, airport transfer…"></textarea></div>
+      </div>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <p class="font-light text-sm text-[#241B12]/55 max-w-xs">No payment now. Free cancellation up to 48 hours before arrival.</p>
+        <button type="submit" class="btn-luxe solid w-full sm:w-auto">Send Enquiry</button>
+      </div>
+    </form>
+    <div class="grid sm:grid-cols-3 gap-6 mt-10 text-center">
+      <div class="reveal"><p class="eyebrow text-[#A98B5F] mb-2" style="font-size:.6rem">Address</p><p class="font-light text-[#241B12]/70">Corniche Road, Al Majaz,<br>Sharjah, UAE</p></div>
+      <div class="reveal"><p class="eyebrow text-[#A98B5F] mb-2" style="font-size:.6rem">Reservations desk</p><p class="font-light text-[#241B12]/70">Daily 8 AM – 10 PM GST</p></div>
+      <div class="reveal"><p class="eyebrow text-[#A98B5F] mb-2" style="font-size:.6rem">Airport</p><p class="font-light text-[#241B12]/70">15 min from Sharjah Intl.<br>Complimentary transfer on suites</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#171008" class="text-[#F6F0E4]">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16 grid md:grid-cols-3 gap-12">
+    <div>
+      <p class="serif text-3xl">Sharjah <span class="italic text-[#C6A15B]">Palace</span></p>
+      <p class="mt-4 font-light text-[#F6F0E4]/55 max-w-xs text-[.95rem] leading-relaxed">A quiet icon of Gulf hospitality since 1987. Arched courtyards, slow evenings, and service that remembers your name.</p>
+    </div>
+    <div>
+      <p class="eyebrow text-[#C6A15B] mb-5" style="font-size:.62rem">Explore</p>
+      <div class="grid grid-cols-2 gap-3 font-light text-[#F6F0E4]/65 text-[.95rem]">
+        <a href="#rooms" class="hover:text-[#C6A15B] transition-colors">Rooms &amp; Suites</a>
+        <a href="#dining" class="hover:text-[#C6A15B] transition-colors">Zafran Dining</a>
+        <a href="#experiences" class="hover:text-[#C6A15B] transition-colors">Experiences</a>
+        <a href="#booking" class="hover:text-[#C6A15B] transition-colors">Reservations</a>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow text-[#C6A15B] mb-5" style="font-size:.62rem">Visit</p>
+      <p class="font-light text-[#F6F0E4]/65 text-[.95rem]">Corniche Road, Al Majaz,<br>Sharjah, United Arab Emirates</p>
+    </div>
+  </div>
+  <div class="border-t border-[#C6A15B]/15">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm font-light text-[#F6F0E4]/40">
+      <p>© 2026 Sharjah Palace Hotel. Concept demo.</p>
+      <p>Concept demo by <span class="text-[#C6A15B]">Om Vibe Webs</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[92%] max-w-md">
+  <div class="bg-[#171008] text-[#F6F0E4] border border-[#C6A15B]/50 rounded-sm px-6 py-5 flex items-center gap-4 shadow-2xl">
+    <svg viewBox="0 0 48 48" class="w-10 h-10 shrink-0" fill="none"><circle cx="24" cy="24" r="21" stroke="#C6A15B" stroke-width="2.5"/><path d="M15 24.5 21.5 31 33 18" stroke="#C6A15B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><p class="serif text-xl" id="toast-title">Enquiry received</p><p class="font-light text-sm text-[#F6F0E4]/65" id="toast-msg">Our reservations desk will reply within two hours.</p></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+"use strict";
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduced){ document.body.classList.add('no-motion'); }
+
+/* lit windows in hero silhouette */
+(function(){
+  var g = document.getElementById('wins'); if(!g) return;
+  var h = '';
+  var rows = [[640,200,4],[920,240,4],[380,240,3],[160,280,2],[1180,280,2]];
+  rows.forEach(function(r){
+    for(var i=0;i<r[2];i++){
+      var x = r[0]+40+i*44, y = r[1]+((i%2)*44);
+      h += '<rect x="'+x+'" y="'+y+'" width="16" height="26" rx="8"/>';
+    }
+  });
+  g.innerHTML = h;
+})();
+
+/* marquees */
+function fillMarquee(id, items, sep){
+  var el = document.getElementById(id); if(!el) return;
+  var chunk = items.map(function(t){ return '<span>'+t+'</span><span class="opacity-50">'+sep+'</span>'; }).join('');
+  el.innerHTML = chunk + chunk + chunk + chunk;
+}
+fillMarquee('luxe-marquee', ['Qahwa on arrival','Courtyard serenity','Zafran · est. 1986','Creek sunsets','Oud in the lobby'], '✦');
+(function(){
+  var reviews = [
+    ['“The courtyard at dusk is pure poetry. We extended two nights.”','Amira K. · Dubai'],
+    ['“Staff remembered our names and our tea order. Extraordinary.”','James W. · London'],
+    ['“Zafran’s harees is the best I have had outside my grandmother’s kitchen.”','Fatima A. · Sharjah'],
+    ['“Quiet, graceful, unhurried. The anti-hotel hotel.”','Rohan M. · Mumbai']
+  ];
+  var el = document.getElementById('review-track'); if(!el) return;
+  var chunk = reviews.map(function(r){
+    return '<figure class="w-[320px] sm:w-[420px] shrink-0 bg-white/70 border border-[#A98B5F]/30 rounded-sm p-7">'
+      + '<blockquote class="serif italic text-xl leading-relaxed text-[#241B12]/85">'+r[0]+'</blockquote>'
+      + '<figcaption class="eyebrow mt-4 text-[#A98B5F]" style="font-size:.6rem">'+r[1]+'</figcaption></figure>';
+  }).join('');
+  el.innerHTML = chunk + chunk;
+})();
+
+/* counters */
+function animateCounters(){
+  document.querySelectorAll('.counter').forEach(function(c){
+    var to = parseInt(c.getAttribute('data-to'),10);
+    if(reduced){ c.textContent = to; return; }
+    var start = null;
+    function step(ts){ if(!start) start = ts; var p = Math.min((ts-start)/1600,1);
+      c.textContent = Math.round(to*(1-Math.pow(1-p,3)));
+      if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  });
+}
+var countersDone = false;
+
+/* GSAP */
+if(!reduced && window.gsap && window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo('.hero-line',{y:70,opacity:0},{y:0,opacity:1,duration:1.1,stagger:.14,ease:'power3.out',delay:.2});
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    gsap.to(el,{y:0,opacity:1,duration:1,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%',once:true},
+      onStart:function(){ if(!countersDone){ countersDone = true; animateCounters(); } }});
+  });
+  /* gentle parallax on hero art */
+  gsap.to('#top svg',{y:60,ease:'none',scrollTrigger:{trigger:'#top',start:'top top',end:'bottom top',scrub:true}});
+}
+if(reduced){ document.querySelectorAll('.reveal').forEach(function(el){ el.style.opacity=1; el.style.transform='none'; }); animateCounters(); }
+
+/* nav */
+var nav = document.getElementById('nav');
+function onScroll(){
+  if(window.scrollY > 60){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+}
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* room CTA preselect */
+document.querySelectorAll('.room-cta').forEach(function(a){
+  a.addEventListener('click', function(){
+    var sel = document.getElementById('bk-room');
+    var room = a.getAttribute('data-room');
+    for(var i=0;i<sel.options.length;i++){
+      if(sel.options[i].text.indexOf(room) === 0){ sel.selectedIndex = i; break; }
+    }
+  });
+});
+
+/* date minimums */
+(function(){
+  var today = new Date().toISOString().split('T')[0];
+  var di = document.getElementById('bk-in'), doo = document.getElementById('bk-out');
+  di.min = today; doo.min = today;
+  di.addEventListener('change', function(){ doo.min = di.value || today; if(doo.value && doo.value < doo.min) doo.value = doo.min; });
+})();
+
+/* toast */
+var toastTimer = null;
+function showToast(title, msg){
+  document.getElementById('toast-title').textContent = title;
+  document.getElementById('toast-msg').textContent = msg;
+  var t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 4200);
+}
+
+/* booking form */
+document.getElementById('booking-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = (this.name.value.trim().split(' ')[0]) || 'traveller';
+  var room = document.getElementById('bk-room').value.split(' — ')[0];
+  showToast('Shukran, ' + name + '.', 'Your ' + room + ' enquiry is with our reservations desk — reply within two hours.');
+  this.reset();
+});
+})();
+</script>
+</body>
+</html>
