@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Castle Hotel Sharjah | 4-Star Stay</title>
+<meta name="description" content="Red Castle Hotel — Sharjah's 4-star landmark stay. 180 rooms & suites, 4 dining venues, minutes from the Blue Souk and Al Majaz Waterfront. Enquire now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#171221; --night2:#241b33; --ember:#ff5c1f; --ember2:#ff9a3d; --sand:#e8d5b5;
+  --sand2:#cbb28a; --cream:#faf3e7; --ink:#1c1526; --r:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.display{font-family:'Anton',Impact,sans-serif;font-weight:400;letter-spacing:.01em;line-height:.95;text-transform:uppercase}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1200px,92%);margin:0 auto}
+section{padding:100px 0;position:relative}
+/* scroll progress */
+.progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--ember),var(--ember2));z-index:90}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:70;background:rgba(23,18,33,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.1)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;color:#fff}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .mark{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--ember),var(--ember2));display:grid;place-items:center;color:#fff}
+.brand .display{font-size:1.25rem;letter-spacing:.06em}
+.brand small{display:block;font-family:'Inter';font-size:.62rem;letter-spacing:.34em;color:var(--sand2);text-transform:none}
+.nav-links{display:flex;gap:30px;font-weight:600;font-size:.92rem;color:#d9cdb8}
+.nav-links a{transition:color .25s}
+.nav-links a:hover{color:var(--ember2)}
+.btn{display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;font-family:inherit;font-weight:700;
+  padding:14px 30px;border-radius:12px;font-size:.98rem;transition:transform .22s,box-shadow .22s}
+.btn-fire{background:linear-gradient(135deg,var(--ember),#e04a10);color:#fff;box-shadow:0 12px 28px -10px rgba(255,92,31,.7)}
+.btn-fire:hover{transform:translateY(-3px);box-shadow:0 18px 36px -10px rgba(255,92,31,.8)}
+.btn-line{background:transparent;border:2px solid rgba(255,255,255,.4);color:#fff}
+.btn-line:hover{border-color:#fff;transform:translateY(-3px)}
+.burger{display:none;background:none;border:2px solid rgba(255,255,255,.4);border-radius:10px;padding:8px 10px;cursor:pointer}
+.burger span{display:block;width:22px;height:2.5px;background:#fff;margin:4px 0}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:flex-end;position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(180deg,#120d1c 0%,#2c1a2e 45%,#7a2f1d 75%,#c65a1e 100%)}
+.hero-sky{position:absolute;inset:-6%;will-change:transform}
+.hero-sky svg{width:100%;height:100%}
+.hero-inner{position:relative;z-index:2;width:min(1200px,92%);margin:0 auto;padding:150px 0 70px}
+.hero .kicker{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(8px);padding:9px 20px;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:26px}
+.hero h1{font-size:clamp(3.6rem,11vw,9.5rem);text-shadow:0 10px 60px rgba(0,0,0,.5)}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--sand)}
+.hero .sub{font-size:1.2rem;color:#f3e2c4;max-width:52ch;margin:22px 0 34px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+.hero-meta div strong{font-size:1.7rem;display:block}
+.hero-meta small{color:#d9b98f;letter-spacing:.06em}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:#fff;opacity:.8;animation:hint 2s ease-in-out infinite;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase}
+@keyframes hint{50%{transform:translate(-50%,10px);opacity:.4}}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--night);color:var(--sand);overflow:hidden;padding:16px 0;border-top:1px solid rgba(255,255,255,.08)}
+.marquee .track{display:flex;width:max-content;animation:scrollx 28s linear infinite;font-family:'Anton';font-size:1.15rem;letter-spacing:.14em;text-transform:uppercase}
+.marquee .track span{padding:0 26px;white-space:nowrap}
+.marquee .track b{color:var(--ember2)}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ---------- section heads ---------- */
+.sec-head{margin-bottom:56px;max-width:720px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head .kicker{color:var(--ember);font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.78rem}
+.sec-head h2{font-size:clamp(2.4rem,5.4vw,4.2rem);margin:14px 0 12px}
+.sec-head h2 .thin{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.sec-head p{color:#5c5348;font-size:1.05rem}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- stats ---------- */
+.stats{background:var(--night);color:#fff;border-radius:28px;padding:56px clamp(24px,5vw,72px);display:grid;grid-template-columns:repeat(4,1fr);gap:30px;position:relative;overflow:hidden}
+.stats::before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,92,31,.35),transparent 70%)}
+.stat{text-align:center;position:relative}
+.stat .num{font-family:'Anton';font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--ember2)}
+.stat p{color:#cbb892;font-size:.9rem;letter-spacing:.04em}
+
+/* ---------- rooms ---------- */
+.room{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border-radius:24px;overflow:hidden;margin-bottom:34px;
+  box-shadow:0 24px 60px -24px rgba(28,21,38,.3);border:1px solid #ead9bd}
+.room:nth-child(even) .room-art{order:2}
+.room-art{min-height:340px;position:relative;display:grid;place-items:center;overflow:hidden}
+.room-art.a{background:linear-gradient(135deg,#2c1a2e,#7a2f1d)}
+.room-art.b{background:linear-gradient(135deg,#1d2a33,#2e6b5e)}
+.room-art.c{background:linear-gradient(135deg,#3a2415,#a8542a)}
+.room-art .big-num{position:absolute;top:14px;left:22px;font-family:'Anton';font-size:5rem;color:rgba(255,255,255,.14)}
+.room-body{padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;justify-content:center}
+.room-body .cls{font-size:.76rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ember)}
+.room-body h3{font-size:clamp(1.9rem,3.4vw,2.8rem);margin:10px 0 12px}
+.room-body p{color:#5c5348;margin-bottom:18px}
+.feats{list-style:none;margin-bottom:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.feats li{display:flex;gap:10px;align-items:center;font-size:.92rem;font-weight:600}
+.feats svg{color:var(--ember);flex:none}
+.room-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rate{font-size:2rem;font-weight:800}
+.rate small{font-size:.85rem;font-weight:500;color:#5c5348}
+
+/* ---------- dining tabs ---------- */
+.dine{background:var(--night);border-radius:28px;padding:clamp(30px,5vw,64px);color:#fff;overflow:hidden;position:relative}
+.dine::after{content:"";position:absolute;bottom:-120px;left:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,154,61,.25),transparent 70%)}
+.tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px;position:relative;z-index:1}
+.tab{border:2px solid rgba(255,255,255,.25);background:transparent;color:#e8d5b5;font-family:inherit;font-weight:700;font-size:.95rem;
+  padding:12px 26px;border-radius:999px;cursor:pointer;transition:.25s}
+.tab:hover{border-color:var(--ember2)}
+.tab.active{background:linear-gradient(135deg,var(--ember),#e04a10);border-color:transparent;color:#fff;box-shadow:0 10px 26px -8px rgba(255,92,31,.7)}
+.panels{position:relative;z-index:1}
+.panel{display:none;grid-template-columns:1fr 1fr;gap:40px;align-items:center;animation:fadeUp .5s ease}
+.panel.active{display:grid}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}}
+.panel h3{font-size:clamp(1.8rem,3.4vw,2.8rem);margin-bottom:12px;color:#fff}
+.panel .cuisine{color:var(--ember2);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem}
+.panel p{color:#cbb892;margin:14px 0 20px}
+.dish{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(255,255,255,.2);padding:10px 0;font-size:.95rem}
+.dish strong{color:#fff}
+.dish span{color:var(--ember2);font-weight:700}
+
+/* ---------- attractions ---------- */
+.attr{border-top:2px solid var(--ink)}
+.attr-row{display:grid;grid-template-columns:90px 1fr auto;gap:26px;align-items:center;padding:28px 10px;border-bottom:2px solid var(--ink);transition:background .25s,padding .25s;cursor:default}
+.attr-row:hover{background:#fff;padding-left:22px}
+.attr-row .n{font-family:'Anton';font-size:2.6rem;color:transparent;-webkit-text-stroke:1.5px var(--ember)}
+.attr-row h3{font-size:1.5rem;margin-bottom:4px}
+.attr-row p{color:#5c5348;font-size:.95rem;max-width:56ch}
+.dist{background:var(--ink);color:var(--sand);font-weight:700;font-size:.82rem;padding:9px 18px;border-radius:999px;white-space:nowrap}
+
+/* ---------- booking ---------- */
+.book{background:var(--night);border-radius:28px;padding:clamp(30px,5vw,64px);color:#fff;display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;position:relative;overflow:hidden}
+.book::before{content:"";position:absolute;top:-100px;left:40%;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(255,92,31,.28),transparent 70%)}
+.book-side{position:relative;z-index:1}
+.book-side h2{font-size:clamp(2.2rem,4.6vw,3.6rem);margin-bottom:16px}
+.book-side h2 span{color:var(--ember2)}
+.book-side p{color:#cbb892;margin-bottom:26px}
+.est{background:rgba(255,255,255,.06);border:1.5px dashed var(--ember2);border-radius:16px;padding:20px 24px;margin-top:8px}
+.est .row{display:flex;justify-content:space-between;color:#cbb892;font-size:.92rem;margin-bottom:6px}
+.est .grand{display:flex;justify-content:space-between;font-size:1.5rem;font-weight:800;margin-top:10px;color:#fff}
+.est .grand span:last-child{color:var(--ember2)}
+form{position:relative;z-index:1}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:700;font-size:.85rem;margin-bottom:7px;color:#e8d5b5}
+.field input,.field select,.field textarea{width:100%;font-family:inherit;font-size:1rem;padding:13px 16px;border-radius:12px;
+  border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:#fff;transition:border .25s}
+.field input::placeholder,.field textarea::placeholder{color:#8d7f6d}
+.field select option{color:#111}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ember2)}
+.field .err{color:#ff9a7a;font-size:.8rem;margin-top:5px;display:none;font-weight:600}
+.field.invalid input,.field.invalid select{border-color:#ff5c1f}
+.field.invalid .err{display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit{width:100%;justify-content:center;margin-top:8px;font-size:1.05rem}
+
+/* ---------- faq ---------- */
+.faq-item{background:#fff;border:2px solid var(--ink);border-radius:16px;margin-bottom:14px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;font-family:inherit;font-size:1.05rem;font-weight:700;text-align:left;
+  padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--ink)}
+.faq-q .plus{flex:none;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:1.2rem;transition:transform .3s}
+.faq-item.open .faq-q .plus{transform:rotate(45deg);background:var(--ember)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 24px 22px;color:#5c5348;font-size:.95rem}
+
+/* ---------- modal / toast ---------- */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(23,18,33,.6);backdrop-filter:blur(6px)}
+.modal.open{display:flex}
+.modal .box{background:var(--cream);border-radius:22px;max-width:450px;width:100%;padding:44px 36px;text-align:center;animation:pop .45s cubic-bezier(.2,.9,.3,1.25);box-shadow:0 40px 90px -20px rgba(0,0,0,.5)}
+@keyframes pop{from{transform:scale(.82) translateY(28px);opacity:0}}
+.seal{width:82px;height:82px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,var(--ember),var(--ember2));display:grid;place-items:center;color:#fff}
+.ref{display:inline-block;background:#fff;border:2px dashed var(--ember);font-weight:800;padding:8px 20px;border-radius:12px;margin:14px 0;letter-spacing:.06em;color:#b34a12}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,140px);background:var(--ink);color:#fff;padding:14px 28px;border-radius:12px;z-index:120;transition:transform .4s;font-weight:600;border:1px solid rgba(255,255,255,.2)}
+.toast.show{transform:translate(-50%,0)}
+
+/* ---------- footer ---------- */
+footer{background:#100b18;color:#cbb892;padding:64px 0 28px;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-grid h4{color:var(--ember2);margin-bottom:16px;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase}
+.foot-grid a,.foot-grid p{display:block;color:#9d8c74;font-size:.93rem;margin-bottom:10px}
+.foot-base{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.85rem;color:#7a6c58}
+
+/* ---------- responsive ---------- */
+@media(max-width:1024px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .room{grid-template-columns:1fr}
+  .room:nth-child(even) .room-art{order:0}
+  .room-art{min-height:260px}
+  .book{grid-template-columns:1fr}
+  .panel.active{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .nav-links{position:fixed;top:70px;left:50%;transform:translateX(-50%) translateY(-16px);width:min(400px,92%);flex-direction:column;
+    background:rgba(23,18,33,.97);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:24px;gap:16px;opacity:0;pointer-events:none;transition:.3s}
+  .nav-links.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .burger{display:block}
+  nav .nav-in .btn{display:none}
+  .attr-row{grid-template-columns:60px 1fr}
+  .attr-row .dist{grid-column:2;justify-self:start}
+}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .grid2{grid-template-columns:1fr}
+  .feats{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .stats{grid-template-columns:1fr 1fr;padding:40px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav><div class="wrap nav-in">
+  <a class="brand" href="#top"><span class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V10l3-2V5h2V3h2v2h2V3h2v2h2v3l3 2v11"/><path d="M2 21h20"/><path d="M10 21v-4a2 2 0 014 0v4"/></svg></span>
+  <span><span class="display">Red Castle</span><small>Sharjah · 4 Star</small></span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#rooms">Rooms</a><a href="#dining">Dining</a><a href="#explore">Explore</a><a href="#faq">FAQ</a>
+  </div>
+  <a href="#book" class="btn btn-fire" style="padding:11px 22px">Check Availability</a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="hero-sky" id="heroSky" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffd9a0"/><stop offset="60%" stop-color="#ff9a3d"/><stop offset="100%" stop-color="#ff9a3d" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="720" cy="640" r="330" fill="url(#sun)" opacity=".9"/>
+      <circle cx="720" cy="640" r="120" fill="#ffe9c4"/>
+      <g fill="#1c1428">
+        <path d="M0 900V700l60-10 40 30 70-50 50 40 60-30 80 20 60-40 70 30 60-20 80 30 60-40 70 20 60-30 80 40 60-20 70 30 60-25 80 35 60-20 90 30v200z" opacity=".55"/>
+        <path d="M0 900V760l90 20 70-40 90 30 80-30 100 40 90-25 90 35 80-30 100 30 90-20 90 30 80-25 90 35 70-20 80 30v140z"/>
+      </g>
+      <g fill="#120d1c">
+        <rect x="620" y="430" width="200" height="240"/>
+        <rect x="600" y="400" width="44" height="60"/><rect x="796" y="400" width="44" height="60"/>
+        <rect x="700" y="370" width="40" height="90"/>
+        <path d="M600 400l22-26 22 26zM796 400l22-26 22 26zM700 370l20-24 20 24z"/>
+        <rect x="560" y="560" width="90" height="110"/><rect x="790" y="560" width="90" height="110"/>
+        <path d="M560 560l45-40 45 40zM790 560l45-40 45 40z"/>
+        <g fill="#ff9a3d" opacity=".85">
+          <rect x="650" y="500" width="24" height="34" rx="12"/><rect x="690" y="500" width="24" height="34" rx="12"/><rect x="730" y="500" width="24" height="34" rx="12"/>
+          <rect x="650" y="560" width="24" height="34" rx="12"/><rect x="730" y="560" width="24" height="34" rx="12"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <span class="kicker">★★★★ &nbsp;Sharjah · United Arab Emirates</span>
+    <h1>Red <span class="stroke">Castle</span><br>Sharjah</h1>
+    <p class="sub">A 4-star landmark where old-town soul meets modern comfort — 180 rooms and suites, four dining venues, and Sharjah's cultural heart at your doorstep.</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn btn-fire">Check Availability
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#rooms" class="btn btn-line">Explore Rooms</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>180</strong><small>ROOMS &amp; SUITES</small></div>
+      <div><strong>4.3/5</strong><small>GUEST RATING</small></div>
+      <div><strong>15 min</strong><small>FROM SHJ AIRPORT</small></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="marqueeTrack">
+  <span><span>Rooftop Pool</span><b>✦</b><span>Ember Grill</span><b>✦</b><span>Spa &amp; Hammam</span><b>✦</b><span>Grand Ballroom</span><b>✦</b><span>24/7 Concierge</span><b>✦</b><span>Free Valet Parking</span><b>✦</b></span>
+</div></div>
+
+<section id="rooms">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">Stay</div><h2>Rooms with a <span class="thin">view</span></h2>
+    <p>Three signature room classes, each dressed in warm desert tones with blackout calm and high-speed Wi-Fi.</p></div>
+
+    <article class="room reveal">
+      <div class="room-art a"><span class="big-num">01</span>
+        <svg width="220" height="170" viewBox="0 0 220 170"><rect x="30" y="90" width="160" height="46" rx="10" fill="#e8d5b5"/><rect x="30" y="60" width="26" height="60" rx="8" fill="#cbb28a"/><rect x="56" y="98" width="108" height="14" rx="7" fill="#ff5c1f" opacity=".85"/><rect x="56" y="118" width="108" height="10" rx="5" fill="#faf3e7"/><circle cx="180" cy="40" r="18" fill="#ff9a3d" opacity=".9"/><rect x="120" y="30" width="46" height="40" rx="4" fill="#241b33" opacity=".8"/><rect x="126" y="36" width="34" height="28" fill="#ffd9a0" opacity=".7"/></svg>
+      </div>
+      <div class="room-body">
+        <span class="cls">Most popular</span><h3>Deluxe King Room</h3>
+        <p>32 m² of calm with a king bed, rainfall shower and a private balcony facing the city skyline.</p>
+        <ul class="feats">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>King bed · sleeps 2</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>City-view balcony</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Rainfall shower</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Breakfast included</li>
+        </ul>
+        <div class="room-foot"><span class="rate">AED 349 <small>/ night</small></span><button class="btn btn-fire enquire" data-room="deluxe">Enquire</button></div>
+      </div>
+    </article>
+
+    <article class="room reveal">
+      <div class="room-art b"><span class="big-num">02</span>
+        <svg width="220" height="170" viewBox="0 0 220 170"><rect x="20" y="86" width="180" height="50" rx="10" fill="#dfe9e4"/><rect x="20" y="56" width="26" height="64" rx="8" fill="#9fb8ab"/><rect x="46" y="96" width="60" height="14" rx="7" fill="#2e6b5e"/><rect x="112" y="96" width="60" height="14" rx="7" fill="#2e6b5e" opacity=".6"/><rect x="140" y="30" width="56" height="46" rx="4" fill="#1d2a33"/><rect x="146" y="36" width="44" height="34" fill="#bfe3d4" opacity=".6"/><path d="M40 140h140" stroke="#1d2a33" stroke-width="6" stroke-linecap="round"/></svg>
+      </div>
+      <div class="room-body">
+        <span class="cls">Executive floor</span><h3>Executive Suite</h3>
+        <p>58 m² with a separate lounge, marble bathroom with soaking tub and access to the executive lounge.</p>
+        <ul class="feats">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Separate lounge</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Soaking tub</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Lounge access</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Late checkout 2 PM</li>
+        </ul>
+        <div class="room-foot"><span class="rate">AED 549 <small>/ night</small></span><button class="btn btn-fire enquire" data-room="executive">Enquire</button></div>
+      </div>
+    </article>
+
+    <article class="room reveal">
+      <div class="room-art c"><span class="big-num">03</span>
+        <svg width="220" height="170" viewBox="0 0 220 170"><rect x="16" y="84" width="88" height="52" rx="10" fill="#e8d5b5"/><rect x="116" y="84" width="88" height="52" rx="10" fill="#e8d5b5" opacity=".75"/><rect x="16" y="56" width="20" height="56" rx="7" fill="#cbb28a"/><rect x="116" y="56" width="20" height="56" rx="7" fill="#cbb28a"/><rect x="36" y="94" width="48" height="12" rx="6" fill="#a8542a"/><rect x="136" y="94" width="48" height="12" rx="6" fill="#a8542a" opacity=".7"/><circle cx="110" cy="40" r="16" fill="#ff9a3d"/></svg>
+      </div>
+      <div class="room-body">
+        <span class="cls">Families</span><h3>Royal Family Residence</h3>
+        <p>Two connected bedrooms, a dining nook and a wraparound terrace — room for the whole tribe.</p>
+        <ul class="feats">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Sleeps 5</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Wraparound terrace</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Dining nook</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg>Kids stay free</li>
+        </ul>
+        <div class="room-foot"><span class="rate">AED 899 <small>/ night</small></span><button class="btn btn-fire enquire" data-room="family">Enquire</button></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="dining" style="padding-top:20px">
+  <div class="wrap">
+    <div class="dine reveal">
+      <div class="sec-head" style="margin-bottom:40px"><div class="kicker" style="color:var(--ember2)">Taste</div>
+        <h2 style="color:#fff">Four venues,<br>one unforgettable table</h2></div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="ember" role="tab">Ember Grill</button>
+        <button class="tab" data-tab="saffron" role="tab">Saffron Court</button>
+        <button class="tab" data-tab="palm" role="tab">The Palm Café</button>
+      </div>
+      <div class="panels">
+        <div class="panel active" id="panel-ember">
+          <div><div class="cuisine">Arabic · Charcoal Grill</div><h3>Ember Grill</h3>
+            <p>Fire-kissed Levantine classics on the rooftop terrace. Mezze, slow lamb shoulder and kunafa, under Sharjah's evening sky.</p>
+            <p style="font-size:.88rem;color:#8d7f6d">Open daily · 6 PM – 11:30 PM · Rooftop level</p></div>
+          <div>
+            <div class="dish"><strong>Mixed Grill Platter</strong><span>AED 145</span></div>
+            <div class="dish"><strong>Slow Lamb Shoulder</strong><span>AED 165</span></div>
+            <div class="dish"><strong>Kunafa with Pistachio</strong><span>AED 55</span></div>
+          </div>
+        </div>
+        <div class="panel" id="panel-saffron">
+          <div><div class="cuisine">North Indian · Tandoor</div><h3>Saffron Court</h3>
+            <p>A tandoor-forward dining room serving dum biryanis, charcoal kebabs and a legendary dal makhani, finished tableside.</p>
+            <p style="font-size:.88rem;color:#8d7f6d">Open daily · 12 PM – 11 PM · Lobby level</p></div>
+          <div>
+            <div class="dish"><strong>Hyderabadi Dum Biryani</strong><span>AED 95</span></div>
+            <div class="dish"><strong>Tandoori Mixed Kebab</strong><span>AED 120</span></div>
+            <div class="dish"><strong>Dal Makhani &amp; Naan Basket</strong><span>AED 70</span></div>
+          </div>
+        </div>
+        <div class="panel" id="panel-palm">
+          <div><div class="cuisine">International · All-day</div><h3>The Palm Café</h3>
+            <p>Sunlit all-day dining with live cooking stations — breakfast buffets, wood-fired pizzas and a patisserie counter.</p>
+            <p style="font-size:.88rem;color:#8d7f6d">Open daily · 6:30 AM – 11 PM · Ground floor</p></div>
+          <div>
+            <div class="dish"><strong>Grand Breakfast Buffet</strong><span>AED 85</span></div>
+            <div class="dish"><strong>Wood-fired Margherita</strong><span>AED 65</span></div>
+            <div class="dish"><strong>Date &amp; Walnut Cake</strong><span>AED 42</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="explore" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">Beyond the lobby</div><h2>Sharjah, <span class="thin">uncovered</span></h2>
+    <p>The cultural capital of the UAE is right outside our doors — here is where our concierge sends guests first.</p></div>
+    <div class="attr reveal">
+      <div class="attr-row"><span class="n">01</span><div><h3>Blue Souk (Central Market)</h3><p>Sharjah's iconic blue-tiled bazaar — gold, carpets, antiques and oud under one ornate roof.</p></div><span class="dist">6 min drive</span></div>
+      <div class="attr-row"><span class="n">02</span><div><h3>Sharjah Museum of Islamic Civilization</h3><p>7,000 years of Islamic art, science and craft in a stunning domed building on the Corniche.</p></div><span class="dist">8 min drive</span></div>
+      <div class="attr-row"><span class="n">03</span><div><h3>Al Majaz Waterfront</h3><p>Fountains, jogging tracks and skyline views — Sharjah's favourite evening promenade.</p></div><span class="dist">10 min drive</span></div>
+      <div class="attr-row"><span class="n">04</span><div><h3>Al Noor Island</h3><p>A lantern-lit island of art installations, a butterfly house and the famous Literature Pavilion.</p></div><span class="dist">12 min drive</span></div>
+      <div class="attr-row"><span class="n">05</span><div><h3>Al Qasba</h3><p>Canal-side dining, the Eye of the Emirates wheel and weekend street performances.</p></div><span class="dist">14 min drive</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="book" style="padding-top:20px">
+  <div class="wrap">
+    <div class="book reveal">
+      <div class="book-side">
+        <div class="kicker" style="color:var(--ember2);font-weight:800;letter-spacing:.2em;text-transform:uppercase;font-size:.78rem">Reservations</div>
+        <h2>Your castle <span>awaits.</span></h2>
+        <p>Send an enquiry and our reservations team replies within 2 hours with a confirmed rate — best-rate promise on every direct booking.</p>
+        <div class="est" aria-live="polite">
+          <div class="row"><span>Room</span><span id="estRoom">Deluxe King Room</span></div>
+          <div class="row"><span>Nights</span><span id="estNights">—</span></div>
+          <div class="row"><span>Rate / night</span><span id="estRate">AED 349</span></div>
+          <div class="grand"><span>Estimate</span><span id="estTotal">Select dates</span></div>
+        </div>
+      </div>
+      <form id="bookForm" novalidate>
+        <div class="grid2">
+          <div class="field"><label for="fName">Full name</label><input id="fName" type="text" placeholder="e.g. Omar Farouk" autocomplete="name"><p class="err">Please enter your name.</p></div>
+          <div class="field"><label for="fContact">Email or phone</label><input id="fContact" type="text" placeholder="you@email.com / +971…"><p class="err">Enter a valid email or phone.</p></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="fIn">Check-in</label><input id="fIn" type="date"><p class="err">Pick a check-in date.</p></div>
+          <div class="field"><label for="fOut">Check-out</label><input id="fOut" type="date"><p class="err">Check-out must be after check-in.</p></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="fRoom">Room type</label>
+            <select id="fRoom"><option value="deluxe" data-rate="349">Deluxe King Room — AED 349</option><option value="executive" data-rate="549">Executive Suite — AED 549</option><option value="family" data-rate="899">Royal Family Residence — AED 899</option></select></div>
+          <div class="field"><label for="fGuests">Guests</label>
+            <select id="fGuests"><option>1 adult</option><option selected>2 adults</option><option>2 adults + 1 child</option><option>2 adults + 2 children</option><option>3+ adults</option></select></div>
+        </div>
+        <div class="field"><label for="fReq">Special requests (optional)</label><textarea id="fReq" rows="2" placeholder="Early check-in, high floor, anniversary…"></textarea></div>
+        <button type="submit" class="btn btn-fire submit">Send Booking Enquiry</button>
+        <p style="text-align:center;font-size:.82rem;color:#8d7f6d;margin-top:12px">No prepayment · Free cancellation up to 48 hrs before arrival</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap" style="max-width:820px">
+    <div class="sec-head center reveal"><div class="kicker">Good to know</div><h2>Questions, <span class="thin">answered</span></h2></div>
+    <div class="reveal">
+      <div class="faq-item"><button class="faq-q">What time are check-in and check-out?<span class="plus">+</span></button><div class="faq-a"><p>Check-in is from 2 PM and check-out until 12 noon. Early check-in and late check-out are complimentary when availability allows — just mention it in your enquiry.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is breakfast included in the rate?<span class="plus">+</span></button><div class="faq-a"><p>Yes — all direct-booking rates include the Grand Breakfast Buffet at The Palm Café. Executive Suite guests also enjoy evening canapés in the executive lounge.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How far is the hotel from Sharjah Airport?<span class="plus">+</span></button><div class="faq-a"><p>About 15 minutes by car. We offer a paid airport transfer (AED 120 each way) — request it in the booking form and our driver will meet you at arrivals.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do you have family-friendly facilities?<span class="plus">+</span></button><div class="faq-a"><p>Absolutely: a kids' pool, games corner, babysitting on request, and children under 12 stay free in the Royal Family Residence.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is parking available?<span class="plus">+</span></button><div class="faq-a"><p>Yes — complimentary valet parking for all in-house guests, plus secure self-parking in our basement garage.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h4>Red Castle Hotel</h4><p>Al Majaz, Sharjah<br>United Arab Emirates<br>4-star landmark stay.</p></div>
+      <div><h4>Explore</h4><a href="#rooms">Rooms</a><a href="#dining">Dining</a><a href="#explore">Sharjah guide</a><a href="#book">Reservations</a></div>
+      <div><h4>Contact</h4><p>stay@redcastle-sharjah.ae</p><p>+971 6 000 0000</p><p>Front desk · 24/7</p></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Red Castle Hotel Sharjah. All rights reserved.</span><span>Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<div class="modal" id="okModal" role="dialog" aria-modal="true"><div class="box">
+  <div class="seal"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg></div>
+  <h2 class="display" style="font-size:2rem;margin-bottom:8px">Enquiry sent!</h2>
+  <p style="color:#5c5348">Our reservations team will reply within 2 hours with your confirmed rate.</p>
+  <div class="ref" id="okRef">RC-000000</div>
+  <p id="okSummary" style="font-size:.92rem;color:#5c5348"></p>
+  <button class="btn btn-fire" id="okClose" style="margin-top:16px">Done</button>
+</div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* mobile nav */
+  var burger = document.getElementById("burger"), navLinks = document.getElementById("navLinks");
+  burger.addEventListener("click", function(){ navLinks.classList.toggle("open"); });
+  navLinks.addEventListener("click", function(e){ if(e.target.tagName==="A") navLinks.classList.remove("open"); });
+
+  /* marquee seamless loop */
+  var track = document.getElementById("marqueeTrack");
+  track.innerHTML += track.innerHTML;
+
+  /* scroll progress + hero zoom */
+  var progress = document.getElementById("progress"), heroSky = document.getElementById("heroSky");
+  function onScroll(){
+    var h = document.documentElement,
+        max = h.scrollHeight - h.clientHeight,
+        p = max > 0 ? h.scrollTop / max : 0;
+    progress.style.width = (p*100) + "%";
+    if(!reduced && h.scrollTop < window.innerHeight * 1.2){
+      var z = 1 + (h.scrollTop / window.innerHeight) * 0.18;
+      heroSky.style.transform = "scale(" + z + ") translateY(" + (h.scrollTop * 0.12) + "px)";
+    }
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* scroll reveals */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  },{threshold:0.1});
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+  /* dining tabs */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      tabs.forEach(function(x){ x.classList.remove("active"); });
+      document.querySelectorAll(".panel").forEach(function(p){ p.classList.remove("active"); });
+      t.classList.add("active");
+      document.getElementById("panel-" + t.dataset.tab).classList.add("active");
+    });
+  });
+
+  /* faq accordion */
+  document.querySelectorAll(".faq-item").forEach(function(item){
+    var q = item.querySelector(".faq-q"), a = item.querySelector(".faq-a");
+    q.addEventListener("click", function(){
+      var open = item.classList.contains("open");
+      document.querySelectorAll(".faq-item.open").forEach(function(o){
+        o.classList.remove("open"); o.querySelector(".faq-a").style.maxHeight = null;
+      });
+      if(!open){ item.classList.add("open"); a.style.maxHeight = a.scrollHeight + "px"; }
+    });
+  });
+
+  /* ---------- booking estimate ---------- */
+  var fIn = document.getElementById("fIn"), fOut = document.getElementById("fOut"),
+      fRoom = document.getElementById("fRoom"),
+      estRoom = document.getElementById("estRoom"), estNights = document.getElementById("estNights"),
+      estRate = document.getElementById("estRate"), estTotal = document.getElementById("estTotal");
+  var today = new Date().toISOString().split("T")[0];
+  fIn.min = today; fOut.min = today;
+
+  function roomRate(){ return parseInt(fRoom.options[fRoom.selectedIndex].dataset.rate, 10); }
+  function roomName(){ return fRoom.options[fRoom.selectedIndex].text.split(" — ")[0]; }
+  function updateEstimate(){
+    estRoom.textContent = roomName();
+    estRate.textContent = "AED " + roomRate();
+    if(fIn.value && fOut.value && fOut.value > fIn.value){
+      var nights = Math.round((new Date(fOut.value) - new Date(fIn.value)) / 86400000);
+      estNights.textContent = nights + (nights === 1 ? " night" : " nights");
+      estTotal.textContent = "AED " + (nights * roomRate()).toLocaleString("en-AE");
+    } else {
+      estNights.textContent = "—";
+      estTotal.textContent = "Select dates";
+    }
+  }
+  [fIn, fOut, fRoom].forEach(function(el){ el.addEventListener("change", updateEstimate); });
+  updateEstimate();
+
+  /* room "Enquire" buttons preselect the room and scroll to form */
+  document.querySelectorAll(".enquire").forEach(function(b){
+    b.addEventListener("click", function(){
+      fRoom.value = b.dataset.room;
+      updateEstimate();
+      document.getElementById("book").scrollIntoView({behavior: reduced ? "auto" : "smooth"});
+      toast(roomName() + " selected — complete your enquiry");
+    });
+  });
+
+  function toast(msg){
+    var t = document.getElementById("toast");
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+  }
+  function setInvalid(id, bad){
+    document.getElementById(id).closest(".field").classList.toggle("invalid", bad);
+    return !bad;
+  }
+
+  document.getElementById("bookForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var ok = true, form = this;
+    ok = setInvalid("fName", document.getElementById("fName").value.trim().length < 2) && ok;
+    var c = document.getElementById("fContact").value.trim();
+    ok = setInvalid("fContact", !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c) || /^[+\d][\d\s-]{6,16}$/.test(c))) && ok;
+    ok = setInvalid("fIn", !fIn.value || fIn.value < today) && ok;
+    ok = setInvalid("fOut", !fOut.value || !(fOut.value > fIn.value)) && ok;
+    if(!ok){ toast("Please fix the highlighted fields"); return; }
+    var nights = Math.round((new Date(fOut.value) - new Date(fIn.value)) / 86400000);
+    document.getElementById("okRef").textContent = "RC-" + Math.floor(100000 + Math.random()*900000);
+    document.getElementById("okSummary").textContent =
+      roomName() + " · " + fIn.value + " → " + fOut.value + " (" + nights + (nights===1?" night":" nights") +
+      ") · " + document.getElementById("fGuests").value + " · Est. AED " + (nights*roomRate()).toLocaleString("en-AE");
+    document.getElementById("okModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+  });
+  function closeModal(){
+    document.getElementById("okModal").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  document.getElementById("okClose").addEventListener("click", function(){
+    closeModal(); document.getElementById("bookForm").reset(); updateEstimate();
+  });
+  document.getElementById("okModal").addEventListener("click", function(e){ if(e.target===this) closeModal(); });
+})();
+</script>
+</body>
+</html>

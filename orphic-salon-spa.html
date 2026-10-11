@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orphic International Salon &amp; Spa | Jabalpur</title>
+<meta name="description" content="Orphic International Unisex Salon & Spa, Jabalpur — precision hair, luxury spa rituals, bridal couture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf6ee; --paper2:#f3ecdd; --ink:#141210; --ink2:#3c362e;
+  --rose:#c96f6f; --rose-dk:#a85050; --gold:#b98a2f; --line:rgba(20,18,16,.14);
+  --disp:'Syne',Arial,sans-serif; --serif:'Instrument Serif',Georgia,serif; --body:'Inter',Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);overflow-x:hidden;line-height:1.65}
+::selection{background:var(--rose);color:#fff}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 30px}
+section{padding:110px 0;position:relative}
+.eyebrow{font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--rose-dk);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:44px;height:1px;background:var(--rose)}
+h1,h2{font-family:var(--disp);line-height:1.02;letter-spacing:-.015em}
+h2{font-size:clamp(38px,5.4vw,72px);font-weight:800;margin-bottom:18px}
+h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--rose-dk)}
+.sub{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.2vw,26px);color:var(--ink2);max-width:620px}
+
+/* cursor dot */
+#cursor{position:fixed;z-index:300;width:14px;height:14px;border-radius:50%;background:var(--rose);pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:multiply;opacity:.85;transition:width .25s,height .25s,opacity .25s}
+#cursor.big{width:64px;height:64px;opacity:.3}
+@media (hover:none){#cursor{display:none}}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .35s,box-shadow .35s}
+nav.scrolled{background:rgba(250,246,238,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav-in{max-width:1240px;margin:0 auto;padding:18px 30px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:.06em}
+.brand i{font-style:normal;color:var(--rose-dk)}
+.nav-links{display:flex;gap:30px;list-style:none;font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:500}
+.nav-links a{position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rose);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.btn-pill{display:inline-block;background:var(--ink);color:var(--paper);font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;padding:16px 36px;border-radius:999px;border:none;cursor:pointer;transition:transform .3s,background .3s,box-shadow .3s}
+.btn-pill:hover{transform:translateY(-3px) scale(1.02);background:var(--rose-dk);box-shadow:0 14px 30px rgba(168,80,80,.3)}
+.burger{display:none;background:none;border:none;cursor:pointer}
+.burger span{display:block;width:26px;height:2px;background:var(--ink);margin:6px 0;transition:.3s}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:130px 0 70px;overflow:hidden}
+.hero-copy .tag{display:inline-block;font-size:11px;letter-spacing:.34em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:10px 22px;margin-bottom:26px;color:var(--ink2)}
+.hero h1{font-size:clamp(52px,7.6vw,108px);font-weight:800;margin-bottom:20px}
+.hero h1 .wavy{display:inline-block;animation:wavy 3.4s ease-in-out infinite}
+@keyframes wavy{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-7px) rotate(-1deg)}75%{transform:translateY(5px) rotate(1deg)}}
+.hero h1 em{font-family:var(--serif);font-weight:400;font-style:italic;color:var(--rose-dk)}
+.hero-cta{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;align-items:center}
+.hero-cta .alt{font-size:12px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px;font-weight:600}
+.hero-art{position:relative;height:min(72vh,620px)}
+.blob{position:absolute;border-radius:46% 54% 52% 48%/48% 46% 54% 52%;overflow:hidden;box-shadow:0 30px 70px rgba(20,18,16,.18);animation:morph 14s ease-in-out infinite}
+.blob svg{width:100%;height:100%}
+@keyframes morph{0%,100%{border-radius:46% 54% 52% 48%/48% 46% 54% 52%}50%{border-radius:56% 44% 46% 54%/52% 58% 42% 48%}}
+.b1{width:78%;height:78%;top:0;right:0}
+.b2{width:46%;height:46%;bottom:2%;left:2%;animation-delay:-5s;border:3px solid var(--paper)}
+.float-badge{position:absolute;bottom:8%;right:6%;background:var(--ink);color:var(--paper);border-radius:18px;padding:18px 24px;box-shadow:0 20px 44px rgba(20,18,16,.28);animation:floaty 5s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.float-badge b{font-family:var(--disp);font-size:26px;display:block}
+.float-badge small{letter-spacing:.28em;text-transform:uppercase;font-size:10px;opacity:.7}
+
+/* marquee */
+.marquee{background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;padding:20px 0;transform:rotate(-1.2deg) scale(1.02)}
+.marquee .track{display:inline-flex;animation:tick 22s linear infinite}
+.marquee span{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.1em;text-transform:uppercase;padding:0 26px}
+.marquee span i{color:var(--rose);font-style:normal}
+.marquee span i.dia{display:inline-block;width:10px;height:10px;background:var(--rose);transform:rotate(45deg)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* bento services */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:20px;margin-top:52px}
+.cell{background:var(--paper2);border:1px solid var(--line);border-radius:26px;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s}
+.cell:hover{transform:translateY(-8px);box-shadow:0 26px 54px rgba(20,18,16,.14)}
+.cell .art{position:absolute;top:-30px;right:-30px;width:170px;height:170px;opacity:.9;transition:transform .6s}
+.cell:hover .art{transform:rotate(18deg) scale(1.12)}
+.cell h3{font-family:var(--disp);font-size:22px;font-weight:700;margin-bottom:6px}
+.cell .price{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--rose-dk)}
+.cell p{font-size:13.5px;color:var(--ink2)}
+.cell.tall{grid-row:span 2}.cell.wide{grid-column:span 2}
+.cell.dark{background:var(--ink);color:var(--paper);border:none}
+.cell.dark p{color:#b9b2a4}.cell.dark .price{color:var(--gold)}
+
+/* stylists */
+.stylist-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:52px}
+.stylist{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .35s,box-shadow .35s;transform-style:preserve-3d}
+.stylist:hover{box-shadow:0 30px 60px rgba(20,18,16,.16)}
+.stylist .face{height:250px;position:relative;overflow:hidden}
+.stylist .face svg{width:100%;height:100%}
+.stylist .body{padding:24px}
+.stylist h4{font-family:var(--disp);font-size:19px;font-weight:700}
+.stylist small{letter-spacing:.26em;text-transform:uppercase;font-size:10.5px;color:var(--rose-dk);font-weight:600}
+.stylist p{font-size:13.5px;color:var(--ink2);margin-top:8px}
+
+/* rituals (dark band) */
+.rituals{background:var(--ink);color:var(--paper);border-radius:44px;margin:0 22px;overflow:hidden}
+.rituals .eyebrow{color:var(--gold)}
+.rituals .eyebrow::before{background:var(--gold)}
+.rituals h2 em{color:var(--gold)}
+.rit-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:52px}
+.rit{border:1px solid rgba(250,246,238,.16);border-radius:26px;padding:34px;transition:.4s;background:rgba(255,255,255,.02)}
+.rit:hover{border-color:var(--gold);transform:translateY(-8px);background:rgba(185,138,47,.07)}
+.rit .num{font-family:var(--disp);font-size:13px;letter-spacing:.3em;color:var(--gold)}
+.rit h3{font-family:var(--disp);font-size:24px;margin:14px 0 10px}
+.rit p{color:#b9b2a4;font-size:14.5px;margin-bottom:16px}
+.rit .dur{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+
+/* booking */
+.book-wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;margin-top:50px;align-items:start}
+.book-side .big{font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.6vw,46px);line-height:1.1;margin-bottom:18px}
+.perk{display:flex;gap:14px;align-items:flex-start;margin-top:20px}
+.perk svg{flex:0 0 30px;width:30px;height:30px}
+.perk p{font-size:14.5px;color:var(--ink2)}
+form{background:#fff;border:1px solid var(--line);border-radius:28px;padding:clamp(28px,4vw,48px);box-shadow:0 30px 70px rgba(20,18,16,.08)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:var(--ink2)}
+.field input,.field select,.field textarea{border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:13px 15px;font-family:var(--body);font-size:15px;color:var(--ink);transition:border-color .3s,box-shadow .3s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 4px rgba(201,111,111,.14)}
+.field .err{font-size:12px;color:var(--rose-dk);display:none}
+.field.invalid input,.field.invalid select{border-color:var(--rose-dk)}
+.field.invalid .err{display:block}
+#form-ok{display:none;margin-top:20px;background:#eef7ee;border:1.5px solid #7fb069;border-radius:16px;padding:20px;text-align:center}
+#form-ok.show{display:block;animation:pop .5s cubic-bezier(.22,1,.36,1)}
+@keyframes pop{from{transform:scale(.92);opacity:0}}
+#form-ok h4{font-family:var(--disp);margin-bottom:4px}
+
+/* footer */
+footer{background:var(--ink);color:#cfc6b2;padding:64px 0 30px;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-grid h5{font-family:var(--disp);font-size:12px;letter-spacing:.3em;color:var(--paper);margin-bottom:16px}
+.foot-grid p,.foot-grid li{font-size:14px;list-style:none;margin-bottom:8px}
+.foot-base{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+@media (max-width:1024px){
+  .hero{grid-template-columns:1fr;padding-top:120px}
+  .hero-art{height:440px}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:210px}
+  .stylist-grid{grid-template-columns:1fr 1fr}
+  .rit-row{grid-template-columns:1fr}
+  .book-wrap{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .nav-links{position:fixed;inset:0;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:26px;font-size:14px;transform:translateX(100%);transition:transform .4s}
+  .nav-links.open{transform:none}
+  .burger{display:block}
+  .bento{grid-template-columns:1fr}
+  .cell.wide{grid-column:span 1}
+  .stylist-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .rituals{margin:0 10px;border-radius:28px}
+  section{padding:76px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  .marquee .track,.hero h1 .wavy,.blob,.float-badge{animation:none}
+  #cursor{display:none}
+}
+</style>
+</head>
+<body>
+<div id="cursor" aria-hidden="true"></div>
+
+<nav id="nav" aria-label="Primary">
+  <div class="nav-in">
+    <a class="brand" href="#top">ORPHIC<i>.</i></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#stylists">Stylists</a></li>
+      <li><a href="#rituals">Spa Rituals</a></li>
+      <li><a href="#booking">Book Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="hero-copy">
+    <span class="tag rv">Jabalpur · Unisex · Est. 2016</span>
+    <h1 class="rv">Hair that <em class="wavy">turns</em> heads.</h1>
+    <p class="sub rv d1">Orphic International — precision cuts, couture colour and spa rituals, crafted by artists who treat hair as art.</p>
+    <div class="hero-cta rv d2">
+      <a class="btn-pill" href="#booking">Book Appointment</a>
+      <a class="alt" href="#services">View Menu</a>
+    </div>
+  </div>
+  <div class="hero-art rv d1" aria-hidden="true">
+    <div class="blob b1">
+      <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+        <defs><linearGradient id="ob1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8c9a8"/><stop offset="55%" stop-color="#d99a8a"/><stop offset="100%" stop-color="#a85050"/></linearGradient></defs>
+        <rect width="400" height="400" fill="url(#ob1)"/>
+        <ellipse cx="200" cy="180" rx="90" ry="110" fill="#141210"/>
+        <path d="M110 180 q-10 120 40 170 q60 20 100-10 q40-60 30-160 q-80-60-170 0z" fill="#141210"/>
+        <ellipse cx="200" cy="200" rx="56" ry="70" fill="#e9c3a5"/>
+        <path d="M160 260 q40 26 80 0" stroke="#a85050" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="178" cy="192" r="6" fill="#141210"/><circle cx="222" cy="192" r="6" fill="#141210"/>
+        <path d="M120 120 q80-70 160 0 q-20-90-80-90 q-60 0-80 90z" fill="#241d18"/>
+      </svg>
+    </div>
+    <div class="blob b2">
+      <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+        <rect width="200" height="200" fill="#141210"/>
+        <path d="M100 30 q40 50 0 90 q-40-40 0-90z" fill="#c96f6f"/>
+        <path d="M100 60 q40 50 0 90 q-40-40 0-90z" fill="#e8a0a0" opacity=".8"/>
+        <circle cx="100" cy="150" r="12" fill="#b98a2f"/>
+      </svg>
+    </div>
+    <div class="float-badge"><b style="display:flex;align-items:center;gap:8px">4.9<svg viewBox="0 0 24 24" width="22" height="22" fill="#b98a2f"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg></b><small>2,300+ reviews</small></div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="mtrack">
+  <span>Balayage <i class="dia"></i></span><span>Keratin Rituals <i class="dia"></i></span><span>Bridal Couture <i class="dia"></i></span>
+  <span>Thai Spa <i class="dia"></i></span><span>Nail Atelier <i class="dia"></i></span><span>Skin Alchemy <i class="dia"></i></span>
+</div></div>
+
+<section id="services">
+  <div class="wrap">
+    <span class="eyebrow rv">The Menu</span>
+    <h2 class="rv">Services &amp; <em>pricing</em></h2>
+    <p class="sub rv">Transparent pricing. Zero surprises. Every service ends with a style prescription for home.</p>
+    <div class="bento">
+      <div class="cell wide rv">
+        <svg class="art" viewBox="0 0 170 170"><circle cx="85" cy="85" r="70" fill="none" stroke="#c96f6f" stroke-width="10"/><path d="M85 15 a70 70 0 0 1 60 35" stroke="#a85050" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="85" cy="85" r="34" fill="#c96f6f" opacity=".35"/></svg>
+        <h3>Signature Haircut</h3><p>Consultation + precision cut + blowout finish.</p><span class="price">from ₹799</span>
+      </div>
+      <div class="cell dark rv d1">
+        <svg class="art" viewBox="0 0 170 170"><path d="M30 140 q55-90 110 0" stroke="#b98a2f" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M45 140 q40-60 80 0" stroke="#e8cf9a" stroke-width="7" fill="none" stroke-linecap="round"/></svg>
+        <h3>Balayage &amp; Colour</h3><p>Hand-painted dimension, Olaplex bond care included.</p><span class="price">from ₹4,999</span>
+      </div>
+      <div class="cell rv d2">
+        <svg class="art" viewBox="0 0 170 170"><rect x="45" y="45" width="80" height="80" rx="40" fill="none" stroke="#b98a2f" stroke-width="10"/><circle cx="85" cy="85" r="14" fill="#b98a2f"/></svg>
+        <h3>Keratin Ritual</h3><p>Frizz-erasing silk therapy, lasts 4–5 months.</p><span class="price">from ₹5,999</span>
+      </div>
+      <div class="cell tall rv">
+        <svg class="art" viewBox="0 0 170 170"><path d="M85 20 q45 55 0 130 q-45-75 0-130z" fill="none" stroke="#c96f6f" stroke-width="10"/><circle cx="85" cy="85" r="12" fill="#c96f6f"/></svg>
+        <h3>Bridal Couture</h3><p>Trial + wedding-day hair, makeup &amp; drape. In-studio or on-venue.</p><span class="price">from ₹24,999</span>
+      </div>
+      <div class="cell rv d1">
+        <svg class="art" viewBox="0 0 170 170"><circle cx="85" cy="85" r="55" fill="none" stroke="#141210" stroke-width="10"/><path d="M55 85 h60" stroke="#141210" stroke-width="10" stroke-linecap="round"/></svg>
+        <h3>Skin Alchemy Facial</h3><p>75-min deep cleanse + glow peel + LED.</p><span class="price">from ₹1,999</span>
+      </div>
+      <div class="cell dark wide rv d2">
+        <svg class="art" viewBox="0 0 170 170"><path d="M20 85 q32-50 65 0 t65 0" stroke="#b98a2f" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="85" cy="130" r="10" fill="#b98a2f"/></svg>
+        <h3>Nail Atelier</h3><p>Japanese gel, chrome finishes &amp; hand-painted art.</p><span class="price">from ₹1,299</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stylists" style="padding-top:20px">
+  <div class="wrap">
+    <span class="eyebrow rv">The Artists</span>
+    <h2 class="rv">Meet your <em>stylists</em></h2>
+    <p class="sub rv">Internationally trained, competition-winning, and obsessed with the details.</p>
+    <div class="stylist-grid">
+      <article class="stylist rv" data-tilt>
+        <div class="face"><svg viewBox="0 0 300 250" preserveAspectRatio="xMidYMid slice"><rect width="300" height="250" fill="#e9d9c2"/><circle cx="150" cy="120" r="52" fill="#d9a983"/><path d="M98 120 q-6-70 52-70 q58 0 52 70 q-14-34-52-34 q-38 0-52 34z" fill="#2b2119"/><path d="M98 250 q4-70 52-70 q48 0 52 70z" fill="#141210"/><circle cx="132" cy="118" r="5" fill="#141210"/><circle cx="168" cy="118" r="5" fill="#141210"/><path d="M136 146 q14 10 28 0" stroke="#7a3b3b" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div>
+        <div class="body"><small>Creative Director</small><h4>Aarav Mehta</h4><p>12 yrs · Vidal Sassoon trained · balayage specialist.</p></div>
+      </article>
+      <article class="stylist rv d1" data-tilt>
+        <div class="face"><svg viewBox="0 0 300 250" preserveAspectRatio="xMidYMid slice"><rect width="300" height="250" fill="#dcc7d4"/><circle cx="150" cy="120" r="52" fill="#e5b795"/><path d="M96 118 q0-78 54-78 q54 0 54 78 q-10-52-54-52 q-44 0-54 52z" fill="#4a2c1a"/><path d="M96 250 q4-70 54-70 q50 0 54 70z" fill="#c96f6f"/><circle cx="132" cy="118" r="5" fill="#141210"/><circle cx="168" cy="118" r="5" fill="#141210"/><path d="M136 146 q14 10 28 0" stroke="#7a3b3b" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div>
+        <div class="body"><small>Colour Alchemist</small><h4>Sana Kapoor</h4><p>9 yrs · L'Oréal colour trophy winner · lived-in blondes.</p></div>
+      </article>
+      <article class="stylist rv d2" data-tilt>
+        <div class="face"><svg viewBox="0 0 300 250" preserveAspectRatio="xMidYMid slice"><rect width="300" height="250" fill="#cfd8d3"/><circle cx="150" cy="120" r="52" fill="#caa27e"/><path d="M98 112 q2-64 52-64 q50 0 52 64 l-6 26 q-46-22-98 0z" fill="#191410"/><path d="M96 250 q4-70 54-70 q50 0 54 70z" fill="#3c362e"/><circle cx="132" cy="118" r="5" fill="#141210"/><circle cx="168" cy="118" r="5" fill="#141210"/><path d="M136 146 q14 10 28 0" stroke="#5c2f2f" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div>
+        <div class="body"><small>Master Barber</small><h4>Rohan Verma</h4><p>10 yrs · precision fades · hot-towel shave rituals.</p></div>
+      </article>
+      <article class="stylist rv d3" data-tilt>
+        <div class="face"><svg viewBox="0 0 300 250" preserveAspectRatio="xMidYMid slice"><rect width="300" height="250" fill="#e5d5c0"/><circle cx="150" cy="120" r="52" fill="#e8bd96"/><path d="M96 120 q-4-72 54-72 q58 0 54 72 q-8-44-54-44 q-46 0-54 44z" fill="#5c3a22"/><path d="M96 250 q4-70 54-70 q50 0 54 70z" fill="#a85050"/><circle cx="132" cy="118" r="5" fill="#141210"/><circle cx="168" cy="118" r="5" fill="#141210"/><path d="M136 146 q14 10 28 0" stroke="#7a3b3b" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div>
+        <div class="body"><small>Spa Therapist</small><h4>Meera Nair</h4><p>11 yrs · Ayurvedic + Thai fusion massage therapist.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="rituals" id="rituals">
+  <div class="wrap">
+    <span class="eyebrow rv">Slow Down</span>
+    <h2 class="rv">Spa <em>rituals</em></h2>
+    <p class="sub rv" style="color:#b9b2a4">Candle-lit suites, warm oils, zero hurry. Arrive stressed — float out.</p>
+    <div class="rit-row">
+      <div class="rit rv"><span class="num">01</span><h3>Orphic Signature</h3><p>90 minutes: full-body aromatherapy, warm-stone back ritual and a scalp massage that resets everything.</p><span class="dur">90 min · ₹3,499</span></div>
+      <div class="rit rv d1"><span class="num">02</span><h3>Couple's Sanctuary</h3><p>Private suite for two — side-by-side massage, rose bath soak and herbal tea ceremony after.</p><span class="dur">120 min · ₹6,999</span></div>
+      <div class="rit rv d2"><span class="num">03</span><h3>Detox &amp; Glow</h3><p>Body polish + lymphatic drainage + glow facial. The pre-wedding favourite.</p><span class="dur">105 min · ₹4,299</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="wrap">
+    <span class="eyebrow rv">Reserve</span>
+    <h2 class="rv">Book your <em>chair</em></h2>
+    <div class="book-wrap">
+      <div class="book-side rv">
+        <p class="big">Good hair days are scheduled, not wished for.</p>
+        <div class="perk"><svg viewBox="0 0 30 30" fill="none" stroke="#a85050" stroke-width="2"><circle cx="15" cy="15" r="12"/><path d="M10 15l3.5 3.5L20 11" stroke-linecap="round"/></svg><p><b>Instant confirmation</b> — we hold your slot for 30 minutes while you confirm.</p></div>
+        <div class="perk"><svg viewBox="0 0 30 30" fill="none" stroke="#a85050" stroke-width="2"><circle cx="15" cy="15" r="12"/><path d="M15 8v7l5 3" stroke-linecap="round"/></svg><p><b>On-time promise</b> — your stylist starts within 10 minutes, or the blowout is on us.</p></div>
+        <div class="perk"><svg viewBox="0 0 30 30" fill="none" stroke="#a85050" stroke-width="2"><path d="M15 3l2.4 6.2 6.6.3-5.2 4.2 1.7 6.5L15 16.6 9.5 20.2l1.7-6.5L6 9.5l6.6-.3z"/></svg><p><b>4.9 rated</b> across 2,300+ Google reviews — Jabalpur's loved salon.</p></div>
+      </div>
+      <form id="bookForm" class="rv d1" novalidate>
+        <div class="fgrid">
+          <div class="field"><label for="of-name">Full Name</label><input id="of-name" type="text" placeholder="Priya Singh" autocomplete="name"><span class="err">Please enter your name.</span></div>
+          <div class="field"><label for="of-phone">Phone</label><input id="of-phone" type="tel" placeholder="+91 98XXX XXXXX" autocomplete="tel"><span class="err">Enter a valid 10-digit number.</span></div>
+          <div class="field"><label for="of-svc">Service</label><select id="of-svc"><option value="">Choose a service…</option><option>Signature Haircut — ₹799</option><option>Balayage &amp; Colour — ₹4,999</option><option>Keratin Ritual — ₹5,999</option><option>Bridal Couture — ₹24,999</option><option>Skin Alchemy Facial — ₹1,999</option><option>Nail Atelier — ₹1,299</option><option>Spa Ritual — ₹3,499</option></select><span class="err">Pick a service.</span></div>
+          <div class="field"><label for="of-sty">Stylist (optional)</label><select id="of-sty"><option>No preference</option><option>Aarav Mehta</option><option>Sana Kapoor</option><option>Rohan Verma</option><option>Meera Nair</option></select></div>
+          <div class="field"><label for="of-date">Preferred Date</label><input id="of-date" type="date"><span class="err">Choose a date.</span></div>
+          <div class="field"><label for="of-time">Preferred Time</label><select id="of-time"><option>Morning (10–1)</option><option>Afternoon (1–5)</option><option>Evening (5–8)</option></select></div>
+          <div class="field full"><label for="of-notes">Notes</label><textarea id="of-notes" rows="3" placeholder="Reference photos, allergies, occasion…"></textarea></div>
+        </div>
+        <div style="margin-top:24px"><button class="btn-pill" type="submit" style="width:100%">Request Booking</button></div>
+        <div id="form-ok" role="status"><h4>Request received!</h4><p>We'll call you shortly to lock your slot. See you in the chair.</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h5>ORPHIC INTERNATIONAL</h5><p>2nd Floor, Samdariya Mall, Civic Centre,<br>Jabalpur, MP 482002<br>+91 761 407 1234 · hello@orphicsalon.in<br>Open daily 10 AM – 8 PM</p></div>
+      <div><h5>VISIT</h5><ul><li><a href="#services">Services</a></li><li><a href="#stylists">Stylists</a></li><li><a href="#rituals">Spa Rituals</a></li></ul></div>
+      <div><h5>FOLLOW</h5><ul><li>Instagram · @orphic.jbp</li><li>Facebook · Orphic Jabalpur</li></ul></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Orphic International Salon &amp; Spa</span><span>Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* custom cursor */
+  var cur = document.getElementById("cursor");
+  if (!reduce && window.matchMedia("(hover:hover)").matches) {
+    document.addEventListener("mousemove", function(e){
+      cur.style.left = e.clientX + "px"; cur.style.top = e.clientY + "px";
+    }, {passive:true});
+    document.querySelectorAll("a,button,.cell,.stylist").forEach(function(el){
+      el.addEventListener("mouseenter", function(){ cur.classList.add("big"); });
+      el.addEventListener("mouseleave", function(){ cur.classList.remove("big"); });
+    });
+  } else { cur.style.display = "none"; }
+
+  /* nav */
+  var nav = document.getElementById("nav");
+  window.addEventListener("scroll", function(){ nav.classList.toggle("scrolled", window.scrollY > 40); }, {passive:true});
+  var burger = document.getElementById("burger"), links = document.getElementById("navlinks");
+  burger.addEventListener("click", function(){ links.classList.toggle("open"); });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); }); });
+
+  /* marquee duplicate */
+  var mt = document.getElementById("mtrack"); mt.innerHTML += mt.innerHTML;
+
+  /* reveal */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold: 0.12});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* tilt cards */
+  if (!reduce && window.matchMedia("(hover:hover)").matches) {
+    document.querySelectorAll("[data-tilt]").forEach(function(card){
+      card.addEventListener("mousemove", function(e){
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = "perspective(900px) rotateY(" + (x*10) + "deg) rotateX(" + (-y*10) + "deg) translateY(-6px)";
+      });
+      card.addEventListener("mouseleave", function(){ card.style.transform = ""; });
+    });
+  }
+
+  /* form */
+  var form = document.getElementById("bookForm");
+  function bad(id, isBad){ document.getElementById(id).closest(".field").classList.toggle("invalid", isBad); return !isBad; }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault(); var ok = true;
+    ok = bad("of-name", document.getElementById("of-name").value.trim().length < 2) && ok;
+    ok = bad("of-phone", !/^[+\d][\d\s-]{8,14}$/.test(document.getElementById("of-phone").value.trim())) && ok;
+    ok = bad("of-svc", !document.getElementById("of-svc").value) && ok;
+    ok = bad("of-date", !document.getElementById("of-date").value) && ok;
+    if (ok) {
+      form.querySelectorAll("input,select,textarea,button").forEach(function(el){ if (el.id !== "form-ok") el.disabled = true; });
+      document.getElementById("form-ok").classList.add("show");
+      document.getElementById("form-ok").scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
+    }
+  });
+  ["of-name","of-phone","of-svc","of-date"].forEach(function(id){
+    document.getElementById(id).addEventListener("input", function(){ bad(id, false); });
+  });
+})();
+</script>
+</body>
+</html>

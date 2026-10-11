@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Royal Orbit Jabalpur | 5-Star Luxury Stay</title>
+<meta name="description" content="Hotel Royal Orbit, Jabalpur — 122 rooms of 5-star opulence. Suites, banquets, fine dining. Rated 4.8/5.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#07070c; --ink2:#0d0d16; --gold:#c9a45c; --gold-lt:#e8cf9a; --ivory:#f5efe2;
+  --muted:#a89f8d; --line:rgba(201,164,92,.28); --serif:'Cinzel',Georgia,serif;
+  --serif2:'Cormorant Garamond',Georgia,serif; --sans:'Jost',Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--ivory);font-family:var(--sans);overflow-x:hidden;line-height:1.6}
+::selection{background:var(--gold);color:#000}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+section{position:relative;padding:120px 0}
+.kicker{font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:block}
+h1,h2{font-family:var(--serif);font-weight:600;line-height:1.12}
+h2{font-size:clamp(34px,4.5vw,58px);letter-spacing:.02em}
+.lead{font-family:var(--serif2);font-size:clamp(18px,2vw,24px);color:var(--muted);max-width:640px}
+
+/* ---------- preloader / curtain ---------- */
+#loader{position:fixed;inset:0;z-index:200;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px;transition:opacity .7s ease,visibility .7s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .mark{width:84px;height:84px;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#loader p{font-family:var(--serif);letter-spacing:.55em;font-size:13px;color:var(--gold);text-indent:.55em}
+.curtain{position:fixed;inset:0;z-index:150;pointer-events:none;display:flex}
+.curtain span{flex:1;background:linear-gradient(180deg,#0d0d16,#07070c);transform-origin:top;transform:scaleY(1);transition:transform 1s cubic-bezier(.76,0,.24,1)}
+.curtain.open span{transform:scaleY(0)}
+.curtain span:nth-child(2){transition-delay:.08s}.curtain span:nth-child(3){transition-delay:.16s}
+.curtain span:nth-child(4){transition-delay:.24s}.curtain span:nth-child(5){transition-delay:.32s}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(7,7,12,.88);backdrop-filter:blur(14px);border-color:var(--line)}
+.nav-in{max-width:1280px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);letter-spacing:.22em;font-size:15px}
+.brand svg{width:34px;height:34px}
+.nav-links{display:flex;gap:34px;list-style:none;font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+.nav-links a{position:relative;padding:6px 0;color:var(--ivory);opacity:.85;transition:opacity .3s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .35s}
+.nav-links a:hover{opacity:1}.nav-links a:hover::after{width:100%}
+.btn-gold{display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#0a0a0a;background:linear-gradient(135deg,var(--gold-lt),var(--gold));padding:16px 38px;border:none;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(201,164,92,.35)}
+.btn-gold span{position:relative;z-index:2}
+.btn-ghost{display:inline-block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-lt);border:1px solid var(--line);padding:15px 36px;transition:background .3s,border-color .3s}
+.btn-ghost:hover{background:rgba(201,164,92,.12);border-color:var(--gold)}
+.burger{display:none;background:none;border:none;cursor:pointer;z-index:110}
+.burger span{display:block;width:28px;height:2px;background:var(--gold);margin:7px 0;transition:.35s}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 24px 90px;overflow:hidden;
+  background:
+    radial-gradient(1200px 600px at 50% -10%,rgba(201,164,92,.14),transparent 60%),
+    linear-gradient(180deg,#0b0b14 0%,#07070c 60%,#07070c 100%)}
+.hero-sky{position:absolute;inset:0;pointer-events:none}
+.hero-sky svg{width:100%;height:100%}
+.hero-content{position:relative;z-index:3;max-width:900px}
+.hero .stars{letter-spacing:.6em;color:var(--gold);font-size:14px;margin-bottom:26px;display:block}
+.hero h1{font-size:clamp(46px,8.5vw,116px);letter-spacing:.06em;margin-bottom:10px}
+.hero h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotateX(-50deg);animation:charIn .9s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes charIn{to{opacity:1;transform:none}}
+.hero .sub{font-family:var(--serif2);font-style:italic;font-size:clamp(20px,2.6vw,30px);color:var(--gold-lt);margin:14px 0 18px;opacity:0;animation:fadeUp 1s .9s forwards}
+.hero p.tag{color:var(--muted);letter-spacing:.24em;text-transform:uppercase;font-size:12px;margin-bottom:44px;opacity:0;animation:fadeUp 1s 1.15s forwards}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+.hero-cta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s 1.35s forwards}
+.scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;text-align:center;color:var(--muted);font-size:10px;letter-spacing:.4em;text-transform:uppercase}
+.scroll-hint .wheel{width:24px;height:40px;border:1px solid var(--line);border-radius:14px;margin:0 auto 10px;position:relative}
+.scroll-hint .wheel::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:4px;background:var(--gold);animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:1;top:8px}70%{opacity:0;top:20px}100%{opacity:0}}
+
+/* ---------- marquee ---------- */
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0a0a12;overflow:hidden;white-space:nowrap;padding:16px 0}
+.ticker .track{display:inline-flex;gap:0;animation:tick 26s linear infinite}
+.ticker span{font-family:var(--serif);font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);padding:0 34px}
+.ticker span i{font-style:normal;padding-right:34px}
+.ticker span i.dia{display:inline-block;width:9px;height:9px;background:#4a4234;transform:rotate(45deg);margin:0 34px 2px 0;padding:0}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- stats ---------- */
+.stats{background:#0a0a12;border-bottom:1px solid var(--line)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat b{font-family:var(--serif);font-size:clamp(38px,4vw,58px);color:var(--gold);display:block;line-height:1}
+.stat small{letter-spacing:.3em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+
+/* ---------- rooms ---------- */
+.rooms{background:radial-gradient(900px 420px at 85% 10%,rgba(201,164,92,.08),transparent 60%),var(--ink)}
+.room-carousel{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:40px 4px 26px;scrollbar-width:none}
+.room-carousel::-webkit-scrollbar{display:none}
+.room-card{min-width:min(380px,84vw);scroll-snap-align:center;background:linear-gradient(160deg,#101018,#0a0a10);border:1px solid var(--line);overflow:hidden;transition:transform .45s,border-color .45s,box-shadow .45s}
+.room-card:hover{transform:translateY(-10px);border-color:var(--gold);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 0 1px rgba(201,164,92,.25)}
+.room-art{height:250px;position:relative;overflow:hidden}
+.room-art svg{width:100%;height:100%;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.room-card:hover .room-art svg{transform:scale(1.08)}
+.room-price{position:absolute;top:16px;right:16px;background:rgba(7,7,12,.75);backdrop-filter:blur(8px);border:1px solid var(--line);padding:8px 16px;font-size:12px;letter-spacing:.18em;color:var(--gold-lt)}
+.room-body{padding:30px}
+.room-body h3{font-family:var(--serif);font-size:24px;letter-spacing:.06em;margin-bottom:8px}
+.room-body p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.room-feats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.room-feats li{list-style:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--line);padding:7px 13px;color:var(--gold-lt)}
+.car-nav{display:flex;gap:12px;justify-content:center;margin-top:8px}
+.car-nav button{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--gold);font-size:20px;cursor:pointer;transition:.3s;display:inline-flex;align-items:center;justify-content:center}
+.car-nav button:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+
+/* ---------- banquet ---------- */
+.banquet{background:linear-gradient(180deg,#0a0a12,#07070c)}
+.banquet-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-top:50px}
+.banquet-art{position:relative;min-height:480px;border:1px solid var(--line);overflow:hidden}
+.banquet-art svg{width:100%;height:100%;position:absolute;inset:0}
+.banquet-list{list-style:none;margin-top:34px}
+.banquet-list li{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid rgba(201,164,92,.14);align-items:flex-start}
+.banquet-list svg{flex:0 0 34px;width:34px;height:34px}
+.banquet-list h4{font-family:var(--serif);letter-spacing:.08em;font-size:18px;margin-bottom:4px}
+.banquet-list p{color:var(--muted);font-size:15px}
+
+/* ---------- dining ---------- */
+.dining{background:var(--ink)}
+.dine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:50px}
+.dine-card{position:relative;height:440px;overflow:hidden;border:1px solid var(--line);cursor:pointer}
+.dine-card svg{position:absolute;inset:0;width:100%;height:100%;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.dine-card:hover svg{transform:scale(1.1)}
+.dine-veil{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(7,7,12,.92) 78%)}
+.dine-info{position:absolute;bottom:0;left:0;right:0;padding:30px}
+.dine-info small{letter-spacing:.34em;text-transform:uppercase;font-size:11px;color:var(--gold)}
+.dine-info h3{font-family:var(--serif);font-size:26px;letter-spacing:.04em;margin:8px 0 6px}
+.dine-info p{color:#cfc6b2;font-size:14px}
+
+/* ---------- booking ---------- */
+.booking{background:radial-gradient(1000px 500px at 50% 0%,rgba(201,164,92,.1),transparent 60%),#0a0a12;border-top:1px solid var(--line)}
+.book-shell{max-width:960px;margin:50px auto 0;background:linear-gradient(165deg,#111119,#0b0b11);border:1px solid var(--line);padding:clamp(30px,5vw,60px);position:relative;overflow:hidden}
+.book-shell::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.field input,.field select,.field textarea{background:#08080d;border:1px solid rgba(201,164,92,.25);color:var(--ivory);padding:14px 16px;font-family:var(--sans);font-size:15px;transition:border-color .3s,box-shadow .3s;color-scheme:dark}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,92,.15)}
+.field .err{font-size:12px;color:#e88f8f;letter-spacing:.06em;display:none}
+.field.invalid input,.field.invalid select{border-color:#c05656}
+.field.invalid .err{display:block}
+.form-note{margin-top:18px;font-size:13px;color:var(--muted)}
+#book-ok{display:none;margin-top:24px;border:1px solid var(--gold);background:rgba(201,164,92,.1);padding:22px;text-align:center}
+#book-ok.show{display:block;animation:fadeUp .6s}
+#book-ok h4{font-family:var(--serif);color:var(--gold);letter-spacing:.1em;margin-bottom:6px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);background:#060609;padding:60px 0 34px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-grid h5{font-family:var(--serif);letter-spacing:.2em;font-size:13px;color:var(--gold);margin-bottom:16px}
+.foot-grid p,.foot-grid li{color:var(--muted);font-size:14px;list-style:none;margin-bottom:8px}
+.foot-base{border-top:1px solid rgba(201,164,92,.14);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+
+@media (max-width:1024px){
+  .banquet-grid{grid-template-columns:1fr;gap:40px}
+  .dine-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  .nav-links{position:fixed;inset:0;background:rgba(7,7,12,.97);flex-direction:column;align-items:center;justify-content:center;gap:30px;font-size:15px;transform:translateX(100%);transition:transform .45s}
+  .nav-links.open{transform:none}
+  .burger{display:block}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .form-grid{grid-template-columns:1fr}
+  .dine-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  section{padding:84px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .hero h1 .ch{opacity:1;transform:none}
+  .hero .sub,.hero p.tag,.hero-cta{opacity:1}
+  .rv{opacity:1;transform:none}
+  .ticker .track{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="#c9a45c" stroke-width="2">
+    <circle cx="50" cy="50" r="44" opacity=".35"/><circle cx="50" cy="50" r="30"/>
+    <path d="M50 6v18M50 76v18M6 50h18M76 50h18" stroke-linecap="round"/>
+  </svg>
+  <p>ROYAL ORBIT</p>
+</div>
+<div class="curtain" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+
+<nav id="nav" aria-label="Primary">
+  <div class="nav-in">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 40 40" fill="none" stroke="#c9a45c" stroke-width="1.6"><circle cx="20" cy="20" r="17"/><circle cx="20" cy="20" r="11" opacity=".6"/><ellipse cx="20" cy="20" rx="17" ry="6" opacity=".7"/></svg>
+      ROYAL ORBIT
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#banquet">Banquets</a></li>
+      <li><a href="#dining">Dining</a></li>
+      <li><a href="#booking">Reserve</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-sky" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="moon" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#f5e7c4" stop-opacity=".9"/>
+          <stop offset="30%" stop-color="#e8cf9a" stop-opacity=".35"/>
+          <stop offset="100%" stop-color="#e8cf9a" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="tower" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a1a28"/><stop offset="100%" stop-color="#07070c"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="900" fill="none"/>
+      <circle cx="1090" cy="180" r="130" fill="url(#moon)"/>
+      <circle cx="1090" cy="180" r="52" fill="#f2e3bb" opacity=".85"/>
+      <g id="stars"></g>
+      <g fill="url(#tower)">
+        <rect x="0" y="620" width="1440" height="280"/>
+        <path d="M120 620 V470 q0-14 14-14 h60 q14 0 14 14 V620z"/>
+        <path d="M300 620 V400 q0-20 20-20 h80 q20 0 20 20 V620z"/>
+        <path d="M470 620 V430 q0-16 16-16 h70 q16 0 16 16 V620z"/>
+        <path d="M660 620 V350 q0-22 22-22 h90 q22 0 22 22 V620z M700 350 q-22 0-22-22 q22-60 44 0 q0 22-22 22z"/>
+        <path d="M880 620 V440 q0-18 18-18 h64 q18 0 18 18 V620z"/>
+        <path d="M1060 620 V470 q0-14 14-14 h60 q14 0 14 14 V620z"/>
+        <path d="M1240 620 V410 q0-18 18-18 h70 q18 0 18 18 V620z"/>
+      </g>
+      <g fill="#c9a45c" opacity=".85">
+        <rect x="330" y="440" width="10" height="10"/><rect x="355" y="440" width="10" height="10"/>
+        <rect x="330" y="480" width="10" height="10"/><rect x="380" y="440" width="10" height="10"/>
+        <rect x="690" y="400" width="12" height="12"/><rect x="720" y="400" width="12" height="12"/>
+        <rect x="690" y="445" width="12" height="12"/><rect x="720" y="490" width="12" height="12"/>
+        <rect x="1270" y="450" width="10" height="10"/><rect x="1295" y="450" width="10" height="10"/>
+      </g>
+      <path d="M0 700 Q360 660 720 700 T1440 700 V900 H0 Z" fill="#06060a" opacity=".8"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <span class="stars" aria-label="5 star hotel"><svg viewBox="0 0 24 24" width="16" height="16" fill="#c9a45c"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="#c9a45c"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="#c9a45c"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="#c9a45c"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="#c9a45c"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+    <h1 id="heroTitle">ROYAL ORBIT</h1>
+    <p class="sub">Where the skyline of Jabalpur bows to royalty</p>
+    <p class="tag">122 Suites &amp; Rooms · Rated 4.8 / 5 · Est. 2011</p>
+    <div class="hero-cta">
+      <a class="btn-gold" href="#booking"><span>Reserve Your Stay</span></a>
+      <a class="btn-ghost" href="#rooms">Explore Rooms</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="wheel"></div>Scroll</div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div class="track" id="tickTrack">
+  <span>122 Rooms &amp; Suites <i class="dia"></i></span><span>Rated 4.8 / 5 <i class="dia"></i></span>
+  <span>Rooftop Infinity Pool <i class="dia"></i></span><span>Grand Orbit Ballroom <i class="dia"></i></span>
+  <span>4 Signature Restaurants <i class="dia"></i></span><span>Jabalpur · Madhya Pradesh <i class="dia"></i></span>
+</div></div>
+
+<section class="stats">
+  <div class="wrap stat-grid">
+    <div class="stat rv"><b><span class="count" data-to="122">0</span></b><small>Rooms &amp; Suites</small></div>
+    <div class="stat rv d1"><b><span class="count" data-to="4.8" data-dec="1">0</span>/5</b><small>Guest Rating</small></div>
+    <div class="stat rv d2"><b><span class="count" data-to="85000">0</span>+</b><small>Happy Guests</small></div>
+    <div class="stat rv d3"><b><span class="count" data-to="12">0</span></b><small>Years of Legacy</small></div>
+  </div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="wrap">
+    <span class="kicker rv">Stay in Splendour</span>
+    <h2 class="rv">Rooms &amp; Suites</h2>
+    <p class="lead rv">Every key opens a private universe — hand-loomed silk, Italian marble, and views that stretch to the Narmada horizon.</p>
+    <div class="room-carousel" id="roomCar">
+      <article class="room-card rv">
+        <div class="room-art">
+          <svg viewBox="0 0 380 250" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1c1c2e"/><stop offset="100%" stop-color="#0a0a12"/></linearGradient></defs>
+            <rect width="380" height="250" fill="url(#r1)"/>
+            <rect x="40" y="60" width="300" height="120" fill="#141422" stroke="#c9a45c" stroke-width="1.5"/>
+            <rect x="60" y="80" width="260" height="60" fill="#1e1e30"/>
+            <rect x="150" y="40" width="80" height="20" fill="#c9a45c" opacity=".7"/>
+            <rect x="60" y="160" width="120" height="14" fill="#c9a45c" opacity=".5"/>
+            <rect x="200" y="160" width="120" height="14" fill="#c9a45c" opacity=".3"/>
+            <circle cx="90" cy="105" r="12" fill="#c9a45c" opacity=".8"/>
+          </svg>
+          <span class="room-price">₹8,500 / night</span>
+        </div>
+        <div class="room-body">
+          <h3>Orbit Deluxe King</h3>
+          <p>42 sqm of warm minimalism with a king bed, rain shower and city-view window wall.</p>
+          <ul class="room-feats"><li>King Bed</li><li>42 sqm</li><li>City View</li></ul>
+          <a class="btn-ghost" href="#booking">Book This Room</a>
+        </div>
+      </article>
+      <article class="room-card rv d1">
+        <div class="room-art">
+          <svg viewBox="0 0 380 250" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#231a10"/><stop offset="100%" stop-color="#0c0906"/></linearGradient></defs>
+            <rect width="380" height="250" fill="url(#r2)"/>
+            <rect x="30" y="40" width="320" height="150" fill="#171008" stroke="#c9a45c" stroke-width="1.5"/>
+            <circle cx="190" cy="115" r="46" fill="none" stroke="#c9a45c" stroke-width="2"/>
+            <circle cx="190" cy="115" r="30" fill="none" stroke="#c9a45c" stroke-width="1" opacity=".6"/>
+            <rect x="70" y="160" width="240" height="12" fill="#c9a45c" opacity=".5"/>
+            <rect x="100" y="140" width="180" height="10" fill="#c9a45c" opacity=".3"/>
+          </svg>
+          <span class="room-price">₹12,000 / night</span>
+        </div>
+        <div class="room-body">
+          <h3>Signature Twin Luxury</h3>
+          <p>Perfect for families and friends — two queen beds, a lounge corner and marble bath.</p>
+          <ul class="room-feats"><li>2 Queens</li><li>55 sqm</li><li>Lounge</li></ul>
+          <a class="btn-ghost" href="#booking">Book This Room</a>
+        </div>
+      </article>
+      <article class="room-card rv d2">
+        <div class="room-art">
+          <svg viewBox="0 0 380 250" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#141c22"/><stop offset="100%" stop-color="#080b0e"/></linearGradient></defs>
+            <rect width="380" height="250" fill="url(#r3)"/>
+            <rect x="50" y="70" width="280" height="110" fill="#10161c" stroke="#c9a45c" stroke-width="1.5"/>
+            <path d="M50 125 H330" stroke="#c9a45c" stroke-width="1" opacity=".6"/>
+            <rect x="90" y="90" width="60" height="20" fill="#c9a45c" opacity=".6"/>
+            <rect x="230" y="140" width="60" height="20" fill="#c9a45c" opacity=".4"/>
+            <circle cx="190" cy="52" r="10" fill="#c9a45c"/>
+          </svg>
+          <span class="room-price">₹18,500 / night</span>
+        </div>
+        <div class="room-body">
+          <h3>Executive Orbit Suite</h3>
+          <p>A 78 sqm sky suite with private study, dining alcove and butler service on call.</p>
+          <ul class="room-feats"><li>Sky Suite</li><li>78 sqm</li><li>Butler</li></ul>
+          <a class="btn-ghost" href="#booking">Book This Room</a>
+        </div>
+      </article>
+      <article class="room-card rv d3">
+        <div class="room-art">
+          <svg viewBox="0 0 380 250" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e1420"/><stop offset="100%" stop-color="#0b070c"/></linearGradient></defs>
+            <rect width="380" height="250" fill="url(#r4)"/>
+            <path d="M60 200 L190 60 L320 200 Z" fill="#150e16" stroke="#c9a45c" stroke-width="1.5"/>
+            <circle cx="190" cy="150" r="26" fill="none" stroke="#c9a45c" stroke-width="2"/>
+            <rect x="120" y="180" width="140" height="10" fill="#c9a45c" opacity=".5"/>
+            <path d="M190 60 v-24" stroke="#c9a45c" stroke-width="2"/>
+          </svg>
+          <span class="room-price">₹32,000 / night</span>
+        </div>
+        <div class="room-body">
+          <h3>Royal Presidential Villa</h3>
+          <p>Our crown jewel — 210 sqm, private terrace plunge pool, and a dedicated concierge.</p>
+          <ul class="room-feats"><li>210 sqm</li><li>Terrace Pool</li><li>Concierge</li></ul>
+          <a class="btn-ghost" href="#booking">Book This Room</a>
+        </div>
+      </article>
+    </div>
+    <div class="car-nav">
+      <button id="carPrev" aria-label="Previous rooms"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button id="carNext" aria-label="Next rooms"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class="banquet" id="banquet">
+  <div class="wrap">
+    <span class="kicker rv">Weddings &amp; Celebrations</span>
+    <h2 class="rv">The Grand Orbit Ballroom</h2>
+    <p class="lead rv">1,200-guest pillarless ballroom, manicured lawns and five versatile venues — Jabalpur's most coveted wedding address.</p>
+    <div class="banquet-grid">
+      <div class="banquet-art rv">
+        <svg viewBox="0 0 520 480" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="bq" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#151522"/><stop offset="100%" stop-color="#0a0a10"/></linearGradient></defs>
+          <rect width="520" height="480" fill="url(#bq)"/>
+          <g stroke="#c9a45c" fill="none" stroke-width="2">
+            <path d="M60 420 V160 q0-20 20-20 h360 q20 0 20 20 V420"/>
+            <path d="M60 200 h400 M60 260 h400 M60 320 h400" opacity=".35"/>
+            <circle cx="260" cy="90" r="34"/>
+            <path d="M260 56 v-22 M226 90 h-22 M294 90 h22 M260 124 v22"/>
+          </g>
+          <g fill="#c9a45c" opacity=".9">
+            <circle cx="140" cy="260" r="5"/><circle cx="200" cy="260" r="5"/><circle cx="320" cy="260" r="5"/><circle cx="380" cy="260" r="5"/>
+            <circle cx="140" cy="320" r="5"/><circle cx="200" cy="320" r="5"/><circle cx="320" cy="320" r="5"/><circle cx="380" cy="320" r="5"/>
+          </g>
+          <rect x="180" y="380" width="160" height="40" fill="#c9a45c" opacity=".25"/>
+        </svg>
+      </div>
+      <div>
+        <ul class="banquet-list">
+          <li class="rv"><svg viewBox="0 0 34 34" fill="none" stroke="#c9a45c" stroke-width="1.6"><path d="M17 4l2.6 6.8L27 12l-6.8 2.6L17 22l-3.2-7.4L7 12l7.4-1.2z"/></svg><div><h4>Grand Orbit Ballroom</h4><p>Pillarless 14,000 sq ft hall with 28-ft ceiling, crystal chandeliers and a 1,200-guest capacity.</p></div></li>
+          <li class="rv d1"><svg viewBox="0 0 34 34" fill="none" stroke="#c9a45c" stroke-width="1.6"><circle cx="17" cy="12" r="6"/><path d="M6 30c0-6 5-9 11-9s11 3 11 9"/></svg><div><h4>Celestial Lawns</h4><p>Two manicured lawns under fairy-light canopies — sangeet nights and pheras beneath the stars.</p></div></li>
+          <li class="rv d2"><svg viewBox="0 0 34 34" fill="none" stroke="#c9a45c" stroke-width="1.6"><rect x="6" y="10" width="22" height="14" rx="2"/><path d="M6 16h22M11 10v14M23 10v14"/></svg><div><h4>Royal Boardrooms</h4><p>Five sound-proof venues for summits, product launches and high-stakes board meetings.</p></div></li>
+          <li class="rv d3"><svg viewBox="0 0 34 34" fill="none" stroke="#c9a45c" stroke-width="1.6"><path d="M17 29c-8 0-11-5-11-11 4 0 7 1 9 3 2-2 5-3 9-3 0 6-3 11-7 11z"/><circle cx="17" cy="10" r="2.5"/></svg><div><h4>Dedicated Wedding Atelier</h4><p>In-house planners, décor studio and a bridal suite — one team from sagai to vidaai.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dining" id="dining">
+  <div class="wrap">
+    <span class="kicker rv">Taste the Extraordinary</span>
+    <h2 class="rv">Signature Dining</h2>
+    <p class="lead rv">Four restaurants, one philosophy — fire, seasonality and craft on every plate.</p>
+    <div class="dine-grid">
+      <article class="dine-card rv">
+        <svg viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice"><rect width="400" height="440" fill="#120d08"/><circle cx="200" cy="150" r="90" fill="#2a1a0c"/><path d="M200 90 q30 40 0 80 q-30-40 0-80z" fill="#c9a45c" opacity=".85"/><rect x="120" y="280" width="160" height="14" fill="#c9a45c" opacity=".4"/><rect x="150" y="310" width="100" height="10" fill="#c9a45c" opacity=".25"/></svg>
+        <div class="dine-veil"></div>
+        <div class="dine-info"><small>North Indian Royal</small><h3>Maharaja's Table</h3><p>Dum biryanis, tandoor theatre and kebabs from a 400-year-old family recipe book.</p></div>
+      </article>
+      <article class="dine-card rv d1">
+        <svg viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice"><rect width="400" height="440" fill="#0c1218"/><ellipse cx="200" cy="170" rx="110" ry="60" fill="#16222c"/><path d="M90 170 q110-70 220 0" stroke="#c9a45c" stroke-width="3" fill="none" opacity=".8"/><circle cx="200" cy="120" r="14" fill="#c9a45c" opacity=".7"/><rect x="130" y="300" width="140" height="12" fill="#c9a45c" opacity=".35"/></svg>
+        <div class="dine-veil"></div>
+        <div class="dine-info"><small>Pan-Asian</small><h3>Neon Lotus</h3><p>Sushi counters, robata grills and dim-sum carts in a neon-lit izakaya setting.</p></div>
+      </article>
+      <article class="dine-card rv d2">
+        <svg viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice"><rect width="400" height="440" fill="#0a0d0a"/><rect x="90" y="80" width="220" height="140" fill="#121a12" stroke="#c9a45c" stroke-width="2"/><g fill="#c9a45c" opacity=".8"><rect x="120" y="110" width="26" height="60"/><rect x="160" y="110" width="26" height="60"/><rect x="200" y="110" width="26" height="60"/><rect x="240" y="110" width="26" height="60"/></g><rect x="120" y="300" width="160" height="12" fill="#c9a45c" opacity=".35"/></svg>
+        <div class="dine-veil"></div>
+        <div class="dine-info"><small>Rooftop Lounge</small><h3>Orbit Sky Bar</h3><p>Single malts, molecular cocktails and the best sunset view in Jabalpur.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="wrap">
+    <span class="kicker rv" style="text-align:center;display:block">Begin Your Story</span>
+    <h2 class="rv" style="text-align:center">Reservation Enquiry</h2>
+    <p class="lead rv" style="text-align:center;margin:0 auto">Share your dates — our concierge replies within 2 hours with the finest available options.</p>
+    <div class="book-shell rv">
+      <form id="bookForm" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="bf-name">Full Name</label><input id="bf-name" name="name" type="text" placeholder="Aarav Sharma" autocomplete="name"><span class="err">Please enter your name.</span></div>
+          <div class="field"><label for="bf-phone">Phone</label><input id="bf-phone" name="phone" type="tel" placeholder="+91 98XXX XXXXX" autocomplete="tel"><span class="err">Enter a valid 10-digit phone number.</span></div>
+          <div class="field"><label for="bf-in">Check-in</label><input id="bf-in" name="checkin" type="date"><span class="err">Choose a check-in date.</span></div>
+          <div class="field"><label for="bf-out">Check-out</label><input id="bf-out" name="checkout" type="date"><span class="err">Check-out must be after check-in.</span></div>
+          <div class="field"><label for="bf-room">Room Type</label><select id="bf-room" name="room"><option value="">Select a room…</option><option>Orbit Deluxe King — ₹8,500</option><option>Signature Twin Luxury — ₹12,000</option><option>Executive Orbit Suite — ₹18,500</option><option>Royal Presidential Villa — ₹32,000</option></select><span class="err">Please pick a room type.</span></div>
+          <div class="field"><label for="bf-guests">Guests</label><select id="bf-guests" name="guests"><option>1 Guest</option><option selected>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5+ Guests / Group</option></select></div>
+          <div class="field full"><label for="bf-notes">Special Requests</label><textarea id="bf-notes" name="notes" rows="3" placeholder="Honeymoon setup, early check-in, dietary needs…"></textarea></div>
+        </div>
+        <div style="margin-top:30px;text-align:center"><button class="btn-gold" type="submit"><span>Send Enquiry</span></button></div>
+        <p class="form-note" style="text-align:center">No advance needed for an enquiry — pay only when you confirm.</p>
+        <div id="book-ok" role="status"><h4>Enquiry Received</h4><p>Thank you! Our concierge will call you within 2 hours to curate your stay.</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h5>HOTEL ROYAL ORBIT</h5><p>Orbit Tower, Civic Centre, Jabalpur,<br>Madhya Pradesh 482002<br>+91 761 400 0000 · stay@royalorbit.in</p></div>
+      <div><h5>EXPLORE</h5><ul><li><a href="#rooms">Rooms &amp; Suites</a></li><li><a href="#banquet">Weddings</a></li><li><a href="#dining">Dining</a></li><li><a href="#booking">Reserve</a></li></ul></div>
+      <div><h5>GOOD TO KNOW</h5><ul><li>Check-in 2 PM · Check-out 12 PM</li><li>Complimentary valet &amp; Wi-Fi</li><li>Pet-friendly select suites</li></ul></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Hotel Royal Orbit · Jabalpur</span><span>Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* hero split-text */
+  var title = document.getElementById("heroTitle");
+  var text = title.textContent; title.textContent = "";
+  text.split("").forEach(function(ch, i){
+    var s = document.createElement("span");
+    s.className = "ch"; s.textContent = ch === " " ? "\u00A0" : ch;
+    s.style.animationDelay = (0.15 + i * 0.045) + "s";
+    title.appendChild(s);
+  });
+
+  /* star field */
+  var stars = document.getElementById("stars");
+  if (stars) {
+    for (var i = 0; i < 90; i++) {
+      var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("cx", Math.random()*1440); c.setAttribute("cy", Math.random()*520);
+      c.setAttribute("r", Math.random()*1.6+0.4);
+      c.setAttribute("fill", "#f5efe2"); c.setAttribute("opacity", Math.random()*0.7+0.15);
+      stars.appendChild(c);
+    }
+  }
+
+  /* loader + curtain */
+  window.addEventListener("load", function(){
+    setTimeout(function(){
+      document.getElementById("loader").classList.add("done");
+      document.querySelector(".curtain").classList.add("open");
+    }, reduceMotion ? 60 : 900);
+  });
+
+  /* nav */
+  var nav = document.getElementById("nav");
+  window.addEventListener("scroll", function(){
+    nav.classList.toggle("scrolled", window.scrollY > 40);
+  }, {passive:true});
+  var burger = document.getElementById("burger"), links = document.getElementById("navlinks");
+  burger.addEventListener("click", function(){ links.classList.toggle("open"); });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); }); });
+
+  /* ticker duplicate for seamless loop */
+  var track = document.getElementById("tickTrack");
+  track.innerHTML += track.innerHTML;
+
+  /* reveal on scroll */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold: 0.12});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* counters */
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target, to = parseFloat(el.dataset.to), dec = parseInt(el.dataset.dec||"0",10);
+      cio.unobserve(el);
+      if (reduceMotion) { el.textContent = to.toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, ","); return; }
+      var start = null, dur = 1600;
+      function step(t){ if(!start) start=t; var p=Math.min((t-start)/dur,1);
+        var v = to * (1-Math.pow(1-p,3));
+        el.textContent = (dec? v.toFixed(dec) : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        if (p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+  }, {threshold: 0.5});
+  document.querySelectorAll(".count").forEach(function(el){ cio.observe(el); });
+
+  /* room carousel arrows */
+  var car = document.getElementById("roomCar");
+  document.getElementById("carPrev").addEventListener("click", function(){ car.scrollBy({left:-400, behavior: reduceMotion?"auto":"smooth"}); });
+  document.getElementById("carNext").addEventListener("click", function(){ car.scrollBy({left: 400, behavior: reduceMotion?"auto":"smooth"}); });
+
+  /* form validation */
+  var form = document.getElementById("bookForm");
+  function setBad(id, bad){ document.getElementById(id).closest(".field").classList.toggle("invalid", bad); return !bad; }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var ok = true;
+    ok = setBad("bf-name", document.getElementById("bf-name").value.trim().length < 2) && ok;
+    ok = setBad("bf-phone", !/^[+\d][\d\s-]{8,14}$/.test(document.getElementById("bf-phone").value.trim())) && ok;
+    var ci = document.getElementById("bf-in").value, co = document.getElementById("bf-out").value;
+    ok = setBad("bf-in", !ci) && ok;
+    ok = setBad("bf-out", !co || (ci && co <= ci)) && ok;
+    ok = setBad("bf-room", !document.getElementById("bf-room").value) && ok;
+    if (ok) {
+      form.querySelectorAll("input,select,textarea,button.btn-gold").forEach(function(el){ el.disabled = true; });
+      document.getElementById("book-ok").classList.add("show");
+    }
+  });
+  ["bf-name","bf-phone","bf-in","bf-out","bf-room"].forEach(function(id){
+    document.getElementById(id).addEventListener("input", function(){ setBad(id, false); });
+  });
+})();
+</script>
+</body>
+</html>

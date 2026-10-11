@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Bells Thai Spa &amp; Salon | Mumbai</title>
+<meta name="description" content="Blue Bells Thai Spa & Salon — Borivali & Dahisar, Mumbai. Authentic Thai therapies, serene rituals, membership plans.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#081418; --night2:#0c1e24; --deep:#061014;
+  --teal:#2fa79b; --teal-lt:#7fd6c9; --gold:#d4af6a; --gold-lt:#f0d9a8;
+  --cream:#f3ead8; --muted:#93a8a5; --line:rgba(212,175,106,.22);
+  --disp:'Marcellus',Georgia,serif; --serif:'Cormorant Garamond',Georgia,serif; --body:'Outfit',Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--body);overflow-x:hidden;line-height:1.7}
+::selection{background:var(--gold);color:#081418}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 30px}
+section{padding:110px 0;position:relative}
+.kicker{font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:block}
+h1,h2{font-family:var(--disp);font-weight:400;line-height:1.14}
+h2{font-size:clamp(34px,4.6vw,58px);margin-bottom:16px}
+.lead{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.2vw,25px);color:var(--muted);max-width:640px}
+
+/* floating petals */
+#petals{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:-8%;opacity:.55;animation:drift linear infinite}
+@keyframes drift{
+  0%{transform:translateY(-6vh) translateX(0) rotate(0deg)}
+  25%{transform:translateY(28vh) translateX(4vw) rotate(90deg)}
+  50%{transform:translateY(60vh) translateX(-3vw) rotate(180deg)}
+  75%{transform:translateY(90vh) translateX(3vw) rotate(270deg)}
+  100%{transform:translateY(118vh) translateX(0) rotate(360deg)}
+}
+main,nav,footer{position:relative;z-index:2}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s}
+nav.scrolled{background:rgba(6,16,20,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1240px;margin:0 auto;padding:18px 30px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-size:19px;letter-spacing:.08em}
+.brand svg{width:36px;height:36px}
+.brand small{display:block;font-family:var(--body);font-size:9px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase}
+.nav-links{display:flex;gap:30px;list-style:none;font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+.nav-links a{opacity:.85;transition:opacity .3s,color .3s;position:relative}
+.nav-links a:hover{opacity:1;color:var(--gold-lt)}
+.burger{display:none;background:none;border:none;cursor:pointer}
+.burger span{display:block;width:26px;height:2px;background:var(--gold);margin:6px 0}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 24px 90px;
+  background:
+    radial-gradient(1000px 520px at 50% 110%,rgba(47,167,155,.16),transparent 62%),
+    radial-gradient(760px 420px at 50% -8%,rgba(212,175,106,.12),transparent 60%),
+    linear-gradient(180deg,#0a1a20 0%,#081418 55%,#061014 100%)}
+.hero-lotus{width:130px;height:130px;margin:0 auto 30px;animation:breathe 6s ease-in-out infinite;filter:drop-shadow(0 0 26px rgba(212,175,106,.4))}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.92}50%{transform:scale(1.08);opacity:1}}
+.hero h1{font-size:clamp(50px,8vw,110px);letter-spacing:.04em;margin-bottom:6px}
+.hero h1 .shimmer{background:linear-gradient(100deg,var(--gold-lt) 20%,#fff 40%,var(--gold-lt) 60%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 5.5s linear infinite}
+@keyframes shimmer{to{background-position:220% center}}
+.hero .thai{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.6vw,30px);color:var(--teal-lt);margin-bottom:14px}
+.hero p.loc{letter-spacing:.34em;text-transform:uppercase;font-size:12px;color:var(--muted);margin-bottom:42px}
+.hero-cta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.btn-lotus{display:inline-block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#081418;background:linear-gradient(135deg,var(--gold-lt),var(--gold));padding:17px 42px;border-radius:999px;border:none;cursor:pointer;transition:transform .35s,box-shadow .35s}
+.btn-lotus:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(212,175,106,.35)}
+.btn-ghost{display:inline-block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-lt);border:1px solid var(--line);padding:16px 40px;border-radius:999px;transition:.3s}
+.btn-ghost:hover{background:rgba(212,175,106,.12);border-color:var(--gold)}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:10px;letter-spacing:.4em;text-transform:uppercase;text-align:center}
+.scroll-hint .drop{width:2px;height:44px;background:linear-gradient(180deg,var(--gold),transparent);margin:0 auto 10px;animation:drop 2s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* philosophy */
+.philo{background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.philo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:54px}
+.philo-card{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:34px 34px 34px 8px;padding:38px 32px;transition:transform .4s,border-color .4s,background .4s}
+.philo-card:hover{transform:translateY(-10px);border-color:var(--gold);background:rgba(212,175,106,.06)}
+.philo-card svg{width:52px;height:52px;margin-bottom:20px}
+.philo-card h3{font-family:var(--disp);font-size:23px;margin-bottom:10px}
+.philo-card p{color:var(--muted);font-size:15px}
+
+/* therapies accordion */
+.therapies{background:radial-gradient(800px 400px at 12% 20%,rgba(47,167,155,.1),transparent 60%),var(--night)}
+.acc{max-width:880px;margin:50px auto 0}
+.acc-item{border:1px solid var(--line);border-radius:22px;margin-bottom:16px;overflow:hidden;background:rgba(255,255,255,.02);transition:border-color .3s}
+.acc-item.open{border-color:var(--gold)}
+.acc-head{width:100%;background:none;border:none;color:var(--cream);display:flex;align-items:center;gap:20px;padding:24px 28px;cursor:pointer;text-align:left;font-family:var(--body)}
+.acc-head .ico{flex:0 0 54px;width:54px;height:54px;border-radius:50%;background:rgba(212,175,106,.12);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.acc-head .ico svg{width:28px;height:28px}
+.acc-head .tt{flex:1}
+.acc-head .tt b{font-family:var(--disp);font-weight:400;font-size:20px;display:block}
+.acc-head .tt small{color:var(--muted);font-size:13px;letter-spacing:.08em}
+.acc-head .pr{font-family:var(--disp);font-size:19px;color:var(--gold);white-space:nowrap}
+.acc-head .plus{font-size:26px;color:var(--gold);transition:transform .35s;line-height:1}
+.acc-item.open .plus{transform:rotate(45deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,1,.36,1)}
+.acc-body .inner{padding:0 28px 28px 102px;color:var(--muted);font-size:15px}
+.acc-body .inner ul{margin:12px 0 0;padding-left:18px}
+.acc-body .inner li{margin-bottom:6px}
+.acc-body .dur{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--teal-lt);border:1px solid rgba(127,214,201,.35);border-radius:999px;padding:8px 18px}
+
+/* membership */
+.member{background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:54px;align-items:stretch}
+.mem{border:1px solid var(--line);border-radius:30px;padding:44px 36px;display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s,border-color .4s;background:rgba(255,255,255,.02)}
+.mem:hover{transform:translateY(-10px)}
+.mem.hot{border-color:var(--gold);background:linear-gradient(170deg,rgba(212,175,106,.12),rgba(212,175,106,.03));box-shadow:0 30px 70px rgba(212,175,106,.12);position:relative}
+.mem .flag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:#081418;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;padding:8px 22px;border-radius:999px;white-space:nowrap}
+.mem h3{font-family:var(--disp);font-size:26px;margin-bottom:6px}
+.mem .mp{font-family:var(--disp);font-size:44px;color:var(--gold);margin:14px 0 4px}
+.mem .mp small{font-size:15px;color:var(--muted);font-family:var(--body)}
+.mem ul{list-style:none;margin:22px 0 30px;flex:1}
+.mem li{padding:10px 0;border-bottom:1px solid rgba(212,175,106,.12);font-size:14.5px;color:var(--muted);display:flex;gap:12px;align-items:flex-start}
+.mem li svg{flex:0 0 18px;width:18px;height:18px;margin-top:4px}
+
+/* locations */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:54px}
+.loc{border:1px solid var(--line);border-radius:28px;overflow:hidden;background:rgba(255,255,255,.02)}
+.loc .map{height:220px;position:relative}
+.loc .map svg{width:100%;height:100%}
+.loc .body{padding:30px}
+.loc h3{font-family:var(--disp);font-size:24px;margin-bottom:8px}
+.loc p{color:var(--muted);font-size:14.5px}
+.loc .hrs{margin-top:14px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+
+/* booking */
+.booking{background:radial-gradient(900px 460px at 50% 0%,rgba(47,167,155,.12),transparent 60%),var(--deep);border-top:1px solid var(--line)}
+.book-shell{max-width:920px;margin:50px auto 0;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:36px;padding:clamp(30px,5vw,58px);backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.book-shell::before{content:"";position:absolute;top:0;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.field input,.field select,.field textarea{background:#071114;border:1px solid rgba(212,175,106,.25);border-radius:16px;color:var(--cream);padding:14px 16px;font-family:var(--body);font-size:15px;transition:border-color .3s,box-shadow .3s;color-scheme:dark}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,175,106,.14)}
+.field .err{font-size:12px;color:#e89a9a;display:none}
+.field.invalid input,.field.invalid select{border-color:#b05656}
+.field.invalid .err{display:block}
+.seg{display:flex;gap:10px;flex-wrap:wrap}
+.seg button{flex:1;min-width:110px;border:1px solid rgba(212,175,106,.25);background:#071114;color:var(--cream);border-radius:14px;padding:13px 10px;font-family:var(--body);font-size:13.5px;cursor:pointer;transition:.25s}
+.seg button.sel{background:rgba(212,175,106,.16);border-color:var(--gold);color:var(--gold-lt)}
+#bb-ok{display:none;margin-top:24px;border:1px solid var(--gold);background:rgba(212,175,106,.1);border-radius:18px;padding:24px;text-align:center}
+#bb-ok.show{display:block;animation:rise .6s cubic-bezier(.22,1,.36,1)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+#bb-ok h4{font-family:var(--disp);color:var(--gold);font-size:22px;margin-bottom:6px}
+
+/* footer */
+footer{background:#040b0e;border-top:1px solid var(--line);padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-grid h5{font-family:var(--disp);font-size:13px;letter-spacing:.26em;color:var(--gold);margin-bottom:16px}
+.foot-grid p,.foot-grid li{color:var(--muted);font-size:14px;list-style:none;margin-bottom:8px}
+.foot-base{border-top:1px solid rgba(212,175,106,.14);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}
+
+@media (max-width:1024px){
+  .philo-grid{grid-template-columns:1fr 1fr}
+  .mem-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
+}
+@media (max-width:720px){
+  .nav-links{position:fixed;inset:0;background:rgba(6,16,20,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;font-size:14px;transform:translateX(100%);transition:transform .4s}
+  .nav-links.open{transform:none}
+  .burger{display:block}
+  .philo-grid{grid-template-columns:1fr}
+  .loc-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .acc-body .inner{padding-left:28px}
+  .foot-grid{grid-template-columns:1fr}
+  section{padding:78px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  #petals{display:none}
+  .hero h1 .shimmer{background:none;color:var(--gold-lt)}
+}
+</style>
+</head>
+<body>
+<div id="petals" aria-hidden="true"></div>
+
+<nav id="nav" aria-label="Primary">
+  <div class="nav-in">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 40 40" fill="none"><path d="M20 6c4 6 6 10 6 15a6 6 0 0 1-12 0c0-5 2-9 6-15z" fill="#d4af6a"/><path d="M6 20c6-1 10-1 14 1-4 2-8 2-14-1zM34 20c-6-1-10-1-14 1 4 2 8 2 14-1z" fill="#2fa79b"/><ellipse cx="20" cy="32" rx="10" ry="3" fill="#2fa79b" opacity=".5"/></svg>
+      <span>BLUE BELLS<small>Thai Spa · Mumbai</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#therapies">Therapies</a></li>
+      <li><a href="#membership">Membership</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+      <li><a href="#booking">Book Ritual</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+<header class="hero" id="top">
+  <div style="max-width:900px;position:relative;z-index:2">
+    <svg class="hero-lotus" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <path d="M60 18c10 16 14 28 14 42a14 14 0 0 1-28 0c0-14 4-26 14-42z" fill="#d4af6a"/>
+      <path d="M28 44c14 6 24 14 30 26-12 2-24-2-34-10 0-6 2-12 4-16z" fill="#2fa79b"/>
+      <path d="M92 44c-14 6-24 14-30 26 12 2 24-2 34-10 0-6-2-12-4-16z" fill="#2fa79b"/>
+      <path d="M22 78c16-4 30-2 38 6-8 10-22 14-38 10 0-6 0-12 0-16z" fill="#7fd6c9" opacity=".8"/>
+      <path d="M98 78c-16-4-30-2-38 6 8 10 22 14 38 10 0-6 0-12 0-16z" fill="#7fd6c9" opacity=".8"/>
+      <ellipse cx="60" cy="102" rx="30" ry="7" fill="#2fa79b" opacity=".45"/>
+    </svg>
+    <p class="kicker" style="text-align:center">Sawadee · Welcome to stillness</p>
+    <h1><span class="shimmer">Blue Bells</span></h1>
+    <p class="thai">Authentic Thai spa &amp; salon rituals</p>
+    <p class="loc">Borivali West · Dahisar East · Mumbai</p>
+    <div class="hero-cta">
+      <a class="btn-lotus" href="#booking">Book Your Ritual</a>
+      <a class="btn-ghost" href="#therapies">Explore Therapies</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="drop"></div>Breathe</div>
+</header>
+
+<section class="philo">
+  <div class="wrap">
+    <span class="kicker rv">Our Philosophy</span>
+    <h2 class="rv">Healing, the Thai way</h2>
+    <p class="lead rv">Sen energy lines, warm herbal compresses and unhurried hands — therapies passed down through generations in Thailand, practised by certified Thai therapists.</p>
+    <div class="philo-grid">
+      <div class="philo-card rv">
+        <svg viewBox="0 0 52 52" fill="none" stroke="#d4af6a" stroke-width="2"><circle cx="26" cy="26" r="18"/><path d="M26 8v6M26 38v6M8 26h6M38 26h6" stroke-linecap="round"/><circle cx="26" cy="26" r="6" fill="#d4af6a" opacity=".5"/></svg>
+        <h3>Certified Thai Therapists</h3><p>Every therapist trains 500+ hours in Wat Pho-style traditional Thai massage before touching a guest.</p>
+      </div>
+      <div class="philo-card rv d1">
+        <svg viewBox="0 0 52 52" fill="none" stroke="#2fa79b" stroke-width="2"><path d="M26 6c8 10 12 18 12 26a12 12 0 0 1-24 0c0-8 4-16 12-26z"/><path d="M26 22v12M20 28h12" stroke-linecap="round"/></svg>
+        <h3>Warm Herbal Wisdom</h3><p>Lemongrass, plai and turmeric compresses steamed fresh for every single session.</p>
+      </div>
+      <div class="philo-card rv d2">
+        <svg viewBox="0 0 52 52" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M10 40c6-14 12-20 16-20s10 6 16 20" stroke-linecap="round"/><circle cx="26" cy="14" r="5"/><path d="M14 46h24" stroke-linecap="round"/></svg>
+        <h3>Sanctuary Spaces</h3><p>Candle-lit private suites, rain showers and a post-ritual tea lounge — no noise, no rush.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="therapies" id="therapies">
+  <div class="wrap">
+    <span class="kicker rv" style="text-align:center">The Menu</span>
+    <h2 class="rv" style="text-align:center">Massage therapies</h2>
+    <p class="lead rv" style="text-align:center;margin:0 auto">Tap a ritual to see what's inside. All prices include taxes and the tea ceremony.</p>
+    <div class="acc">
+      <div class="acc-item rv">
+        <button class="acc-head" aria-expanded="false">
+          <span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="#d4af6a" stroke-width="1.8"><path d="M14 3c5 7 7 11 7 15a7 7 0 0 1-14 0c0-4 2-8 7-15z"/><circle cx="14" cy="18" r="2.5" fill="#d4af6a"/></svg></span>
+          <span class="tt"><b>Traditional Thai Massage</b><small>Dry · assisted stretching · no oil</small></span>
+          <span class="pr">₹2,499</span><span class="plus">+</span>
+        </button>
+        <div class="acc-body"><div class="inner">
+          The ancient Wat Pho ritual — rhythmic pressing along sen lines with gentle assisted stretches. Done fully clothed on a floor mat.
+          <ul><li>Relieves deep muscular stiffness</li><li>Improves flexibility &amp; posture</li><li>Thai herbal tea + cool towel finish</li></ul>
+          <span class="dur">60 min · ₹2,499 &nbsp;/&nbsp; 90 min · ₹3,499</span>
+        </div></div>
+      </div>
+      <div class="acc-item rv d1">
+        <button class="acc-head" aria-expanded="false">
+          <span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="#d4af6a" stroke-width="1.8"><path d="M4 20c4-8 8-12 10-12s6 4 10 12" stroke-linecap="round"/><path d="M7 24h14" stroke-linecap="round"/></svg></span>
+          <span class="tt"><b>Balinese Aromatherapy</b><small>Warm oils · long flowing strokes</small></span>
+          <span class="pr">₹2,999</span><span class="plus">+</span>
+        </button>
+        <div class="acc-body"><div class="inner">
+          Warm lemongrass and frangipani oils, long gliding strokes and acupressure — pure nervous-system reset.
+          <ul><li>Deep stress &amp; anxiety relief</li><li>Choose your oil blend at arrival</li><li>Warm-towel scalp ritual included</li></ul>
+          <span class="dur">60 min · ₹2,999 &nbsp;/&nbsp; 90 min · ₹3,999</span>
+        </div></div>
+      </div>
+      <div class="acc-item rv d2">
+        <button class="acc-head" aria-expanded="false">
+          <span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="#d4af6a" stroke-width="1.8"><circle cx="14" cy="14" r="9"/><path d="M14 8v6l4 3" stroke-linecap="round"/><path d="M5 5l3 3M23 5l-3 3" stroke-linecap="round"/></svg></span>
+          <span class="tt"><b>Deep Tissue Recovery</b><small>Targeted · for athletes &amp; desk pain</small></span>
+          <span class="pr">₹3,299</span><span class="plus">+</span>
+        </button>
+        <div class="acc-body"><div class="inner">
+          Slow, firm pressure into knots and trigger points — for backs that carry the week.
+          <ul><li>Neck, shoulder &amp; lower-back focus</li><li>Hot-stone add-on available</li><li>Posture assessment included</li></ul>
+          <span class="dur">60 min · ₹3,299 &nbsp;/&nbsp; 90 min · ₹4,299</span>
+        </div></div>
+      </div>
+      <div class="acc-item rv">
+        <button class="acc-head" aria-expanded="false">
+          <span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="#d4af6a" stroke-width="1.8"><path d="M14 4c3 5 4 8 4 12a4 4 0 0 1-8 0c0-4 1-7 4-12z"/><path d="M8 22c2-3 4-4 6-4s4 1 6 4" stroke-linecap="round"/></svg></span>
+          <span class="tt"><b>Herbal Compress Ritual</b><small>Steamed poultice · signature</small></span>
+          <span class="pr">₹3,799</span><span class="plus">+</span>
+        </button>
+        <div class="acc-body"><div class="inner">
+          Our signature — steamed muslin poultices of plai, turmeric and kaffir lime pressed along the body after a full Thai massage.
+          <ul><li>Eases joint pain &amp; inflammation</li><li>Deeply warming in monsoon &amp; winter</li><li>Take-home compress sachet</li></ul>
+          <span class="dur">90 min · ₹3,799 &nbsp;/&nbsp; 120 min · ₹4,999</span>
+        </div></div>
+      </div>
+      <div class="acc-item rv d1">
+        <button class="acc-head" aria-expanded="false">
+          <span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="#d4af6a" stroke-width="1.8"><circle cx="14" cy="10" r="5"/><path d="M6 24c0-5 4-8 8-8s8 3 8 8" stroke-linecap="round"/></svg></span>
+          <span class="tt"><b>Couple's Sanctuary</b><small>Private suite · for two</small></span>
+          <span class="pr">₹6,999</span><span class="plus">+</span>
+        </button>
+        <div class="acc-body"><div class="inner">
+          Side-by-side rituals in a private candle-lit suite with rain shower, rose-petal foot soak and a tea ceremony for two.
+          <ul><li>Choose any two 90-min rituals</li><li>Private suite + rain shower</li><li>Anniversary &amp; celebration setups</li></ul>
+          <span class="dur">120 min · ₹6,999 for two</span>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="member" id="membership">
+  <div class="wrap">
+    <span class="kicker rv" style="text-align:center">Belong to calm</span>
+    <h2 class="rv" style="text-align:center">Membership plans</h2>
+    <p class="lead rv" style="text-align:center;margin:0 auto">One ritual a month keeps the city out. Pause or cancel anytime.</p>
+    <div class="mem-grid">
+      <div class="mem rv">
+        <h3>Serene</h3><p style="color:var(--muted);font-size:14px">For the occasional escape.</p>
+        <div class="mp">₹1,999<small> / month</small></div>
+        <ul>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>1 × 60-min massage monthly</li>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>10% off salon services</li>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>Birthday ritual gift</li>
+        </ul>
+        <a class="btn-ghost" href="#booking" style="text-align:center">Choose Serene</a>
+      </div>
+      <div class="mem hot rv d1">
+        <span class="flag">Most loved</span>
+        <h3>Bliss</h3><p style="color:var(--muted);font-size:14px">Our signature monthly ritual.</p>
+        <div class="mp">₹3,499<small> / month</small></div>
+        <ul>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>1 × 90-min signature ritual monthly</li>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>20% off salon + extra therapies</li>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>Guest pass every quarter</li>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>Priority weekend slots</li>
+        </ul>
+        <a class="btn-lotus" href="#booking" style="text-align:center">Choose Bliss</a>
+      </div>
+      <div class="mem rv d2">
+        <h3>Nirvana</h3><p style="color:var(--muted);font-size:14px">For two, in total calm.</p>
+        <div class="mp">₹5,999<small> / month</small></div>
+        <ul>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>2 × 90-min rituals monthly (shareable)</li>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>1 couple's sanctuary per quarter</li>
+          <li><svg viewBox="0 0 18 18" fill="none" stroke="#d4af6a" stroke-width="2"><path d="M3 9.5l4 4 8-9" stroke-linecap="round"/></svg>25% off everything, always</li>
+        </ul>
+        <a class="btn-ghost" href="#booking" style="text-align:center">Choose Nirvana</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <span class="kicker rv">Two sanctuaries</span>
+    <h2 class="rv">Visit us in Mumbai</h2>
+    <div class="loc-grid">
+      <div class="loc rv">
+        <div class="map" aria-hidden="true"><svg viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice"><rect width="560" height="220" fill="#0c1e24"/><g stroke="#2fa79b" stroke-width="2" opacity=".5"><path d="M0 60 H560 M0 120 H560 M0 175 H560 M120 0 V220 M260 0 V220 M420 0 V220"/></g><circle cx="260" cy="120" r="10" fill="#d4af6a"/><circle cx="260" cy="120" r="22" fill="none" stroke="#d4af6a" opacity=".5"/><circle cx="260" cy="120" r="36" fill="none" stroke="#d4af6a" opacity=".25"/><text x="260" y="172" fill="#f0d9a8" font-size="15" text-anchor="middle" font-family="Outfit">Borivali West</text></svg></div>
+        <div class="body"><h3>Borivali West</h3><p>3rd Floor, Goyal Shopping Centre, SV Road,<br>Borivali West, Mumbai 400092<br>+91 22 4890 1122</p><p class="hrs">Daily · 10 AM – 9 PM</p></div>
+      </div>
+      <div class="loc rv d1">
+        <div class="map" aria-hidden="true"><svg viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice"><rect width="560" height="220" fill="#0c1e24"/><g stroke="#2fa79b" stroke-width="2" opacity=".5"><path d="M0 50 H560 M0 110 H560 M0 170 H560 M160 0 V220 M340 0 V220 M480 0 V220"/></g><circle cx="340" cy="110" r="10" fill="#d4af6a"/><circle cx="340" cy="110" r="22" fill="none" stroke="#d4af6a" opacity=".5"/><circle cx="340" cy="110" r="36" fill="none" stroke="#d4af6a" opacity=".25"/><text x="340" y="162" fill="#f0d9a8" font-size="15" text-anchor="middle" font-family="Outfit">Dahisar East</text></svg></div>
+        <div class="body"><h3>Dahisar East</h3><p>Ground Floor, Shanti Heights, Western Express Hwy,<br>Dahisar East, Mumbai 400068<br>+91 22 4890 3344</p><p class="hrs">Daily · 10 AM – 9 PM</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="wrap">
+    <span class="kicker rv" style="text-align:center">Reserve your calm</span>
+    <h2 class="rv" style="text-align:center">Book a ritual</h2>
+    <p class="lead rv" style="text-align:center;margin:0 auto">Tell us when — we'll prepare your suite, your oils and your tea.</p>
+    <div class="book-shell rv">
+      <form id="bbForm" novalidate>
+        <div class="fgrid">
+          <div class="field"><label for="bb-name">Full Name</label><input id="bb-name" type="text" placeholder="Kavya Iyer" autocomplete="name"><span class="err">Please enter your name.</span></div>
+          <div class="field"><label for="bb-phone">Phone</label><input id="bb-phone" type="tel" placeholder="+91 98XXX XXXXX" autocomplete="tel"><span class="err">Enter a valid 10-digit number.</span></div>
+          <div class="field full"><label>Choose Studio</label><div class="seg" id="bb-studio"><button type="button" class="sel">Borivali West</button><button type="button">Dahisar East</button></div></div>
+          <div class="field"><label for="bb-therapy">Therapy</label><select id="bb-therapy"><option value="">Select a ritual…</option><option>Traditional Thai — ₹2,499</option><option>Balinese Aromatherapy — ₹2,999</option><option>Deep Tissue Recovery — ₹3,299</option><option>Herbal Compress Ritual — ₹3,799</option><option>Couple's Sanctuary — ₹6,999</option><option>Salon Service</option></select><span class="err">Pick a therapy.</span></div>
+          <div class="field"><label for="bb-therapist">Therapist</label><select id="bb-therapist"><option>No preference</option><option>Female therapist</option><option>Male therapist</option></select></div>
+          <div class="field"><label for="bb-date">Preferred Date</label><input id="bb-date" type="date"><span class="err">Choose a date.</span></div>
+          <div class="field"><label for="bb-time">Preferred Time</label><select id="bb-time"><option>Morning (10–1)</option><option>Afternoon (1–5)</option><option>Evening (5–9)</option></select></div>
+          <div class="field full"><label for="bb-notes">Notes</label><textarea id="bb-notes" rows="3" placeholder="Injuries, pressure preference, celebration…"></textarea></div>
+        </div>
+        <div style="margin-top:30px;text-align:center"><button class="btn-lotus" type="submit">Request Booking</button></div>
+        <div id="bb-ok" role="status"><h4>Namaste — request received</h4><p>Our wellness concierge will call within an hour to confirm your suite.</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h5>BLUE BELLS THAI SPA</h5><p>Borivali West · Dahisar East, Mumbai<br>+91 22 4890 1122 · namaste@bluebellsspa.in<br>Certified Thai therapists · Unisex salon</p></div>
+      <div><h5>RITUALS</h5><ul><li><a href="#therapies">Therapies</a></li><li><a href="#membership">Membership</a></li><li><a href="#visit">Locations</a></li></ul></div>
+      <div><h5>CALM HOURS</h5><ul><li>Daily · 10 AM – 9 PM</li><li>Last ritual starts 7:30 PM</li></ul></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Blue Bells Thai Spa &amp; Salon</span><span>Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* floating petals */
+  var petalBox = document.getElementById("petals");
+  if (!reduce && petalBox) {
+    var colors = ["#d4af6a","#2fa79b","#f0d9a8","#7fd6c9"];
+    for (var i = 0; i < 16; i++) {
+      var p = document.createElementNS("http://www.w3.org/2000/svg","svg");
+      var s = 14 + Math.random()*22;
+      p.setAttribute("viewBox","0 0 20 20");
+      p.setAttribute("width", s); p.setAttribute("height", s);
+      p.classList.add("petal");
+      p.style.left = (Math.random()*100) + "vw";
+      p.style.animationDuration = (14 + Math.random()*18) + "s";
+      p.style.animationDelay = (-Math.random()*20) + "s";
+      var el = document.createElementNS("http://www.w3.org/2000/svg","path");
+      el.setAttribute("d","M10 1c4 5 5 8 5 11a5 5 0 0 1-10 0c0-3 1-6 5-11z");
+      el.setAttribute("fill", colors[i % colors.length]);
+      el.setAttribute("opacity", (0.35 + Math.random()*0.3).toFixed(2));
+      p.appendChild(el);
+      petalBox.appendChild(p);
+    }
+  }
+
+  /* nav */
+  var nav = document.getElementById("nav");
+  window.addEventListener("scroll", function(){ nav.classList.toggle("scrolled", window.scrollY > 40); }, {passive:true});
+  var burger = document.getElementById("burger"), links = document.getElementById("navlinks");
+  burger.addEventListener("click", function(){ links.classList.toggle("open"); });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); }); });
+
+  /* reveal */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold: 0.12});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* accordion */
+  document.querySelectorAll(".acc-item").forEach(function(item){
+    var head = item.querySelector(".acc-head"), body = item.querySelector(".acc-body");
+    head.addEventListener("click", function(){
+      var open = item.classList.contains("open");
+      document.querySelectorAll(".acc-item.open").forEach(function(o){
+        o.classList.remove("open"); o.querySelector(".acc-body").style.maxHeight = "0px";
+        o.querySelector(".acc-head").setAttribute("aria-expanded","false");
+      });
+      if (!open) {
+        item.classList.add("open");
+        body.style.maxHeight = body.scrollHeight + "px";
+        head.setAttribute("aria-expanded","true");
+      }
+    });
+  });
+
+  /* studio segmented control */
+  var segBtns = document.querySelectorAll("#bb-studio button");
+  segBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      segBtns.forEach(function(x){ x.classList.remove("sel"); });
+      b.classList.add("sel");
+    });
+  });
+
+  /* form */
+  var form = document.getElementById("bbForm");
+  function bad(id, isBad){ document.getElementById(id).closest(".field").classList.toggle("invalid", isBad); return !isBad; }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault(); var ok = true;
+    ok = bad("bb-name", document.getElementById("bb-name").value.trim().length < 2) && ok;
+    ok = bad("bb-phone", !/^[+\d][\d\s-]{8,14}$/.test(document.getElementById("bb-phone").value.trim())) && ok;
+    ok = bad("bb-therapy", !document.getElementById("bb-therapy").value) && ok;
+    ok = bad("bb-date", !document.getElementById("bb-date").value) && ok;
+    if (ok) {
+      form.querySelectorAll("input,select,textarea,button.btn-lotus").forEach(function(el){ el.disabled = true; });
+      var box = document.getElementById("bb-ok");
+      box.classList.add("show");
+      box.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
+    }
+  });
+  ["bb-name","bb-phone","bb-therapy","bb-date"].forEach(function(id){
+    document.getElementById(id).addEventListener("input", function(){ bad(id, false); });
+  });
+})();
+</script>
+</body>
+</html>

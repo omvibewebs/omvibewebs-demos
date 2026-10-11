@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tandoori Culture Singapore | North Indian Restaurant</title>
+<meta name="description" content="Tandoori Culture, 4 Hill View Rise, Singapore — fiery North Indian classics from a live clay tandoor. Full menu with SGD prices, catering and table booking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#faf4e8; --paper:#fffdf7;
+  --ink:#211419; --plum:#3a1f2b;
+  --flame:#e4572e; --ember:#c23a1d; --gold:#f2a03d;
+  --leaf:#5a7d3c; --chili:#d7263d;
+  --line:rgba(33,20,25,.12);
+  --radius:20px;
+  --shadow:0 26px 60px -26px rgba(194,58,29,.35);
+  --disp:'Anton',sans-serif; --body:'Inter',sans-serif; --hand:'Caveat',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--flame);color:#fff}
+.wrap{width:min(1200px,92vw);margin:0 auto}
+h1,h2,h3{font-family:var(--disp);font-weight:400;letter-spacing:.01em;line-height:.98;text-transform:uppercase}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.78rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--ember)}
+.eyebrow .pill{background:var(--ink);color:var(--cream);padding:.45rem 1rem;border-radius:100px;letter-spacing:.22em;font-size:.7rem}
+.sec{padding:clamp(4rem,8vw,7rem) 0}
+.sec-head{margin-bottom:clamp(2rem,4vw,3rem);max-width:720px}
+.sec-head h2{font-size:clamp(2.6rem,6vw,4.6rem);margin:1rem 0 .8rem}
+.sec-head h2 .hot{color:var(--flame);position:relative;display:inline-block}
+.sec-head h2 .hot::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.14em;background:var(--gold);z-index:-1;transform:skew(-12deg)}
+.sec-head p{color:#6b5a52;font-size:1.05rem;max-width:560px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(30px) rotate(.4deg);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:.35s}
+nav .bar{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+.brand{display:flex;align-items:center;gap:.75rem}
+.brand .fl{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--flame),var(--ember));display:grid;place-items:center;transform:rotate(-6deg);box-shadow:var(--shadow)}
+.brand b{font-family:var(--disp);font-size:1.3rem;letter-spacing:.04em}
+.brand small{display:block;font-size:.62rem;font-weight:700;letter-spacing:.3em;color:var(--ember)}
+nav .inner{width:min(1200px,92vw);margin:.8rem auto 0;background:rgba(250,244,232,.82);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:100px;padding:.55rem .6rem .55rem 1.4rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 14px 40px -20px rgba(33,20,25,.3)}
+.links{display:flex;gap:1.7rem;align-items:center}
+.links a{font-size:.88rem;font-weight:600;letter-spacing:.04em}
+.links a:hover{color:var(--ember)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:var(--cream);border:none;cursor:pointer;font-weight:700;font-size:.86rem;letter-spacing:.06em;padding:.9rem 1.7rem;border-radius:100px;transition:transform .25s,background .25s;text-transform:uppercase}
+.btn:hover{transform:translateY(-3px) rotate(-1deg);background:var(--ember)}
+.btn.flame{background:linear-gradient(120deg,var(--flame),var(--ember));color:#fff;box-shadow:var(--shadow)}
+.btn.flame:hover{background:linear-gradient(120deg,var(--ember),var(--flame))}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.burger span{display:block;width:26px;height:2px;background:var(--ink);margin:6px 0;transition:.3s}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:9rem 0 5rem;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;z-index:0;animation:blob 12s ease-in-out infinite alternate}
+.b1{width:520px;height:520px;background:#f6b26b;top:-120px;right:-120px}
+.b2{width:420px;height:420px;background:#f4908a;bottom:-140px;left:-120px;animation-delay:3s}
+.b3{width:300px;height:300px;background:#cfe08a;top:40%;left:38%;animation-delay:6s;opacity:.35}
+@keyframes blob{to{transform:translate(40px,-50px) scale(1.12)}}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;width:min(1200px,92vw);margin:0 auto}
+.kicker{font-family:var(--hand);font-size:1.6rem;color:var(--ember);transform:rotate(-3deg);display:inline-block;margin-bottom:.6rem}
+.hero h1{font-size:clamp(3.4rem,9vw,7.6rem);line-height:.94}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
+.hero h1 .fire{background:linear-gradient(100deg,var(--flame) 10%,var(--gold) 55%,var(--chili) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.1rem;color:#5c4b44;max-width:480px;margin:1.4rem 0 2rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.badges{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2.2rem}
+.badges span{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--paper);border:1px solid var(--line);padding:.5rem 1rem;border-radius:100px;display:inline-flex;align-items:center;gap:.5rem}
+.badges svg{width:15px;height:15px}
+.tandoor-card{position:relative;background:var(--ink);border-radius:28px;padding:2.2rem;color:var(--cream);box-shadow:0 40px 90px -30px rgba(33,20,25,.55);transform:rotate(2deg);overflow:hidden}
+.tandoor-card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 300px at 80% 100%,rgba(228,87,46,.4),transparent 60%)}
+.tandoor-card h3{font-size:1.9rem;margin-bottom:.4rem;position:relative}
+.tandoor-card p{color:#d8c4b2;font-size:.95rem;position:relative}
+.flame-svg{position:relative;display:block;margin:1rem auto;animation:flick 1.6s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes flick{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.06,1.12) rotate(2deg)}}
+.tandoor-stats{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.2rem}
+.tandoor-stats div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:.9rem;text-align:center}
+.tandoor-stats b{font-family:var(--disp);font-size:1.5rem;color:var(--gold);display:block}
+.tandoor-stats span{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#cbb49e}
+.scroll-strip{position:relative;z-index:2;margin-top:3.5rem}
+
+/* marquee */
+.marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:1rem 0;transform:rotate(1.1deg) scale(1.03)}
+.marquee .track{display:flex;gap:2.6rem;width:max-content;animation:mq 24s linear infinite;font-family:var(--disp);font-size:1.3rem;letter-spacing:.05em;white-space:nowrap}
+.marquee .track em{font-style:normal;color:var(--gold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* menu */
+.menu-sec{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.tab{border:1.5px solid var(--line);background:transparent;font-family:var(--body);font-weight:700;font-size:.85rem;letter-spacing:.06em;padding:.75rem 1.4rem;border-radius:100px;cursor:pointer;transition:.25s;text-transform:uppercase}
+.tab:hover{border-color:var(--ink)}
+.tab.active{background:var(--ink);color:var(--cream);border-color:var(--ink);transform:rotate(-1.5deg)}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.dish{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;position:relative;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;gap:.5rem}
+.dish:hover{transform:translateY(-7px) rotate(-.6deg);box-shadow:var(--shadow)}
+.dish .veg{position:absolute;top:1.1rem;right:1.1rem;width:20px;height:20px;border:2px solid var(--leaf);border-radius:5px;display:grid;place-items:center}
+.dish .veg i{width:9px;height:9px;border-radius:50%;background:var(--leaf)}
+.dish .veg.nonveg{border-color:var(--chili)}.dish .veg.nonveg i{background:var(--chili);border-radius:0;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.dish h3{font-size:1.25rem;letter-spacing:.03em;padding-right:1.6rem}
+.dish p{font-size:.9rem;color:#6b5a52;flex:1}
+.dish .pr{display:flex;align-items:center;justify-content:space-between;margin-top:.6rem}
+.dish .sgd{font-family:var(--disp);font-size:1.5rem;color:var(--ember)}
+.dish .add{border:1.5px solid var(--ink);background:transparent;border-radius:100px;font-weight:700;font-size:.78rem;letter-spacing:.08em;padding:.55rem 1.1rem;cursor:pointer;transition:.25s;text-transform:uppercase}
+.dish .add:hover{background:var(--ink);color:var(--cream)}
+.dish .tagline{font-family:var(--hand);font-size:1.25rem;color:var(--ember);transform:rotate(-2deg)}
+.dish.hide{display:none}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+.dish.pop{animation:pop .35s ease}
+
+/* spice meter */
+.spice{display:flex;gap:.3rem;align-items:center;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a7368}
+.spice svg{width:13px;height:13px}
+
+/* catering */
+.cater{background:linear-gradient(150deg,#2a1420,#3a1f2b 55%,#241019);color:#f6e8d8;position:relative;overflow:hidden}
+.cater::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 12% 8%,rgba(242,160,61,.18),transparent 60%),radial-gradient(500px 380px at 90% 92%,rgba(214,38,61,.16),transparent 60%)}
+.cater .sec-head h2{color:#fff}
+.cater .sec-head p{color:#cbb49e}
+.cater .eyebrow{color:var(--gold)}
+.pack-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;z-index:1}
+.pack{background:rgba(255,253,247,.06);border:1px solid rgba(242,160,61,.3);border-radius:24px;padding:2rem;backdrop-filter:blur(10px);transition:transform .35s;display:flex;flex-direction:column}
+.pack:hover{transform:translateY(-8px)}
+.pack.star{border-color:var(--gold);background:rgba(242,160,61,.12);position:relative}
+.pack.star::after{content:"MOST BOOKED";position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-2deg);background:var(--gold);color:var(--ink);font-size:.68rem;font-weight:800;letter-spacing:.2em;padding:.4rem 1.1rem;border-radius:100px}
+.pack h3{font-size:1.6rem;color:#fff;margin:.4rem 0}
+.pack .pax{font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.pack ul{list-style:none;margin:1.2rem 0;display:grid;gap:.6rem;flex:1}
+.pack li{display:flex;gap:.7rem;align-items:flex-start;font-size:.93rem;color:#e9d6bd}
+.pack li svg{flex:none;width:17px;height:17px;margin-top:.2rem}
+.pack .from{font-family:var(--disp);font-size:2rem;color:#fff}
+.pack .from small{font-family:var(--body);font-size:.8rem;color:#cbb49e}
+
+/* gallery strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.tile{border-radius:var(--radius);min-height:220px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1.2rem;color:#fff;transition:transform .35s}
+.tile:hover{transform:scale(1.03) rotate(.6deg)}
+.tile svg{position:absolute;inset:0;width:100%;height:100%}
+.tile span{position:relative;font-family:var(--disp);font-size:1.15rem;letter-spacing:.04em;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+
+/* visit */
+.visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.hours{background:var(--ink);color:var(--cream);border-radius:24px;padding:2.2rem;transform:rotate(-1.2deg);box-shadow:0 30px 70px -28px rgba(33,20,25,.5)}
+.hours h3{font-size:1.7rem;margin-bottom:1rem;color:var(--gold)}
+.hours dl{display:grid;grid-template-columns:1fr auto;gap:.55rem 1rem;font-size:.95rem}
+.hours dt{color:#d8c4b2}.hours dd{font-weight:700}
+.hours .addr{margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.15);font-size:.95rem;color:#e9d6bd}
+
+/* booking form */
+.book{background:var(--cream)}
+.form-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:clamp(1.8rem,4vw,3rem);display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field.full{grid-column:1/-1}
+.field label{font-size:.74rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#8a7368}
+.field input,.field select,.field textarea{font-family:var(--body);font-size:1rem;border:1.5px solid var(--line);border-radius:14px;padding:.9rem 1.05rem;background:#fff;outline:none;transition:border .25s,box-shadow .25s;width:100%;color:var(--ink)}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--flame);box-shadow:0 0 0 4px rgba(228,87,46,.14)}
+.field .err{font-size:.8rem;color:var(--chili);min-height:1.1em;font-weight:600}
+.field.invalid input,.field.invalid select{border-color:var(--chili)}
+.radio-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-block;border:1.5px solid var(--line);border-radius:100px;padding:.65rem 1.3rem;font-weight:700;font-size:.85rem;cursor:pointer;transition:.25s}
+.chip input:checked+span{background:var(--flame);border-color:var(--flame);color:#fff;transform:rotate(-1.5deg)}
+.chip input:focus-visible+span{box-shadow:0 0 0 4px rgba(228,87,46,.25)}
+
+footer{background:var(--ink);color:#cbb49e;padding:3.5rem 0 2rem}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;margin-bottom:2.4rem}
+footer h4{font-family:var(--disp);color:#fff;font-size:1.15rem;letter-spacing:.04em;margin-bottom:.9rem}
+footer p,footer li{font-size:.92rem}
+footer ul{list-style:none;display:grid;gap:.5rem}
+footer a:hover{color:var(--gold)}
+.credit{border-top:1px solid rgba(255,255,255,.12);padding-top:1.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem}
+
+.toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,160%);background:var(--ink);color:var(--cream);padding:1.1rem 1.8rem;border-radius:16px;box-shadow:0 24px 60px -18px rgba(0,0,0,.5);z-index:100;transition:transform .45s cubic-bezier(.22,.61,.36,1);display:flex;gap:.8rem;align-items:center;max-width:90vw}
+.toast.show{transform:translate(-50%,0)}
+
+.cart-fab{position:fixed;right:1.4rem;bottom:1.4rem;z-index:90;background:var(--ink);color:#fff;border:none;border-radius:100px;padding:1rem 1.5rem;font-family:var(--body);font-weight:800;font-size:.9rem;cursor:pointer;display:none;align-items:center;gap:.7rem;box-shadow:0 20px 50px -16px rgba(0,0,0,.5);transition:transform .25s}
+.cart-fab.show{display:inline-flex}
+.cart-fab:hover{transform:translateY(-3px)}
+.cart-fab .n{background:var(--flame);border-radius:50%;width:26px;height:26px;display:grid;place-items:center;font-size:.8rem}
+
+@media(max-width:980px){
+  .menu-grid{grid-template-columns:1fr 1fr}
+  .pack-grid{grid-template-columns:1fr}
+  .strip{grid-template-columns:1fr 1fr}
+  .hero-grid{grid-template-columns:1fr}
+  .tandoor-card{transform:rotate(0);max-width:520px}
+  .visit .grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  nav .links{position:fixed;inset:0;background:var(--cream);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateX(100%);transition:transform .4s;z-index:65;padding:2rem}
+  nav .links.open{transform:none}
+  .burger{display:block;z-index:70;position:relative}
+  .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  nav .inner{border-radius:22px}
+  .menu-grid{grid-template-columns:1fr}
+  .form-card{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr}
+  .hero{padding-top:8rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="#top" aria-label="Tandoori Culture home">
+      <span class="fl" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z" fill="#fff"/><path d="M12 22c2.2 0 3.6-1.4 3.6-3.3 0-2-1.6-3.1-2.3-4.6-.3-.6-.7-1.3-1.3-2.1-.6.8-1 1.5-1.3 2.1-.7 1.5-2.3 2.6-2.3 4.6 0 1.9 1.4 3.3 3.6 3.3z" fill="#e4572e"/></svg></span>
+      <span><b>Tandoori Culture</b><small>Singapore</small></span>
+    </a>
+    <div class="links" id="links">
+      <a href="#menu">Menu</a>
+      <a href="#catering">Catering</a>
+      <a href="#visit">Visit</a>
+      <a href="#book" class="btn flame" style="padding:.75rem 1.4rem">Book Table</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="blob b1" aria-hidden="true"></div>
+  <div class="blob b2" aria-hidden="true"></div>
+  <div class="blob b3" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div>
+      <span class="kicker rv">straight from the clay tandoor</span>
+      <h1 class="rv rv-d1"><span class="stroke">Fire.</span><br><span class="fire">Flavour.</span><br>Culture.</h1>
+      <p class="lead rv rv-d2">North India&rsquo;s legendary tandoor lands at 4 Hill View Rise — smoky kebabs, hand-torn naans and curries that don&rsquo;t hold back. Halal-certified kitchen, vegetarian-friendly, unapologetically bold.</p>
+      <div class="hero-ctas rv rv-d3">
+        <a href="#menu" class="btn flame">See the Menu
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#book" class="btn">Book a Table</a>
+      </div>
+      <div class="badges rv rv-d3">
+        <span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5a7d3c" stroke-width="2"/><path d="m8.5 12.5 2.5 2.5 4.5-5.5" stroke="#5a7d3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Halal Certified</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21c-5 0-8-3-8-8 0-6 5-9 8-11 3 2 8 5 8 11 0 5-3 8-8 8z" stroke="#e4572e" stroke-width="2" stroke-linejoin="round"/></svg>Live Tandoor</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" stroke="#f2a03d" stroke-width="2" stroke-linejoin="round"/></svg>4.8 &middot; 2,300+ reviews</span>
+      </div>
+    </div>
+    <div class="tandoor-card rv rv-d2" aria-label="About our tandoor">
+      <h3>The 480&deg;C Heart</h3>
+      <p>Our clay tandoor never sleeps during service. Watch naans blister and kebabs char through the open kitchen.</p>
+      <svg class="flame-svg" width="150" height="190" viewBox="0 0 150 190" aria-hidden="true">
+        <defs>
+          <linearGradient id="fl1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#c23a1d"/><stop offset=".55" stop-color="#e4572e"/><stop offset="1" stop-color="#f2a03d"/></linearGradient>
+          <linearGradient id="fl2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#e4572e"/><stop offset="1" stop-color="#ffd166"/></linearGradient>
+        </defs>
+        <path d="M75 185c34 0 55-20 55-46 0-30-24-44-34-64-4-8-9-17-16-26-7 9-12 18-16 26-10 20-34 34-34 64 0 26 21 46 45 46z" fill="url(#fl1)"/>
+        <path d="M75 185c18 0 30-11 30-25 0-16-13-24-18-35-2.5-4.5-5-9-7-13-2 4-4.5 8.5-7 13-5 11-18 19-18 35 0 14 12 25 20 25z" fill="url(#fl2)" opacity=".92"/>
+        <ellipse cx="75" cy="186" rx="52" ry="7" fill="#000" opacity=".35"/>
+      </svg>
+      <div class="tandoor-stats">
+        <div><b>480&deg;C</b><span>Clay Heat</span></div>
+        <div><b>90<span style="font-size:1rem">s</span></b><span>Naan Flash</span></div>
+        <div><b>18<span style="font-size:1rem">+</span></b><span>Kebab Cuts</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="scroll-strip">
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Butter Chicken <em>&#10022;</em> Tandoori Nights <em>&#10022;</em> Garlic Naan <em>&#10022;</em> Biryani Fridays <em>&#10022;</em> Masala Chai <em>&#10022;</em> Paneer Tikka <em>&#10022;</em>&nbsp;</span>
+      <span>Butter Chicken <em>&#10022;</em> Tandoori Nights <em>&#10022;</em> Garlic Naan <em>&#10022;</em> Biryani Fridays <em>&#10022;</em> Masala Chai <em>&#10022;</em> Paneer Tikka <em>&#10022;</em>&nbsp;</span>
+    </div>
+  </div>
+</div>
+
+<section class="sec menu-sec" id="menu">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow"><span class="pill">Menu</span> All prices in SGD</span>
+      <h2>Built for <span class="hot">cravings</span></h2>
+      <p>Filter by mood. Everything is made to order over real fire — allow a few extra minutes when the tandoor is roaring.</p>
+    </div>
+    <div class="tabs rv" role="tablist" aria-label="Menu categories">
+      <button class="tab active" data-cat="all" role="tab" aria-selected="true">All</button>
+      <button class="tab" data-cat="tandoor" role="tab" aria-selected="false">From the Tandoor</button>
+      <button class="tab" data-cat="curry" role="tab" aria-selected="false">Curries</button>
+      <button class="tab" data-cat="biryani" role="tab" aria-selected="false">Biryani &amp; Rice</button>
+      <button class="tab" data-cat="bread" role="tab" aria-selected="false">Breads</button>
+      <button class="tab" data-cat="dessert" role="tab" aria-selected="false">Dessert &amp; Drinks</button>
+    </div>
+    <div class="menu-grid" id="menuGrid">
+
+      <article class="dish rv" data-cat="tandoor" data-veg="nonveg">
+        <span class="veg nonveg" title="Non-vegetarian"><i></i></span>
+        <span class="tagline">crowd favourite</span>
+        <h3>Tandoori Chicken (Half)</h3>
+        <p>Overnight yoghurt-spice marinade, charred in the clay oven, finished with butter &amp; chaat masala.</p>
+        <div class="spice">Heat <svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e0cbb8"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg></div>
+        <div class="pr"><span class="sgd">S$16.90</span><button class="add" data-dish="Tandoori Chicken (Half)">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d1" data-cat="tandoor" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Paneer Tikka Angar</h3>
+        <p>Smoked cottage-cheese cubes, peppers &amp; onions in a fiery angar masala, mint chutney alongside.</p>
+        <div class="spice">Heat <svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e0cbb8"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg></div>
+        <div class="pr"><span class="sgd">S$15.90</span><button class="add" data-dish="Paneer Tikka Angar">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d2" data-cat="tandoor" data-veg="nonveg">
+        <span class="veg nonveg" title="Non-vegetarian"><i></i></span>
+        <h3>Seekh Kebab (4 pc)</h3>
+        <p>Hand-minced lamb, green chilli &amp; coriander, grilled on skewers till the edges caramelise.</p>
+        <div class="spice">Heat <svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg></div>
+        <div class="pr"><span class="sgd">S$17.90</span><button class="add" data-dish="Seekh Kebab">Add +</button></div>
+      </article>
+
+      <article class="dish rv" data-cat="curry" data-veg="nonveg">
+        <span class="veg nonveg" title="Non-vegetarian"><i></i></span>
+        <span class="tagline">the legend</span>
+        <h3>Old Delhi Butter Chicken</h3>
+        <p>Charred tandoori chicken folded into silky tomato-makhani gravy. Order extra naan. Trust us.</p>
+        <div class="spice">Heat <svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e0cbb8"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e0cbb8"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg></div>
+        <div class="pr"><span class="sgd">S$18.90</span><button class="add" data-dish="Old Delhi Butter Chicken">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d1" data-cat="curry" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Dal Makhani 24-Hour</h3>
+        <p>Black lentils simmered a full day over embers, finished with white butter &amp; cream.</p>
+        <div class="spice">Heat <svg viewBox="0 0 24 24" fill="#e0cbb8"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e0cbb8"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e0cbb8"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg></div>
+        <div class="pr"><span class="sgd">S$14.90</span><button class="add" data-dish="Dal Makhani 24-Hour">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d2" data-cat="curry" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Kadhai Paneer</h3>
+        <p>Crushed coriander &amp; peppercorn masala, charred peppers, thick tomato-onion base.</p>
+        <div class="spice">Heat <svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e4572e"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg><svg viewBox="0 0 24 24" fill="#e0cbb8"><path d="M12 22c4.4 0 7-2.8 7-6.5 0-4-3.2-6.3-4.6-9.2-.5-1-1.3-2.3-2.4-3.8-1.1 1.5-1.9 2.8-2.4 3.8C8.2 9.2 5 11.5 5 15.5 5 19.2 7.6 22 12 22z"/></svg></div>
+        <div class="pr"><span class="sgd">S$16.90</span><button class="add" data-dish="Kadhai Paneer">Add +</button></div>
+      </article>
+
+      <article class="dish rv" data-cat="biryani" data-veg="nonveg">
+        <span class="veg nonveg" title="Non-vegetarian"><i></i></span>
+        <span class="tagline">friday special</span>
+        <h3>Hyderabadi Chicken Dum Biryani</h3>
+        <p>Sealed-handi biryani, saffron milk, crispy onions — served with mirchi ka salan &amp; raita.</p>
+        <div class="pr"><span class="sgd">S$17.90</span><button class="add" data-dish="Hyderabadi Chicken Dum Biryani">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d1" data-cat="biryani" data-veg="nonveg">
+        <span class="veg nonveg" title="Non-vegetarian"><i></i></span>
+        <h3>Mutton Rogan Josh Biryani</h3>
+        <p>Slow-braised mutton layered through aged basmati, ghee-tempered, kewra-kissed.</p>
+        <div class="pr"><span class="sgd">S$21.90</span><button class="add" data-dish="Mutton Rogan Josh Biryani">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d2" data-cat="biryani" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Subz Biryani &amp; Jeera Rice</h3>
+        <p>Garden vegetables &amp; paneer dum-style, or simple ghee-jeera rice — both with dal tadka pairing.</p>
+        <div class="pr"><span class="sgd">S$13.90</span><button class="add" data-dish="Subz Biryani">Add +</button></div>
+      </article>
+
+      <article class="dish rv" data-cat="bread" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Garlic Naan</h3>
+        <p>Blistered in 90 seconds flat, brushed with garlic butter &amp; coriander.</p>
+        <div class="pr"><span class="sgd">S$4.50</span><button class="add" data-dish="Garlic Naan">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d1" data-cat="bread" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <span class="tagline">stuffed &amp; proud</span>
+        <h3>Amritsari Kulcha (2 pc)</h3>
+        <p>Crisp-edged, potato-onion stuffed, drowned in white butter — with chole on request.</p>
+        <div class="pr"><span class="sgd">S$8.90</span><button class="add" data-dish="Amritsari Kulcha">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d2" data-cat="bread" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Cheese Chilli Naan</h3>
+        <p>Molten cheese core with a green-chilli kick — the table-fighter everyone reaches for.</p>
+        <div class="pr"><span class="sgd">S$7.90</span><button class="add" data-dish="Cheese Chilli Naan">Add +</button></div>
+      </article>
+
+      <article class="dish rv" data-cat="dessert" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Gulab Jamun Cheesecake</h3>
+        <p>Our mashup legend — baked cheesecake crowned with warm gulab jamun &amp; pistachio dust.</p>
+        <div class="pr"><span class="sgd">S$9.90</span><button class="add" data-dish="Gulab Jamun Cheesecake">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d1" data-cat="dessert" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Kulfi Falooda</h3>
+        <p>Dense malai kulfi, vermicelli, basil seeds, rose syrup — old-school Delhi style.</p>
+        <div class="pr"><span class="sgd">S$8.90</span><button class="add" data-dish="Kulfi Falooda">Add +</button></div>
+      </article>
+
+      <article class="dish rv rv-d2" data-cat="dessert" data-veg="veg">
+        <span class="veg" title="Vegetarian"><i></i></span>
+        <h3>Masala Chai / Mango Lassi</h3>
+        <p>Slow-brewed spiced chai or thick Alphonso lassi — the only correct endings.</p>
+        <div class="pr"><span class="sgd">S$5.50</span><button class="add" data-dish="Masala Chai / Mango Lassi">Add +</button></div>
+      </article>
+
+    </div>
+    <p class="rv" style="margin-top:1.6rem;color:#8a7368;font-size:.9rem">Prices include GST. A 10% service charge applies for dine-in. Full allergen chart available on request.</p>
+  </div>
+</section>
+
+<section class="sec cater" id="catering">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow"><span class="pill" style="background:var(--gold);color:var(--ink)">Catering</span></span>
+      <h2>We bring the <span style="color:var(--gold)">fire</span> to you</h2>
+      <p>Weddings, Deepavali open houses, corporate lunches — live tandoor stations, chaat counters and buffet spreads across Singapore.</p>
+    </div>
+    <div class="pack-grid">
+      <div class="pack rv">
+        <span class="pax">20 – 50 guests</span>
+        <h3>House Party</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>2 live counters (chaat + tandoor)</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>8-dish buffet, veg &amp; non-veg</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Dessert + chai station</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Setup, service crew &amp; cleanup</li>
+        </ul>
+        <div class="from">S$38 <small>/ guest</small></div>
+      </div>
+      <div class="pack star rv rv-d1">
+        <span class="pax">50 – 200 guests</span>
+        <h3>Wedding &amp; Festival</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Live tandoor + chaat + dosa counters</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>14-dish royal buffet spread</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Welcome drinks &amp; mithai counter</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated event manager</li>
+        </ul>
+        <div class="from">S$55 <small>/ guest</small></div>
+      </div>
+      <div class="pack rv rv-d2">
+        <span class="pax">30+ guests</span>
+        <h3>Corporate Lunch</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Office-friendly buffet boxes</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Veg / halal / Jain options</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>On-time islandwide delivery</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2a03d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly plans for teams</li>
+        </ul>
+        <div class="from">S$18 <small>/ guest</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="vibe">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow"><span class="pill">The Vibe</span></span>
+      <h2>Bold room, <span class="hot">bolder</span> plates</h2>
+    </div>
+    <div class="strip">
+      <div class="tile rv" aria-label="Open kitchen"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice"><rect width="400" height="260" fill="#3a1f2b"/><rect x="40" y="40" width="320" height="120" rx="12" fill="#211419"/><ellipse cx="200" cy="150" rx="70" ry="26" fill="#e4572e" opacity=".85"/><ellipse cx="200" cy="140" rx="40" ry="16" fill="#f2a03d"/><rect x="60" y="180" width="280" height="14" rx="7" fill="#f2a03d" opacity=".6"/></svg><span>Open Tandoor Kitchen</span></div>
+      <div class="tile rv rv-d1" aria-label="Family dining"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice"><rect width="400" height="260" fill="#e4572e"/><circle cx="120" cy="90" r="46" fill="#faf4e8" opacity=".9"/><circle cx="280" cy="90" r="46" fill="#faf4e8" opacity=".7"/><rect x="60" y="160" width="280" height="60" rx="14" fill="#211419" opacity=".85"/><rect x="90" y="176" width="60" height="28" rx="8" fill="#f2a03d"/><rect x="170" y="176" width="60" height="28" rx="8" fill="#faf4e8" opacity=".8"/><rect x="250" y="176" width="60" height="28" rx="8" fill="#f2a03d" opacity=".7"/></svg><span>Family Thali Nights</span></div>
+      <div class="tile rv rv-d2" aria-label="Chaat counter"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice"><rect width="400" height="260" fill="#5a7d3c"/><rect x="50" y="60" width="300" height="140" rx="14" fill="#faf4e8"/><circle cx="130" cy="120" r="26" fill="#e4572e"/><circle cx="200" cy="120" r="26" fill="#f2a03d"/><circle cx="270" cy="120" r="26" fill="#d7263d"/><rect x="90" y="160" width="220" height="12" rx="6" fill="#211419" opacity=".25"/></svg><span>Chaat Counter</span></div>
+      <div class="tile rv rv-d3" aria-label="Private events"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice"><rect width="400" height="260" fill="#211419"/><circle cx="200" cy="110" r="54" fill="#f2a03d" opacity=".9"/><path d="M120 220 Q200 160 280 220" stroke="#e4572e" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="90" cy="60" r="10" fill="#e4572e"/><circle cx="320" cy="70" r="12" fill="#f2a03d"/></svg><span>Private Events</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec visit" id="visit">
+  <div class="wrap">
+    <div class="grid">
+      <div class="rv">
+        <span class="eyebrow"><span class="pill">Visit Us</span></span>
+        <h2 style="font-size:clamp(2.4rem,5vw,3.8rem);margin:1rem 0 .8rem">Find the <span class="hot">fire</span></h2>
+        <p style="color:#6b5a52;max-width:460px">Two minutes from Hillview MRT (Downtown Line). Street parking on Hill View Rise after 7 PM; taxi stand right outside.</p>
+        <div style="margin-top:1.6rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)" aria-hidden="true">
+          <svg viewBox="0 0 600 380">
+            <rect width="600" height="380" fill="#f3e8d2"/>
+            <g stroke="#211419" stroke-width="10" fill="none" opacity=".8"><path d="M0 190 H600"/><path d="M300 0 V380"/></g>
+            <g stroke="#211419" stroke-width="5" fill="none" opacity=".35"><path d="M0 90 H600"/><path d="M0 290 H600"/><path d="M150 0 V380"/><path d="M450 0 V380"/></g>
+            <rect x="255" y="145" width="90" height="90" rx="14" fill="#e4572e"/>
+            <circle cx="300" cy="178" r="14" fill="#fff"/>
+            <path d="M300 170c2-3 2-5.4 0-7.4-2 2-2 4.4 0 7.4z" fill="#e4572e"/>
+            <text x="300" y="252" text-anchor="middle" font-family="Inter,sans-serif" font-size="19" font-weight="800" fill="#211419">TANDOORI CULTURE</text>
+            <text x="300" y="272" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#6b5a52">4 Hill View Rise, S(667979)</text>
+            <g font-family="Inter,sans-serif" font-size="13" fill="#6b5a52">
+              <text x="20" y="178">Hillview Ave</text><text x="330" y="40">Hill View Rise</text><text x="470" y="350">MRT: Hillview DT3</text>
+            </g>
+            <circle cx="470" cy="320" r="10" fill="#5a7d3c"/><text x="470" y="324" text-anchor="middle" font-size="11" fill="#fff" font-weight="800">M</text>
+          </svg>
+        </div>
+      </div>
+      <div class="hours rv rv-d1">
+        <h3>Hours &amp; Contact</h3>
+        <dl>
+          <dt>Mon – Thu</dt><dd>11:30 AM – 10:00 PM</dd>
+          <dt>Fri – Sat</dt><dd>11:30 AM – 11:00 PM</dd>
+          <dt>Sunday</dt><dd>11:00 AM – 10:00 PM</dd>
+          <dt>Lunch buffet</dt><dd>11:30 AM – 2:30 PM</dd>
+        </dl>
+        <div class="addr">
+          4 Hill View Rise, Singapore 667979<br>
+          <a href="tel:+6567612345" style="color:var(--gold)">+65 6761 2345</a> &middot;
+          <a href="mailto:hello@tandooriculture.sg" style="color:var(--gold)">hello@tandooriculture.sg</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec book" id="book">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow"><span class="pill">Reservations</span></span>
+      <h2>Book your <span class="hot">table</span></h2>
+      <p>Tables for 7+ or catering quotes — send the form and our team confirms within 30 minutes during opening hours.</p>
+    </div>
+    <form class="form-card rv rv-d1" id="bookForm" novalidate>
+      <div class="field">
+        <label for="f-name">Full Name</label>
+        <input id="f-name" name="name" type="text" placeholder="e.g. Priya Nair" autocomplete="name">
+        <span class="err" data-err="name"></span>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone</label>
+        <input id="f-phone" name="phone" type="tel" placeholder="+65 8123 4567" autocomplete="tel">
+        <span class="err" data-err="phone"></span>
+      </div>
+      <div class="field">
+        <label for="f-date">Date</label>
+        <input id="f-date" name="date" type="date">
+        <span class="err" data-err="date"></span>
+      </div>
+      <div class="field">
+        <label for="f-time">Time</label>
+        <select id="f-time" name="time">
+          <option value="">Select a slot</option>
+          <option>Lunch — 12:00 PM</option><option>Lunch — 1:00 PM</option><option>Lunch — 2:00 PM</option>
+          <option>Dinner — 6:30 PM</option><option>Dinner — 7:30 PM</option><option>Dinner — 8:30 PM</option><option>Dinner — 9:30 PM</option>
+        </select>
+        <span class="err" data-err="time"></span>
+      </div>
+      <div class="field">
+        <label for="f-pax">Guests</label>
+        <select id="f-pax" name="pax">
+          <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+ (we'll call you)</option>
+        </select>
+        <span class="err" data-err="pax"></span>
+      </div>
+      <div class="field">
+        <label>Dietary Needs</label>
+        <div class="radio-row" role="group" aria-label="Dietary needs">
+          <label class="chip"><input type="checkbox" name="diet" value="Vegetarian"><span>Vegetarian</span></label>
+          <label class="chip"><input type="checkbox" name="diet" value="Vegan"><span>Vegan</span></label>
+          <label class="chip"><input type="checkbox" name="diet" value="Halal"><span>Halal</span></label>
+          <label class="chip"><input type="checkbox" name="diet" value="Jain"><span>Jain</span></label>
+          <label class="chip"><input type="checkbox" name="diet" value="No nuts"><span>No nuts</span></label>
+        </div>
+      </div>
+      <div class="field full">
+        <label for="f-notes">Notes <span style="text-transform:none;letter-spacing:0;opacity:.7">(optional)</span></label>
+        <textarea id="f-notes" name="notes" placeholder="Birthday, wheelchair access, catering enquiry for 80 guests..."></textarea>
+      </div>
+      <div class="field full">
+        <button type="submit" class="btn flame" style="justify-content:center;font-size:1rem;padding:1.05rem">Confirm Reservation Request
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Tandoori Culture</h4>
+        <p>North Indian fire-food at 4 Hill View Rise, Singapore. Halal-certified, vegetarian-friendly, always from the clay tandoor.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>4 Hill View Rise, Singapore 667979</li>
+          <li><a href="tel:+6567612345">+65 6761 2345</a></li>
+          <li><a href="mailto:hello@tandooriculture.sg">hello@tandooriculture.sg</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#catering">Catering</a></li>
+          <li><a href="#visit">Visit</a></li>
+          <li><a href="#book">Book a Table</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credit">
+      <span>&copy; 2026 Tandoori Culture, Singapore. All rights reserved.</span>
+      <span>Concept demo by Om Vibe Webs</span>
+    </div>
+  </div>
+</footer>
+
+<button class="cart-fab" id="cartFab" aria-label="View shortlisted dishes">
+  Shortlist <span class="n" id="cartCount">0</span>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 7h12l1.5 13.5a1 1 0 0 1-1 1.1H5.5a1 1 0 0 1-1-1.1L6 7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 10V6a3 3 0 0 1 6 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</button>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f2a03d"/><path d="m8 12.5 2.7 2.7L16 9.5" stroke="#211419" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="toastMsg">Done.</span>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* mobile menu */
+  var burger = document.getElementById("burger"), links = document.getElementById("links");
+  burger.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); burger.classList.remove("open"); }); });
+
+  /* reveal */
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* menu tabs */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  var dishes = Array.prototype.slice.call(document.querySelectorAll(".dish"));
+  tabs.forEach(function(tab){
+    tab.addEventListener("click", function(){
+      tabs.forEach(function(t){ t.classList.remove("active"); t.setAttribute("aria-selected","false"); });
+      tab.classList.add("active"); tab.setAttribute("aria-selected","true");
+      var cat = tab.getAttribute("data-cat");
+      dishes.forEach(function(d){
+        var show = (cat === "all" || d.getAttribute("data-cat") === cat);
+        d.classList.toggle("hide", !show);
+        if(show && !reduceMotion){ d.classList.remove("pop"); void d.offsetWidth; d.classList.add("pop"); }
+      });
+    });
+  });
+
+  /* shortlist (front-end cart) */
+  var shortlist = [];
+  var fab = document.getElementById("cartFab"), countEl = document.getElementById("cartCount");
+  function refreshFab(){ countEl.textContent = shortlist.length; fab.classList.toggle("show", shortlist.length > 0); }
+  document.querySelectorAll(".add").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var dish = btn.getAttribute("data-dish");
+      if(shortlist.indexOf(dish) === -1){ shortlist.push(dish); }
+      refreshFab();
+      showToast('"' + dish + '" shortlisted — mention it when you book.');
+      if(!reduceMotion){ btn.style.transform = "scale(.9)"; setTimeout(function(){ btn.style.transform = ""; }, 160); }
+    });
+  });
+  fab.addEventListener("click", function(){
+    var notes = document.getElementById("f-notes");
+    notes.value = (notes.value ? notes.value + "\n" : "") + "Shortlisted dishes: " + shortlist.join(", ");
+    document.getElementById("book").scrollIntoView({behavior: reduceMotion ? "auto" : "smooth"});
+    showToast(shortlist.length + " dish(es) added to your booking notes.");
+  });
+
+  /* toast */
+  var toast = document.getElementById("toast"), toastMsg = document.getElementById("toastMsg"), toastT;
+  function showToast(msg){
+    toastMsg.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){ toast.classList.remove("show"); }, 5200);
+  }
+
+  /* booking form */
+  var form = document.getElementById("bookForm");
+  var fDate = document.getElementById("f-date");
+  var today = new Date(); today.setHours(0,0,0,0);
+  fDate.min = today.toISOString().split("T")[0];
+  function setErr(name, msg){
+    var f = form.querySelector('[data-err="'+name+'"]');
+    if(f) f.textContent = msg || "";
+    var input = form.elements[name];
+    if(input){ var field = input.closest(".field"); if(field) field.classList.toggle("invalid", !!msg); }
+  }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var ok = true;
+    var name = form.elements.name.value.trim();
+    var phone = form.elements.phone.value.trim();
+    setErr("name", name.length >= 2 ? "" : "Please enter your full name."); if(name.length < 2) ok = false;
+    setErr("phone", /^[+\d][\d\s\-()]{6,}$/.test(phone) ? "" : "Please enter a valid phone number."); if(!/^[+\d][\d\s\-()]{6,}$/.test(phone)) ok = false;
+    var d = fDate.value ? new Date(fDate.value + "T00:00:00") : null;
+    setErr("date", d && d >= today ? "" : "Pick a date (today or later)."); if(!(d && d >= today)) ok = false;
+    var time = form.elements.time.value;
+    setErr("time", time ? "" : "Please choose a time slot."); if(!time) ok = false;
+    if(!ok){ showToast("Please fix the highlighted fields and try again."); return; }
+    var diets = Array.prototype.slice.call(form.querySelectorAll('input[name="diet"]:checked')).map(function(c){ return c.value; });
+    showToast("Thanks " + name.split(" ")[0] + "! Table for " + form.elements.pax.value + " on " + fDate.value + " (" + time + ") requested" + (diets.length ? " — " + diets.join(", ") : "") + ". We confirm within 30 mins.");
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>

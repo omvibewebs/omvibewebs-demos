@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream Touch Beauty Salon Dubai | Salon at Home</title>
+<meta name="description" content="Dream Touch Beauty Salon — Dubai's 4.9-rated salon at home. Facials, Moroccan bath, nails, hair spa & bridal packages, delivered to your door.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:#ff9ebb; --rose-deep:#f06292; --lav:#c9b8ff; --peach:#ffd9ad;
+  --cream:#fff8f4; --ink:#402c40; --ink-soft:#6d5470; --gold:#d9a441;
+  --glass:rgba(255,255,255,.55); --glass-brd:rgba(255,255,255,.7);
+  --shadow:0 24px 60px -18px rgba(240,98,146,.35);
+  --r:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;line-height:1.08;letter-spacing:-.01em}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,92%);margin:0 auto}
+section{padding:96px 0;position:relative}
+
+/* ---------- aurora background ---------- */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;background:linear-gradient(160deg,#fff3ec,#fdeef4 40%,#f3ecff)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.65;animation:drift 22s ease-in-out infinite alternate}
+.b1{width:560px;height:560px;background:radial-gradient(circle,var(--rose),transparent 70%);top:-140px;left:-120px}
+.b2{width:640px;height:640px;background:radial-gradient(circle,var(--lav),transparent 70%);top:22%;right:-200px;animation-delay:-8s}
+.b3{width:520px;height:520px;background:radial-gradient(circle,var(--peach),transparent 70%);bottom:-160px;left:28%;animation-delay:-14s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(70px,50px) scale(1.12)}}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1180px,94%);z-index:50;
+  background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--glass-brd);border-radius:20px;padding:12px 22px;
+  display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 40px -12px rgba(64,44,64,.18)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem}
+.brand .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--rose-deep),var(--lav));display:grid;place-items:center;color:#fff}
+.nav-links{display:flex;gap:26px;font-weight:500;font-size:.95rem}
+.nav-links a{position:relative;opacity:.85}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--rose-deep);border-radius:2px;transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;font-family:inherit;font-weight:600;
+  padding:14px 28px;border-radius:999px;font-size:1rem;transition:transform .25s,box-shadow .25s}
+.btn-primary{background:linear-gradient(135deg,var(--rose-deep),#b388ff);color:#fff;box-shadow:0 14px 30px -10px rgba(240,98,146,.6)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 20px 40px -10px rgba(240,98,146,.7)}
+.btn-ghost{background:rgba(255,255,255,.6);border:1px solid var(--glass-brd);color:var(--ink)}
+.btn-ghost:hover{transform:translateY(-3px)}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{display:block;width:24px;height:2.5px;background:var(--ink);border-radius:2px;margin:5px 0;transition:.3s}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:150px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.6);border:1px solid var(--glass-brd);
+  padding:8px 16px;border-radius:999px;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:22px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.2);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(61,220,132,.08)}}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:700}
+.hero h1 .grad{background:linear-gradient(100deg,var(--rose-deep),#8b5cf6 60%,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .w>span{display:inline-block;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{transform:translateY(0)}}
+.hero p.lead{font-size:1.15rem;color:var(--ink-soft);max-width:46ch;margin:22px 0 34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.trust{display:flex;gap:26px;margin-top:40px;flex-wrap:wrap}
+.trust div strong{font-size:1.5rem;display:block}
+.stars{color:#f5a623;letter-spacing:2px;font-size:.95rem}
+.hero-art{position:relative;min-height:480px}
+.glass-card{position:absolute;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--glass-brd);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
+.gc-main{inset:40px 10px 60px 40px;display:flex;flex-direction:column;justify-content:center;gap:6px;animation:floaty 7s ease-in-out infinite}
+.gc-main .big{font-size:3.4rem;font-weight:700}
+.gc-chip{top:8px;right:0;animation:floaty 6s ease-in-out infinite reverse}
+.gc-chip2{bottom:6px;left:0;animation:floaty 8s ease-in-out infinite;animation-delay:-3s}
+@keyframes floaty{50%{transform:translateY(-16px)}}
+.orbit{position:absolute;border:1.5px dashed rgba(240,98,146,.4);border-radius:50%;animation:spin 26s linear infinite}
+.o1{width:420px;height:420px;top:40px;right:20px}
+.o2{width:300px;height:300px;top:100px;right:80px;animation-direction:reverse;animation-duration:20s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orbit i{position:absolute;top:-9px;left:50%;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--rose-deep),var(--lav))}
+
+/* ---------- marquee ---------- */
+.marquee{background:linear-gradient(90deg,var(--rose-deep),#8b5cf6);color:#fff;overflow:hidden;padding:16px 0;transform:rotate(-1.2deg) scale(1.02)}
+.marquee .track{display:flex;gap:48px;width:max-content;animation:scrollx 26s linear infinite;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+.marquee .track span{display:flex;align-items:center;gap:48px;white-space:nowrap}
+
+/* ---------- sections ---------- */
+.sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
+.sec-head .kicker{color:var(--rose-deep);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem);margin:12px 0 14px}
+.sec-head p{color:var(--ink-soft)}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--glass-brd);border-radius:var(--r);
+  padding:30px;box-shadow:0 14px 40px -18px rgba(64,44,64,.25);transition:transform .3s,box-shadow .3s;transform-style:preserve-3d;position:relative;overflow:hidden}
+.svc::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,158,187,.16),rgba(201,184,255,.16));opacity:0;transition:opacity .3s}
+.svc:hover::before{opacity:1}
+.svc .icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;color:#fff;margin-bottom:18px;transform:translateZ(30px)}
+.svc h3{font-size:1.35rem;margin-bottom:6px;transform:translateZ(20px)}
+.svc .desc{color:var(--ink-soft);font-size:.94rem;min-height:66px;transform:translateZ(14px)}
+.svc .meta{display:flex;justify-content:space-between;align-items:center;margin-top:18px;transform:translateZ(20px)}
+.price{font-size:1.5rem;font-weight:700}
+.price small{font-size:.8rem;font-weight:500;color:var(--ink-soft)}
+.dur{font-size:.82rem;color:var(--ink-soft);background:rgba(255,255,255,.7);padding:5px 12px;border-radius:999px}
+.pick{margin-top:16px;width:100%;justify-content:center;transform:translateZ(20px)}
+.pick.added{background:linear-gradient(135deg,#3ddc84,#22b07d);color:#fff}
+
+/* ---------- steps ---------- */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:10px}
+.steps::before{content:"";position:absolute;top:44px;left:8%;right:8%;height:3px;border-radius:3px;
+  background:linear-gradient(90deg,var(--rose-deep),var(--lav),var(--peach));opacity:.5}
+.step{background:var(--glass);backdrop-filter:blur(14px);border:1px solid var(--glass-brd);border-radius:var(--r);padding:30px 22px;text-align:center;position:relative;z-index:1}
+.step .n{width:52px;height:52px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:1.2rem;color:#fff;
+  background:linear-gradient(135deg,var(--rose-deep),#8b5cf6);box-shadow:0 10px 24px -8px rgba(240,98,146,.6)}
+.step h3{font-size:1.15rem;margin-bottom:8px}
+.step p{font-size:.9rem;color:var(--ink-soft)}
+
+/* ---------- testimonials ---------- */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testi{background:rgba(255,255,255,.65);border:1px solid var(--glass-brd);border-radius:var(--r);padding:28px;box-shadow:0 14px 40px -20px rgba(64,44,64,.25)}
+.testi .q{font-size:1.02rem;font-style:italic;margin:14px 0 18px}
+.testi .who{display:flex;align-items:center;gap:12px}
+.avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700}
+.testi .who small{color:var(--ink-soft)}
+
+/* ---------- booking ---------- */
+.book-card{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);border:1px solid var(--glass-brd);border-radius:28px;
+  box-shadow:var(--shadow);padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:1fr 1.1fr;gap:44px}
+.book-side h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:14px}
+.book-side p{color:var(--ink-soft);margin-bottom:22px}
+.perk{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.perk .ic{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--rose-deep),var(--lav))}
+.perk small{color:var(--ink-soft)}
+.total-box{background:linear-gradient(135deg,#fff,#ffeef4);border:1.5px dashed var(--rose-deep);border-radius:18px;padding:18px 22px;margin-top:22px}
+.total-box .row{display:flex;justify-content:space-between;font-size:.92rem;color:var(--ink-soft);margin-bottom:6px}
+.total-box .grand{display:flex;justify-content:space-between;font-size:1.35rem;font-weight:700;margin-top:10px}
+form .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:600;font-size:.88rem;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;font-family:inherit;font-size:1rem;padding:13px 16px;border-radius:14px;
+  border:1.5px solid #ecd9e4;background:#fff;transition:border .25s,box-shadow .25s;color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--rose-deep);box-shadow:0 0 0 4px rgba(240,98,146,.14)}
+.field .err{color:#d6336c;font-size:.8rem;margin-top:5px;display:none}
+.field.invalid input,.field.invalid select{border-color:#d6336c}
+.field.invalid .err{display:block}
+.svc-checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.svc-checks label{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #ecd9e4;border-radius:12px;padding:10px 12px;font-size:.88rem;cursor:pointer;transition:.25s}
+.svc-checks label:has(input:checked){border-color:var(--rose-deep);background:#fff0f5;box-shadow:0 0 0 3px rgba(240,98,146,.12)}
+.svc-checks input{accent-color:var(--rose-deep);width:16px;height:16px}
+.submit{width:100%;justify-content:center;font-size:1.1rem;margin-top:6px}
+
+/* ---------- modal / toast ---------- */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(64,44,64,.45);backdrop-filter:blur(6px)}
+.modal.open{display:flex}
+.modal .box{background:#fff;border-radius:26px;max-width:460px;width:100%;padding:44px 36px;text-align:center;animation:pop .45s cubic-bezier(.2,.9,.3,1.3);box-shadow:0 40px 90px -20px rgba(64,44,64,.4)}
+@keyframes pop{from{transform:scale(.8) translateY(30px);opacity:0}}
+.check-ring{width:84px;height:84px;margin:0 auto 20px;border-radius:50%;background:linear-gradient(135deg,#3ddc84,#22b07d);display:grid;place-items:center;color:#fff;animation:ring .8s ease}
+@keyframes ring{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.ref{display:inline-block;background:#f3ecff;border:1px dashed #8b5cf6;color:#6d28d9;font-weight:700;padding:8px 18px;border-radius:12px;margin:14px 0;letter-spacing:.06em}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:14px 26px;border-radius:999px;z-index:120;transition:transform .4s;font-weight:500;box-shadow:0 16px 40px -10px rgba(0,0,0,.4)}
+.toast.show{transform:translate(-50%,0)}
+
+/* ---------- footer ---------- */
+footer{background:linear-gradient(160deg,#3a2440,#241a2e);color:#f3e9f2;padding:64px 0 30px;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-grid h4{margin-bottom:16px;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--rose)}
+.foot-grid a,.foot-grid p{display:block;color:#cdb9cf;font-size:.93rem;margin-bottom:10px}
+.foot-base{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.86rem;color:#a98fae}
+
+/* ---------- responsive ---------- */
+@media(max-width:1024px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .steps::before{display:none}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .book-card{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{min-height:420px}
+}
+@media(max-width:860px){
+  .nav-links{position:fixed;top:78px;left:50%;transform:translateX(-50%) translateY(-20px);width:min(420px,92%);flex-direction:column;background:rgba(255,255,255,.96);
+    border:1px solid var(--glass-brd);border-radius:20px;padding:22px;gap:16px;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 20px 50px -12px rgba(64,44,64,.3)}
+  .nav-links.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .burger{display:block}
+  nav .btn{display:none}
+}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .svc-grid,.testi-grid,.steps{grid-template-columns:1fr}
+  form .grid2{grid-template-columns:1fr}
+  .svc-checks{grid-template-columns:1fr}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .gc-main{inset:20px 0 40px 0}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+  .hero h1 .w>span{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<nav>
+  <a class="brand" href="#top" aria-label="Dream Touch home">
+    <span class="logo" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
+    Dream&nbsp;Touch
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#services">Services</a><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#book">Book now</a>
+  </div>
+  <a href="#book" class="btn btn-primary" style="padding:11px 22px">Book Home Visit</a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Dubai &middot; Salon at Home &middot; 4.9 Rated</span>
+      <h1 id="heroTitle">Salon luxury, delivered to your door.</h1>
+      <p class="lead">Dream Touch brings the full salon experience home — facials, Moroccan bath, nails, hair spa and bridal glam, performed by certified therapists with hospital-grade hygiene kits.</p>
+      <div class="hero-cta">
+        <a href="#book" class="btn btn-primary magnetic">Book Your Home Visit
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#services" class="btn btn-ghost">Explore Services</a>
+      </div>
+      <div class="trust">
+        <div><strong>4.9<span class="stars"> ★★★★★</span></strong><small style="color:var(--ink-soft)">2,400+ Google reviews</small></div>
+        <div><strong>12k+</strong><small style="color:var(--ink-soft)">Happy clients</small></div>
+        <div><strong>45 min</strong><small style="color:var(--ink-soft)">Avg. arrival time</small></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="orbit o1"><i></i></div><div class="orbit o2"><i></i></div>
+      <div class="glass-card gc-main">
+        <small style="letter-spacing:.14em;text-transform:uppercase;color:var(--rose-deep);font-weight:700">Next available slot</small>
+        <div class="big serif">Today, 4:30 PM</div>
+        <p style="color:var(--ink-soft)">Certified therapist arrives with a sealed hygiene kit.</p>
+        <a href="#book" class="btn btn-primary" style="align-self:flex-start;margin-top:8px">Reserve this slot</a>
+      </div>
+      <div class="glass-card gc-chip"><strong>100% Hygiene</strong><br><small style="color:var(--ink-soft)">Sealed single-use kits</small></div>
+      <div class="glass-card gc-chip2"><strong>AED 249</strong><br><small style="color:var(--ink-soft)">Signature facial, at home</small></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="marqueeTrack">
+  <span>Signature Facials &nbsp;✦&nbsp; Moroccan Bath &nbsp;✦&nbsp; Mani-Pedi &nbsp;✦&nbsp; Hair Spa &nbsp;✦&nbsp; Bridal Glam &nbsp;✦&nbsp; Full-Body Waxing &nbsp;✦&nbsp;</span>
+</div></div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">Service menu</div><h2>Treatments worth staying in for</h2>
+    <p>Transparent AED pricing, zero salon queues. Tap select to add a service straight into your booking.</p></div>
+    <div class="svc-grid">
+      <article class="svc tilt reveal" data-key="facial">
+        <div class="icon" style="background:linear-gradient(135deg,#f06292,#b388ff)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></div>
+        <h3>Signature Glow Facial</h3><p class="desc">24k gold-leaf facial with lymphatic massage and LED therapy for instant radiance.</p>
+        <div class="meta"><span class="price">AED 249 <small>/ 75 min</small></span><span class="dur">Bestseller</span></div>
+        <button class="btn btn-ghost pick" data-service="facial">Select service</button>
+      </article>
+      <article class="svc tilt reveal d1" data-key="moroccan">
+        <div class="icon" style="background:linear-gradient(135deg,#26c6da,#5c6bc0)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c3 4 6 7 6 11a6 6 0 11-12 0c0-4 3-7 6-11z"/></svg></div>
+        <h3>Royal Moroccan Bath</h3><p class="desc">Traditional hammam ritual — black soap, kessa exfoliation and argan oil wrap.</p>
+        <div class="meta"><span class="price">AED 199 <small>/ 60 min</small></span><span class="dur">60 min</span></div>
+        <button class="btn btn-ghost pick" data-service="moroccan">Select service</button>
+      </article>
+      <article class="svc tilt reveal d2" data-key="manicure">
+        <div class="icon" style="background:linear-gradient(135deg,#ff8a65,#f06292)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 11V6a2 2 0 014 0v4m0-2a2 2 0 014 0v2m0-1a2 2 0 014 0v5c0 4-2.5 7-7 7s-6-2-8-6l-1.5-3.5c-.5-1 .8-2 1.7-1.2L7 11z"/></svg></div>
+        <h3>Luxe Mani-Pedi</h3><p class="desc">Spa soak, cuticle therapy, gel polish and a relaxing hand-foot massage.</p>
+        <div class="meta"><span class="price">AED 149 <small>/ 90 min</small></span><span class="dur">90 min</span></div>
+        <button class="btn btn-ghost pick" data-service="manicure">Select service</button>
+      </article>
+      <article class="svc tilt reveal" data-key="hairspa">
+        <div class="icon" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20c4-1 5-8 5-12m4 12c-1-5 0-9 3-12m4 12c-2-4-1-8 1-11"/></svg></div>
+        <h3>Keratin Hair Spa</h3><p class="desc">Deep-repair keratin ritual with steam therapy and scalp massage for silk-smooth hair.</p>
+        <div class="meta"><span class="price">AED 179 <small>/ 60 min</small></span><span class="dur">60 min</span></div>
+        <button class="btn btn-ghost pick" data-service="hairspa">Select service</button>
+      </article>
+      <article class="svc tilt reveal d1" data-key="bridal">
+        <div class="icon" style="background:linear-gradient(135deg,#f5a623,#f06292)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8l4 4 5-6 5 6 4-4-1.5 9h-15z"/><path d="M9 21h6"/></svg></div>
+        <h3>Bridal Glam Package</h3><p class="desc">Trial + wedding-day HD makeup, hairstyling, draping and touch-up kit.</p>
+        <div class="meta"><span class="price">AED 899 <small>/ full day</small></span><span class="dur">Premium</span></div>
+        <button class="btn btn-ghost pick" data-service="bridal">Select service</button>
+      </article>
+      <article class="svc tilt reveal d2" data-key="waxing">
+        <div class="icon" style="background:linear-gradient(135deg,#66bb6a,#26c6da)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Full-Body Waxing</h3><p class="desc">Gentle stripless wax, soothing aloe finish — smooth skin for weeks.</p>
+        <div class="meta"><span class="price">AED 129 <small>/ 45 min</small></span><span class="dur">45 min</span></div>
+        <button class="btn btn-ghost pick" data-service="waxing">Select service</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">How it works</div><h2>From tap to pampered in four steps</h2>
+    <p>No phone tag, no traffic. Your therapist arrives with everything needed.</p></div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3>Pick your ritual</h3><p>Choose services above or in the booking form — mix and match freely.</p></div>
+      <div class="step reveal d1"><div class="n">2</div><h3>Choose your slot</h3><p>Same-day slots across Dubai, 9 AM to 9 PM, seven days a week.</p></div>
+      <div class="step reveal d2"><div class="n">3</div><h3>We come to you</h3><p>A certified therapist arrives with a sealed, single-use hygiene kit.</p></div>
+      <div class="step reveal d3"><div class="n">4</div><h3>Relax &amp; glow</h3><p>Pay after the service by card, cash or Apple Pay. Bliss, delivered.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">Loved across Dubai</div><h2>2,400+ five-star reviews</h2>
+    <p>Real clients, real living rooms, real glow-ups.</p></div>
+    <div class="testi-grid">
+      <div class="testi reveal"><div class="stars">★★★★★</div>
+        <p class="q">"The Moroccan bath at home was unreal — better than any spa I've visited in Marina. The therapist was on time and so professional."</p>
+        <div class="who"><span class="avatar" style="background:linear-gradient(135deg,#f06292,#b388ff)">A</span><div><strong>Ayesha K.</strong><br><small>Dubai Marina</small></div></div></div>
+      <div class="testi reveal d1"><div class="stars">★★★★★</div>
+        <p class="q">"Booked the bridal package for my sister. Trial and wedding-day glam were flawless — the team even stayed for touch-ups."</p>
+        <div class="who"><span class="avatar" style="background:linear-gradient(135deg,#26c6da,#5c6bc0)">M</span><div><strong>Mariam S.</strong><br><small>JVC</small></div></div></div>
+      <div class="testi reveal d2"><div class="stars">★★★★★</div>
+        <p class="q">"As a new mum I can't get to a salon. Dream Touch's mani-pedi at home is my monthly sanity ritual now. Impeccable hygiene."</p>
+        <div class="who"><span class="avatar" style="background:linear-gradient(135deg,#f5a623,#f06292)">P</span><div><strong>Priya R.</strong><br><small>Business Bay</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="book" style="padding-top:20px">
+  <div class="wrap">
+    <div class="book-card reveal">
+      <div class="book-side">
+        <div class="kicker" style="color:var(--rose-deep);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem">Book at home</div>
+        <h2>Your glow-up is one form away</h2>
+        <p>Free cancellation up to 4 hours before your slot. Pay only after your service is complete.</p>
+        <div class="perk"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><div><strong>Certified therapists</strong><br><small>Background-verified, 200+ hrs trained</small></div></div>
+        <div class="perk"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c3 4 6 7 6 11a6 6 0 11-12 0c0-4 3-7 6-11z"/></svg></span><div><strong>Hospital-grade hygiene</strong><br><small>Sealed single-use kits, every visit</small></div></div>
+        <div class="perk"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><strong>On-time promise</strong><br><small>AED 25 credit if we're ever late</small></div></div>
+        <div class="total-box" aria-live="polite">
+          <div class="row"><span>Selected services</span><span id="sumCount">0</span></div>
+          <div class="row"><span>Home-visit fee</span><span style="color:#22b07d;font-weight:600">FREE</span></div>
+          <div class="grand"><span>Estimated total</span><span id="sumTotal">AED 0</span></div>
+        </div>
+      </div>
+      <form id="bookForm" novalidate>
+        <div class="grid2">
+          <div class="field"><label for="fName">Full name</label><input id="fName" name="name" type="text" placeholder="e.g. Sara Ahmed" autocomplete="name"><p class="err">Please enter your name.</p></div>
+          <div class="field"><label for="fPhone">Mobile number</label><input id="fPhone" name="phone" type="tel" placeholder="+971 5X XXX XXXX" autocomplete="tel"><p class="err">Enter a valid phone number.</p></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="fArea">Area in Dubai</label>
+            <select id="fArea" name="area"><option value="">Select area…</option><option>Marina / JBR</option><option>Downtown / Business Bay</option><option>JVC / Al Barsha</option><option>Deira / Bur Dubai</option><option>Mirdif / International City</option><option>Palm Jumeirah</option><option>Other</option></select><p class="err">Please choose your area.</p></div>
+          <div class="field"><label for="fDate">Preferred date</label><input id="fDate" name="date" type="date"><p class="err">Pick a date (today or later).</p></div>
+        </div>
+        <div class="field"><label>Services</label>
+          <div class="svc-checks" id="svcChecks">
+            <label><input type="checkbox" value="facial" data-price="249"> Signature Facial — AED 249</label>
+            <label><input type="checkbox" value="moroccan" data-price="199"> Moroccan Bath — AED 199</label>
+            <label><input type="checkbox" value="manicure" data-price="149"> Luxe Mani-Pedi — AED 149</label>
+            <label><input type="checkbox" value="hairspa" data-price="179"> Keratin Hair Spa — AED 179</label>
+            <label><input type="checkbox" value="bridal" data-price="899"> Bridal Package — AED 899</label>
+            <label><input type="checkbox" value="waxing" data-price="129"> Full-Body Waxing — AED 129</label>
+          </div>
+          <p class="err" id="svcErr">Please select at least one service.</p>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="fTime">Time slot</label>
+            <select id="fTime" name="time"><option value="">Select slot…</option><option>9:00 AM – 11:00 AM</option><option>11:30 AM – 1:30 PM</option><option>2:00 PM – 4:00 PM</option><option>4:30 PM – 6:30 PM</option><option>7:00 PM – 9:00 PM</option></select><p class="err">Please choose a time slot.</p></div>
+          <div class="field"><label for="fAddr">Home address</label><input id="fAddr" name="address" type="text" placeholder="Building, street, flat"><p class="err">Please enter your address.</p></div>
+        </div>
+        <div class="field"><label for="fNotes">Notes (optional)</label><textarea id="fNotes" name="notes" rows="2" placeholder="Allergies, parking info, gate code…"></textarea></div>
+        <button type="submit" class="btn btn-primary submit">Confirm Home Booking</button>
+        <p style="text-align:center;font-size:.82rem;color:var(--ink-soft);margin-top:12px">No advance payment · Free cancellation up to 4 hrs before</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Dream Touch</h4>
+        <p>Dubai's 4.9-rated salon at home. Certified therapists, sealed hygiene kits, and spa-grade treatments — in your living room.</p>
+        <p>Serving all of Dubai · 9 AM – 9 PM daily</p>
+      </div>
+      <div><h4>Explore</h4><a href="#services">Service menu</a><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#book">Book now</a></div>
+      <div><h4>Contact</h4><p>hello@dreamtouch-salon.ae</p><p>+971 4 000 0000</p><p>Dubai, United Arab Emirates</p></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Dream Touch Beauty Salon. All rights reserved.</span><span>Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="box">
+    <div class="check-ring"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5l5 5L20 6.5"/></svg></div>
+    <h2 id="mTitle" class="serif" style="font-size:1.9rem;margin-bottom:8px">Booking received!</h2>
+    <p style="color:var(--ink-soft)">We'll call you within 15 minutes to confirm your therapist and slot.</p>
+    <div class="ref" id="mRef">DT-000000</div>
+    <p id="mSummary" style="font-size:.92rem;color:var(--ink-soft)"></p>
+    <button class="btn btn-primary" id="mClose" style="margin-top:18px">Done</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* mobile nav */
+  var burger = document.getElementById("burger"),
+      navLinks = document.getElementById("navLinks");
+  burger.addEventListener("click", function(){ navLinks.classList.toggle("open"); });
+  navLinks.addEventListener("click", function(e){ if(e.target.tagName==="A") navLinks.classList.remove("open"); });
+
+  /* split hero title into animated words */
+  var h1 = document.getElementById("heroTitle");
+  if(h1 && !reduced){
+    var words = h1.textContent.trim().split(/\s+/);
+    h1.innerHTML = words.map(function(w,i){
+      var cls = (w==="delivered") ? "grad" : "";
+      return '<span class="w"><span class="'+cls+'" style="animation-delay:'+(i*0.07)+'s">'+w+'</span></span>';
+    }).join(" ");
+  } else if(h1){ h1.querySelectorAll(".w>span").forEach(function(s){ s.style.transform="none"; }); }
+
+  /* marquee: duplicate track for seamless loop */
+  var track = document.getElementById("marqueeTrack");
+  track.innerHTML += track.innerHTML;
+
+  /* scroll reveals */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  },{threshold:0.12});
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+  /* 3D tilt cards */
+  if(!reduced && window.matchMedia("(pointer:fine)").matches){
+    document.querySelectorAll(".tilt").forEach(function(card){
+      card.addEventListener("mousemove", function(e){
+        var r = card.getBoundingClientRect(),
+            x = (e.clientX - r.left)/r.width - .5,
+            y = (e.clientY - r.top)/r.height - .5;
+        card.style.transform = "perspective(900px) rotateY("+(x*10)+"deg) rotateX("+(-y*10)+"deg) translateY(-6px)";
+        card.style.boxShadow = "0 30px 60px -18px rgba(240,98,146,.45)";
+      });
+      card.addEventListener("mouseleave", function(){
+        card.style.transform = ""; card.style.boxShadow = "";
+      });
+    });
+    /* magnetic primary buttons */
+    document.querySelectorAll(".magnetic").forEach(function(btn){
+      btn.addEventListener("mousemove", function(e){
+        var r = btn.getBoundingClientRect();
+        btn.style.transform = "translate("+((e.clientX-r.left-r.width/2)*.15)+"px,"+((e.clientY-r.top-r.height/2)*.25)+"px)";
+      });
+      btn.addEventListener("mouseleave", function(){ btn.style.transform=""; });
+    });
+  }
+
+  /* ---- booking logic ---- */
+  var checks = Array.prototype.slice.call(document.querySelectorAll("#svcChecks input[type=checkbox]")),
+      sumCount = document.getElementById("sumCount"),
+      sumTotal = document.getElementById("sumTotal"),
+      svcErr = document.getElementById("svcErr");
+
+  function updateTotal(){
+    var n = 0, total = 0;
+    checks.forEach(function(c){ if(c.checked){ n++; total += parseInt(c.dataset.price,10); } });
+    sumCount.textContent = n + (n===1?" service":" services");
+    sumTotal.textContent = "AED " + total;
+    syncPickButtons();
+    return {n:n, total:total};
+  }
+  checks.forEach(function(c){ c.addEventListener("change", updateTotal); });
+
+  /* service-card "select" buttons toggle the matching checkbox */
+  var pickBtns = document.querySelectorAll(".pick");
+  function syncPickButtons(){
+    pickBtns.forEach(function(b){
+      var box = document.querySelector('#svcChecks input[value="'+b.dataset.service+'"]');
+      var on = box && box.checked;
+      b.classList.toggle("added", !!on);
+      b.textContent = on ? "Selected ✓".replace(" ✓","")+" — Added" : "Select service";
+    });
+  }
+  pickBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      var box = document.querySelector('#svcChecks input[value="'+b.dataset.service+'"]');
+      if(!box) return;
+      box.checked = !box.checked;
+      updateTotal();
+      toast(box.checked ? "Service added to your booking" : "Service removed");
+    });
+  });
+  updateTotal();
+
+  /* date min = today */
+  var fDate = document.getElementById("fDate");
+  fDate.min = new Date().toISOString().split("T")[0];
+
+  function toast(msg){
+    var t = document.getElementById("toast");
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+  }
+  function setInvalid(id, bad){
+    var f = document.getElementById(id).closest(".field");
+    f.classList.toggle("invalid", bad);
+    return !bad;
+  }
+
+  var form = document.getElementById("bookForm");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var ok = true;
+    ok = setInvalid("fName", document.getElementById("fName").value.trim().length < 2) && ok;
+    ok = setInvalid("fPhone", !/^[+\d][\d\s-]{6,16}$/.test(document.getElementById("fPhone").value.trim())) && ok;
+    ok = setInvalid("fArea", !document.getElementById("fArea").value) && ok;
+    var d = fDate.value, today = new Date().toISOString().split("T")[0];
+    ok = setInvalid("fDate", !d || d < today) && ok;
+    ok = setInvalid("fTime", !document.getElementById("fTime").value) && ok;
+    ok = setInvalid("fAddr", document.getElementById("fAddr").value.trim().length < 4) && ok;
+    var st = updateTotal();
+    svcErr.style.display = st.n ? "none" : "block";
+    if(!st.n) ok = false;
+    if(!ok){ toast("Please fix the highlighted fields"); return; }
+
+    var names = checks.filter(function(c){return c.checked;}).map(function(c){
+      return c.parentElement.textContent.trim().split(" — ")[0];
+    });
+    var ref = "DT-" + Math.floor(100000 + Math.random()*900000);
+    document.getElementById("mRef").textContent = ref;
+    document.getElementById("mSummary").textContent =
+      names.join(", ") + " · " + document.getElementById("fDate").value + ", " +
+      document.getElementById("fTime").value + " · Est. AED " + st.total;
+    document.getElementById("successModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+  });
+  document.getElementById("mClose").addEventListener("click", function(){
+    document.getElementById("successModal").classList.remove("open");
+    document.body.style.overflow = "";
+    form.reset(); updateTotal();
+  });
+  document.getElementById("successModal").addEventListener("click", function(e){
+    if(e.target === this){ this.classList.remove("open"); document.body.style.overflow=""; }
+  });
+})();
+</script>
+</body>
+</html>

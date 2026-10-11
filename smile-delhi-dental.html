@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smile Delhi Dental Clinic | New Delhi</title>
+<meta name="description" content="Smile Delhi The Dental Clinic, New Delhi — 4.9 rated. Painless dentistry: implants, aligners, smile design. Book online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4fafb; --card:rgba(255,255,255,.72); --ink:#0d2b33; --ink2:#4a6b74;
+  --teal:#0aa8a3; --teal-dk:#077e7a; --mint:#c9f2ee; --line:rgba(13,43,51,.12);
+  --disp:'Sora',Arial,sans-serif; --body:'Inter',Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);overflow-x:hidden;line-height:1.65}
+::selection{background:var(--teal);color:#fff}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 30px}
+section{padding:104px 0;position:relative}
+.pill-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal-dk);background:var(--mint);border-radius:999px;padding:10px 22px;margin-bottom:20px}
+h1,h2{font-family:var(--disp);line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(34px,4.6vw,58px);font-weight:800;margin-bottom:16px}
+.sub{font-size:clamp(16px,1.8vw,20px);color:var(--ink2);max-width:640px}
+
+/* nav */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:100;width:min(1240px,calc(100% - 28px))}
+.nav-in{background:rgba(255,255,255,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:20px;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 12px 34px rgba(13,43,51,.08)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:18px}
+.brand svg{width:32px;height:32px}
+.brand i{font-style:normal;color:var(--teal)}
+.nav-links{display:flex;gap:28px;list-style:none;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.nav-links a{position:relative;color:var(--ink2);transition:color .25s}
+.nav-links a:hover{color:var(--teal-dk)}
+.btn-teal{display:inline-block;background:linear-gradient(135deg,var(--teal),var(--teal-dk));color:#fff;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:15px 34px;border-radius:999px;border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;box-shadow:0 10px 26px rgba(10,168,163,.32)}
+.btn-teal:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(10,168,163,.42)}
+.burger{display:none;background:none;border:none;cursor:pointer}
+.burger span{display:block;width:26px;height:2px;background:var(--ink);margin:6px 0}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.02fr .98fr;gap:50px;align-items:center;padding:150px 0 80px;
+  background:radial-gradient(900px 480px at 88% 8%,rgba(10,168,163,.14),transparent 60%),radial-gradient(700px 420px at 6% 90%,rgba(10,168,163,.1),transparent 60%),var(--bg)}
+.hero h1{font-size:clamp(46px,6.6vw,92px);font-weight:800;margin-bottom:22px}
+.hero h1 .hl{background:linear-gradient(120deg,var(--teal),#37c6d8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-badges{display:flex;gap:14px;flex-wrap:wrap;margin:28px 0 34px}
+.gbadge{background:var(--card);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:16px;padding:12px 20px;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;box-shadow:0 8px 22px rgba(13,43,51,.06)}
+.gbadge svg{width:26px;height:26px}
+.hero-art{position:relative;height:min(70vh,600px)}
+.glass-stage{position:absolute;inset:0;background:var(--card);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.9);border-radius:38px;box-shadow:0 40px 90px rgba(10,168,163,.16);overflow:hidden;animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.glass-stage svg{width:100%;height:100%}
+.float-chip{position:absolute;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 20px;box-shadow:0 18px 40px rgba(13,43,51,.14);font-size:13.5px;font-weight:600;animation:floaty 6s ease-in-out infinite}
+.float-chip small{display:block;font-weight:400;color:var(--ink2);font-size:12px}
+.chip1{top:10%;left:-34px;animation-delay:-2s}.chip2{bottom:12%;right:-24px}
+
+/* stats */
+.stats{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat b{font-family:var(--disp);font-size:clamp(36px,3.8vw,54px);color:var(--teal-dk);display:block}
+.stat small{letter-spacing:.26em;text-transform:uppercase;font-size:11px;color:var(--ink2);font-weight:600}
+
+/* treatments tabs */
+.tabs{display:flex;gap:12px;flex-wrap:wrap;margin:38px 0 30px}
+.tab{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:13px 28px;font-family:var(--disp);font-weight:600;font-size:14px;cursor:pointer;transition:.3s;color:var(--ink2)}
+.tab.active,.tab:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.treat-panels{position:relative}
+.treat-panel{display:none;grid-template-columns:repeat(3,1fr);gap:22px}
+.treat-panel.active{display:grid;animation:panelIn .5s cubic-bezier(.22,1,.36,1)}
+@keyframes panelIn{from{opacity:0;transform:translateY(18px)}}
+.treat{background:var(--card);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:24px;padding:32px;transition:transform .35s,box-shadow .35s}
+.treat:hover{transform:translateY(-8px);box-shadow:0 26px 54px rgba(10,168,163,.16)}
+.treat .icon{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,var(--mint),#fff);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.treat .icon svg{width:30px;height:30px}
+.treat h3{font-family:var(--disp);font-size:20px;margin-bottom:8px}
+.treat p{font-size:14px;color:var(--ink2);margin-bottom:16px}
+.treat .price{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--teal-dk)}
+.treat .price small{font-weight:400;color:var(--ink2);font-size:12px}
+
+/* doctors */
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.doc{background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.doc:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(13,43,51,.12)}
+.doc .face{height:270px;position:relative}
+.doc .face svg{width:100%;height:100%}
+.doc .exp{position:absolute;top:16px;left:16px;background:rgba(13,43,51,.82);color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:8px 16px;border-radius:999px;font-weight:600}
+.doc .body{padding:26px}
+.doc h4{font-family:var(--disp);font-size:20px}
+.doc small{color:var(--teal-dk);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+.doc p{font-size:14px;color:var(--ink2);margin-top:10px}
+
+/* smile gallery before/after */
+.gallery{background:linear-gradient(180deg,#fff,var(--bg))}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:50px}
+.ba{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);height:380px;background:#0d2b33;user-select:none}
+.ba svg{position:absolute;inset:0;width:100%;height:100%}
+.ba .after{clip-path:inset(0 0 0 50%)}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;appearance:none}
+.ba .handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);pointer-events:none;box-shadow:0 0 20px rgba(0,0,0,.4)}
+.ba .handle::after{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d2b33' stroke-width='2.4'%3E%3Cpath d='M14 6l-6 6 6 6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10 6l6 6-6 6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/22px no-repeat;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;color:var(--ink);font-size:12px;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.3)}
+.ba .tagb{position:absolute;bottom:16px;left:16px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;letter-spacing:.24em;text-transform:uppercase;padding:8px 16px;border-radius:999px}
+.ba .taga{position:absolute;bottom:16px;right:16px;background:var(--teal);color:#fff;font-size:11px;letter-spacing:.24em;text-transform:uppercase;padding:8px 16px;border-radius:999px}
+.ba-cap{text-align:center;margin-top:14px;font-size:14px;color:var(--ink2)}
+
+/* reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.rev{background:var(--card);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:24px;padding:32px}
+.rev .stars{color:#e8a13c;letter-spacing:.2em;margin-bottom:12px}
+.rev p{font-size:15px;font-style:italic;color:var(--ink)}
+.rev b{display:block;margin-top:16px;font-family:var(--disp);font-size:14px}
+.rev small{color:var(--ink2);font-size:12px}
+
+/* booking */
+.booking{background:linear-gradient(160deg,#0d2b33,#0a2229);color:#fff;border-radius:44px;margin:0 22px;overflow:hidden}
+.booking .pill-tag{background:rgba(255,255,255,.12);color:#9fe8e2}
+.booking h2{color:#fff}
+.booking .sub{color:#a9c6cb}
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:44px;align-items:start}
+.contact-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:32px;backdrop-filter:blur(10px)}
+.contact-card h4{font-family:var(--disp);margin-bottom:14px;font-size:18px}
+.contact-card p{color:#a9c6cb;font-size:14.5px;margin-bottom:10px}
+form{background:#fff;border-radius:28px;padding:clamp(28px,4vw,46px);color:var(--ink)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:var(--ink2)}
+.field input,.field select,.field textarea{border:1.5px solid var(--line);border-radius:14px;background:var(--bg);padding:13px 15px;font-family:var(--body);font-size:15px;color:var(--ink);transition:border-color .3s,box-shadow .3s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(10,168,163,.14)}
+.field .err{font-size:12px;color:#c0392b;display:none}
+.field.invalid input,.field.invalid select{border-color:#c0392b}
+.field.invalid .err{display:block}
+#appt-ok{display:none;margin-top:20px;background:#eefaf8;border:1.5px solid var(--teal);border-radius:16px;padding:20px;text-align:center;color:var(--ink)}
+#appt-ok.show{display:block;animation:panelIn .5s}
+#appt-ok h4{font-family:var(--disp);color:var(--teal-dk);margin-bottom:4px}
+
+/* footer */
+footer{background:#0a2229;color:#a9c6cb;padding:64px 0 30px;margin-top:90px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-grid h5{font-family:var(--disp);font-size:12px;letter-spacing:.3em;color:#fff;margin-bottom:16px}
+.foot-grid p,.foot-grid li{font-size:14px;list-style:none;margin-bottom:8px}
+.foot-base{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}
+
+@media (max-width:1024px){
+  .hero{grid-template-columns:1fr;padding-top:140px}
+  .hero-art{height:460px}
+  .treat-panel.active{grid-template-columns:1fr 1fr}
+  .docs{grid-template-columns:1fr 1fr}
+  .book-grid{grid-template-columns:1fr}
+}
+@media (max-width:680px){
+  .nav-links{position:fixed;top:86px;left:14px;right:14px;background:#fff;border:1px solid var(--line);border-radius:20px;flex-direction:column;align-items:center;padding:30px;gap:20px;transform:translateY(-16px);opacity:0;pointer-events:none;transition:.35s;box-shadow:0 30px 60px rgba(13,43,51,.16)}
+  .nav-links.open{transform:none;opacity:1;pointer-events:auto}
+  .burger{display:block}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .treat-panel.active{grid-template-columns:1fr}
+  .docs{grid-template-columns:1fr}
+  .ba-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .booking{margin:0 10px;border-radius:28px}
+  section{padding:74px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  .glass-stage,.float-chip{animation:none}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <div class="nav-in">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 32 32" fill="none"><path d="M16 4c-5 0-8 3.4-8 8 0 6 3 12 8 16 5-4 8-10 8-16 0-4.6-3-8-8-8z" fill="#0aa8a3"/><path d="M12 12l2.4 2.4L20 9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Smile<i>Delhi</i>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#treatments">Treatments</a></li>
+      <li><a href="#doctors">Doctors</a></li>
+      <li><a href="#gallery">Smiles</a></li>
+      <li><a href="#booking">Book Visit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div>
+    <span class="pill-tag rv">New Delhi · 4.9 Rated · Painless First</span>
+    <h1 class="rv">Dentistry that makes you <span class="hl">smile wider.</span></h1>
+    <p class="sub rv d1">Smile Delhi — microscope-precision implants, invisible aligners and complete smile makeovers. Zero-pain promise, on every single visit.</p>
+    <div class="hero-badges rv d1">
+      <div class="gbadge"><svg viewBox="0 0 26 26" fill="none"><path d="M13 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L13 17.2l-6.1 3.4 1.4-6.8L3.2 9.1l6.9-.8z" fill="#e8a13c"/></svg>4.9 · 3,100+ reviews</div>
+      <div class="gbadge"><svg viewBox="0 0 26 26" fill="none" stroke="#0aa8a3" stroke-width="2"><circle cx="13" cy="13" r="10"/><path d="M8.5 13l3 3 6-6.5" stroke-linecap="round"/></svg>Sterilisation ISO certified</div>
+    </div>
+    <div class="rv d2"><a class="btn-teal" href="#booking">Book Free Consultation</a></div>
+  </div>
+  <div class="hero-art rv d1" aria-hidden="true">
+    <div class="glass-stage">
+      <svg viewBox="0 0 520 600" preserveAspectRatio="xMidYMid slice">
+        <rect width="520" height="600" fill="none"/>
+        <ellipse cx="260" cy="520" rx="150" ry="22" fill="#0aa8a3" opacity=".12"/>
+        <path d="M260 120c-70 0-105 44-105 108 0 78 40 150 105 200 65-50 105-122 105-200 0-64-35-108-105-108z" fill="#fff" stroke="#0aa8a3" stroke-width="6"/>
+        <path d="M260 120c-70 0-105 44-105 108 0 78 40 150 105 200 65-50 105-122 105-200 0-64-35-108-105-108z" fill="url(#tg)" opacity=".25"/>
+        <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0aa8a3"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+        <path d="M215 210l18 18 42-46" stroke="#0aa8a3" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#0aa8a3" opacity=".5"><circle cx="120" cy="120" r="8"/><circle cx="400" cy="180" r="6"/><circle cx="360" cy="420" r="10"/><circle cx="150" cy="470" r="6"/></g>
+      </svg>
+    </div>
+    <div class="float-chip chip1"><small>Next slot today</small>4:30 PM available</div>
+    <div class="float-chip chip2"><small>Aligners from</small>₹59,999</div>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="wrap stat-grid">
+    <div class="stat rv"><b><span class="count" data-to="4.9" data-dec="1">0</span><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg></b><small>Google Rating</small></div>
+    <div class="stat rv d1"><b><span class="count" data-to="18000">0</span>+</b><small>Smiles Transformed</small></div>
+    <div class="stat rv d2"><b><span class="count" data-to="15">0</span></b><small>Expert Doctors</small></div>
+    <div class="stat rv d2"><b><span class="count" data-to="98">0</span>%</b><small>Painless Visits</small></div>
+  </div>
+</section>
+
+<section id="treatments">
+  <div class="wrap">
+    <span class="pill-tag rv">What we fix</span>
+    <h2 class="rv">Treatments &amp; honest pricing</h2>
+    <p class="sub rv">Written estimates before we begin. No hidden charges, ever.</p>
+    <div class="tabs rv" role="tablist">
+      <button class="tab active" data-tab="t1">Smile Design</button>
+      <button class="tab" data-tab="t2">Implants</button>
+      <button class="tab" data-tab="t3">Orthodontics</button>
+      <button class="tab" data-tab="t4">Everyday Care</button>
+    </div>
+    <div class="treat-panels">
+      <div class="treat-panel active" id="t1">
+        <div class="treat rv"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><path d="M5 15c4 8 8 11 10 11s6-3 10-11" stroke-linecap="round"/><path d="M8 15h14" stroke-linecap="round"/></svg></div><h3>Digital Smile Design</h3><p>Preview your new smile on screen before a single tooth is touched.</p><div class="price">₹9,999 <small>/ session</small></div></div>
+        <div class="treat rv d1"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><rect x="6" y="8" width="18" height="14" rx="7"/><path d="M11 15h8" stroke-linecap="round"/></svg></div><h3>Porcelain Veneers</h3><p>Ultra-thin E-max veneers for shape, shade and symmetry.</p><div class="price">₹14,999 <small>/ tooth</small></div></div>
+        <div class="treat rv d2"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><circle cx="15" cy="15" r="9"/><path d="M15 9v6l4 3" stroke-linecap="round"/></svg></div><h3>Laser Teeth Whitening</h3><p>Up to 8 shades brighter in a single 60-minute sitting.</p><div class="price">₹12,999 <small>/ session</small></div></div>
+      </div>
+      <div class="treat-panel" id="t2">
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><path d="M15 4v10M11 14h8l-1.5 12h-5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Single Tooth Implant</h3><p>Swiss titanium implant with zirconia crown, lifetime warranty.</p><div class="price">₹34,999 <small>/ implant</small></div></div>
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><path d="M8 6v8M15 6v8M22 6v8M6 22h18" stroke-linecap="round"/></svg></div><h3>Full-Arch (All-on-4)</h3><p>A complete fixed set of teeth on just four implants.</p><div class="price">₹1,49,999 <small>/ arch</small></div></div>
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><circle cx="15" cy="15" r="10"/><path d="M10 15l3.5 3.5L20 12" stroke-linecap="round"/></svg></div><h3>Implant Consultation</h3><p>3D CBCT scan + bone assessment + written plan.</p><div class="price">Free <small>/ this month</small></div></div>
+      </div>
+      <div class="treat-panel" id="t3">
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><path d="M4 18c6-2 10 2 16 0s6-4 6-4" stroke-linecap="round"/><circle cx="9" cy="15" r="2"/><circle cx="20" cy="14" r="2"/></svg></div><h3>Clear Aligners</h3><p>Invisible teeth straightening with remote monitoring app.</p><div class="price">₹59,999 <small>/ onwards</small></div></div>
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><rect x="5" y="11" width="20" height="8" rx="4"/><path d="M9 11v8M15 11v8M21 11v8" stroke-linecap="round"/></svg></div><h3>Ceramic Braces</h3><p>Tooth-coloured braces — strong, discreet, affordable.</p><div class="price">₹38,999 <small>/ onwards</small></div></div>
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><path d="M15 5l2.5 6.5L24 13l-6.5 1.5L15 21l-2.5-6.5L6 13l6.5-1.5z"/></svg></div><h3>Retainers &amp; Aftercare</h3><p>Fixed + removable retainers with lifetime smile guarantee.</p><div class="price">₹7,999 <small>/ set</small></div></div>
+      </div>
+      <div class="treat-panel" id="t4">
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><path d="M6 20c2-8 6-12 9-12s7 4 9 12" stroke-linecap="round"/><path d="M10 20h10" stroke-linecap="round"/></svg></div><h3>Cleaning &amp; Polish</h3><p>Ultrasonic scaling, stain removal and fluoride shield.</p><div class="price">₹1,499 <small>/ session</small></div></div>
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><circle cx="15" cy="15" r="9"/><path d="M15 11v4" stroke-linecap="round"/></svg></div><h3>Painless Root Canal</h3><p>Single-visit rotary RCT under microscope, with crown options.</p><div class="price">₹6,999 <small>/ onwards</small></div></div>
+        <div class="treat"><div class="icon"><svg viewBox="0 0 30 30" fill="none" stroke="#0aa8a3" stroke-width="2"><path d="M8 12c0-4 3-7 7-7s7 3 7 7-3 10-7 12c-4-2-7-8-7-12z"/></svg></div><h3>Kids Dentistry</h3><p>Friendly first visits, fluoride application and habit correction.</p><div class="price">₹999 <small>/ visit</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="doctors" style="padding-top:20px">
+  <div class="wrap">
+    <span class="pill-tag rv">The hands behind the smiles</span>
+    <h2 class="rv">Meet your doctors</h2>
+    <div class="docs">
+      <article class="doc rv">
+        <div class="face"><svg viewBox="0 0 340 270" preserveAspectRatio="xMidYMid slice"><rect width="340" height="270" fill="#dff0f1"/><circle cx="170" cy="130" r="56" fill="#d9a983"/><path d="M114 130 q-6-74 56-74 q62 0 56 74 q-16-38-56-38 q-40 0-56 38z" fill="#3a2c20"/><rect x="150" y="178" width="40" height="60" fill="#d9a983"/><path d="M104 270 q6-60 66-60 q60 0 66 60z" fill="#fff"/><path d="M104 270 q6-60 66-60 l-8 60z" fill="#0aa8a3"/><path d="M236 270 q-6-60-66-60 l8 60z" fill="#0aa8a3"/><circle cx="150" cy="128" r="5" fill="#141210"/><circle cx="190" cy="128" r="5" fill="#141210"/><path d="M156 158 q14 10 28 0" stroke="#7a4b3b" stroke-width="4" fill="none" stroke-linecap="round"/></svg><span class="exp">16 yrs exp</span></div>
+        <div class="body"><small>Chief Dentist · MDS</small><h4>Dr. Ananya Deshmukh</h4><p>Cosmetic dentistry &amp; full-mouth rehabilitation. 4,000+ smile makeovers.</p></div>
+      </article>
+      <article class="doc rv d1">
+        <div class="face"><svg viewBox="0 0 340 270" preserveAspectRatio="xMidYMid slice"><rect width="340" height="270" fill="#e4efe9"/><circle cx="170" cy="130" r="56" fill="#caa27e"/><path d="M114 122 q2-68 56-68 q54 0 56 68 l-8 30 q-48-24-104 0z" fill="#1c1712"/><rect x="150" y="178" width="40" height="60" fill="#caa27e"/><path d="M104 270 q6-60 66-60 q60 0 66 60z" fill="#fff"/><path d="M104 270 q6-60 66-60 l-8 60z" fill="#077e7a"/><path d="M236 270 q-6-60-66-60 l8 60z" fill="#077e7a"/><circle cx="150" cy="128" r="5" fill="#141210"/><circle cx="190" cy="128" r="5" fill="#141210"/><path d="M156 158 q14 10 28 0" stroke="#5c3a2f" stroke-width="4" fill="none" stroke-linecap="round"/></svg><span class="exp">12 yrs exp</span></div>
+        <div class="body"><small>Implantologist · FICOI</small><h4>Dr. Vikram Rao</h4><p>1,800+ implants placed. Painless single-visit implant specialist.</p></div>
+      </article>
+      <article class="doc rv d2">
+        <div class="face"><svg viewBox="0 0 340 270" preserveAspectRatio="xMidYMid slice"><rect width="340" height="270" fill="#f0e8dc"/><circle cx="170" cy="130" r="56" fill="#e8bd96"/><path d="M112 128 q-6-76 58-76 q64 0 58 76 q-10-46-58-46 q-48 0-58 46z" fill="#5c3a22"/><rect x="150" y="178" width="40" height="60" fill="#e8bd96"/><path d="M104 270 q6-60 66-60 q60 0 66 60z" fill="#fff"/><path d="M104 270 q6-60 66-60 l-8 60z" fill="#0aa8a3"/><path d="M236 270 q-6-60-66-60 l8 60z" fill="#0aa8a3"/><circle cx="150" cy="128" r="5" fill="#141210"/><circle cx="190" cy="128" r="5" fill="#141210"/><path d="M156 158 q14 10 28 0" stroke="#7a4b3b" stroke-width="4" fill="none" stroke-linecap="round"/></svg><span class="exp">10 yrs exp</span></div>
+        <div class="body"><small>Orthodontist · MDS</small><h4>Dr. Ishita Malhotra</h4><p>Clear aligners &amp; braces for teens and adults. 2,500+ aligned smiles.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <span class="pill-tag rv">Real patients, real results</span>
+    <h2 class="rv">The smile gallery</h2>
+    <p class="sub rv">Drag the handle to compare. Every transformation shown with patient consent.</p>
+    <div class="ba-grid">
+      <div>
+        <div class="ba rv" data-ba>
+          <svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice"><rect width="600" height="380" fill="#8a7a5c"/><ellipse cx="300" cy="200" rx="130" ry="90" fill="#c8a26e"/><path d="M220 200 q80 50 160 0 q-20 60 -80 60 q-60 0 -80 -60z" fill="#5c4a33"/><path d="M225 202 q75 40 150 0" stroke="#d8c49a" stroke-width="10" fill="none" opacity=".5"/></svg>
+          <svg class="after" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice"><rect width="600" height="380" fill="#8a7a5c"/><ellipse cx="300" cy="200" rx="130" ry="90" fill="#e8bd96"/><path d="M220 200 q80 44 160 0 q-20 56 -80 56 q-60 0 -80 -56z" fill="#7a4b3b"/><path d="M228 200 q72 34 144 0 l-8 22 q-64 30 -128 0z" fill="#fff"/></svg>
+          <div class="handle"></div><span class="tagb">Before</span><span class="taga">After</span>
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+        </div>
+        <p class="ba-cap rv">Full veneer smile design — 10 E-max veneers</p>
+      </div>
+      <div>
+        <div class="ba rv d1" data-ba>
+          <svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice"><rect width="600" height="380" fill="#6c7a8a"/><ellipse cx="300" cy="200" rx="130" ry="90" fill="#c8a26e"/><path d="M225 195 q30 60 60 55 q10 40 30 35 q25 -5 20 -50 q30 -10 40 -40" stroke="#5c4a33" stroke-width="14" fill="none" opacity=".7"/></svg>
+          <svg class="after" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice"><rect width="600" height="380" fill="#6c7a8a"/><ellipse cx="300" cy="200" rx="130" ry="90" fill="#e8bd96"/><path d="M225 200 q75 40 150 0 l-10 26 q-65 28 -130 0z" fill="#fff" stroke="#d8c49a" stroke-width="4"/></svg>
+          <div class="handle"></div><span class="tagb">Before</span><span class="taga">After</span>
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+        </div>
+        <p class="ba-cap rv d1">Clear aligners — 9 months, zero braces</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <span class="pill-tag rv">Loved in Delhi</span>
+    <h2 class="rv">3,100+ five-star stories</h2>
+    <div class="rev-grid">
+      <div class="rev rv"><div class="stars"><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>"Terrified of dentists all my life. Dr. Ananya's painless RCT changed that forever — I actually fell asleep in the chair."</p><b>Ritu Sharma</b><small>Veneers · South Ex</small></div>
+      <div class="rev rv d1"><div class="stars"><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>"Two implants, zero pain, and I was eating normally in 3 days. The 3D scan planning is genuinely impressive."</p><b>Amit Khanna</b><small>Implants · Dwarka</small></div>
+      <div class="rev rv d2"><div class="stars"><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" width="20" height="20" fill="#e8a13c" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2l-6.1 3.4 1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>"My daughter's aligner journey was so smooth — the app showed progress every week. Worth every rupee."</p><b>Farah Khan</b><small>Aligners · Noida</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="wrap">
+    <span class="pill-tag rv">Same-day slots</span>
+    <h2 class="rv">Book your appointment</h2>
+    <p class="sub rv">Free first consultation this month. We confirm on WhatsApp within 30 minutes.</p>
+    <div class="book-grid">
+      <div class="rv">
+        <div class="contact-card">
+          <h4>Visit us</h4>
+          <p>Smile Delhi The Dental Clinic<br>B-14, Lajpat Nagar II, New Delhi 110024</p>
+          <p>+91 11 4000 1234 · care@smiledelhi.in</p>
+          <p>Mon–Sat: 10 AM – 8 PM · Sun: 11 AM – 4 PM</p>
+        </div>
+        <div class="contact-card" style="margin-top:18px">
+          <h4>Emergency?</h4>
+          <p>Severe tooth pain, swelling or trauma — call our 24×7 dental helpline and we will see you the same day.</p>
+        </div>
+      </div>
+      <form id="apptForm" class="rv d1" novalidate>
+        <div class="fgrid">
+          <div class="field"><label for="sd-name">Full Name</label><input id="sd-name" type="text" placeholder="Neha Gupta" autocomplete="name"><span class="err">Please enter your name.</span></div>
+          <div class="field"><label for="sd-phone">Phone</label><input id="sd-phone" type="tel" placeholder="+91 98XXX XXXXX" autocomplete="tel"><span class="err">Enter a valid 10-digit number.</span></div>
+          <div class="field"><label for="sd-treat">Treatment</label><select id="sd-treat"><option value="">Select treatment…</option><option>Free Consultation</option><option>Cleaning &amp; Polish — ₹1,499</option><option>Root Canal — ₹6,999</option><option>Clear Aligners — ₹59,999</option><option>Implants — ₹34,999</option><option>Veneers / Smile Design</option><option>Teeth Whitening — ₹12,999</option><option>Kids Dentistry — ₹999</option></select><span class="err">Choose a treatment.</span></div>
+          <div class="field"><label for="sd-doc">Doctor</label><select id="sd-doc"><option>No preference</option><option>Dr. Ananya Deshmukh</option><option>Dr. Vikram Rao</option><option>Dr. Ishita Malhotra</option></select></div>
+          <div class="field"><label for="sd-date">Preferred Date</label><input id="sd-date" type="date"><span class="err">Pick a date.</span></div>
+          <div class="field"><label for="sd-time">Time Slot</label><select id="sd-time"><option>Morning (10–1)</option><option>Afternoon (1–5)</option><option>Evening (5–8)</option></select></div>
+          <div class="field full"><label for="sd-notes">Symptoms / Notes</label><textarea id="sd-notes" rows="3" placeholder="Sensitivity, bleeding gums, wedding in 2 months…"></textarea></div>
+        </div>
+        <div style="margin-top:24px"><button class="btn-teal" type="submit" style="width:100%">Request Appointment</button></div>
+        <div id="appt-ok" role="status"><h4>Appointment requested!</h4><p>We'll WhatsApp you within 30 minutes to confirm your slot.</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h5>SMILE DELHI</h5><p>The Dental Clinic<br>B-14, Lajpat Nagar II, New Delhi 110024<br>+91 11 4000 1234 · care@smiledelhi.in</p></div>
+      <div><h5>CLINIC</h5><ul><li><a href="#treatments">Treatments</a></li><li><a href="#doctors">Doctors</a></li><li><a href="#gallery">Smile Gallery</a></li></ul></div>
+      <div><h5>HOURS</h5><ul><li>Mon–Sat · 10 AM – 8 PM</li><li>Sunday · 11 AM – 4 PM</li><li>Emergency · 24×7 helpline</li></ul></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Smile Delhi The Dental Clinic</span><span>Concept demo by Om Vibe Webs</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* nav */
+  var burger = document.getElementById("burger"), links = document.getElementById("navlinks");
+  burger.addEventListener("click", function(){ links.classList.toggle("open"); });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); }); });
+
+  /* reveal */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold: 0.12});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* counters */
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target, to = parseFloat(el.dataset.to), dec = parseInt(el.dataset.dec||"0",10);
+      cio.unobserve(el);
+      var fmt = function(v){ return (dec ? v.toFixed(dec) : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")); };
+      if (reduce) { el.textContent = fmt(to); return; }
+      var start = null, dur = 1500;
+      (function step(t){ if(!start) start=t; var p=Math.min((t-start)/dur,1);
+        el.textContent = fmt(to*(1-Math.pow(1-p,3)));
+        if (p<1) requestAnimationFrame(step); })(performance.now());
+    });
+  }, {threshold: 0.5});
+  document.querySelectorAll(".count").forEach(function(el){ cio.observe(el); });
+
+  /* tabs */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      tabs.forEach(function(x){ x.classList.remove("active"); });
+      document.querySelectorAll(".treat-panel").forEach(function(p){ p.classList.remove("active"); });
+      t.classList.add("active");
+      var panel = document.getElementById(t.dataset.tab);
+      if (panel) { panel.classList.add("active"); }
+    });
+  });
+
+  /* before/after sliders */
+  document.querySelectorAll("[data-ba]").forEach(function(ba){
+    var range = ba.querySelector('input[type=range]');
+    var after = ba.querySelector(".after"), handle = ba.querySelector(".handle");
+    function set(v){ after.style.clipPath = "inset(0 0 0 " + v + "%)"; handle.style.left = v + "%"; }
+    range.addEventListener("input", function(){ set(range.value); });
+    set(50);
+  });
+
+  /* form */
+  var form = document.getElementById("apptForm");
+  function bad(id, isBad){ document.getElementById(id).closest(".field").classList.toggle("invalid", isBad); return !isBad; }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault(); var ok = true;
+    ok = bad("sd-name", document.getElementById("sd-name").value.trim().length < 2) && ok;
+    ok = bad("sd-phone", !/^[+\d][\d\s-]{8,14}$/.test(document.getElementById("sd-phone").value.trim())) && ok;
+    ok = bad("sd-treat", !document.getElementById("sd-treat").value) && ok;
+    ok = bad("sd-date", !document.getElementById("sd-date").value) && ok;
+    if (ok) {
+      form.querySelectorAll("input,select,textarea,button").forEach(function(el){ el.disabled = true; });
+      var box = document.getElementById("appt-ok");
+      box.classList.add("show");
+      box.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
+    }
+  });
+  ["sd-name","sd-phone","sd-treat","sd-date"].forEach(function(id){
+    document.getElementById(id).addEventListener("input", function(){ bad(id, false); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N Beauty Salons Dubai | 12 Branches</title>
+<meta name="description" content="N Beauty Salons — Dubai's fresh glam destination with 12 branches. Hair, nails, skin, lashes & brows. Membership plans and easy online booking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pearl:#fdf8fb; --blush:#f9e9f0; --rose:#e36a8a; --rosedeep:#c2436b;
+  --lav:#e9e2f7; --lilac:#a78bdb; --plum:#3c2340; --ink:#33202f;
+  --mint:#bfe8d4; --peach:#ffd9c2;
+  --line:rgba(60,35,64,.12);
+  --radius:26px;
+  --shadow:0 30px 70px -28px rgba(227,106,138,.45);
+  --serif:'Fraunces',serif; --sans:'Outfit',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--pearl);color:var(--ink);overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--rose);color:#fff}
+.wrap{width:min(1200px,92vw);margin:0 auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacing:-.01em}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.76rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--rosedeep)}
+.eyebrow::before{content:"";width:36px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--rose),var(--lilac))}
+.sec{padding:clamp(4rem,8vw,7rem) 0}
+.sec-head{max-width:680px;margin-bottom:clamp(2rem,4vw,3rem)}
+.sec-head h2{font-size:clamp(2.4rem,5.4vw,4rem);margin:1rem 0 .8rem}
+.sec-head h2 em{font-style:italic;background:linear-gradient(100deg,var(--rosedeep),var(--lilac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head p{color:#7d6577;font-size:1.05rem}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+
+/* orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none;z-index:0;animation:orb 14s ease-in-out infinite alternate}
+@keyframes orb{to{transform:translate(50px,-40px) scale(1.15)}}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:60}
+nav .inner{width:min(1200px,92vw);margin:.9rem auto 0;display:flex;align-items:center;justify-content:space-between;background:rgba(253,248,251,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:100px;padding:.6rem .7rem .6rem 1.5rem;box-shadow:0 16px 44px -22px rgba(60,35,64,.3)}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand .n{width:42px;height:42px;border-radius:50%;background:conic-gradient(from 40deg,var(--rose),var(--lilac),var(--peach),var(--rose));display:grid;place-items:center;color:#fff;font-family:var(--serif);font-weight:700;font-size:1.4rem;box-shadow:var(--shadow)}
+.brand b{font-family:var(--serif);font-size:1.25rem}
+.brand small{display:block;font-size:.6rem;font-weight:700;letter-spacing:.32em;color:var(--rosedeep)}
+.links{display:flex;gap:1.7rem;align-items:center}
+.links a{font-size:.9rem;font-weight:500;position:relative}
+.links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;border-radius:2px;background:linear-gradient(90deg,var(--rose),var(--lilac));transition:width .3s}
+.links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:.6rem;border:none;cursor:pointer;font-family:var(--sans);font-weight:600;font-size:.88rem;letter-spacing:.04em;padding:.95rem 1.8rem;border-radius:100px;color:#fff;background:linear-gradient(120deg,var(--rosedeep),var(--rose));box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.btn.glass{background:rgba(255,255,255,.6);color:var(--plum);border:1px solid var(--line);box-shadow:none;backdrop-filter:blur(8px)}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.burger span{display:block;width:26px;height:2px;background:var(--ink);margin:6px 0;transition:.3s}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:9rem 0 4rem;overflow:hidden;background:linear-gradient(180deg,#fdf8fb 0%,#f9e9f0 60%,#f3e4ee 100%)}
+.o1{width:480px;height:480px;background:#f6c6d8;top:-140px;right:-100px}
+.o2{width:420px;height:420px;background:#d9ccf5;bottom:-120px;left:-120px;animation-delay:4s}
+.o3{width:260px;height:260px;background:#ffe3c9;top:38%;left:44%;animation-delay:8s;opacity:.5}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;width:min(1200px,92vw);margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.7);border:1px solid var(--line);backdrop-filter:blur(8px);border-radius:100px;padding:.5rem 1.1rem;font-size:.8rem;font-weight:600;letter-spacing:.06em;margin-bottom:1.2rem}
+.hero-badge .pulse{width:9px;height:9px;border-radius:50%;background:var(--rose);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(227,106,138,.5)}70%{box-shadow:0 0 0 10px rgba(227,106,138,0)}100%{box-shadow:0 0 0 0 rgba(227,106,138,0)}}
+.hero h1{font-size:clamp(3rem,7.6vw,6rem)}
+.hero h1 .grad{background:linear-gradient(100deg,var(--rosedeep),var(--rose) 45%,var(--lilac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.08rem;color:#7d6577;max-width:470px;margin:1.3rem 0 2rem;font-weight:300}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-stats{display:flex;gap:2.2rem;margin-top:2.4rem}
+.hero-stats div b{font-family:var(--serif);font-size:1.9rem;display:block;background:linear-gradient(120deg,var(--rosedeep),var(--lilac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-stats div span{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#9a8296}
+.hero-visual{position:relative}
+.glass-card{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:32px;box-shadow:0 40px 90px -30px rgba(60,35,64,.35);padding:1.4rem;position:relative;overflow:hidden}
+.glass-card .art{border-radius:20px;overflow:hidden}
+.float-chip{position:absolute;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:18px;padding:.8rem 1.1rem;box-shadow:0 18px 44px -18px rgba(60,35,64,.4);display:flex;align-items:center;gap:.7rem;font-size:.85rem;font-weight:600;animation:floaty 6s ease-in-out infinite}
+.fc1{top:8%;left:-8%}
+.fc2{bottom:10%;right:-6%;animation-delay:3s}
+.float-chip .ic{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;flex:none}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+/* marquee */
+.marquee{background:linear-gradient(90deg,var(--rosedeep),var(--rose),var(--lilac));color:#fff;overflow:hidden;padding:1rem 0;transform:rotate(-1deg) scale(1.02)}
+.marquee .track{display:flex;gap:2.8rem;width:max-content;animation:mq 26s linear infinite;font-family:var(--serif);font-style:italic;font-size:1.25rem;white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.svc{background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:var(--radius);padding:2rem 1.7rem;backdrop-filter:blur(10px);transition:transform .35s,box-shadow .35s;position:relative;overflow:hidden}
+.svc::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(227,106,138,.1),rgba(167,139,219,.1));opacity:0;transition:opacity .35s}
+.svc:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.svc:hover::before{opacity:1}
+.svc .ic{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;margin-bottom:1.2rem;position:relative;transform:rotate(-6deg);transition:transform .35s}
+.svc:hover .ic{transform:rotate(6deg) scale(1.08)}
+.svc h3{font-size:1.45rem;margin-bottom:.5rem;position:relative}
+.svc p{font-size:.92rem;color:#7d6577;position:relative}
+.svc ul{list-style:none;margin:1.1rem 0;display:grid;gap:.45rem;position:relative}
+.svc li{display:flex;justify-content:space-between;font-size:.88rem;border-bottom:1px dashed var(--line);padding-bottom:.45rem}
+.svc li b{color:var(--rosedeep);font-weight:700}
+.svc .from{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rosedeep);position:relative}
+
+/* branches */
+.branches{background:linear-gradient(180deg,var(--pearl),var(--lav) 130%)}
+.b-filters{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem}
+.btab{border:1.5px solid var(--line);background:rgba(255,255,255,.7);font-family:var(--sans);font-weight:600;font-size:.84rem;padding:.7rem 1.3rem;border-radius:100px;cursor:pointer;transition:.25s}
+.btab:hover{border-color:var(--rose)}
+.btab.active{background:var(--plum);color:#fff;border-color:var(--plum)}
+.b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.branch{background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:22px;padding:1.6rem;backdrop-filter:blur(8px);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.branch:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.branch::after{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--rose),var(--lilac),var(--peach))}
+.branch h3{font-size:1.25rem;margin-bottom:.3rem}
+.branch .area{font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--rosedeep)}
+.branch p{font-size:.88rem;color:#7d6577;margin:.7rem 0 1rem}
+.branch .meta{display:flex;gap:1rem;font-size:.8rem;color:#9a8296}
+.branch .meta span{display:inline-flex;align-items:center;gap:.4rem}
+.branch .meta svg{width:14px;height:14px}
+.branch.hide{display:none}
+@keyframes pop{0%{transform:scale(.94);opacity:0}100%{transform:scale(1);opacity:1}}
+.branch.pop{animation:pop .35s ease}
+
+/* membership */
+.plans{background:var(--plum);color:#f3e7ef;position:relative;overflow:hidden}
+.plans::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 88% 6%,rgba(227,106,138,.25),transparent 60%),radial-gradient(560px 420px at 6% 94%,rgba(167,139,219,.22),transparent 60%)}
+.plans .sec-head h2{color:#fff}
+.plans .sec-head p{color:#c4aec2}
+.plans .eyebrow{color:#f2b8cb}.plans .eyebrow::before{background:linear-gradient(90deg,#f2b8cb,var(--lilac))}
+.switch{display:inline-flex;align-items:center;gap:1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:.5rem .6rem;margin-bottom:2.4rem;position:relative;z-index:1}
+.switch button{border:none;background:transparent;color:#d9c3d4;font-family:var(--sans);font-weight:700;font-size:.88rem;letter-spacing:.06em;padding:.7rem 1.6rem;border-radius:100px;cursor:pointer;transition:.3s}
+.switch button.active{background:linear-gradient(120deg,var(--rose),var(--lilac));color:#fff;box-shadow:0 10px 26px -10px rgba(227,106,138,.7)}
+.switch .save{font-size:.72rem;background:var(--mint);color:#14532d;font-weight:800;border-radius:100px;padding:.25rem .7rem;margin-left:.4rem}
+.plan-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.plan{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:28px;padding:2.2rem;backdrop-filter:blur(12px);display:flex;flex-direction:column;transition:transform .35s}
+.plan:hover{transform:translateY(-8px)}
+.plan.elite{border:1.5px solid var(--rose);background:rgba(227,106,138,.12);position:relative}
+.plan.elite::after{content:"MOST LOVED";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,var(--rose),var(--lilac));font-size:.68rem;font-weight:800;letter-spacing:.22em;padding:.45rem 1.2rem;border-radius:100px;color:#fff}
+.plan .pname{font-family:var(--serif);font-size:1.5rem;color:#fff}
+.plan .pdesc{font-size:.9rem;color:#c4aec2;margin:.4rem 0 1.2rem}
+.plan .pval{font-family:var(--serif);font-size:3rem;color:#fff;line-height:1}
+.plan .pval small{font-family:var(--sans);font-size:.85rem;color:#c4aec2}
+.plan ul{list-style:none;margin:1.4rem 0 1.8rem;display:grid;gap:.65rem;flex:1}
+.plan li{display:flex;gap:.7rem;align-items:flex-start;font-size:.92rem;color:#e6d3e0}
+.plan li svg{flex:none;width:17px;height:17px;margin-top:.2rem}
+.plan .btn{justify-content:center}
+
+/* booking */
+.book{position:relative;overflow:hidden}
+.form-card{position:relative;z-index:1;background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:32px;backdrop-filter:blur(16px);box-shadow:var(--shadow);padding:clamp(1.8rem,4vw,3rem);display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field.full{grid-column:1/-1}
+.field label{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#9a8296}
+.field input,.field select,.field textarea{font-family:var(--sans);font-size:1rem;border:1.5px solid var(--line);border-radius:14px;padding:.9rem 1.05rem;background:#fff;outline:none;transition:border .25s,box-shadow .25s;width:100%;color:var(--ink)}
+.field textarea{resize:vertical;min-height:104px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--rose);box-shadow:0 0 0 4px rgba(227,106,138,.15)}
+.field .err{font-size:.8rem;color:var(--rosedeep);min-height:1.1em;font-weight:600}
+.field.invalid input,.field.invalid select{border-color:var(--rosedeep)}
+.svc-pills{display:flex;gap:.6rem;flex-wrap:wrap}
+.pill input{position:absolute;opacity:0;pointer-events:none}
+.pill span{display:inline-block;border:1.5px solid var(--line);background:#fff;border-radius:100px;padding:.6rem 1.2rem;font-weight:600;font-size:.85rem;cursor:pointer;transition:.25s}
+.pill input:checked+span{background:linear-gradient(120deg,var(--rosedeep),var(--rose));color:#fff;border-color:transparent;box-shadow:0 10px 24px -10px rgba(227,106,138,.6)}
+.pill input:focus-visible+span{box-shadow:0 0 0 4px rgba(227,106,138,.25)}
+
+footer{background:var(--plum);color:#c4aec2;padding:3.5rem 0 2rem}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;margin-bottom:2.4rem}
+footer h4{font-family:var(--serif);color:#fff;font-size:1.15rem;margin-bottom:.9rem}
+footer p,footer li{font-size:.92rem;font-weight:300}
+footer ul{list-style:none;display:grid;gap:.5rem}
+footer a:hover{color:#f2b8cb}
+.credit{border-top:1px solid rgba(255,255,255,.12);padding-top:1.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem}
+
+.toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,160%);background:var(--plum);color:#fff;padding:1.1rem 1.8rem;border-radius:16px;box-shadow:0 24px 60px -18px rgba(0,0,0,.5);z-index:100;transition:transform .45s cubic-bezier(.22,.61,.36,1);display:flex;gap:.8rem;align-items:center;max-width:90vw}
+.toast.show{transform:translate(-50%,0)}
+
+@media(max-width:980px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .b-grid{grid-template-columns:1fr 1fr}
+  .plan-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{max-width:520px}
+  .fc1{left:0}.fc2{right:0}
+}
+@media(max-width:760px){
+  .links{position:fixed;inset:0;background:var(--pearl);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateX(100%);transition:transform .4s;z-index:65}
+  .links.open{transform:none}
+  .burger{display:block;z-index:70;position:relative}
+  .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .svc-grid{grid-template-columns:1fr}
+  .b-grid{grid-template-columns:1fr}
+  .form-card{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr}
+  .hero{padding-top:8rem}
+  .hero-stats{gap:1.4rem;flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="#top" aria-label="N Beauty Salons home">
+      <span class="n" aria-hidden="true">N</span>
+      <span><b>N Beauty Salons</b><small>Dubai &middot; 12 Branches</small></span>
+    </a>
+    <div class="links" id="links">
+      <a href="#services">Services</a>
+      <a href="#branches">Branches</a>
+      <a href="#membership">Membership</a>
+      <a href="#book" class="btn" style="padding:.75rem 1.4rem">Book Now</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="orb o1" aria-hidden="true"></div>
+  <div class="orb o2" aria-hidden="true"></div>
+  <div class="orb o3" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div>
+      <span class="hero-badge rv"><span class="pulse"></span> Now open in Dubai Hills &amp; JBR</span>
+      <h1 class="rv rv-d1">Glow like you<br><span class="grad">mean it.</span></h1>
+      <p class="lead rv rv-d2">Dubai&rsquo;s fresh-glam beauty collective — 12 neighbourhood salons, one standard: senior stylists, honest pricing and appointments that start on time.</p>
+      <div class="hero-ctas rv rv-d3">
+        <a href="#book" class="btn">Book an Appointment
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#membership" class="btn glass">Membership Plans</a>
+      </div>
+      <div class="hero-stats rv rv-d3">
+        <div><b>12</b><span>Branches</span></div>
+        <div><b>140+</b><span>Beauty Experts</span></div>
+        <div><b>4.9</b><span>Avg. Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-visual rv rv-d2">
+      <div class="glass-card">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 520 420">
+            <defs>
+              <linearGradient id="nb1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f9d9e4"/><stop offset=".5" stop-color="#e9defc"/><stop offset="1" stop-color="#ffe3c9"/></linearGradient>
+              <linearGradient id="nb2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e36a8a"/><stop offset="1" stop-color="#a78bdb"/></linearGradient>
+            </defs>
+            <rect width="520" height="420" fill="url(#nb1)"/>
+            <circle cx="120" cy="90" r="60" fill="#fff" opacity=".5"/>
+            <circle cx="430" cy="330" r="80" fill="#fff" opacity=".4"/>
+            <ellipse cx="260" cy="200" rx="105" ry="130" fill="#f6c9d8"/>
+            <path d="M170 150c-14 60-8 130 24 176" stroke="#5b3a4a" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path d="M350 150c14 60 8 130-24 176" stroke="#5b3a4a" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <ellipse cx="260" cy="205" rx="72" ry="92" fill="#ffd9c2"/>
+            <circle cx="232" cy="195" r="9" fill="#3c2340"/><circle cx="288" cy="195" r="9" fill="#3c2340"/>
+            <circle cx="234" cy="193" r="3" fill="#fff"/><circle cx="290" cy="193" r="3" fill="#fff"/>
+            <path d="M228 244q32 22 64 0" stroke="#c2436b" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <ellipse cx="205" cy="222" rx="14" ry="9" fill="#f4a8bc" opacity=".8"/><ellipse cx="315" cy="222" rx="14" ry="9" fill="#f4a8bc" opacity=".8"/>
+            <path d="M170 150c30-52 150-52 180 0-8-64-52-104-90-104s-82 40-90 104z" fill="#5b3a4a"/>
+            <rect x="238" y="330" width="44" height="60" rx="14" fill="#ffd9c2"/>
+            <path d="M200 420c6-40 24-64 60-64s54 24 60 64z" fill="url(#nb2)"/>
+            <g opacity=".9">
+              <rect x="380" y="70" width="70" height="90" rx="12" fill="#fff" opacity=".85"/>
+              <rect x="392" y="84" width="46" height="10" rx="5" fill="url(#nb2)"/>
+              <rect x="392" y="102" width="34" height="8" rx="4" fill="#e9defc"/>
+              <circle cx="70" cy="330" r="26" fill="url(#nb2)"/>
+              <rect x="58" y="352" width="24" height="40" rx="8" fill="#fff" opacity=".9"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="float-chip fc1"><span class="ic" style="background:linear-gradient(135deg,#e36a8a,#c2436b)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Senior stylists only</div>
+      <div class="float-chip fc2"><span class="ic" style="background:linear-gradient(135deg,#a78bdb,#7c5cc9)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>On-time, every time</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Hair Spa Rituals &#10022; Russian Manicures &#10022; Glass Skin Facials &#10022; Lash Lifts &#10022; Balayage Bar &#10022; Bridal Couture &#10022;&nbsp;</span>
+    <span>Hair Spa Rituals &#10022; Russian Manicures &#10022; Glass Skin Facials &#10022; Lash Lifts &#10022; Balayage Bar &#10022; Bridal Couture &#10022;&nbsp;</span>
+  </div>
+</div>
+
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Services &amp; Pricing</span>
+      <h2>Everything glow, <em>one menu</em></h2>
+      <p>Transparent AED pricing at every branch — no surprises at the till, ever. All services by senior-certified artists.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc rv">
+        <div class="ic" style="background:linear-gradient(135deg,#f9d9e4,#f4a8bc)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3c-4 3.5-6 7-6 10.5a6 6 0 0 0 12 0C18 10 16 6.5 12 3z" stroke="#c2436b" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8v9" stroke="#c2436b" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Hair Studio</h3>
+        <p>Precision cuts, lived-in colour and treatments that actually repair.</p>
+        <ul>
+          <li><span>Signature Cut + Finish</span><b>AED 145</b></li>
+          <li><span>Balayage / Foilayage</span><b>AED 550</b></li>
+          <li><span>Keratin Smoothing</span><b>AED 650</b></li>
+          <li><span>Japanese Hair Spa Ritual</span><b>AED 220</b></li>
+        </ul>
+        <span class="from">From AED 95</span>
+      </article>
+      <article class="svc rv rv-d1">
+        <div class="ic" style="background:linear-gradient(135deg,#e9defc,#c9b6f2)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M7 21V10l5-7 5 7v11" stroke="#7c5cc9" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 14h10" stroke="#7c5cc9" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Nails Atelier</h3>
+        <p>Russian manicures, BIAB overlays and nail art worth photographing.</p>
+        <ul>
+          <li><span>Russian Manicure</span><b>AED 160</b></li>
+          <li><span>BIAB Overlay</span><b>AED 210</b></li>
+          <li><span>Soft Gel Extensions</span><b>AED 280</b></li>
+          <li><span>Nail Art (per nail)</span><b>AED 15</b></li>
+        </ul>
+        <span class="from">From AED 120</span>
+      </article>
+      <article class="svc rv rv-d2">
+        <div class="ic" style="background:linear-gradient(135deg,#ffe3c9,#ffc79e)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="#c2571f" stroke-width="1.8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1" stroke="#c2571f" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Skin Lab</h3>
+        <p>Glass-skin facials, peels and glow boosters with medical-grade tech.</p>
+        <ul>
+          <li><span>Glass Skin Facial (75 min)</span><b>AED 350</b></li>
+          <li><span>HydraGlow Deluxe</span><b>AED 420</b></li>
+          <li><span>Chemical Peel (single)</span><b>AED 300</b></li>
+          <li><span>LED Glow Booster</span><b>AED 150</b></li>
+        </ul>
+        <span class="from">From AED 150</span>
+      </article>
+      <article class="svc rv">
+        <div class="ic" style="background:linear-gradient(135deg,#d8f0e2,#a9dcc0)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12c2.5-4.5 6-6.5 9-6.5s6.5 2 9 6.5c-2.5 4.5-6 6.5-9 6.5s-6.5-2-9-6.5z" stroke="#2e7d54" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" stroke="#2e7d54" stroke-width="1.8"/></svg></div>
+        <h3>Lashes &amp; Brows</h3>
+        <p>Feather-light extensions, lifts and sculpted brows that frame everything.</p>
+        <ul>
+          <li><span>Classic Lash Set</span><b>AED 250</b></li>
+          <li><span>Volume Lash Set</span><b>AED 350</b></li>
+          <li><span>Lash Lift + Tint</span><b>AED 180</b></li>
+          <li><span>Brow Sculpt + Tint</span><b>AED 95</b></li>
+        </ul>
+        <span class="from">From AED 95</span>
+      </article>
+      <article class="svc rv rv-d1">
+        <div class="ic" style="background:linear-gradient(135deg,#f9d9e4,#e9defc)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 21c-6 0-9-3.5-9-8 0-4 3-6.5 5.5-8C10 3.7 11 3 12 3s2 .7 3.5 2C18 6.5 21 9 21 13c0 4.5-3 8-9 8z" stroke="#c2436b" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 13c1.5 2 4.5 2 6 0" stroke="#c2436b" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Bridal Couture</h3>
+        <p>Full bridal parties with trials, on-location teams and calm timelines.</p>
+        <ul>
+          <li><span>Bridal Trial</span><b>AED 400</b></li>
+          <li><span>Bridal Hair + Makeup</span><b>AED 1,500</b></li>
+          <li><span>Bridesmaid (each)</span><b>AED 550</b></li>
+          <li><span>Pre-bridal Glow (4 wks)</span><b>AED 900</b></li>
+        </ul>
+        <span class="from">Packages from AED 900</span>
+      </article>
+      <article class="svc rv rv-d2">
+        <div class="ic" style="background:linear-gradient(135deg,#fff3d6,#ffd98a)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3v10M8 7l4-4 4 4" stroke="#b07a1e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" stroke="#b07a1e" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Waxing &amp; More</h3>
+        <p>Gentle strip-free waxing, threading and finishing touches.</p>
+        <ul>
+          <li><span>Full Body Wax</span><b>AED 280</b></li>
+          <li><span>Brazilian</span><b>AED 160</b></li>
+          <li><span>Face Threading</span><b>AED 60</b></li>
+          <li><span>Back &amp; Shoulder (men)</span><b>AED 120</b></li>
+        </ul>
+        <span class="from">From AED 45</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec branches" id="branches">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Branch Locator</span>
+      <h2>12 doors, <em>one glow</em></h2>
+      <p>Every branch runs the same menu, same pricing, same senior artists. Pick your neighbourhood.</p>
+    </div>
+    <div class="b-filters rv" role="group" aria-label="Filter branches by area">
+      <button class="btab active" data-area="all">All 12</button>
+      <button class="btab" data-area="marina">Marina &amp; JBR</button>
+      <button class="btab" data-area="downtown">Downtown &amp; DIFC</button>
+      <button class="btab" data-area="north">North Dubai</button>
+      <button class="btab" data-area="south">South Dubai</button>
+    </div>
+    <div class="b-grid" id="branchGrid">
+      <article class="branch rv" data-area="marina"><span class="area">Marina &amp; JBR</span><h3>Dubai Marina Mall</h3><p>Level 2, Marina Promenade — our flagship with the Balayage Bar.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>10 AM – 10 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0001</span></div></article>
+      <article class="branch rv rv-d1" data-area="marina"><span class="area">Marina &amp; JBR</span><h3>JBR — The Walk</h3><p>Beach-facing studio; sunset appointments are the worst-kept secret.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>10 AM – 10 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0002</span></div></article>
+      <article class="branch rv rv-d2" data-area="marina"><span class="area">Marina &amp; JBR</span><h3>JLT Cluster D</h3><p>Neighbourhood favourite with express lunch-hour services.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>9 AM – 9 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0003</span></div></article>
+      <article class="branch rv" data-area="downtown"><span class="area">Downtown &amp; DIFC</span><h3>Downtown — Boulevard</h3><p>Steps from Dubai Mall; bridal couture lounge on the mezzanine.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>10 AM – 10 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0004</span></div></article>
+      <article class="branch rv rv-d1" data-area="downtown"><span class="area">Downtown &amp; DIFC</span><h3>DIFC — Gate Avenue</h3><p>Power-hour blowouts and boardroom-ready grooming, 8 AM opens.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>8 AM – 9 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0005</span></div></article>
+      <article class="branch rv rv-d2" data-area="downtown"><span class="area">Downtown &amp; DIFC</span><h3>City Walk</h3><p>Al-fresco waiting lounge; family packages on weekends.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>10 AM – 10 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0006</span></div></article>
+      <article class="branch rv" data-area="north"><span class="area">North Dubai</span><h3>Mirdif — City Centre</h3><p>Community hub with a dedicated kids&rsquo; styling corner.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>10 AM – 10 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0007</span></div></article>
+      <article class="branch rv rv-d1" data-area="north"><span class="area">North Dubai</span><h3>Festival City</h3><p>Waterfront views from the wash basins — yes, really.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>10 AM – 10 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0008</span></div></article>
+      <article class="branch rv rv-d2" data-area="north"><span class="area">North Dubai</span><h3>Al Garhoud</h3><p>Quiet villa-style salon, perfect for long colour appointments.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>9 AM – 9 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0009</span></div></article>
+      <article class="branch rv" data-area="south"><span class="area">South Dubai</span><h3>Dubai Hills Estate</h3><p>Brand-new studio with the full Skin Lab treatment menu.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>10 AM – 10 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0010</span></div></article>
+      <article class="branch rv rv-d1" data-area="south"><span class="area">South Dubai</span><h3>Motor City</h3><p>Pet-friendly patio and express mani-pedi combos.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>9 AM – 9 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0011</span></div></article>
+      <article class="branch rv rv-d2" data-area="south"><span class="area">South Dubai</span><h3>Arabian Ranches</h3><p>Serene garden salon; mums&rsquo; morning packages with creche.</p><div class="meta"><span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e36a8a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e36a8a" stroke-width="2" stroke-linecap="round"/></svg>9 AM – 9 PM</span><span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z" stroke="#e36a8a" stroke-width="2" stroke-linejoin="round"/></svg>+971 4 111 0012</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec plans" id="membership">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Membership</span>
+      <h2>The Glow Club</h2>
+      <p>One membership, valid at all 12 branches. Pause anytime, share with family, and never pay full price for your rituals again.</p>
+    </div>
+    <div class="switch rv" role="group" aria-label="Billing period">
+      <button class="active" data-bill="monthly" aria-pressed="true">Monthly</button>
+      <button data-bill="yearly" aria-pressed="false">Yearly <span class="save">2 months free</span></button>
+    </div>
+    <div class="plan-grid">
+      <div class="plan rv">
+        <div class="pname">Blush</div>
+        <p class="pdesc">For the regular refresh — nails, brows and blowouts.</p>
+        <div class="pval"><span class="amt" data-m="AED 199" data-y="AED 1,990">AED 199</span><small class="per" data-m="/month" data-y="/year">/month</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>1 signature service / month</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>10% off all add-ons</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority booking window</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Birthday treat on us</li>
+        </ul>
+        <a href="#book" class="btn glass" data-plan="Blush">Choose Blush</a>
+      </div>
+      <div class="plan elite rv rv-d1">
+        <div class="pname">Radiance</div>
+        <p class="pdesc">Our most-loved ritual — hair, skin and nails in rotation.</p>
+        <div class="pval"><span class="amt" data-m="AED 449" data-y="AED 4,490">AED 449</span><small class="per" data-m="/month" data-y="/year">/month</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>3 signature services / month</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>20% off everything else</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>1 guest pass / quarter</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Free hair-spa upgrade monthly</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Valid at all 12 branches</li>
+        </ul>
+        <a href="#book" class="btn" data-plan="Radiance">Choose Radiance</a>
+      </div>
+      <div class="plan rv rv-d2">
+        <div class="pname">Icon</div>
+        <p class="pdesc">Unlimited-glow energy for the always-camera-ready.</p>
+        <div class="pval"><span class="amt" data-m="AED 899" data-y="AED 8,990">AED 899</span><small class="per" data-m="/month" data-y="/year">/month</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>6 signature services / month</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>25% off everything else</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated stylist &amp; skin coach</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="#f2b8cb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Home-service slots included</li>
+        </ul>
+        <a href="#book" class="btn glass" data-plan="Icon">Choose Icon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec book" id="book">
+  <div class="orb" style="width:420px;height:420px;background:#f6c6d8;top:-100px;right:-100px" aria-hidden="true"></div>
+  <div class="orb" style="width:360px;height:360px;background:#d9ccf5;bottom:-80px;left:-100px;animation-delay:5s" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Book Now</span>
+      <h2>Your chair is <em>waiting</em></h2>
+      <p>Pick services, branch and time — we confirm on WhatsApp within 15 minutes during opening hours.</p>
+    </div>
+    <form class="form-card rv rv-d1" id="bookForm" novalidate>
+      <div class="field">
+        <label for="f-name">Full Name</label>
+        <input id="f-name" name="name" type="text" placeholder="e.g. Aisha Khan" autocomplete="name">
+        <span class="err" data-err="name"></span>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone / WhatsApp</label>
+        <input id="f-phone" name="phone" type="tel" placeholder="+971 50 123 4567" autocomplete="tel">
+        <span class="err" data-err="phone"></span>
+      </div>
+      <div class="field">
+        <label for="f-branch">Preferred Branch</label>
+        <select id="f-branch" name="branch">
+          <option value="">Select a branch</option>
+          <option>Dubai Marina Mall</option><option>JBR — The Walk</option><option>JLT Cluster D</option>
+          <option>Downtown — Boulevard</option><option>DIFC — Gate Avenue</option><option>City Walk</option>
+          <option>Mirdif — City Centre</option><option>Festival City</option><option>Al Garhoud</option>
+          <option>Dubai Hills Estate</option><option>Motor City</option><option>Arabian Ranches</option>
+        </select>
+        <span class="err" data-err="branch"></span>
+      </div>
+      <div class="field">
+        <label for="f-date">Preferred Date</label>
+        <input id="f-date" name="date" type="date">
+        <span class="err" data-err="date"></span>
+      </div>
+      <div class="field">
+        <label for="f-time">Preferred Time</label>
+        <select id="f-time" name="time">
+          <option value="">Select a slot</option>
+          <option>Morning (9 AM – 12 PM)</option><option>Midday (12 – 3 PM)</option>
+          <option>Afternoon (3 – 6 PM)</option><option>Evening (6 – 9 PM)</option>
+        </select>
+        <span class="err" data-err="time"></span>
+      </div>
+      <div class="field">
+        <label for="f-plan">Membership Interest <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+        <select id="f-plan" name="plan">
+          <option value="">Just booking services</option>
+          <option>Blush</option><option>Radiance</option><option>Icon</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label>Services Wanted</label>
+        <div class="svc-pills" role="group" aria-label="Services wanted">
+          <label class="pill"><input type="checkbox" name="svc" value="Haircut / Colour"><span>Haircut / Colour</span></label>
+          <label class="pill"><input type="checkbox" name="svc" value="Nails"><span>Nails</span></label>
+          <label class="pill"><input type="checkbox" name="svc" value="Facial / Skin"><span>Facial / Skin</span></label>
+          <label class="pill"><input type="checkbox" name="svc" value="Lashes / Brows"><span>Lashes / Brows</span></label>
+          <label class="pill"><input type="checkbox" name="svc" value="Bridal"><span>Bridal</span></label>
+          <label class="pill"><input type="checkbox" name="svc" value="Waxing"><span>Waxing</span></label>
+        </div>
+        <span class="err" data-err="svc"></span>
+      </div>
+      <div class="field full">
+        <label for="f-notes">Notes <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea id="f-notes" name="notes" placeholder="Preferred stylist, allergies, occasion..."></textarea>
+      </div>
+      <div class="field full">
+        <button type="submit" class="btn" style="justify-content:center;font-size:1rem;padding:1.05rem">Request Appointment
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>N Beauty Salons</h4>
+        <p>Dubai&rsquo;s fresh-glam beauty collective — 12 branches, 140+ senior artists, one uncompromising standard of glow.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+97141110000">+971 4 111 0000</a> (central)</li>
+          <li><a href="mailto:hello@nbeauty.ae">hello@nbeauty.ae</a></li>
+          <li>Open daily, 9 AM – 10 PM</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#branches">Branches</a></li>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#book">Book Now</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credit">
+      <span>&copy; 2026 N Beauty Salons, Dubai. All rights reserved.</span>
+      <span>Concept demo by Om Vibe Webs</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#e36a8a"/><path d="m8 12.5 2.7 2.7L16 9.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="toastMsg">Done.</span>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* mobile menu */
+  var burger = document.getElementById("burger"), links = document.getElementById("links");
+  burger.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); burger.classList.remove("open"); }); });
+
+  /* reveal */
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* branch filters */
+  var btabs = Array.prototype.slice.call(document.querySelectorAll(".btab"));
+  var branches = Array.prototype.slice.call(document.querySelectorAll(".branch"));
+  btabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      btabs.forEach(function(x){ x.classList.remove("active"); });
+      t.classList.add("active");
+      var area = t.getAttribute("data-area"), n = 0;
+      branches.forEach(function(b){
+        var show = (area === "all" || b.getAttribute("data-area") === area);
+        b.classList.toggle("hide", !show);
+        if(show){ n++; if(!reduceMotion){ b.classList.remove("pop"); void b.offsetWidth; b.classList.add("pop"); } }
+      });
+      showToast("Showing " + n + " branch" + (n===1?"":"es") + ".");
+    });
+  });
+
+  /* membership billing switch */
+  var swBtns = Array.prototype.slice.call(document.querySelectorAll(".switch button"));
+  swBtns.forEach(function(b){
+    b.addEventListener("click", function(){
+      swBtns.forEach(function(x){ x.classList.remove("active"); x.setAttribute("aria-pressed","false"); });
+      b.classList.add("active"); b.setAttribute("aria-pressed","true");
+      var bill = b.getAttribute("data-bill");
+      document.querySelectorAll(".plan .amt").forEach(function(el){
+        el.textContent = bill === "yearly" ? el.getAttribute("data-y") : el.getAttribute("data-m");
+      });
+      document.querySelectorAll(".plan .per").forEach(function(el){
+        el.textContent = bill === "yearly" ? el.getAttribute("data-y") : el.getAttribute("data-m");
+      });
+    });
+  });
+
+  /* plan pre-select from cards */
+  document.querySelectorAll("[data-plan]").forEach(function(a){
+    a.addEventListener("click", function(){
+      var sel = document.getElementById("f-plan");
+      sel.value = a.getAttribute("data-plan");
+    });
+  });
+
+  /* toast */
+  var toast = document.getElementById("toast"), toastMsg = document.getElementById("toastMsg"), toastT;
+  function showToast(msg){
+    toastMsg.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){ toast.classList.remove("show"); }, 4600);
+  }
+
+  /* booking form */
+  var form = document.getElementById("bookForm");
+  var fDate = document.getElementById("f-date");
+  var today = new Date(); today.setHours(0,0,0,0);
+  fDate.min = today.toISOString().split("T")[0];
+  function setErr(name, msg){
+    var f = form.querySelector('[data-err="'+name+'"]');
+    if(f) f.textContent = msg || "";
+    var input = form.elements[name];
+    if(input && input.closest){ var field = input.closest(".field"); if(field) field.classList.toggle("invalid", !!msg); }
+    if(name === "svc"){ var pills = form.querySelector(".svc-pills"); if(pills) pills.closest(".field").classList.toggle("invalid", !!msg); }
+  }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var ok = true;
+    var name = form.elements.name.value.trim();
+    var phone = form.elements.phone.value.trim();
+    setErr("name", name.length >= 2 ? "" : "Please enter your full name."); if(name.length < 2) ok = false;
+    setErr("phone", /^[+\d][\d\s\-()]{6,}$/.test(phone) ? "" : "Please enter a valid phone number."); if(!/^[+\d][\d\s\-()]{6,}$/.test(phone)) ok = false;
+    setErr("branch", form.elements.branch.value ? "" : "Please choose a branch."); if(!form.elements.branch.value) ok = false;
+    var d = fDate.value ? new Date(fDate.value + "T00:00:00") : null;
+    setErr("date", d && d >= today ? "" : "Pick a date (today or later)."); if(!(d && d >= today)) ok = false;
+    setErr("time", form.elements.time.value ? "" : "Please choose a time slot."); if(!form.elements.time.value) ok = false;
+    var svcs = Array.prototype.slice.call(form.querySelectorAll('input[name="svc"]:checked')).map(function(c){ return c.value; });
+    setErr("svc", svcs.length ? "" : "Pick at least one service."); if(!svcs.length) ok = false;
+    if(!ok){ showToast("Please fix the highlighted fields and try again."); return; }
+    var plan = form.elements.plan.value;
+    showToast("Thank you, " + name.split(" ")[0] + "! " + svcs.join(" + ") + " at " + form.elements.branch.value + " requested" + (plan ? " (" + plan + " plan)" : "") + " — confirmation on WhatsApp within 15 mins.");
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>

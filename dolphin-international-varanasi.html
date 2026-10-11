@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Dolphin International Varanasi | Stay by the Ganga</title>
+<meta name="description" content="Hotel Dolphin International, Varanasi — a riverside-spirit 3-star premium stay minutes from the ghats. Rooms, Ganga aarti experiences and easy booking enquiry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dawn:#f7ead9; --cream:#fffaf1; --sand:#f3e3c8;
+  --saffron:#e8842c; --marigold:#f5b942; --ember:#c2551f;
+  --teal:#0e4f4a; --deep-teal:#08312e; --ink:#2b2118;
+  --muted:#7a6a58; --line:rgba(14,79,74,.14);
+  --card:#ffffff;
+  --shadow:0 24px 60px -24px rgba(8,49,46,.28);
+  --radius:22px;
+  --serif:'Cormorant Garamond',serif; --sans:'Jost',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.6}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--saffron);color:#fff}
+h1,h2,h3,.serif{font-family:var(--serif);font-weight:600;line-height:1.08}
+.wrap{width:min(1180px,92vw);margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ember);font-weight:500}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--ember)}
+.sec{padding:clamp(4rem,8vw,7rem) 0}
+.sec-head{max-width:640px;margin-bottom:clamp(2rem,4vw,3.2rem)}
+.sec-head h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin:.9rem 0 .8rem}
+.sec-head p{color:var(--muted);font-size:1.05rem}
+
+/* ---------- reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+
+/* ---------- nav ---------- */
+nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .35s,box-shadow .35s,backdrop-filter .35s}
+nav .bar{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0}
+nav.scrolled{background:rgba(255,250,241,.88);backdrop-filter:blur(14px);box-shadow:0 8px 30px -18px rgba(8,49,46,.35)}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand .mark{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--marigold),var(--ember));display:grid;place-items:center;box-shadow:0 8px 20px -8px var(--ember)}
+.brand .mark svg{width:24px;height:24px}
+.brand b{font-family:var(--serif);font-size:1.25rem;letter-spacing:.02em}
+.brand small{display:block;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.links{display:flex;gap:2rem;align-items:center}
+.links a{font-size:.92rem;letter-spacing:.06em;position:relative;padding:.3rem 0}
+.links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--saffron);transition:width .3s}
+.links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(120deg,var(--ember),var(--saffron));color:#fff;border:none;cursor:pointer;font-family:var(--sans);font-weight:500;letter-spacing:.08em;font-size:.9rem;padding:.95rem 1.9rem;border-radius:100px;transition:transform .25s,box-shadow .25s;box-shadow:0 14px 30px -12px rgba(194,85,31,.55)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 20px 38px -12px rgba(194,85,31,.6)}
+.btn.ghost{background:transparent;color:var(--deep-teal);border:1.5px solid rgba(8,49,46,.35);box-shadow:none}
+.btn.ghost:hover{border-color:var(--deep-teal)}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.burger span{display:block;width:26px;height:2px;background:var(--ink);margin:6px 0;transition:.3s}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(180deg,#3a2b52 0%,#7a3f5c 26%,#d2693c 52%,#f2a65a 72%,#f7d9a8 100%)}
+.sun{position:absolute;left:50%;top:46%;width:min(46vw,380px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fff7e6 0%,#ffe3a3 32%,#ffb84d 58%,rgba(255,150,60,0) 72%);filter:blur(2px);animation:sunrise 9s ease-in-out infinite alternate}
+@keyframes sunrise{from{transform:translate(-50%,-50%) scale(1)}to{transform:translate(-50%,-56%) scale(1.12)}}
+.hero-silhouette{position:absolute;left:0;right:0;bottom:0;width:100%;height:38%}
+.hero .waves{position:absolute;left:0;right:0;bottom:-2px;width:200%;height:120px;display:flex}
+.hero .waves svg{width:50%;height:100%}
+.w1{animation:drift 14s linear infinite}
+.w2{animation:drift 22s linear infinite reverse}
+@keyframes drift{to{transform:translateX(-50%)}}
+.hero-content{position:relative;z-index:3;width:min(1180px,92vw);margin:0 auto;padding:9rem 0 11rem;color:#fff}
+.hero-content .eyebrow{color:#ffe3a3}
+.hero-content .eyebrow::before{background:#ffe3a3}
+.hero h1{font-size:clamp(3rem,8.4vw,6.6rem);letter-spacing:.01em;text-shadow:0 4px 40px rgba(60,20,5,.45)}
+.hero h1 em{font-style:italic;color:#ffe3a3}
+.hero p.sub{max-width:560px;font-size:clamp(1.02rem,1.6vw,1.25rem);font-weight:300;margin:1.2rem 0 2.2rem;color:#fff6e8}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.6)}
+.diya{position:absolute;z-index:2;opacity:.9;animation:floaty 7s ease-in-out infinite}
+.diya.d1{left:8%;bottom:26%;animation-delay:0s}
+.diya.d2{right:10%;bottom:34%;animation-delay:2.2s;transform:scale(.8)}
+.diya.d3{left:44%;bottom:20%;animation-delay:4s;transform:scale(.6)}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-16px) rotate(3deg)}}
+.scroll-hint{position:absolute;z-index:3;left:50%;bottom:1.4rem;transform:translateX(-50%);color:#fff;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.scroll-hint i{width:1px;height:44px;background:linear-gradient(#fff,transparent);animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--deep-teal);color:#ffe9c4;overflow:hidden;padding:1.1rem 0;transform:rotate(-1.2deg) scale(1.02)}
+.marquee .track{display:flex;gap:3rem;width:max-content;animation:mq 26s linear infinite;font-family:var(--serif);font-size:1.25rem;letter-spacing:.06em;white-space:nowrap}
+.marquee .track span{display:flex;align-items:center;gap:3rem}
+.marquee .dot{color:var(--marigold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- stats ---------- */
+.stats{background:var(--cream);margin-top:-2.2rem;position:relative;z-index:5}
+.stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:2.2rem 1.4rem}
+.stat{text-align:center;position:relative}
+.stat+.stat::before{content:"";position:absolute;left:0;top:15%;bottom:15%;width:1px;background:var(--line)}
+.stat b{font-family:var(--serif);font-size:clamp(2rem,3.6vw,3rem);color:var(--deep-teal);display:block}
+.stat span{font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- rooms bento ---------- */
+.rooms{background:linear-gradient(180deg,var(--cream),var(--dawn))}
+.bento{display:grid;grid-template-columns:1.15fr 1fr 1fr;grid-template-rows:auto auto;gap:1.2rem}
+.room{position:relative;border-radius:var(--radius);overflow:hidden;min-height:340px;display:flex;align-items:flex-end;color:#fff;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+.room:hover{transform:translateY(-8px) scale(1.01)}
+.room .art{position:absolute;inset:0}
+.room .art svg{width:100%;height:100%}
+.room .veil{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,20,25,.78) 82%)}
+.room .info{position:relative;z-index:2;padding:1.6rem;width:100%}
+.room .tag{display:inline-block;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35);padding:.32rem .9rem;border-radius:100px;margin-bottom:.7rem}
+.room h3{font-size:1.7rem;margin-bottom:.35rem}
+.room p{font-size:.94rem;color:#f3e9d6;font-weight:300}
+.room .price-row{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
+.room .price{font-family:var(--serif);font-size:1.5rem}
+.room .price small{font-family:var(--sans);font-size:.8rem;color:#e8d9bd}
+.room .go{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:.3s}
+.room:hover .go{background:var(--marigold);border-color:var(--marigold);transform:rotate(-38deg)}
+.room.hero-card{grid-row:span 2;min-height:100%}
+.room .amen{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem}
+.room .amen li{list-style:none;font-size:.75rem;letter-spacing:.08em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:.28rem .8rem;border-radius:100px}
+
+/* ---------- experiences ---------- */
+.exp{background:var(--deep-teal);color:#f5ead2;position:relative;overflow:hidden}
+.exp::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 85% 10%,rgba(245,185,66,.16),transparent 60%),radial-gradient(600px 500px at 8% 90%,rgba(232,132,44,.12),transparent 60%)}
+.exp .sec-head h2{color:#fff}
+.exp .sec-head p{color:#cdbfa4}
+.exp .eyebrow{color:var(--marigold)}.exp .eyebrow::before{background:var(--marigold)}
+.timeline{position:relative;display:grid;gap:0;max-width:860px;margin:0 auto}
+.timeline::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--marigold),var(--ember),transparent)}
+.step{position:relative;display:grid;grid-template-columns:44px 1fr;gap:1.4rem;padding:1.6rem 0}
+.step .node{width:40px;height:40px;border-radius:50%;background:rgba(245,185,66,.12);border:1.5px solid var(--marigold);display:grid;place-items:center;z-index:1}
+.step .node svg{width:20px;height:20px}
+.step .card{background:rgba(255,255,255,.05);border:1px solid rgba(245,185,66,.22);border-radius:18px;padding:1.4rem 1.6rem;backdrop-filter:blur(8px);transition:transform .35s,background .35s}
+.step .card:hover{transform:translateX(8px);background:rgba(255,255,255,.09)}
+.step .time{font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--marigold)}
+.step h3{font-size:1.5rem;margin:.4rem 0 .4rem;color:#fff}
+.step p{color:#d8cba9;font-size:.98rem;font-weight:300}
+
+/* ---------- testimonials ---------- */
+.testi{background:var(--dawn);overflow:hidden}
+.t-track{display:flex;gap:1.2rem;width:max-content;animation:mq 38s linear infinite;padding:.6rem 0}
+.t-card{width:340px;flex:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.6rem;box-shadow:0 16px 40px -22px rgba(8,49,46,.25)}
+.t-card .stars{display:flex;gap:.25rem;margin-bottom:.8rem}
+.t-card p{font-family:var(--serif);font-style:italic;font-size:1.08rem;color:#4a3d2e}
+.t-card .who{margin-top:1rem;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+.testi:hover .t-track{animation-play-state:paused}
+
+/* ---------- location ---------- */
+.loc .grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.map-art{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.loc ul{list-style:none;margin-top:1.4rem;display:grid;gap:1rem}
+.loc li{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:1rem 1.2rem}
+.loc li .ic{flex:none;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--saffron),var(--ember));display:grid;place-items:center}
+.loc li .ic svg{width:22px;height:22px}
+.loc li b{display:block;font-weight:500}
+.loc li span{color:var(--muted);font-size:.92rem}
+
+/* ---------- booking ---------- */
+.book{background:linear-gradient(160deg,var(--deep-teal),#0a3f3a 60%,#0c2b28);color:#f3e9d2;position:relative;overflow:hidden}
+.book::after{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(245,185,66,.22),transparent 65%)}
+.book .sec-head h2{color:#fff}.book .sec-head p{color:#cdbfa4}
+.book .eyebrow{color:var(--marigold)}.book .eyebrow::before{background:var(--marigold)}
+.form-card{position:relative;z-index:2;background:rgba(255,255,255,.06);border:1px solid rgba(245,185,66,.28);backdrop-filter:blur(14px);border-radius:26px;padding:clamp(1.6rem,4vw,3rem);display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;box-shadow:0 30px 80px -30px rgba(0,0,0,.5)}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field.full{grid-column:1/-1}
+.field label{font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:#e6d3a8}
+.field input,.field select,.field textarea{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:12px;color:#fff;font-family:var(--sans);font-size:1rem;padding:.85rem 1rem;outline:none;transition:border .25s,background .25s;width:100%}
+.field select option{color:#222}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--marigold);background:rgba(255,255,255,.12)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.4)}
+.field .err{font-size:.8rem;color:#ffb3a0;min-height:1.1em}
+.field.invalid input,.field.invalid select{border-color:#ff8d7a}
+.form-note{grid-column:1/-1;font-size:.85rem;color:#cdbfa4}
+.form-note a{color:var(--marigold);text-decoration:underline}
+
+/* ---------- footer ---------- */
+footer{background:#071f1d;color:#bfae8d;padding:3.5rem 0 2rem}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;margin-bottom:2.4rem}
+footer h4{font-family:var(--serif);color:#fff;font-size:1.2rem;margin-bottom:.9rem}
+footer p,footer li{font-size:.92rem;font-weight:300}
+footer ul{list-style:none;display:grid;gap:.5rem}
+footer a:hover{color:var(--marigold)}
+.credit{border-top:1px solid rgba(255,255,255,.1);padding-top:1.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;letter-spacing:.06em}
+
+/* ---------- toast ---------- */
+.toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,140%);background:var(--deep-teal);color:#fff;padding:1.1rem 1.8rem;border-radius:16px;box-shadow:0 24px 60px -18px rgba(0,0,0,.5);z-index:100;transition:transform .45s cubic-bezier(.22,.61,.36,1);display:flex;gap:.8rem;align-items:center;max-width:90vw}
+.toast.show{transform:translate(-50%,0)}
+.toast svg{flex:none}
+
+/* ---------- responsive ---------- */
+@media(max-width:980px){
+  .bento{grid-template-columns:1fr 1fr}
+  .room.hero-card{grid-row:auto;grid-column:1/-1;min-height:380px}
+  .loc .grid{grid-template-columns:1fr}
+  .stats .grid{grid-template-columns:1fr 1fr;gap:1.6rem}
+  .stat:nth-child(3)::before{display:none}
+}
+@media(max-width:760px){
+  .links{position:fixed;inset:0;background:var(--cream);flex-direction:column;justify-content:center;gap:1.6rem;font-size:1.3rem;transform:translateX(100%);transition:transform .4s}
+  .links.open{transform:none}
+  .links .btn{font-size:1rem}
+  .burger{display:block;z-index:70}
+  .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .bento{grid-template-columns:1fr}
+  .form-card{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr}
+  .stats .grid{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Hotel Dolphin International home">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 15c2.5 0 4-1.6 5.5-1.6S11 15 13.5 15s4-2 6-2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><path d="M6 12.5c1.2-3.4 3.4-5 6-5 2.2 0 4 1.4 5 3.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="9.6" r="1.1" fill="#fff"/></svg>
+      </span>
+      <span><b>Hotel Dolphin International</b><small>Varanasi</small></span>
+    </a>
+    <div class="links" id="links">
+      <a href="#rooms">Rooms</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#location">Location</a>
+      <a href="#book" class="btn">Book Your Stay</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="sun" aria-hidden="true"></div>
+
+  <div class="diya d1" aria-hidden="true">
+    <svg width="54" height="66" viewBox="0 0 54 66"><ellipse cx="27" cy="60" rx="20" ry="4" fill="#000" opacity=".25"/><path d="M7 52c0-8 9-13 20-13s20 5 20 13c0 3-4 5-20 5s-20-2-20-5z" fill="#8a4a1d"/><ellipse cx="27" cy="49" rx="14" ry="3.4" fill="#5d2f0e"/><path d="M27 40c3-4.5 3-8 0-11-3 3-3 6.5 0 11z" fill="#ffcf6b"/><path d="M27 37c1.6-2.4 1.6-4.4 0-6-1.6 1.6-1.6 3.6 0 6z" fill="#ff9a2e"/></svg>
+  </div>
+  <div class="diya d2" aria-hidden="true">
+    <svg width="54" height="66" viewBox="0 0 54 66"><ellipse cx="27" cy="60" rx="20" ry="4" fill="#000" opacity=".25"/><path d="M7 52c0-8 9-13 20-13s20 5 20 13c0 3-4 5-20 5s-20-2-20-5z" fill="#8a4a1d"/><ellipse cx="27" cy="49" rx="14" ry="3.4" fill="#5d2f0e"/><path d="M27 40c3-4.5 3-8 0-11-3 3-3 6.5 0 11z" fill="#ffcf6b"/><path d="M27 37c1.6-2.4 1.6-4.4 0-6-1.6 1.6-1.6 3.6 0 6z" fill="#ff9a2e"/></svg>
+  </div>
+  <div class="diya d3" aria-hidden="true">
+    <svg width="54" height="66" viewBox="0 0 54 66"><ellipse cx="27" cy="60" rx="20" ry="4" fill="#000" opacity=".25"/><path d="M7 52c0-8 9-13 20-13s20 5 20 13c0 3-4 5-20 5s-20-2-20-5z" fill="#8a4a1d"/><ellipse cx="27" cy="49" rx="14" ry="3.4" fill="#5d2f0e"/><path d="M27 40c3-4.5 3-8 0-11-3 3-3 6.5 0 11z" fill="#ffcf6b"/><path d="M27 37c1.6-2.4 1.6-4.4 0-6-1.6 1.6-1.6 3.6 0 6z" fill="#ff9a2e"/></svg>
+  </div>
+
+  <svg class="hero-silhouette" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 300V190l40-8 30 12 50-60 24 44 30-30 40 60 26-14 34 20 44-90 26 60 30-24 44 40 30-16 40 66 36-22 30 30 50-110 28 84 34-28 40 44 34-18 44 70 40-26 36 30 50-96 30 70 34-30 40 46 30-16 34 34 40-60 30 40 30-18 34 26 40-44 30 30 40-70 34 50 30-20 36 24 40-40 34 28V300z" fill="#241a35" opacity=".92"/>
+    <rect x="0" y="252" width="1440" height="48" fill="#120c1c" opacity=".9"/>
+  </svg>
+
+  <div class="waves" aria-hidden="true">
+    <div class="w1" style="display:flex;width:200%">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 60 Q 90 20 180 60 T 360 60 T 540 60 T 720 60 T 900 60 T 1080 60 T 1260 60 T 1440 60 V120 H0 Z" fill="#0e4f4a" opacity=".85"/></svg>
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 60 Q 90 20 180 60 T 360 60 T 540 60 T 720 60 T 900 60 T 1080 60 T 1260 60 T 1440 60 V120 H0 Z" fill="#0e4f4a" opacity=".85"/></svg>
+    </div>
+    <div class="w2" style="display:flex;width:200%;position:absolute;bottom:0;left:0">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 70 Q 120 40 240 70 T 480 70 T 720 70 T 960 70 T 1200 70 T 1440 70 V120 H0 Z" fill="#08312e"/></svg>
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 70 Q 120 40 240 70 T 480 70 T 720 70 T 960 70 T 1200 70 T 1440 70 V120 H0 Z" fill="#08312e"/></svg>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <span class="eyebrow rv">Varanasi &middot; Uttar Pradesh</span>
+    <h1 class="rv rv-d1">Wake up to the <em>Ganga</em>,<br>sleep to temple bells.</h1>
+    <p class="sub rv rv-d2">A riverside-spirit 3-star premium stay a short stroll from the ghats — warm rooms, honest prices, and Varanasi woven into every hour of your day.</p>
+    <div class="hero-ctas rv rv-d3">
+      <a href="#book" class="btn magnetic">Check Availability
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#experiences" class="btn ghost magnetic">Explore Experiences</a>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">Scroll<i></i></div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Ganga Aarti <i class="dot">&#10022;</i> Sunrise Boat Rides <i class="dot">&#10022;</i> Old City Walks <i class="dot">&#10022;</i> Sarnath Day Trip <i class="dot">&#10022;</i> Banarasi Food Trail <i class="dot">&#10022;</i> Silk Weavers&rsquo; Lanes <i class="dot">&#10022;</i>&nbsp;</span>
+    <span>Ganga Aarti <i class="dot">&#10022;</i> Sunrise Boat Rides <i class="dot">&#10022;</i> Old City Walks <i class="dot">&#10022;</i> Sarnath Day Trip <i class="dot">&#10022;</i> Banarasi Food Trail <i class="dot">&#10022;</i> Silk Weavers&rsquo; Lanes <i class="dot">&#10022;</i>&nbsp;</span>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="grid rv">
+      <div class="stat"><b><span class="count" data-to="68">0</span></b><span>Elegant Rooms</span></div>
+      <div class="stat"><b><span class="count" data-to="15">0</span>+</b><span>Years of Hospitality</span></div>
+      <div class="stat"><b><span class="count" data-to="42">0</span>k+</b><span>Happy Guests</span></div>
+      <div class="stat"><b>4.6<span style="font-size:1.2rem">/5</span></b><span>Guest Rating</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec rooms" id="rooms">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Rooms &amp; Suites</span>
+      <h2>Rest, the Banarasi way</h2>
+      <p>Sun-washed rooms with handloom textiles, deep mattresses and balconies that catch the morning aarti breeze. Pick your pace.</p>
+    </div>
+    <div class="bento">
+      <article class="room hero-card rv">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5b942"/><stop offset=".55" stop-color="#c96b2b"/><stop offset="1" stop-color="#4a2c3a"/></linearGradient></defs>
+            <rect width="600" height="800" fill="url(#r1)"/>
+            <rect x="60" y="180" width="480" height="300" rx="14" fill="#2b1b28" opacity=".55"/>
+            <rect x="90" y="210" width="150" height="240" rx="8" fill="#ffd9a0" opacity=".8"/>
+            <rect x="260" y="210" width="150" height="240" rx="8" fill="#e8a86b" opacity=".7"/>
+            <rect x="430" y="210" width="80" height="240" rx="8" fill="#ffd9a0" opacity=".55"/>
+            <rect x="60" y="480" width="480" height="26" rx="6" fill="#1d1220" opacity=".6"/>
+            <rect x="90" y="540" width="420" height="180" rx="16" fill="#3a2430" opacity=".65"/>
+            <rect x="120" y="570" width="360" height="60" rx="10" fill="#f7ead9" opacity=".85"/>
+            <rect x="120" y="650" width="160" height="50" rx="10" fill="#e8842c" opacity=".9"/>
+            <circle cx="480" cy="120" r="46" fill="#fff3d6" opacity=".95"/>
+          </svg>
+        </div>
+        <div class="veil"></div>
+        <div class="info">
+          <span class="tag">Most Loved</span>
+          <h3>Ganga View Deluxe</h3>
+          <p>Private balcony facing the river — watch diyas drift by at dusk, mist lift at dawn.</p>
+          <ul class="amen"><li>32 m&sup2;</li><li>King Bed</li><li>River Balcony</li><li>Rain Shower</li></ul>
+          <div class="price-row"><span class="price">&#8377;4,200 <small>/ night</small></span><span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </article>
+
+      <article class="room rv rv-d1">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e4f4a"/><stop offset="1" stop-color="#08312e"/></linearGradient></defs>
+            <rect width="600" height="420" fill="url(#r2)"/>
+            <rect x="70" y="90" width="200" height="150" rx="10" fill="#f7ead9" opacity=".9"/>
+            <rect x="300" y="90" width="230" height="150" rx="10" fill="#e8842c" opacity=".85"/>
+            <rect x="70" y="270" width="460" height="90" rx="12" fill="#f5b942" opacity=".9"/>
+            <circle cx="520" cy="70" r="30" fill="#fff3d6" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="veil"></div>
+        <div class="info">
+          <span class="tag">Smart Value</span>
+          <h3>Comfort Twin</h3>
+          <p>Two plush twins, work nook and blackout drapes — ideal for friends and families.</p>
+          <div class="price-row"><span class="price">&#8377;2,800 <small>/ night</small></span><span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </article>
+
+      <article class="room rv rv-d2">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3f5c"/><stop offset="1" stop-color="#3a2b52"/></linearGradient></defs>
+            <rect width="600" height="420" fill="url(#r3)"/>
+            <rect x="60" y="70" width="480" height="220" rx="14" fill="#2b1b28" opacity=".5"/>
+            <rect x="100" y="110" width="180" height="140" rx="8" fill="#ffd9a0" opacity=".85"/>
+            <rect x="300" y="110" width="200" height="140" rx="8" fill="#e8842c" opacity=".7"/>
+            <rect x="100" y="310" width="400" height="60" rx="12" fill="#f7ead9" opacity=".85"/>
+            <circle cx="90" cy="60" r="26" fill="#fff3d6" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="veil"></div>
+        <div class="info">
+          <span class="tag">Family</span>
+          <h3>Heritage Family Room</h3>
+          <p>Interlinked space for four, Banarasi silk cushions, and a dining corner.</p>
+          <div class="price-row"><span class="price">&#8377;5,600 <small>/ night</small></span><span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </article>
+
+      <article class="room rv rv-d1">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8842c"/><stop offset="1" stop-color="#8a4a1d"/></linearGradient></defs>
+            <rect width="600" height="420" fill="url(#r4)"/>
+            <rect x="80" y="120" width="440" height="180" rx="14" fill="#2b1b28" opacity=".45"/>
+            <rect x="120" y="150" width="360" height="40" rx="8" fill="#fff3d6" opacity=".9"/>
+            <rect x="120" y="210" width="220" height="60" rx="8" fill="#f5b942" opacity=".9"/>
+            <rect x="360" y="210" width="120" height="60" rx="8" fill="#fff3d6" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="veil"></div>
+        <div class="info">
+          <span class="tag">Indulgent</span>
+          <h3>Dolphin Suite</h3>
+          <p>Top-floor suite with lounge, soaker tub and a terrace made for aarti evenings.</p>
+          <div class="price-row"><span class="price">&#8377;8,900 <small>/ night</small></span><span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </article>
+
+      <article class="room rv rv-d2">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7ead9"/><stop offset="1" stop-color="#e8c89a"/></linearGradient></defs>
+            <rect width="600" height="420" fill="url(#r5)"/>
+            <rect x="80" y="100" width="200" height="220" rx="12" fill="#0e4f4a" opacity=".85"/>
+            <rect x="310" y="100" width="210" height="100" rx="12" fill="#c2551f" opacity=".8"/>
+            <rect x="310" y="220" width="210" height="100" rx="12" fill="#0e4f4a" opacity=".55"/>
+            <circle cx="480" cy="70" r="28" fill="#e8842c" opacity=".85"/>
+          </svg>
+        </div>
+        <div class="veil"></div>
+        <div class="info">
+          <span class="tag">Solo Travellers</span>
+          <h3>Yatri Single</h3>
+          <p>A calm, clever single room with reading light, desk and garden-facing window.</p>
+          <div class="price-row"><span class="price">&#8377;1,950 <small>/ night</small></span><span class="go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec exp" id="experiences">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Varanasi Experiences</span>
+      <h2>A day on the ghats, curated</h2>
+      <p>Our concierge desk strings these together into one seamless day — boats, bells, lanes and laddoos, all handled.</p>
+    </div>
+    <div class="timeline">
+      <div class="step rv">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.5" stroke="#f5b942" stroke-width="1.8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1" stroke="#f5b942" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="card"><span class="time">5:30 AM</span><h3>Sunrise Boat Ride</h3><p>Drift past 84 ghats as the city wakes — sadhus at prayer, pigeons lifting off the water, chai in a kulhad.</p></div>
+      </div>
+      <div class="step rv rv-d1">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17c2-4 5-6 8-6s6 2 8 6" stroke="#f5b942" stroke-width="1.8" stroke-linecap="round"/><path d="M12 11c1.6-2.4 1.6-4.4 0-6-1.6 1.6-1.6 3.6 0 6z" stroke="#f5b942" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div class="card"><span class="time">9:00 AM</span><h3>Old City &amp; Silk Lanes Walk</h3><p>A guided wander through galis older than memory — silk weavers at wooden looms, paan, and hidden temples.</p></div>
+      </div>
+      <div class="step rv rv-d2">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 8l7-5 7 5" stroke="#f5b942" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17" r="3" stroke="#f5b942" stroke-width="1.8"/></svg></div>
+        <div class="card"><span class="time">2:00 PM</span><h3>Sarnath Day Trip</h3><p>Where the Buddha gave his first sermon — stupas, museums and deer park, 40 minutes away with our driver.</p></div>
+      </div>
+      <div class="step rv rv-d3">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 18c0-5 2.5-8 6-8s6 3 6 8" stroke="#f5b942" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10V4M9.5 6.5 12 4l2.5 2.5" stroke="#f5b942" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="card"><span class="time">6:45 PM</span><h3>Ganga Aarti at Dashashwamedh</h3><p>Reserved riverside seating for the fire ceremony — conches, chants and a thousand flames on the water.</p></div>
+      </div>
+      <div class="step rv rv-d4">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 10h10v3a5 5 0 0 1-10 0v-3z" stroke="#f5b942" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 10V7a3 3 0 0 1 6 0v3M12 18v2" stroke="#f5b942" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="card"><span class="time">8:30 PM</span><h3>Banarasi Food Trail</h3><p>Tamatar chaat, kachori-sabzi, malaiyo in winter and blue-lassi — our food captain knows every legendary stall.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec testi">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Guest Stories</span>
+      <h2>Loved by travellers worldwide</h2>
+    </div>
+  </div>
+  <div class="t-track" aria-label="Guest reviews">
+    <div class="t-card"><div class="stars" aria-label="5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>&ldquo;The Ganga View room at sunrise is worth the trip alone. The staff arranged our aarti seats and boat — flawless.&rdquo;</p><div class="who">Ananya S. &middot; Mumbai</div></div>
+    <div class="t-card"><div class="stars" aria-label="5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>&ldquo;Walk to the ghats in ten minutes, come back to the best filter coffee. Felt like home within an hour.&rdquo;</p><div class="who">James W. &middot; London</div></div>
+    <div class="t-card"><div class="stars" aria-label="5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>&ldquo;The food trail night was the highlight of our India trip. Tamatar chaat at midnight — unforgettable.&rdquo;</p><div class="who">Priya &amp; Arjun &middot; Bengaluru</div></div>
+    <div class="t-card"><div class="stars" aria-label="5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>&ldquo;Spotless rooms, honest pricing, and the Sarnath trip was beautifully organised. Highly recommended.&rdquo;</p><div class="who">Daniel K. &middot; Singapore</div></div>
+    <div class="t-card"><div class="stars" aria-label="5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>&ldquo;We came for two nights and stayed five. The terrace at aarti time, with diyas below — pure magic.&rdquo;</p><div class="who">Meera R. &middot; Delhi</div></div>
+    <div class="t-card"><div class="stars" aria-label="5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><p>&ldquo;Travelling with parents and kids — the family room was perfect and the staff treated us like their own.&rdquo;</p><div class="who">Rohit M. &middot; Pune</div></div>
+  </div>
+</section>
+
+<section class="sec loc" id="location">
+  <div class="wrap">
+    <div class="grid">
+      <div class="map-art rv" aria-hidden="true">
+        <svg viewBox="0 0 600 520">
+          <rect width="600" height="520" fill="#f3e3c8"/>
+          <path d="M-20 360 C 120 300 180 420 320 360 S 520 300 640 380 L 640 540 L -20 540 Z" fill="#0e4f4a" opacity=".9"/>
+          <path d="M-20 400 C 120 350 180 450 320 400 S 520 350 640 420" stroke="#f5b942" stroke-width="3" fill="none" opacity=".6"/>
+          <g fill="#08312e" opacity=".85">
+            <rect x="90" y="120" width="60" height="44" rx="6"/><rect x="165" y="100" width="44" height="64" rx="6"/>
+            <rect x="225" y="130" width="70" height="40" rx="6"/><rect x="310" y="95" width="52" height="70" rx="6"/>
+            <rect x="380" y="130" width="64" height="42" rx="6"/><rect x="460" y="105" width="50" height="60" rx="6"/>
+            <rect x="120" y="200" width="52" height="46" rx="6"/><rect x="250" y="205" width="66" height="42" rx="6"/>
+            <rect x="400" y="200" width="56" height="48" rx="6"/>
+          </g>
+          <g stroke="#08312e" stroke-width="5" fill="none" opacity=".7">
+            <path d="M0 260 H 600"/><path d="M180 60 V 260"/><path d="M420 60 V 260"/>
+          </g>
+          <g>
+            <circle cx="300" cy="330" r="26" fill="#c2551f"/>
+            <circle cx="300" cy="330" r="26" fill="none" stroke="#fff" stroke-width="2.5"/>
+            <path d="M300 318c2.5-3.5 2.5-6.5 0-9-2.5 2.5-2.5 5.5 0 9z" fill="#ffd9a0"/>
+            <circle cx="300" cy="330" r="40" fill="none" stroke="#c2551f" stroke-width="2" opacity=".5"/>
+          </g>
+          <text x="300" y="300" text-anchor="middle" font-family="Jost,sans-serif" font-size="20" font-weight="600" fill="#08312e">Hotel Dolphin International</text>
+          <text x="300" y="470" text-anchor="middle" font-family="Jost,sans-serif" font-size="22" letter-spacing="6" fill="#f7ead9" opacity=".9">GANGA RIVER</text>
+        </svg>
+      </div>
+      <div class="rv rv-d1">
+        <span class="eyebrow">Find Us</span>
+        <h2 class="serif" style="font-size:clamp(2.2rem,4.6vw,3.2rem);margin:.9rem 0 .8rem">Ten minutes from the ghats,<br>a world away from the noise</h2>
+        <p style="color:var(--muted)">B 1/54, Assi Road, near Assi Ghat,<br>Varanasi, Uttar Pradesh 221005</p>
+        <ul>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="#fff" stroke-width="1.8"/></svg></span><span><b>Dashashwamedh Ghat</b><span>10 min by auto &middot; 1.8 km</span></span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16l8-12 8 12" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 20h20" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></span><span><b>Varanasi Junction (BSB)</b><span>25 min by car &middot; 6 km</span></span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 13l9-7 9 7" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 11v9h14v-9" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span><b>Lal Bahadur Shastri Airport (VNS)</b><span>50 min by car &middot; 26 km — free pickup on suites</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec book" id="book">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Booking Enquiry</span>
+      <h2>Reserve your riverside stay</h2>
+      <p>Send an enquiry and our reservations desk replies within 2 hours (7 AM – 11 PM IST) with availability and the best direct-booking rate.</p>
+    </div>
+    <form class="form-card rv rv-d1" id="bookForm" novalidate>
+      <div class="field">
+        <label for="f-name">Full Name</label>
+        <input id="f-name" name="name" type="text" placeholder="e.g. Aarav Sharma" autocomplete="name">
+        <span class="err" data-err="name"></span>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone</label>
+        <input id="f-phone" name="phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel">
+        <span class="err" data-err="phone"></span>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+        <span class="err" data-err="email"></span>
+      </div>
+      <div class="field">
+        <label for="f-guests">Guests</label>
+        <select id="f-guests" name="guests">
+          <option value="1">1 guest</option>
+          <option value="2" selected>2 guests</option>
+          <option value="3">3 guests</option>
+          <option value="4">4 guests</option>
+          <option value="5+">5+ guests</option>
+        </select>
+        <span class="err" data-err="guests"></span>
+      </div>
+      <div class="field">
+        <label for="f-in">Check-in</label>
+        <input id="f-in" name="checkin" type="date">
+        <span class="err" data-err="checkin"></span>
+      </div>
+      <div class="field">
+        <label for="f-out">Check-out</label>
+        <input id="f-out" name="checkout" type="date">
+        <span class="err" data-err="checkout"></span>
+      </div>
+      <div class="field full">
+        <label for="f-room">Room Preference</label>
+        <select id="f-room" name="room">
+          <option>Ganga View Deluxe — &#8377;4,200/night</option>
+          <option>Comfort Twin — &#8377;2,800/night</option>
+          <option>Heritage Family Room — &#8377;5,600/night</option>
+          <option>Dolphin Suite — &#8377;8,900/night</option>
+          <option>Yatri Single — &#8377;1,950/night</option>
+        </select>
+        <span class="err" data-err="room"></span>
+      </div>
+      <div class="field full">
+        <label for="f-msg">Special Requests <span style="text-transform:none;letter-spacing:0;opacity:.7">(optional)</span></label>
+        <textarea id="f-msg" name="message" placeholder="Early check-in, aarti seats, dietary needs, airport pickup..."></textarea>
+        <span class="err" data-err="message"></span>
+      </div>
+      <p class="form-note">By sending, you agree to be contacted about this enquiry. Prefer to talk? Call <a href="tel:+915422220000">+91 542 222 0000</a>.</p>
+      <div class="field full" style="margin-top:.4rem">
+        <button type="submit" class="btn" style="justify-content:center;font-size:1rem;padding:1.05rem">Send Booking Enquiry
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Hotel Dolphin International</h4>
+        <p>A riverside-spirit 3-star premium hotel in Varanasi — warm rooms, honest prices, and the Ganga at your doorstep.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>B 1/54, Assi Road, Varanasi 221005</li>
+          <li><a href="tel:+915422220000">+91 542 222 0000</a></li>
+          <li><a href="mailto:stay@hoteldolphinvaranasi.in">stay@hoteldolphinvaranasi.in</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#rooms">Rooms &amp; Suites</a></li>
+          <li><a href="#experiences">Experiences</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#book">Book Your Stay</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credit">
+      <span>&copy; 2026 Hotel Dolphin International, Varanasi. All rights reserved.</span>
+      <span>Concept demo by Om Vibe Webs</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f5b942"/><path d="m8 12.5 2.7 2.7L16 9.5" stroke="#08312e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="toastMsg">Enquiry sent.</span>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* nav */
+  var nav = document.getElementById("nav");
+  function onScroll(){ nav.classList.toggle("scrolled", window.scrollY > 40); }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+  var burger = document.getElementById("burger"), links = document.getElementById("links");
+  burger.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); burger.classList.remove("open"); }); });
+
+  /* reveal on scroll */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+
+  /* counters */
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target, to = parseInt(el.getAttribute("data-to"),10) || 0;
+      if(reduceMotion){ el.textContent = to; return; }
+      var t0 = null, dur = 1400;
+      function tick(t){ if(!t0) t0 = t; var p = Math.min((t-t0)/dur, 1); el.textContent = Math.round(to * (1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:.5});
+  document.querySelectorAll(".count").forEach(function(el){ cio.observe(el); });
+
+  /* magnetic buttons (desktop, fine pointer) */
+  if(!reduceMotion && window.matchMedia("(pointer: fine)").matches){
+    document.querySelectorAll(".magnetic").forEach(function(btn){
+      btn.addEventListener("mousemove", function(ev){
+        var r = btn.getBoundingClientRect();
+        var x = ev.clientX - r.left - r.width/2, y = ev.clientY - r.top - r.height/2;
+        btn.style.transform = "translate(" + x*.18 + "px," + y*.22 + "px)";
+      });
+      btn.addEventListener("mouseleave", function(){ btn.style.transform = ""; });
+    });
+  }
+
+  /* toast */
+  var toast = document.getElementById("toast"), toastMsg = document.getElementById("toastMsg"), toastT;
+  function showToast(msg){
+    toastMsg.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){ toast.classList.remove("show"); }, 5200);
+  }
+
+  /* date minimums */
+  var fin = document.getElementById("f-in"), fout = document.getElementById("f-out");
+  var today = new Date(); today.setHours(0,0,0,0);
+  var iso = today.toISOString().split("T")[0];
+  fin.min = iso; fout.min = iso;
+
+  /* form validation */
+  var form = document.getElementById("bookForm");
+  function setErr(name, msg){
+    var f = form.querySelector('[data-err="'+name+'"]');
+    if(f) f.textContent = msg || "";
+    var input = form.elements[name];
+    if(input){ var field = input.closest(".field"); if(field) field.classList.toggle("invalid", !!msg); }
+  }
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var ok = true;
+    var name = form.elements.name.value.trim();
+    var phone = form.elements.phone.value.trim();
+    var email = form.elements.email.value.trim();
+    setErr("name", name.length >= 2 ? "" : "Please enter your full name."); if(name.length < 2) ok = false;
+    setErr("phone", /^[+\d][\d\s\-()]{6,}$/.test(phone) ? "" : "Please enter a valid phone number."); if(!/^[+\d][\d\s\-()]{6,}$/.test(phone)) ok = false;
+    setErr("email", validEmail(email) ? "" : "Please enter a valid email address."); if(!validEmail(email)) ok = false;
+    var dIn = fin.value ? new Date(fin.value+"T00:00:00") : null;
+    var dOut = fout.value ? new Date(fout.value+"T00:00:00") : null;
+    setErr("checkin", dIn && dIn >= today ? "" : "Pick a check-in date (today or later)."); if(!(dIn && dIn >= today)) ok = false;
+    setErr("checkout", (dOut && dIn && dOut > dIn) ? "" : "Check-out must be after check-in."); if(!(dOut && dIn && dOut > dIn)) ok = false;
+    if(!ok){ showToast("Please fix the highlighted fields and try again."); return; }
+    var nights = Math.round((dOut - dIn)/86400000);
+    showToast("Dhanyavaad, " + name.split(" ")[0] + "! Enquiry received for " + nights + (nights===1?" night":" nights") + " — we reply within 2 hours.");
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
